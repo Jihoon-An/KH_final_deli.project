@@ -1,11 +1,11 @@
 
-              ,,          ,,    ,,                                                                      ,,            ,,               ,,
-  .g8"""bgd `7MM          db  `7MM   .M"""bgd                 `7MM        `7MMF'             `7MM"""YMM db          `7MM        mm     db                       OO OO
-.dP'     `M   MM                MM  ,MI    "Y                   MM          MM                 MM    `7               MM        MM                              88 88
-dM'       `   MMpMMMb.  `7MM    MM  `MMb.      ,6"Yb.  .gP"Ya   MM  ,MP'    MM  ,pW"Wq.        MM   d `7MM  .P"Ybmmm  MMpMMMb.mmMMmm `7MM  `7MMpMMMb.  .P"Ybmmm || ||
-MM            MM    MM    MM    MM    `YMMNq. 8)   MM ,M'   Yb  MM ;Y       MM 6W'   `Wb       MM""MM   MM :MI  I8    MM    MM  MM     MM    MM    MM :MI  I8   || ||
-MM.           MM    MM    MM    MM  .     `MM  ,pm9MM 8M""""""  MM;Mm       MM 8M     M8       MM   Y   MM  WmmmP"    MM    MM  MM     MM    MM    MM  WmmmP"   `' `'
-`Mb.     ,'   MM    MM    MM    MM  Mb     dM 8M   MM YM.    ,  MM `Mb.(O)  MM YA.   ,A9       MM       MM 8M         MM    MM  MM     MM    MM    MM 8M        ,, ,,
-  `"bmmmd'  .JMML  JMML..JMML..JMML.P"Ybmmd"  `Moo9^Yo.`Mbmmd'.JMML. YA.Ymmm9   `Ybmd9'      .JMML.   .JMML.YMMMMMb .JMML  JMML.`Mbmo.JMML..JMML  JMML.YMMMMMb  db db
+${AnsiColor.BRIGHT_RED}              ,,          ,,    ,,                                                                      ,,            ,,               ,,
+${AnsiColor.RED}  .g8"""bgd `7MM          db  `7MM   .M"""bgd                 `7MM        `7MMF'             `7MM"""YMM db          `7MM        mm     db                       OO OO
+${AnsiColor.YELLOW}.dP'     `M   MM                MM  ,MI    "Y                   MM          MM                 MM    `7               MM        MM                              88 88
+${AnsiColor.BRIGHT_YELLOW}dM'       `   MMpMMMb.  `7MM    MM  `MMb.      ,6"Yb.  .gP"Ya   MM  ,MP'    MM  ,pW"Wq.        MM   d `7MM  .P"Ybmmm  MMpMMMb.mmMMmm `7MM  `7MMpMMMb.  .P"Ybmmm || ||
+${AnsiColor.BRIGHT_GREEN}MM            MM    MM    MM    MM    `YMMNq. 8)   MM ,M'   Yb  MM ;Y       MM 6W'   `Wb       MM""MM   MM :MI  I8    MM    MM  MM     MM    MM    MM :MI  I8   || ||
+${AnsiColor.GREEN}MM.           MM    MM    MM    MM  .     `MM  ,pm9MM 8M""""""  MM;Mm       MM 8M     M8       MM   Y   MM  WmmmP"    MM    MM  MM     MM    MM    MM  WmmmP"   `' `'
+${AnsiColor.BRIGHT_CYAN}`Mb.     ,'   MM    MM    MM    MM  Mb     dM 8M   MM YM.    ,  MM `Mb.(O)  MM YA.   ,A9       MM       MM 8M         MM    MM  MM     MM    MM    MM 8M        ,, ,,
+${AnsiColor.BLUE}  `"bmmmd'  .JMML  JMML..JMML..JMML.P"Ybmmd"  `Moo9^Yo.`Mbmmd'.JMML. YA.Ymmm9   `Ybmd9'      .JMML.   .JMML.YMMMMMb .JMML  JMML.`Mbmo.JMML..JMML  JMML.YMMMMMb  db db
                                                                                                            6'     dP                                  6'     dP
                                                                                                            Ybmmmd'                                    Ybmmmd'
