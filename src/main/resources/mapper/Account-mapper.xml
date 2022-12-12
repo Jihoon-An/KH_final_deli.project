@@ -4,13 +4,25 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.main.mapper.AccountMapper">
+    <!-- 멤버 로그인 -->
     <select id="login" resultType="int">
-        select count(*) from account
-        where acc_email = #{email} and acc_pw = #{pw} and acc_sns = 'normal'
+        SELECT COUNT(*) FROM ACCOUNT
+        WHERE ACC_EMAIL = #{eamil} AND ACC_PW = #{pw} AND ACC_SNS = 'normal'
     </select>
-    <insert id="insert" parameterType="OwnerDTO">
-        INSERT INTO ACCOUNT VALUES(
-ss
+
+    <!-- 멤버 회원가입(sns회원가입x) -->
+    <insert id="memberSignUp" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO account VALUES(
+        acc_seq.nextval,
+        #{acc_email},
+        #{acc_pw},
+        'client',
+        'normal',
+        null,
+        sysdate,
+        'Y'
         )
     </insert>
+
+
 </mapper>
