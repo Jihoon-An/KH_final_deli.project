@@ -27,5 +27,6 @@
 </head>
 <body>
 Home
+<img src="resources/">
 </body>
 </html>
