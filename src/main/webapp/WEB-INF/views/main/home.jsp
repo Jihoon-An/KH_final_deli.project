@@ -34,6 +34,8 @@
                     <marquee>
                         <h1>로그인 성공이다 이 짜식아.</h1>
                         <br>
+                        <a href="/member/toMemberMain"><button>메인으로</button></a>
+                        <br>
                         <h1>
                             <a href="/account/logout"><button>로그아웃</button></a>
                         </h1>
