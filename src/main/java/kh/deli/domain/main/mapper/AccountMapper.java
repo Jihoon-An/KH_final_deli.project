@@ -22,5 +22,6 @@ public interface AccountMapper {
     public int getAccSeq();
 
     public int login(Map<String, String> param);
+
     void memberSignUp(AccountDTO accountDTO);
 }
