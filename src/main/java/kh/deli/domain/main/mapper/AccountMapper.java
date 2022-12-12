@@ -12,5 +12,4 @@ public interface AccountMapper {
     public void insert(@Param("account") AccountDTO accountDTO);
 
 
-
 }

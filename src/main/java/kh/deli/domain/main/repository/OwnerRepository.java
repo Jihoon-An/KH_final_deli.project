@@ -1,5 +1,6 @@
 package kh.deli.domain.main.repository;
 
+import kh.deli.domain.main.controller.AccountController;
 import kh.deli.domain.main.mapper.OwnerSignUpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
