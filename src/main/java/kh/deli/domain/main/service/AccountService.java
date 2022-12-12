@@ -54,7 +54,6 @@ public class AccountService {
 
     public int login(String email, String pw) throws Exception {
         Map<String, String> param = new HashMap<>();
-        System.out.println(email + " ::: " + pw);
         param.put("email", email);
         param.put("pw", pw);
 //        param.put("pw", Encryptor.getSHA512(pw));
