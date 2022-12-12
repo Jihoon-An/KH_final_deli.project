@@ -27,6 +27,7 @@
 </head>
 <body>
 Home
-<img src="resources/">
+<img src="/img/favicon.ico">
+<img src="/favicon.ico">
 </body>
 </html>
