@@ -24,6 +24,7 @@ public class AccountController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String email, String pw) throws Exception {
+        System.out.println(email + " : " + pw);
         int result = accountService.login(email, pw);
         if (result == 1) {
             session.setAttribute("loginEmail", email);
@@ -31,12 +32,18 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping("/toMemberSignUp")
+    @RequestMapping("logout")
+    public String logout() throws Exception {
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @RequestMapping("toMemberSignUp")
     public String toMemberSignUp() throws Exception {
         return "main/memberSignUp";
     }
 
-    @PostMapping("/memberSignUp")
+    @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
         accountService.memberSignUp(accountDTO);
         return "main/home";
