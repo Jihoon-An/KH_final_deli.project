@@ -28,6 +28,6 @@
 <body>
 Home
 <img src="/img/favicon.ico">
-<img src="/favicon.ico">
+<img src="/resources/favicon.ico">
 </body>
 </html>
