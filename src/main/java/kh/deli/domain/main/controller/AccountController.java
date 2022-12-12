@@ -49,34 +49,24 @@ public class AccountController {
     @RequestMapping("oauth/kakao")
     public String  kakaoLogin(String code) throws Exception {
         System.out.println(code);
-        accountService.getKakaoAccessToken(code);
+
+        // 코드를 이용하여 accessToken 추출
+        String accessToken = accountService.getKakaoAccessToken(code);
+
+        // accessToken을 이용하여 사용자 정보 추출
+        accountService.getKakaoId(accessToken);
 
         // 발급 받은 accessToken 으로 카카오 회원 정보 DB 저장
-        String User = accountService.saveKakaoToken();
+        // String User = accountService.saveKakaoToken();
 
         System.out.println("로그인 성공! 저장은 아직!");
         return "redirect:/";
     }
 
-//    // 프론트에서 인가코드 받아오는 url
-//    @GetMapping("/oauth/token")
-//    public String getLogin(String code) {
-//
-//        // 넘어온 인가 코드를 통해 access_token 발급
-//        OauthToken oauthToken = userService.getAccessToken(code);
-//
-//        //(1)
-//        // 발급 받은 accessToken 으로 카카오 회원 정보 DB 저장
-//        String User = userService.saveUser(oauthToken.getAccess_token());
-//
-//        return User;
-//    }
-
     @RequestMapping("oauth/kakaoLogout")
     public String  kakaoLogout() throws Exception {
         return "redirect:/";
     }
-
 
 
 }
