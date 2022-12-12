@@ -14,6 +14,11 @@
 
 <form method="post" action="/account/memberSignUp">
     <h1>회원가입</h1>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code"><img src="/resources/img/kakao_login.png"></a><br>
+
+    <hr>
+    <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">로그아웃</a>
+    <hr>
     <input type="text" placeholder="이메일 주소 입력해라" name="acc_email"><br>
     <input type="text" placeholder="비밀번호 입력해라" name="acc_pw"><br>
     <input type="password" placeholder="비밀번호 동일하게 입력해라" name="acc_pw_re"><br>
