@@ -48,16 +48,16 @@
 
                     <div class="loginBox">
                         <form id="loginForm" action="/account/login" method="post">
-                            <input type="text" placeholder="이메일" name="email">
+                            <input type="text" placeholder="이메일" name="email" <c:if test="${not empty saved_email}"> value="${saved_email}"</c:if>>
                             <input type="text" placeholder="비밀번호" name="pw">
-                            <button>로그인</button>
+                            <button>로그인</button><br>
+                            <label for="emailSave">이메일저장</label>
+                            <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
+                            <a href="#">이메일|비밀번호 찾기</a>
+                            <button>카카오로그인</button><br>
+                            <span>아직 딜리의 회원이 아니신가요?</span>
+                            <a href="/account/toMemberSignUp">회원가입</a>
                         </form>
-                        <label for="emailSave">이메일저장</label>
-                        <input type="checkbox" id="emailSave" name="emailSave">
-                        <a href="#">이메일|비밀번호 찾기</a>
-                        <button>카카오로그인</button><br>
-                        <span>아직 딜리의 회원이 아니신가요?</span>
-                        <a href="/account/toMemberSignUp">회원가입</a>
                     </div>
 
                 </div>
