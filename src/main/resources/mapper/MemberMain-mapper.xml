@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.main.mapper.MemberMainMapper">
+    <select id="selectByStar" resultType="kh.deli.domain.main.dto.MemberMainRequestDTO">
+        SELECT *  FROM (SELECT STORE_SEQ ,AVG(REV_STAR) "avg_star" FROM REVIEW GROUP BY STORE_SEQ) r, STORE s WHERE s.STORE_SEQ =r.STORE_SEQ
+    </select>
+</mapper>
