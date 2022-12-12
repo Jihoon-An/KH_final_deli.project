@@ -4,6 +4,11 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.main.mapper.AccountMapper">
+    <!-- 멤버 로그인 -->
+    <select id="login" resultType="int">
+        SELECT COUNT(*) FROM ACCOUNT
+        WHERE ACC_EMAIL = #{eamil} AND ACC_PW = #{pw} AND ACC_SNS = 'normal'
+    </select>
 
     <!-- 멤버 회원가입(sns회원가입x) -->
     <insert id="memberSignUp" parameterType="kh.deli.global.entity.AccountDTO">

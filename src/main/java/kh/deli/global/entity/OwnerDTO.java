@@ -1,4 +1,3 @@
-
 package kh.deli.global.entity;
 
 import lombok.AllArgsConstructor;
