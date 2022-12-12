@@ -3,15 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.main.mapper.OwnerMapper">
+<mapper namespace="kh.deli.domain.main.mapper.OwnerSignUpMapper">
     <insert id="insert" parameterType="OwnerDTO">
         INSERT INTO OWNER VALUES(
-        OWNER_SEQ.NEXTVAL,
-        #{owner.acc_seq},
-        #{owner.owner_name},
-        #{owner.owner_phone},
-        #{owner.owner_num},
-        #{owner.owner_card_img}
+            OWNER_SEQ.NEXTVAL,
+            #{owner.acc_seq},
+            #{owner.owner_name},
+            #{owner.owner_phone},
+            #{owner.owner_num},
+            #{owner.owner_card_img}
         )
     </insert>
+
+
 </mapper>

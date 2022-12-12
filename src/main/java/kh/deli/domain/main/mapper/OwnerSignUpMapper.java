@@ -11,5 +11,4 @@ public interface OwnerSignUpMapper {
 
     public void insert(@Param("owner") OwnerDTO owner);
 
-
 }

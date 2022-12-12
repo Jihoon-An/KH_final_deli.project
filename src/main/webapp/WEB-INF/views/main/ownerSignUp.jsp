@@ -25,7 +25,8 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/resources/css/main/ownerSignUp.css">
-    <script rel="script" src="/resources/js/main/ownerSignUp.js"/>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -92,11 +93,14 @@
                     <button type="button" class="footer_btn">취소하기</button>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="footer_btn">가입하기</button>
+                    <button type="submit" class="footer_btn">가입하기</button>
                 </div>
             </div>
         </form>
     </div>
 </main>
+
+
+<script src="/resources/js/main/ownerSignUp.js"></script>
 </body>
 </html>

@@ -4,9 +4,13 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.main.mapper.AccountMapper">
-    <insert id="insert" parameterType="OwnerDTO">
-        INSERT INTO ACCOUNT VALUES(
-ss
+    <insert id="insertOwner" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO ACCOUNT(ACC_SEQ, ACC_EMAIL, ACC_PW, ACC_TYPE)
+        VALUES (
+        #{acc.acc_seq},
+        #{acc.acc_email},
+        #{acc.acc_pw},
+        'business'
         )
     </insert>
 </mapper>
