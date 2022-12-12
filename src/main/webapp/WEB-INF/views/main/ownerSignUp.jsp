@@ -26,10 +26,81 @@
 
     <link rel="stylesheet" href="/resources/css/main/ownerSignUp.css">
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
+<main id="owner_signup">
+    <div class="container">
+        <form id="signup_frm" action="/ownerSignUp/signUp" enctype="multipart/form-data" method="post">
+            <div class="header row"><h1 class="text-center">사업자 회원가입</h1></div>
 
-<input class="testInput">
+            <div class="input_title row"><h5>이메일</h5></div>
+            <div class="row">
+                <div class="col-3">
+                    <input class="input_data" id="email" name="acc_email">
+                </div>
+                <div class="col-3">
+                    <button class="certi_btn" type="button" id="email_btn">인증</button>
+                </div>
+            </div>
 
+            <div class="input_title row"><h5>비밀번호</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="pw1" name="acc_pw">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="pw2">
+                </div>
+            </div>
+
+            <div class="input_title row"><h5>이름</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="name" name="owner_name">
+                </div>
+            </div>
+
+            <div class="input_title row"><h5>핸드폰 번호</h5></div>
+            <div class="row">
+                <div class="col-3">
+                    <input class="input_data" id="phone" name="owner_phone">
+                </div>
+                <div class="col-3">
+                    <button class="certi_btn" type="button" id="phone_btn">인증</button>
+                </div>
+            </div>
+
+            <div class="input_title row"><h5>사업자 번호</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="num" name="owner_num">
+                </div>
+            </div>
+
+            <div class="input_title row"><h5>사업자 등록증</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input type="file" class="input_file" id="input_file" name="input_file">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <button type="button" class="footer_btn">취소하기</button>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="footer_btn">가입하기</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+<script src="/resources/js/main/ownerSignUp.js"></script>
 </body>
 </html>
