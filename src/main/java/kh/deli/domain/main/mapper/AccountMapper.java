@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 public interface AccountMapper {
     public void insert(@Param("account") AccountDTO accountDTO);
 
+    public String findByEmail(@Param("email") String email);
 }
