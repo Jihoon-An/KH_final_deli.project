@@ -4,8 +4,22 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -14,10 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@AllArgsConstructor
 public class AccountService {
-    @Autowired
-    private AccountMapper accountMapper;
-
+    private final AccountMapper accountMapper;
+    private final RestTemplate restTemplate;
 
     public void sign(AccountDTO dto) throws Exception {
         accountMapper.insert(dto);
@@ -94,6 +108,7 @@ public class AccountService {
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 
+
             System.out.println("access_token : " + access_Token);
             System.out.println("refresh_token : " + refresh_Token);
 
@@ -109,5 +124,41 @@ public class AccountService {
 
         return "";
     }
+
+    public String getKakaoId(String code) {
+
+            String myTocken = "Bearer " + code;
+
+            //헤더 객체 생성
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            headers.set("Authorization", myTocken);
+
+            //요청 url
+            UriComponentsBuilder builder =
+                    UriComponentsBuilder.fromHttpUrl("https://kapi.kakao.com/v2/user/me");
+
+            HttpEntity<?> entity = new HttpEntity<>(headers);
+
+            HttpEntity<String> response = null;
+
+            //요청
+            try {
+                response = restTemplate.exchange(
+                        builder.toUriString(),
+                        HttpMethod.GET,
+                        entity,
+                        String.class);
+
+                System.out.println("응답결과 :" + response.getBody());
+
+            } catch (HttpStatusCodeException e) {
+
+                System.out.println("error :" + e);
+
+            }
+
+            return response.getBody();
+        }
 
 }
