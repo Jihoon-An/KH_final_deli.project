@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package kh.deli.global.entity;
 
 import lombok.AllArgsConstructor;
@@ -16,4 +17,7 @@ public class OwnerDTO {
     private String owner_phone;
     private String owner_num;
     private String owner_card_img;
+=======
+package kh.deli.global.entity;public class OwnerDTO {
+>>>>>>> 40a1771 (feat:entity DTO 신규등록)
 }
