@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form method="post" action="/signUp">
+<form method="post" action="/account/memberSignUp">
     <h1>회원가입</h1>
     <input type="text" placeholder="이메일 주소 입력해라" name="acc_email"><br>
     <input type="text" placeholder="비밀번호 입력해라" name="acc_pw"><br>

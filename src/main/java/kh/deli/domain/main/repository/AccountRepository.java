@@ -1,5 +1,7 @@
 package kh.deli.domain.main.repository;
 
+import kh.deli.domain.main.mapper.AccountMapper;
+import kh.deli.domain.main.mapper.OwnerSignUpMapper;
 import kh.deli.global.entity.AccountDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,9 @@ import org.springframework.stereotype.Repository;
 public class AccountRepository {
 
     @Autowired
-    private SqlSession db;
+    private AccountMapper accountMapper;
 
-    public int sign(AccountDTO dto) throws Exception {
-        return db.insert("Account.insert", dto);
+    public void memberSignUp(AccountDTO dto) throws Exception {
+        accountMapper.memberSignUp(dto);
     }
 }
