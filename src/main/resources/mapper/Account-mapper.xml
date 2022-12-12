@@ -13,6 +13,7 @@
         #{acc.acc_pw},
         'business'
         )
+    </insert>
     <!-- 멤버 로그인 -->
     <select id="login" resultType="int">
         SELECT COUNT(*) FROM ACCOUNT

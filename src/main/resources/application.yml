@@ -1,0 +1,13 @@
+#java mail sender
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: {abg1418@gmail.com}
+    password: {qjmekhnpxwpvzvsu}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
