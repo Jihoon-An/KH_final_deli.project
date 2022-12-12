@@ -7,7 +7,7 @@
     <!-- 멤버 로그인 -->
     <select id="login" resultType="int">
         SELECT COUNT(*) FROM ACCOUNT
-        WHERE ACC_EMAIL = #{eamil} AND ACC_PW = #{pw} AND ACC_SNS = 'normal'
+        WHERE ACC_EMAIL = #{email} AND ACC_PW = #{pw} AND ACC_SNS = 'normal'
     </select>
 
     <!-- 멤버 회원가입(sns회원가입x) -->
