@@ -14,10 +14,10 @@
 
 <form method="post" action="/account/memberSignUp">
     <h1>회원가입</h1>
-    <a href="https://kauth.kakao.com/oauth/authorize?client_id=2aad40910868e3c5fa9594f8de34a07b&redirect_uri=http://mydeli/main/kakao&response_type=code"><img src="/resources/img/kakao_login.png"></a><br>
-    /oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code HTTP/1.1
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code"><img src="/resources/img/kakao_login.png"></a><br>
+
     <hr>
-    <a href="https://kauth.kakao.com/oauth/logout?client_id=2aad40910868e3c5fa9594f8de34a07b&logout_redirect_uri=http://mydeli/main/kakao/do">로그아웃</a>
+    <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">로그아웃</a>
     <hr>
     <input type="text" placeholder="이메일 주소 입력해라" name="acc_email"><br>
     <input type="text" placeholder="비밀번호 입력해라" name="acc_pw"><br>

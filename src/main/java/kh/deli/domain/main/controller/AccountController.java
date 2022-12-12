@@ -5,10 +5,7 @@ import kh.deli.global.entity.AccountDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -46,7 +43,41 @@ public class AccountController {
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
         accountService.memberSignUp(accountDTO);
-        return "main/home";
+        return "redirect:/";
     }
 
+    @RequestMapping("oauth/kakao")
+    public String  kakaoLogin(String code) throws Exception {
+        System.out.println(code);
+        accountService.getKakaoAccessToken(code);
+
+        // 발급 받은 accessToken 으로 카카오 회원 정보 DB 저장
+        String User = accountService.saveKakaoToken();
+
+        System.out.println("로그인 성공! 저장은 아직!");
+        return "redirect:/";
+    }
+
+//    // 프론트에서 인가코드 받아오는 url
+//    @GetMapping("/oauth/token")
+//    public String getLogin(String code) {
+//
+//        // 넘어온 인가 코드를 통해 access_token 발급
+//        OauthToken oauthToken = userService.getAccessToken(code);
+//
+//        //(1)
+//        // 발급 받은 accessToken 으로 카카오 회원 정보 DB 저장
+//        String User = userService.saveUser(oauthToken.getAccess_token());
+//
+//        return User;
+//    }
+
+    @RequestMapping("oauth/kakaoLogout")
+    public String  kakaoLogout() throws Exception {
+        return "redirect:/";
+    }
+
+
+
 }
+
