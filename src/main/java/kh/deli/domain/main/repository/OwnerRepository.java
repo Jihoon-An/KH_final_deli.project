@@ -1,7 +1,6 @@
 package kh.deli.domain.main.repository;
 
-import kh.deli.domain.main.controller.AccountController;
-import kh.deli.domain.main.mapper.OwnerSignUpMapper;
+import kh.deli.domain.main.mapper.OwnerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public class OwnerRepository {
 
     @Autowired
-    private OwnerSignUpMapper ownerSignUpMapper;
+    private OwnerMapper ownerMapper;
 
 
 }
