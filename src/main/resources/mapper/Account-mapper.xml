@@ -6,7 +6,7 @@
 <mapper namespace="kh.deli.domain.main.mapper.AccountMapper">
     <insert id="insert" parameterType="OwnerDTO">
         INSERT INTO ACCOUNT VALUES(
-
+ss
         )
     </insert>
 </mapper>
