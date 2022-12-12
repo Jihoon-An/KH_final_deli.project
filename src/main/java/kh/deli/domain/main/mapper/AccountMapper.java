@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Mapper
 public interface AccountMapper {
 
+    public void login(@Param("login") AccountDTO accountDTO);
     public void insert(@Param("account") AccountDTO accountDTO);
 
 
