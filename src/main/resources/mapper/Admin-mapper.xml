@@ -8,6 +8,7 @@
     <select id="selectAll" resultType="AdminReviewDTO">
 
         select
+            rev_seq,
             mem_name,
             rev_content,
             store_name,
