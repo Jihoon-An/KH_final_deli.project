@@ -102,10 +102,10 @@
             <%--footer 버튼--%>
             <div class="row">
                 <div class="col-3">
-                    <button type="button" class="footer_btn">취소하기</button>
+                    <button type="button" class="footer_btn" id="cancel_btn">취소하기</button>
                 </div>
                 <div class="col-3">
-                    <button type="submit" class="footer_btn">가입하기</button>
+                    <button type="button" class="footer_btn" id="submit_btn">가입하기</button>
                 </div>
             </div>
         </form>

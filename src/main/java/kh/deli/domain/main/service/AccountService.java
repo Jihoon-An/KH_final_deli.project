@@ -200,6 +200,7 @@ public class AccountService {
         return accountMapper.getAccEmail(acc_token);
     }
 
+
     /** 연락처 문자 인증 전송
      *
      * @param tel
@@ -217,4 +218,5 @@ public class AccountService {
         message.send_msg(tel, numStr);
         return numStr;
     }
+
 }
