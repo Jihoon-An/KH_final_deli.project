@@ -9,12 +9,7 @@ public class MailRestController {
     @Autowired
     MailService mailService;
     @PostMapping("/mailCerti")
-    public void mailCerti() {
-        MailDTO mail = new MailDTO();
-        mail.setAddress("abg1418@naver.com");
-        mail.setTitle("test mail");
-        mail.setMessage("test mail");
-
+    public void mailCerti(MailDTO mail) {
         mailService.mailSend(mail);
     }
 }
