@@ -30,7 +30,8 @@ public class OwnerSignUpController {
     @PostMapping("/signUp")
     public String signUp(OwnerDTO owner, AccountDTO account, MultipartFile file) throws Exception{
 
-        ownerSignUpService.signUp(owner, account);
+        //signUp 데이터 처리
+        ownerSignUpService.signUp(owner, account, file);
 
         return "redirect:/";
     }

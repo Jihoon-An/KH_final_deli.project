@@ -42,7 +42,7 @@ public class AccountService {
      * <h2>email 중복체크</h2>
      *
      * @param email 검색할 email
-     * @return 검색한 email이 있으면 true, 업으면 false
+     * @return 검색한 email 이 있으면 true, 없으면 false
      */
     public boolean dupleCheck(String email) throws Exception {
 
@@ -54,16 +54,50 @@ public class AccountService {
         return false;
     }
 
+    /**
+     * <h2>Normal Type 로그인</h2>
+     * @param email
+     * @param pw
+     * @return int
+     * @throws Exception
+     */
     public int login(String email, String pw) throws Exception {
         Map<String, String> param = new HashMap<>();
         param.put("email", email);
-        param.put("pw", pw);
         param.put("pw", Encryptor.getSHA512(pw));
         return accountMapper.login(param);
     }
 
-    /** member 회원가입 메서드
-     * 
+
+    /**
+     * <h2>카카오 연결헤제</h2>
+     * @param accessToken
+     * @throws Exception
+     */
+    public void kakaoUnlink(String accessToken) throws Exception {
+        String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+        URL url = new URL(reqURL);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+        int responseCode = conn.getResponseCode();
+        System.out.println("responseCode : " + responseCode);
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+        String result = "";
+        String line = "";
+
+        while ((line = br.readLine()) != null) {
+            result += line;
+        }
+        System.out.println("개좆같은새끼야 : " + result);
+    }
+
+    /**
+     * member 회원가입 메서드
+     *
      * @param dto
      * @throws Exception
      */
@@ -72,8 +106,9 @@ public class AccountService {
         accountMapper.memberSignUp(dto);
     }
 
-    /** 카카오 AccessToken 값 가져오는 메서드
-     * 
+    /**
+     * 카카오 AccessToken 값 가져오는 메서드
+     *
      * @param code
      * @return
      */
@@ -126,7 +161,8 @@ public class AccountService {
         return access_Token;
     }
 
-    /** 카카오 회원 ID 값 가져오는 메서드
+    /**
+     * 카카오 회원 ID 값 가져오는 메서드
      *
      * @param code
      * @return
@@ -165,12 +201,12 @@ public class AccountService {
         return id;
     }
 
-    /** kakaoId 중복체크
+    /**
+     * kakaoId 중복체크
      *
      * @param kakaoId 검색할 kakaoId
-     * @return 검색한 kakaoId가 있으면 true, 없으면 false
-     *
      * @param kakaoId
+     * @return 검색한 kakaoId가 있으면 true, 없으면 false
      * @return
      * @throws Exception
      */
@@ -182,7 +218,8 @@ public class AccountService {
         return false;
     }
 
-    /** kakao 회원가입 메서드
+    /**
+     * kakao 회원가입 메서드
      *
      * @param dto
      * @throws Exception
