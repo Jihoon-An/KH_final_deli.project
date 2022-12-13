@@ -3,6 +3,7 @@ package kh.deli.domain.main.controller;
 import kh.deli.domain.main.service.AccountService;
 import kh.deli.global.entity.AccountDTO;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,12 +61,17 @@ public class AccountController {
         return "redirect:/";
     }
 
+    @RequestMapping("toKakaoSignUp")
+    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
+        model.addAttribute("acc_token", kakaoId);
+        return "main/kakaoSignUp";
+    }
+
     @PostMapping("kakaoSignUp")
-    public String kakaoSignUp(AccountDTO accountDTO, String kakaoId) throws Exception {
-        accountDTO.setAcc_token(kakaoId);
+    public String kakaoSignUp(AccountDTO accountDTO) throws Exception {
         accountService.kakaoSignUp(accountDTO);
-        accountService.memberSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
+        System.out.println("야 카카오 회원가입 성공했다 짜식들아");
         return "redirect:/";
     }
 
@@ -78,11 +84,12 @@ public class AccountController {
         System.out.println("로그인 성공! 저장은 아직!");
         // kakaoId 으로 카카오 회원 정보 DB 저장
         if(!accountService.dupleCheckKakaoId(kakaoId)){
-            System.out.println("로그인 성공! 저장은 함!");
+            System.out.println("로그인 성공! 저장은 할 예정!");
             // 회원가입으로 페이지 이동
-            return "/account/toMemberSignUp?kakaoId=" + kakaoId;
+            return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
         } else {
-            // 저장된 회원 정보가 있으면 그냥 페이지 메인으로
+            // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
+            session.setAttribute("loginEmail", accountService.getAccEmail(kakaoId));
             return "redirect:/";
         }
     }

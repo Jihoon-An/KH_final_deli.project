@@ -14,6 +14,7 @@
         'business'
         )
     </insert>
+
     <!-- 멤버 로그인 -->
     <select id="login" resultType="int">
         SELECT COUNT(*) FROM ACCOUNT
@@ -51,6 +52,12 @@
     <!-- 카카오 회원가입 확인(아이디 존재 여부 확인) -->
     <select id="findByAccToken" resultType="int">
         SELECT COUNT(*) FROM ACCOUNT
+        WHERE acc_token = #{acc_token}
+    </select>
+
+    <!-- 카카오 아이디(토큰) 값으로 이메일 확인(카카오 로그인시 이메일로 로그인하기 위함) -->
+    <select id="getAccEmail" resultType="String">
+        SELECT ACC_EMAIL FROM ACCOUNT
         WHERE acc_token = #{acc_token}
     </select>
 

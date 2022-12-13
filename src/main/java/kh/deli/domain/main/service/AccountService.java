@@ -6,6 +6,7 @@ import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.util.Encryptor;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -179,8 +180,8 @@ public class AccountService {
      * @throws Exception
      */
     public boolean dupleCheckKakaoId(String kakaoId) throws Exception {
-        String result = accountMapper.findByAccToken(kakaoId);
-        if (result != null) {
+        int result = accountMapper.findByAccToken(kakaoId);
+        if (result == 1) {
             return true;
         }
         return false;
@@ -195,5 +196,10 @@ public class AccountService {
         dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
         accountMapper.kakaoSignUp(dto);
     }
+
+    public String getAccEmail(String acc_token) {
+        return accountMapper.getAccEmail(acc_token);
+    }
+
 
 }

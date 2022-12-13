@@ -27,5 +27,7 @@ public interface AccountMapper {
 
     void kakaoSignUp(AccountDTO accountDTO);
 
-    String findByAccToken(String acc_token);
+    int findByAccToken(String acc_token);
+
+    String getAccEmail(String acc_token);
 }
