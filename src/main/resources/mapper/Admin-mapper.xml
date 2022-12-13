@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.admin.mapper.AdminMapper">
+
+    <select id="selectAll" resultType="AdminReviewDTO">
+
+        select
+            mem_name,
+            rev_content,
+            store_name,
+            rev_writedate,
+            rev_modified_date
+        from member,store,review
+        where review.acc_seq=member.acc_seq
+        and review.store_seq=store.store_seq
+    </select>
+
+</mapper>
