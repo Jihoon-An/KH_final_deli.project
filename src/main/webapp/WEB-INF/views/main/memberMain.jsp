@@ -29,6 +29,9 @@
     <td><a>아시안</a></td>
     <td><a>분식</a></td>
   </tr>
+    <tr>
+        <td colspan="4"><a href="/memberReviewForm/toMemberReviewForm">리뷰쓰기</a></td>
+    </tr>
 </table>
 <c:choose>
     <c:when test="${not empty list}">
