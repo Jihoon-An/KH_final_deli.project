@@ -2,6 +2,7 @@ package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.AccountService;
 import kh.deli.global.entity.AccountDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/account/")
 public class AccountController {
 
-    @Autowired
-    private AccountService accountService;
-
-    @Autowired
-    private HttpSession session;
+    private final AccountService accountService;
+    private final HttpSession session;
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String email, String pw) throws Exception {
