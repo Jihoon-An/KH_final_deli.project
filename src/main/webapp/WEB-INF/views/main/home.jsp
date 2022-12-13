@@ -39,6 +39,9 @@
                         <h1>
                             <a href="/account/logout"><button>로그아웃</button></a>
                         </h1>
+                        <h2>
+                            <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
+                        </h2>
                     </marquee>
                 </div>
             </c:when>

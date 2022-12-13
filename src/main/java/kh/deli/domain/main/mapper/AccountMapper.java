@@ -14,6 +14,7 @@ public interface AccountMapper {
 
     void insert(@Param("account") AccountDTO accountDTO);
 
+    @Select("SELECT ACC_EMAIL FROM ACCOUNT WHERE ACC_EMAIL = #{email}")
     String findByEmail(@Param("email") String email);
 
     void insertOwner(@Param("acc") AccountDTO acc);
