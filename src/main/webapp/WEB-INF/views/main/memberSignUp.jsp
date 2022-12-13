@@ -25,14 +25,9 @@
     <input type="hidden" name="acc_type" value="client">
     <input type="hidden" name="acc_sns" value="normal">
     <button type="submit">가입 완료</button>
-
-    <br>
-    ---<br>
+    <hr>
     <input type="hidden" name="acc_sns" value="kakao"><br>
     acc_token<br>
-    acc_signupdate sysdate<br>
-    acc_unregister Y<br>
-
 </form>
 
 </body>
