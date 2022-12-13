@@ -42,10 +42,11 @@ public class NaverSensV2 {
         bodyJson.put("contentType","COMM");
         bodyJson.put("countryCode","82");
         bodyJson.put("from","01025125388");	// 발신번호 * 사전에 인증/등록된 번호만 사용할 수 있습니다.
+        bodyJson.put("content","WEB");
         bodyJson.put("messages", toArr);
 
         String body = bodyJson.toJSONString();
-        System.out.println(body);
+        System.out.println("내용 : " + body);
 
         try {
             URL url = new URL(apiUrl);
@@ -67,7 +68,9 @@ public class NaverSensV2 {
 
             int responseCode = con.getResponseCode();
             BufferedReader br;
+
             System.out.println("responseCode" +" " + responseCode);
+
             if(responseCode==202) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             } else {  // 에러 발생
@@ -80,8 +83,6 @@ public class NaverSensV2 {
                 response.append(inputLine);
             }
             br.close();
-
-            System.out.println(response.toString());
 
         } catch (Exception e) {
             System.out.println(e);
