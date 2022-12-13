@@ -3,5 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.member.mapper.StoreMapper">
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreMapper">
+    <insert id="insertStore" parameterType="kh.deli.global.entity.StoreDTO">
+        insert into store values(
+        store_seq.nextval,
+        #{store_name},
+        #{store_category},
+        #{store_phone},
+        #{store_intro},
+        #{store_min_price},
+        #{store_deli_tip},
+        #{store_deli_time},
+        #{store_bsns_hours},
+        #{store_close_day},
+        #{store_add_detail1},
+        #{store_add_detail2},
+        #{store_add_x},
+        #{store_add_y},
+        #{store_logo, jdbcType=VARCHAR},
+        #{store_origin},
+        #{store_open},
+        #{store_display},
+        #{store_destination}
+        )
+    </insert>
 </mapper>
