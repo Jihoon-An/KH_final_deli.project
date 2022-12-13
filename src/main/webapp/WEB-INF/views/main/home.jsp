@@ -33,7 +33,7 @@
             <c:when test="${loginEmail != null}">
                 <div class="container">
                     <marquee>
-                        <h1>로그인 성공이다 이 짜식아.</h1>
+                        <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>
                         <br>
                         <a href="/member/toMemberMain"><button>메인으로</button></a>
                         <br>
