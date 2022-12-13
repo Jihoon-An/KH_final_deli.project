@@ -12,16 +12,23 @@ import java.util.Map;
 @Mapper
 public interface AccountMapper {
 
-    public void insert(@Param("account") AccountDTO accountDTO);
+    void insert(@Param("account") AccountDTO accountDTO);
 
-    public String findByEmail(@Param("email") String email);
+    @Select("SELECT ACC_EMAIL FROM ACCOUNT WHERE ACC_EMAIL = #{email}")
+    String findByEmail(@Param("email") String email);
 
-    public void insertOwner(@Param("acc") AccountDTO acc);
+    void insertOwner(@Param("acc") AccountDTO acc);
 
     @Select("SELECT ACC_SEQ.NEXTVAL FROM DUAL")
-    public int getAccSeq();
+    int getAccSeq();
 
-    public int login(Map<String, String> param);
+    int login(Map<String, String> param);
 
     void memberSignUp(AccountDTO accountDTO);
+
+    void kakaoSignUp(AccountDTO accountDTO);
+
+    int findByAccToken(String acc_token);
+
+    String getAccEmail(String acc_token);
 }

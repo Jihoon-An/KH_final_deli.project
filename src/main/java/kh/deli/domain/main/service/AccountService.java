@@ -4,7 +4,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.util.Encryptor;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -44,6 +47,7 @@ public class AccountService {
      * @return 검색한 email이 있으면 true, 업으면 false
      */
     public boolean dupleCheck(String email) throws Exception {
+
         String result = accountMapper.findByEmail(email);
 
         if (result != null) {
@@ -56,19 +60,29 @@ public class AccountService {
         Map<String, String> param = new HashMap<>();
         param.put("email", email);
         param.put("pw", pw);
-//        param.put("pw", Encryptor.getSHA512(pw));
+        param.put("pw", Encryptor.getSHA512(pw));
         return accountMapper.login(param);
     }
 
+    /** member 회원가입 메서드
+     * 
+     * @param dto
+     * @throws Exception
+     */
     public void memberSignUp(AccountDTO dto) throws Exception {
+        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
         accountMapper.memberSignUp(dto);
     }
 
+    /** 카카오 AccessToken 값 가져오는 메서드
+     * 
+     * @param code
+     * @return
+     */
     public String getKakaoAccessToken(String code) {
         String access_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
-
         try {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -89,75 +103,103 @@ public class AccountService {
 
             //결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
+//            System.out.println("responseCode : " + responseCode);
+
             //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
             String result = "";
-
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
+//            System.out.println("response body : " + result);
 
             //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
-
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-
-
-            System.out.println("access_token : " + access_Token);
-            System.out.println("refresh_token : " + refresh_Token);
-
+//            System.out.println("access_token : " + access_Token);
+//            System.out.println("refresh_token : " + refresh_Token);
             br.close();
             bw.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return access_Token;
     }
 
-    public String saveKakaoToken() {
+    /** 카카오 회원 ID 값 가져오는 메서드
+     *
+     * @param code
+     * @return
+     */
+    public String getKakaoId(String code) {
+        String myTocken = "Bearer " + code;
 
-        return "";
+        //헤더 객체 생성
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.set("Authorization", myTocken);
+
+        //요청 url
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl("https://kapi.kakao.com/v2/user/me");
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        HttpEntity<String> response = null;
+
+        //요청
+        String id = null;
+        try {
+            response = restTemplate.exchange(
+                    builder.toUriString(),
+                    HttpMethod.GET,
+                    entity,
+                    String.class);
+
+            JsonParser parser = new JsonParser();
+            JsonElement element = parser.parse(response.getBody());
+            id = element.getAsJsonObject().get("id").getAsString();
+            System.out.println("아이디 : " + id);
+
+        } catch (HttpStatusCodeException e) {
+            System.out.println("error :" + e);
+        }
+        return id;
     }
 
-    public String getKakaoId(String code) {
-
-            String myTocken = "Bearer " + code;
-
-            //헤더 객체 생성
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.set("Authorization", myTocken);
-
-            //요청 url
-            UriComponentsBuilder builder =
-                    UriComponentsBuilder.fromHttpUrl("https://kapi.kakao.com/v2/user/me");
-
-            HttpEntity<?> entity = new HttpEntity<>(headers);
-
-            HttpEntity<String> response = null;
-
-            //요청
-            try {
-                response = restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        entity,
-                        String.class);
-
-                System.out.println("응답결과 :" + response.getBody());
-
-            } catch (HttpStatusCodeException e) {
-
-                System.out.println("error :" + e);
-
-            }
-
-            return response.getBody();
+    /** kakaoId 중복체크
+     *
+     * @param kakaoId 검색할 kakaoId
+     * @return 검색한 kakaoId가 있으면 true, 없으면 false
+     *
+     * @param kakaoId
+     * @return
+     * @throws Exception
+     */
+    public boolean dupleCheckKakaoId(String kakaoId) throws Exception {
+        int result = accountMapper.findByAccToken(kakaoId);
+        if (result == 1) {
+            return true;
         }
+        return false;
+    }
+
+    /** kakao 회원가입 메서드
+     *
+     * @param dto
+     * @throws Exception
+     */
+    public void kakaoSignUp(AccountDTO dto) throws Exception {
+        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
+        accountMapper.kakaoSignUp(dto);
+    }
+
+    public String getAccEmail(String acc_token) {
+        return accountMapper.getAccEmail(acc_token);
+    }
+
+
+        return response.getBody();
+    }
 
 }

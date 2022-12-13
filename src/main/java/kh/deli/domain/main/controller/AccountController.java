@@ -3,6 +3,7 @@ package kh.deli.domain.main.controller;
 import kh.deli.domain.main.service.AccountService;
 import kh.deli.global.entity.AccountDTO;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,24 +73,41 @@ public class AccountController {
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
         accountService.memberSignUp(accountDTO);
+        session.setAttribute("loginEmail", accountDTO.getAcc_email());
+        return "redirect:/";
+    }
+
+    @RequestMapping("toKakaoSignUp")
+    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
+        model.addAttribute("acc_token", kakaoId);
+        return "main/kakaoSignUp";
+    }
+
+    @PostMapping("kakaoSignUp")
+    public String kakaoSignUp(AccountDTO accountDTO) throws Exception {
+        accountService.kakaoSignUp(accountDTO);
+        session.setAttribute("loginEmail", accountDTO.getAcc_email());
+        System.out.println("야 카카오 회원가입 성공했다 짜식들아");
         return "redirect:/";
     }
 
     @RequestMapping("oauth/kakao")
     public String  kakaoLogin(String code) throws Exception {
-        System.out.println(code);
-
         // 코드를 이용하여 accessToken 추출
         String accessToken = accountService.getKakaoAccessToken(code);
-
         // accessToken을 이용하여 사용자 정보 추출
-        accountService.getKakaoId(accessToken);
-
-        // 발급 받은 accessToken 으로 카카오 회원 정보 DB 저장
-        // String User = accountService.saveKakaoToken();
-
+        String kakaoId = accountService.getKakaoId(accessToken);
         System.out.println("로그인 성공! 저장은 아직!");
-        return "redirect:/";
+        // kakaoId 으로 카카오 회원 정보 DB 저장
+        if(!accountService.dupleCheckKakaoId(kakaoId)){
+            System.out.println("로그인 성공! 저장은 할 예정!");
+            // 회원가입으로 페이지 이동
+            return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
+        } else {
+            // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
+            session.setAttribute("loginEmail", accountService.getAccEmail(kakaoId));
+            return "redirect:/";
+        }
     }
 
     @RequestMapping("oauth/kakaoLogout")
