@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.util.Encryptor;
+import kh.deli.global.util.naverSms.NaverSensV2;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.binding.BindingException;
@@ -29,6 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
@@ -64,8 +66,9 @@ public class AccountService {
         return accountMapper.login(param);
     }
 
-    /** member 회원가입 메서드
-     * 
+    /**
+     * member 회원가입 메서드
+     *
      * @param dto
      * @throws Exception
      */
@@ -74,8 +77,9 @@ public class AccountService {
         accountMapper.memberSignUp(dto);
     }
 
-    /** 카카오 AccessToken 값 가져오는 메서드
-     * 
+    /**
+     * 카카오 AccessToken 값 가져오는 메서드
+     *
      * @param code
      * @return
      */
@@ -128,7 +132,8 @@ public class AccountService {
         return access_Token;
     }
 
-    /** 카카오 회원 ID 값 가져오는 메서드
+    /**
+     * 카카오 회원 ID 값 가져오는 메서드
      *
      * @param code
      * @return
@@ -159,20 +164,20 @@ public class AccountService {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(response.getBody());
             id = element.getAsJsonObject().get("id").getAsString();
-            System.out.println("아이디 : " + id);
+            // System.out.println("아이디 : " + id);
 
         } catch (HttpStatusCodeException e) {
-            System.out.println("error :" + e);
+            // System.out.println("error :" + e);
         }
         return id;
     }
 
-    /** kakaoId 중복체크
+    /**
+     * kakaoId 중복체크
      *
      * @param kakaoId 검색할 kakaoId
-     * @return 검색한 kakaoId가 있으면 true, 없으면 false
-     *
      * @param kakaoId
+     * @return 검색한 kakaoId가 있으면 true, 없으면 false
      * @return
      * @throws Exception
      */
@@ -184,7 +189,8 @@ public class AccountService {
         return false;
     }
 
-    /** kakao 회원가입 메서드
+    /**
+     * kakao 회원가입 메서드
      *
      * @param dto
      * @throws Exception
@@ -199,7 +205,23 @@ public class AccountService {
     }
 
 
-        return response.getBody();
+    /**
+     * 연락처 문자 인증 전송
+     *
+     * @param tel
+     * @return
+     */
+    public String sendRandomMessage(String tel) {
+        NaverSensV2 message = new NaverSensV2();
+        Random rand = new Random();
+        String numStr = "";
+        for (int i = 0; i < 6; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            numStr += ran;
+        }
+        System.out.println("회원가입 문자 인증 => " + numStr);
+        message.send_msg(tel, numStr);
+        return numStr;
     }
 
 }
