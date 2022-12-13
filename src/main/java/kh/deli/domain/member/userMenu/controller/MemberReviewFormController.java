@@ -2,6 +2,7 @@ package kh.deli.domain.member.userMenu.controller;
 
 import kh.deli.domain.main.dto.MemberMainRequestDTO;
 import kh.deli.domain.member.userMenu.service.MemberReviewFormService;
+import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -29,7 +30,8 @@ public class MemberReviewFormController {
     @RequestMapping("toMemberReviewForm")
     public String toMemberMain(Model model) throws Exception {
         //주문내역 가져오기
-
+        int order_seq=1;
+        OrdersDTO dto=memberReviewFormService.selectByOrderSeq(order_seq);
         return "member/userMenu/memberReviewForm";
     }
 
