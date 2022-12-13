@@ -53,15 +53,15 @@ $("#email_btn").on("click", function () {
             Swal.fire('가입 가능한 이메일입니다.');
             // 이메일 보내기
             confirm_num = Math.floor(Math.random()*1000000)
-            // $.ajax({
-            //     url: "/mailCerti",
-            //     type: "post",
-            //     data: {
-            //         address: $("#email").val(),
-            //         title: "Deli email confirm",
-            //         message: "<h1>"+email_confirm_num+"</h1>"
-            //     }
-            // });
+            $.ajax({
+                url: "/mailCerti",
+                type: "post",
+                data: {
+                    address: $("#email").val(),
+                    title: "Deli email confirm",
+                    message: "<h1>"+email_confirm_num+"</h1>"
+                }
+            });
             $("#email_confirm_table").css("display", "block");
             countdown("confirm_count", 0, 5);
         }

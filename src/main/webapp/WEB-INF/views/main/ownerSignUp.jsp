@@ -96,7 +96,7 @@
             <div class="input_title row"><h5>사업자 등록증</h5></div>
             <div class="row">
                 <div class="col">
-                    <input type="file" class="input_file" id="input_file" name="input_file">
+                    <input type="file" class="input_file" id="input_file" name="file">
                 </div>
             </div>
             <%--footer 버튼--%>
