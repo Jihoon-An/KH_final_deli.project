@@ -25,4 +25,10 @@ public interface AccountMapper {
     int login(Map<String, String> param);
 
     void memberSignUp(AccountDTO accountDTO);
+
+    void kakaoSignUp(AccountDTO accountDTO);
+
+    int findByAccToken(String acc_token);
+
+    String getAccEmail(String acc_token);
 }

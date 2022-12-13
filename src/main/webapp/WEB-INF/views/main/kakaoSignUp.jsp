@@ -9,19 +9,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>일반 회원가입</title>
+    <title>카카오 회원가입</title>
 </head>
 <body>
 
-<form method="post" action="/account/memberSignUp">
-    <h1>일반 회원가입</h1>
-    <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code"><img src="/resources/img/kakao_login.png"></a><br>
+<form method="post" action="/account/kakaoSignUp">
+    <h1>회원가입 추가 정보 입력</h1>
     <hr>
     <input type="text" placeholder="이메일 주소 입력해라" name="acc_email"><br>
     <input type="text" placeholder="비밀번호 입력해라" name="acc_pw"><br>
     <input type="password" placeholder="비밀번호 동일하게 입력해라" name="acc_pw_re"><br>
     <input type="hidden" name="acc_type" value="client">
-    <input type="hidden" name="acc_sns" value="normal">
+    <input type="hidden" name="acc_sns" value="kakao">
+    <input type="hidden" name="acc_token" value="${acc_token}">
     <button type="submit">가입 완료</button>
 </form>
 
