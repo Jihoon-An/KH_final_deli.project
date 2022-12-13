@@ -46,12 +46,14 @@
                 </div>
             </div>
             <%--이메일 인증--%>
-            <div class="row" id="email_confirm_table">
-                <div class="col-3">
-                    <input class="input_data" id="email_confirm_input"/>
-                </div>
-                <div class="col-3">
-                    <button class="confirm_btn" id="email_confirm_btn">확인</button>
+            <div id="email_confirm_table">
+                <div class="row">
+                    <div class="col-3">
+                        <input class="input_data" id="email_confirm_input"/><span id="confirm_count"></span>
+                    </div>
+                    <div class="col-3">
+                        <button class="confirm_btn" id="email_confirm_btn">확인</button>
+                    </div>
                 </div>
             </div>
             <%--비밀번호 입력--%>

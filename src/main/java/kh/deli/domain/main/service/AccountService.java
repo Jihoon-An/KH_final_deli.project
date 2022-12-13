@@ -45,16 +45,13 @@ public class AccountService {
      * @return 검색한 email이 있으면 true, 업으면 false
      */
     public boolean dupleCheck(String email) throws Exception {
-        try {
-            String result = accountMapper.findByEmail(email);
 
-            if (result != null) {
-                return true;
-            }
-            return false;
-        } catch (BindingException e) {
-            return false;
+        String result = accountMapper.findByEmail(email);
+
+        if (result != null) {
+            return true;
         }
+        return false;
     }
 
     public int login(String email, String pw) throws Exception {
@@ -131,38 +128,38 @@ public class AccountService {
 
     public String getKakaoId(String code) {
 
-            String myTocken = "Bearer " + code;
+        String myTocken = "Bearer " + code;
 
-            //헤더 객체 생성
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.set("Authorization", myTocken);
+        //헤더 객체 생성
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.set("Authorization", myTocken);
 
-            //요청 url
-            UriComponentsBuilder builder =
-                    UriComponentsBuilder.fromHttpUrl("https://kapi.kakao.com/v2/user/me");
+        //요청 url
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl("https://kapi.kakao.com/v2/user/me");
 
-            HttpEntity<?> entity = new HttpEntity<>(headers);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
 
-            HttpEntity<String> response = null;
+        HttpEntity<String> response = null;
 
-            //요청
-            try {
-                response = restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        entity,
-                        String.class);
+        //요청
+        try {
+            response = restTemplate.exchange(
+                    builder.toUriString(),
+                    HttpMethod.GET,
+                    entity,
+                    String.class);
 
-                System.out.println("응답결과 :" + response.getBody());
+            System.out.println("응답결과 :" + response.getBody());
 
-            } catch (HttpStatusCodeException e) {
+        } catch (HttpStatusCodeException e) {
 
-                System.out.println("error :" + e);
+            System.out.println("error :" + e);
 
-            }
-
-            return response.getBody();
         }
+
+        return response.getBody();
+    }
 
 }
