@@ -1,3 +1,10 @@
+var email_ok = false;
+var pw_ok = false;
+var name_ok = false;
+var phone_ok = false;
+var bs_num_ok = false;
+var bs_card_ok = false;
+
 
 var confirm_num;
 var confirm_count;
@@ -72,6 +79,42 @@ $("#email_btn").on("click", function () {
 //     })
 // });
 
-$("email_confirm_btn").click(function () {
 
+
+$("#email_confirm_btn").click(function () {
+    if ($("#email_confirm_input").val() == confirm_num) {
+        $("#email_confirm_table").css("display", "block");
+        email_ok = true;
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: '땡!',
+            text: '일치하지 않습니다.',
+        })
+        email_ok = false;
+    }
+});
+
+$("#submit_btn").click(function () {
+    if (!email_ok) {
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '조건을 다시 확인해주세요.',
+        });
+        $("#email").focus();
+    }
+    if (!pw_ok) {
+        
+    }
+    if (!name_ok) {
+        
+    }
+    if (!bs_num_ok) {
+        
+    }
+    if (!bs_card_ok) {
+        
+    }
+    $("#signup_frm").submit();
 });
