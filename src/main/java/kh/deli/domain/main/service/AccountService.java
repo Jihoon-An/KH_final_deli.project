@@ -6,12 +6,16 @@ import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.util.Encryptor;
 import kh.deli.global.util.naverSms.NaverSensV2;
+import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.binding.BindingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -28,6 +32,7 @@ import java.util.Random;
 public class AccountService {
     private final AccountMapper accountMapper;
     private final RestTemplate restTemplate;
+    private final RedisUtil redisUtil;
 
     public void sign(AccountDTO dto) throws Exception {
         accountMapper.insert(dto);
@@ -228,9 +233,7 @@ public class AccountService {
         return accountMapper.getAccEmail(acc_token);
     }
 
-
-    /**
-     * 연락처 문자 인증 전송
+    /** 연락처 문자 인증 전송 + 발송 정보를 Redis에 저장
      *
      * @param tel
      * @return
