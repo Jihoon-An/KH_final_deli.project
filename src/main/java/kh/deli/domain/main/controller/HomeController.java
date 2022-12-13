@@ -13,7 +13,9 @@ public class HomeController {
 
     @RequestMapping("/")
     public String toHome(@CookieValue(value = "saved_email", required = false) String saved_email, Model model) throws Exception {
-            model.addAttribute("saved_email", saved_email);
+        // @CookieValue 를 통해 쿠키 값 불러와 String 에 담기
+        // required = false 안 하면 NullPointException
+        model.addAttribute("saved_email", saved_email);
         return "main/home";
     }
 }

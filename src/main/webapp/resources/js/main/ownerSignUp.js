@@ -5,7 +5,6 @@ var phone_ok = false;
 var bs_num_ok = false;
 var bs_card_ok = false;
 
-
 var confirm_num;
 var confirm_count;
 
