@@ -16,7 +16,7 @@
     position: relative;
     top: 40%;
     left: 50%;
-    margin-top: -100px;
+    margin-top: -150px;
     margin-left: -200px;
     text-align: center;
     box-sizing: border-box;
@@ -25,3 +25,17 @@
     cursor: pointer;
 }
 
+#reviewField {
+    position: relative;
+    left: -93px;
+}
+
+#review_content {
+    border: 1px solid black;
+    margin: auto;
+    width: 250px;
+}
+
+#myTable * {
+    cursor: pointer;
+}
