@@ -64,8 +64,9 @@ public class AccountService {
         return accountMapper.login(param);
     }
 
-    /** member 회원가입 메서드
-     * 
+    /**
+     * member 회원가입 메서드
+     *
      * @param dto
      * @throws Exception
      */
@@ -74,8 +75,9 @@ public class AccountService {
         accountMapper.memberSignUp(dto);
     }
 
-    /** 카카오 AccessToken 값 가져오는 메서드
-     * 
+    /**
+     * 카카오 AccessToken 값 가져오는 메서드
+     *
      * @param code
      * @return
      */
@@ -128,7 +130,8 @@ public class AccountService {
         return access_Token;
     }
 
-    /** 카카오 회원 ID 값 가져오는 메서드
+    /**
+     * 카카오 회원 ID 값 가져오는 메서드
      *
      * @param code
      * @return
@@ -167,12 +170,12 @@ public class AccountService {
         return id;
     }
 
-    /** kakaoId 중복체크
+    /**
+     * kakaoId 중복체크
      *
      * @param kakaoId 검색할 kakaoId
-     * @return 검색한 kakaoId가 있으면 true, 없으면 false
-     *
      * @param kakaoId
+     * @return 검색한 kakaoId가 있으면 true, 없으면 false
      * @return
      * @throws Exception
      */
@@ -184,7 +187,8 @@ public class AccountService {
         return false;
     }
 
-    /** kakao 회원가입 메서드
+    /**
+     * kakao 회원가입 메서드
      *
      * @param dto
      * @throws Exception
@@ -198,8 +202,5 @@ public class AccountService {
         return accountMapper.getAccEmail(acc_token);
     }
 
-
-        return response.getBody();
-    }
-
 }
+
