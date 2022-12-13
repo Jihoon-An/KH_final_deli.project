@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -44,12 +45,16 @@ public class AccountService {
      * @return 검색한 email이 있으면 true, 업으면 false
      */
     public boolean dupleCheck(String email) throws Exception {
-        String result = accountMapper.findByEmail(email);
+        try {
+            String result = accountMapper.findByEmail(email);
 
-        if (result != null) {
-            return true;
+            if (result != null) {
+                return true;
+            }
+            return false;
+        } catch (BindingException e) {
+            return false;
         }
-        return false;
     }
 
     public int login(String email, String pw) throws Exception {
