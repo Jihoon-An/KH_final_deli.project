@@ -37,7 +37,7 @@ public class AccountService {
      * <h2>email 중복체크</h2>
      *
      * @param email 검색할 email
-     * @return 검색한 email이 있으면 true, 업으면 false
+     * @return 검색한 email 이 있으면 true, 없으면 false
      */
     public boolean dupleCheck(String email) throws Exception {
 
@@ -49,12 +49,45 @@ public class AccountService {
         return false;
     }
 
+    /**
+     * <h2>Normal Type 로그인</h2>
+     * @param email
+     * @param pw
+     * @return int
+     * @throws Exception
+     */
     public int login(String email, String pw) throws Exception {
         Map<String, String> param = new HashMap<>();
         param.put("email", email);
-        param.put("pw", pw);
         param.put("pw", Encryptor.getSHA512(pw));
         return accountMapper.login(param);
+    }
+
+
+    /**
+     * <h2>카카오 연결헤제</h2>
+     * @param accessToken
+     * @throws Exception
+     */
+    public void kakaoUnlink(String accessToken) throws Exception {
+        String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+        URL url = new URL(reqURL);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+        int responseCode = conn.getResponseCode();
+        System.out.println("responseCode : " + responseCode);
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+        String result = "";
+        String line = "";
+
+        while ((line = br.readLine()) != null) {
+            result += line;
+        }
+        System.out.println("개좆같은새끼야 : " + result);
     }
 
     /**
