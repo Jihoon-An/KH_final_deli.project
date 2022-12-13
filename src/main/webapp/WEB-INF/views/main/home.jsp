@@ -34,11 +34,14 @@
                     <marquee>
                         <h1>로그인 성공이다 이 짜식아.</h1>
                         <br>
-                        <a href="/member/toMemberMain"><button>메인으로</button></a>
+                        <a href="/memberMain/toMemberMain"><button>메인으로</button></a>
                         <br>
                         <h1>
                             <a href="/account/logout"><button>로그아웃</button></a>
                         </h1>
+                        <h2>
+                            <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
+                        </h2>
                     </marquee>
                 </div>
             </c:when>
@@ -54,7 +57,8 @@
                             <label for="emailSave">이메일저장</label>
                             <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
                             <a href="#">이메일|비밀번호 찾기</a>
-                            <button>카카오로그인</button><br>
+                            <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code"><img src="/resources/img/kakao_login.png"></a><br>
+                            <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">카카오로그아웃</a><br>
                             <span>아직 딜리의 회원이 아니신가요?</span>
                             <a href="/account/toMemberSignUp">회원가입</a>
                         </form>
