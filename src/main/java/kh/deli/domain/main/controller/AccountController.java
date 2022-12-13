@@ -2,29 +2,42 @@ package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.AccountService;
 import kh.deli.global.entity.AccountDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/account/")
 public class AccountController {
 
-    @Autowired
-    private AccountService accountService;
-
-    @Autowired
-    private HttpSession session;
+    private final AccountService accountService;
+    private final HttpSession session;
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(String email, String pw) throws Exception {
-        System.out.println(email + " : " + pw);
+    public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
+
         int result = accountService.login(email, pw);
         if (result == 1) {
             session.setAttribute("loginEmail", email);
+            if (String.valueOf(emailSave).equals("on")) {
+                Cookie cookie = new Cookie("saved_email", email);
+                cookie.setMaxAge(24 * 30 * 60 * 60 * 1000); // 유통기한 30일
+                cookie.setPath("/");
+                response.addCookie(cookie);
+            } else{
+                Cookie cookie = new Cookie("saved_email", null);
+                cookie.setMaxAge(0);
+                cookie.setPath("/");
+                response.addCookie(cookie);
+            }
         }
         return "redirect:/";
     }
