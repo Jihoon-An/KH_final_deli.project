@@ -2,7 +2,6 @@ package kh.deli.domain.admin.controller;
 
 import kh.deli.domain.admin.dto.AdminReviewDTO;
 import kh.deli.domain.admin.service.AdminService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/")
-public class AdminController {
+public class AdminReviewController {
 
     @Autowired
     private AdminService adminService;
@@ -22,6 +21,12 @@ public class AdminController {
         List<AdminReviewDTO> nev_list = adminService.selectAll();
         model.addAttribute("nev_list", nev_list);
         return "/admin/adminReviewMng";
+    }
+
+    @RequestMapping("deleteReview")
+    public String deleteReview(int rev_seq) throws Exception{
+        adminService.deleteReview(rev_seq);
+        return "redirect:/admin/selectReview";
     }
 
 }

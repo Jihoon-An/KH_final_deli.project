@@ -8,15 +8,20 @@
     <select id="selectAll" resultType="AdminReviewDTO">
 
         select
-            rev_seq,
-            mem_name,
-            rev_content,
-            store_name,
-            rev_writedate,
-            rev_modified_date
+        rev_seq,
+        rev_star,
+        mem_name,
+        rev_content,
+        store_name,
+        rev_writedate,
+        rev_modified_date
         from member,store,review
         where review.acc_seq=member.acc_seq
         and review.store_seq=store.store_seq
     </select>
+
+    <delete id="deleteReview" parameterType="int">
+        delete from review where rev_seq=${value}
+    </delete>
 
 </mapper>

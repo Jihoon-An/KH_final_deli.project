@@ -16,5 +16,8 @@ public class AdminService {
     public List<AdminReviewDTO> selectAll() throws Exception {
         return adminMapper.selectAll();
     }
+    public int deleteReview(int rev_seq) throws Exception{
+        return adminMapper.deleteReview(rev_seq);
+    }
 
 }

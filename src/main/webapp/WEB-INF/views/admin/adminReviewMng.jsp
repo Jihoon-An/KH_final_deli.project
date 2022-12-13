@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>adminReviewMng</title>
@@ -19,43 +20,7 @@
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable();
-
-            $("#rev_content").css("cursor", "pointer");
-
-        });
-    </script>
-
-    <style>
-        .modal {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            top: 0;
-            left: 0;
-            display: none;
-        }
-
-        .modal_content {
-            width: 400px;
-            height: auto;
-            background: #fff;
-            border-radius: 10px;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            margin-top: -100px;
-            margin-left: -200px;
-            text-align: center;
-            box-sizing: border-box;
-            padding: 74px 0;
-            /*line-height: 23px;*/
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="/resources/css/admin/adminReviewMng.css">
 </head>
 <body>
 <table id="myTable" class="display">
@@ -69,109 +34,80 @@
     </tr>
     </thead>
     <tbody>
-        <c:choose>
-            <c:when test="${not empty nev_list}">
-                <c:forEach var="i" items="${nev_list}">
-        <tr>
-                    <input type="hidden" value="${i.rev_seq}">
-                    <input type="hidden" value="${i.rev_star}">
-
+    <c:choose>
+        <c:when test="${not empty nev_list}">
+            <c:forEach var="i" items="${nev_list}">
+                <tr>
                     <td class="mem_name">${i.mem_name}</td>
-                    <td id="rev_content">${i.rev_content}</td>
-                    <td>${i.store_name}</td>
-                    <td>${i.rev_writedate}</td>
+                    <td class="rev_content">${i.rev_content}</td>
+                    <td class="store_name">${i.store_name}</td>
+                    <td class="rev_writedate">
+                        <fmt:parseDate value="${i.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss" />
+                        <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd" />
+<%--                            ${i.rev_writedate}--%>
+                    </td>
+
+                    <input type="hidden" value="${i.rev_seq}" class="rev_seq">
+                    <input type="hidden" value="${i.rev_star}" class="rev_star">
+
                     <c:choose>
                         <c:when test="${i.rev_modified_date!=null}">
-                            <td>${i.rev_modified_date}</td>
+                            <td class="rev_modified_date">
+                                <fmt:parseDate value="${i.rev_modified_date}" var="registered" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd" />
+<%--                                    ${i.rev_modified_date}--%>
+                            </td>
                         </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
                     </c:choose>
-                    <div class="modal">
-                        <div class="modal_content">
-                            <div class="closeModal">X</div>
-                            <div>
-                                작성자 <input
-                                    type="text" placeholder="작성자" id="writer" class="writer" disabled
-                                    value="${i.mem_name}">
-                            </div>
-                            <div>
-                                별점 <input
-                                    type="text" placeholder="별점" disabled value="${i.rev_star}">
-                            </div>
-                            <div>
-                                작성시간<input
-                                    type="text" placeholder="작성시간" disabled value="${i.rev_writedate}">
-                            </div>
-                            <div>
-                                리뷰 내용<input
-                                    type="text" placeholder="리뷰내용" disabled value="${i.rev_content}">
-                            </div>
-                            <div>
-                                수정시간<input
-                                    type="text" placeholder="수정시간" disabled value="${i.rev_modified_date}">
-                            </div>
-                            <button type="button">비공개</button>
-                            <button id="deleteReview" type="button">삭제</button>
-                        </div>
-                    </div>
-<%--                    <script>--%>
-<%--                        $(".modal").hide();--%>
-<%--                    </script>--%>
-        </tr>
-                </c:forEach>
-            </c:when>
-        </c:choose>
+                </tr>
+            </c:forEach>
+        </c:when>
+    </c:choose>
     </tbody>
 </table>
 
-<%--<form action="/admin/deleteReview">--%>
-<%--    <div class="modal">--%>
-<%--        <div class="modal_content">--%>
-<%--            <div id="closeModal">X</div>--%>
-<%--            <div>--%>
-<%--                작성자 <input--%>
-<%--                    type="text" placeholder="작성자" id="writer" class="writer" disabled--%>
-<%--                    value="${i.mem_name}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                별점 <input--%>
-<%--                    type="text" placeholder="별점" disabled value="${i.rev_star}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                작성시간<input--%>
-<%--                    type="text" placeholder="작성시간" disabled value="${i.rev_writedate}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                리뷰 내용<input--%>
-<%--                    type="text" placeholder="리뷰내용" disabled value="${i.rev_content}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                수정시간<input--%>
-<%--                    type="text" placeholder="수정시간" disabled value="${i.rev_modified_date}">--%>
-<%--            </div>--%>
-<%--            <button type="button">비공개</button>--%>
-<%--            <button id="deleteReview" type="button">삭제</button>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</form>--%>
+<form action="/admin/deleteReview" id="frm">
+    <div class="modal">
+        <div class="modal_content">
+            <div class="closeModal">X</div>
 
-<script>
-    $(function () {
+            <div>
+                작성자 <input
+                    type="text" placeholder="작성자" id="writer" class="writer" disabled
+            >
+            </div>
+            <div>
+                별점 <input
+                    type="text" placeholder="별점" disabled id="star" class="star">
+            </div>
+            <div>
+                리뷰 내용<input
+                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">
+            </div>
+            <div>
+                작성일자<input
+                    type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
+            </div>
+            <div>
+                수정일자<input
+                    type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
+            </div>
 
-        $("#deleteReview").on("click", function () {
-            let ans = confirm("리뷰를 삭제하시겠습니까?");
-            if (ans == true) location.href = "/admin/deleteReview";
-        });
+            <div>
+                리뷰번호<input
+                    type="text" placeholder="리뷰번호" id="rseq" class="rseq">
+            </div>
 
-        $("#rev_content").click(function () {
-            $(".modal").fadeIn();
 
-        });
+            <button type="button">비공개</button>
+            <button id="deleteReview" type="button">삭제</button>
+        </div>
+    </div>
+</form>
 
-        $(".closeModal").click(function () {
-            $(".modal").fadeOut();
-        });
-
-    });
-</script>
+<script src="/resources/js/admin/adminReviewMng.js"></script>
 </body>
 </html>

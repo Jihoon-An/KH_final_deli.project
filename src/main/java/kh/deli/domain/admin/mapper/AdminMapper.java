@@ -9,4 +9,6 @@ import java.util.List;
 public interface AdminMapper {
 
     public List<AdminReviewDTO> selectAll();
+
+    public int deleteReview(int rev_seq);
 }
