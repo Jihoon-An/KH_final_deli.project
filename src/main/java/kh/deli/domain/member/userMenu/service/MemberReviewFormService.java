@@ -17,6 +17,6 @@ public class MemberReviewFormService {
     }
 
     public OrdersDTO selectByOrderSeq(int order_seq) throws Exception{
-        memberReviewFormMapper.selectByOrderSeq(order_seq);
+        return memberReviewFormMapper.selectByOrderSeq(order_seq);
     }
 }

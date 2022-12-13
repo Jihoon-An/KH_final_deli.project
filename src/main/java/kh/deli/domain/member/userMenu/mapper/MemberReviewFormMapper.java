@@ -11,5 +11,5 @@ public interface MemberReviewFormMapper {
 
     public void reviewInsert(ReviewDTO dto);
 
-    public OrdersDTO selectByOrderSeq(i)
+    public OrdersDTO selectByOrderSeq(int order_seq);
 }

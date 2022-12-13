@@ -29,9 +29,10 @@ public class MemberReviewFormController {
 
     @RequestMapping("toMemberReviewForm")
     public String toMemberMain(Model model) throws Exception {
-        //주문내역 가져오기
-        int order_seq=1;
+        int order_seq=1; // 내 주문리스트에서 order_seq 파라미터로 가져오기
         OrdersDTO dto=memberReviewFormService.selectByOrderSeq(order_seq);
+        System.out.println(dto.getMenu_list());
+        model.addAttribute("dto",dto);
         return "member/userMenu/memberReviewForm";
     }
 
