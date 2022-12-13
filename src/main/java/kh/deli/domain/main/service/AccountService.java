@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.util.Encryptor;
+import kh.deli.global.util.naverSms.NaverSensV2;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.binding.BindingException;
@@ -29,6 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
@@ -47,16 +49,13 @@ public class AccountService {
      * @return 검색한 email이 있으면 true, 업으면 false
      */
     public boolean dupleCheck(String email) throws Exception {
-        try {
-            String result = accountMapper.findByEmail(email);
 
-            if (result != null) {
-                return true;
-            }
-            return false;
-        } catch (BindingException e) {
-            return false;
+        String result = accountMapper.findByEmail(email);
+
+        if (result != null) {
+            return true;
         }
+        return false;
     }
 
     public int login(String email, String pw) throws Exception {
@@ -162,10 +161,10 @@ public class AccountService {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(response.getBody());
             id = element.getAsJsonObject().get("id").getAsString();
-            System.out.println("아이디 : " + id);
+            // System.out.println("아이디 : " + id);
 
         } catch (HttpStatusCodeException e) {
-            System.out.println("error :" + e);
+            // System.out.println("error :" + e);
         }
         return id;
     }
@@ -201,5 +200,21 @@ public class AccountService {
         return accountMapper.getAccEmail(acc_token);
     }
 
-
+    /** 연락처 문자 인증 전송
+     *
+     * @param tel
+     * @return
+     */
+    public String sendRandomMessage(String tel) {
+        NaverSensV2 message = new NaverSensV2();
+        Random rand = new Random();
+        String numStr = "";
+        for (int i = 0; i < 6; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            numStr += ran;
+        }
+        System.out.println("회원가입 문자 인증 => " + numStr);
+        message.send_msg(tel, numStr);
+        return numStr;
+    }
 }

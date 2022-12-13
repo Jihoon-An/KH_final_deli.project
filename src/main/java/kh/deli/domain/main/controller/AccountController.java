@@ -54,6 +54,7 @@ public class AccountController {
         return "main/memberSignUp";
     }
 
+
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
         accountService.memberSignUp(accountDTO);
@@ -99,6 +100,15 @@ public class AccountController {
         return "redirect:/";
     }
 
+    @RequestMapping("certify/tel")
+    public String telOauth(String tel, String telCertifyStr) {
+        String randStr = accountService.sendRandomMessage(tel);
+        if (telCertifyStr == randStr) {
+            System.out.println("인증성공");
+            return "sucess";
+        }
+        return "fail";
+    }
 
 }
 
