@@ -26,7 +26,7 @@ $(".rev_content").on("click", function () {
 
     $("#modified_date").val(
         // $(this).closest("tr").find(".rev_modified_date").find("#formed_rev_modified_date").val()
-        $(this).closest("tr").find(".formed_rev_modified_date").val()
+        $(this).closest("tr").find(".formed_rev_modifieddate").val()
     );
 
     // rev_seq
@@ -60,7 +60,7 @@ $(".mem_name").on("click", function () {
 
     $("#modified_date").val(
         // $(this).closest("tr").find(".rev_modified_date").find("#formed_rev_modified_date").val()
-        $(this).closest("tr").find(".formed_rev_modified_date").val()
+        $(this).closest("tr").find(".formed_rev_modifieddate").val()
     );
 
     // rev_seq
@@ -95,7 +95,7 @@ $(".store_name").on("click", function () {
 
     $("#modified_date").val(
         // $(this).closest("tr").find(".rev_modified_date").find("#formed_rev_modified_date").val()
-        $(this).closest("tr").find(".formed_rev_modified_date").val()
+        $(this).closest("tr").find(".formed_rev_modifieddate").val()
     );
 
     // rev_seq
@@ -129,7 +129,7 @@ $(".rev_writedate").on("click", function () {
 
     $("#modified_date").val(
         // $(this).closest("tr").find(".rev_modified_date").find("#formed_rev_modified_date").val()
-        $(this).closest("tr").find(".formed_rev_modified_date").val()
+        $(this).closest("tr").find(".formed_rev_modifieddate").val()
     );
 
     // rev_seq
@@ -164,7 +164,7 @@ $(".rev_modified_date").on("click", function () {
 
     $("#modified_date").val(
         // $(this).closest("tr").find(".rev_modified_date").find("#formed_rev_modified_date").val()
-        $(this).closest("tr").find(".formed_rev_modified_date").val()
+        $(this).closest("tr").find(".formed_rev_modifieddate").val()
     );
 
     // rev_seq
