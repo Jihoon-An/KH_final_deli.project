@@ -233,6 +233,10 @@ public class AccountService {
         return accountMapper.getAccEmail(acc_token);
     }
 
+    public int getAccSeq(String acc_email) {
+        return accountMapper.getAccSeq(acc_email);
+    }
+
     /** 연락처 문자 인증 전송 + 발송 정보를 Redis에 저장
      *
      * @param tel

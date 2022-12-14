@@ -31,4 +31,6 @@ public interface AccountMapper {
     int findByAccToken(String acc_token);
 
     String getAccEmail(String acc_token);
+
+    int getAccSeq(String acc_email);
 }

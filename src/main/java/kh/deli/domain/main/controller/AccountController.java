@@ -44,6 +44,7 @@ public class AccountController {
             // Session 에 로그인 성공한 이메일 담기
             session.setAttribute("loginEmail", email);
             session.setAttribute("loginType", "normal");
+            session.setAttribute("acc_seq", accountService.getAccSeq(email));
 
             // String.valueOf 사용하지 않으면 NullPointException
             // String.valueOf 없이 사용하려면 true false 등으로 값 변환 후 조건문 작성
@@ -118,9 +119,11 @@ public class AccountController {
             return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
-            session.setAttribute("loginEmail", accountService.getAccEmail(kakaoId));
+            String email = accountService.getAccEmail(kakaoId);
+            session.setAttribute("loginEmail", email);
             session.setAttribute("kakaoAccessToken", accessToken);
             session.setAttribute("loginType", "kakao");
+            session.setAttribute("acc_seq", accountService.getAccSeq(email));
             return "redirect:/";
         }
     }
