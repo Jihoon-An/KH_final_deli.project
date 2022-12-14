@@ -44,7 +44,7 @@
                         <span class="text">쿠폰</span>
                     </div>
                 </a>
-                <a href="/">
+                <a href="/myPage/dibs/">
                     <div class="link FavoritesBox">
                         <span class="icon"><i class="fa-solid fa-heart"></i></span><br>
                         <span class="text">찜</span>
