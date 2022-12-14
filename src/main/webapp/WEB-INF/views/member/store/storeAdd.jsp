@@ -117,28 +117,31 @@
                 <img src="/images/no_profile.png" id="profile">
             </div>
             <div class="control">
-                <input type=file name="file" id="profile_img" accept=".png, .jpg, .jpg,.gif">
+                <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
             </div>
         </div>
         <input type="text" name="store_intro" placeholder="식당소개">
         <br>
         <input type="text" name="store_origin" placeholder="원산지">
         <Br>
-        <select name="store_bsns_hours" class="bsns">
+        <div class="bsnsdiv">
+
+        <select name="store_bsns_hours" class="bsns" class="bs1" >
             <option value="휴무일">
                 휴무일
             </option>
             <option value="영업일">
                 영업일
             </option>
-
         </select>
         <input type =text value="월요일" disabled >
         <input type=hidden class=bsns value="월요일"  >
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
-        <input type="time"class=bsns value="09:00" min="09:00" max="24:00">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"   class="bs1" disabled>
+        <input type="time"class=bsns value="09:00" min="09:00" max="24:00"    class="bs1" disabled>
+
         <br>
-        <select name="store_bsns_hours" class="bsns">
+
+        <select name="store_bsns_hours" class="bsns" class="bs2">
             <option value="휴무일">
                 휴무일
             </option>
@@ -149,10 +152,11 @@
         </select>
         <input type=text  value="화요일" disabled>
         <input type=hidden class=bsns value="화요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled  class="bs2">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs2">
+
         <br>
-        <select name="store_bsns_hours" class="bsns">
+        <select name="store_bsns_hours" class="bsns" class="bs3">
             <option value="휴무일">
                 휴무일
             </option>
@@ -163,10 +167,10 @@
         </select>
         <input type=text value="수요일" disabled>
         <input type=hidden class=bsns value="수요일">
-        <input type="time" class=bsns  value="09:00" min="09:00" max="24:00">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
+        <input type="time" class=bsns  value="09:00" min="09:00" max="24:00"  disabled class="bs3">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs3">
         <br>
-        <select name="store_bsns_hours" class="bsns">
+        <select name="store_bsns_hours" class="bsns" class="bs4">
             <option value="휴무일">
                 휴무일
             </option>
@@ -177,10 +181,10 @@
         </select>
         <input type=text value="목요일" disabled>
         <input type=hidden class=bsns value="목요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs4">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs4">
         <br>
-        <select name="store_bsns_hours" class="bsns">
+        <select name="store_bsns_hours" class="bsns" class="bs5">
             <option value="휴무일">
                 휴무일
             </option>
@@ -191,10 +195,10 @@
         </select>
         <input type=text value="금요일" disabled>
         <input type=hidden class=bsns value="금요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs5">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs5">
         <br>
-        <select name="store_bsns_hours" class="bsns">
+        <select name="store_bsns_hours" class="bsns" class="bs6">
             <option value="휴무일">
                 휴무일
             </option>
@@ -205,10 +209,10 @@
         </select>
         <input type=text  value="토요일" disabled>
         <input type=hidden class=bsns value="토요일">
-        <input type="time"  class=bsns value="09:00" min="09:00" max="24:00">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">`
+        <input type="time"  class=bsns value="09:00" min="09:00" max="24:00" class="bs6">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00" class="bs6">
         <br>
-        <select name="store_bsns_hours" class="bsns">
+        <select name="store_bsns_hours" class="bsns" class="bs7">
             <option value="휴무일">
                 휴무일
             </option>
@@ -219,9 +223,10 @@
         </select>
         <input type=text  value="일요일" disabled>
         <input type=hidden class=bsns value="일요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00" class="bs7">
+        <input type="time" class=bsns value="09:00" min="09:00" max="24:00" class="bs7">
         <input type="hidden" id="bsnsdata" name="store_bsns_hours">
+        </div>
         <br>
         <input type="text" name="store_close_day" placeholder="휴무일">
         <br>
@@ -249,13 +254,23 @@
 </body>
 <script>
 
+    $(".bs1").on("change", function () {
+        let bs1 = $(".bs1").val();
+        console.log(bs1)
+        if(bs1=='영업일'){
+            $(".bs1").removeAttr("disabled")
+            console.log("제거성공")
+        }else{
+            $(".bs1").attr("disabled", true)
+            console.log("복구")
+        }
+
+    })
+
 
     $("#add").on("click", function(){
 
         var bsnsarr = [];
-
-
-
 
         let b = document.getElementsByClassName("bsns")
         let bs = document.getElementById("bsnsdata")
@@ -263,7 +278,7 @@
 
         for (let i = 0; i < b.length; i++) {
 
-            bsnsarr.push(b[i].value);
+      bsnsarr.push(b[i].value);
 
 
         }
