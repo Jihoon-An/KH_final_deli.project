@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/addCoupon")
+@RequestMapping("/admin/addCoupon")
 @AllArgsConstructor
 public class AddCouponController {
 
