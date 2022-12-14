@@ -27,12 +27,8 @@ public class AccountController {
 
     /**
      * <h1>Normal Type 회원 로그인</h1>
-     * @param email
-     * @param pw
      * @param emailSave
-     * @param response
      * @return set loginEmail to Session & set saved_email to Cookie
-     * @throws Exception
      */
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
@@ -44,6 +40,7 @@ public class AccountController {
             // Session 에 로그인 성공한 이메일 담기
             session.setAttribute("loginEmail", email);
             session.setAttribute("loginType", "normal");
+            session.setAttribute("acc_seq", mainAccountService.getAccSeq(email));
 
             // String.valueOf 사용하지 않으면 NullPointException
             // String.valueOf 없이 사용하려면 true false 등으로 값 변환 후 조건문 작성
@@ -118,9 +115,11 @@ public class AccountController {
             return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
-            session.setAttribute("loginEmail", mainAccountService.getAccEmail(kakaoId));
+            String email = mainAccountService.getAccEmail(kakaoId);
+            session.setAttribute("loginEmail", email);
             session.setAttribute("kakaoAccessToken", accessToken);
             session.setAttribute("loginType", "kakao");
+            session.setAttribute("acc_seq", mainAccountService.getAccSeq(email));
             return "redirect:/";
         }
     }
