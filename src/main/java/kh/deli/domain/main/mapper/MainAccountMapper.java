@@ -20,7 +20,7 @@ public interface MainAccountMapper {
     void insertOwner(@Param("acc") AccountDTO acc);
 
     @Select("SELECT ACC_SEQ.NEXTVAL FROM DUAL")
-    int getAccSeq();
+    int getNextAccSeq();
 
     int login(Map<String, String> param);
 
