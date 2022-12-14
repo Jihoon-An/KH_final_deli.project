@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface OrederOrdersMapper {
+public interface OrderOrdersMapper {
 
-    public void insert(@Param("orders")OrdersDTO orders);
+    public void insert(@Param("orders")OrdersDTO ordersDTO);
+
+
 }

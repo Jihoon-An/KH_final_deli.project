@@ -16,7 +16,8 @@ public class OrdersDTO {
     private String menu_list;
     private int order_price;
     Timestamp order_date;
-    private String add_seq;
+    private String add_detail1;
+    private String add_detail2;
     private String order_phone;
     private String order_status;
     private String order_disposable;
@@ -26,4 +27,5 @@ public class OrdersDTO {
     private String order_rider_req;
     private String pay_method;
     private int delivery_tip;
+    private int pay_price;
 }

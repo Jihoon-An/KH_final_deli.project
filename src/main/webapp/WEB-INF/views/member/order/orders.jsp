@@ -193,7 +193,7 @@
         }
     })
 
-
+    //우편 api
     document.getElementById("btnSearch").onclick = function () {
         new daum.Postcode({
             oncomplete: function (data) {
@@ -203,6 +203,7 @@
         }).open();
     }
 
+    // kg 이니시스 결제
     $(".btn_payment").click(function() {
         //class가 btn_payment인 태그를 선택했을 때 작동한다.
         IMP.init("imp52685667");
@@ -240,7 +241,7 @@
     });
 
 
-
+    // 카카오페이 결제
     var IMP = window.IMP;
     IMP.init("imp52685667");
     function requestPay() {
