@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Repository
 @Mapper
-public interface AccountMapper {
+public interface MainAccountMapper {
 
     @Select("SELECT ACC_EMAIL FROM ACCOUNT WHERE ACC_EMAIL = #{email}")
     String findByEmail(@Param("email") String email);
@@ -20,7 +20,7 @@ public interface AccountMapper {
     void insertOwner(@Param("acc") AccountDTO acc);
 
     @Select("SELECT ACC_SEQ.NEXTVAL FROM DUAL")
-    int getAccSeq();
+    int getNextAccSeq();
 
     int login(Map<String, String> param);
 
@@ -33,4 +33,6 @@ public interface AccountMapper {
     int findByAccToken(String acc_token);
 
     String getAccEmail(String acc_token);
+
+    int getAccSeq(String acc_email);
 }

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.main.mapper.AccountMapper">
+<mapper namespace="kh.deli.domain.main.mapper.MainAccountMapper">
 
     <insert id="insertOwner" parameterType="kh.deli.global.entity.AccountDTO">
         INSERT INTO ACCOUNT(ACC_SEQ, ACC_EMAIL, ACC_PW, ACC_TYPE)
@@ -87,6 +87,12 @@
     <select id="getAccEmail" resultType="String">
         SELECT ACC_EMAIL FROM ACCOUNT
         WHERE acc_token = #{acc_token}
+    </select>
+
+    <!-- 로그인 된 이메일을 통해 ACC_SEQ 불러오기 -->
+    <select id="getAccSeq" resultType="int">
+        SELECT ACC_SEQ FROM ACCOUNT
+        WHERE ACC_EMAIL = #{acc_email}
     </select>
 
 </mapper>
