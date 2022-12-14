@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -142,10 +143,12 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value="certify/telConfirm", method=RequestMethod.POST)
-    public String telConfirm(String telCertifyStr) {
-        String test = redisUtil.getData(telCertifyStr);
-        System.out.println(test);
-        return test;
+    public boolean telConfirm(String tel, String telCertifyStr) {
+        System.out.println("내가 적은 연락처: " + tel);
+        System.out.println("내가 적은 인증문자: " + telCertifyStr);
+        String getServerTelCertifyStr = redisUtil.getData(tel);
+        System.out.println("연락처로 얻은-입력해둔 랜덤문자: " + getServerTelCertifyStr);
+        return telCertifyStr.equals(getServerTelCertifyStr) ? true : false;
     }
 
 }
