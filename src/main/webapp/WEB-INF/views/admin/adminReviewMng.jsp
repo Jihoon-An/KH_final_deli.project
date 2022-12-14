@@ -42,9 +42,14 @@
                     <td class="rev_content">${i.rev_content}</td>
                     <td class="store_name">${i.store_name}</td>
                     <td class="rev_writedate">
-                        <fmt:parseDate value="${i.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss" />
-                        <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd" />
-<%--                            ${i.rev_writedate}--%>
+
+                            <%-- 리뷰상세에 기본날짜로 던짐--%>
+                        <input id="formed_rev_writedate" class="formed_rev_writedate"
+                               type="hidden" value="${i.rev_writedate}">
+
+                        <fmt:parseDate value="${i.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
+                            <%--   ${i.rev_writedate}--%>
                     </td>
 
                     <input type="hidden" value="${i.rev_seq}" class="rev_seq">
@@ -52,10 +57,15 @@
 
                     <c:choose>
                         <c:when test="${i.rev_modified_date!=null}">
+
+                            <input id="formed_rev_modified_date" class="formed_rev_modified_date"
+                                   type="hidden" value="${i.rev_modified_date}">
+
                             <td class="rev_modified_date">
-                                <fmt:parseDate value="${i.rev_modified_date}" var="registered" pattern="yyyy-MM-dd HH:mm:ss" />
-                                <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd" />
-<%--                                    ${i.rev_modified_date}--%>
+                                <fmt:parseDate value="${i.rev_modified_date}" var="registered"
+                                               pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
+                                    <%--  ${i.rev_modified_date}--%>
                             </td>
                         </c:when>
                         <c:otherwise>
@@ -69,6 +79,7 @@
     </tbody>
 </table>
 
+<%--모달--%>
 <form action="/admin/deleteReview" id="frm">
     <div class="modal">
         <div class="modal_content">
@@ -76,16 +87,18 @@
 
             <div>
                 작성자 <input
-                    type="text" placeholder="작성자" id="writer" class="writer" disabled
-            >
+                    type="text" placeholder="작성자" id="writer" class="writer" disabled>
             </div>
             <div>
                 별점 <input
                     type="text" placeholder="별점" disabled id="star" class="star">
             </div>
-            <div>
-                리뷰 내용<input
-                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">
+            <%--            <div>--%>
+            <%--                리뷰 내용<input--%>
+            <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
+            <%--            </div>--%>
+            <div id="reviewField">리뷰 내용</div>
+            <div id="review_content" class="review_content">
             </div>
             <div>
                 작성일자<input
@@ -100,7 +113,6 @@
                 리뷰번호<input
                     type="text" placeholder="리뷰번호" id="rseq" class="rseq">
             </div>
-
 
             <button type="button">비공개</button>
             <button id="deleteReview" type="button">삭제</button>
