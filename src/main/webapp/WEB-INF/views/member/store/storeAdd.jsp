@@ -117,7 +117,7 @@
                 <img src="/images/no_profile.png" id="profile">
             </div>
             <div class="control">
-                <input type=file name="file" id="profile_img" accept=".png, .jpg, .jpg,.gif">
+                <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
             </div>
         </div>
         <input type="text" name="store_intro" placeholder="식당소개">
