@@ -2,12 +2,14 @@ package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.AccountService;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +22,8 @@ public class AccountController {
 
     private final AccountService accountService;
     private final HttpSession session;
+    private final RedisUtil redisUtil;
+
 
     /**
      * <h1>Normal Type 회원 로그인</h1>
@@ -77,7 +81,6 @@ public class AccountController {
         return "main/memberSignUp";
     }
 
-
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
         accountService.memberSignUp(accountDTO);
@@ -128,14 +131,22 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping("certify/tel")
-    public String telOauth(String tel, String telCertifyStr) {
-        String randStr = accountService.sendRandomMessage(tel);
-        if (telCertifyStr == randStr) {
-            System.out.println("인증성공");
-            return "sucess";
-        }
-        return "fail";
+    @ResponseBody
+    @RequestMapping(value="certify/tel", method=RequestMethod.POST)
+    public String telCertify(String tel) {
+        String serverTelCertifyStr = accountService.sendRandomMessage(tel);
+        redisUtil.setData(tel,serverTelCertifyStr);
+        System.out.println(tel);
+        System.out.println(serverTelCertifyStr);
+        return serverTelCertifyStr;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="certify/telConfirm", method=RequestMethod.POST)
+    public String telConfirm(String telCertifyStr) {
+        String test = redisUtil.getData(telCertifyStr);
+        System.out.println(test);
+        return test;
     }
 
 }

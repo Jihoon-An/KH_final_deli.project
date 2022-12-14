@@ -38,16 +38,17 @@ function countdown( elementName, minutes, seconds )
 
 $("#email_btn").on("click", function () {
     $.ajax({
-        url: "/ownerSignUp/dupleCheck",
+        url: "/owner/signUp/dupleCheck",
         type: "post",
         data: {email: $("#email").val()}
     }).done(function (result) {
-        if (result == true) {
+        if (result) {
             Swal.fire({
                 icon: 'error',
                 title: '실패',
                 text: '중복된 이메일입니다',
-            })
+            });
+            $("#email").val("").focus();
         } else {
             Swal.fire('가입 가능한 이메일입니다.');
             // 이메일 보내기
@@ -99,21 +100,46 @@ $("#submit_btn").click(function () {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
-            text: '조건을 다시 확인해주세요.',
+            text: '이메일을 다시 확인해주세요.',
         });
         $("#email").focus();
+        return;
     }
     if (!pw_ok) {
-        
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '비밀번호를 다시 확인해주세요.',
+        });
+        $("#pw1").focus();
+        return;
     }
     if (!name_ok) {
-        
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '이름을 다시 확인해주세요.',
+        });
+        $("#name").focus();
+        return;
     }
     if (!bs_num_ok) {
-        
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '사업자 번호를 다시 확인해주세요.',
+        });
+        $("#num").focus();
+        return;
     }
     if (!bs_card_ok) {
-        
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '사업증을 다시 확인해주세요.',
+        });
+        $("#num").focus();
+        return;
     }
     $("#signup_frm").submit();
 });
