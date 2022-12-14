@@ -43,7 +43,7 @@ public class DestinationController {
         System.out.println("add_division: " + add_division);
 
         System.out.println("-----------------------------------------------");
-//
+
 //        System.out.println("add_seq[0]: " + add_seq.get(0));
 //        System.out.println("add_division[0]: " + add_division.get(0));
 //
