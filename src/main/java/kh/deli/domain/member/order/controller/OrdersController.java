@@ -3,6 +3,7 @@ package kh.deli.domain.member.order.controller;
 import kh.deli.domain.member.order.service.OrderOrdersService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -21,5 +22,9 @@ public class OrdersController {
     public String toOrders() throws  Exception{
         return "order/orders";
     }
+
+    //주문 입력
+
+
 
 }
