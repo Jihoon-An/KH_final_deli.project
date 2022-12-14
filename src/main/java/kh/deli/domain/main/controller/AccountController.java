@@ -2,6 +2,8 @@ package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.MainAccountService;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.entity.AddressDTO;
+import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -79,8 +81,8 @@ public class AccountController {
     }
 
     @PostMapping("memberSignUp")
-    public String memberSignUp(AccountDTO accountDTO) throws Exception {
-        mainAccountService.memberSignUp(accountDTO);
+    public String memberSignUp(AccountDTO accountDTO, MemberDTO memberDTO, AddressDTO addressDTO) throws Exception {
+        mainAccountService.memberSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
         return "redirect:/";

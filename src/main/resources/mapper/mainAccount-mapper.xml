@@ -35,6 +35,34 @@
         )
     </insert>
 
+    <insert id="insertMember" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO member VALUES(
+        acc_seq.nextval,
+        mem_seq.nextval,
+        mem_name
+        mem_phone
+        mem_nick
+        mem_birthday
+        mem_sex
+        mem_grade
+        mem_point
+        )
+    </insert>
+    <insert id="insertAddress" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO address VALUES(
+
+        add_seq.nextval,
+        acc_seq.nextval,
+        basics,
+        add_name,
+        add_detail1,
+        add_detail2,
+        add_x,
+        add_y,
+        null
+        )
+    </insert>
+
     <!-- kakao 회원가입 -->
     <insert id="kakaoSignUp" parameterType="kh.deli.global.entity.AccountDTO">
         INSERT INTO account VALUES(
