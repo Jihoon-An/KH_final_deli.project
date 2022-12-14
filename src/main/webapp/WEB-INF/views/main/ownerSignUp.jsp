@@ -25,11 +25,94 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/resources/css/main/ownerSignUp.css">
+    <%--sweet alert2--%>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
+<main id="owner_signup">
+    <div class="container">
+        <form id="signup_frm" action="/ownerSignUp/signUp" enctype="multipart/form-data" method="post">
+            <div class="header row"><h1 class="text-center">사업자 회원가입</h1></div>
 
-<input class="testInput">
+            <%--이메일 입력--%>
+            <div class="input_title row"><h5>이메일</h5></div>
+            <div class="row">
+                <div class="col-3">
+                    <input class="input_data" id="email" name="acc_email">
+                </div>
+                <div class="col-3">
+                    <button class="certi_btn" type="button" id="email_btn">인증</button>
+                </div>
+            </div>
+            <%--이메일 인증--%>
+            <div id="email_confirm_table">
+                <div class="row">
+                    <div class="col-3">
+                        <input class="input_data" id="email_confirm_input"/><span id="confirm_count"></span>
+                    </div>
+                    <div class="col-3">
+                        <button class="confirm_btn" id="email_confirm_btn">확인</button>
+                    </div>
+                </div>
+            </div>
+            <%--비밀번호 입력--%>
+            <div class="input_title row"><h5>비밀번호</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="pw1" name="acc_pw">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="pw2">
+                </div>
+            </div>
+            <%--이름 입력--%>
+            <div class="input_title row"><h5>이름</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="name" name="owner_name">
+                </div>
+            </div>
+            <%--핸드폰 번호 입력--%>
+            <div class="input_title row"><h5>핸드폰 번호</h5></div>
+            <div class="row">
+                <div class="col-3">
+                    <input class="input_data" id="phone" name="owner_phone">
+                </div>
+                <div class="col-3">
+                    <button class="certi_btn" type="button" id="phone_btn">인증</button>
+                </div>
+            </div>
+            <%--사업자 번호 입력--%>
+            <div class="input_title row"><h5>사업자 번호</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input class="input_data" id="num" name="owner_num">
+                </div>
+            </div>
+            <%--사업자 등록증 업로드--%>
+            <div class="input_title row"><h5>사업자 등록증</h5></div>
+            <div class="row">
+                <div class="col">
+                    <input type="file" class="input_file" id="input_file" name="file">
+                </div>
+            </div>
+            <%--footer 버튼--%>
+            <div class="row">
+                <div class="col-3">
+                    <button type="button" class="footer_btn" id="cancel_btn">취소하기</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="footer_btn" id="submit_btn">가입하기</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
 
+
+<script src="/resources/js/main/ownerSignUp.js"></script>
 </body>
 </html>
