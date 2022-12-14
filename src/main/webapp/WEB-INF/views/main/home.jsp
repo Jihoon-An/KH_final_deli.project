@@ -25,6 +25,8 @@
 </head>
 <body>
     <main id="home">
+
+        <p><a href="/member/header/destination">배달지선택페이지로</a></p>
         <c:choose>
             <c:when test="${loginEmail != null}">
                 ${acc_seq}
