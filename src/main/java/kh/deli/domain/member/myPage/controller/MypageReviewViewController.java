@@ -35,7 +35,7 @@ public class MypageReviewViewController {
 
         model.addAttribute("dto",dto);
 
-        return "member/userMenu/memberReviewForm";
+        return "member/myPage/memberReviewForm";
     }
 
     @RequestMapping(value = "reviewInsert", method = RequestMethod.POST)
@@ -61,9 +61,9 @@ public class MypageReviewViewController {
         }
 
         dto.setRev_sysname(componentArray.toJSONString());
-
+        System.out.println(dto.getAcc_seq());
         memberReviewFormService.reviewInsert(dto);
 
-        return "redirect:/memberMain/toMemberMain";
+        return "redirect:/";
     }
 }
