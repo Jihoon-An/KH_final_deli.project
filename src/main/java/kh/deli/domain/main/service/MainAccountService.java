@@ -92,9 +92,9 @@ public class MainAccountService {
      */
     public void memberSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
         accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
-        accountMapper.memberSignUp(accountDTO);
-        accountMapper.insertMember(memberDTO);
-        accountMapper.insertAddress(addressDTO);
+        mainAccountMapper.memberSignUp(accountDTO);
+        mainAccountMapper.insertMember(memberDTO);
+        mainAccountMapper.insertAddress(addressDTO);
     }
 
 
