@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface OwnerMapper {
+public interface MainOwnerMapper {
 
     void put(@Param("owner") OwnerDTO owner);
 

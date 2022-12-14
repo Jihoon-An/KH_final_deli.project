@@ -4,11 +4,12 @@ import kh.deli.global.entity.CouponDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface CouponMngMapper {
+public interface AdminCouponMapper {
 
     @Insert("INSERT INTO COUPON VALUES (" +
             "CP_SEQ.NEXTVAL, " +
@@ -20,6 +21,7 @@ public interface CouponMngMapper {
             "#{cp.cp_period})")
     void put(@Param("cp") CouponDTO coupon);
 
-    String getCpCodeByCpCode(@Param("code") String cpCode);
+    @Select("SELECT COUNT(CP_CODE) FROM COUPON WHERE CP_CODE = #{code}")
+    int getCpCodeByCpCode(@Param("code") String cpCode);
 
 }

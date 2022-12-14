@@ -1,4 +1,4 @@
-package kh.deli.domain.member.userMenu.mapper;
+package kh.deli.domain.member.myPage.mapper;
 
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface MemberReviewFormMapper {
+public interface MyPageReviewMapper {
 
     public void reviewInsert(ReviewDTO dto);
 

@@ -1,6 +1,6 @@
 package kh.deli.domain.main.controller;
 
-import kh.deli.domain.main.service.AccountService;
+import kh.deli.domain.main.service.MainAccountService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/account/")
 public class AccountController {
 
-    private final AccountService accountService;
+    private final MainAccountService mainAccountService;
     private final HttpSession session;
     private final RedisUtil redisUtil;
 
@@ -37,7 +37,7 @@ public class AccountController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
         // 로그인 서비스 요청
-        int result = accountService.login(email, pw);
+        int result = mainAccountService.login(email, pw);
 
         if (result == 1) { // 로그인 성공했을 때
 
@@ -84,7 +84,7 @@ public class AccountController {
 
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
-        accountService.memberSignUp(accountDTO);
+        mainAccountService.memberSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
         return "redirect:/";
@@ -98,7 +98,7 @@ public class AccountController {
 
     @PostMapping("kakaoSignUp")
     public String kakaoSignUp(AccountDTO accountDTO) throws Exception {
-        accountService.kakaoSignUp(accountDTO);
+        mainAccountService.kakaoSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
         System.out.println("야 카카오 회원가입 성공했다 짜식들아");
@@ -108,18 +108,18 @@ public class AccountController {
     @RequestMapping("oauth/kakao")
     public String  kakaoLogin(String code) throws Exception {
         // 코드를 이용하여 accessToken 추출
-        String accessToken = accountService.getKakaoAccessToken(code);
+        String accessToken = mainAccountService.getKakaoAccessToken(code);
         // accessToken을 이용하여 사용자 정보 추출
-        String kakaoId = accountService.getKakaoId(accessToken);
+        String kakaoId = mainAccountService.getKakaoId(accessToken);
         System.out.println("로그인 성공! 저장은 아직!");
         // kakaoId 으로 카카오 회원 정보 DB 저장
-        if(!accountService.dupleCheckKakaoId(kakaoId)){
+        if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
             System.out.println("로그인 성공! 저장은 할 예정!");
             // 회원가입으로 페이지 이동
             return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
-            String email = accountService.getAccEmail(kakaoId);
+            String email = mainAccountService.getAccEmail(kakaoId);
             session.setAttribute("loginEmail", email);
             session.setAttribute("kakaoAccessToken", accessToken);
             session.setAttribute("loginType", "kakao");
@@ -137,7 +137,7 @@ public class AccountController {
     @ResponseBody
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
     public String telCertify(String tel) {
-        String serverTelCertifyStr = accountService.sendRandomMessage(tel);
+        String serverTelCertifyStr = mainAccountService.sendRandomMessage(tel);
         redisUtil.setData(tel,serverTelCertifyStr);
         return serverTelCertifyStr;
     }

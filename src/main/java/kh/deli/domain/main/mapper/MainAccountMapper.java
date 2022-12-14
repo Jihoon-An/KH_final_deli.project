@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Repository
 @Mapper
-public interface AccountMapper {
+public interface MainAccountMapper {
 
     void insert(@Param("account") AccountDTO accountDTO);
 

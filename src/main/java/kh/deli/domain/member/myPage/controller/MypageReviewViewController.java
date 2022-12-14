@@ -1,7 +1,6 @@
-package kh.deli.domain.member.userMenu.controller;
+package kh.deli.domain.member.myPage.controller;
 
-import kh.deli.domain.main.dto.MemberMainRequestDTO;
-import kh.deli.domain.member.userMenu.service.MemberReviewFormService;
+import kh.deli.domain.member.myPage.service.MemberReviewFormService;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import org.json.simple.JSONArray;
@@ -19,7 +18,7 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/memberReviewForm/")
-public class MemberReviewFormController {
+public class MypageReviewViewController {
 
     @Autowired
     private MemberReviewFormService memberReviewFormService;

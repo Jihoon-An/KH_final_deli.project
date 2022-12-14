@@ -1,7 +1,7 @@
 package kh.deli.domain.main.controller;
 
-import kh.deli.domain.main.service.AccountService;
-import kh.deli.domain.main.service.OwnerSignUpService;
+import kh.deli.domain.main.service.MainAccountService;
+import kh.deli.domain.main.service.MainOwnerService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.OwnerDTO;
 import lombok.AllArgsConstructor;
@@ -15,12 +15,12 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/owner/signUp")
+@RequestMapping("/ownerSignUp")
 public class OwnerSignUpController {
 
     private final HttpSession session;
-    private final AccountService accountService;
-    private final OwnerSignUpService ownerSignUpService;
+    private final MainAccountService mainAccountService;
+    private final MainOwnerService ownerSignUpService;
 
     @RequestMapping("")
     public String toOwnerSignUp() {
@@ -39,6 +39,6 @@ public class OwnerSignUpController {
     @PostMapping("/dupleCheck")
     @ResponseBody
     public boolean dupleCheck(String email) throws Exception {
-        return accountService.dupleCheck(email);
+        return mainAccountService.dupleCheck(email);
     }
 }

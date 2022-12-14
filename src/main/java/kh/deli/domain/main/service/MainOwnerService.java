@@ -1,7 +1,7 @@
 package kh.deli.domain.main.service;
 
-import kh.deli.domain.main.mapper.AccountMapper;
-import kh.deli.domain.main.mapper.OwnerMapper;
+import kh.deli.domain.main.mapper.MainAccountMapper;
+import kh.deli.domain.main.mapper.MainOwnerMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.OwnerDTO;
 import kh.deli.global.util.Encryptor;
@@ -15,17 +15,17 @@ import javax.servlet.http.HttpSession;
 
 @Service
 @AllArgsConstructor
-public class OwnerSignUpService {
+public class MainOwnerService {
 
     private final HttpSession session;
-    private final OwnerMapper ownerMapper;
-    private final AccountMapper accountMapper;
+    private final MainOwnerMapper ownerMapper;
+    private final MainAccountMapper mainAccountMapper;
 
     @Transactional
     public void signUp(OwnerDTO owner, AccountDTO account, MultipartFile file) throws Exception {
         FileUtil fileUtil = new FileUtil();
 
-        int accSeq = accountMapper.getAccSeq();
+        int accSeq = mainAccountMapper.getAccSeq();
 
         String path = "/resources/img/owner-card/";
         String sysName = fileUtil.save(session, path, file);
@@ -38,6 +38,6 @@ public class OwnerSignUpService {
         account.setAcc_seq(accSeq);
         account.setAcc_pw(Encryptor.getSHA512(account.getAcc_pw()));
 
-        accountMapper.insertOwner(account);
+        mainAccountMapper.insertOwner(account);
     }
 }

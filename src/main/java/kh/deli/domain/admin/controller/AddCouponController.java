@@ -1,6 +1,6 @@
 package kh.deli.domain.admin.controller;
 
-import kh.deli.domain.admin.service.AddCouponService;
+import kh.deli.domain.admin.service.AdminCouponService;
 import kh.deli.global.entity.CouponDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class AddCouponController {
 
     private final HttpSession session;
-    private final AddCouponService couponService;
+    private final AdminCouponService couponService;
 
     //쿠폰 추가 페이지로 이동
     @RequestMapping("")
@@ -28,7 +28,7 @@ public class AddCouponController {
     public String addCoupon(CouponDTO coupon) throws Exception{
 
         //쿠폰코드 유효성
-        if (coupon.getCp_code() != null) {
+        if (coupon.getCp_code() != null && couponService.dupleCheck(coupon.getCp_code())) {
             return "error";
         }
 

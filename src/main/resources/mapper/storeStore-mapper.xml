@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.member.store.mapper.StoreMapper">
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreStoreMapper">
     <insert id="insertStore" parameterType="kh.deli.global.entity.StoreDTO">
         insert into store values(
         store_seq.nextval,
