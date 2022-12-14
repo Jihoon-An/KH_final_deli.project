@@ -17,7 +17,7 @@ import org.json.simple.JSONObject;
 
 public class NaverSensV2 {
     @SuppressWarnings("unchecked")
-    public void send_msg(String tel, String rand) {
+    public void send_msg(String tel, String msg) {
         String hostNameUrl = "https://sens.apigw.ntruss.com";     		// 호스트 URL
         String requestUrl= "/sms/v2/services/";                   		// 요청 URL
         String requestUrlType = "/messages";                      		// 요청 URL
@@ -34,7 +34,7 @@ public class NaverSensV2 {
         JSONObject toJson = new JSONObject();
         JSONArray toArr = new JSONArray();
 
-        toJson.put("content","딜리본인인증번호 ["+rand+"]");		// 난수와 함께 전송
+        toJson.put("content",msg);
         toJson.put("to",tel);
         toArr.add(toJson);
 

@@ -25,7 +25,7 @@ public class MainOwnerService {
     public void signUp(OwnerDTO owner, AccountDTO account, MultipartFile file) throws Exception {
         FileUtil fileUtil = new FileUtil();
 
-        int accSeq = mainAccountMapper.getAccSeq();
+        int accSeq = mainAccountMapper.getNextAccSeq();
 
         String path = "/resources/img/owner-card/";
         String sysName = fileUtil.save(session, path, file);

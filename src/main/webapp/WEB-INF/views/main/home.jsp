@@ -27,6 +27,7 @@
     <main id="home">
         <c:choose>
             <c:when test="${loginEmail != null}">
+                ${acc_seq}
                 <div class="container">
                     <marquee>
                         <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>
