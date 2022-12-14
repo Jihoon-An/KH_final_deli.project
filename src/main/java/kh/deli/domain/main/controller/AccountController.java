@@ -1,7 +1,9 @@
 package kh.deli.domain.main.controller;
 
-import kh.deli.domain.main.service.AccountService;
+import kh.deli.domain.main.service.MainAccountService;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.entity.AddressDTO;
+import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,30 +22,27 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/account/")
 public class AccountController {
 
-    private final AccountService accountService;
+    private final MainAccountService mainAccountService;
     private final HttpSession session;
     private final RedisUtil redisUtil;
 
 
     /**
      * <h1>Normal Type 회원 로그인</h1>
-     * @param email
-     * @param pw
      * @param emailSave
-     * @param response
      * @return set loginEmail to Session & set saved_email to Cookie
-     * @throws Exception
      */
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
         // 로그인 서비스 요청
-        int result = accountService.login(email, pw);
+        int result = mainAccountService.login(email, pw);
 
         if (result == 1) { // 로그인 성공했을 때
 
             // Session 에 로그인 성공한 이메일 담기
             session.setAttribute("loginEmail", email);
             session.setAttribute("loginType", "normal");
+            session.setAttribute("acc_seq", mainAccountService.getAccSeq(email));
 
             // String.valueOf 사용하지 않으면 NullPointException
             // String.valueOf 없이 사용하려면 true false 등으로 값 변환 후 조건문 작성
@@ -82,8 +81,8 @@ public class AccountController {
     }
 
     @PostMapping("memberSignUp")
-    public String memberSignUp(AccountDTO accountDTO) throws Exception {
-        accountService.memberSignUp(accountDTO);
+    public String memberSignUp(AccountDTO accountDTO, MemberDTO memberDTO, AddressDTO addressDTO) throws Exception {
+        mainAccountService.memberSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
         return "redirect:/";
@@ -97,7 +96,7 @@ public class AccountController {
 
     @PostMapping("kakaoSignUp")
     public String kakaoSignUp(AccountDTO accountDTO) throws Exception {
-        accountService.kakaoSignUp(accountDTO);
+        mainAccountService.kakaoSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
         System.out.println("야 카카오 회원가입 성공했다 짜식들아");
@@ -107,20 +106,22 @@ public class AccountController {
     @RequestMapping("oauth/kakao")
     public String  kakaoLogin(String code) throws Exception {
         // 코드를 이용하여 accessToken 추출
-        String accessToken = accountService.getKakaoAccessToken(code);
+        String accessToken = mainAccountService.getKakaoAccessToken(code);
         // accessToken을 이용하여 사용자 정보 추출
-        String kakaoId = accountService.getKakaoId(accessToken);
+        String kakaoId = mainAccountService.getKakaoId(accessToken);
         System.out.println("로그인 성공! 저장은 아직!");
         // kakaoId 으로 카카오 회원 정보 DB 저장
-        if(!accountService.dupleCheckKakaoId(kakaoId)){
+        if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
             System.out.println("로그인 성공! 저장은 할 예정!");
             // 회원가입으로 페이지 이동
             return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
-            session.setAttribute("loginEmail", accountService.getAccEmail(kakaoId));
+            String email = mainAccountService.getAccEmail(kakaoId);
+            session.setAttribute("loginEmail", email);
             session.setAttribute("kakaoAccessToken", accessToken);
             session.setAttribute("loginType", "kakao");
+            session.setAttribute("acc_seq", mainAccountService.getAccSeq(email));
             return "redirect:/";
         }
     }
@@ -134,7 +135,7 @@ public class AccountController {
     @ResponseBody
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
     public String telCertify(String tel) {
-        String serverTelCertifyStr = accountService.sendRandomMessage(tel);
+        String serverTelCertifyStr = mainAccountService.sendRandomMessage(tel);
         redisUtil.setData(tel,serverTelCertifyStr);
         return serverTelCertifyStr;
     }

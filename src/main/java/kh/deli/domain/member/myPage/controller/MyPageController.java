@@ -11,7 +11,7 @@ public class MyPageController {
 
     @RequestMapping("toMyPage")
     public String toMyPage() throws Exception {
-        return "/member/userMenu/myPage";
+        return "/member/myPage/myPage";
     }
 
 

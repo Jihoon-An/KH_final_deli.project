@@ -2,20 +2,16 @@ package kh.deli.domain.main.service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import kh.deli.domain.main.mapper.AccountMapper;
+import kh.deli.domain.main.mapper.MainAccountMapper;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.entity.AddressDTO;
+import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.Encryptor;
 import kh.deli.global.util.naverSms.NaverSensV2;
 import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.binding.BindingException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -29,14 +25,9 @@ import java.util.Random;
 
 @Service
 @AllArgsConstructor
-public class AccountService {
-    private final AccountMapper accountMapper;
+public class MainAccountService {
+    private final MainAccountMapper mainAccountMapper;
     private final RestTemplate restTemplate;
-    private final RedisUtil redisUtil;
-
-    public void sign(AccountDTO dto) throws Exception {
-        accountMapper.insert(dto);
-    }
 
     /**
      * <h2>email 중복체크</h2>
@@ -46,7 +37,7 @@ public class AccountService {
      */
     public boolean dupleCheck(String email) throws Exception {
 
-        String result = accountMapper.findByEmail(email);
+        String result = mainAccountMapper.findByEmail(email);
 
         if (result != null) {
             return true;
@@ -65,7 +56,7 @@ public class AccountService {
         Map<String, String> param = new HashMap<>();
         param.put("email", email);
         param.put("pw", Encryptor.getSHA512(pw));
-        return accountMapper.login(param);
+        return mainAccountMapper.login(param);
     }
 
 
@@ -97,14 +88,20 @@ public class AccountService {
 
     /**
      * member 회원가입 메서드
-     *
-     * @param dto
-     * @throws Exception
      */
-    public void memberSignUp(AccountDTO dto) throws Exception {
-        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
-        accountMapper.memberSignUp(dto);
+    public void memberSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        int getNextAccSeq = mainAccountMapper.getNextAccSeq();
+        accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
+        accountDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.memberSignUp(accountDTO);
+        memberDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertMember(memberDTO);
+        addressDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertAddress(addressDTO);
     }
+
+
+
 
     /**
      * 카카오 AccessToken 값 가져오는 메서드
@@ -211,7 +208,7 @@ public class AccountService {
      * @throws Exception
      */
     public boolean dupleCheckKakaoId(String kakaoId) throws Exception {
-        int result = accountMapper.findByAccToken(kakaoId);
+        int result = mainAccountMapper.findByAccToken(kakaoId);
         if (result == 1) {
             return true;
         }
@@ -226,11 +223,15 @@ public class AccountService {
      */
     public void kakaoSignUp(AccountDTO dto) throws Exception {
         dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
-        accountMapper.kakaoSignUp(dto);
+        mainAccountMapper.kakaoSignUp(dto);
     }
 
     public String getAccEmail(String acc_token) {
-        return accountMapper.getAccEmail(acc_token);
+        return mainAccountMapper.getAccEmail(acc_token);
+    }
+
+    public int getAccSeq(String acc_email) {
+        return mainAccountMapper.getAccSeq(acc_email);
     }
 
     /** 연락처 문자 인증 전송 + 발송 정보를 Redis에 저장
@@ -246,7 +247,7 @@ public class AccountService {
             String ran = Integer.toString(rand.nextInt(10));
             numStr += ran;
         }
-        message.send_msg(tel, numStr);
+        message.send_msg(tel, "딜리본인인증번호 ["+numStr+"]");
         return numStr;
     }
 

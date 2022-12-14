@@ -25,8 +25,11 @@
 </head>
 <body>
     <main id="home">
+
+        <p><a href="/member/header/destination">배달지선택페이지로</a></p>
         <c:choose>
             <c:when test="${loginEmail != null}">
+                ${acc_seq}
                 <div class="container">
                     <marquee>
                         <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>
