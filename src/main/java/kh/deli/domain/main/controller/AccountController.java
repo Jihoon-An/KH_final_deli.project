@@ -136,18 +136,13 @@ public class AccountController {
     public String telCertify(String tel) {
         String serverTelCertifyStr = accountService.sendRandomMessage(tel);
         redisUtil.setData(tel,serverTelCertifyStr);
-        System.out.println(tel);
-        System.out.println(serverTelCertifyStr);
         return serverTelCertifyStr;
     }
 
     @ResponseBody
     @RequestMapping(value="certify/telConfirm", method=RequestMethod.POST)
     public boolean telConfirm(String tel, String telCertifyStr) {
-        System.out.println("내가 적은 연락처: " + tel);
-        System.out.println("내가 적은 인증문자: " + telCertifyStr);
         String getServerTelCertifyStr = redisUtil.getData(tel);
-        System.out.println("연락처로 얻은-입력해둔 랜덤문자: " + getServerTelCertifyStr);
         return telCertifyStr.equals(getServerTelCertifyStr) ? true : false;
     }
 
