@@ -15,8 +15,8 @@ public class AdminCouponService {
     }
 
     public boolean dupleCheck(String code) {
-        String result = couponMngMapper.getCpCodeByCpCode(code);
-        if (result != null) {
+        int result = couponMngMapper.getCpCodeByCpCode(code);
+        if (result > 0) {
             return true;
         } else {
             return false;

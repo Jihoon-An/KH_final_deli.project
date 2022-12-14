@@ -28,7 +28,7 @@ public class AddCouponController {
     public String addCoupon(CouponDTO coupon) throws Exception{
 
         //쿠폰코드 유효성
-        if (coupon.getCp_code() != null) {
+        if (coupon.getCp_code() != null && couponService.dupleCheck(coupon.getCp_code())) {
             return "error";
         }
 
