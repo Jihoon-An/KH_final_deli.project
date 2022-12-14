@@ -239,15 +239,14 @@ public class AccountService {
      * @return
      */
     public String sendRandomMessage(String tel) {
-//        NaverSensV2 message = new NaverSensV2();
+        NaverSensV2 message = new NaverSensV2();
         Random rand = new Random();
         String numStr = "";
         for (int i = 0; i < 6; i++) {
             String ran = Integer.toString(rand.nextInt(10));
             numStr += ran;
         }
-        System.out.println("회원가입 문자 인증 => " + numStr);
-//        message.send_msg(tel, numStr);
+        message.send_msg(tel, numStr);
         return numStr;
     }
 
