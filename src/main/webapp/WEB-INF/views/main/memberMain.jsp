@@ -16,38 +16,46 @@
     </script>
 </head>
 <body>
+<div>
 <table border="1px">
-  <tr>
-    <td><a>한식</a></td>
-    <td><a>양식</a></td>
-    <td><a>중식</a></td>
-    <td><a>일식</a></td>
-  </tr>
-  <tr>
-    <td><a>야식</a></td>
-    <td><a>디저트</a></td>
-    <td><a>아시안</a></td>
-    <td><a>분식</a></td>
-  </tr>
+    <tr>
+        <td><a>한식</a></td>
+        <td><a>양식</a></td>
+        <td><a>중식</a></td>
+        <td><a>일식</a></td>
+    </tr>
+    <tr>
+        <td><a>야식</a></td>
+        <td><a>디저트</a></td>
+        <td><a>아시안</a></td>
+        <td><a>분식</a></td>
+    </tr>
     <tr>
         <td colspan="4"><a href="/memberReviewForm/toMemberReviewForm">리뷰쓰기</a></td>
     </tr>
 </table>
 <c:choose>
     <c:when test="${not empty list}">
-    <c:forEach  var="i" items="${list}">
-        <div>
-            <span>가게시퀀스 : ${i.store_seq}</span>
-            <span>평점 : ${i.avg_star}</span>
-            <span>가게이름 : ${i.store_name}</span>
-            <span>로고 : ${i.store_logo}</span>
-            <span>최소금액 : ${i.store_min_price},</span>
-            <span>배달팁 : ${i.store_deli_tip},</span>
-            <span>배달시간 : ${i.store_deli_time}</span>
-        </div>
-    </c:forEach>
+        <c:forEach  var="i" items="${list}">
+            <div>
+                <span>가게시퀀스 : ${i.store_seq}</span>
+                <span>평점 : ${i.avg_star}</span> <%-- 소수점 첫째자리까지 --%>
+                <span>가게이름 : ${i.store_name}</span>
+                <span>로고 : ${i.store_logo}</span>
+                <span>최소금액 : ${i.store_min_price},</span>
+                <span>배달팁 : ${i.store_deli_tip},</span>
+                <span>배달시간 : ${i.store_deli_time}</span>
+            </div>
+        </c:forEach>
     </c:when>
 </c:choose>
-
+    <div>
+        <h1>
+            <a href="/account/logout"><button>로그아웃</button></a>
+        </h1>
+        <h2>
+            <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
+    </div>
+</div>
 </body>
 </html>
