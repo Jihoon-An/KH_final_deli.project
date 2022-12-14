@@ -24,6 +24,7 @@ public interface MainAccountMapper {
 
     int login(Map<String, String> param);
 
+
     void memberSignUp(AccountDTO accountDTO);
     void insertMember(MemberDTO memberDTO);
     void insertAddress(AddressDTO addressDTO);
