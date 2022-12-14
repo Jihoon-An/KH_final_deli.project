@@ -124,109 +124,93 @@
         <br>
         <input type="text" name="store_origin" placeholder="원산지">
         <Br>
+
         <div class="bsnsdiv">
-
-        <select name="store_bsns_hours" class="bsns" class="bs1" >
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-        </select>
-        <input type =text value="월요일" disabled >
-        <input type=hidden class=bsns value="월요일"  >
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"   class="bs1" disabled>
-        <input type="time"class=bsns value="09:00" min="09:00" max="24:00"    class="bs1" disabled>
-
-        <br>
-
-        <select name="store_bsns_hours" class="bsns" class="bs2">
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-
-        </select>
-        <input type=text  value="화요일" disabled>
-        <input type=hidden class=bsns value="화요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled  class="bs2">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs2">
-
-        <br>
-        <select name="store_bsns_hours" class="bsns" class="bs3">
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-
-        </select>
-        <input type=text value="수요일" disabled>
-        <input type=hidden class=bsns value="수요일">
-        <input type="time" class=bsns  value="09:00" min="09:00" max="24:00"  disabled class="bs3">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs3">
-        <br>
-        <select name="store_bsns_hours" class="bsns" class="bs4">
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-
-        </select>
-        <input type=text value="목요일" disabled>
-        <input type=hidden class=bsns value="목요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs4">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs4">
-        <br>
-        <select name="store_bsns_hours" class="bsns" class="bs5">
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-
-        </select>
-        <input type=text value="금요일" disabled>
-        <input type=hidden class=bsns value="금요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs5">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00"  disabled class="bs5">
-        <br>
-        <select name="store_bsns_hours" class="bsns" class="bs6">
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-
-        </select>
-        <input type=text  value="토요일" disabled>
-        <input type=hidden class=bsns value="토요일">
-        <input type="time"  class=bsns value="09:00" min="09:00" max="24:00" class="bs6">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00" class="bs6">
-        <br>
-        <select name="store_bsns_hours" class="bsns" class="bs7">
-            <option value="휴무일">
-                휴무일
-            </option>
-            <option value="영업일">
-                영업일
-            </option>
-
-        </select>
-        <input type=text  value="일요일" disabled>
-        <input type=hidden class=bsns value="일요일">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00" class="bs7">
-        <input type="time" class=bsns value="09:00" min="09:00" max="24:00" class="bs7">
-        <input type="hidden" id="bsnsdata" name="store_bsns_hours">
+            <span>월요일</span>
+            <input type="hidden" class="bsns" value="월요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
         </div>
+        <div class="bsnsdiv">
+            <span>화요일</span>
+            <input type="hidden" class="bsns" value="화요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
+        </div>
+        <div class="bsnsdiv">
+            <span>수요일</span>
+            <input type="hidden" class="bsns" value="수요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
+        </div>
+        <div class="bsnsdiv">
+            <span>목요일</span>
+            <input type="hidden" class="bsns" value="목요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
+        </div>
+        <div class="bsnsdiv">
+            <span>금요일</span>
+            <input type="hidden" class="bsns" value="금요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
+        </div>
+        <div class="bsnsdiv">
+            <span>토요일</span>
+            <input type="hidden" class="bsns" value="토요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
+        </div>
+        <div class="bsnsdiv">
+            <span>일요일</span>
+            <input type="hidden" class="bsns" value="일요일">
+            <select name="store_bsns_hours" class="bsns bs">
+                <option>영업일</option>
+                <option>휴무일</option>
+            </select>
+            <span class="bs_time">
+            <input type="time" class="bsns">
+            <input type="time" class="bsns">
+        </span>
+        </div>
+        <input type="hidden" id="bsnsdata" name="store_bsns_hours">
+
         <br>
         <input type="text" name="store_close_day" placeholder="휴무일">
         <br>
@@ -254,17 +238,13 @@
 </body>
 <script>
 
-    $(".bs1").on("change", function () {
-        let bs1 = $(".bs1").val();
-        console.log(bs1)
-        if(bs1=='영업일'){
-            $(".bs1").removeAttr("disabled")
-            console.log("제거성공")
-        }else{
-            $(".bs1").attr("disabled", true)
-            console.log("복구")
+    $(".bs").on("change", function () {
+        if ($(this).val() == '영업일') {
+            $(this).closest($(".bsnsdiv")).find($(".bs_time")).show();
+        } else {
+            $(this).closest($(".bsnsdiv")).find($(".bs_time")).find($(".bsns")).val("");
+            $(this).closest($(".bsnsdiv")).find($(".bs_time")).hide();
         }
-
     })
 
 
@@ -298,7 +278,7 @@
 
     })
     //이미지미리보기
-    function fileToBase64(file) {
+    function fileToBase64(file){
         const reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onload = () => {
@@ -306,28 +286,28 @@
             $("#profile").attr("src", reader.result);
         }
     }
-    $("#profile_img").on("change", function () {
-        if ($("#profile_img").val() == "") {
-            $("#profile").attr("src", "/profile/no_profile.png");
+    $("#profile_img").on("change", function(){
+        if($("#profile_img").val()==""){
+            $("#profile").attr("src", "/images/no_profile.png");
             return;
         }
         console.log($("#profile_img").val());
-        let ext = $("#profile_img").val().split(".").pop().toLowerCase();
+        let ext=$("#profile_img").val().split(".").pop().toLowerCase();
 
-        let accept = ["png", "jpg", "jpeg", "gif"];
+        let accept=["png", "jpg", "jpeg", "gif"];
 
-        let result = $.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
+        let result=	$.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
         console.log(result);
 
 
 
-        if (result == -1) {
+        if(result==-1){
             alert("이미지만 사용 가능합니다")
             $("#profile_img").val("");//비워주기
             $("#profile").attr("src", "/images/no_profile.png")//다른 사진들어올떄 #profile 도 비워주기
 
 
-        } else {
+        } else{
             fileToBase64(document.getElementById("profile_img").files[0]);
         }
     });
