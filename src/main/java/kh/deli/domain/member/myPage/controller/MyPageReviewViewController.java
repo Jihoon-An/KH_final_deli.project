@@ -1,6 +1,6 @@
 package kh.deli.domain.member.myPage.controller;
 
-import kh.deli.domain.member.myPage.service.MemberReviewFormService;
+import kh.deli.domain.member.myPage.service.MyPageReviewFormService;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import org.json.simple.JSONArray;
@@ -18,10 +18,10 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/memberReviewForm/")
-public class MypageReviewViewController {
+public class MyPageReviewViewController {
 
     @Autowired
-    private MemberReviewFormService memberReviewFormService;
+    private MyPageReviewFormService myPageReviewFormService;
 
     @Autowired
     private HttpSession session;
@@ -29,7 +29,7 @@ public class MypageReviewViewController {
     @RequestMapping("toMemberReviewForm")
     public String toMemberMain(Model model) throws Exception {
         int order_seq=1; // 내 주문리스트에서 order_seq 파라미터로 가져오기
-        OrdersDTO dto=memberReviewFormService.selectByOrderSeq(order_seq);
+        OrdersDTO dto=myPageReviewFormService.selectByOrderSeq(order_seq);
 
         System.out.println(dto.getMenu_list());
 
@@ -62,7 +62,7 @@ public class MypageReviewViewController {
 
         dto.setRev_sysname(componentArray.toJSONString());
         System.out.println(dto.getAcc_seq());
-        memberReviewFormService.reviewInsert(dto);
+        myPageReviewFormService.reviewInsert(dto);
 
         return "redirect:/";
     }
