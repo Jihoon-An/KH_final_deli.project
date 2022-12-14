@@ -1,6 +1,8 @@
 package kh.deli.domain.main.mapper;
 
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.entity.AddressDTO;
+import kh.deli.global.entity.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -11,8 +13,6 @@ import java.util.Map;
 @Repository
 @Mapper
 public interface MainAccountMapper {
-
-    void insert(@Param("account") AccountDTO accountDTO);
 
     @Select("SELECT ACC_EMAIL FROM ACCOUNT WHERE ACC_EMAIL = #{email}")
     String findByEmail(@Param("email") String email);
@@ -25,6 +25,8 @@ public interface MainAccountMapper {
     int login(Map<String, String> param);
 
     void memberSignUp(AccountDTO accountDTO);
+    void insertMember(MemberDTO memberDTO);
+    void insertAddress(AddressDTO addressDTO);
 
     void kakaoSignUp(AccountDTO accountDTO);
 
