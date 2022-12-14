@@ -4,6 +4,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import kh.deli.domain.main.mapper.AccountMapper;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.entity.AddressDTO;
+import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.Encryptor;
 import kh.deli.global.util.naverSms.NaverSensV2;
 import kh.deli.global.util.redis.RedisUtil;
@@ -33,10 +35,6 @@ public class AccountService {
     private final AccountMapper accountMapper;
     private final RestTemplate restTemplate;
     private final RedisUtil redisUtil;
-
-    public void sign(AccountDTO dto) throws Exception {
-        accountMapper.insert(dto);
-    }
 
     /**
      * <h2>email 중복체크</h2>
@@ -97,14 +95,16 @@ public class AccountService {
 
     /**
      * member 회원가입 메서드
-     *
-     * @param dto
-     * @throws Exception
      */
-    public void memberSignUp(AccountDTO dto) throws Exception {
-        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
-        accountMapper.memberSignUp(dto);
+    public void memberSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
+        accountMapper.memberSignUp(accountDTO);
+        accountMapper.insertMember(memberDTO);
+        accountMapper.insertAddress(addressDTO);
     }
+
+
+
 
     /**
      * 카카오 AccessToken 값 가져오는 메서드
@@ -246,7 +246,7 @@ public class AccountService {
             String ran = Integer.toString(rand.nextInt(10));
             numStr += ran;
         }
-        message.send_msg(tel, numStr);
+        message.send_msg(tel, "딜리본인인증번호 ["+numStr+"]");
         return numStr;
     }
 
