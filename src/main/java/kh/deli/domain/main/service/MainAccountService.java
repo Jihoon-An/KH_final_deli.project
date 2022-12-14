@@ -28,7 +28,6 @@ import java.util.Random;
 public class MainAccountService {
     private final MainAccountMapper mainAccountMapper;
     private final RestTemplate restTemplate;
-    private final RedisUtil redisUtil;
 
     /**
      * <h2>email 중복체크</h2>
@@ -91,9 +90,13 @@ public class MainAccountService {
      * member 회원가입 메서드
      */
     public void memberSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        int getNextAccSeq = mainAccountMapper.getNextAccSeq();
         accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
+        accountDTO.setAcc_seq(getNextAccSeq);
         mainAccountMapper.memberSignUp(accountDTO);
+        memberDTO.setAcc_seq(getNextAccSeq);
         mainAccountMapper.insertMember(memberDTO);
+        addressDTO.setAcc_seq(getNextAccSeq);
         mainAccountMapper.insertAddress(addressDTO);
     }
 

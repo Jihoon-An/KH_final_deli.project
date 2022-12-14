@@ -24,7 +24,7 @@
     <!-- 멤버 회원가입(sns회원가입x) -->
     <insert id="memberSignUp" parameterType="kh.deli.global.entity.AccountDTO">
         INSERT INTO account VALUES(
-        acc_seq.nextval,
+        #{acc_seq},
         #{acc_email},
         #{acc_pw},
         'client',
@@ -35,30 +35,29 @@
         )
     </insert>
 
-    <insert id="insertMember" parameterType="kh.deli.global.entity.AccountDTO">
+    <insert id="insertMember" parameterType="kh.deli.global.entity.MemberDTO">
         INSERT INTO member VALUES(
-        acc_seq.nextval,
+        #{acc_seq},
         mem_seq.nextval,
-        mem_name
-        mem_phone
-        mem_nick
-        mem_birthday
-        mem_sex
-        mem_grade
-        mem_point
+        #{mem_name},
+        #{mem_phone},
+        null,
+        null,
+        null,
+        'normal',
+        null
         )
     </insert>
-    <insert id="insertAddress" parameterType="kh.deli.global.entity.AccountDTO">
+    <insert id="insertAddress" parameterType="kh.deli.global.entity.AddressDTO">
         INSERT INTO address VALUES(
-
         add_seq.nextval,
-        acc_seq.nextval,
-        basics,
-        add_name,
-        add_detail1,
-        add_detail2,
-        add_x,
-        add_y,
+        #{acc_seq},
+        'basics',
+        #{add_name},
+        #{add_detail1},
+        #{add_detail2},
+        #{add_x},
+        #{add_y},
         null
         )
     </insert>

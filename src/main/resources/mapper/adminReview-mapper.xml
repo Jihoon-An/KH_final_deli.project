@@ -14,7 +14,7 @@
         rev_content,
         store_name,
         rev_writedate,
-        rev_modified_date
+        rev_modifieddate
         from member,store,review
         where review.acc_seq=member.acc_seq
         and review.store_seq=store.store_seq
