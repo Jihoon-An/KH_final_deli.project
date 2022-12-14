@@ -40,6 +40,9 @@
                         <h2>
                             <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
                         </h2>
+                        <h1>
+                            <a href=""><button>고추장바구니모를찾아서</button></a>
+                        </h1>
                     </marquee>
                 </div>
             </c:when>
