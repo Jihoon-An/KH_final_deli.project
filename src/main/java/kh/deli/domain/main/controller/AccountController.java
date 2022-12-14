@@ -32,7 +32,7 @@ public class AccountController {
      * @param emailSave
      * @return set loginEmail to Session & set saved_email to Cookie
      */
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @PostMapping("login")
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
         // 로그인 서비스 요청
         int result = mainAccountService.login(email, pw);
@@ -73,6 +73,16 @@ public class AccountController {
                 return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
                 }
         return "redirect:/";
+    }
+
+    @ResponseBody
+    @RequestMapping("deleteSavedEmail")
+    public String deleteSavedEmail(HttpServletResponse response) throws Exception {
+        Cookie cookie = new Cookie("saved_email", null);
+        cookie.setMaxAge(0); // 유통기한 0초 ( 삭제 )
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return "";
     }
 
     @RequestMapping("toMemberSignUp")

@@ -4,8 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <a href="/admin/selectReview">운영자리뷰로</a>
+    <a href="/admin/review/selectReview">운영자리뷰로</a>
     <a href="/member/order/payResult">결제결과페이지로</a>
+    <a href="/myPage/review/">일반회원-리뷰수정페이지로</a>
     <title>Home</title>
 
     <!--jQuery-->
@@ -42,6 +43,9 @@
                         <h2>
                             <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
                         </h2>
+                        <h1>
+                            <a href="/basket"><button>고추장바구니모를찾아서</button></a>
+                        </h1>
                     </marquee>
                 </div>
             </c:when>
@@ -77,7 +81,7 @@
             </c:otherwise>
         </c:choose>
 
-
+        <script src="/resources/js/main/home.js"></script>
     </main>
 </body>
 </html>

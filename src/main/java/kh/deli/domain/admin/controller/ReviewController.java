@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin/review/")
 public class ReviewController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class ReviewController {
     public String selectAll(Model model) throws Exception {
         List<AdminReviewDTO> nev_list = adminService.selectAll();
         model.addAttribute("nev_list", nev_list);
-        return "/admin/adminReviewMng";
+        return "/admin/ReviewMng";
     }
 
     @RequestMapping("deleteReview")
