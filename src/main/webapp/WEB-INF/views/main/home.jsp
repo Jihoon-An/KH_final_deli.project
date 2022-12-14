@@ -4,8 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <a href="/admin/selectReview">운영자리뷰로</a>
+    <a href="/admin/review/selectReview">운영자리뷰로</a>
     <a href="/member/order/payResult">결제결과페이지로</a>
+    <a href="/myPage/review/">일반회원-리뷰수정페이지로</a>
     <title>Home</title>
 
     <!--jQuery-->
