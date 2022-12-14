@@ -35,5 +35,6 @@ public interface MainAccountMapper {
 
     String getAccEmail(String acc_token);
 
+    @Select("SELECT ACC_SEQ FROM ACCOUNT WHERE ACC_EMAIL = #{acc_email}")
     int getAccSeq(String acc_email);
 }
