@@ -38,7 +38,7 @@ function countdown( elementName, minutes, seconds )
 
 $("#email_btn").on("click", function () {
     $.ajax({
-        url: "/owner/signUp/dupleCheck",
+        url: "/ownerSignUp/dupleCheck",
         type: "post",
         data: {email: $("#email").val()}
     }).done(function (result) {

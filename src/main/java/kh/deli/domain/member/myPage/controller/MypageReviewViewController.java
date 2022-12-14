@@ -31,6 +31,7 @@ public class MypageReviewViewController {
         model.addAttribute("dto", dto);
 
         return "/member/myPage/memberReview";
+
     }
 
     @PostMapping("reviewInsert")
@@ -38,6 +39,7 @@ public class MypageReviewViewController {
 
         memberReviewFormService.reviewInsert(session, dto, files);
 
-        return "redirect:/memberMain/toMemberMain";
+
+        return "redirect:/";
     }
 }
