@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @Service
 @AllArgsConstructor
-public class OwnerSignUpService {
+public class OwnerService {
 
     private final HttpSession session;
     private final OwnerMapper ownerMapper;

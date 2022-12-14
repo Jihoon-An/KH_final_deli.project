@@ -1,6 +1,6 @@
-package kh.deli.domain.member.userMenu.service;
+package kh.deli.domain.member.myPage.service;
 
-import kh.deli.domain.member.userMenu.mapper.MemberReviewFormMapper;
+import kh.deli.domain.member.myPage.mapper.MemberReviewFormMapper;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;

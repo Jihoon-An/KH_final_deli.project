@@ -1,7 +1,7 @@
 package kh.deli.domain.admin.controller;
 
 import kh.deli.domain.admin.dto.AdminReviewDTO;
-import kh.deli.domain.admin.service.AdminService;
+import kh.deli.domain.admin.service.AdminReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +11,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/")
-public class AdminReviewController {
+public class ReviewController {
 
     @Autowired
-    private AdminService adminService;
+    private AdminReviewService adminService;
 
     @RequestMapping("selectReview")
     public String selectAll(Model model) throws Exception {

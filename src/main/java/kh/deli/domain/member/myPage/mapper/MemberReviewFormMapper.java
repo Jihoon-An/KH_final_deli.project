@@ -1,4 +1,4 @@
-package kh.deli.domain.member.userMenu.mapper;
+package kh.deli.domain.member.myPage.mapper;
 
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;

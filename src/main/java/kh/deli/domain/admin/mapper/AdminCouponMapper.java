@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface CouponMngMapper {
+public interface AdminCouponMapper {
 
     @Insert("INSERT INTO COUPON VALUES (" +
             "CP_SEQ.NEXTVAL, " +

@@ -1,6 +1,6 @@
 package kh.deli.domain.admin.controller;
 
-import kh.deli.domain.admin.service.AddCouponService;
+import kh.deli.domain.admin.service.AdminCouponService;
 import kh.deli.global.entity.CouponDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class AddCouponController {
 
     private final HttpSession session;
-    private final AddCouponService couponService;
+    private final AdminCouponService couponService;
 
     //쿠폰 추가 페이지로 이동
     @RequestMapping("")

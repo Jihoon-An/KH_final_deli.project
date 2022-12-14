@@ -1,7 +1,7 @@
 package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.AccountService;
-import kh.deli.domain.main.service.OwnerSignUpService;
+import kh.deli.domain.main.service.OwnerService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.OwnerDTO;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class OwnerSignUpController {
 
     private final HttpSession session;
     private final AccountService accountService;
-    private final OwnerSignUpService ownerSignUpService;
+    private final OwnerService ownerSignUpService;
 
     @RequestMapping("")
     public String toOwnerSignUp() {

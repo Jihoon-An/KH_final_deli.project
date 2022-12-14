@@ -32,7 +32,7 @@
 <main id="add_coupon">
 
     <h1>쿠폰 등록</h1>
-    <form id="cp_submit" action="/addCoupon/add" method="post">
+    <form id="cp_submit" action="/admin/addCoupon/add" method="post">
         <%--이름--%>
         <div class="row" id="name_area">
             <div class="col-3">

@@ -1,7 +1,6 @@
 package kh.deli.domain.member.store.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-import kh.deli.domain.member.store.service.StoreService;
+import kh.deli.domain.member.store.service.StoreStoreService;
 import kh.deli.global.entity.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -22,7 +20,7 @@ public class StoreController {
     @Autowired
     private HttpSession session;
     @Autowired
-    private StoreService storeService;
+    private StoreStoreService storeService;
 
     @RequestMapping("toStoreAdd")
     public String toAdd(){
