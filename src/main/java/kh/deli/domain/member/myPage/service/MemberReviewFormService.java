@@ -1,6 +1,6 @@
 package kh.deli.domain.member.myPage.service;
 
-import kh.deli.domain.member.myPage.mapper.MemberReviewFormMapper;
+import kh.deli.domain.member.myPage.mapper.MyPageReviewMapper;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class MemberReviewFormService {
 
     @Autowired
-    private MemberReviewFormMapper memberReviewFormMapper;
+    private MyPageReviewMapper memberReviewFormMapper;
 
     public void reviewInsert(ReviewDTO dto) throws Exception{
         memberReviewFormMapper.reviewInsert(dto);

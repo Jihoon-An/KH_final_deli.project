@@ -1,7 +1,7 @@
 package kh.deli.domain.main.service;
 
 import kh.deli.domain.main.mapper.AccountMapper;
-import kh.deli.domain.main.mapper.OwnerMapper;
+import kh.deli.domain.main.mapper.MainOwnerMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.OwnerDTO;
 import kh.deli.global.util.Encryptor;
@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
 
 @Service
 @AllArgsConstructor
-public class OwnerService {
+public class MainOwnerService {
 
     private final HttpSession session;
-    private final OwnerMapper ownerMapper;
+    private final MainOwnerMapper ownerMapper;
     private final AccountMapper accountMapper;
 
     @Transactional
