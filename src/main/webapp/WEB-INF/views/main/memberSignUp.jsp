@@ -69,9 +69,10 @@
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
-            data: {telCertifyStr: $("#telCertifyStr").val()}
+            data: {tel: $("#tel").val(),telCertifyStr: $("#telCertifyStr").val()}
         }).done(function (result) {
-            if (result == "sucess") {
+            console.log(result);
+            if (result == true) {
                 alert("성공");
             } else {
                 alert("실패");
