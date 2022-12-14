@@ -246,7 +246,6 @@ public class AccountService {
             String ran = Integer.toString(rand.nextInt(10));
             numStr += ran;
         }
-        System.out.println("회원가입 문자 인증 => " + numStr);
         message.send_msg(tel, numStr);
         return numStr;
     }

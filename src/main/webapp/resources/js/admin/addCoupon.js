@@ -6,7 +6,7 @@ var period_ok = false;
 
 $("#cp_code_confirm_btn").click(function () {
     $.ajax({
-        url: "/addCoupon/dupleCheck",
+        url: "/admin/addCoupon/dupleCheck",
         type: "post",
         data: {code: $("#cp_code").val()}
     }).done(function (result) {

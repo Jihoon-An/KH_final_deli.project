@@ -136,17 +136,14 @@ public class AccountController {
     public String telCertify(String tel) {
         String serverTelCertifyStr = accountService.sendRandomMessage(tel);
         redisUtil.setData(tel,serverTelCertifyStr);
-        System.out.println(tel);
-        System.out.println(serverTelCertifyStr);
         return serverTelCertifyStr;
     }
 
     @ResponseBody
     @RequestMapping(value="certify/telConfirm", method=RequestMethod.POST)
-    public String telConfirm(String telCertifyStr) {
-        String test = redisUtil.getData(telCertifyStr);
-        System.out.println(test);
-        return test;
+    public boolean telConfirm(String tel, String telCertifyStr) {
+        String getServerTelCertifyStr = redisUtil.getData(tel);
+        return telCertifyStr.equals(getServerTelCertifyStr) ? true : false;
     }
 
 }

@@ -31,8 +31,11 @@ public class MemberReviewFormController {
     public String toMemberMain(Model model) throws Exception {
         int order_seq=1; // 내 주문리스트에서 order_seq 파라미터로 가져오기
         OrdersDTO dto=memberReviewFormService.selectByOrderSeq(order_seq);
+
         System.out.println(dto.getMenu_list());
+
         model.addAttribute("dto",dto);
+
         return "member/userMenu/memberReviewForm";
     }
 

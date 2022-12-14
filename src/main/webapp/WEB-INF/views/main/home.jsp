@@ -1,12 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: abg14
-  Date: 2022-12-11
-  Time: 오후 11:44
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <a href="/admin/selectReview">운영자리뷰로</a>
