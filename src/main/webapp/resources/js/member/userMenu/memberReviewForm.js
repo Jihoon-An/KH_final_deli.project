@@ -11,6 +11,8 @@ $("#revImgBtn").on("change",function(){
         $("#revImgBtn").val("");// accept에 없는 파일을 올릴 경우 경고창을 띄우면서 업로드한 파일을 지움
     }
 
-
     fileToBase64(document.getElementById("revImgBtn").files[0]);
+})
+$("#back").on("click",function(){
+   location.href="/memberMain/toMemberMain";
 })

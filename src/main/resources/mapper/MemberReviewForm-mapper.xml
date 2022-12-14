@@ -19,4 +19,8 @@
         )
     </insert>
 
+    <select id="selectByOrderSeq" resultType="kh.deli.global.entity.OrdersDTO">
+        select * from orders where order_seq=#{order_seq}
+    </select>
+
 </mapper>

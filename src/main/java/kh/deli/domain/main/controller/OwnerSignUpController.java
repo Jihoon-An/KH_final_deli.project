@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/ownerSignUp")
+@RequestMapping("/owner/signUp")
 public class OwnerSignUpController {
 
     private final HttpSession session;

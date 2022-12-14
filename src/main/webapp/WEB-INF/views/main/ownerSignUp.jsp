@@ -25,7 +25,7 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/resources/css/main/ownerSignUp.css">
-
+    <%--sweet alert2--%>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>

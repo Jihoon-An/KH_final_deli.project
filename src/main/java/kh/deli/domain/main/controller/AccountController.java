@@ -2,15 +2,16 @@ package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.AccountService;
 import kh.deli.global.entity.AccountDTO;
+import kh.deli.global.util.redis.RedisUtil;
 import lombok.AllArgsConstructor;
-import org.apache.ibatis.annotations.Select;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +22,8 @@ public class AccountController {
 
     private final AccountService accountService;
     private final HttpSession session;
+    private final RedisUtil redisUtil;
+
 
     /**
      * <h1>Normal Type 회원 로그인</h1>
@@ -40,6 +43,7 @@ public class AccountController {
 
             // Session 에 로그인 성공한 이메일 담기
             session.setAttribute("loginEmail", email);
+            session.setAttribute("loginType", "normal");
 
             // String.valueOf 사용하지 않으면 NullPointException
             // String.valueOf 없이 사용하려면 true false 등으로 값 변환 후 조건문 작성
@@ -61,7 +65,14 @@ public class AccountController {
 
     @RequestMapping("logout")
     public String logout() throws Exception {
-        session.invalidate();
+        String loginType = (String)session.getAttribute("loginType");
+        switch (loginType) {
+            case "normal" :
+                session.invalidate();
+                break;
+            case "kakao" :
+                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
+                }
         return "redirect:/";
     }
 
@@ -70,11 +81,11 @@ public class AccountController {
         return "main/memberSignUp";
     }
 
-
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO) throws Exception {
         accountService.memberSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
+        session.setAttribute("loginType", "normal");
         return "redirect:/";
     }
 
@@ -88,6 +99,7 @@ public class AccountController {
     public String kakaoSignUp(AccountDTO accountDTO) throws Exception {
         accountService.kakaoSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
+        session.setAttribute("loginType", "kakao");
         System.out.println("야 카카오 회원가입 성공했다 짜식들아");
         return "redirect:/";
     }
@@ -107,23 +119,34 @@ public class AccountController {
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
             session.setAttribute("loginEmail", accountService.getAccEmail(kakaoId));
+            session.setAttribute("kakaoAccessToken", accessToken);
+            session.setAttribute("loginType", "kakao");
             return "redirect:/";
         }
     }
 
     @RequestMapping("oauth/kakaoLogout")
     public String  kakaoLogout() throws Exception {
+        session.invalidate();
         return "redirect:/";
     }
 
-    @RequestMapping("certify/tel")
-    public String telOauth(String tel, String telCertifyStr) {
-        String randStr = accountService.sendRandomMessage(tel);
-        if (telCertifyStr == randStr) {
-            System.out.println("인증성공");
-            return "sucess";
-        }
-        return "fail";
+    @ResponseBody
+    @RequestMapping(value="certify/tel", method=RequestMethod.POST)
+    public String telCertify(String tel) {
+        String serverTelCertifyStr = accountService.sendRandomMessage(tel);
+        redisUtil.setData(tel,serverTelCertifyStr);
+        System.out.println(tel);
+        System.out.println(serverTelCertifyStr);
+        return serverTelCertifyStr;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="certify/telConfirm", method=RequestMethod.POST)
+    public String telConfirm(String telCertifyStr) {
+        String test = redisUtil.getData(telCertifyStr);
+        System.out.println(test);
+        return test;
     }
 
 }
