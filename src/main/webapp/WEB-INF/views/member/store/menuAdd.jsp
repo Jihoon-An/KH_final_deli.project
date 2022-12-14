@@ -45,13 +45,13 @@
     }
 </style>
 
-<form action="" method="post" enctype="multipart/form-data"></form>
+<form action="/menu/menuAdd" id="frm" method="post" enctype="multipart/form-data">
 <div class="container">
     <div class="menufrm">
         <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요">
         <div class="profile">
             <div class="thumbnail">
-                <img src="/resources/img/store/no_storelogo.png" id="profile">
+                <img src="/resources/img/store/no_foodlogo.png" id="profile">
             </div>
             <div class="control">
                 <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
@@ -68,10 +68,11 @@
         <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"><br>
         <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"><br>
         <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
-
+        <input type="text" id="menu_num" name="menu_num" placeholder="메뉴순서">
+        <input type="hidden" name="store_seq" value="2">
         <hr>
 
-        <button class="btn btn-outline-secondary modify_btn" type="button"
+        <button class="btn btn-outline-secondary modify_btn" type="submit"
                 style="--bs-btn-border-color: rgb(206,212,218);">등록
         </button>
 
@@ -112,7 +113,7 @@
         if (result == -1) {
             alert("이미지만 사용 가능합니다")
             $("#profile_img").val("");//비워주기
-            $("#profile").attr("src", "/images/no_profile.png")//다른 사진들어올떄 #profile 도 비워주기
+            $("#profile").attr("src", "/resources/img/store/no_storelogo.png")//다른 사진들어올떄 #profile 도 비워주기
 
 
         } else {
