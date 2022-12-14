@@ -43,8 +43,8 @@
      <button type="button" id="tel_confirm_btn">확인</button>
     <p>인증 완료인지 확인 중입니다.</p>
     <hr>
-    <p>기본 배송 주소지 등록</p>
-    <input type="text" placeholder="주소지명 입력해봐라" name="add_name"><br>
+    <p>기본 배달지 주소 등록</p>
+    <input type="text" placeholder="주소지 별명을 입력해주세요." name="add_name"><br>
     <input type="text" id="postcode" placeholder="우편번호">
     <button type="button" class="postsearch">우편검색</button>
     <br>
