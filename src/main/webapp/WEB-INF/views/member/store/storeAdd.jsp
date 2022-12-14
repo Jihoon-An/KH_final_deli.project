@@ -114,7 +114,7 @@
         <br>
         <div class="profile">
             <div class="thumbnail">
-                <img src="/images/no_profile.png" id="profile">
+                <img src="/resources/img/store/no_storelogo.png" id="profile">
             </div>
             <div class="control">
                 <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
@@ -288,7 +288,7 @@
     }
     $("#profile_img").on("change", function(){
         if($("#profile_img").val()==""){
-            $("#profile").attr("src", "/images/no_profile.png");
+            $("#profile").attr("src", "/resources/img/store/no_storelogo.png");
             return;
         }
         console.log($("#profile_img").val());
