@@ -36,14 +36,7 @@
                         </c:choose>
                         <div class="info">
                             <div>식당명: ${i.STORE_NAME}</div>
-                            <c:choose>
-                                <c:when test="${not empty starlist[status.index]}">
-                                    <div>평점: ${starlist[status.index]} </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <div>평점: 평점없음</div>
-                                </c:otherwise>
-                            </c:choose>
+                            <div>평점: ${i.avg_star}</div>
                             <div>최소주문금액: ${i.STORE_MIN_PRICE}</div>
                             <div>배달팁: ${i.STORE_DELI_TIP}</div>
                             <div>배달시간: ${i.STORE_DELI_TIME}</div>

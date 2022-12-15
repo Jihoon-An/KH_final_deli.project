@@ -5,13 +5,22 @@
 
 <mapper namespace="kh.deli.domain.member.myPage.mapper.MyPageDibsMapper">
 
-    <select id="select" resultType="kh.deli.domain.member.myPage.dto.MyPageDibsDTO">
-        SELECT d.DIBS_SEQ , d.ACC_SEQ ,d.STORE_SEQ ,s.STORE_NAME ,s.STORE_MIN_PRICE ,s.STORE_DELI_TIP ,s.STORE_DELI_TIME ,s.STORE_LOGO FROM DIBS d ,STORE s  WHERE d.ACC_SEQ =#{acc_seq} AND s.STORE_SEQ =d.STORE_SEQ
-    </select>
-
-    <select id="selectStar" resultType="Integer">
-        SELECT AVG(REV_STAR) FROM REVIEW where store_seq = #{store_seq} GROUP BY STORE_SEQ
-    </select>
+    <select id="select" parameterType="int" resultType="kh.deli.domain.member.myPage.dto.MyPageDibsDTO">
+        SELECT d.DIBS_SEQ
+        , d.ACC_SEQ
+        ,d.STORE_SEQ
+        ,s.STORE_NAME
+        ,s.STORE_MIN_PRICE
+        ,s.STORE_DELI_TIP
+        ,s.STORE_DELI_TIME
+        ,s.STORE_LOGO
+        ,NVL((SELECT AVG(x.REV_STAR)
+        FROM REVIEW x WHERE x.store_seq = d.STORE_SEQ  GROUP BY STORE_SEQ), 0) avg_star
+        FROM DIBS d
+        INNER join STORE s
+        on d.ACC_SEQ = #{acc_seq}
+        AND s.STORE_SEQ =d.STORE_SEQ
+   </select>
 
     <insert id="insertDibs">
         insert into dibs values (dibs_seq.nextval,#{acc_seq},#{store_seq})
