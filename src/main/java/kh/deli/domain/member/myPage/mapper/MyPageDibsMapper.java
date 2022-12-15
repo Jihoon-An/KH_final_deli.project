@@ -14,5 +14,9 @@ public interface MyPageDibsMapper {
 
     public List<MyPageDibsDTO> select(int acc_seq);
 
-    public int selectStar(int store_seq);
+    public Integer selectStar(int store_seq);
+
+    public void insertDibs(DibsDTO dto);
+
+    public void deleteDibs(int dibs_seq);
 }
