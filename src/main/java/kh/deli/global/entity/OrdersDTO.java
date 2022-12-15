@@ -17,13 +17,15 @@ public class OrdersDTO {
     private int order_price;
     Timestamp order_date;
     private String add_seq;
+    private String add_detail2;
     private String order_phone;
     private String order_status;
     private String order_disposable;
+    private String order_rider_req;
+    private String pay_method;
     private int cp_seq;
     private int order_point;
     private String order_store_req;
-    private String order_rider_req;
-    private String pay_method;
     private int delivery_tip;
+    private int pay_price;
 }
