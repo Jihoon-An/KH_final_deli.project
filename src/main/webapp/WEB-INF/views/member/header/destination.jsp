@@ -38,19 +38,18 @@
             <c:choose>
                 <c:when test="${not empty address_List}">
                     <c:forEach var="i" items="${address_List}">
-                        <input type="hidden" name="add_seq" value="${i.add_seq}">
-                        <input type="radio" name="add_division" <c:if test="${i.add_division=='basics'}">checked</c:if>>
-                        <c:if test="${i.add_division=='basics'}">[기본]</c:if>
-                        <c:if test="${i.add_division!='basics'}">[선택]</c:if>
-
-                        <input type="text" name="add_division" value="${i.add_division}">
-                        <!-- 벨류에 딴값 넣어도 됨 -->
-
-                        ${i.add_name} <a href="delete">x</a> <br>
-                        ${i.add_detail1} <br>
-                        상세주소 : ${i.add_detail2} <br>
-                        ${i.add_msg} <br>
-                        <hr>
+                        <div class="destination_box">
+                            <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
+                            <input type="radio" name="radio_add_division" <c:if test="${i.add_division=='basics'}">checked</c:if>>
+                            <c:if test="${i.add_division=='basics'}">[기본]</c:if>
+                            <c:if test="${i.add_division!='basics'}">[선택]</c:if>
+                            <input type="hidden" name="add_division" class="hidden_add_division" value="${i.add_division}">
+                            ${i.add_name} <a class="del">x</a> <br>
+                            ${i.add_detail1} <br>
+                            상세주소 : ${i.add_detail2} <br>
+                            ${i.add_msg} <br>
+                            <hr>
+                        </div>
                     </c:forEach>
                 </c:when>
             </c:choose>
@@ -82,11 +81,29 @@
 
 <script>
 
+    $(".del").on("click", function () {
+        console.log($(this).closest(".destination_box").find(".add_seq").val());
+
+        if(confirm("정말 삭제 하시겠습니까?")){
+            $(this).closest(".destination_box").remove();
+            $.ajax({
+                url: "/member/header/destination/delete",
+                type: "post",
+                data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
+            }).done(function () {
+                alert("삭제 성공/모달 새고고침처럼 다시 보여야함/지웠다가 다시 띄우기");
+            });
+        }
+    });
+
+
     $("#destination_select").on("click", function () {
-
-        $("input[name='add_division']:checked").val("basics");
-        $("input[name='add_division']:not(:checked)").val("add");
-
+        $("input[name='radio_add_division']").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
+        if($("input[name='radio_add_division']:checked")){
+            $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".hidden_add_division")).val("basics");
+        } else {
+            $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
+        }
 
         $.ajax({
             url: "/member/header/destination/divisionChange",

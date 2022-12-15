@@ -2,10 +2,7 @@ package kh.deli.domain.member.header.mapper;
 
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.CouponDTO;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface DestinationMapper {
 
-    @Select("SELECT * FROM address WHERE acc_seq = #{value}")
+    @Select("SELECT * FROM address WHERE acc_seq = #{value} order by 3 DESC")
     List<AddressDTO> selectAll(int acc_seq);
 
     @Insert("INSERT INTO address VALUES (" +
@@ -28,5 +25,14 @@ public interface DestinationMapper {
             "#{add_y}," +
             "null)")
     void insert(AddressDTO addressDTO);
+
+    @Update("UPDATE address set " +
+            "add_division = #{add_division} " +
+            "WHERE add_seq = #{add_seq}")
+    void modify(int add_seq, String add_division);
+
+    @Delete("delete FROM address WHERE add_seq = #{value}")
+    void delete(int add_seq);
+
 
 }

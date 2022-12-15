@@ -1,8 +1,6 @@
 package kh.deli.domain.main.mapper;
 
-import kh.deli.domain.main.dto.MemberMainRequestDTO;
-import kh.deli.global.entity.AccountDTO;
-import kh.deli.global.entity.ReviewDTO;
+import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +10,8 @@ import java.util.List;
 @Mapper
 public interface MemberMainMapper {
 
-    public List<MemberMainRequestDTO> selectByStar ();
+    public Integer selectStar (int store_seq);
     public String selectType (int acc_seq);
+
+    public List<StoreDTO> selectAll();
 }

@@ -23,5 +23,12 @@ public class DestinationService {
     public void insert(AddressDTO addressDTO) throws Exception {
         destinationMapper.insert(addressDTO);
     }
+    public void modify(int add_seq, String add_division) {
+        destinationMapper.modify(add_seq,add_division);
+    }
+
+    public void delete(int add_seq) {
+        destinationMapper.delete(add_seq);
+    }
 
 }

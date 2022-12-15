@@ -30,7 +30,7 @@ public class AccountController {
     /**
      * <h1>Normal Type 회원 로그인</h1>
      * @param emailSave
-     * @return set loginEmail to Session & set saved_email to Cookie
+     * @return set loginEmail in Session & set saved_email in Cookie
      */
     @PostMapping("login")
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
@@ -73,6 +73,26 @@ public class AccountController {
                 return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
                 }
         return "redirect:/";
+    }
+
+    @RequestMapping("withdrawal")
+    public String withdrawal() throws Exception {
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        String loginType = (String)session.getAttribute("loginType");
+        switch (loginType) {
+            case "normal" :
+                mainAccountService.withdrawal(acc_seq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
+                session.invalidate();
+                break;
+            case "kakao" :
+                String accessToken = (String)session.getAttribute("kakaoAccessToken");
+                mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
+                mainAccountService.withdrawal(acc_seq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
+                session.invalidate();
+//                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
+        }
+        return "redirect:/";
+
     }
 
     @ResponseBody
@@ -118,6 +138,8 @@ public class AccountController {
     public String  kakaoLogin(String code) throws Exception {
         // 코드를 이용하여 accessToken 추출
         String accessToken = mainAccountService.getKakaoAccessToken(code);
+        // 세션 토큰 담기
+        session.setAttribute("kakaoAccessToken", accessToken);
         // accessToken을 이용하여 사용자 정보 추출
         String kakaoId = mainAccountService.getKakaoId(accessToken);
         // kakaoId 으로 카카오 회원 정보 DB 저장
@@ -128,7 +150,6 @@ public class AccountController {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
             String email = mainAccountService.getAccEmail(kakaoId);
             session.setAttribute("loginEmail", email);
-            session.setAttribute("kakaoAccessToken", accessToken);
             session.setAttribute("loginType", "kakao");
             session.setAttribute("acc_seq", mainAccountService.getAccSeq(email));
             return "redirect:/";

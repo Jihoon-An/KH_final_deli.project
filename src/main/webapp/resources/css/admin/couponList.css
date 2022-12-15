@@ -1,0 +1,39 @@
+#coupon_list .coupon{
+    cursor: pointer;
+}
+
+#coupon_list #close_modal{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+#coupon_list #modal {
+    width: 500px;
+    height: 500px;
+    background-color: antiquewhite;
+    position: fixed;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#coupon_list #modal_btn_area{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+#coupon_list #modal_btn_area > *{
+
+}
+
+#coupon_list #modal_content{
+
+}
+
+#coupon_list #modal_content > input{
+    display: block;
+}
