@@ -36,15 +36,15 @@
 </table>
 <c:choose>
     <c:when test="${not empty list}">
-        <c:forEach  var="i" items="${list}">
+        <c:forEach var="sysName" items="${list}">
             <div>
-                <span>가게시퀀스 : ${i.store_seq}</span>
-                <span>평점 : ${i.avg_star}</span> <%-- 소수점 첫째자리까지 --%>
-                <span>가게이름 : ${i.store_name}</span>
-                <span>로고 : ${i.store_logo}</span>
-                <span>최소금액 : ${i.store_min_price},</span>
-                <span>배달팁 : ${i.store_deli_tip},</span>
-                <span>배달시간 : ${i.store_deli_time}</span>
+                <span>가게시퀀스 : ${sysName.store_seq}</span>
+                <span>평점 : ${sysName.avg_star}</span> <%-- 소수점 첫째자리까지 --%>
+                <span>가게이름 : ${sysName.store_name}</span>
+                <span>로고 : ${sysName.store_logo}</span>
+                <span>최소금액 : ${sysName.store_min_price},</span>
+                <span>배달팁 : ${sysName.store_deli_tip},</span>
+                <span>배달시간 : ${sysName.store_deli_time}</span>
             </div>
         </c:forEach>
     </c:when>
@@ -55,6 +55,7 @@
         </h1>
         <h2>
             <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
+        </h2>
     </div>
 </div>
 </body>

@@ -23,101 +23,102 @@
     <link rel="stylesheet" href="/resources/css/admin/adminReviewMng.css">
 </head>
 <body>
-<table id="myTable" class="display">
-    <thead>
-    <tr>
-        <th>작성자</th>
-        <th>리뷰내용</th>
-        <th>상호명</th>
-        <th>작성일자</th>
-        <th>수정일자</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:if test="${not empty nev_list}">
-        <c:forEach var="i" items="${nev_list}">
-            <tr>
-                <td class="mem_name">${i.mem_name}</td>
-                <td class="rev_content">${i.rev_content}</td>
-                <td class="store_name">${i.store_name}</td>
-                <td class="rev_writedate">
+<main id="review_mng">
+    <table id="myTable" class="display">
+        <thead>
+        <tr>
+            <th>작성자</th>
+            <th>리뷰내용</th>
+            <th>상호명</th>
+            <th>작성일자</th>
+            <th>수정일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:if test="${not empty nev_list}">
+            <c:forEach var="sysName" items="${nev_list}">
+                <tr>
+                    <td class="mem_name">${sysName.mem_name}</td>
+                    <td class="rev_content">${sysName.rev_content}</td>
+                    <td class="store_name">${sysName.store_name}</td>
+                    <td class="rev_writedate">
 
-                        <%-- 리뷰상세에 기본날짜로 던짐--%>
-                    <input id="formed_rev_writedate" class="formed_rev_writedate"
-                           type="hidden" value="${i.rev_writedate}">
+                        <fmt:parseDate value="${sysName.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
 
-                    <fmt:parseDate value="${i.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
-                    <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
-                        <%--   ${i.rev_writedate}--%>
-                </td>
+                        <input id="formed_rev_writedate" class="formed_rev_writedate"
+                               type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
+                    </td>
 
-                <input type="hidden" value="${i.rev_seq}" class="rev_seq">
-                <input type="hidden" value="${i.rev_star}" class="rev_star">
+                    <input type="hidden" value="${sysName.rev_seq}" class="rev_seq">
+                    <input type="hidden" value="${sysName.rev_star}" class="rev_star">
 
-                <c:choose>
-                    <c:when test="${i.rev_modifieddate!=null}">
+                    <c:choose>
+                        <c:when test="${sysName.rev_modifieddate!=null}">
 
-                        <input id="formed_rev_modified_date" class="formed_rev_modified_date"
-                               type="hidden" value="${i.rev_modifieddate}">
+                            <td class="rev_modified_date">
+                                <fmt:parseDate value="${sysName.rev_modifieddate}" var="registered"
+                                               pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
+                                    <%--  ${i.rev_modified_date}--%>
 
-                        <td class="rev_modified_date">
-                            <fmt:parseDate value="${i.rev_modifieddate}" var="registered"
-                                           pattern="yyyy-MM-dd HH:mm:ss"/>
-                            <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
-                                <%--  ${i.rev_modified_date}--%>
-                        </td>
-                    </c:when>
-                    <c:otherwise>
-                        <td></td>
-                    </c:otherwise>
-                </c:choose>
-            </tr>
-        </c:forEach>
-    </c:if>
-    </tbody>
-</table>
+                                <input id="formed_rev_modified_date" class="formed_rev_modified_date"
+                                       type="hidden" value=<fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
+                    </c:choose>
+                </tr>
+            </c:forEach>
+        </c:if>
+        </tbody>
+    </table>
 
-<%--모달--%>
-<form action="/admin/deleteReview" id="frm">
-    <div class="modal">
-        <div class="modal_content">
-            <div class="closeModal">X</div>
+    <%--모달--%>
+    <form action="/admin/review/deleteReview" id="frm">
+        <div class="modal">
+            <div class="modal_content">
+                <div class="closeModal">X</div>
 
-            <div>
-                작성자 <input
-                    type="text" placeholder="작성자" id="writer" class="writer" disabled>
+                <div>
+                    작성자 <input
+                        type="text" placeholder="작성자" id="writer" class="writer" disabled>
+                </div>
+                <div>
+                    별점 <input
+                        type="text" placeholder="별점" disabled id="star" class="star">
+                </div>
+                <%--            <div>--%>
+                <%--                리뷰 내용<input--%>
+                <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
+                <%--            </div>--%>
+                <div id="reviewField">리뷰 내용</div>
+                <div id="review_content" class="review_content">
+                </div>
+                <div>
+                    작성일자<input
+                        type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
+                </div>
+                <div>
+                    수정일자<input
+                        type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
+                </div>
+
+                <div>
+                    리뷰번호<input
+                        type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
+                </div>
+
+
+                <button type="button">비공개</button>
+                <button id="deleteReview">삭제</button>
             </div>
-            <div>
-                별점 <input
-                    type="text" placeholder="별점" disabled id="star" class="star">
-            </div>
-            <%--            <div>--%>
-            <%--                리뷰 내용<input--%>
-            <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
-            <%--            </div>--%>
-            <div id="reviewField">리뷰 내용</div>
-            <div id="review_content" class="review_content">
-            </div>
-            <div>
-                작성일자<input
-                    type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
-            </div>
-            <div>
-                수정일자<input
-                    type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
-            </div>
-
-            <div>
-                리뷰번호<input
-                    type="text" placeholder="리뷰번호" id="rseq" class="rseq">
-            </div>
-
-            <button type="button">비공개</button>
-            <button id="deleteReview" type="button">삭제</button>
         </div>
-    </div>
-</form>
+    </form>
 
-<script src="/resources/js/admin/adminReviewMng.js"></script>
+    <script src="/resources/js/admin/adminReviewMng.js"></script>
+</main>
 </body>
 </html>
