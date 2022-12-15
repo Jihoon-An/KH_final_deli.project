@@ -32,7 +32,7 @@ public class AccountController {
      * @param emailSave
      * @return set loginEmail to Session & set saved_email to Cookie
      */
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @PostMapping("login")
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
         // 로그인 서비스 요청
         int result = mainAccountService.login(email, pw);
@@ -75,6 +75,16 @@ public class AccountController {
         return "redirect:/";
     }
 
+    @ResponseBody
+    @RequestMapping("deleteSavedEmail")
+    public String deleteSavedEmail(HttpServletResponse response) throws Exception {
+        Cookie cookie = new Cookie("saved_email", null);
+        cookie.setMaxAge(0); // 유통기한 0초 ( 삭제 )
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return "";
+    }
+
     @RequestMapping("toMemberSignUp")
     public String toMemberSignUp() throws Exception {
         return "main/memberSignUp";
@@ -85,6 +95,7 @@ public class AccountController {
         mainAccountService.memberSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
+        redisUtil.deleteData(memberDTO.getMem_phone());
         return "redirect:/";
     }
 
@@ -95,11 +106,11 @@ public class AccountController {
     }
 
     @PostMapping("kakaoSignUp")
-    public String kakaoSignUp(AccountDTO accountDTO) throws Exception {
+    public String kakaoSignUp(AccountDTO accountDTO, MemberDTO memberDTO) throws Exception {
         mainAccountService.kakaoSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
-        System.out.println("야 카카오 회원가입 성공했다 짜식들아");
+        redisUtil.deleteData(memberDTO.getMem_phone());
         return "redirect:/";
     }
 
@@ -109,10 +120,8 @@ public class AccountController {
         String accessToken = mainAccountService.getKakaoAccessToken(code);
         // accessToken을 이용하여 사용자 정보 추출
         String kakaoId = mainAccountService.getKakaoId(accessToken);
-        System.out.println("로그인 성공! 저장은 아직!");
         // kakaoId 으로 카카오 회원 정보 DB 저장
         if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
-            System.out.println("로그인 성공! 저장은 할 예정!");
             // 회원가입으로 페이지 이동
             return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
         } else {

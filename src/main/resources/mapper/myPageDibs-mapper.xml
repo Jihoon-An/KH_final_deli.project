@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.member.myPage.mapper.MyPageDibsMapper">
+
+    <select id="select" resultType="kh.deli.domain.member.myPage.dto.MyPageDibsDTO">
+        SELECT d.DIBS_SEQ , d.ACC_SEQ ,d.STORE_SEQ ,s.STORE_NAME ,s.STORE_MIN_PRICE ,s.STORE_DELI_TIP ,s.STORE_DELI_TIME ,s.STORE_LOGO FROM DIBS d ,STORE s  WHERE d.ACC_SEQ =#{acc_seq} AND s.STORE_SEQ =d.STORE_SEQ
+    </select>
+
+    <select id="selectStar" resultType="Integer">
+        SELECT AVG(REV_STAR) FROM REVIEW where store_seq = #{store_seq} GROUP BY STORE_SEQ
+    </select>
+
+</mapper>
