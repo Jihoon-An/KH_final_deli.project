@@ -33,45 +33,62 @@
 </head>
 <body>
 <main id="coupon_list">
-<div id="table_area">
-    <table id="myTable" class="display">
-        <thead>
-        <tr>
-            <th class="name">쿠폰이름</th>
-            <th class="type">타입</th>
-            <th class="discount">할인</th>
-            <th class="period">기간</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:if test="${!empty cpList}">
-            <c:forEach var="cp" items="${cpList}">
-                <tr class="coupon">
-                    <td class="name">${cp.cp_name}</td>
-                    <td class="type">${cp.cp_type}</td>
-                    <td class="discount">
-                            ${cp.cp_discount}
-                        <c:choose>
-                            <c:when test='${cp.cp_type == "percent"}'>
-                                %
-                            </c:when>
-                            <c:otherwise>
-                                원
-                            </c:otherwise>
-                        </c:choose>
-                    </td>
-                    <td class="period">${cp.cp_period} 일</td>
-                    <input type="hidden" value="${cp.cp_seq}" class="seq">
-                    <input type="hidden" value="${cp.cp_code}" class="code">
-                    <input type="hidden" value="${cp.cp_content}" class="content">
-                    <input type="hidden" value="${cp.cp_period}" class="period">
-                </tr>
-            </c:forEach>
-        </c:if>
-        </tbody>
-    </table>
+    <div id="table_area">
+        <!-- 테이블 -->
+        <table id="myTable" class="display">
+            <thead>
+            <tr>
+                <th class="name">쿠폰이름</th>
+                <th class="type">타입</th>
+                <th class="discount">할인</th>
+                <th class="period">기간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:if test="${!empty cpList}">
+                <c:forEach var="cp" items="${cpList}">
+                    <tr class="coupon">
+                        <td class="name">${cp.cp_name}</td>
+                        <td class="type">${cp.cp_type}</td>
+                        <td class="discount">
+                                ${cp.cp_discount}
+                            <c:choose>
+                                <c:when test='${cp.cp_type == "percent"}'>
+                                    %
+                                </c:when>
+                                <c:otherwise>
+                                    원
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td class="period">${cp.cp_period} 일</td>
+                        <input type="hidden" value="${cp.cp_seq}" class="seq">
+                        <input type="hidden" value="${cp.cp_code}" class="code">
+                        <input type="hidden" value="${cp.cp_content}" class="content">
+                    </tr>
+                </c:forEach>
+            </c:if>
+            </tbody>
+        </table>
+    </div>
+    <!-- 모달 -->
+    <div id="modal">
+        <div id="close_modal">X</div>
+        <div id="modal_content">
+            <input type="hidden" id="modal_cp_seq">
+            <input type="text" id="modal_cp_name">
+            <input type="text" id="modal_cp_code">
+            <input type="text" id="modal_cp_content">
+            <input type="text" id="modal_cp_type">
+            <input type="text" id="modal_cp_discount">
+            <input type="text" id="modal_cp_period">
+        </div>
+        <div id="modal_btn_area">
+            <button id="hidden_btn" type="button">비공개</button>
+            <button id="delete_btn" type="button">삭제</button>
+        </div>
+    </div>
 
-</div>
 </main>
 <script src="/resources/js/admin/couponList.js"></script>
 </body>
