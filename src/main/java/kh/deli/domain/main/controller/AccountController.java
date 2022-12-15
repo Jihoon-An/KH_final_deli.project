@@ -75,6 +75,27 @@ public class AccountController {
         return "redirect:/";
     }
 
+    @RequestMapping("withdrawal")
+    public String withdrawal() throws Exception {
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        String loginType = (String)session.getAttribute("loginType");
+
+        switch (loginType) {
+            case "normal" :
+                mainAccountService.withdrawal(acc_seq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
+                session.invalidate();
+                break;
+            case "kakao" :
+                String accessToken = (String)session.getAttribute("kakaoAccessToken");
+                mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
+                mainAccountService.withdrawal(acc_seq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
+                session.invalidate();
+                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
+        }
+        return "redirect:/";
+
+    }
+
     @ResponseBody
     @RequestMapping("deleteSavedEmail")
     public String deleteSavedEmail(HttpServletResponse response) throws Exception {

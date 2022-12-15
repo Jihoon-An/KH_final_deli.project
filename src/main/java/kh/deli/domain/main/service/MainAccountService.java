@@ -47,10 +47,7 @@ public class MainAccountService {
 
     /**
      * <h2>Normal Type 로그인</h2>
-     * @param email
-     * @param pw
-     * @return int
-     * @throws Exception
+     * @return COUNT(*)
      */
     public int login(String email, String pw) throws Exception {
         Map<String, String> param = new HashMap<>();
@@ -59,11 +56,20 @@ public class MainAccountService {
         return mainAccountMapper.login(param);
     }
 
+    /**
+     * <h2>회원탈퇴 (Address -> Member -> Account)</h2>
+     * @param acc_seq
+     */
+    public void withdrawal(int acc_seq) throws Exception {
+        mainAccountMapper.deleteAddress(acc_seq);
+        mainAccountMapper.deleteMember(acc_seq);
+        mainAccountMapper.deleteAccount(acc_seq);
+    }
+
 
     /**
      * <h2>카카오 연결헤제</h2>
      * @param accessToken
-     * @throws Exception
      */
     public void kakaoUnlink(String accessToken) throws Exception {
         String reqURL = "https://kapi.kakao.com/v1/user/unlink";
