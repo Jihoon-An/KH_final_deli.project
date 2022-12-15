@@ -1,33 +1,27 @@
-#home .container{
+#memberMain .container{
     width: 375px;
-    height: 800px;
     border: 1px solid black;
     margin: auto;
-    text-align: center;
-    padding-top: 50px;
-}
-#home #kakao_login_img{
-    width: 100%;
 }
 
-#home #fucking{
+#memberMain #fucking{
     width: 250px;
     height: fit-content;
     position: fixed;
     top: 50px;
-    left: 20px;
+    left: 100px;
     border: 7px solid #e84c4f;
-    box-shadow: 3px 3px 15px 3px #9f1f20;
+    box-shadow: 3px 3px 15px 10px #9f1f20;
     background-color: #f8f5f2;
     border-radius: 15px;
     padding: 15px;
     line-height: 40px;
     text-align: center;
 }
-#home #fucking a{
+#memberMain #fucking a{
     color: #3e4462;
     font-weight: bolder;
     text-decoration: none;
 }
 
-#home #fucking hr{border: 2px dashed #e84c4f;}
+#memberMain #fucking hr{border: 2px dashed #e84c4f;}

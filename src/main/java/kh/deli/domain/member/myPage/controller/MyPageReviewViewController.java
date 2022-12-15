@@ -1,6 +1,7 @@
 package kh.deli.domain.member.myPage.controller;
 
 import kh.deli.domain.member.myPage.service.MemberReviewService;
+import kh.deli.global.entity.DibsDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import lombok.AllArgsConstructor;
@@ -13,14 +14,14 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/memberReviewForm/")
+@RequestMapping("/myPage/reviewWrite/")
 @AllArgsConstructor
 public class MyPageReviewViewController {
 
         private final MemberReviewService memberReviewFormService;
         private final HttpSession session;
 
-        @RequestMapping()
+        @RequestMapping("")
         public String toMemberMain(Model model) throws Exception {
             int order_seq = 1; // 내 주문리스트에서 order_seq 파라미터로 가져오기
             OrdersDTO dto = memberReviewFormService.selectByOrderSeq(order_seq);
@@ -40,4 +41,5 @@ public class MyPageReviewViewController {
 
             return "redirect:/";
         }
+
     }

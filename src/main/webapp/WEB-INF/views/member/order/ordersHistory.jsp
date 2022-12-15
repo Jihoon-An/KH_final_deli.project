@@ -120,8 +120,8 @@
                 <span class="storename ">${i.store_name}</span>
                 <span class="storeloca ">-${i.add_detail2}</span>
                 <p><span class="meinfo">${i.menu_list}</span><span class="meinfo">${i.pay_price}</span></p>
-                <button type="button">리뷰작성</button>
-                <button>주문상세</button>
+                <a href="/"><button>메인으로</button></a>
+                <a href="/myPage/reviewWrite/"><button>리뷰작성</button></a>
                 <button>재주문</button>
             </div>
         </div>

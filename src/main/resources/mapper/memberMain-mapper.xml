@@ -5,12 +5,16 @@
 
 <mapper namespace="kh.deli.domain.main.mapper.MemberMainMapper">
 
-    <select id="selectByStar" resultType="kh.deli.domain.main.dto.MemberMainRequestDTO">
-        SELECT *  FROM (SELECT STORE_SEQ ,AVG(REV_STAR) "avg_star" FROM REVIEW GROUP BY STORE_SEQ) r, STORE s WHERE s.STORE_SEQ =r.STORE_SEQ
+    <select id="selectStar" resultType="Integer">
+        SELECT AVG(REV_STAR) FROM REVIEW where store_seq = #{store_seq} GROUP BY STORE_SEQ
     </select>
 
     <select id="selectType" resultType="String">
         select acc_type from account where acc_seq=#{acc_seq}
+    </select>
+
+    <select id="selectAll" resultType="kh.deli.global.entity.StoreDTO">
+        select * from store
     </select>
 
 </mapper>
