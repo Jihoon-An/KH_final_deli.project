@@ -15,7 +15,8 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
 
     <style>
         #destination .container {
@@ -31,42 +32,88 @@
 <body>
 
 <main id="destination">
-  <div class="container">
-      <h1>주소 설정</h1>
+    <div class="container">
+        <h1>주소 설정</h1>
+        <form id="destination_select_frm" method="post">
+            <c:choose>
+                <c:when test="${not empty address_List}">
+                    <c:forEach var="i" items="${address_List}">
+                        <input type="hidden" name="add_seq" value="${i.add_seq}">
+                        <input type="radio" name="add_division" <c:if test="${i.add_division=='basics'}">checked</c:if>>
+                        <c:if test="${i.add_division=='basics'}">[기본]</c:if>
+                        <c:if test="${i.add_division!='basics'}">[선택]</c:if>
 
-      <input type="radio" name="add_select">[기본] 우리집(주소지별명)<br>
-      서울시 강동구 상암로12길 2<br>
-      상세주소 : 천호빌 102호<br>
-      <br>
-      <input type="radio" name="add_select">[선택] 저쪽집(주소지별명)<br>
-      서울시 종로구 을지로2길 4<br>
-      상세주소 : 천둥빌딩 1101호<br>
-      <br>
-      <input type="radio" name="add_select">[선택] 회사(주소지별명)<br>
-      부산시 사하구 이리온8길 92<br>
-      상세주소 : 이리온아파트 A동 814호<br>
-      <br>
+                        <input type="text" name="add_division" value="${i.add_division}">
+                        <!-- 벨류에 딴값 넣어도 됨 -->
 
-      <hr>
-
-      <p>배달지 주소 등록</p>
-      <input type="text" placeholder="주소지 별명을 입력해주세요." name="add_name"><br>
-      <input type="text" id="postcode" placeholder="우편번호">
-      <button type="button" class="postsearch">우편검색</button>
-      <br>
-      <input type="text" id="add_detail1" name="add_detail1" placeholder="기본주소">
-      <br>
-      <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소">
-      <br>
-      <input type="hidden" id="add_x" name="add_x">
-      <input type="hidden" id="add_y" name="add_y">
-
-      <button>배달지 추가</button>
-
-  </div>
+                        ${i.add_name} <a href="delete">x</a> <br>
+                        ${i.add_detail1} <br>
+                        상세주소 : ${i.add_detail2} <br>
+                        ${i.add_msg} <br>
+                        <hr>
+                    </c:forEach>
+                </c:when>
+            </c:choose>
+            <button id="destination_select">기본 주소지 선택</button>
+        </form>
+        <hr><hr>
+        아래 다음 화면
+        <button id="destination_add_box_btn">주소지 추가 등록</button>
+        <hr>
+        <div id="destination_add_box" style="display: none">
+            <form id="destination_add_frm" method="post">
+            <h1>배달지 주소 등록</h1>
+                <input type="text" placeholder="주소지 별명을 입력해주세요." name="add_name"><br>
+                <input type="text" id="postcode" placeholder="우편번호">
+                <button type="button" class="postsearch">우편검색</button>
+                <br>
+                <input type="text" id="add_detail1" name="add_detail1" placeholder="기본주소">
+                <br>
+                <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소">
+                <br>
+                <input type="hidden" id="add_x" name="add_x">
+                <input type="hidden" id="add_y" name="add_y">
+                <input type="hidden" name="acc_seq" value="${acc_seq}">
+                <button id="destination_add_btn">배달지 추가</button>
+            </form>
+        </div>
+    </div>
 </main>
 
 <script>
+
+    $("#destination_select").on("click", function () {
+
+        $("input[name='add_division']:checked").val("basics");
+        $("input[name='add_division']:not(:checked)").val("add");
+
+
+        $.ajax({
+            url: "/member/header/destination/divisionChange",
+            type: "post",
+            data: $("#destination_select_frm").serialize(),
+            dataType: 'JSON'
+        }).done(function () {
+            alert("선택지 변경 성공/모달 사라져야함");
+        });
+    });
+
+    $("#destination_add_box_btn").on("click", function () {
+        $("input:not([name=acc_seq])").val("");
+        $("#destination_add_box").show();
+    });
+
+    $("#destination_add_btn").on("click", function () {
+        $.ajax({
+            url: "/member/header/destination/insert",
+            type: "post",
+            data: $("#destination_add_frm").serialize()
+        }).done(function () {
+            alert("추가 성공");
+            $("#destination_add_box").hide();
+        });
+    });
+
     $(document).on("click", ".postsearch", function () {
         new daum.Postcode({
             oncomplete: function (data) {

@@ -88,10 +88,5 @@
         WHERE acc_token = #{acc_token}
     </select>
 
-    <!-- 로그인 된 이메일을 통해 ACC_SEQ 불러오기 -->
-    <select id="getAccSeq" resultType="int">
-        SELECT ACC_SEQ FROM ACCOUNT
-        WHERE ACC_EMAIL = #{acc_email}
-    </select>
 
 </mapper>

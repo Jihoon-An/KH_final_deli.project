@@ -9,14 +9,24 @@
 </head>
 <body>
 <div>
+    <div><Button>Back</Button></div>
+    <hr>
     <div>찜</div>
+    <hr>
     <div>
         <c:choose>
             <c:when test="${not empty list}">
-                <c:forEach var="sysName" items="${list}">
-                    <div class="logoimg">이미지</div>
+                <c:forEach var="i" items="${list}">
+                    <div class="logoimg">이미지: ${i.STORE_LOGO}</div>
                     <div class="info">
+                        <div>식당명: ${i.STORE_NAME}</div>
+                        <div>평점: </div>
+                        <div>최소주문금액: ${i.STORE_MIN_PRICE}</div>
+                        <div>배달팁: ${i.STORE_DELI_TIP}</div>
+                        <div>배달시간: ${i.STORE_DELI_TIME}</div>
+                        <div>찜 여부: </div>
                     </div>
+                    <hr>
                 </c:forEach>
             </c:when>
         </c:choose>
