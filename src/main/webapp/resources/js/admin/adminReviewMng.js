@@ -171,12 +171,12 @@ $(".closeModal").click(function () {
     $(".modal").fadeOut();
 });
 
-// $("#deleteReview").on("click", function () {
-//     let ans = confirm("리뷰를 삭제하시겠습니까?");
-//     if (ans == true) {
-//         location.href = "/admin/review/deleteReview?rev_seq="+rev_seq;
-//     }
-// });
+$("#deleteReview").on("click", function () {
+    let ans = confirm("리뷰를 삭제하시겠습니까?");
+    if (ans == true) {
+        location.href = "/admin/review/deleteReview?rev_seq="+rev_seq;
+    }
+});
 
 
 
