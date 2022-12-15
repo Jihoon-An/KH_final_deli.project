@@ -34,10 +34,10 @@
 <main id="storeSearch">
   <div class="container">
     <input type="text" placeholder="검색해라" name="search"><button>검색</button>
-
+    ${store_List[0].store_seq}
     <c:choose>
-      <c:when test="${not empty address_List}">
-        <c:forEach var="i" items="${address_List}">
+      <c:when test="${not empty store_List}">
+        <c:forEach var="i" items="${store_List}">
         <c:if test="${i.add_division=='basics'}">checked</c:if>>
         </c:forEach>
       </c:when>

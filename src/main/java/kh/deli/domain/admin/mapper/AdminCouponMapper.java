@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface AdminCouponMapper {
@@ -24,4 +26,6 @@ public interface AdminCouponMapper {
     @Select("SELECT COUNT(CP_CODE) FROM COUPON WHERE CP_CODE = #{code}")
     int getCpCodeByCpCode(@Param("code") String cpCode);
 
+    @Select("SELECT * FROM COUPON")
+    List<CouponDTO> getAll();
 }

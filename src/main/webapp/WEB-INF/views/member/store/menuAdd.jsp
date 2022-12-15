@@ -43,6 +43,37 @@
         top: 20px;
         width: 50px;
     }
+    .profile {
+        margin: auto;
+        width: 300px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .profile div {
+        float: left;
+        height: 100%;
+    }
+
+    .thumbnail {
+        width: 30%;
+        padding: 5px;
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .control {
+        width: 70%;
+        line-height: 100px;
+    }
+
+    .control input {
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <form action="/menu/menuAdd" id="frm" method="post" enctype="multipart/form-data">
@@ -51,7 +82,7 @@
         <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요">
         <div class="profile">
             <div class="thumbnail">
-                <img src="/resources/img/store/no_foodlogo.png" id="profile">
+                <img src="/resources/img/store/no_foodlogo.png" class="image-thumbnail" id="profile">
             </div>
             <div class="control">
                 <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">

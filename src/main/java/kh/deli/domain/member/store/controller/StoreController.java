@@ -2,6 +2,7 @@ package kh.deli.domain.member.store.controller;
 
 import kh.deli.domain.member.store.service.StoreStoreService;
 import kh.deli.global.entity.StoreDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +14,14 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("store")
 public class StoreController {
 
 
-    @Autowired
-    private HttpSession session;
-    @Autowired
-    private StoreStoreService storeService;
+    private final HttpSession session;
+
+    private final StoreStoreService storeService;
 
     @RequestMapping("")
     public String toAdd(){
@@ -45,7 +46,7 @@ public class StoreController {
 
 
 
-        String realPath=session.getServletContext().getRealPath("/resources/profile");
+        String realPath=session.getServletContext().getRealPath("/resources/store");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성
@@ -61,7 +62,7 @@ public class StoreController {
             dto.setStore_logo(sysName);
         }
 
-       storeService.insertStore(dto);
+        storeService.insertStore(dto);
 
         return "redirect:/";
     }
