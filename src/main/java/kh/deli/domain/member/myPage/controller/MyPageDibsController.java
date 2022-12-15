@@ -7,6 +7,7 @@ import kh.deli.global.entity.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -30,17 +31,29 @@ public class MyPageDibsController {
 
         List<MyPageDibsDTO> list = myPageDibsService.select(acc_seq);
 
-//        List<Integer> intlist=new ArrayList<>();
-//        for(int i=0;i<list.size();i++){
-//            System.out.println(list.get(i).getSTORE_SEQ());
-//            int store_seq=list.get(i).getSTORE_SEQ();
-//            int value = myPageDibsService.selectStar(store_seq);
-//            intlist.add(value);
-//        }
-//        model.addAttribute("intlist",intlist);
+        List<Integer> starlist=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            int store_seq=list.get(i).getSTORE_SEQ();
+            Integer value = myPageDibsService.selectStar(store_seq);
+            starlist.add(value);
+        }
 
+        model.addAttribute("starlist",starlist);
         model.addAttribute("list",list);
+
         return "/member/myPage/dibs";
     }
 
+
+    @PostMapping("insertDibs")
+    public String insertDibs(DibsDTO dto) throws Exception{
+        myPageDibsService.insertDibs(dto);
+        return "/";
+    }
+
+    @PostMapping("deleteDibs")
+    public String deleteDibs(DibsDTO dto) throws Exception{
+        myPageDibsService.deleteDibs(dto.getDibs_seq());
+        return "/";
+    }
 }

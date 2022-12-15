@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpSession;
 @AllArgsConstructor
 public class AddCouponController {
 
-    private final HttpSession session;
     private final AdminCouponService couponService;
 
     //쿠폰 추가 페이지로 이동
@@ -38,6 +38,7 @@ public class AddCouponController {
     }
 
     @PostMapping("/dupleCheck")
+    @ResponseBody
     public boolean dupleCheck(String code) throws Exception {
         return couponService.dupleCheck(code);
     }

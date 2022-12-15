@@ -20,7 +20,7 @@
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
-    <link rel="stylesheet" href="/resources/css/admin/adminReviewMng.css">
+    <link rel="stylesheet" href="/resources/css/admin/ReviewMng.css">
 </head>
 <body>
 <main id="review_mng">
@@ -118,7 +118,7 @@
         </div>
     </form>
 
-    <script src="/resources/js/admin/adminReviewMng.js"></script>
+    <script src="/resources/js/admin/ReviewMng.js"></script>
 </main>
 </body>
 </html>

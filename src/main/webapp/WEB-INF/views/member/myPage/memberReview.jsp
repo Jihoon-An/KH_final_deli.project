@@ -8,12 +8,13 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
 
-    <link rel="stylesheet" href="/resources/css/member/userMenu/memberReviewForm.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/memberReviewForm.css">
 
 </head>
 <body>
+<main id="reviewWrite">
 <div>
-    <form action="/memberReviewForm/reviewInsert" id="reviewPost" method="post" enctype="multipart/form-data">
+    <form action="/myPage/reviewWrite/reviewInsert" id="reviewPost" method="post" enctype="multipart/form-data">
         <div>
             <div id="back">
                 <button>Back</button>
@@ -62,6 +63,7 @@
         </div>
     </form>
 </div>
-<script src="/resources/js/member/userMenu/memberReviewForm.js"></script>
+<script src="/resources/js/member/myPage/memberReview.js"></script>
+</main>
 </body>
 </html>
