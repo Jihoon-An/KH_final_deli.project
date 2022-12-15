@@ -51,8 +51,8 @@
             <input type="text" value="${dto.order_price}">
             <c:choose>
                 <c:when test="${not empty dto.menu_list}">
-                    <c:forEach var="i" items="${dto.menu_list}">
-                        <input type="text" value="${i}"> <%-- [] 제거해야 함 --%>
+                    <c:forEach var="sysName" items="${dto.menu_list}">
+                        <input type="text" value="${sysName}"> <%-- [] 제거해야 함 --%>
                     </c:forEach>
                 </c:when>
             </c:choose>

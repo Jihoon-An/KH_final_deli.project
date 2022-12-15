@@ -22,7 +22,7 @@ public class StoreController {
     @Autowired
     private StoreStoreService storeService;
 
-    @RequestMapping("toStoreAdd")
+    @RequestMapping("")
     public String toAdd(){
         return "member/store/storeAdd";
     }

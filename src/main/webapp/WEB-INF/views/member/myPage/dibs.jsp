@@ -16,6 +16,7 @@
     <div>
         <c:choose>
             <c:when test="${not empty list}">
+
                 <c:forEach var="i" items="${list}">
                     <div class="logoimg">이미지: ${i.STORE_LOGO}</div>
                     <div class="info">
