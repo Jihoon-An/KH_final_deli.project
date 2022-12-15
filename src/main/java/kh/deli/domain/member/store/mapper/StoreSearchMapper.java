@@ -1,10 +1,9 @@
 package kh.deli.domain.member.store.mapper;
 
-import kh.deli.global.entity.AddressDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +11,6 @@ import java.util.Map;
 @Mapper
 public interface StoreSearchMapper {
 
-    List<HashMap<String, Object>> selectDistanceByAccSeq(int acc_seq);
+    List<Map<String, Object>> selectDistanceByAccSeq(int acc_seq);
 
 }

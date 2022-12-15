@@ -4,7 +4,6 @@ import kh.deli.domain.member.store.mapper.StoreSearchMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +12,7 @@ import java.util.Map;
 public class StoreSearchService {
 
     private final StoreSearchMapper storeSearchMapper;
-    public List<HashMap<String, Object>> selectDistanceByAccSeq(int acc_seq) {
+    public List<Map<String, Object>> selectDistanceByAccSeq(int acc_seq) {
         return storeSearchMapper.selectDistanceByAccSeq(acc_seq);
     }
 

@@ -3,60 +3,63 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.member.mapper.StoreSearchMapper">
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreSearchMapper">
 
-    <select id="selectDistanceByAccSeq" resultType="hashMap">
+    <select id="selectDistanceByAccSeq" resultType="map">
         SELECT
-            A.STORE_SEQ AS STORE_SEQ,
-            STORE_NAME,
-            STORE_CATEGORY,
-            STORE_PHONE,
-            STORE_INTRO,
-            STORE_MIN_PRICE,
-            STORE_DELI_TIP,
-            STORE_DELI_TIME,
-            STORE_BSNS_HOURS,
-            STORE_CLOSE_DAY,
-            STORE_ADD_DETAIL1,
-            STORE_ADD_DETAIL2,
-            STORE_ADD_X,
-            STORE_ADD_Y,
-            STORE_LOGO,
-            STORE_ORIGIN,
-            STORE_OPEN,
-            STORE_DISPLAY,
-            STORE_DESTINATION
+        A.STORE_SEQ AS STORE_SEQ,
+        STORE_NAME,
+        STORE_CATEGORY,
+        STORE_PHONE,
+        STORE_INTRO,
+        STORE_MIN_PRICE,
+        STORE_DELI_TIP,
+        STORE_DELI_TIME,
+        STORE_BSNS_HOURS,
+        STORE_CLOSE_DAY,
+        STORE_ADD_DETAIL1,
+        STORE_ADD_DETAIL2,
+        STORE_ADD_X,
+        STORE_ADD_Y,
+        STORE_LOGO,
+<!--        STORE_ORIGIN,-->
+        to_char(STORE_ORIGIN) AS STORE_ORIGIN,
+        STORE_OPEN,
+        STORE_DISPLAY,
+        STORE_DESTINATION
         FROM
-            (SELECT
-                STORE_SEQ,
-                ABS(STORE_X - MEMBER_X) AS X,
-                ABS(STORE_Y - MEMBER_Y) AS Y
-            FROM
-                (SELECT
-                    STORE_SEQ,
-                    STORE_ADD_X AS STORE_X,
-                    STORE_ADD_Y AS STORE_Y
-                FROM
-                    STORE
-                ),
-                (SELECT
-                    ADD_X AS MEMBER_X,
-                    ADD_Y AS MEMBER_Y,
-                    ACC_SEQ,
-                    ADD_DIVISION
-                FROM
-                    ADDRESS
-                WHERE
-                    ACC_SEQ = #{value} AND
-                    ADD_DIVISION = 'basics'
-                )
-            ) A
-        LEFT JOIN
-            STORE B
-        ON
-            A.STORE_SEQ = B.STORE_SEQ
+        (SELECT
+        STORE_SEQ,
+        ABS(STORE_X - MEMBER_X) AS X,
+        ABS(STORE_Y - MEMBER_Y) AS Y
+        FROM
+        (SELECT
+        STORE_SEQ,
+        STORE_ADD_X AS STORE_X,
+        STORE_ADD_Y AS STORE_Y
+        FROM
+        STORE
+        ),
+        (SELECT
+        ADD_X AS MEMBER_X,
+        ADD_Y AS MEMBER_Y,
+        ACC_SEQ,
+        ADD_DIVISION
+        FROM
+        ADDRESS
         WHERE
-            ABS((X*X*10000)-(Y*Y*10000)) < ( (36000/40075) * (36000/40075) * 2.5 * 2.5);
+        ACC_SEQ = #{value} AND
+        ADD_DIVISION = 'basics'
+        )
+        ) A
+        LEFT JOIN
+        STORE B
+        ON
+        A.STORE_SEQ = B.STORE_SEQ
+        WHERE
+        ABS((X*X*10000)-(Y*Y*10000)) <![CDATA[
+            <
+        ]]>  ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
     </select>
 
 </mapper>
