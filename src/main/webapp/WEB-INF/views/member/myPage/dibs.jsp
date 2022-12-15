@@ -13,7 +13,7 @@
     <div>
         <c:choose>
             <c:when test="${not empty list}">
-                <c:forEach var="i" items="${list}">
+                <c:forEach var="sysName" items="${list}">
                     <div class="logoimg">이미지</div>
                     <div class="info">
                     </div>
