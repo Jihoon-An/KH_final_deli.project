@@ -36,24 +36,18 @@ public class DestinationController {
 
     @ResponseBody
     @RequestMapping("divisionChange")
-    public void divisionChange(@RequestParam(value = "add_seq", required = true) List<String> add_seq,
-                               @RequestParam(value = "add_division", required = true) List<String> add_division
-    ) throws Exception {
-        System.out.println("add_seq: " + add_seq);
-        System.out.println("add_division: " + add_division);
+    public void divisionChange(@RequestParam(value = "add_seq", required = false) List<String> addSeqList,
+                               @RequestParam(value = "add_division", required = false) List<String> addDivisionList
+    ) {
+        for(int i = 0; i < addSeqList.size(); i++) {
+            destinationService.modify(Integer.valueOf(addSeqList.get(i)), addDivisionList.get(i));
+        }
+    }
 
-        System.out.println("-----------------------------------------------");
-
-//        System.out.println("add_seq[0]: " + add_seq.get(0));
-//        System.out.println("add_division[0]: " + add_division.get(0));
-//
-//        System.out.println("add_seq[1]: " + add_seq.get(1));
-//        System.out.println("add_division[1]: " + add_division.get(1));
-//
-//        System.out.println("-----------------------------------------------");
-//
-//        System.out.println("add_seq[3]: " + add_seq.get(3));
-//        System.out.println("add_division[3]: " + add_division.get(3));
+    @ResponseBody
+    @RequestMapping("delete")
+    public void delete(int add_seq) throws Exception {
+        destinationService.delete(add_seq);
     }
 
 }

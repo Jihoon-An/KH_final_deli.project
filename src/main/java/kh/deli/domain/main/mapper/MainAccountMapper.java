@@ -3,6 +3,7 @@ package kh.deli.domain.main.mapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -28,6 +29,15 @@ public interface MainAccountMapper {
     void memberSignUp(AccountDTO accountDTO);
     void insertMember(MemberDTO memberDTO);
     void insertAddress(AddressDTO addressDTO);
+
+    @Delete("DELETE FROM ACCOUNT WHERE ACC_SEQ = #{acc_seq}")
+    void deleteAccount(int acc_seq);
+
+    @Delete("DELETE FROM MEMBER WHERE ACC_SEQ = #{acc_seq}")
+    void deleteMember(int acc_seq);
+
+    @Delete("DELETE FROM ADDRESS WHERE ACC_SEQ = #{acc_seq}")
+    void deleteAddress(int acc_seq);
 
     void kakaoSignUp(AccountDTO accountDTO);
 
