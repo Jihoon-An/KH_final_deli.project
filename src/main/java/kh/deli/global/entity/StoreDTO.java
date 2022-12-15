@@ -25,4 +25,5 @@ public class StoreDTO {
     private String store_open;
     private String store_display;
     private String store_destination;
+    private int owner_seq;
 }
