@@ -24,7 +24,8 @@
         #{store_origin},
         #{store_open},
         #{store_display},
-        #{store_destination}
+        #{store_destination},
+        #{owner_seq}
         )
     </insert>
 

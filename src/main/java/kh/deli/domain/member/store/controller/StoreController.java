@@ -43,8 +43,10 @@ public class StoreController {
         System.out.println(dto.getStore_display()+"공개여부");
         System.out.println(dto.getStore_open()+"품절여부");
 
-
-
+       // int owner_Seq = (Integer) session.getAttribute("owner_seq");
+     
+        int owner_Seq=19;
+        dto.setOwner_seq(owner_Seq);  //임시
 
         String realPath=session.getServletContext().getRealPath("/resources/store");
         File filePath=new File(realPath);

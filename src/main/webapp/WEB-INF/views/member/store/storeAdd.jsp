@@ -258,7 +258,7 @@
 
         for (let i = 0; i < b.length; i++) {
 
-      bsnsarr.push(b[i].value);
+        bsnsarr.push(b[i].value);
 
 
         }
