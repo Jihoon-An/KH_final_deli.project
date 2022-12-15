@@ -24,9 +24,16 @@
             <c:choose>
                 <c:when test="${not empty list}">
                     <c:forEach var="i" items="${list}" varStatus="status">
-                        <div class="logoimg">
-                            <img src="/resources/img/store/${i.STORE_LOGO}">
-                            이미지: ${i.STORE_LOGO}</div>
+                        <c:choose>
+                            <c:when test="${i.STORE_LOGO !=null}">
+                                <div>
+                                    <img class="storeLogo" src="/resources/img/store/${i.STORE_LOGO}">
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>이미지: 사진없음</div>
+                            </c:otherwise>
+                        </c:choose>
                         <div class="info">
                             <div>식당명: ${i.STORE_NAME}</div>
                             <c:choose>

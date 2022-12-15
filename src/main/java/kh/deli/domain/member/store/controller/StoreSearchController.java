@@ -1,19 +1,12 @@
 package kh.deli.domain.member.store.controller;
 
 import kh.deli.domain.member.store.service.StoreSearchService;
-import kh.deli.global.entity.AddressDTO;
-import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
-import java.io.Reader;
-import java.sql.Clob;
-import java.sql.NClob;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
