@@ -1,5 +1,8 @@
 package kh.deli.domain.member.myPage.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import kh.deli.domain.member.myPage.service.MemberReviewService;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
@@ -20,10 +23,14 @@ public class MypageReviewModifyController {
     @RequestMapping()
     public String toModifyReviewForm(Model model) throws Exception {
         int order_seq = 1;
-        int rev_seq = 1;
+        int rev_seq = 7;
         int store_seq = 1;
         OrdersDTO orders_dto = memberReviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = memberReviewService.selectByReviewSeq(rev_seq);
+//        List<FormedReviewDTO>formedReviewDTOList=review_dto.getRev_sysname();
+
+//        JsonArray jsonArray = new JsonArray(review_dto.getRev_sysname());
+
         StoreDTO store_dto = memberReviewService.selectByStoreSeq(store_seq);
         model.addAttribute("orders_dto", orders_dto);
         model.addAttribute("review_dto", review_dto);
