@@ -8,7 +8,7 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
 
-    <link rel="stylesheet" href="/resources/css/member/userMenu/memberReviewForm.css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/memberReviewForm.css">
 
 </head>
 <body>
@@ -62,6 +62,6 @@
         </div>
     </form>
 </div>
-<script src="/resources/js/member/userMenu/memberReviewForm.js"></script>
+<script src="/resources/js/member/myPage/memberReviewForm.js"></script>
 </body>
 </html>

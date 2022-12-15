@@ -23,4 +23,11 @@ public class MyPageDibsService {
         return myPageDibsMapper.selectStar(store_seq);
     }
 
+    public void insertDibs(DibsDTO dto) throws Exception{
+        myPageDibsMapper.insertDibs(dto);
+    }
+
+    public void deleteDibs(int dibs_seq) throws Exception{
+        myPageDibsMapper.deleteDibs(dibs_seq);
+    }
 }

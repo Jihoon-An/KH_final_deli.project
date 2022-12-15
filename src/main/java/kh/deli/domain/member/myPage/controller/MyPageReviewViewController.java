@@ -1,6 +1,7 @@
 package kh.deli.domain.member.myPage.controller;
 
 import kh.deli.domain.member.myPage.service.MemberReviewService;
+import kh.deli.global.entity.DibsDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import lombok.AllArgsConstructor;
@@ -40,4 +41,5 @@ public class MyPageReviewViewController {
 
             return "redirect:/";
         }
+
     }

@@ -7,6 +7,7 @@ import kh.deli.global.entity.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -43,4 +44,16 @@ public class MyPageDibsController {
         return "/member/myPage/dibs";
     }
 
+
+    @PostMapping("insertDibs")
+    public String insertDibs(DibsDTO dto) throws Exception{
+        myPageDibsService.insertDibs(dto);
+        return "/";
+    }
+
+    @PostMapping("deleteDibs")
+    public String deleteDibs(DibsDTO dto) throws Exception{
+        myPageDibsService.deleteDibs(dto.getDibs_seq());
+        return "/";
+    }
 }
