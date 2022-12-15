@@ -21,20 +21,40 @@
             border: 1px solid black;
             margin: auto;
         }
+
+        .btn {
+
+            width: 100%;
+            height: 50px;
+        }
+
+        #complete {
+
+            width: 100%;
+            height: 100%;
+            background-color: #e84c4f;
+            color: white;
+            border-radius: 5px;
+            border-style: none;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="storeInfo">
-        <div>상호명</div>
-        <div>주문시간</div>
-        <div>도착예정시간</div>
-        <div>주문번호</div>
+    <h3>상호명</h3>
+    <hr>
+    <h3>주문내역</h3>
+    <hr>
+    <h3>결제정보</h3>
+    <hr>
+    <h3>주문자정보</h3>
+
+    <div class="btn">
+        <%--메인으로--%>
+        <a href="#">
+            <button id="complete">완료</button>
+        </a>
     </div>
-    <div class="orderHistory">주문내역</div>
-    <div class="paymentInfo">결제정보</div>
-    <div class="ordererInfo">주문자정보</div>
-    <div class="completeBtn">완료</div>
 </div>
 </body>
 </html>
