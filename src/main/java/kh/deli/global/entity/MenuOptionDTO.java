@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuOptionDTO {
-    private int menu_option_seq;
+    private int option_seq;
     private int menu_seq;
     private String menu_option;
     private String option_name;
