@@ -1,20 +1,30 @@
 var name_ok = false;
-var code_ok = false;
+var code_ok = true;
 var discount_ok = false;
 var content_ok = false;
 var period_ok = false;
+
+$("#cp_code").on("change", function () {
+    if ($(this).val() == "") {
+        code_ok = true;
+    } else {
+        code_ok = false;
+    }
+    console.log(code_ok);
+});
 
 $("#cp_code_confirm_btn").click(function () {
     $.ajax({
         url: "/admin/addCoupon/dupleCheck",
         type: "post",
-        data: {code: $("#cp_code").val()}
+        data: {code: $("#cp_code").val()},
+        dataType: "json"
     }).done(function (result) {
-        if (result == true) {
+        if (result) {
             Swal.fire({
                 icon: 'error',
                 title: '실패',
-                text: '중복된 코드입니다',
+                text: '중복된 코드입니다'
             });
             code_ok = false;
             $("#cp_code").val("").focus();
