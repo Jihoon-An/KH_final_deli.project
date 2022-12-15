@@ -43,16 +43,25 @@
     <div class="container">
         <table border="1px">
             <tr>
-                <td><a>한식</a></td>
-                <td><a>양식</a></td>
-                <td><a>중식</a></td>
-                <td><a>일식</a></td>
+                <td><a><img src="/resources/img/memberMain/korean.png" class="categoryIcon"><div>한식</div></a></td>
+                <td><a><img src="/resources/img/memberMain/bunsik.png" class="categoryIcon"> <div>분식</div></a></td>
+                <td><a><img src="/resources/img/memberMain/jjim.png" class="categoryIcon"><div>찜</div></a></td>
+                <td><a><img src="/resources/img/memberMain/chicken.png" class="categoryIcon"><div>치킨</div></a></td>
+                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon"><div>도시락</div></a></td>
             </tr>
             <tr>
-                <td><a>야식</a></td>
-                <td><a>디저트</a></td>
-                <td><a>아시안</a></td>
-                <td><a>분식</a></td>
+                <td><a><img src="/resources/img/memberMain/china.png" class="categoryIcon"><div>중식</div></a></td>
+                <td><a><img src="/resources/img/memberMain/japan.png" class="categoryIcon"><div>일식</div></a></td>
+                <td><a><img src="/resources/img/memberMain/western.png" class="categoryIcon"><div>양식</div></a></td>
+                <td><a><img src="/resources/img/memberMain/pizza.png" class="categoryIcon"><div>피자</div></a></td>
+                <td><a><img src="/resources/img/memberMain/burger.png" class="categoryIcon"><div>버거</div></a></td>
+            </tr>
+            <tr>
+                <td><a><img src="/resources/img/memberMain/salad.png" class="categoryIcon"><div>샐러드</div></a></td>
+                <td><a><img src="/resources/img/memberMain/cafe.png" class="categoryIcon"><div>카페</div></a></td>
+                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon"><div>도시락</div></a></td>
+                <td><a><img src="/resources/img/memberMain/franchise.png" class="categoryIcon"><div>프랜차이즈</div></a></td>
+                <td><a><img src="/resources/img/memberMain/newstore.png" class="categoryIcon"><div>신규맛집</div></a></td>
             </tr>
         </table>
         <c:choose>
