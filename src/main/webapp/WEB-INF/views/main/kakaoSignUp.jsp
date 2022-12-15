@@ -108,6 +108,7 @@
                 };
                 geocoder.addressSearch(addr, callback);
                 document.getElementById("postcode").value = data.zonecode;
+                document.getElementById("add_detail1").value = data.roadAddress;
                 document.getElementById("add_detail1").value = data.jibunAddress;
                 document.getElementById("add_detail2").focus();
             }
