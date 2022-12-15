@@ -85,7 +85,7 @@
         console.log($(this).closest(".destination_box").find(".add_seq").val());
 
         if(confirm("정말 삭제 하시겠습니까?")){
-            $(this).closest(".destination_box").remove();
+            // $(this).closest(".destination_box").remove();
             $.ajax({
                 url: "/member/header/destination/delete",
                 type: "post",
@@ -152,6 +152,7 @@
                 geocoder.addressSearch(addr, callback);
                 document.getElementById("postcode").value = data.zonecode;
                 document.getElementById("add_detail1").value = data.jibunAddress;
+                document.getElementById("add_detail1").value = data.roadAddress;
                 document.getElementById("add_detail2").focus();
             }
         }).open();
