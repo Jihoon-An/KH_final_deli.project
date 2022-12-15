@@ -30,7 +30,7 @@ public class AccountController {
     /**
      * <h1>Normal Type 회원 로그인</h1>
      * @param emailSave
-     * @return set loginEmail to Session & set saved_email to Cookie
+     * @return set loginEmail in Session & set saved_email in Cookie
      */
     @PostMapping("login")
     public String login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
