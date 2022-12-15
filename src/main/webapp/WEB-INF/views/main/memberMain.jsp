@@ -21,8 +21,7 @@
 <main id="memberMain">
 
     <div id="fucking">
-        <h4><a href="/">임시 리모컨</a></h4>
-        <hr>
+        <h4><a href="/">임시 리모컨</a></h4><hr>
         <a href="/storeSearch">[유저]식당검색</a><br>
         <a href="/userMenu/toMyPage">[유저]마이페이지</a><br>
         <a href="/member/header/destination">[유저]배달지 선택 페이지</a><br>
@@ -32,6 +31,7 @@
         <a href="/basket">[유저]장바구니</a><br>
         <a href="/">[유저]내주문내역unlink</a><br>
         <hr>
+        <a href="/ownerSignUp">[오너]사업자회원가입</a><br>
         <a href="/store">[오너]식당추가</a><br>
         <a href="/menu">[오너]메뉴추가</a><br>
         <hr>
@@ -82,8 +82,7 @@
                         <c:choose>
                             <c:when test="${sysName.store_logo !=null}">
                                 <div>
-                                    <img src="/resources/img/store/${sysName.store_logo}">
-                                    이미지: ${sysName.store_logo}
+                                    <img class="logoImg" src="/resources/img/store/${sysName.store_logo}">
                                 </div>
                             </c:when>
                             <c:otherwise>
