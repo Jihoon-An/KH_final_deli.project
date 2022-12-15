@@ -3,6 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96512be (feat: 메인페이지 임시 리모트 기능 / 장바구니 Controller, Mapper 생성)
     <title>Home</title>
 
     <!--jQuery-->
@@ -66,6 +70,7 @@
             </div>
         </c:when>
 
+<<<<<<< HEAD
         <c:otherwise>
             <div class="container">
 
@@ -74,6 +79,28 @@
                         <input type="text" placeholder="이메일" name="email" <c:if test="${not empty saved_email}">
                                value="${saved_email}"</c:if>>
                         <input type="password" placeholder="비밀번호" name="pw">
+=======
+        <div id="fucking">
+            <h4><a href="/">임시 리모컨</a></h4><hr>
+            <a href="/main/memberMain">[일반]메인 페이지</a><br>
+            <a href="/myPage/review/">[일반]리뷰 수정 페이지</a><br>
+            <a href="/member/header/destination">[일반]배달지 선택 페이지</a><br>
+            <a href="/member/order">[일반]결제결과 페이지</a><br>
+            <a href="/admin/review/selectReview">[운영자]리뷰 관리 페이지</a><br>
+            <hr>
+            <a href="/userMenu/toMyPage">마이페이지</a><br>
+            <a href="/basket">장바구니</a><br>
+            <a href="/account/logout">로그아웃</a><br>
+            <a href="/account/withdrawal">회원탈퇴</a><br>
+        </div>
+
+        <c:choose>
+            <c:when test="${loginEmail != null}">
+                ${acc_seq}
+                <div class="container">
+                    <marquee>
+                        <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>
+>>>>>>> 96512be (feat: 메인페이지 임시 리모트 기능 / 장바구니 Controller, Mapper 생성)
                         <br>
                         <label for="emailSave">이메일저장</label>
                         <input type="checkbox" id="emailSave" name="emailSave"
