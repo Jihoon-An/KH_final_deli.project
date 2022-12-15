@@ -31,16 +31,16 @@ public class MyPageDibsController {
 
         List<MyPageDibsDTO> list = myPageDibsService.select(acc_seq);
 
-//        List<Integer> intlist=new ArrayList<>();
-//        for(int i=0;i<list.size();i++){
-//            System.out.println(list.get(i).getSTORE_SEQ());
-//            int store_seq=list.get(i).getSTORE_SEQ();
-//            int value = myPageDibsService.selectStar(store_seq);
-//            intlist.add(value);
-//        }
-//        model.addAttribute("intlist",intlist);
+        List<Integer> starlist=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            int store_seq=list.get(i).getSTORE_SEQ();
+            Integer value = myPageDibsService.selectStar(store_seq);
+            starlist.add(value);
+        }
 
+        model.addAttribute("starlist",starlist);
         model.addAttribute("list",list);
+
         return "/member/myPage/dibs";
     }
 

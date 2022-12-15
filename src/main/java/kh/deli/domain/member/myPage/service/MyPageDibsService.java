@@ -19,7 +19,7 @@ public class MyPageDibsService {
         return myPageDibsMapper.select(acc_seq);
     }
 
-    public int selectStar(int store_seq) throws Exception{
+    public Integer selectStar(int store_seq) throws Exception{
         return myPageDibsMapper.selectStar(store_seq);
     }
 

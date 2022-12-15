@@ -64,6 +64,6 @@
     </form>
 </div>
 <script src="/resources/js/member/myPage/memberReview.js"></script>
-</body>
 </main>
+</body>
 </html>

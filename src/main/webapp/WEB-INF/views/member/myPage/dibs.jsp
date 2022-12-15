@@ -6,12 +6,16 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
+
+    <link rel="stylesheet" href="/resources/css/member/myPage/dibs.css" type="text/css">
 </head>
 <body>
 <main id="dibs">
-    <div>
+    <div class="container">
         <div>
-            <Button>Back</Button>
+            <a href="/">
+                <Button> Back</Button>
+            </a>
         </div>
         <hr>
         <div>찜</div>
@@ -19,15 +23,26 @@
         <div>
             <c:choose>
                 <c:when test="${not empty list}">
-                    <c:forEach var="i" items="${list}">
-                        <div class="logoimg">이미지: ${i.STORE_LOGO}</div>
+                    <c:forEach var="i" items="${list}" varStatus="status">
+                        <div class="logoimg">
+                            <img src="/resources/img/store/${i.STORE_LOGO}">
+                            이미지: ${i.STORE_LOGO}</div>
                         <div class="info">
                             <div>식당명: ${i.STORE_NAME}</div>
-                            <div>평점:</div>
+                            <c:choose>
+                                <c:when test="${not empty starlist[status.index]}">
+                                    <div>평점: ${starlist[status.index]} </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div>평점: 평점없음</div>
+                                </c:otherwise>
+                            </c:choose>
                             <div>최소주문금액: ${i.STORE_MIN_PRICE}</div>
                             <div>배달팁: ${i.STORE_DELI_TIP}</div>
                             <div>배달시간: ${i.STORE_DELI_TIME}</div>
-                            <div><button class="heart">찜</button></div>
+                            <div>
+                                <button class="heart">찜</button>
+                            </div>
                         </div>
                         <hr>
                     </c:forEach>

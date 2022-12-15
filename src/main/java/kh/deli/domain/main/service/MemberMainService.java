@@ -1,9 +1,6 @@
 package kh.deli.domain.main.service;
 
-import kh.deli.domain.main.dto.MemberMainRequestDTO;
 import kh.deli.domain.main.mapper.MemberMainMapper;
-import kh.deli.global.entity.AccountDTO;
-import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +13,8 @@ public class MemberMainService {
     @Autowired
     private MemberMainMapper memberMainMapper;
 
-    public List<MemberMainRequestDTO> selectStar(){
-        return memberMainMapper.selectStar();
+    public Integer selectStar(int store_seq){
+        return memberMainMapper.selectStar(store_seq);
     }
 
     public String selectType(int acc_seq){

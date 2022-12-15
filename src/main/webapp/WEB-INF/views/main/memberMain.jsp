@@ -19,19 +19,26 @@
 </head>
 <body>
 <main id="memberMain">
+
     <div id="fucking">
         <h4><a href="/">임시 리모컨</a></h4>
         <hr>
-        <a href="/myPage/reviewWrite/">[일반]리뷰 작성 페이지</a><br>
-        <a href="/myPage/review/">[일반]리뷰 수정 페이지</a><br>
-        <a href="/member/header/destination">[일반]배달지 선택 페이지</a><br>
-        <a href="/member/order">[일반]결제결과 페이지</a><br>
+        <a href="/storeSearch">[유저]식당검색</a><br>
+        <a href="/userMenu/toMyPage">[유저]마이페이지</a><br>
+        <a href="/member/header/destination">[유저]배달지 선택 페이지</a><br>
+        <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>
+        <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>
+        <a href="/member/order">[유저]결제결과 페이지</a><br>
+        <a href="/basket">[유저]장바구니</a><br>
+        <a href="/">[유저]내주문내역unlink</a><br>
+        <hr>
+        <a href="/store">[오너]식당추가</a><br>
+        <a href="/menu">[오너]메뉴추가</a><br>
+        <hr>
         <a href="/admin/review/selectReview">[운영자]리뷰 관리 페이지</a><br>
         <hr>
-        <a href="/userMenu/toMyPage">마이페이지</a><br>
-        <a href="/basket">장바구니</a><br>
-        <a href="/account/logout">로그아웃</a><br>
-        <a href="/account/withdrawal">회원탈퇴</a><br>
+        <a href="/account/logout">[유저+오너]로그아웃</a><br>
+        <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
     </div>
     <div class="container">
         <table border="1px">
@@ -48,13 +55,20 @@
                 <td><a>분식</a></td>
             </tr>
         </table>
-        <hr>
         <c:choose>
             <c:when test="${not empty list}">
-                <c:forEach var="sysName" items="${list}">
+                <c:forEach var="sysName" items="${list}" varStatus="status">
+                    <hr>
                     <div>
                         <div>가게시퀀스 : ${sysName.store_seq}</div>
-                            <%--                <span>평점 : ${sysName.avg_star}</span> &lt;%&ndash; 소수점 첫째자리까지 &ndash;%&gt;--%>
+                        <c:choose>
+                            <c:when test="${not empty starlist[status.index]}">
+                                <div>평점: ${starlist[status.index]} </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>평점: 평점없음</div>
+                            </c:otherwise>
+                        </c:choose>
                         <div>가게이름 : ${sysName.store_name}</div>
                         <c:choose>
                             <c:when test="${sysName.store_logo !=null}">
@@ -64,13 +78,12 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div>사진없음</div>
+                                <div>이미지: 사진없음</div>
                             </c:otherwise>
                         </c:choose>
-                        <span>최소금액 : ${sysName.store_min_price},</span>
-                        <span>배달팁 : ${sysName.store_deli_tip},</span>
-                        <span>배달시간 : ${sysName.store_deli_time}</span>
-                        <hr>
+                        <div>최소금액 : ${sysName.store_min_price},</div>
+                        <div>배달팁 : ${sysName.store_deli_tip},</div>
+                        <div>배달시간 : ${sysName.store_deli_time}</div>
                     </div>
                 </c:forEach>
             </c:when>
