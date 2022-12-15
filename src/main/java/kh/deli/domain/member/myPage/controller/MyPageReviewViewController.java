@@ -14,14 +14,14 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/memberReviewForm/")
+@RequestMapping("/myPage/reviewWrite/")
 @AllArgsConstructor
 public class MyPageReviewViewController {
 
         private final MemberReviewService memberReviewFormService;
         private final HttpSession session;
 
-        @RequestMapping()
+        @RequestMapping("")
         public String toMemberMain(Model model) throws Exception {
             int order_seq = 1; // 내 주문리스트에서 order_seq 파라미터로 가져오기
             OrdersDTO dto = memberReviewFormService.selectByOrderSeq(order_seq);

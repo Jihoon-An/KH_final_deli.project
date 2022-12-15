@@ -12,8 +12,9 @@
 
 </head>
 <body>
+<main id="reviewWrite">
 <div>
-    <form action="/memberReviewForm/reviewInsert" id="reviewPost" method="post" enctype="multipart/form-data">
+    <form action="/myPage/reviewWrite/reviewInsert" id="reviewPost" method="post" enctype="multipart/form-data">
         <div>
             <div id="back">
                 <button>Back</button>
@@ -62,6 +63,7 @@
         </div>
     </form>
 </div>
-<script src="/resources/js/member/myPage/memberReviewForm.js"></script>
+<script src="/resources/js/member/myPage/memberReview.js"></script>
 </body>
+</main>
 </html>
