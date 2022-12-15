@@ -46,6 +46,8 @@
                         <h1>
                             <a href="/basket"><button>고추장바구니모를찾아서</button></a>
                         </h1>
+                        <br><br><br>
+                        <h3><a href="/account/withdrawal"><button>꺼지셈 너 필요없음 이제</button></a> </h3>
                     </marquee>
                 </div>
             </c:when>
