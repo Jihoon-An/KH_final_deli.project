@@ -26,10 +26,10 @@
 
     <div id="fucking">
         <h4><a href="/">임시 리모컨</a></h4><hr>
-        <a href="/main/memberMain">[유저]메인 페이지</a><br>
         <a href="/storeSearch">[유저]식당검색</a><br>
         <a href="/userMenu/toMyPage">[유저]마이페이지</a><br>
         <a href="/member/header/destination">[유저]배달지 선택 페이지</a><br>
+        <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>
         <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>
         <a href="/member/order">[유저]결제결과 페이지</a><br>
         <a href="/basket">[유저]장바구니</a><br>
