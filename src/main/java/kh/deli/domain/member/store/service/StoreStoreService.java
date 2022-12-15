@@ -26,4 +26,5 @@ public class StoreStoreService {
     public MenuDTO menuInfo(int store_seq) throws Exception{
         return storeMapper.menuInfo(store_seq);
     }
+
 }
