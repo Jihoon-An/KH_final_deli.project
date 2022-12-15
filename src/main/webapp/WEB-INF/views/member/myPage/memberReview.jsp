@@ -46,23 +46,21 @@
         </div>
         <div>
             <div> 주문한 메뉴</div>
-            <input type="text" value="${dto.order_seq}" name="order_seq">
-            <input type="text" value="${dto.acc_seq}" name="acc_seq">
-            <input type="text" value="${dto.store_seq}" name="store_seq">
-            <input type="text" value="${dto.order_price}">
-            <c:choose>
-                <c:when test="${not empty dto.menu_list}">
-                    <c:forEach var="sysName" items="${dto.menu_list}">
-                        <input type="text" value="${sysName}"> <%-- [] 제거해야 함 --%>
-                    </c:forEach>
-                </c:when>
-            </c:choose>
+            주문번호: <input type="text" value="${dto.order_seq}" name="order_seq">
+            회원번호: <input type="text" value="${dto.acc_seq}" name="acc_seq">
+            가게번호: <input type="text" value="${dto.store_seq}" name="store_seq">
+            주문금액: <input type="text" value="${dto.order_price}">
+            <input type="hidden" value="${dto.menu_list}" id="menu">
+            <div class="menuBox"></div>
         </div>
         <div>
             <button>작성하기</button>
         </div>
     </form>
 </div>
+    <script>
+        var list = ${dto.menu_list};
+    </script>
 <script src="/resources/js/member/myPage/memberReview.js"></script>
 </main>
 </body>

@@ -1,22 +1,35 @@
 package kh.deli.domain.member.order.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.*;
 
 /**
- * menu_list -> <menu, price>
+ * menu_list -> < menu, price >
  */
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class OrderBasketDTO {
-    private int store_seq;
-    private Map<String, Integer> menu_list;
-    private int delivery_tip;
+    private StoreDTO store;
+    private List<OrderBasketMenuDTO> menuList;
+    private int totalPrice;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
