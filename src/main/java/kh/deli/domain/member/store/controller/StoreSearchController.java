@@ -28,10 +28,10 @@ public class StoreSearchController {
     @RequestMapping("123")
     public String selectAll(Model model) throws Exception {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-        List<AddressDTO> addressList = storeService.selectAll(acc_seq);
+//        List<AddressDTO> addressList = storeService.selectAll(acc_seq);
 //        List<AddressDTO> addressList = destinationService.selectAll(acc_seq);
 
-        model.addAttribute("address_List", addressList);
+//        model.addAttribute("address_List", addressList);
         return "/member/header/destination";
     }
 }
