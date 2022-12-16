@@ -30,6 +30,9 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/admin/couponList.css">
+
+    <%--sweetalert--%>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <main id="coupon_list">
@@ -45,27 +48,27 @@
             </tr>
             </thead>
             <tbody>
-                <c:if test="${!empty cpList}">
-                    <c:forEach var="cp" items="${cpList}">
-                        <tr class="coupon">
-                            <td class="name">${cp.cp_name}</td>
-                            <td class="type">${cp.cp_type}</td>
-                            <c:choose>
-                                <c:when test='${cp.cp_type == "percent"}'>
-                                    <td class="discount">${cp.cp_discount}%</td>
-                                </c:when>
-                                <c:otherwise>
-                                    <td class="discount">${cp.cp_discount}원</td>
-                                </c:otherwise>
-                            </c:choose>
+            <c:if test="${!empty cpList}">
+                <c:forEach var="cp" items="${cpList}">
+                    <tr class="coupon">
+                        <td class="name">${cp.cp_name}</td>
+                        <td class="type">${cp.cp_type}</td>
+                        <c:choose>
+                            <c:when test='${cp.cp_type == "percent"}'>
+                                <td class="discount">${cp.cp_discount}%</td>
+                            </c:when>
+                            <c:otherwise>
+                                <td class="discount">${cp.cp_discount}원</td>
+                            </c:otherwise>
+                        </c:choose>
 
-                            <td class="period">${cp.cp_period} 일</td>
-                            <input type="hidden" value="${cp.cp_seq}" class="seq">
-                            <input type="hidden" value="${cp.cp_code}" class="code">
-                            <input type="hidden" value="${cp.cp_content}" class="content">
-                        </tr>
-                    </c:forEach>
-                </c:if>
+                        <td class="period">${cp.cp_period} 일</td>
+                        <input type="hidden" value="${cp.cp_seq}" class="seq">
+                        <input type="hidden" value="${cp.cp_code}" class="code">
+                        <input type="hidden" value="${cp.cp_content}" class="content">
+                    </tr>
+                </c:forEach>
+            </c:if>
             </tbody>
         </table>
     </div>
@@ -74,22 +77,22 @@
         <div id="close_modal">X</div>
         <div id="modal_content">
             modal_cp_seq wheat
-            <input type="text" id="modal_cp_seq" placeholder="seq" style="background-color: wheat;">
+            <input type="hidden" id="modal_cp_seq" placeholder="seq" style="background-color: wheat;" readonly>
             modal_cp_name Red
-            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;">
+            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;" readonly>
             modal_cp_code Dodgerblue
-            <input type="text" id="modal_cp_code" placeholder="code" style="background-color: dodgerblue;">
+            <input type="text" id="modal_cp_code" placeholder="code" style="background-color: dodgerblue;" readonly>
             modal_cp_content white
-            <input type="text" id="modal_cp_content" placeholder="content" style="background-color: white;">
+            <input type="text" id="modal_cp_content" placeholder="content" style="background-color: white;" readonly>
             modal_cp_type yellow
-            <input type="text" id="modal_cp_type" placeholder="cp_type" style="background-color: yellow;">
+            <input type="text" id="modal_cp_type" placeholder="cp_type" style="background-color: yellow;" readonly>
             modal_cp_discount Green
-            <input type="text" id="modal_cp_discount" placeholder="cp_discount" style="background-color: green;">
+            <input type="text" id="modal_cp_discount" placeholder="cp_discount" style="background-color: green;" readonly>
             modal_cp_period Salmon
-            <input type="text" id="modal_cp_period" placeholder="cp_period"  style="background-color: salmon;">
+            <input type="text" id="modal_cp_period" placeholder="cp_period" style="background-color: salmon;" readonly>
         </div>
         <div id="modal_btn_area">
-            <button id="hidden_btn" type="button">비공개</button>
+            <button id="publish_btn" type="button">발행</button>
             <button id="delete_btn" type="button">삭제</button>
         </div>
     </div>

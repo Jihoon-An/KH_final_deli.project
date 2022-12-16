@@ -1,5 +1,26 @@
 package kh.deli.domain.member.order.service;
 
+import kh.deli.domain.member.order.dto.OrderOrdersDTO;
+import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderOrdersService {
+
+    @Autowired
+    private OrderOrdersMapper orderOrdersMapper;
+
+
+    public OrderOrdersDTO selectInitInfo(OrderOrdersDTO param) {
+        return orderOrdersMapper.selectOrderMemberInfo(param);
+    };
+
+    public void updateMemberAddr(OrderOrdersDTO param) {
+        orderOrdersMapper.updateMemberAddr(param);
+    };
+
+
 
 import kh.deli.domain.member.order.dto.OrdererInfoDTO;
 import kh.deli.domain.member.order.dto.PayInfoDTO;
