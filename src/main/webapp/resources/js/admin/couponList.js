@@ -1,7 +1,9 @@
+//data tables
 $(document).ready(function () {
     $('#myTable').DataTable();
 });
 
+//쿠폰 상세 모달 띄우기
 $(".coupon").click(function () {
 
     //선택한 coupon값 가져오기
@@ -49,6 +51,7 @@ $(".coupon").click(function () {
     $("#modal").fadeIn();
 });
 
+//쿠폰 상세 모달 닫기
 $("#close_modal").click(function () {
     $("#modal").fadeOut();
     $("#modal").find("#modal_cp_seq").val("").css("display", "block");
@@ -58,4 +61,64 @@ $("#close_modal").click(function () {
     $("#modal").find("#modal_cp_type").val("").css("display", "block");
     $("#modal").find("#modal_cp_discount").val("").css("display", "block");
     $("#modal").find("#modal_cp_period").val("").css("display", "block");
+});
+
+//발행하기 버튼 (미완성)
+$("#publish_btn").click(() => {
+    // Swal.fire({
+    //     title: '정말 비공개 처리 하시겠습니까?',
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#3085d6',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: '실행',
+    //     cancelButtonText: '취소'
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         $.ajax({
+    //             url: "",
+    //             type: "post",
+    //             data: {},
+    //             dataType: "json"
+    //         }).done(() => {
+    //             Swal.fire({
+    //                 position: 'center-center',
+    //                 icon: 'success',
+    //                 title: '삭제되었습니다.',
+    //                 showConfirmButton: false,
+    //                 timer: 1500
+    //             })
+    //         }).error();
+    //     }
+    // })
+});
+
+//삭제버튼
+$("#delete_btn").click(() => {
+
+    Swal.fire({
+        title: '정말 삭제 하시겠습니까?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '실행',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/admin/coupon/list/delete",
+                type: "post",
+                data: $("#modal_cp_seq").val()
+            }).done(() => {
+                Swal.fire({
+                    position: 'center-center',
+                    icon: 'success',
+                    title: '삭제되었습니다.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            });
+        }
+    })
 });
