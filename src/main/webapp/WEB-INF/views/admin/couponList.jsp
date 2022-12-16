@@ -45,29 +45,27 @@
             </tr>
             </thead>
             <tbody>
-            <c:if test="${!empty cpList}">
-                <c:forEach var="cp" items="${cpList}">
-                    <tr class="coupon">
-                        <td class="name">${cp.cp_name}</td>
-                        <td class="type">${cp.cp_type}</td>
-                        <td class="discount">
-                                ${cp.cp_discount}
+                <c:if test="${!empty cpList}">
+                    <c:forEach var="cp" items="${cpList}">
+                        <tr class="coupon">
+                            <td class="name">${cp.cp_name}</td>
+                            <td class="type">${cp.cp_type}</td>
                             <c:choose>
                                 <c:when test='${cp.cp_type == "percent"}'>
-                                    %
+                                    <td class="discount">${cp.cp_discount}%</td>
                                 </c:when>
                                 <c:otherwise>
-                                    원
+                                    <td class="discount">${cp.cp_discount}원</td>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                        <td class="period">${cp.cp_period} 일</td>
-                        <input type="hidden" value="${cp.cp_seq}" class="seq">
-                        <input type="hidden" value="${cp.cp_code}" class="code">
-                        <input type="hidden" value="${cp.cp_content}" class="content">
-                    </tr>
-                </c:forEach>
-            </c:if>
+
+                            <td class="period">${cp.cp_period} 일</td>
+                            <input type="hidden" value="${cp.cp_seq}" class="seq">
+                            <input type="hidden" value="${cp.cp_code}" class="code">
+                            <input type="hidden" value="${cp.cp_content}" class="content">
+                        </tr>
+                    </c:forEach>
+                </c:if>
             </tbody>
         </table>
     </div>
@@ -75,13 +73,20 @@
     <div id="modal">
         <div id="close_modal">X</div>
         <div id="modal_content">
-            <input type="hidden" id="modal_cp_seq">
-            <input type="text" id="modal_cp_name">
-            <input type="text" id="modal_cp_code">
-            <input type="text" id="modal_cp_content">
-            <input type="text" id="modal_cp_type">
-            <input type="text" id="modal_cp_discount">
-            <input type="text" id="modal_cp_period">
+            modal_cp_seq wheat
+            <input type="text" id="modal_cp_seq" placeholder="seq" style="background-color: wheat;">
+            modal_cp_name Red
+            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;">
+            modal_cp_code Dodgerblue
+            <input type="text" id="modal_cp_code" placeholder="code" style="background-color: dodgerblue;">
+            modal_cp_content white
+            <input type="text" id="modal_cp_content" placeholder="content" style="background-color: white;">
+            modal_cp_type yellow
+            <input type="text" id="modal_cp_type" placeholder="cp_type" style="background-color: yellow;">
+            modal_cp_discount Green
+            <input type="text" id="modal_cp_discount" placeholder="cp_discount" style="background-color: green;">
+            modal_cp_period Salmon
+            <input type="text" id="modal_cp_period" placeholder="cp_period"  style="background-color: salmon;">
         </div>
         <div id="modal_btn_area">
             <button id="hidden_btn" type="button">비공개</button>

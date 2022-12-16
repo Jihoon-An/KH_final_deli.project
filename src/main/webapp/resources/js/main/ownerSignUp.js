@@ -8,6 +8,7 @@ var bs_card_ok = false;
 var confirm_num;
 var confirm_count;
 
+
 function countdown( elementName, minutes, seconds )
 {
     var element, endTime, hours, mins, msLeft, time;
@@ -59,11 +60,11 @@ $("#email_btn").on("click", function () {
                 data: {
                     address: $("#email").val(),
                     title: "Deli email confirm",
-                    message: "<h1>"+email_confirm_num+"</h1>"
+                    message: "<h1>"+confirm_num+"</h1>"
                 }
             });
             $("#email_confirm_table").css("display", "block");
-            countdown("confirm_count", 0, 5);
+            countdown("confirm_count", 3, 0);
         }
     });
 });
@@ -82,8 +83,8 @@ $("#email_btn").on("click", function () {
 
 
 $("#email_confirm_btn").click(function () {
-    if ($("#email_confirm_input").val() == confirm_num) {
-        $("#email_confirm_table").css("display", "block");
+    if ($("#email_confirm_input").val() == confirm_num && $("#confirm_count").html() != "시간초과") {
+        $("#email_confirm_table").css("display", "none");
         email_ok = true;
     } else {
         Swal.fire({
