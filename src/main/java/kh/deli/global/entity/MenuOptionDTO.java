@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class MenuOptionDTO {
     private int option_seq;
     private int menu_seq;
-    private String menu_option;
+    private String option_group;
     private String option_name;
     private int option_price;
     private String option_required;
