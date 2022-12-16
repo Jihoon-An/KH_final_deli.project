@@ -36,33 +36,33 @@
     <tbody>
     <c:choose>
         <c:when test="${not empty nev_list}">
-            <c:forEach var="i" items="${nev_list}">
+            <c:forEach var="cp" items="${nev_list}">
                 <tr>
-                    <td class="mem_name">${i.mem_name}</td>
-                    <td class="rev_content">${i.rev_content}</td>
-                    <td class="store_name">${i.store_name}</td>
+                    <td class="mem_name">${cp.mem_name}</td>
+                    <td class="rev_content">${cp.rev_content}</td>
+                    <td class="store_name">${cp.store_name}</td>
                     <td class="rev_writedate">
 
                             <%-- 리뷰상세에 기본날짜로 던짐--%>
                         <input id="formed_rev_writedate" class="formed_rev_writedate"
-                               type="hidden" value="${i.rev_writedate}">
+                               type="hidden" value="${cp.rev_writedate}">
 
-                        <fmt:parseDate value="${i.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        <fmt:parseDate value="${cp.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
                             <%--   ${i.rev_writedate}--%>
                     </td>
 
-                    <input type="hidden" value="${i.rev_seq}" class="rev_seq">
-                    <input type="hidden" value="${i.rev_star}" class="rev_star">
+                    <input type="hidden" value="${cp.rev_seq}" class="rev_seq">
+                    <input type="hidden" value="${cp.rev_star}" class="rev_star">
 
                     <c:choose>
-                        <c:when test="${i.rev_modified_date!=null}">
+                        <c:when test="${cp.rev_modified_date!=null}">
 
                             <input id="formed_rev_modified_date" class="formed_rev_modified_date"
-                                   type="hidden" value="${i.rev_modified_date}">
+                                   type="hidden" value="${cp.rev_modified_date}">
 
                             <td class="rev_modified_date">
-                                <fmt:parseDate value="${i.rev_modified_date}" var="registered"
+                                <fmt:parseDate value="${cp.rev_modified_date}" var="registered"
                                                pattern="yyyy-MM-dd HH:mm:ss"/>
                                 <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
                                     <%--  ${i.rev_modified_date}--%>

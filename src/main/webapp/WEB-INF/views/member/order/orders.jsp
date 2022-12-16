@@ -95,7 +95,7 @@
     <hr>
     <div id="mainAddress">address1출력
         <input type="text" id="add_1" name="add_1" placeholder="Address1">
-        <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%>
+        <!-- <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%> -->
         <button type="button" id="btn_modal">주소 변경</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">

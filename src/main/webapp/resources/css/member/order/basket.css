@@ -1,0 +1,51 @@
+#basket *{box-sizing: border-box;}
+#basket .container{
+    width: 375px;
+    height: 800px;
+    border: 1px solid gray;
+    margin: auto;
+}
+#basket .topBox{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 25px;
+}
+#basket .topBox > .topLeftBox{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+#basket .topBox > .topRightBox{
+    width: 50px;
+    height: 50px;
+    float: right;
+}
+#basket .titleBox{
+    width: 100%;
+    height: 75px;
+    text-align: center;
+    font-size: 24px;
+}
+
+#basket .buttonBox{
+    width: 350px;
+    height: 35px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 330px;
+}
+#basket .buttonBox button{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    border: none;
+    background-color: #e84c4f;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+#basket a:visited{
+    color: unset;
+}

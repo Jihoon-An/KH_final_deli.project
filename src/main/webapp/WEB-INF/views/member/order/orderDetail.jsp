@@ -1,0 +1,88 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 이나경
+  Date: 2022-12-14
+  Time: 오전 1:20
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+    <title>memberOrder</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
+
+    <style>
+        .container {
+            width: 375px;
+            height: auto;
+            border: 1px solid black;
+            margin: auto;
+        }
+
+        .btn {
+
+            width: 100%;
+            height: 50px;
+        }
+
+        #complete {
+
+            width: 100%;
+            height: 100%;
+            background-color: #e84c4f;
+            color: white;
+            border-radius: 5px;
+            border-style: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <c:choose>
+        <c:when test="${not empty storeInfoDTO}">
+            <h3> ${storeInfoDTO.store_name}</h3>
+            <div>주문 시간 : ${storeInfoDTO.order_date}</div>
+            <div>배달 예상 시간 : ${storeInfoDTO.store_deli_time}</div>
+            <div>주문 번호 :  ${storeInfoDTO.order_seq}</div>
+        </c:when>
+    </c:choose>
+    <hr>
+    <h3>주문내역</h3>
+    <hr>
+    <c:choose>
+        <c:when test="${not empty payInfoDTO}">
+            <h3>결제정보</h3>
+            <div>총주문금액  ${payInfoDTO.order_price}</div>
+            <div>쿠폰할인  -${payInfoDTO.discountByCoupon}</div>
+            <div>포인트할인  -${payInfoDTO.order_point}</div>
+            <div>배달팁  +${payInfoDTO.delivery_tip}</div>
+            <hr>
+            <div>총결제금액  ${payInfoDTO.pay_price}</div>
+            <div>결제방법  ${payInfoDTO.pay_method}</div>
+        </c:when>
+    </c:choose>
+    <hr>
+    <c:choose>
+        <c:when test="${not empty ordererInfoDTO}">
+            <h3>주문자 정보</h3>
+            <div>전화번호 : ${ordererInfoDTO.mem_phone}</div>
+            <div>주소 : ${ordererInfoDTO.address_add_detail1}</div>
+            <div>상세주소 : ${ordererInfoDTO.orders_add_detail2}</div>
+            <div>가게요청사항 : ${ordererInfoDTO.order_store_req}</div>
+            <div>배달요청사항 : ${ordererInfoDTO.order_rider_req}</div>
+        </c:when>
+    </c:choose>
+
+
+    <div class="btn">
+        <%--메인으로--%>
+        <a href="#">
+            <button id="complete">완료</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

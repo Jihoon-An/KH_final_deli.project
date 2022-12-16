@@ -10,7 +10,7 @@
     </script>
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/css/member/userMenu/myPage.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/member/myPage/myPage.css" type="text/css">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
                         <span class="text">쿠폰</span>
                     </div>
                 </a>
-                <a href="/">
+                <a href="/myPage/dibs/">
                     <div class="link FavoritesBox">
                         <span class="icon"><i class="fa-solid fa-heart"></i></span><br>
                         <span class="text">찜</span>
