@@ -1,9 +1,8 @@
-package kh.deli.domain.member.store.controller;
+package kh.deli.domain.owner.controller;
 
-import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.domain.owner.service.OwnerStoreService;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,19 +14,19 @@ import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("store")
-public class StoreController {
+@RequestMapping("/store/add")
+public class StoreAddController {
 
 
     private final HttpSession session;
 
-    private final StoreStoreService storeService;
+    private final OwnerStoreService storeService;
 
     @RequestMapping("")
     public String toAdd(){
-        return "member/store/storeAdd";
+        return "/owner/storeAdd";
     }
-    @RequestMapping("add")
+    @RequestMapping("storeAdd")
     public String add(StoreDTO dto, MultipartFile file ) throws IOException {
 
         System.out.println(dto.getStore_name());

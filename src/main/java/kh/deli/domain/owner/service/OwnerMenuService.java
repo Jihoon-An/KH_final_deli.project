@@ -1,12 +1,11 @@
-package kh.deli.domain.member.store.service;
+package kh.deli.domain.owner.service;
 
 
-import kh.deli.domain.member.store.mapper.StoreMenuMapper;
+import kh.deli.domain.owner.mapper.OwnerMenuMapper;
 import kh.deli.global.entity.MenuDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import kh.deli.global.util.FileUtil;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -17,11 +16,11 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-public class StoreMenuService {
+public class OwnerMenuService {
 
     private final HttpSession session;
     @Autowired
-    private StoreMenuMapper storeMenuMapper;
+    private OwnerMenuMapper storeMenuMapper;
 
 
     public void insertMenu(MenuDTO menu, MultipartFile file) throws IOException {

@@ -1,0 +1,53 @@
+#storeAdd * {
+    box-sizing: border-box;
+}
+
+#storeAdd div {
+    border: 1px solid black;
+}
+
+#storeAdd .container {
+    width: 100%;
+    height: 80%;
+}
+#storeAdd .box1{
+    width: 300px;
+}
+
+
+/* 이미지미리보기*/
+#storeAdd .resultval {
+    color: red;
+}
+
+#storeAdd .profile {
+
+    width: 300px;
+    height: 100px;
+    overflow: hidden;
+}
+
+#storeAdd .profile div {
+    float: left;
+    height: 100%;
+}
+
+#storeAdd .thumbnail {
+    width: 30%;
+    padding: 5px;
+}
+
+#storeAdd .thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+
+#storeAdd .control {
+    width: 70%;
+    line-height: 100px;
+}
+
+#storeAdd .control input {
+    width: 100%;
+    height: 100%;
+}
