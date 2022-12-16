@@ -16,7 +16,7 @@ public class OrdersDTO {
     private String menu_list;
     private int order_price;
     Timestamp order_date;
-    private String add_detail1;
+    private int add_seq;
     private String add_detail2;
     private String order_phone;
     private String order_status;
@@ -28,4 +28,12 @@ public class OrdersDTO {
     private String pay_method;
     private int delivery_tip;
     private int pay_price;
+
+    /* 결제 화면 조회 변수 */
+    private int seq; //회원번호
+    private String address1;    //주소 1
+    private String address2;    //주소 2
+    private String phoneNum;    //핸드폰 번호
+    private String ownPoint;    //보유 포인트
+
 }

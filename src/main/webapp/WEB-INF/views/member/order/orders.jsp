@@ -89,13 +89,14 @@
 </style>
 <body>
 
+
 <div class="container">
     <h2>배달 정보</h2>
     <hr>
     <div id="mainAddress">address1출력
-        <a href="memberSignUp.jsp"><button type="button" id="changeAddress">변경</button></a>
-        <%--        모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%>
-        <button id="btn_modal">주소 변경</button>
+        <input type="text" id="add_1" name="add_1" placeholder="Address1">
+        <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%>
+        <button type="button" id="btn_modal">주소 변경</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
                 <div class="title">
@@ -103,70 +104,214 @@
                 </div>
                 <div class="close-area">X</div>
                 <div class="content">
-                    <input type="text" id="postcode" placeholder="우편번호">
+                    <input type="text" value="" id="postcode" placeholder="우편번호">
                     <input type="button" onclick="postcode()" value="찾기" id="btnSearch"><br>
-                    <input type="text" id="address1" placeholder="지번주소">
-                    <input type="text" id="address2" placeholder="상세주소">
-                    <p>주소 변경</p>
-                    <p>zipcode</p>
-                    <p>address1</p>
-                    <p>address2</p>
+                    <input type="text" id="address1" placeholder="도로명 / 지번주소">
+                    <input type="text" id="address2" placeholder="상세주소"><br>
+                    <button onclick="onclickBtnChgAddr()" id="btnChgAddr">완료</button>
+                </div>
+            </div>
+        </div>
+        <div id="modal2" class="modal-overlay">
+            <div class="modal-window">
+                <div class="title">
+                    <h2>쿠폰리스트</h2>
+                </div>
+                <div class="close-area">X</div>
+                <div class="content" id="couponList">
+                    html += "<div>" + data[i].info + "</div>";
                 </div>
             </div>
         </div>
 
     </div>
-    <input type="text" placeholder="Address2">
-    <div>핸드폰 번호
+    <input type="text" id="add_2" name="add_detail2" placeholder="Address2">
+ㅇ  <input type="text" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber">
+    <%--핸드폰 번호 변경 모달--%>
+    <button type="button" id="btn_phone_modal">핸드폰 번호 변경</button>
+    <div id="phone_modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>핸드폰 번호 변경</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+                <input type="text" value="" id="phone_num">
+                <button>완료</button>
+            </div>
+        </div>
         <button type="button">변경</button>
     </div>
     <hr>
     <div>요청사항</div>
-    <div>
-        체크박스 수저 포크 / 단무지
+    <div style="border: 1px solid black">
+        <input type="checkbox" name="" value="">일회용 수저,포크 안주셔도 돼요!<br>
+        <input type="checkbox" name="" value="">단무지, 김치 안주셔도 돼요!
     </div>
-    <input type="text" placeholder="사장님한테 전달할 말">
-    <input type="text" placeholder="라이더님한테 전달할 말">
+    <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말">
+    <input type="text" name="order_rider_req" value="" placeholder="라이더님한테 전달할 말">
     <hr>
     <div>결제수단
-        <select>
-            <option>선택</option>
-            <option>카카오페이</option>
-            <option>신용/체크카드</option>
-            <option>현금</option>
+        <select id="payment" onchange="onchangePayment()">
+            <option name="payMethod" value="">선택</option>
+            <option name="payMethod" value="kakaoPay">카카오페이</option>
+            <option name="payMethod" value="creditCard">신용/체크카드</option>
+            <option name="payMethod" value="cash">현금</option>
         </select>
     </div>
     <hr>
+
+    <%--할인쿠폰 리스트 모달--%>
     <div>
-        <button>할인쿠폰</button>
-        <div>할인쿠폰 출력</div>
+        <button type="button" id="btn_coupon_modal">할인쿠폰</button>
+        <div id="coupon_modal" class="modal-overlay"></div>
+        <div class="modal-window"></div>
+        <div>할인쿠폰 선택</div>x`
     </div>
     <div>포인트
-        <div>보유 포인트 출력
-            <input type="text" placeholder="사용할 포인트">
+        <div>
+            <input  type="text" id="ownPoint" placeholder="보유포인트 0">
+            <input  type="text" value="${mem_point}"  placeholder="사용할 포인트">
         </div>
         <hr>
-        <div>총 결제 금액
-            <div>주문 내역 출력</div>
-        </div>
-        <div>쿠폰할인
-            <input type="text" placeholder="쿠폰 할인 출력">
+        <div>구매 가격 출력</div>
+        <div id="modal2">쿠폰할인
+            <input type="text" name="distcount_coupon" value=""  placeholder="쿠폰 할인 출력">
         </div>
         <div>포인트 할인
-            <input type="text" placeholder="포인트 할인 출력">
+            <input type="text" name="order_point" value=""  placeholder="포인트 할인 출력">
         </div>
         <div>배달팁
-            <input type="text" placeholder="사용할 포인트 출력">
+            <input type="text" value="${store_deli_tip}"  placeholder="사용할 포인트 출력">
         </div>
+        <div>총 결제 금액 출력</div>
         <hr>
-        <button onclick="requestPay()">카카오 페이 결제</button>
-        <button type="button" class="btn_payment">다른 결제 수단으로 결제</button>
+        <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
+        <button type="button" id="payCard" class="btn_payment">다른 결제 수단으로 결제</button>
     </div>
+
+    <button type="submit">확인</button>
 
 </div>
 
+<form name="dataForm" action="orders/saveOrder" method="post">
+</form>
 <script>
-    // 버튼 클릭 시 모달창 오픈
+
+    window.onload = function(){
+        $("#payKakao").hide();
+        $("#payCard").hide();
+        initPage();
+    }
+
+    function initPage(){
+        $.ajax({
+            url: "/order/orders/selectInitInfo",
+            type: "post",
+            dataType: "json",
+            data : {seq : 39},
+            success : function (data){
+                $("#add_1").val(data.address1);
+                $("#add_2").val(data.address2);
+                $("#phoneNumber").val(data.phoneNum);
+                $("#ownPoint").val(data.ownPoint);
+            },
+            error : function (data){
+            }
+        }).done(function (result) {
+
+        });
+    }
+    function initPage(){
+        $.ajax({
+            url: "/order/orders/selectCouponList",
+            type: "post",
+            dataType: "json",
+            data : {seq : 39},
+            success : function (data){
+                var html = "";
+
+                for(var i = 0; i < data.length; i++){
+                    html += "<div>" + data[i].couponInfo + "</div>";
+                }
+                $("#couponList").html(html);
+
+            },
+            error : function (data){
+                $("#couponList").html('');
+            }
+        }).done(function (result) {
+
+        });
+    }
+    function onclickBtnChgAddr(){
+        var postCd = $("#postcode").val();
+        var address1 = $("#address1").val();
+        var address2 = $("#address2").val();
+        var msg = "";
+        var inptFlag = 0;
+
+        if(postCd == ""){
+            msg = "우편번호";
+            inptFlag = 1;
+        }
+        if(address1 == ""){
+            msg = "도로명/지번";
+            inptFlag = 1;
+        }
+        if(address2 == ""){
+            msg = "상세주소";
+            inptFlag = 1;
+        }
+        if(inptFlag == 1){
+            msg += "을/를 입력해주세요.";
+            alert(msg);
+            return;
+        }else{
+            $.ajax({
+                url: "/order/orders/updateMemberAddr",
+                type: "post",
+                dataType: "json",
+                data : {
+                    seq : 39,
+                    address1 : address1,
+                    address2 : address2
+                },
+                success : function (){
+
+                },
+                error : function (){
+
+                }
+            }).done(function () {
+                alert("주소변경 되었습니다.");
+                location.href="/home";
+            });
+        }
+    }
+
+    function onchangePayment (){
+        $("#payKakao").hide();
+        $("#payCard").hide();
+        var payMth = $("#payment").val();
+        switch(payMth){
+            case "" :
+                break;
+            case "kakaoPay" :
+                $("#payKakao").show();
+                break;
+            case "creditCard" :
+                $("#payCard").show();
+                break;
+            case "cash" :
+                //협의필요
+                break;
+
+
+        }
+
+    }
+    // 버튼 클릭 시 주소 변경 모달창 오픈
     const modal = document.getElementById("modal")
     const btnModal = document.getElementById("btn_modal")
     btnModal.addEventListener("click", e => {
@@ -191,6 +336,13 @@
         if(modal.style.display === "flex" && e.key === "Escape") {
             modal.style.display = "none"
         }
+    })
+
+    // 버튼 클릭 시 핸드폰 변경 모달창 오픈
+    const phone_modal = document.getElementById("phone_modal")
+    const phone_btnModal = document.getElementById("btn_phone_modal")
+    btnModal.addEventListener("click", e => {
+        modal.style.display = "flex"
     })
 
     //우편 api
@@ -250,7 +402,7 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '결제',
-            amount: 64900,//'가격 입력',
+            amount: 100,//'가격 입력',
             buyer_email: 'jaeyoung1870@gmail.com',//'구매자 이메일',
             buyer_name: '허재영',//'구매자 이름'
             buyer_tel: '010-4242-4242',
