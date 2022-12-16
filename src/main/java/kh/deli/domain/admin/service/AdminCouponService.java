@@ -28,4 +28,8 @@ public class AdminCouponService {
     public List<CouponDTO> getAll() {
         return cpMapper.getAll();
     }
+
+    public void deleteBySeq(int seq) {
+        cpMapper.deleteBySeq(seq);
+    }
 }
