@@ -39,6 +39,8 @@
         <a href="/store">[오너]식당추가</a><br>
         <a href="/menu">[오너]메뉴추가</a><br>
         <hr>
+        <a href="/admin/coupon/add">[운영자]쿠폰 추가 페이지</a><br>
+        <a href="/admin/coupon/list">[운영자]쿠폰 리스트 페이지</a><br>
         <a href="/admin/review/selectReview">[운영자]리뷰 관리 페이지</a><br>
         <hr>
         <a href="/account/logout">[유저+오너]로그아웃</a><br>

@@ -16,7 +16,7 @@ public class OrdersDTO {
     private String menu_list;
     private int order_price;
     Timestamp order_date;
-    private String add_seq;
+    private int add_seq;
     private String add_detail2;
     private String order_phone;
     private String order_status;
