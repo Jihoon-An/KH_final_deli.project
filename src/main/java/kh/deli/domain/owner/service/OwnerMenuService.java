@@ -26,7 +26,7 @@ public class OwnerMenuService {
     public void insertMenu(MenuDTO menu, MultipartFile file) throws IOException {
 
 
-        String realPath=session.getServletContext().getRealPath("/resources/img/store");
+        String realPath=session.getServletContext().getRealPath("/resources/img/menu-img");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성

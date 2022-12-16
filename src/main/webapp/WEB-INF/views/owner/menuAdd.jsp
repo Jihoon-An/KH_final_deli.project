@@ -34,7 +34,7 @@
             <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요">
             <div class="profile">
                 <div class="thumbnail">
-                    <img src="/resources/img/store/no_foodlogo.png" class="image-thumbnail" id="profile">
+                    <img src="/resources/img/menu-img/no_foodlogo.png" class="image-thumbnail" id="profile">
                 </div>
                 <div class="control">
                     <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
@@ -52,7 +52,7 @@
             <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"><br>
             <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
             <input type="text" id="menu_num" name="menu_num" placeholder="메뉴순서">
-            <input type="hidden" name="store_seq" value="2">
+            <input type="hidden" name="store_seq" value="21">
             <hr>
 
             <button class="btn btn-outline-secondary modify_btn" type="submit"
