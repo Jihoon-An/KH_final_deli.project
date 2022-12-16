@@ -6,6 +6,8 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class StoreStoreService {
@@ -19,8 +21,12 @@ public class StoreStoreService {
     public StoreDTO storeInfo(int store_seq) throws Exception{
         return storeMapper.storeInfo(store_seq);
     }
-
-    public MenuDTO menuInfo(int store_seq) throws Exception{
-        return storeMapper.menuInfo(store_seq);
+    public int getReviewCount(int store_seq)throws Exception{
+        return storeMapper.getReviewCount(store_seq);
     }
+
+    public List<StoreDTO> menuOrigin() throws Exception{
+        return storeMapper.menuOrigin();
+    }
+
 }

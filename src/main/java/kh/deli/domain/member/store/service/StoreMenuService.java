@@ -3,6 +3,7 @@ package kh.deli.domain.member.store.service;
 
 import kh.deli.domain.member.store.mapper.StoreMenuMapper;
 import kh.deli.global.entity.MenuDTO;
+import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -46,4 +48,14 @@ public class StoreMenuService {
 
         storeMenuMapper.insertMenu(menu);
     }
+
+    public List<String> menuInfo(int store_seq) throws Exception{
+        return storeMenuMapper.menuInfo(store_seq);
+    }
+
+    public List<MenuDTO> menuList(String menu_group,int store_seq) throws Exception{
+        return storeMenuMapper.menuList(menu_group,store_seq);
+    }
+
+
 }

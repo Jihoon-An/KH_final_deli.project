@@ -34,7 +34,7 @@
             <th>수정일자</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="66">
         <c:if test="${not empty nev_list}">
             <c:forEach var="sysName" items="${nev_list}">
                 <tr>
@@ -81,7 +81,6 @@
         <div class="modal">
             <div class="modal_content">
                 <div class="closeModal">X</div>
-
                 <div>
                     작성자 <input
                         type="text" placeholder="작성자" id="writer" class="writer" disabled>
@@ -111,14 +110,15 @@
                         type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
                 </div>
 
-
                 <button type="button">비공개</button>
-                <button id="deleteReview">삭제</button>
+                <button type="button" id="deleteReview">삭제</button>
+
+
             </div>
         </div>
     </form>
 
-    <script src="/resources/js/admin/ReviewMng.js"></script>
+    <script src="/resources/js/admin/reviewMng.js"></script>
 </main>
 </body>
 </html>
