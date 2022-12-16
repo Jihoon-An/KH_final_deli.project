@@ -33,12 +33,7 @@ public class HomeController {
             if (acc_type.equals("client")) {
                 List<StoreDTO> list = memberMainService.selectAll();
 
-                List<Integer> starlist=new ArrayList<>();
-                for(int i=0;i<list.size();i++){
-                    int store_seq=list.get(i).getStore_seq();
-                    Integer value = memberMainService.selectStar(store_seq);
-                    starlist.add(value);
-                }
+                List<Integer> starlist=memberMainService.carry(list);
 
                 model.addAttribute("starlist",starlist);
                 model.addAttribute("list", list);

@@ -15,7 +15,7 @@ $("#cp_code").on("change", function () {
 
 $("#cp_code_confirm_btn").click(function () {
     $.ajax({
-        url: "/admin/addCoupon/dupleCheck",
+        url: "/admin/coupon/add/dupleCheck",
         type: "post",
         data: {code: $("#cp_code").val()},
         dataType: "json"

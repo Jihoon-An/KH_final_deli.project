@@ -1,10 +1,7 @@
 package kh.deli.domain.admin.mapper;
 
 import kh.deli.global.entity.CouponDTO;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,4 +25,7 @@ public interface AdminCouponMapper {
 
     @Select("SELECT * FROM COUPON")
     List<CouponDTO> getAll();
+
+    @Delete("DELETE FROM COUPON WHERE CP_SEQ = #{seq")
+    void deleteBySeq(@Param("seq") int seq);
 }

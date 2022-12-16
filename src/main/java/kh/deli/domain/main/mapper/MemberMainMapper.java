@@ -11,6 +11,7 @@ import java.util.List;
 public interface MemberMainMapper {
 
     public Integer selectStar (int store_seq);
+
     public String selectType (int acc_seq);
 
     public List<StoreDTO> selectAll();

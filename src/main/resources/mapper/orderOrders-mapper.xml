@@ -4,6 +4,42 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper">
+    <select id="selectOrderMemberInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        select
+            seq,
+            address1,
+            address2,
+            phoneNum,
+            ownPoint
+        from
+        (
+            select
+            A.acc_seq as seq,
+            A.add_detail1 as address1,
+            A.add_detail2 as address2,
+            M.mem_phone as phoneNum,
+            M.mem_point as ownPoint
+            from member M
+            inner join address A ON (A.acc_seq = M.acc_seq)
+            where add_seq = 6
+        )
+        where
+            seq = #{orderOrdersDTO.seq}
+
+    </select>
+    <update id="updateMemberAddr"  parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        UPDATE ADDRESS
+        SET
+            ADD_DETAIL1 = #{orderOrdersDTO.address1},
+            ADD_DETAIL2 = #{orderOrdersDTO.address2}
+        WHERE
+            ACC_SEQ = #{orderOrdersDTO.seq}
+            AND ADD_SEQ = 6
+    </update>
+</mapper>
+
+
+<mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper">
 
     <select id="storeInfo" resultType="StoreInfoDTO">
         select
@@ -46,3 +82,4 @@
     </select>
 
 </mapper>
+

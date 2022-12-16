@@ -1,6 +1,7 @@
 package kh.deli.domain.member.store.service;
 
 import kh.deli.domain.member.store.mapper.StoreStoreMapper;
+import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class StoreStoreService {
     public int getReviewCount(int store_seq)throws Exception{
         return storeMapper.getReviewCount(store_seq);
     }
+
 
     public List<StoreDTO> menuOrigin() throws Exception{
         return storeMapper.menuOrigin();

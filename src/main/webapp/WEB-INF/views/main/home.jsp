@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+
     <title>Home</title>
 
     <!--jQuery-->
@@ -22,7 +23,7 @@
 </head>
 <body>
 <main id="home">
-
+    <marquee><Strong><h1>🎉나경이 생일축하해~🎂🎉</h1></Strong></marquee>
     <div id="fucking">
         <h4><a href="/">임시 리모컨</a></h4><hr>
         <a href="/storeSearch">[유저]식당검색</a><br>
@@ -34,10 +35,15 @@
         <a href="/basket">[유저]장바구니</a><br>
         <a href="/">[유저]내주문내역unlink</a><br>
         <hr>
+        <a href="/ownerSignUp">[오너]사업자회원가입</a><br>
         <a href="/store">[오너]식당추가</a><br>
         <a href="/menu">[오너]메뉴추가</a><br>
         <hr>
-        <a href="/admin/review/">[운영자]리뷰 관리 페이지</a><br>
+
+        <a href="/admin/coupon/add">[운영자]쿠폰 추가 페이지</a><br>
+        <a href="/admin/coupon/list">[운영자]쿠폰 리스트 페이지</a><br>
+        <a href="/admin/review/selectReview">[운영자]리뷰 관리 페이지</a><br>
+
         <hr>
         <a href="/account/logout">[유저+오너]로그아웃</a><br>
         <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
