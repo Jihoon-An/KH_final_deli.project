@@ -23,7 +23,7 @@
 </head>
 <body>
 <main id="home">
-
+    <marquee><Strong><h1>🎉나경이 생일축하해~🎂🎉</h1></Strong></marquee>
     <div id="fucking">
         <h4><a href="/">임시 리모컨</a></h4><hr>
         <a href="/storeSearch">[유저]식당검색</a><br>
@@ -35,6 +35,7 @@
         <a href="/basket">[유저]장바구니</a><br>
         <a href="/">[유저]내주문내역unlink</a><br>
         <hr>
+        <a href="/ownerSignUp">[오너]사업자회원가입</a><br>
         <a href="/store">[오너]식당추가</a><br>
         <a href="/menu">[오너]메뉴추가</a><br>
         <hr>
