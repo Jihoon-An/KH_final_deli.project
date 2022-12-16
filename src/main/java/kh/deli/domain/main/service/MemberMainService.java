@@ -26,12 +26,13 @@ public class MemberMainService {
 
     public List<Integer> carry(List<StoreDTO> list){
         List<Integer> starlist=new ArrayList<>();
+
                 for(int i=0;i<list.size();i++){
                     int store_seq=list.get(i).getStore_seq();
-                    System.out.println("t서비스 : "+ store_seq);
                     Integer value = this.selectStar(store_seq);
                     starlist.add(value);
                 }
+
                 return starlist;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/myPage/reviewWrite/")
@@ -23,12 +24,13 @@ public class MyPageReviewViewController {
 
         @RequestMapping("")
         public String toMemberMain(Model model) throws Exception {
-            int order_seq = 11; // 내 주문리스트에서 order_seq 파라미터로 가져오기
+            int order_seq = 12; // 내 주문리스트에서 order_seq 파라미터로 가져오기
             OrdersDTO dto = memberReviewFormService.selectByOrderSeq(order_seq);
 
-            System.out.println(dto.getMenu_list());
-
             model.addAttribute("dto", dto);
+
+            String menu_list=dto.getMenu_list();
+            List<Integer> list
 
             return "/member/myPage/memberReview";
 
