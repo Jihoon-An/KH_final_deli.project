@@ -1,11 +1,10 @@
 package kh.deli.domain.member.store.controller;
 
-import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.domain.owner.service.OwnerStoreService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 public class StoreDetailController {
 
-    private final StoreStoreService storeStoreService;
+    private final OwnerStoreService storeStoreService;
 
 
     @RequestMapping()
