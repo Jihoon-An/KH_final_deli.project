@@ -5,6 +5,8 @@ import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderMenuOptionService {
@@ -12,5 +14,9 @@ public class OrderMenuOptionService {
 
     public MenuOptionDTO findBySeq(int seq) throws Exception {
         return optionMapper.findBySeq(seq);
+    }
+
+    public List<MenuOptionDTO> findByMenuSeq(int menuSeq) {
+        return optionMapper.findByMenuSeq(menuSeq);
     }
 }
