@@ -78,7 +78,7 @@
                                 <div>평점: ${starlist[status.index]} </div>
                             </c:when>
                             <c:otherwise>
-                                <div>평점: 평점없음</div>
+                                <div>평점: 0</div>
                             </c:otherwise>
                         </c:choose>
                         <div>가게이름 : ${sysName.store_name}</div>
