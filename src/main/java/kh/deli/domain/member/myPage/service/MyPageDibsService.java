@@ -3,7 +3,6 @@ package kh.deli.domain.member.myPage.service;
 import kh.deli.domain.member.myPage.dto.MyPageDibsDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageDibsMapper;
 import kh.deli.global.entity.DibsDTO;
-import kh.deli.global.entity.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +18,15 @@ public class MyPageDibsService {
         return myPageDibsMapper.select(acc_seq);
     }
 
-    public Integer selectStar(int store_seq) throws Exception{
-        return myPageDibsMapper.selectStar(store_seq);
+    public void insertDibs(int acc_seq,int store_seq) throws Exception{
+        myPageDibsMapper.insertDibs(acc_seq,store_seq);
     }
 
-    public void insertDibs(DibsDTO dto) throws Exception{
-        myPageDibsMapper.insertDibs(dto);
+    public void deleteDibs(int acc_seq,int store_seq) throws Exception{
+        myPageDibsMapper.deleteDibs(acc_seq,store_seq);
     }
 
-    public void deleteDibs(int dibs_seq) throws Exception{
-        myPageDibsMapper.deleteDibs(dibs_seq);
+    public Integer isExistDibs(int acc_seq,int store_seq) throws Exception{
+        return myPageDibsMapper.isExistDibs(acc_seq,store_seq);
     }
 }

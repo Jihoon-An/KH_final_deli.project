@@ -30,11 +30,14 @@
         <a href="/member/order">[유저]결제결과 페이지</a><br>
         <a href="/basket">[유저]장바구니</a><br>
         <a href="/">[유저]내주문내역unlink</a><br>
+        <a href="/store/menu/detail">[유저]메뉴상세 장바구니 담기</a><br>
         <hr>
         <a href="/ownerSignUp">[오너]사업자회원가입</a><br>
         <a href="/store">[오너]식당추가</a><br>
         <a href="/menu">[오너]메뉴추가</a><br>
         <hr>
+        <a href="/admin/coupon/add">[운영자]쿠폰 추가 페이지</a><br>
+        <a href="/admin/coupon/list">[운영자]쿠폰 리스트 페이지</a><br>
         <a href="/admin/review/selectReview">[운영자]리뷰 관리 페이지</a><br>
         <hr>
         <a href="/account/logout">[유저+오너]로그아웃</a><br>
@@ -75,7 +78,7 @@
                                 <div>평점: ${starlist[status.index]} </div>
                             </c:when>
                             <c:otherwise>
-                                <div>평점: 평점없음</div>
+                                <div>평점: 0</div>
                             </c:otherwise>
                         </c:choose>
                         <div>가게이름 : ${sysName.store_name}</div>

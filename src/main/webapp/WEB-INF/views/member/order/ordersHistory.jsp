@@ -106,7 +106,7 @@
     <div class="box1">
         <div class="box2">
             <span class="headdeli">배달주문</span>
-            <span class="headdate">${i.order_date}</span>
+            <span class="headdate">${i.formDate}</span>
             <span class="headstatus">${i.order_status}</span>
         </div>
         <div class="box3">

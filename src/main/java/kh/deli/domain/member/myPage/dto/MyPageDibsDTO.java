@@ -16,5 +16,5 @@ public class MyPageDibsDTO {
     private Integer STORE_DELI_TIP;
     private String STORE_DELI_TIME;
     private String STORE_LOGO;
-
+    private Integer avg_star;
 }
