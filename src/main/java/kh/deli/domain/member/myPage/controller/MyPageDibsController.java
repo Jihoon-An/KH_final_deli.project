@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -34,16 +35,22 @@ public class MyPageDibsController {
         return "/member/myPage/dibs";
     }
 
+    @ResponseBody
+    @PostMapping(value = "like")
+    public void insertDibs(int store_seq) throws Exception{
+        
+        System.out.println("컨트롤러 : "+" + "+store_seq);
 
-    @PostMapping("insertDibs")
-    public String insertDibs(DibsDTO dto) throws Exception{
-        myPageDibsService.insertDibs(dto);
-        return "/";
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        Integer result = myPageDibsService.isExistDibs(acc_seq,store_seq);
+        System.out.println("결과 : "+result );
+        if(result==0){
+            System.out.println("추가");
+            myPageDibsService.insertDibs(acc_seq,store_seq);
+        }else {
+            System.out.println("삭제");
+            myPageDibsService.deleteDibs(acc_seq,store_seq);
+        }
     }
 
-    @PostMapping("deleteDibs")
-    public String deleteDibs(DibsDTO dto) throws Exception{
-        myPageDibsService.deleteDibs(dto.getDibs_seq());
-        return "/";
-    }
 }

@@ -16,5 +16,5 @@
 - MemberMain 페이지 아이콘 삽입
 
 ### 22-12-16
-- Homecontroller 코드 정리
+- 내 찜 목록 구현  
 

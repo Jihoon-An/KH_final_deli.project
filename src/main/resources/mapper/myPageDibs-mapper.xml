@@ -27,7 +27,11 @@
     </insert>
 
     <delete id="deleteDibs">
-        delete from dibs where dibs_seq=#{dibs_seq}
+        delete from dibs where acc_seq=#{acc_seq} and store_seq=#{store_seq}
     </delete>
+
+    <select id="isExistDibs" resultType="Integer">
+        select count(*) from dibs where acc_seq=#{acc_seq} and store_seq=#{store_seq}
+    </select>
 
 </mapper>
