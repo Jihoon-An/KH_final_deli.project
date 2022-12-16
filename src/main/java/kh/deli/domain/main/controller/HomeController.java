@@ -30,6 +30,7 @@ public class HomeController {
             int acc_seq = (Integer) session.getAttribute("acc_seq");
             String acc_type = memberMainService.selectType(acc_seq);
 
+            //toMemberMainPage
             if (acc_type.equals("client")) {
                 List<StoreDTO> list = memberMainService.selectAll();
 
@@ -38,6 +39,12 @@ public class HomeController {
                 model.addAttribute("starlist",starlist);
                 model.addAttribute("list", list);
                 return "main/memberMain";
+            }
+
+            //toOwnerMainPage
+            if (acc_type.equals("business")) {
+
+                return "owner/ownerMain";
             }
         }
 
