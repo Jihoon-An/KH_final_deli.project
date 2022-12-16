@@ -23,4 +23,8 @@
         select * from orders where order_seq=#{order_seq}
     </select>
 
+    <select id="selectMenuName" resultType="String">
+        select menu_name from menu where menu_seq=#{menu_seq}
+    </select>
+
 </mapper>
