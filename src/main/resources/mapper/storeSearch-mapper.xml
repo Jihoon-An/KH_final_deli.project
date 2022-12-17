@@ -22,11 +22,15 @@
         STORE_ADD_X,
         STORE_ADD_Y,
         STORE_LOGO,
-<!--        STORE_ORIGIN,-->
-        to_char(STORE_ORIGIN) AS STORE_ORIGIN,
+<!--        to_char(STORE_ORIGIN) AS STORE_ORIGIN,-->
+        STORE_ORIGIN,
         STORE_OPEN,
         STORE_DISPLAY,
-        STORE_DESTINATION
+        STORE_DESTINATION,
+
+        (SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360) AS DISTANCE,
+        (SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS AVERAGE_STARS,
+        (SELECT COUNT(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS COUNT_REVIEW
         FROM
         (SELECT
         STORE_SEQ,
@@ -48,7 +52,7 @@
         FROM
         ADDRESS
         WHERE
-        ACC_SEQ = #{value} AND
+        ACC_SEQ = 49 AND
         ADD_DIVISION = 'basics'
         )
         ) A
@@ -57,9 +61,15 @@
         ON
         A.STORE_SEQ = B.STORE_SEQ
         WHERE
-        ABS((X*X*10000)-(Y*Y*10000)) <![CDATA[
-            <
-        ]]>  ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
+        ABS((X*X*10000)+(Y*Y*10000)) <![CDATA[<]]> ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
+        AND(
+
+        A.STORE_SEQ IN
+        (SELECT M.STORE_SEQ FROM MENU M WHERE M.MENU_NAME LIKE '%SEARCH_TEXT%')
+        OR
+        A.STORE_SEQ IN
+        (SELECT SEC_STORE.STORE_SEQ FROM STORE SEC_STORE WHERE SEC_STORE.STORE_NAME LIKE '%SEARCH_TEXT%' or SEC_STORE.STORE_CATEGORY LIKE '%SEARCH_TEXT%')
+        );
     </select>
 
 </mapper>
