@@ -17,4 +17,5 @@ public class OrderBasketMenuDTO {
     private MenuDTO menu;
     private List<MenuOptionDTO> options;
     private Integer count;
+    private Integer price;
 }
