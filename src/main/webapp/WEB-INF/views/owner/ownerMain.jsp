@@ -15,12 +15,15 @@
 <main id="ownerMain">
 
     <div class="container">
-        <div>
-            메인페이지
-        </div>
-        <div>
-            <a href="/account/logout">[유저+오너]로그아웃</a><br>
-            <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
+        <div class="leftBox"> </div>
+        <div class="rightbox">
+            <div>
+                메인페이지
+            </div>
+            <div>
+                <a href="/account/logout">[유저+오너]로그아웃</a><br>
+                <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
+            </div>
         </div>
     </div>
 
