@@ -1,6 +1,6 @@
 package kh.deli.domain.member.myPage.mapper;
 
-import kh.deli.domain.member.myPage.dto.MyPageReviewDTO;
+import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
@@ -29,7 +29,7 @@ public interface MyPageReviewMapper {
 
     double getReviewAvg(int store_seq);
 
-    List<MyPageReviewDTO> getReviews();
+    List<StoreReviewDTO> getReviews();
 
 
 }
