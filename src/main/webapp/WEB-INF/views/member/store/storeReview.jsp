@@ -60,19 +60,23 @@
 
     <div class="reviews">
         <c:choose>
-            <c:when test="${not empty myPageReviewList}">
-                <c:forEach var="i" items="${myPageReviewList}">
+            <c:when test="${not empty storeReviewList}">
+                <c:forEach var="i" items="${storeReviewList}">
                     <div id="nickname">${i.mem_nick}</div>
                     <div id="writeDate">${i.rev_writedate}</div>
                     <div id="reviewStar">${i.rev_star}</div>
-                    <div id="reviewImgs"></div>
+                    <c:forEach var="k" items="${i.rev_sysname}">
+                        <div id="reviewImgs">${k}</div>
+                    </c:forEach>
                     <div id="revieContent">${i.rev_content}</div>
-                    <div id="orderList"></div>
+                    <c:forEach var="l" items="${i.menu_list}">
+                        <div id="reviewImgs">${l}</div>
+                    </c:forEach>
+                    <br>
                 </c:forEach>
             </c:when>
         </c:choose>
     </div>
-
 </div>
 </body>
 </html>

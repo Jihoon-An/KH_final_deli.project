@@ -1,4 +1,4 @@
-package kh.deli.domain.member.myPage.dto;
+package kh.deli.domain.member.store.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyPageReviewDTO {
+public class StoreReviewDTO {
 
     private String mem_nick;
     private String rev_writedate;

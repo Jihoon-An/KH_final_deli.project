@@ -24,17 +24,11 @@ public class MenuAddController {
 
     @RequestMapping("")
     public String toMenuAdd(){
-
-
-
         return "/owner/menuAdd";
     }
 
     @RequestMapping("/menuAdd")
     public String menuAdd(MenuDTO dto, MultipartFile file) throws IOException {
-
-
-
 
         System.out.println(dto.getMenu_group());
         System.out.println(dto.getStore_seq());
