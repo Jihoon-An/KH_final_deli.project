@@ -16,7 +16,8 @@
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
-
+    <!--sweet alert2-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -27,6 +28,34 @@
     <hr>
     <input type="text" placeholder="이메일 주소 입력해라" name="acc_email"><br>
     <p>이메일 양식에 맞게 썼는지 + 중복 확인 중입니다.</p>
+
+
+    <%--이메일 입력--%>
+    <div class="input_title row"><h5>이메일</h5></div>
+    <div class="row">
+        <div class="col-3">
+            <input class="input_data" id="email" name="acc_email">
+        </div>
+        <div class="col-3">
+            <button class="certi_btn" type="button" id="email_btn">인증</button>
+        </div>
+    </div>
+    <%--이메일 인증--%>
+    <div id="email_confirm_table">
+        <div class="row">
+            <div class="col-3">
+                <input class="input_data" id="email_confirm_input"/><span id="confirm_count"></span>
+            </div>
+            <div class="col-3">
+                <button class="confirm_btn" id="email_confirm_btn">확인</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <input type="text" placeholder="비밀번호 입력해라"><br>
     <p>비밀번호 양식에 맞게 썼는지 확인 중입니다.</p>
     <input type="password" placeholder="비밀번호 동일하게 입력해라" name="acc_pw"><br>
@@ -54,11 +83,155 @@
     <br>
     <input type="hidden" id="add_x" name="add_x">
     <input type="hidden" id="add_y" name="add_y">
-    <button type="submit">가입 완료</button>
+
+    <button type="button">취소 하기</button> <button type="submit">가입 완료</button>
 
 </form>
 
 <script>
+    function countdown( elementName, minutes, seconds )
+    {
+        var element, endTime, hours, mins, msLeft, time;
+
+        function twoDigits( n )
+        {
+            return (n <= 9 ? "0" + n : n);
+        }
+
+        function updateTimer()
+        {
+            msLeft = endTime - (+new Date);
+            if ( msLeft < 1000 ) {
+                element.innerHTML = "시간초과";
+            } else {
+                time = new Date( msLeft );
+                hours = time.getUTCHours();
+                mins = time.getUTCMinutes();
+                element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+                setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+            }
+        }
+
+        element = document.getElementById( elementName );
+        endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+        updateTimer();
+    }
+
+    $("#email_btn").on("click", function () {
+        $.ajax({
+            url: "/ownerSignUp/dupleCheck",
+            type: "post",
+            data: {email: $("#email").val()}
+        }).done(function (result) {
+            if (result) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '실패',
+                    text: '중복된 이메일입니다',
+                });
+                $("#email").val("").focus();
+            } else {
+                Swal.fire('가입 가능한 이메일입니다.');
+                // 이메일 보내기
+                confirm_num = Math.floor(Math.random()*1000000)
+                $.ajax({
+                    url: "/mailCerti",
+                    type: "post",
+                    data: {
+                        address: $("#email").val(),
+                        title: "Deli email confirm",
+                        message: "<h1>"+confirm_num+"</h1>"
+                    }
+                });
+                $("#email_confirm_table").css("display", "block");
+                countdown("confirm_count", 3, 0);
+            }
+        });
+    });
+
+
+
+
+    $("#email_confirm_btn").click(function () {
+        if ($("#email_confirm_input").val() == confirm_num && $("#confirm_count").html() != "시간초과") {
+            $("#email_confirm_table").css("display", "none");
+            email_ok = true;
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: '땡!',
+                text: '일치하지 않습니다.',
+            })
+            email_ok = false;
+        }
+    });
+
+    $("#submit_btn").click(function () {
+        if (!email_ok) {
+            Swal.fire({
+                icon: 'error',
+                title: '옳바르지 않은 입력입니다.',
+                text: '이메일을 다시 확인해주세요.',
+            });
+            $("#email").focus();
+            return;
+        }
+        if (!pw_ok) {
+            Swal.fire({
+                icon: 'error',
+                title: '옳바르지 않은 입력입니다.',
+                text: '비밀번호를 다시 확인해주세요.',
+            });
+            $("#pw1").focus();
+            return;
+        }
+        if (!name_ok) {
+            Swal.fire({
+                icon: 'error',
+                title: '옳바르지 않은 입력입니다.',
+                text: '이름을 다시 확인해주세요.',
+            });
+            $("#name").focus();
+            return;
+        }
+        if (!bs_num_ok) {
+            Swal.fire({
+                icon: 'error',
+                title: '옳바르지 않은 입력입니다.',
+                text: '사업자 번호를 다시 확인해주세요.',
+            });
+            $("#num").focus();
+            return;
+        }
+        if (!bs_card_ok) {
+            Swal.fire({
+                icon: 'error',
+                title: '옳바르지 않은 입력입니다.',
+                text: '사업증을 다시 확인해주세요.',
+            });
+            $("#num").focus();
+            return;
+        }
+        $("#signup_frm").submit();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $("#tel_btn").on("click", function () {
         $.ajax({
