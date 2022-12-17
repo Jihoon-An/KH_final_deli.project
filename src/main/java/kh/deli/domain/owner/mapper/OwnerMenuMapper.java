@@ -1,4 +1,4 @@
-package kh.deli.domain.member.store.mapper;
+package kh.deli.domain.owner.mapper;
 
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.StoreDTO;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface StoreMenuMapper {
+public interface OwnerMenuMapper {
 
     public void insertMenu(MenuDTO dto);
     List<String> menuInfo(int store_seq);
