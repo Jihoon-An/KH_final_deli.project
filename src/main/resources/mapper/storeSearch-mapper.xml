@@ -5,7 +5,33 @@
 
 <mapper namespace="kh.deli.domain.member.store.mapper.StoreSearchMapper">
 
-    <select id="selectDistanceByAccSeq" resultType="map">
+    <resultMap id="selectDistanceByAccSeqResult" type="HashMap">
+        <result property="STORE_SEQ" column="STORE_SEQ" />
+        <result property="STORE_NAME" column="STORE_NAME" />
+        <result property="STORE_CATEGORY" column="STORE_CATEGORY" />
+        <result property="STORE_PHONE" column="STORE_PHONE" />
+        <result property="STORE_INTRO" column="STORE_INTRO" />
+        <result property="STORE_MIN_PRICE" column="STORE_MIN_PRICE" />
+        <result property="STORE_DELI_TIP" column="STORE_DELI_TIP" />
+        <result property="STORE_DELI_TIME" column="STORE_DELI_TIME" />
+        <result property="STORE_BSNS_HOURS" column="STORE_BSNS_HOURS" />
+        <result property="STORE_CLOSE_DAY" column="STORE_CLOSE_DAY" />
+        <result property="STORE_ADD_DETAIL1" column="STORE_ADD_DETAIL1" />
+        <result property="STORE_ADD_DETAIL2" column="STORE_ADD_DETAIL2" />
+        <result property="STORE_ADD_X" column="STORE_ADD_X" />
+        <result property="STORE_ADD_Y" column="STORE_ADD_Y" />
+        <result property="STORE_LOGO" column="STORE_LOGO" />
+        <result property="STORE_ORIGIN" column="STORE_ORIGIN" jdbcType="NCLOB" javaType="java.lang.String" />
+        <result property="STORE_OPEN" column="STORE_OPEN" />
+        <result property="STORE_DISPLAY" column="STORE_DISPLAY" />
+        <result property="STORE_DISTANCE" column="STORE_DISTANCE" />
+        <result property="STORE_DESTINATION" column="STORE_DESTINATION" />
+        <result property="OWNER_SEQ" column="OWNER_SEQ" />
+        <result property="DISTANCE" column="DISTANCE" />
+        <result property="AVERAGE_STARS" column="AVERAGE_STARS" />
+        <result property="COUNT_REVIEW" column="COUNT_REVIEW" />
+    </resultMap>
+    <select id="selectDistanceByAccSeq" parameterType="java.util.HashMap" resultMap="selectDistanceByAccSeqResult">
         SELECT
         A.STORE_SEQ AS STORE_SEQ,
         STORE_NAME,
@@ -22,13 +48,12 @@
         STORE_ADD_X,
         STORE_ADD_Y,
         STORE_LOGO,
-<!--        to_char(STORE_ORIGIN) AS STORE_ORIGIN,-->
+        <!--        to_char(STORE_ORIGIN) AS STORE_ORIGIN,-->
         STORE_ORIGIN,
         STORE_OPEN,
         STORE_DISPLAY,
         STORE_DESTINATION,
-
-        (SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360) AS DISTANCE,
+        ROUND((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360)) AS DISTANCE,
         (SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS AVERAGE_STARS,
         (SELECT COUNT(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS COUNT_REVIEW
         FROM
@@ -52,7 +77,7 @@
         FROM
         ADDRESS
         WHERE
-        ACC_SEQ = 49 AND
+        ACC_SEQ = #{acc_seq} AND
         ADD_DIVISION = 'basics'
         )
         ) A
@@ -63,13 +88,20 @@
         WHERE
         ABS((X*X*10000)+(Y*Y*10000)) <![CDATA[<]]> ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
         AND(
-
         A.STORE_SEQ IN
-        (SELECT M.STORE_SEQ FROM MENU M WHERE M.MENU_NAME LIKE '%SEARCH_TEXT%')
+        (SELECT M.STORE_SEQ FROM MENU M WHERE M.MENU_NAME LIKE '%'||#{SEARCH_TEXT, jdbcType=VARCHAR}||'%')
         OR
         A.STORE_SEQ IN
-        (SELECT SEC_STORE.STORE_SEQ FROM STORE SEC_STORE WHERE SEC_STORE.STORE_NAME LIKE '%SEARCH_TEXT%' or SEC_STORE.STORE_CATEGORY LIKE '%SEARCH_TEXT%')
-        );
+        (SELECT SEC_STORE.STORE_SEQ FROM STORE SEC_STORE
+        WHERE SEC_STORE.STORE_NAME LIKE '%'||#{SEARCH_TEXT, jdbcType=VARCHAR}||'%'
+        or SEC_STORE.STORE_CATEGORY LIKE '%'||#{SEARCH_TEXT, jdbcType=VARCHAR}||'%')
+        )
     </select>
+
+    <select id="selectMenuListByStoreSeq" resultType="MenuDTO" parameterType="MenuDTO">
+        select * from menu where store_seq=#{value}
+    </select>
+
+
 
 </mapper>
