@@ -21,8 +21,6 @@ public class OwnerStoreService {
         return storeMapper.storeInfo(store_seq);
     }
 
-    public List<StoreDTO> menuOrigin() throws Exception{
-        return storeMapper.menuOrigin();
-    }
+
 
 }

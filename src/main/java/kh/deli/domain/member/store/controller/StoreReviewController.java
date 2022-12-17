@@ -27,7 +27,7 @@ public class StoreReviewController {
         int store_seq=16;
         int acc_seq=9; //사업자 acc_seq
         StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq);
-        MemberDTO memberDTO =
+//      MemberDTO memberDTO =
 
         int storeReviewCount = memberReviewService.getReviewCount(store_seq);
         double storeReviewAvg=memberReviewService.getReviewAvg(store_seq);

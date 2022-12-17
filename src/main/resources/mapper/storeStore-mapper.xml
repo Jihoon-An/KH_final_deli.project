@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreStoreMapper">
+    <insert id="insertStore" parameterType="kh.deli.global.entity.StoreDTO">
+        insert into store values(
+        store_seq.nextval,
+        #{store_name},
+        #{store_category},
+        #{store_phone},
+        #{store_intro},
+        #{store_min_price},
+        #{store_deli_tip},
+        #{store_deli_time},
+        #{store_bsns_hours},
+        #{store_close_day},
+        #{store_add_detail1},
+        #{store_add_detail2},
+        #{store_add_x},
+        #{store_add_y},
+        #{store_logo, jdbcType=VARCHAR},
+        #{store_origin},
+        #{store_open},
+        #{store_display},
+        #{store_destination}
+        )
+    </insert>
+
+    <select id="storeInfo" resultType="StoreDTO">
+        select
+        *
+        from store
+        where store_seq=#{store_seq}
+    </select>
+
+    <select id="getReviewCount" resultType="int">
+        select
+        count(*)
+        from store
+        where store_seq=#{store_seq}
+    </select>
+
+    <select id="menuOrigin" resultType="StoreDTO">
+        select store_origin from store,menu where menu.store_seq=store.store_seq
+    </select>
+
+</mapper>
