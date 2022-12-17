@@ -10,6 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
+
     <title>adminReviewMng</title>
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -21,6 +22,7 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/admin/ReviewMng.css">
+
 </head>
 <body>
 <main id="review_mng">
@@ -55,13 +57,11 @@
 
                     <c:choose>
                         <c:when test="${sysName.rev_modifieddate!=null}">
-
                             <td class="rev_modified_date">
                                 <fmt:parseDate value="${sysName.rev_modifieddate}" var="registered"
                                                pattern="yyyy-MM-dd HH:mm:ss"/>
                                 <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
                                     <%--  ${i.rev_modified_date}--%>
-
                                 <input id="formed_rev_modified_date" class="formed_rev_modified_date"
                                        type="hidden" value=<fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
                             </td>
@@ -94,8 +94,7 @@
                 <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
                 <%--            </div>--%>
                 <div id="reviewField">리뷰 내용</div>
-                <div id="review_content" class="review_content">
-                </div>
+                <div id="review_content" class="review_content"></div>
                 <div>
                     작성일자<input
                         type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
@@ -104,7 +103,6 @@
                     수정일자<input
                         type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
                 </div>
-
                 <div>
                     리뷰번호<input
                         type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
@@ -112,7 +110,6 @@
 
                 <button type="button">비공개</button>
                 <button type="button" id="deleteReview">삭제</button>
-
 
             </div>
         </div>

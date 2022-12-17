@@ -1,6 +1,7 @@
 package kh.deli.domain.member.store.mapper;
 
 import kh.deli.global.entity.MenuDTO;
+import kh.deli.global.entity.OwnerDTO;
 import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -16,9 +17,9 @@ public interface StoreStoreMapper {
 
     StoreDTO storeInfo(int store_seq);
 
-    int getReviewCount(int store_seq);
 
     public List<StoreDTO> menuOrigin();
+
 
 
 }

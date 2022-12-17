@@ -1,9 +1,12 @@
 $('#myTable').DataTable();
 
-
-
-$("#myTable").on("mouseover", 'tr', ()=>{
-    $("tr").on("click", function () {
+trClickEvent();
+//페이지 버튼을 눌렀을때 다시 script 돌아가게
+$(".paginate_button").click(function (){
+    trClickEvent();
+});
+function trClickEvent() {
+    $("tr").click(function () {
         $("#frm").find(".writer").val(
             $(this).find(".mem_name").html()
         );
@@ -16,11 +19,11 @@ $("#myTable").on("mouseover", 'tr', ()=>{
             $(this).find(".rev_content").html()
         );
 
-        if(!$(this).find(".rev_content").html()){
+        if (!$(this).find(".rev_content").html()) {
             $("#review_content").html(
                 "리뷰 내용 x"
             );
-        }else {
+        } else {
             $("#review_content").html(
                 $(this).find(".rev_content").html()
             );
@@ -31,11 +34,11 @@ $("#myTable").on("mouseover", 'tr', ()=>{
         );
 
         // $(this).closest("tr").find(".rev_modified_date").val()
-        if( $(this).find(".rev_modified_date").val()!=""){
+        if ($(this).find(".rev_modified_date").val() != "") {
             $("#modified_date").val(
                 $(".formed_rev_modified_date").val()
             );
-        }else{
+        } else {
             $("#modified_date").val("");
         }
 
@@ -45,7 +48,7 @@ $("#myTable").on("mouseover", 'tr', ()=>{
         $(".modal").fadeIn();
 
     });
-})
+};
 
 // $(".mem_name").on("click", function () {
 //     $("#frm").find(".writer").val(
@@ -179,7 +182,6 @@ $("#myTable").on("mouseover", 'tr', ()=>{
 //     $(".modal").fadeIn();
 //
 // });
-
 $(".closeModal").click(function () {
     $(".modal").fadeOut();
 });
