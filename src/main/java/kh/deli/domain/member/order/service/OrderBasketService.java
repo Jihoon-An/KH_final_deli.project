@@ -2,6 +2,7 @@ package kh.deli.domain.member.order.service;
 
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
+import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,20 +22,30 @@ public class OrderBasketService {
 
         OrderBasketMenuDTO menu1 = new OrderBasketMenuDTO();
         OrderBasketMenuDTO menu2 = new OrderBasketMenuDTO();
+        OrderBasketMenuDTO menu3 = new OrderBasketMenuDTO();
 
         menu1.setMenu(menuService.findBySeq(5));
-        menu1.setOptions(new ArrayList<MenuOptionDTO>(List.of(optionService.findBySeq(1))));
+        menu1.setOptions(optionService.findByMenuSeq(5));
         menu1.setCount(3);
+        menu1.setPrice(this.getPrice(3, optionService.findByMenuSeq(5), menuService.findBySeq(5)));
 
         menuList.add(menu1);
 
         menu2.setMenu(menuService.findBySeq(4));
-        menu2.setOptions(new ArrayList<MenuOptionDTO>(List.of(optionService.findBySeq(2))));
+        menu2.setOptions(optionService.findByMenuSeq(4));
         menu2.setCount(1);
+        menu2.setPrice(this.getPrice(1, optionService.findByMenuSeq(4), menuService.findBySeq(4)));
 
         menuList.add(menu2);
 
-        //total price 계산
+        menu3.setMenu(menuService.findBySeq(4));
+        menu3.setOptions(optionService.findByMenuSeq(4));
+        menu3.setCount(7);
+        menu3.setPrice(this.getPrice(7, optionService.findByMenuSeq(4), menuService.findBySeq(4)));
+
+        menuList.add(menu3);
+
+        // total price 계산
         int total_price = this.getTotalPrice(menuList);
 
         OrderBasketDTO basket = new OrderBasketDTO();
@@ -44,6 +55,23 @@ public class OrderBasketService {
         basket.setTotalPrice(total_price);
 
         return basket;
+    }
+
+    public int getPrice(int count, List<MenuOptionDTO> menuOptionDTOList, MenuDTO menuDTO) {
+        int price = menuDTO.getMenu_price();
+        for (MenuOptionDTO option : menuOptionDTOList) {
+            price += option.getOption_price();
+        }
+        return price * count;
+    }
+
+    public int getTotalCount(List<OrderBasketMenuDTO> orderBasketMenuDTOList) {
+        int totalCount = 0;
+
+        for (OrderBasketMenuDTO menu : orderBasketMenuDTOList) {
+            totalCount += menu.getCount();
+        }
+        return totalCount;
     }
 
     public int getTotalPrice(List<OrderBasketMenuDTO> menuList) {

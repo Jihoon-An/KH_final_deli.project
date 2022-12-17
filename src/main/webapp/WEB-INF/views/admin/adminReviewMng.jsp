@@ -115,11 +115,11 @@
             </div>
 
             <button type="button">비공개</button>
-            <button id="deleteReview" type="button">삭제</button>
+            <button type="button" id="deleteReview" type="button">삭제</button>
         </div>
     </div>
 </form>
 
-<script src="/resources/js/admin/adminReviewMng.js"></script>
+<script src="/resources/js/admin/reviewMng.js"></script>
 </body>
 </html>
