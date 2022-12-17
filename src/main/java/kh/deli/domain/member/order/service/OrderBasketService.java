@@ -65,6 +65,15 @@ public class OrderBasketService {
         return price * count;
     }
 
+    public int getTotalCount(List<OrderBasketMenuDTO> orderBasketMenuDTOList) {
+        int totalCount = 0;
+
+        for (OrderBasketMenuDTO menu : orderBasketMenuDTOList) {
+            totalCount += menu.getCount();
+        }
+        return totalCount;
+    }
+
     public int getTotalPrice(List<OrderBasketMenuDTO> menuList) {
 
         int totalPrice = 0;

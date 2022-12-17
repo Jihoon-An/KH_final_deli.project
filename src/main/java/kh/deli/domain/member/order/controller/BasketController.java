@@ -26,9 +26,13 @@ public class BasketController {
         StoreDTO storeDTO = sampleBasket.getStore();
         List<OrderBasketMenuDTO> menuList = sampleBasket.getMenuList();
         int totalPrice = sampleBasket.getTotalPrice();
+        int deliveryTip = sampleBasket.getStore().getStore_deli_tip();
+        int totalCount = basketService.getTotalCount(sampleBasket.getMenuList());
 
         model.addAttribute("basket", sampleBasket);
         model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("payAmount", (totalPrice + deliveryTip));
+        model.addAttribute("totalCount", totalCount);
 
 //        Gson gson = new Gson();
 //        model.addAttribute("basketToJson", gson.toJson(sampleBasket));

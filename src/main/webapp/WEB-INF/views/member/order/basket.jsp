@@ -32,7 +32,7 @@
         </div>
         상호명 : ${basket.store.store_name}<br>
         로고 : ${basket.store.store_name}<br>
-        배달팁 : ${basket.store.store_deli_tip}원<br>
+        <hr>
         <hr>
         <c:forEach var="menuList" items="${basket.menuList}">
             <div class="menuBox">
@@ -57,17 +57,29 @@
                     <button class="minus">-</button>
                     수량 : <span class="countSpan">${menuList.count}</span>개
                     <button class="plus">+</button>
-                    <hr>
                 </div>
+                <button class="deleteBtn">X</button>
+                <hr>
             </div>
         </c:forEach>
-        Total : <span id="totalPrice">${totalPrice}</span>원
-
+        <hr>
+        총 주문금액 : <span id="totalPriceSpan">${totalPrice}</span>원<br>
+        배달팁 : <span id="deliTipSpan">${basket.store.store_deli_tip}</span>원
+        <hr>
+        결제예정금액 : <span id="payAmountSpan">${payAmount}</span>원
 
         <div class="buttonBox">
-            <a href="/">
-                <button>결제</button>
-            </a>
+            <form id="payment">
+                <input type="hidden" id="payAmount" name="payAmount" value="">
+
+                <a href="#">
+                    <button type="button" id="pay">
+                        <span id="countPB">${totalCount}</span>
+                        배달 주문하기
+                        <span id="totalPB">${payAmount}</span>원
+                    </button>
+                </a>
+            </form>
         </div>
 
     </div>
