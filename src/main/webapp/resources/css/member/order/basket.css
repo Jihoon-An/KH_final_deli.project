@@ -1,9 +1,11 @@
 #basket *{box-sizing: border-box;}
 #basket .container{
     width: 375px;
-    height: 800px;
+    /*height: 800px;*/
+    height: fit-content;
     border: 1px solid gray;
     margin: auto;
+    padding: 10px;
 }
 #basket .topBox{
     width: 100%;
@@ -32,9 +34,7 @@
 #basket .buttonBox{
     width: 350px;
     height: 35px;
-    float: left;
-    margin-left: 10px;
-    margin-top: 330px;
+    margin-top: 30px;
 }
 #basket .buttonBox button{
     width: 100%;

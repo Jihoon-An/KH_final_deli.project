@@ -5,6 +5,8 @@ import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface StoreStoreMapper {
@@ -14,7 +16,9 @@ public interface StoreStoreMapper {
 
     StoreDTO storeInfo(int store_seq);
 
-    MenuDTO menuInfo(int store_seq);
+    int getReviewCount(int store_seq);
+
+    public List<StoreDTO> menuOrigin();
 
 
 }

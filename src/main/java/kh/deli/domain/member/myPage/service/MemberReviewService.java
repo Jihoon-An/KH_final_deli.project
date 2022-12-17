@@ -1,6 +1,7 @@
 package kh.deli.domain.member.myPage.service;
 
 import com.google.gson.Gson;
+import kh.deli.domain.member.myPage.dto.MyPageReviewDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageReviewMapper;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
@@ -17,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MemberReviewService {
 
-    private final MyPageReviewMapper memberReviewFormMapper;
+    private final MyPageReviewMapper MyPageReviewMapper;
 
     private final Gson gson;
 
@@ -28,19 +29,33 @@ public class MemberReviewService {
 
         dto.setRev_sysname(gson.toJson(sysNameList));
 
-        memberReviewFormMapper.reviewInsert(dto);
+        MyPageReviewMapper.reviewInsert(dto);
     }
 
     public OrdersDTO selectByOrderSeq(int order_seq) throws Exception {
-        return memberReviewFormMapper.selectByOrderSeq(order_seq);
+        return MyPageReviewMapper.selectByOrderSeq(order_seq);
     }
 
     public ReviewDTO selectByReviewSeq(int rev_seq) throws Exception {
-        return memberReviewFormMapper.selectByReviewSeq(rev_seq);
+        return MyPageReviewMapper.selectByReviewSeq(rev_seq);
+    }
+
+    public int getReviewCount(int store_seq)throws Exception{
+        return MyPageReviewMapper.getReviewCount(store_seq);
     }
 
     public StoreDTO selectByStoreSeq(int store_seq) throws Exception {
-        return memberReviewFormMapper.selectByStoreSeq(store_seq);
+        return MyPageReviewMapper.selectByStoreSeq(store_seq);
+    }
+
+    //별점
+    public double getReviewAvg(int store_seq) throws Exception{
+        return MyPageReviewMapper.getReviewAvg(store_seq);
+    }
+
+    //리뷰출력
+    public List<MyPageReviewDTO> getReviews() throws Exception{
+        return MyPageReviewMapper.getReviews();
     }
 
 }

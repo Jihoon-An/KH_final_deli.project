@@ -3,15 +3,14 @@ package kh.deli.domain.member.myPage.controller;
 import kh.deli.domain.member.myPage.dto.MyPageDibsDTO;
 import kh.deli.domain.member.myPage.service.MyPageDibsService;
 import kh.deli.global.entity.DibsDTO;
-import kh.deli.global.entity.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,29 +30,27 @@ public class MyPageDibsController {
 
         List<MyPageDibsDTO> list = myPageDibsService.select(acc_seq);
 
-        List<Integer> starlist=new ArrayList<>();
-        for(int i=0;i<list.size();i++){
-            int store_seq=list.get(i).getSTORE_SEQ();
-            Integer value = myPageDibsService.selectStar(store_seq);
-            starlist.add(value);
-        }
-
-        model.addAttribute("starlist",starlist);
         model.addAttribute("list",list);
 
         return "/member/myPage/dibs";
     }
 
+    @ResponseBody
+    @PostMapping(value = "like")
+    public void insertDibs(int store_seq) throws Exception{
+        
+        System.out.println("컨트롤러 : "+" + "+store_seq);
 
-    @PostMapping("insertDibs")
-    public String insertDibs(DibsDTO dto) throws Exception{
-        myPageDibsService.insertDibs(dto);
-        return "/";
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        Integer result = myPageDibsService.isExistDibs(acc_seq,store_seq);
+        System.out.println("결과 : "+result );
+        if(result==0){
+            System.out.println("추가");
+            myPageDibsService.insertDibs(acc_seq,store_seq);
+        }else {
+            System.out.println("삭제");
+            myPageDibsService.deleteDibs(acc_seq,store_seq);
+        }
     }
 
-    @PostMapping("deleteDibs")
-    public String deleteDibs(DibsDTO dto) throws Exception{
-        myPageDibsService.deleteDibs(dto.getDibs_seq());
-        return "/";
-    }
 }
