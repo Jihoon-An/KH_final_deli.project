@@ -4,18 +4,17 @@ package kh.deli.domain.member.store.service;
 
 import kh.deli.domain.member.store.mapper.StoreMenuMapper;
 import kh.deli.global.entity.MenuDTO;
-import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import kh.deli.global.util.FileUtil;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -55,7 +54,10 @@ public class StoreMenuService {
     }
 
     public List<MenuDTO> menuList(String menu_group, int store_seq) throws Exception {
-        return storeMenuMapper.menuList(menu_group, store_seq);
+        Map<String, Object> param = new HashMap<>();
+        param.put("menu_group", menu_group);
+        param.put("store_seq", store_seq);
+        return storeMenuMapper.menuList(param);
     }
 
 }
