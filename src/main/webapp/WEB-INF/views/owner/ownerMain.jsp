@@ -19,7 +19,31 @@
         <div class="rightbox">
             <div>
                 메인페이지
+                <c:choose>
+                    <c:when test="${not empty list}">
+                        <c:forEach var="i" items="${list}">
+                            <hr>
+                            <div>사업자회원번호 : ${i.owner_seq}</div>
+                            <div>식당번호 : ${i.store_seq}</div>
+                            <div>식당명 : ${i.store_name}</div>
+                        </c:forEach>
+                    </c:when>
+                </c:choose>
             </div>
+            <hr>
+            <div class="infoBox">
+                <div>하루 총 매출액 : </div>
+                <c:choose>
+                    <c:when test="${not empty list}">
+                        <c:forEach var="i" items="${list}">
+                            <hr>
+                            <div>식당이름 : </div>
+                            <div>매출액 : </div>
+                        </c:forEach>
+                    </c:when>
+                </c:choose>
+            </div>
+            <hr>
             <div>
                 <a href="/account/logout">[유저+오너]로그아웃</a><br>
                 <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
@@ -27,7 +51,7 @@
         </div>
     </div>
 
-    <%--    <script src="/resources/js/"></script>--%>
+        <script src="/resources/js/owner/ownerMain.js"></script>
 </main>
 </body>
 </html>

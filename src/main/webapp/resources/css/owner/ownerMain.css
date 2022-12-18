@@ -1,13 +1,17 @@
 #ownerMain *{box-sizing: border-box;}
-#ownerMain div{border:1px solid black;}
-#ownerMain .leftbox{
-    float: left;
-    width: 20%;
-    border: 1px solid #3e4462;
-    height: 1000px;
-}
+/*#ownerMain div{border:1px solid black;}*/
+/*#ownerMain .leftbox{*/
+/*    float: left;*/
+/*    width: 20%;*/
+/*    border: 1px solid #3e4462;*/
+/*    height: 1000px;*/
+/*}*/
 
-#ownerMain .rightBox{
-    display: inline;
-    width: 80%;
+/*#ownerMain .rightBox{*/
+/*    display: inline;*/
+/*    width: 80%;*/
+/*}*/
+
+#ownerMain .infoBox{
+    background-color: cadetblue;
 }
