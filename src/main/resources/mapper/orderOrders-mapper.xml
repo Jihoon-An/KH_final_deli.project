@@ -39,6 +39,9 @@
 
     <select id="storeInfo" resultType="StoreInfoDTO">
         select
+            store_phone,
+            store_add_detail1,
+            store_add_detail2,
             store_name,
             store_deli_time,
             orders.order_seq,

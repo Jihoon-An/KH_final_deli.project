@@ -1,12 +1,15 @@
 package kh.deli.domain.member.store.controller;
 
 import kh.deli.domain.member.store.service.StoreSearchService;
+import kh.deli.global.entity.MenuDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,22 +23,44 @@ public class StoreSearchController {
     private final StoreSearchService storeSearchService;
 
     @RequestMapping("")
-    public String selectDistanceByAccSeq(Model model) throws Exception {
+    public String selectDistanceByAccSeq(Model model) {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-        List<Map<String, Object>> storeList = storeSearchService.selectDistanceByAccSeq(acc_seq);
-//        for (int i = 0; i < storeList.size() ; i ++){
-//            if( storeList.get(i).get("STORE_ORIGIN") instanceof java.sql.NClob ) {
-//                StringBuffer strOut = new StringBuffer();
-//                String str = "";
-//                NClob nClob = (java.sql.NClob)storeList.get(i).get("STORE_ORIGIN");
-//                BufferedReader br = new BufferedReader(nClob.getCharacterStream());
-//                while ((str = br.readLine()) != null) {
-//                    strOut.append(str);
-//                }
-//                br.close();
-//            }
-//        }
+        List<Map<String, Object>> storeList = storeSearchService.selectDistanceByAccSeq(acc_seq, "");
+        List<Map<String, Object>> menuList = new ArrayList();
+
+        for (int i = 0; i < storeList.size(); i++) {
+            Object STORE_SEQ = storeList.get(i).get("STORE_SEQ");
+            int int_STORE_SEQ = Integer.parseInt(String.valueOf(STORE_SEQ));
+            List<MenuDTO> menuOne = storeSearchService.selectMenuListByStoreSeq(int_STORE_SEQ);
+            for (int num = 0; num < menuOne.size(); num++) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("menu_name", menuOne.get(num).getMenu_name());
+                menuList.add(map);
+            }
+        }
+
         model.addAttribute("store_list", storeList);
+        model.addAttribute("menu_list", menuList);
+        return "member/store/storeSearch";
+    }
+
+    @RequestMapping("search")
+    public String search(Model model, String SEARCH_TEXT) {
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        List<Map<String, Object>> storeList = storeSearchService.selectDistanceByAccSeq(acc_seq, SEARCH_TEXT);
+        List<Map<String, Object>> menuList = new ArrayList();
+        for (int i = 0; i < storeList.size(); i++) {
+            Object STORE_SEQ = storeList.get(i).get("STORE_SEQ");
+            int int_STORE_SEQ = Integer.parseInt(String.valueOf(STORE_SEQ));
+            List<MenuDTO> menuOne = storeSearchService.selectMenuListByStoreSeq(int_STORE_SEQ);
+            for (int num = 0; num < menuOne.size(); num++) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("menu_name", menuOne.get(num).getMenu_name());
+                menuList.add(map);
+            }
+        }
+        model.addAttribute("store_list", storeList);
+        model.addAttribute("menu_list", menuList);
         return "member/store/storeSearch";
     }
 

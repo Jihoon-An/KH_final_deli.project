@@ -21,11 +21,10 @@ public class MenuAddController {
 
     private final HttpSession session;
 
-    private  final OwnerMenuService storeMenuService;
+    private  final OwnerMenuService ownerMenuService;
 
     @RequestMapping("")
     public String toMenuAdd(){
-
 
 
         return "/owner/menuAdd2";
@@ -47,8 +46,13 @@ public class MenuAddController {
 //
 //        return "redirect:/";
 //    }
+
+
+    
+
     @RequestMapping("/menuAdd")
     public String menuAdd(MenuDTO menuDTO, MenuOptionDTO menuOptionDTO, MultipartFile file) throws IOException {
+
 
 
 
@@ -59,7 +63,14 @@ public class MenuAddController {
 //        System.out.println(menu.getMenu_num());
 //        System.out.println(menu.getMenu_img());
 
-        storeMenuService.insertMenu(menuDTO,menuOptionDTO, file);
+        System.out.println(menuDTO.getMenu_group());
+        System.out.println(menuDTO.getStore_seq());
+        System.out.println(menuDTO.getMenu_sold_out());
+        System.out.println(menuDTO.getMenu_num());
+        System.out.println(menuDTO.getMenu_img());
+
+
+        ownerMenuService.insertMenu(menuDTO,menuOptionDTO, file);
 
         return "redirect:/";
     }
