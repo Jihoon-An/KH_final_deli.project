@@ -17,6 +17,7 @@
     </script>
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+
     <link rel="stylesheet" href=" /resources/css/member/myPage/memberInfo.css" type="text/css">
 
 </head>
@@ -31,7 +32,7 @@
                 <div class="topLeftBox">
                     <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
                 </div>
-                <div class="topRightBox">
+
                     <button>저장</button>
                 </div>
             </div>
