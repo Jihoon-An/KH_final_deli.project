@@ -2,7 +2,9 @@ package kh.deli.domain.owner.service;
 
 
 import kh.deli.domain.owner.mapper.OwnerMenuMapper;
+import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.MenuDTO;
+import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,12 @@ public class OwnerMenuService {
 
     private final HttpSession session;
     @Autowired
-    private OwnerMenuMapper storeMenuMapper;
+    private OwnerMenuMapper ownerMenuMapperr;
 
 
-    public void insertMenu(MenuDTO menu, MultipartFile file) throws IOException {
+    public void insertMenu(MenuDTO menuDTO, MenuOptionDTO menuOptionDTO, MultipartFile file) throws IOException {
 
-
+        int getNextMenuSeq = ownerMenuMapperr.getNextMenuSeq();//메뉴seq 생성
         String realPath=session.getServletContext().getRealPath("/resources/img/menu-img");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
@@ -41,19 +43,21 @@ public class OwnerMenuService {
             file.transferTo(new File(filePath+"/"+sysName));
             System.out.println("파일있을떄");
 
-            menu.setMenu_img(sysName);
+            menuDTO.setMenu_img(sysName);
         }
+        menuDTO.setMenu_seq(getNextMenuSeq); //메뉴seq
+        ownerMenuMapperr.insertMenu(menuDTO);
+        menuOptionDTO.setMenu_seq(getNextMenuSeq); //메뉴옵션에 메뉴seq
+        ownerMenuMapperr.insertMenuOption(menuOptionDTO);
 
-
-        storeMenuMapper.insertMenu(menu);
     }
 
     public List<String> menuInfo(int store_seq) throws Exception{
-        return storeMenuMapper.menuInfo(store_seq);
+        return ownerMenuMapperr.menuInfo(store_seq);
     }
 
     public List<MenuDTO> menuList(String menu_group,int store_seq) throws Exception{
-        return storeMenuMapper.menuList(menu_group,store_seq);
+        return ownerMenuMapperr.menuList(menu_group,store_seq);
     }
 
 

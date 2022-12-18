@@ -36,7 +36,7 @@ $("#profile_img").on("change", function () {
 /* 아래로 옵션추가수정본*/
 
 $("#addop").on("click", function(){
-
+    $("#frm").attr("action", "/menu/add/menuAdd")
     $("#frm").submit();
 
     //  var bsnsarr = [];

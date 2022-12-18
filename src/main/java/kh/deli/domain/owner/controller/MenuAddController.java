@@ -3,6 +3,7 @@ package kh.deli.domain.owner.controller;
 
 import kh.deli.domain.owner.service.OwnerMenuService;
 import kh.deli.global.entity.MenuDTO;
+import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,23 +28,40 @@ public class MenuAddController {
 
 
 
-        return "/owner/menuAdd";
+        return "/owner/menuAdd2";
     }
 
+//    @RequestMapping("/menuAdd")
+//    public String menuAdd(MenuDTO menu, MenuOptionDTO menuop, MultipartFile file) throws IOException {
+//
+//
+//
+//
+//        System.out.println(menu.getMenu_group());
+//        System.out.println(menu.getStore_seq());
+//        System.out.println(menu.getMenu_sold_out());
+//        System.out.println(menu.getMenu_num());
+//        System.out.println(menu.getMenu_img());
+//
+//        storeMenuService.insertMenu(menu, file);
+//
+//        return "redirect:/";
+//    }
     @RequestMapping("/menuAdd")
-    public String menuAdd(MenuDTO dto, MultipartFile file) throws IOException {
+    public String menuAdd(MenuDTO menuDTO, MenuOptionDTO menuOptionDTO, MultipartFile file) throws IOException {
 
 
 
 
-        System.out.println(dto.getMenu_group());
-        System.out.println(dto.getStore_seq());
-        System.out.println(dto.getMenu_sold_out());
-        System.out.println(dto.getMenu_num());
-        System.out.println(dto.getMenu_img());
+        System.out.println(menuDTO.getMenu_group());
+//        System.out.println(menu.getStore_seq());
+//        System.out.println(menu.getMenu_sold_out());
+//        System.out.println(menu.getMenu_num());
+//        System.out.println(menu.getMenu_img());
 
-        storeMenuService.insertMenu(dto, file);
+        storeMenuService.insertMenu(menuDTO,menuOptionDTO, file);
 
         return "redirect:/";
     }
+
 }
