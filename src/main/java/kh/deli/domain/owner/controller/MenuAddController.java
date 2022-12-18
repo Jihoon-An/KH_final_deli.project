@@ -30,26 +30,6 @@ public class MenuAddController {
         return "/owner/menuAdd2";
     }
 
-//    @RequestMapping("/menuAdd")
-//    public String menuAdd(MenuDTO menu, MenuOptionDTO menuop, MultipartFile file) throws IOException {
-//
-//
-//
-//
-//        System.out.println(menu.getMenu_group());
-//        System.out.println(menu.getStore_seq());
-//        System.out.println(menu.getMenu_sold_out());
-//        System.out.println(menu.getMenu_num());
-//        System.out.println(menu.getMenu_img());
-//
-//        storeMenuService.insertMenu(menu, file);
-//
-//        return "redirect:/";
-//    }
-
-
-    
-
     @RequestMapping("/menuAdd")
     public String menuAdd(MenuDTO menuDTO, MenuOptionDTO menuOptionDTO, MultipartFile file) throws IOException {
 

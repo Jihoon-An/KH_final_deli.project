@@ -24,4 +24,8 @@
         delete from review where rev_seq=${rev_seq}
     </delete>
 
+    <update id="modifyReviewDisplay">
+        update review set rev_display=#{rev_display} where rev_seq=${rev_seq}
+    </update>
+
 </mapper>
