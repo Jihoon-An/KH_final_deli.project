@@ -1,5 +1,5 @@
 $("#emailSave").on("change" ,()=>{
-    if ($("#emailSave").val("")) {
+    if (!$("#emailSave").is(":checked")) {
         $.ajax({
             url: "/account/deleteSavedEmail",
             type: "post"
