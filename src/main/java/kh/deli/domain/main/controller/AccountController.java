@@ -177,5 +177,12 @@ public class AccountController {
         return telCertifyStr.equals(getServerTelCertifyStr) ? true : false;
     }
 
+    @PostMapping("/dupleCheck")
+    @ResponseBody
+    public boolean dupleCheck(String email) throws Exception {
+        return mainAccountService.dupleCheck(email);
+    }
+
+
 }
 

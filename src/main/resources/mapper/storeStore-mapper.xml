@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.owner.mapper.OwnerStoreMapper">
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreStoreMapper">
     <insert id="insertStore" parameterType="kh.deli.global.entity.StoreDTO">
         insert into store values(
         store_seq.nextval,
@@ -24,14 +24,20 @@
         #{store_origin},
         #{store_open},
         #{store_display},
-        #{store_destination},
-        #{owner_seq}
+        #{store_destination}
         )
     </insert>
 
     <select id="storeInfo" resultType="StoreDTO">
         select
-          *
+        *
+        from store
+        where store_seq=#{store_seq}
+    </select>
+
+    <select id="getReviewCount" resultType="int">
+        select
+        count(*)
         from store
         where store_seq=#{store_seq}
     </select>

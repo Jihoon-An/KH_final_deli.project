@@ -37,12 +37,11 @@
             AND ADD_SEQ = 6
     </update>
 
-
-
-
-
     <select id="storeInfo" resultType="StoreInfoDTO">
         select
+            store_phone,
+            store_add_detail1,
+            store_add_detail2,
             store_name,
             store_deli_time,
             orders.order_seq,
@@ -51,8 +50,6 @@
         where store.store_seq=orders.store_seq
         and order_seq=${order_seq}
     </select>
-
-<select id=""></select>
 
     <select id="ordererInfo" resultType="OrdererInfoDTO">
         select
