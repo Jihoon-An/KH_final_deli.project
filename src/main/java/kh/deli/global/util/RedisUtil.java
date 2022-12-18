@@ -1,4 +1,4 @@
-package kh.deli.global.util.redis;
+package kh.deli.global.util;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;

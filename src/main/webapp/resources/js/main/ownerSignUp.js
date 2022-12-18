@@ -1,9 +1,9 @@
-var email_ok = false;
-var pw_ok = false;
-var name_ok = false;
-var phone_ok = false;
-var bs_num_ok = false;
-var bs_card_ok = false;
+var email_ok = true;
+var pw_ok = true;
+var name_ok = true;
+var phone_ok = true;
+var bs_num_ok = true;
+var bs_card_ok = true;
 
 var confirm_num;
 var confirm_count;
