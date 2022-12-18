@@ -1,4 +1,4 @@
-package kh.deli.global.util.naverSms;
+package kh.deli.global.util.naverSensV2;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -15,7 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class NaverSensV2 {
+public class NaverSms {
     @SuppressWarnings("unchecked")
     public void send_msg(String tel, String msg) {
         String hostNameUrl = "https://sens.apigw.ntruss.com";     		// 호스트 URL
