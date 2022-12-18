@@ -26,7 +26,7 @@ public class MenuAddController {
     public String toMenuAdd(){
         return "/owner/menuAdd";
     }
-    
+
     @RequestMapping("/menuAdd")
     public String menuAdd(MenuDTO dto, MultipartFile file) throws IOException {
 
