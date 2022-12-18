@@ -33,8 +33,10 @@
 
             <a href="/">
                 <div class="profileBox">
-                    <i class="fa-regular fa-circle-user"></i> 닉네임
-                    <div><i class="fa-solid fa-chevron-right"></i></div>
+                    <a href="/myPage/memberInfo">
+                        <i class="fa-regular fa-circle-user"></i> 닉네임
+                        <div><i class="fa-solid fa-chevron-right"></i></div>
+                    </a>
                 </div>
             </a>
             <div class="linkBox">
