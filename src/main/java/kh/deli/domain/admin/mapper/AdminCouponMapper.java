@@ -26,6 +26,6 @@ public interface AdminCouponMapper {
     @Select("SELECT * FROM COUPON")
     List<CouponDTO> getAll();
 
-    @Delete("DELETE FROM COUPON WHERE CP_SEQ = #{seq")
+    @Delete("DELETE FROM COUPON WHERE CP_SEQ = #{seq}")
     void deleteBySeq(@Param("seq") int seq);
 }
