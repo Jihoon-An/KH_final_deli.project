@@ -23,11 +23,11 @@
 </head>
 <body>
 <main id="home">
-    <marquee><Strong><h1>🎉나경이 생일축하했어~🎂🎉</h1></Strong></marquee>
+    <!--<marquee><Strong><h1>🎉나경이 생일축하했어~🎂🎉</h1></Strong></marquee>-->
     <div id="fucking">
         <h4><a href="/">임시 리모컨</a></h4><hr>
         <a href="/storeSearch">[유저]식당검색</a><br>
-        <a href="/userMenu/toMyPage">[유저]마이페이지</a><br>
+        <a href="/myPage">[유저]마이페이지</a><br>
         <a href="/member/header/destination">[유저]배달지 선택 페이지</a><br>
         <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>
         <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>

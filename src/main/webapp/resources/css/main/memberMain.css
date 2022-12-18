@@ -7,9 +7,9 @@
 #memberMain #fucking{
     width: 250px;
     height: fit-content;
-    position: fixed;
+    position: absolute;
     top: 50px;
-    left: 50px;
+    left: 20px;
     border: 7px solid #e84c4f;
     box-shadow: 3px 3px 15px 3px #9f1f20;
     background-color: #f8f5f2;

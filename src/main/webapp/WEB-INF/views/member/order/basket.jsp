@@ -36,6 +36,7 @@
         <hr>
         <c:forEach var="menuList" items="${basket.menuList}">
             <div class="menuBox">
+                <button class="deleteBtn">X</button><br>
                 메뉴 SEQ : ${menuList.menu.menu_seq}<br>
                 메뉴명 : ${menuList.menu.menu_name}<br>
                 메뉴 가격 : <span class="menuPrice">${menuList.menu.menu_price}</span><br>
@@ -58,7 +59,6 @@
                     수량 : <span class="countSpan">${menuList.count}</span>개
                     <button class="plus">+</button>
                 </div>
-                <button class="deleteBtn">X</button>
                 <hr>
             </div>
         </c:forEach>
@@ -83,6 +83,15 @@
         </div>
 
     </div>
+
+
+
+
+
+
+
+
+
     <script src="/resources/js/member/order/basket.js"></script>
 </main>
 </body>
