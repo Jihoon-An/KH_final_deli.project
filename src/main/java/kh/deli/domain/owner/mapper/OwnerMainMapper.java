@@ -12,4 +12,5 @@ public interface OwnerMainMapper {
 
     public List<OwnerStoreInfoDTO> selectByOwner (int owner_seq);
 
+   // public int selectSales();
 }

@@ -10,7 +10,7 @@
     </select>
 
 <!--    <select id="selectSales" resultType="">-->
-<!--        SELECT (sum(o.PAY_PRICE)-sum(DELIVERY_TIP)),o.STORE_SEQ-->
+<!--        SELECT (sum(o.PAY_PRICE)-sum(DELIVERY_TIP)) AS daily_sales,o.STORE_SEQ-->
 <!--        FROM ORDERS o-->
 <!--        WHERE o.STORE_SEQ =${store_seq}-->
 <!--        AND o.ORDER_DATE BETWEEN TO_TIMESTAMP('${today} 00:00:00') and TO_TIMESTAMP('${today} 23:59:59')-->

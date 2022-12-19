@@ -49,6 +49,8 @@ public class HomeController {
             if (acc_type.equals("business")) {
                 int owner_seq=10;
                 List<OwnerStoreInfoDTO> list=ownerMainService.selectByOwner(owner_seq);
+//                OwnerMainService.selectSales(list);
+
                 model.addAttribute("list", list);
                 return "owner/ownerMain";
             }
