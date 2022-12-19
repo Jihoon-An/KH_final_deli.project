@@ -21,5 +21,12 @@
     </insert>
 
 
+    <select id="menuInfo" resultType="String">
+        select distinct menu_group from menu where store_seq=${store_seq}
+    </select>
+
+    <select id="menuList" resultType="MenuDTO" parameterType="MenuDTO">
+        select * from menu where menu_group=#{menu_group} and store_seq=${store_seq}
+    </select>
 
 </mapper>

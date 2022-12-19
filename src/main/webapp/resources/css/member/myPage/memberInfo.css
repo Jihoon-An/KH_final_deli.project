@@ -1,0 +1,98 @@
+#memberInfo *{box-sizing: border-box;}
+#memberInfo .container{
+    width: 375px;
+    height: 800px;
+    border: 1px solid gray;
+    margin: auto;
+}
+#memberInfo .topBox{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 25px;
+}
+#memberInfo .topBox > .topLeftBox{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+#memberInfo .topBox > .topRightBox{
+    width: 50px;
+    height: 50px;
+    float: right;
+}
+#memberInfo .titleBox{
+    width: 100%;
+    height: 75px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 75px;
+}
+#memberInfo .nameBox{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+#memberInfo .nameBox > input{
+    width: 250px;
+    height: 40px;
+    font-size: 1.1em;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+#memberInfo .nameBox > #nameRemoveLabel{
+    position: relative;
+    right: 30px;
+    cursor: pointer;
+}
+
+#memberInfo .infoBox{
+    margin-top: 40px;
+}
+#memberInfo .infoTitleBox{
+    margin-left: 20px;
+    width: 100px;
+    height: 50px;
+    float: left;
+}
+#memberInfo .infoInputBox{
+    width: 250px;
+    height: 50px;
+    float: left;
+}
+
+
+
+
+
+#memberInfo .buttonBox{
+    width: 350px;
+    height: 35px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 100px;
+}
+#memberInfo .buttonBox button{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    border: none;
+    background-color: #e84c4f;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+
+#memberInfo a{
+    text-decoration: none;
+    color: black;
+}
+#memberInfo a:active{
+    color: unset;
+}
+#memberInfo a:visited{
+    color: unset;
+}

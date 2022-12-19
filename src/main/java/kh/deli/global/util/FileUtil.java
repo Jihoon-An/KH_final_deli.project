@@ -2,18 +2,15 @@ package kh.deli.global.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -23,7 +20,6 @@ public class FileUtil {
      * 기본 최대 파일 사이즈는 10Mb입니다.
      */
     private int maxSize = 1024 * 1024 * 10;
-    private MultipartRequest multi;
 
     List<String> sysNameList = new ArrayList<>();
 

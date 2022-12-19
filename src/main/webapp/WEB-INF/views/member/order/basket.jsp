@@ -10,37 +10,89 @@
     </script>
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/css/member/order/basket.css" type="text/css">
+    <link rel="stylesheet" href=" /resources/css/member/order/basket.css" type="text/css">
 
 </head>
 <body>
-    <main id="basket">
+<main id="basket">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="topBox">
-                <div class="topLeftBox">
-                    <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-                <div class="topRightBox">
-                    <a href="/"><i class="fa-solid fa-house"></i></a>
-                </div>
+        <div class="topBox">
+            <div class="topLeftBox">
+                <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
             </div>
-
-            <div class="titleBox">
-                장바구니
+            <div class="topRightBox">
+                <a href="/"><i class="fa-solid fa-house"></i></a>
             </div>
-
-
-
-            <div class="buttonBox">
-                <a href="/account/logout">
-                    <button>로그아웃</button>
-                </a>
-            </div>
-
         </div>
 
-    </main>
+        <div class="titleBox">
+            장바구니
+        </div>
+        상호명 : ${basket.store.store_name}<br>
+        로고 : ${basket.store.store_name}<br>
+        <hr>
+        <hr>
+        <c:forEach var="menuList" items="${basket.menuList}">
+            <div class="menuBox">
+                <button class="deleteBtn">X</button><br>
+                메뉴 SEQ : ${menuList.menu.menu_seq}<br>
+                메뉴명 : ${menuList.menu.menu_name}<br>
+                메뉴 가격 : <span class="menuPrice">${menuList.menu.menu_price}</span><br>
+                메뉴 이미지 : ${menuList.menu.menu_img}<br>
+                <br>
+                <c:forEach var="option" items="${menuList.options}" varStatus="i">
+                    - 옵션 메뉴 SEQ : ${option.menu_seq}<br>
+                    - 옵션 SEQ : ${option.option_seq}<br>
+                    - 옵션 그룹 : ${option.option_group}<br>
+                    - 옵션명 : ${option.option_name}<br>
+                    - 옵션 가격 : <span class="optionPrice op${i.count}">${option.option_price}</span><br>
+                    <br>
+                </c:forEach>
+                <br>
+                <div class="priceBox">
+                    <span class="priceSpan">${menuList.price}</span>원
+                </div>
+                <div class="countBox">
+                    <button class="minus">-</button>
+                    수량 : <span class="countSpan">${menuList.count}</span>개
+                    <button class="plus">+</button>
+                </div>
+                <hr>
+            </div>
+        </c:forEach>
+        <hr>
+        총 주문금액 : <span id="totalPriceSpan">${totalPrice}</span>원<br>
+        배달팁 : <span id="deliTipSpan">${basket.store.store_deli_tip}</span>원
+        <hr>
+        결제예정금액 : <span id="payAmountSpan">${payAmount}</span>원
+
+        <div class="buttonBox">
+            <form id="payment">
+                <input type="hidden" id="payAmount" name="payAmount" value="">
+
+                <a href="#">
+                    <button type="button" id="pay">
+                        <span id="countPB">${totalCount}</span>
+                        배달 주문하기
+                        <span id="totalPB">${payAmount}</span>원
+                    </button>
+                </a>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="/resources/js/member/order/basket.js"></script>
+</main>
 </body>
 </html>

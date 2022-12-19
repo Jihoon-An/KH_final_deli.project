@@ -9,59 +9,140 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <title>식당 검색 리스트</title>
-  <!--jQuery-->
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-          integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-  </script>
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
+    <title>식당 검색 리스트</title>
 
-  <style>
-    #storeSearch .container {
-      width: 375px;
-      height: 800px;
-      border: 1px solid black;
-      margin: auto;
-      text-align: center;
-      padding-top: 50px;
-    }
-  </style>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        #storeSearch .container {
+            width: 375px;
+            height: 800px;
+            border: 1px solid black;
+            margin: auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+
+        .filter {
+            border-radius: 20px;
+            border: #e84c4f solid 1px;
+        }
+
+        .store_list {
+            border: #e84c4f solid 1px;
+        }
+
+        .store_logo {
+            width: 90px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .store_info_box {
+            overflow: hidden;
+        }
+
+        .menu_name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+
 </head>
 <body>
 
+
 <main id="storeSearch">
-  <div class="container">
-    <input type="text" placeholder="검색해라" name="search"><button>검색</button>
-    <h3>검색 결과 00개</h3>
-    <hr>
+    <div class="container">
+        <form action="/storeSearch/search">
+            <input type="text" placeholder="검색해라" name="SEARCH_TEXT">
+            <button>검색</button>
+        </form>
+        <hr>
+        <div class="d-inline-flex">
+            <div class="filter py-1 px-2 m-1">별점</div>
+            <div class="filter py-1 px-2 m-1">리뷰</div>
+            <div class="filter py-1 px-2 m-1">무료배달</div>
+            <div class="filter py-1 px-2 m-1">최소주문금액</div>
+        </div>
 
-    <c:choose>
-    <c:when test="${not empty store_list}">
-    <c:forEach var="store_list" items="${store_list}">
-    상호명${store_list.STORE_NAME}<BR>
-    식당카테고리${store_list.STORE_CATEGORY}<BR>
-    식당연락처${store_list.STORE_PHONE}<BR>
-    식당코멘트${store_list.STORE_INTRO}<BR>
-    최소주문금액${store_list.STORE_MIN_PRICE}<BR>
-    배달팁${store_list.STORE_DELI_TIP}<BR>
-    배달예상시간${store_list.STORE_DELI_TIME}<BR>
-    식당영업시간${store_list.STORE_BSNS_HOURS}<BR>
-    식당휴무일${store_list.STORE_CLOSE_DAY}<BR>
-    기본위치${store_list.STORE_ADD_DETAIL1}<BR>
-    상세위치${store_list.STORE_ADD_DETAIL2}<BR>
-    위도${store_list.STORE_ADD_X}<BR>${store_list.STORE_ADD_Y}<BR>
-    경도${store_list.STORE_LOGO}<BR>
-    원산지${store_list.STORE_ORIGIN}<BR>
-    오픈여부${store_list.STORE_OPEN}<BR>
-    공개여부${store_list.STORE_DISPLAY}<BR>
-    배달가능지역${store_list.STORE_DESTINATION}<BR>
-      <c:if test=""></c:if>
-    </c:forEach>
-    </c:when>
-    </c:choose>
+        <hr>
+        <div class="d-flex flex-column">
+            <c:choose>
+                <c:when test="${not empty store_list}">
+                    <c:forEach var="store_list" items="${store_list}">
 
+                        <div class="store_list d-inline-flex m-2">
+                            <div class="m-2 store_logo_box"><img class="store_logo"
+                                                                 src="https://shop-phinf.pstatic.net/20221209_61/1670570397926XRLOY_JPEG/%ED%8C%A8%EC%85%98%ED%83%80%EC%9A%B4_%ED%96%89%EC%82%AC%EB%B0%B0%EB%84%88%EC%9A%B4%EC%98%81%EA%B0%80%EC%9D%B4%EB%93%9C.jpg">
+                            </div>
+                                ${store_list.STORE_LOGO}
+                            <div class="m-2 store_info_box">
+                                <div>식당명: ${store_list.STORE_NAME}</div>
+                                <div>★${store_list.AVERAGE_STARS} / 리뷰개수:${store_list.COUNT_REVIEW}
+                                    / ${store_list.DISTANCE}m
+                                </div>
+                                <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
+                                <div class="menu_name">메뉴명:
+                                    <c:choose>
+                                        <c:when test="${not empty menu_list}">
+                                            <c:forEach var="menu_list" items="${menu_list}" varStatus="status">
+                                                ${menu_list.menu_name}<c:if test="${!status.last}">, </c:if>
+                                            </c:forEach>
+                                        </c:when>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <c:if test=""></c:if>
+
+
+                    </c:forEach>
+                </c:when>
+            </c:choose>
+
+            <!--
+<%--          상호명${store_list.STORE_NAME}<BR>--%>
+<%--          식당카테고리${store_list.STORE_CATEGORY}<BR>--%>
+<%--          식당연락처${store_list.STORE_PHONE}<BR>--%>
+<%--          식당코멘트${store_list.STORE_INTRO}<BR>--%>
+<%--          최소주문금액${store_list.STORE_MIN_PRICE}<BR>--%>
+<%--          배달팁${store_list.STORE_DELI_TIP}<BR>--%>
+<%--          배달예상시간${store_list.STORE_DELI_TIME}<BR>--%>
+<%--          식당영업시간${store_list.STORE_BSNS_HOURS}<BR>--%>
+<%--          식당휴무일${store_list.STORE_CLOSE_DAY}<BR>--%>
+<%--          기본위치${store_list.STORE_ADD_DETAIL1}<BR>--%>
+<%--          상세위치${store_list.STORE_ADD_DETAIL2}<BR>--%>
+<%--          위도${store_list.STORE_ADD_X}<BR>${store_list.STORE_ADD_Y}<BR>--%>
+<%--          경도${store_list.STORE_LOGO}<BR>--%>
+<%--          원산지${store_list.STORE_ORIGIN}<BR>--%>
+<%--          오픈여부${store_list.STORE_OPEN}<BR>--%>
+<%--          공개여부${store_list.STORE_DISPLAY}<BR>--%>
+<%--          배달가능지역${store_list.STORE_DESTINATION}<BR>--%>
+<%--          거리${store_list.STORE_DISTANCE}<BR>--%>
+<%--          거리 ${store_list.DISTANCE}<BR>--%>
+<%--          평균별점 ${store_list.AVERAGE_STARS}<BR>--%>
+<%--          리뷰개수 ${store_list.COUNT_REVIEW}<BR>--%>
+
+-->
+
+
+        </div>
+    </div>
 </main>
 
 <script>

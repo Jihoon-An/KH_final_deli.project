@@ -3,6 +3,9 @@
 <html>
 <head>
     <title>찜</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
@@ -36,19 +39,13 @@
                         </c:choose>
                         <div class="info">
                             <div>식당명: ${i.STORE_NAME}</div>
-                            <c:choose>
-                                <c:when test="${not empty starlist[status.index]}">
-                                    <div>평점: ${starlist[status.index]} </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <div>평점: 평점없음</div>
-                                </c:otherwise>
-                            </c:choose>
+                            <div>평점: ${i.avg_star}</div>
                             <div>최소주문금액: ${i.STORE_MIN_PRICE}</div>
                             <div>배달팁: ${i.STORE_DELI_TIP}</div>
                             <div>배달시간: ${i.STORE_DELI_TIME}</div>
+                            <input type="text" class="name" value="${i.STORE_SEQ}">
                             <div>
-                                <button class="heart">찜</button>
+                                <button class="heart">찜<input class="inlike" type="hidden" value="${i.DIBS_SEQ}"></button>
                             </div>
                         </div>
                         <hr>

@@ -23,6 +23,7 @@
         select * from orders where order_seq=#{order_seq}
     </select>
 
+<<<<<<< HEAD
     <select id="reviewList" resultType="reivewListDTO">
         SELECT
             M.ACC_SEQ,
@@ -35,4 +36,21 @@
             MEMBER M JOIN REVIEW R ON M.ACC_SEQ = R.ACC_SEQ
             JOIN ORDERS O ON R.ACC_SEQ = O.ACC_SEQ;
     </select>
+=======
+    <select id="selectMenuName" resultType="String">
+        select menu_name from menu where menu_seq=#{menu_seq}
+    </select>
+
+    <select id="getReviewCount" resultType="int">
+        select
+        count(*)
+        from review
+        where store_seq=#{store_seq}
+    </select>
+
+    <select id="getReviewAvg" resultType="double">
+        select round(avg(rev_star),1) from review where store_seq=${store_seq}
+    </select>
+
+>>>>>>> 74422e102d4732bc0dcbe395578853cb22a461c5
 </mapper>

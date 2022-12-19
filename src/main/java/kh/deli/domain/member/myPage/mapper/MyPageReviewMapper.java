@@ -1,5 +1,6 @@
 package kh.deli.domain.member.myPage.mapper;
 
+import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
@@ -7,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @Mapper
@@ -21,4 +24,12 @@ public interface MyPageReviewMapper {
 
     @Select("SELECT * FROM STORE WHERE STORE_SEQ=${store_seq}")
     StoreDTO selectByStoreSeq(@Param("store_seq") int store_seq);
+
+    int getReviewCount(int store_seq);
+
+    double getReviewAvg(int store_seq);
+
+    List<StoreReviewDTO> getReviews();
+
+
 }

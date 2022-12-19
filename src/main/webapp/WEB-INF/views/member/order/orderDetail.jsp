@@ -14,39 +14,18 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
 
-    <style>
-        .container {
-            width: 375px;
-            height: auto;
-            border: 1px solid black;
-            margin: auto;
-        }
+    <link rel="stylesheet" href="/resources/css/member/order/orderDetail.css">
 
-        .btn {
-
-            width: 100%;
-            height: 50px;
-        }
-
-        #complete {
-
-            width: 100%;
-            height: 100%;
-            background-color: #e84c4f;
-            color: white;
-            border-radius: 5px;
-            border-style: none;
-        }
-    </style>
 </head>
 <body>
+<main id="orderDetail">
 <div class="container">
     <c:choose>
         <c:when test="${not empty storeInfoDTO}">
             <h3> ${storeInfoDTO.store_name}</h3>
             <div>주문 시간 : ${storeInfoDTO.order_date}</div>
-            <div>배달 예상 시간 : ${storeInfoDTO.store_deli_time}</div>
-            <div>주문 번호 :  ${storeInfoDTO.order_seq}</div>
+            <div>배달 예상 시간 : ${storeInfoDTO.store_deli_time}분</div>
+            <div>주문 번호 : ${storeInfoDTO.order_seq}</div>
         </c:when>
     </c:choose>
     <hr>
@@ -55,13 +34,13 @@
     <c:choose>
         <c:when test="${not empty payInfoDTO}">
             <h3>결제정보</h3>
-            <div>총주문금액  ${payInfoDTO.order_price}</div>
-            <div>쿠폰할인  -${payInfoDTO.discountByCoupon}</div>
-            <div>포인트할인  -${payInfoDTO.order_point}</div>
-            <div>배달팁  +${payInfoDTO.delivery_tip}</div>
+            <div>총주문금액 ${payInfoDTO.order_price}원</div>
+            <div>쿠폰할인 -${payInfoDTO.discountByCoupon}</div>
+            <div>포인트할인 -${payInfoDTO.order_point}</div>
+            <div>배달팁 +${payInfoDTO.delivery_tip}</div>
             <hr>
-            <div>총결제금액  ${payInfoDTO.pay_price}</div>
-            <div>결제방법  ${payInfoDTO.pay_method}</div>
+            <div>총결제금액 ${payInfoDTO.pay_price}</div>
+            <div>결제방법 ${payInfoDTO.pay_method}</div>
         </c:when>
     </c:choose>
     <hr>
@@ -76,13 +55,13 @@
         </c:when>
     </c:choose>
 
-
     <div class="btn">
-        <%--메인으로--%>
-        <a href="#">
-            <button id="complete">완료</button>
-        </a>
+        <%--메인으로?--%>
+        <button id="complete">완료</button>
     </div>
 </div>
+
+    <script src="/resources/js/member/order/orderDetail.js" ></script>
+</main>
 </body>
 </html>

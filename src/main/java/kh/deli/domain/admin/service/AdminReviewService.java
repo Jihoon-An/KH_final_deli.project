@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +20,13 @@ public class AdminReviewService {
     }
     public int deleteReview(int rev_seq) throws Exception{
         return adminReviewMapper.deleteReview(rev_seq);
+    }
+
+   public void modifyReviewDisplay(int rev_seq,String rev_display) throws Exception{
+       Map<String,Object>param=new HashMap<>();
+       param.put("rev_seq",rev_seq);
+       param.put("rev_display",rev_display);
+       adminReviewMapper.modifyReviewDisplay(param);
     }
 
 }

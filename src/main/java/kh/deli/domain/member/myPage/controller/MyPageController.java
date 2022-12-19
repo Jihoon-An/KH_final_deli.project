@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/userMenu/")
+@RequestMapping("/myPage")
 public class MyPageController {
 
-    @RequestMapping("toMyPage")
+    @RequestMapping("")
     public String toMyPage() throws Exception {
         return "/member/myPage/myPage";
     }
