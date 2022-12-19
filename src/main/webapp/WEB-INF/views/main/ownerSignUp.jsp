@@ -52,7 +52,7 @@
                         <input class="input_data" id="email_confirm_input"/><span id="confirm_count"></span>
                     </div>
                     <div class="col-3">
-                        <button class="confirm_btn" id="email_confirm_btn">확인</button>
+                        <button type="button" class="confirm_btn" id="email_confirm_btn">확인</button>
                     </div>
                 </div>
             </div>
