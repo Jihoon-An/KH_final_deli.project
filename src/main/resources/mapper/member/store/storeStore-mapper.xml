@@ -28,29 +28,40 @@
         )
     </insert>
 
-    <select id="storeInfo" resultType="StoreDTO">
-        select
-        *
-        from store
-        where store_seq=#{store_seq}
-    </select>
+<!--가게 정보-->
 
-    <select id="getReviewCount" resultType="int">
-        select
-        count(*)
-        from store
-        where store_seq=#{store_seq}
-    </select>
+<!--    <resultMap id="storeInfoMap" type="HashMap">-->
+<!--        <result property="STORE_SEQ" column="STORE_SEQ" />-->
+<!--        <result property="STORE_NAME" column="STORE_NAME" />-->
+<!--        <result property="STORE_CATEGORY" column="STORE_CATEGORY" />-->
+<!--        <result property="STORE_PHONE" column="STORE_PHONE"  />-->
+<!--        <result property="STORE_INTRO" column="STORE_INTRO" />-->
+<!--        <result property="STORE_MIN_PRICE" column="STORE_MIN_PRICE" />-->
+<!--        <result property="STORE_DELI_TIP" column="STORE_DELI_TIP" />-->
+<!--        <result property="STORE_DELI_TIME" column="STORE_DELI_TIME" />-->
+<!--        <result property="STORE_BSNS_HOURS" column="STORE_BSNS_HOURS" />-->
+<!--        <result property="STORE_CLOSE_DAY" column="STORE_CLOSE_DAY" />-->
+<!--        <result property="STORE_ADD_DETAIL1" column="STORE_ADD_DETAIL1" />-->
+<!--        <result property="STORE_ADD_DETAIL2" column="STORE_ADD_DETAIL2" />-->
+<!--        <result property="STORE_ADD_X" column="STORE_ADD_X" />-->
+<!--        <result property="STORE_ADD_Y" column="STORE_ADD_Y" />-->
+<!--        <result property="STORE_LOGO" column="STORE_LOGO" />-->
+<!--        <result property="STORE_ORIGIN" column="STORE_ORIGIN" jdbcType="NCLOB" javaType="java.lang.String"/>-->
+<!--        <result property="STORE_OPEN" column="STORE_OPEN" />-->
+<!--        <result property="STORE_DISPLAY" column="STORE_DISPLAY" />-->
+<!--        <result property="STORE_DESTINATION" column="STORE_DESTINATION" />-->
+<!--        <result property="OWNER_SEQ" column="OWNER_SEQ" />-->
+<!--    </resultMap>-->
 
-    <select id="menuOrigin" resultType="StoreDTO">
-        select store_origin from store,menu where menu.store_seq=store.store_seq
-    </select>
+<!--    <select id="storeInfo" resultType="HashMap" resultMap="storeInfoMap">-->
+<!--        select * from store where store_seq =#{store_seq}-->
+<!--    </select>-->
 
-    <delete id="deleteStore">
-        delete from store where store_seq=${store_seq}
-    </delete>
 
     <update id="modifyStore" parameterType="StoreDTO">
         <!--update store set-->
     </update>
+
+
+
 </mapper>

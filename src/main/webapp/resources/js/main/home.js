@@ -1,3 +1,8 @@
+
+
+/**
+ * 이메일 저장 해제 기능
+ */
 $("#emailSave").on("change" ,()=>{
     if (!$("#emailSave").is(":checked")) {
         $.ajax({
@@ -8,3 +13,6 @@ $("#emailSave").on("change" ,()=>{
         });
     }
 });
+
+
+

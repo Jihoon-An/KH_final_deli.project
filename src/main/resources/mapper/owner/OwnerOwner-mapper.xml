@@ -9,5 +9,6 @@
         OWNER.*
         FROM OWNER,STORE
         WHERE OWNER.OWNER_SEQ=STORE.OWNER_SEQ
+        and store.store_seq=${store_seq}
     </select>
 </mapper>

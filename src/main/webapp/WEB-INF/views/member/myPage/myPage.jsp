@@ -31,12 +31,10 @@
                 마이페이지
             </div>
 
-            <a href="/">
+            <a href="/myPage/memberInfo">
                 <div class="profileBox">
-                    <a href="/myPage/memberInfo">
-                        <i class="fa-regular fa-circle-user"></i> 닉네임
-                        <div><i class="fa-solid fa-chevron-right"></i></div>
-                    </a>
+                    <i class="fa-regular fa-circle-user"></i> 닉네임
+                    <div><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
             </a>
             <div class="linkBox">

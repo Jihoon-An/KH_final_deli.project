@@ -82,7 +82,7 @@
         <div class="d-flex flex-column">
             <c:choose>
                 <c:when test="${not empty store_list}">
-                    <c:forEach var="store_list" items="${store_list}">
+                    <c:forEach var="store_list" items="${store_list}" varStatus="status">
 
                         <div class="store_list d-inline-flex m-2">
                             <div class="m-2 store_logo_box"><img class="store_logo"
@@ -96,22 +96,14 @@
                                     / ${store_list.DISTANCE}m
                                 </div>
                                 <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
-                                <div class="menu_name">메뉴명:
-                                    <c:choose>
-                                        <c:when test="${not empty menu_list}">
-                                            <c:forEach var="menu_list" items="${menu_list}" varStatus="status">
-                                                ${menu_list.menu_name}<c:if test="${!status.last}">, </c:if>
-                                            </c:forEach>
-                                        </c:when>
-                                    </c:choose>
+                                <div class="menu_name">
+                                    메뉴명:
+                                    <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}" varStatus="status2">
+                                        ${menu_list}<c:if test="${!status2.last}">, </c:if>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>
-
-
-                        <c:if test=""></c:if>
-
-
                     </c:forEach>
                 </c:when>
             </c:choose>

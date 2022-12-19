@@ -14,7 +14,7 @@
             rev_content,
             store_name,
             rev_writedate,
-            rev_modifieddate
+            rev_modified_date
         from member,store,review
         where review.acc_seq=member.acc_seq
         and review.store_seq=store.store_seq
@@ -24,7 +24,7 @@
         delete from review where rev_seq=${rev_seq}
     </delete>
 
-    <update id="modifyReviewDisplay">
+    <update id="modifyReviewDisplay" >
         update review set rev_display=#{rev_display} where rev_seq=${rev_seq}
     </update>
 

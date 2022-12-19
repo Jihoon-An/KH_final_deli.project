@@ -26,19 +26,26 @@ public class StoreSearchController {
     public String selectDistanceByAccSeq(Model model, String search, String filter) {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
         List<Map<String, Object>> storeList = storeSearchService.selectDistanceByAccSeq(acc_seq, search, filter);
-        List<Map<String, Object>> menuList = new ArrayList();
-
+        List<Map<String, List<String>>> menuList = new ArrayList();
         for (int i = 0; i < storeList.size(); i++) {
             Object STORE_SEQ = storeList.get(i).get("STORE_SEQ");
             int int_STORE_SEQ = Integer.parseInt(String.valueOf(STORE_SEQ));
             List<MenuDTO> menuOne = storeSearchService.selectMenuListByStoreSeq(int_STORE_SEQ);
-            for (int num = 0; num < menuOne.size(); num++) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("menu_name", menuOne.get(num).getMenu_name());
+            Map<String, List<String>> map = new HashMap<>();
+
+            if(menuOne.size() == 0) {
+                map.put("menu_name", null);
+                menuList.add(map);
+            } else {
+                ArrayList<String> list = new ArrayList<>();
+                for (int num = 0; num < menuOne.size(); num++) {
+                    String menuName = menuOne.get(num).getMenu_name();
+                    list.add(menuName);
+                }
+                map.put("menu_name", list);
                 menuList.add(map);
             }
         }
-
         model.addAttribute("store_list", storeList);
         model.addAttribute("menu_list", menuList);
         return "member/store/storeSearch";

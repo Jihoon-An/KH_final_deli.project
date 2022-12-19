@@ -55,7 +55,6 @@
         STORE_DESTINATION,
         TRUNC((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360),3) * 1000 AS DISTANCE,
         NVL(TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1), 0) AS AVERAGE_STARS,
-<!--        TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1) AS AVERAGE_STARS,-->
         (SELECT COUNT(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS COUNT_REVIEW
         FROM
         (SELECT
@@ -119,7 +118,7 @@
         </choose>
     </select>
 
-    <select id="selectMenuListByStoreSeq" resultType="MenuDTO" parameterType="MenuDTO">
+    <select id="selectMenuListByStoreSeq" resultType="MenuDTO">
         select * from menu where store_seq=#{value}
     </select>
 
