@@ -40,6 +40,7 @@
         <div>글자수</div>
         <div>
             <div class="imgbox fileBtnBox">
+                <input type="hidden" name="rev_sysname" id="rev_sysmname">
                 <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
             </div>
 
@@ -54,7 +55,7 @@
             <div class="menuBox"></div>
         </div>
         <div>
-            <button>작성하기</button>
+            <button type="button" id="writeBtn">작성하기</button>
         </div>
     </form>
 </div>

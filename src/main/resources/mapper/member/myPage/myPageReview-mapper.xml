@@ -15,7 +15,8 @@
         #{store_seq},
         #{order_seq},
         sysdate,
-        null
+        null,
+        default
         )
     </insert>
 
