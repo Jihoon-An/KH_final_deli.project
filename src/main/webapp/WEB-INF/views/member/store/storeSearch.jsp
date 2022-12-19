@@ -72,10 +72,10 @@
         </form>
         <hr>
         <div class="d-inline-flex">
-            <div class="filter py-1 px-2 m-1">별점</div>
-            <div class="filter py-1 px-2 m-1">리뷰</div>
-            <div class="filter py-1 px-2 m-1">무료배달</div>
-            <div class="filter py-1 px-2 m-1">최소주문금액</div>
+            <a href="/storeSearch/"><div class="filter py-1 px-2 m-1">별점</div></a>
+            <a><div class="filter py-1 px-2 m-1">리뷰</div></a>
+            <a><div class="filter py-1 px-2 m-1">무료배달</div></a>
+            <a><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
         </div>
 
         <hr>

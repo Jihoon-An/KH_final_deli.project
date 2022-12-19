@@ -53,7 +53,7 @@
         STORE_OPEN,
         STORE_DISPLAY,
         STORE_DESTINATION,
-        ROUND((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360)) AS DISTANCE,
+        TRUNC((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360),3) AS DISTANCE,
         TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1) AS AVERAGE_STARS,
         (SELECT COUNT(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS COUNT_REVIEW
         FROM
@@ -99,6 +99,7 @@
         OR SEC_STORE.STORE_CATEGORY LIKE UPPER('%'||#{search, jdbcType=VARCHAR}||'%')
         OR SEC_STORE.STORE_CATEGORY LIKE LOWER('%'||#{search, jdbcType=VARCHAR}||'%'))
         )
+        ORDER BY 1
     </select>
 
     <select id="selectMenuListByStoreSeq" resultType="MenuDTO" parameterType="MenuDTO">
