@@ -25,9 +25,12 @@ public class OrderOrdersService {
         orderOrdersMapper.updateMemberAddr(param);
     };
 
+
+
     public StoreInfoDTO storeInfo(int order_seq) throws Exception{
         return orderOrdersMapper.storeInfo(order_seq);
     }
+
 
     public OrdererInfoDTO ordererInfo(int order_seq) throws Exception{
         return orderOrdersMapper.ordererInfo(order_seq);
