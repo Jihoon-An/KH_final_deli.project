@@ -16,7 +16,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2831f365f4c14d690cf0e21146e8dd99"></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2831f365f4c14d690cf0e21146e8dd99"></script>
     <link rel="stylesheet" href="/resources/css/member/store/storeInfo.css">
 </head>
 <body>
@@ -68,11 +69,10 @@
         </div>
     </div>
 
-
-        <script>
-            var latitude =${storeInfoDTO.store_add_x};
-            var longitude =${storeInfoDTO.store_add_y};
-        </script>
+    <script>
+        var latitude =${storeInfoDTO.store_add_x};
+        var longitude =${storeInfoDTO.store_add_y};
+    </script>
     <script src="/resources/js/member/store/storeInfo.js"></script>
 </main>
 

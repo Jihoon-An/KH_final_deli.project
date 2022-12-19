@@ -21,12 +21,9 @@ public interface StoreStoreMapper {
     @Select("select * from store where store_seq =#{store_seq}")
     StoreDTO storeInfo(int store_seq);
 
-    //가게 리뷰 개수
-    @Select("select count(*) from store where store_seq=#{store_seq}")
-    int getReviewCount(int store_seq);
 
     //식당 삭제
-    @Delete("delete from store where store_seq=${store_seq}")
+    @Delete("delete from store where store_seq=#{store_seq}")
     int deleteStore(int store_seq);
 
     //식당 수정

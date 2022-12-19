@@ -1,6 +1,7 @@
 package kh.deli.domain.member.store.controller;
 
 import kh.deli.domain.member.myPage.service.MemberReviewService;
+import kh.deli.domain.member.store.service.StoreReviewService;
 import kh.deli.domain.member.store.service.StoreStoreService;
 import kh.deli.domain.owner.service.OwnerOwnerService;
 import kh.deli.global.entity.OwnerDTO;
@@ -17,22 +18,24 @@ public class StoreInfoController {
 
     private final StoreStoreService storeStoreService;
     private final OwnerOwnerService ownerOwnerService;
-    private final MemberReviewService memberReviewService;
+    private final StoreReviewService storeReviewService;
 
     @RequestMapping()
     public String storeInfo(Model model) throws Exception{
-        int store_seq=16;
-        int acc_seq=9; //사업자 acc_seq
-        StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq);
-        OwnerDTO ownerInfoDTO=ownerOwnerService.bsInfo(acc_seq);
-        int storeReviewCount = memberReviewService.getReviewCount(store_seq);
-        double storeReviewAvg=memberReviewService.getReviewAvg(store_seq);
+
+        int store_seq=19;
+//        int acc_seq=9; //사업자 acc_seq
+
+        StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq); //식당정보
+        OwnerDTO ownerInfoDTO=ownerOwnerService.bsInfo(store_seq); //사업자정보
+        int storeReviewCount = storeReviewService.getReviewCount(store_seq); //식당리뷰개수
+        double storeReviewAvg=storeReviewService.getReviewAvg(store_seq);//식당별점평균
         model.addAttribute("storeInfoDTO",storeInfoDTO);
         model.addAttribute("ownerInfoDTO",ownerInfoDTO);
         model.addAttribute("storeReviewCount",storeReviewCount);
         model.addAttribute("storeReviewAvg",storeReviewAvg);
+
         return "/member/store/storeInfo";
     }
-//    select owner.* from owner,store where owner.acc_seq=store.owner_seq
 
 }

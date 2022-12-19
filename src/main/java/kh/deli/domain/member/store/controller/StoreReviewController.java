@@ -32,22 +32,21 @@ public class StoreReviewController {
 
     private final StoreStoreService storeStoreService;
     private final MemberReviewService memberReviewService;
-
     private final StoreReviewService storeReviewService;
 
 
     @RequestMapping()
     public String toStoreReview(Model model) throws Exception {
         int store_seq = 19;
-        int acc_seq = 9; //사업자 acc_seq
-        StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq);
+//      int acc_seq = 9; //사업자 acc_seq
+        StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); //식당정보
 
-        int storeReviewCount = memberReviewService.getReviewCount(store_seq);
-        double storeReviewAvg = memberReviewService.getReviewAvg(store_seq);
+        int storeReviewCount = storeReviewService.getReviewCount(store_seq); //식당리뷰개수
+        double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); //식당별점평균
 
         List<StoreReviewDTO> storeReviewList = new ArrayList<>();
 
-        List<Map<String, Object>> reviewInfoList = storeReviewService.getReviewInfo(store_seq);
+        List<Map<String, Object>> reviewInfoList = storeReviewService.getReviewInfo(store_seq); //식당 상세 리뷰페이지 리뷰 가져오기
         System.out.println(reviewInfoList.get(1).get("REV_CONTENT"));
 
         for (int i = 0; i < reviewInfoList.size(); i++) {
