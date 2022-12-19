@@ -30,3 +30,12 @@ $(document).ready(function () {
         $(".menuBox").append(div);
     }
 })
+
+    $("#writeBtn").on("click",function (){
+        if($("#revImgBtn").val()==""){
+            let val=$("#revImgBtn").val();
+            val=1;
+            console.log(val);
+        }
+        $("#reviewPost").submit();
+    })

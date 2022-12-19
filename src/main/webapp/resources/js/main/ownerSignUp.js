@@ -5,36 +5,52 @@ var phone_ok = true;
 var bs_num_ok = true;
 var bs_card_ok = true;
 
-var confirm_num;
+var confirm_text;
 var confirm_count;
+var count_stopper = false;
+var count_status = false;
 
-
-function countdown( elementName, minutes, seconds )
-{
+//이메일 시간 카운트다운
+function countdown(elementName, minutes, seconds) {
+    count_status = true;
+    count_stopper = false;
     var element, endTime, hours, mins, msLeft, time;
 
-    function twoDigits( n )
-    {
+    function twoDigits(n) {
         return (n <= 9 ? "0" + n : n);
     }
 
-    function updateTimer()
-    {
+    function updateTimer() {
         msLeft = endTime - (+new Date);
-        if ( msLeft < 1000 ) {
+        if (msLeft < 1000) {
             element.innerHTML = "시간초과";
         } else {
-            time = new Date( msLeft );
+            time = new Date(msLeft);
             hours = time.getUTCHours();
             mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
-            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+            element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
+            if (count_stopper) {
+                count_status = false;
+                return;
+            } else {
+                setTimeout(updateTimer, time.getUTCMilliseconds() + 300);
+            }
         }
     }
 
-    element = document.getElementById( elementName );
-    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    element = document.getElementById(elementName);
+    endTime = (+new Date) + 1000 * (60 * minutes + seconds) + 500;
     updateTimer();
+}
+
+function count_starter() {
+    if (count_status) {
+        count_stopper = true;
+        console.log("test")
+        setTimeout(count_starter, 300);
+    } else {
+        countdown("confirm_count", 3, 0);
+    }
 }
 
 $("#email_btn").on("click", function () {
@@ -53,22 +69,37 @@ $("#email_btn").on("click", function () {
         } else {
             Swal.fire('가입 가능한 이메일입니다.');
             // 이메일 보내기
-            confirm_num = Math.floor(Math.random()*1000000)
+            confirm_text = randomString();
+
+            console.log(confirm_text);
+
             $.ajax({
                 url: "/mailCerti",
                 type: "post",
                 data: {
                     address: $("#email").val(),
                     title: "Deli email confirm",
-                    message: "<h1>"+confirm_num+"</h1>"
+                    message: "<h1>" + confirm_text + "</h1>"
                 }
             });
             $("#email_confirm_table").css("display", "block");
-            countdown("confirm_count", 3, 0);
+
+            count_stopper = true;
+            count_starter();
         }
     });
 });
 
+function randomString() {
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+    const stringLength = 6;
+    let randomstring = '';
+    for (let i = 0; i < stringLength; i++) {
+        const rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    }
+    return randomstring;
+}
 
 
 // 폰인증 보류
@@ -80,10 +111,18 @@ $("#email_btn").on("click", function () {
 //     })
 // });
 
-
-
+//email confirm
+$("#email_confirm_input").on("keydown", function (e) {
+    if (e.which == 13) {
+        email_confirm();
+    }
+});
 $("#email_confirm_btn").click(function () {
-    if ($("#email_confirm_input").val() == confirm_num && $("#confirm_count").html() != "시간초과") {
+    email_confirm();
+});
+
+function email_confirm() {
+    if ($("#email_confirm_input").val() == confirm_text && $("#confirm_count").html() != "시간초과") {
         $("#email_confirm_table").css("display", "none");
         email_ok = true;
     } else {
@@ -94,7 +133,7 @@ $("#email_confirm_btn").click(function () {
         })
         email_ok = false;
     }
-});
+}
 
 $("#submit_btn").click(function () {
     if (!email_ok) {
