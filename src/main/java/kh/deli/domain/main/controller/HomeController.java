@@ -1,6 +1,7 @@
 package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.MemberMainService;
+import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import kh.deli.domain.owner.service.OwnerMainService;
 import kh.deli.global.entity.StoreDTO;
@@ -47,10 +48,13 @@ public class HomeController {
 
             //toOwnerMainPage
             if (acc_type.equals("business")) {
-                int owner_seq=10;
+                int owner_seq=ownerMainService.selectOwnerSeq(acc_seq);
                 List<OwnerStoreInfoDTO> list=ownerMainService.selectByOwner(owner_seq);
-//                OwnerMainService.selectSales(list);
+                List<OwnerDailySalesDTO> dslist=ownerMainService.selectSales(list);
+                int total= ownerMainService.calcul(dslist);
 
+                model.addAttribute("total",total);
+                model.addAttribute("dslist",dslist);
                 model.addAttribute("list", list);
                 return "owner/ownerMain";
             }
