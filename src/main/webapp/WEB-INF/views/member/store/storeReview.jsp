@@ -10,7 +10,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title></title>
+    <title>식당상세리뷰</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -65,8 +66,10 @@
                     <div id="nickname">${i.mem_nick}</div>
                     <div id="writeDate">${i.rev_writedate}</div>
                     <div id="reviewStar">${i.rev_star}</div>
-                    <c:forEach var="k" items="${i.rev_sysname}">
-                        <div id="reviewImgs">${k}</div>
+                    <c:forEach var="k" items="${i.rev_sysname}"><%--사진 출력되게해야함--%>
+                        <div id="reviewImgs">
+                            <img src="/resources/img/review">
+                        </div>
                     </c:forEach>
                     <div id="revieContent">${i.rev_content}</div>
                     <c:forEach var="l" items="${i.menu_list}">

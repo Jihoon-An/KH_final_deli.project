@@ -28,6 +28,7 @@
                 where r.ACC_SEQ = m.ACC_SEQ
                 and r.ORDER_SEQ = o.ORDER_SEQ
                 and r.STORE_SEQ =#{store_seq}
+                and rev_display='Y'
         </select>
 
 </mapper>

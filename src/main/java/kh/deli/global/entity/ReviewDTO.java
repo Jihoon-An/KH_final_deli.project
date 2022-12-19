@@ -17,4 +17,5 @@ public class ReviewDTO {
     private int order_seq;
     private Timestamp rev_writedate;
     private Timestamp rev_modified_date;
+    private String rev_display;
 }

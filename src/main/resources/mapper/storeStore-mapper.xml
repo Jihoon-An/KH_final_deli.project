@@ -46,4 +46,11 @@
         select store_origin from store,menu where menu.store_seq=store.store_seq
     </select>
 
+    <delete id="deleteStore">
+        delete from store where store_seq=${store_seq}
+    </delete>
+
+    <update id="modifyStore" parameterType="StoreDTO">
+        <!--update store set-->
+    </update>
 </mapper>
