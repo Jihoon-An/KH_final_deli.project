@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>adminReviewMng</title>
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -52,6 +52,8 @@
                                type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
                     </td>
 
+<%--                    <input type="hidden" value="${sysName.review_display}" class="rev_display">--%>
+                    <input type="hidden" value="Y" class="rev_display">
                     <input type="hidden" value="${sysName.rev_seq}" class="rev_seq">
                     <input type="hidden" value="${sysName.rev_star}" class="rev_star">
 
@@ -108,9 +110,11 @@
                         type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
                 </div>
 
-                <button type="button">비공개</button>
-                <button type="button" id="deleteReview">삭제</button>
-
+                <div class="btns">
+                    <button type="button" id="deleteReview">삭제</button>
+                    <button type="button" id="privateReview">비공개</button>
+                    <button type="button" id="openReview">공개</button>
+                </div>
             </div>
         </div>
     </form>

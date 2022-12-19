@@ -15,6 +15,7 @@ public class AdminReviewDTO {
     private String rev_modifieddate;
     private int rev_seq;
     private int rev_star;
+    private String review_display;
 }
 
 

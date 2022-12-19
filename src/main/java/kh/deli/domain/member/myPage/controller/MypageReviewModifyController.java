@@ -22,9 +22,9 @@ public class MypageReviewModifyController {
 
     @RequestMapping()
     public String toModifyReviewForm(Model model) throws Exception {
-        int order_seq = 1;
-        int rev_seq = 7;
-        int store_seq = 1;
+        int order_seq = 11;
+        int rev_seq = 9;
+        int store_seq = 19;
         OrdersDTO orders_dto = memberReviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = memberReviewService.selectByReviewSeq(rev_seq);
 //        List<FormedReviewDTO>formedReviewDTOList=review_dto.getRev_sysname();
