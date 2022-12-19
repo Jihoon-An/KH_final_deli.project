@@ -36,11 +36,6 @@
             ACC_SEQ = #{orderOrdersDTO.seq}
             AND ADD_SEQ = 6
     </update>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 74422e102d4732bc0dcbe395578853cb22a461c5
 
     <select id="storeInfo" resultType="StoreInfoDTO">
         select
@@ -56,10 +51,6 @@
         and order_seq=${order_seq}
     </select>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 74422e102d4732bc0dcbe395578853cb22a461c5
     <select id="ordererInfo" resultType="OrdererInfoDTO">
         select
             mem_phone,
