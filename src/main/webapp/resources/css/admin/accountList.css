@@ -8,7 +8,7 @@
     display: none;
 }
 
-.modal_content {
+#account_list .modal_content {
     width: 400px;
     height: auto;
     background: #fff;
@@ -25,12 +25,12 @@
     cursor: pointer;
 }
 
-#reviewField {
+#account_list #reviewField {
     position: relative;
     left: -93px;
 }
 
-#review_content {
+#account_list #review_content {
     border: 1px solid black;
     margin: auto;
     width: 250px;

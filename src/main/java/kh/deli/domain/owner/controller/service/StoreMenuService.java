@@ -1,5 +1,5 @@
 
-package kh.deli.domain.member.store.service;
+package kh.deli.domain.owner.controller.service;
 
 
 import kh.deli.domain.member.store.mapper.StoreMenuMapper;

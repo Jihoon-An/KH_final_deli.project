@@ -1,4 +1,4 @@
-package kh.deli.domain.member.store.service;
+package kh.deli.domain.owner.controller.service;
 
 import kh.deli.domain.member.store.mapper.StoreSearchMapper;
 import kh.deli.global.entity.MenuDTO;

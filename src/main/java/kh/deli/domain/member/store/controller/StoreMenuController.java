@@ -2,8 +2,8 @@ package kh.deli.domain.member.store.controller;
 
 import kh.deli.domain.member.myPage.service.MemberReviewService;
 import kh.deli.domain.member.store.dto.CategoryResponseDTO;
-import kh.deli.domain.member.store.service.StoreMenuService;
-import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.domain.owner.controller.service.StoreMenuService;
+import kh.deli.domain.owner.controller.service.StoreStoreService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;

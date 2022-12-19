@@ -23,7 +23,7 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
 
-
+    <link rel="stylesheet" href="/resources/css/admin/accountList.css" type="text/css">
 </head>
 <body>
 <main id="account_list">

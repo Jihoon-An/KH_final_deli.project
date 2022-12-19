@@ -1,23 +1,16 @@
 package kh.deli.domain.member.store.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.domain.member.myPage.service.MemberReviewService;
-import kh.deli.domain.member.store.service.StoreReviewService;
-import kh.deli.domain.member.store.service.StoreStoreService;
-import kh.deli.global.entity.ReviewDTO;
+import kh.deli.domain.owner.controller.service.StoreReviewService;
+import kh.deli.domain.owner.controller.service.StoreStoreService;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

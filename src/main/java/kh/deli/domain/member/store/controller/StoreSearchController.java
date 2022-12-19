@@ -1,6 +1,6 @@
 package kh.deli.domain.member.store.controller;
 
-import kh.deli.domain.member.store.service.StoreSearchService;
+import kh.deli.domain.owner.controller.service.StoreSearchService;
 import kh.deli.global.entity.MenuDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
