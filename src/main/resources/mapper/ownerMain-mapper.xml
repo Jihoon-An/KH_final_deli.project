@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.owner.mapper.OwnerMainMapper">
+
+    <select id="selectByOwner" resultType="kh.deli.domain.owner.dto.OwnerStoreInfoDTO">
+        SELECT o.OWNER_SEQ ,s.STORE_SEQ ,s.STORE_NAME FROM OWNER o INNER JOIN STORE s ON o.OWNER_SEQ =s.OWNER_SEQ AND o.OWNER_SEQ =#{owner_seq}
+    </select>
+
+<!--    <select id="selectSales" resultType="">-->
+<!--        SELECT (sum(o.PAY_PRICE)-sum(DELIVERY_TIP)),o.STORE_SEQ-->
+<!--        FROM ORDERS o-->
+<!--        WHERE o.STORE_SEQ =${store_seq}-->
+<!--        AND o.ORDER_DATE BETWEEN TO_TIMESTAMP('${today} 00:00:00') and TO_TIMESTAMP('${today} 23:59:59')-->
+<!--        GROUP BY o.STORE_SEQ-->
+<!--    </select>-->
+
+</mapper>

@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/admin/review/")
+@RequestMapping("/admin/review")
 public class ReviewController {
 
     private final AdminReviewService adminReviewService;
@@ -26,11 +26,17 @@ public class ReviewController {
     }
 
     @ResponseBody
-    @PostMapping("deleteReview")
+    @PostMapping("/deleteReview")
     public void deleteReview(int rev_seq) throws Exception{
         System.out.println(rev_seq);
         adminReviewService.deleteReview(rev_seq);
 //        return "redirect:";
+    }
+
+    @ResponseBody
+    @PostMapping("/modifyReviewDisplay")
+    public void modifyReviewDisplay(int rev_seq,String rev_display) throws Exception{
+        adminReviewService.modifyReviewDisplay(rev_seq,rev_display);
     }
 
 }

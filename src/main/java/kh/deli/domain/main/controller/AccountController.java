@@ -4,7 +4,7 @@ import kh.deli.domain.main.service.MainAccountService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
-import kh.deli.global.util.redis.RedisUtil;
+import kh.deli.global.util.RedisUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -166,7 +166,7 @@ public class AccountController {
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
     public String telCertify(String tel) {
         String serverTelCertifyStr = mainAccountService.sendRandomMessage(tel);
-        redisUtil.setData(tel,serverTelCertifyStr);
+        redisUtil.setData(tel,serverTelCertifyStr); // 문자 인증번호 정보를 Redis에 저장
         return serverTelCertifyStr;
     }
 

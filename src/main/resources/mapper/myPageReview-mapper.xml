@@ -38,4 +38,5 @@
         select round(avg(rev_star),1) from review where store_seq=${store_seq}
     </select>
 
+
 </mapper>
