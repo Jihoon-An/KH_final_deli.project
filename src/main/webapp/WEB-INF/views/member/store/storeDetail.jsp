@@ -26,9 +26,25 @@
             <div class="store_deli_time">배달시간 : ${storeDTO.store_deli_time}분</div>
             <div class="store_deli_tip">배달팁 : ${storeDTO.store_deli_tip}원</div>
             <div class="store_deli_tip">식당소개 : ${storeDTO.store_intro}</div>
-            <div class="store_deli_tip">리뷰개수 : ${storeReviewCount}</div>
-            <div>리뷰 평균 : ${storeReviewAvg}</div>
+            <c:choose>
+                <c:when test="${not empty storeReviewCount}">
+                    <div class="store_deli_tip">리뷰개수 : ${storeReviewCount}</div>
+                </c:when>
+                <c:otherwise>
+                    <div>리뷰개수 : 0개</div>
+                </c:otherwise>
+            </c:choose>
+
+            <c:choose>
+                <c:when test="${not empty storeReviewAvg}">
+                    <div>리뷰 평균 : ${storeReviewAvg}</div>
+                </c:when>
+                <c:otherwise>
+                    <div>리뷰 평균 : 0</div>
+                </c:otherwise>
+            </c:choose>
         </div>
+
         <div class="fieldBox">
             <div id="menu"><h2><a href="#">메뉴</a></h2></div>
             <div id="info"><a href="/store/info">정보</a></div>
@@ -39,8 +55,8 @@
         <div class="menuInfo">
             <c:choose>
                 <c:when test="${not empty menuGroup}">
-                    <c:forEach var="i" items="${menuGroup}">
-                        <div class="menu_group">${menuGroup}</div>
+                    <c:forEach var="mGroup" items="${menuGroup}">
+                        <div class="menu_group">${mGroup}</div>
                     </c:forEach>
                 </c:when>
             </c:choose>
@@ -50,19 +66,23 @@
         <div class="menuDetailInfo">
             <c:choose>
                 <c:when test="${not empty categoryList}">
-                    <c:forEach var="i" items="${categoryList}">
-                        <div class="bottom_menu_group">${i.menu_group}
-                            <c:forEach var="k" items="${i.menuList}">
-
+                    <c:forEach var="categories" items="${categoryList}">
+                        <div class="bottom_menu_group">${categories.menu_group}
+                            <c:forEach var="menuList" items="${categories.menuList}">
                                 <div class="menu">
                                     <div class="yyyy">
-                                        <div>메뉴 이름 : ${k.menu_name}</div>
-                                        <div>메뉴 가격 : ${k.menu_price}원</div>
-                                        <div>메뉴 소개 : ${k.menu_intro}</div>
+                                        <div>메뉴 이름 : ${menuList.menu_name}</div>
+                                        <div>메뉴 가격 : ${menuList.menu_price}원</div>
+                                        <div>메뉴 소개 : ${menuList.menu_intro}</div>
                                     </div>
-                                    <div class="menu_img">
-                                        <img src="/resources/img/store/${k.menu_img}">
-                                    </div>
+                                    <c:choose>
+                                        <c:when test="${not empty menuList.menu_img}">
+                                            <div class="menu_img">
+                                                <img src="/resources/img/menu-img/${menuList.menu_img}">
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise></c:otherwise>
+                                    </c:choose>
                                 </div>
                             </c:forEach>
                         </div>
@@ -73,13 +93,7 @@
 
         <%--원산지--%>
         <div class="origin">
-            <c:choose>
-                <c:when test="${not empty menuOrigin}">
-                    <c:forEach var="i" items="${menuOrigin}">
-                        <div class="menu_origin">${i.store_origin}</div>
-                    </c:forEach>
-                </c:when>
-            </c:choose>
+            ${storeDTO.store_origin}
         </div>
     </div>
 </main>

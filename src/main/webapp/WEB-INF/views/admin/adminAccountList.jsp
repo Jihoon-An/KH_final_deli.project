@@ -72,25 +72,23 @@
                 이름<input
                     type="text" placeholder="이름" disabled id="name" class="name">
             </div>
-            <%--            <div>--%>
-            <%--                리뷰 내용<input--%>
-            <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
-            <%--            </div>--%>
-            <div id="phone" class="phone">연락처</div>
-            <div id="address" class="address">
-            </div>
             <div>
-                가입일<input
-                    type="text" placeholder="가입일자" disabled id="acc_signupdate" class="acc_signupdate">
-            </div>
-            <div>
-               등급<input
-                    type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
+                연락처<input
+                    type="text" placeholder="연락처" disabled id="phone" class="phone">
             </div>
 
             <div>
-                리뷰번호<input
-                    type="text" placeholder="회원번호" id="aseq" class="aseq">
+                가입일<input
+                    type="text" placeholder="가입일자" disabled id="accsignupdate" class="accsignupdate">
+            </div>
+            <div>
+               등급<input
+                    type="text" placeholder="등급" disabled id="memgrade" class="memgrade">
+            </div>
+
+            <div>
+                회원번호<input
+                    type="text" placeholder="회원번호" id="accseq" class="accseq">
             </div>
 
 
@@ -100,7 +98,7 @@
 </form>
 
 
-<script src="/resources/js/admin/reviewMng.js"></script>
+<script src="/resources/js/admin/accountList.js"></script>
 </main>
 </body>
 </html>

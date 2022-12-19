@@ -29,9 +29,9 @@ function countdown(elementName, minutes, seconds) {
 
 // 유효성 검사 Regex
 let emailRegex = /^[a-zA-Z0-9+-\_.]{1,20}@[a-zA-Z0-9-]{1,15}\.[a-zA-Z-.]{1,12}$/;
-let bsPwRegex = /^(?=.*[A-Za-z\d])(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,16}$/;
+let pwRegex = /^(?=.*[A-Za-z\d])(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,16}$/;
 let phoneRegex = /^0[\d]{8,10}$/;
-let bsNumberRegex = /^[1-9][\d]{7}[1-9][\d]$/;
+
 
 
 // 이메일(아이디) - 아이디 중복검사 & 값 입력 유효성 검사 display
@@ -115,33 +115,7 @@ $("#acc_email_confirm_btn").click(function () {
 
 
 
-// 휴대폰번호 - 아이디 중복검사 & 값 입력 유효성 검사 display
-$("#acc_email_certi_btn").on("click", function () {
-    if (emailRegex.test($("#acc_email").val())) {
-        $.ajax({
-            url: "/account/dupleCheck",
-            type: "post",
-            data: {email: $("#acc_email").val()}
-        }).done(function (result) {
-            if (!result) { // 아이디가 존재하지않으므로 사용할 수 있는 경우
-                // 이메일 보내기
-                confirm_text = Math.floor(Math.random() * 1000000)
-                $.ajax({
-                    url: "/mailCerti",
-                    type: "post",
-                    data: {
-                        address: $("#acc_email").val(),
-                        title: "Deli email confirm",
-                        message: "<h1>" + confirm_num + "</h1>"
-                    }
-                });
-                countdown("acc_email_certi_count", 3, 0);
-            }
-        });
-    }
-});
-
-
+// 휴대폰번호 - 값 입력 유효성 검사 display
 $("#tel_btn").on("click", function () {
     if (phoneRegex.test($("#mem_phone").val())) {
         $.ajax({
@@ -151,6 +125,7 @@ $("#tel_btn").on("click", function () {
         }).done(function (result) {
             if (result != null) {
                 alert("메시지 전송 중");
+                countdown("mem_phone_certi_count", 3, 0);
             } else {
                 alert("메시지 전송 실패");
             }

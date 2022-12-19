@@ -18,6 +18,7 @@
                 select
                 MEM_NICK,
                 REV_WRITEDATE,
+                REV_MODIFIED_DATE,
                 REV_STAR,
                 REV_SYSNAME,
                 REV_CONTENT,

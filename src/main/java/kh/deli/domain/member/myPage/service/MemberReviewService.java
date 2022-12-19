@@ -24,18 +24,17 @@ public class MemberReviewService {
 
     public void reviewInsert(HttpSession session, ReviewDTO dto, MultipartFile[] files) throws Exception {
         FileUtil fileUtil = new FileUtil();
-        System.out.println("사진 주소정하기 전 : "+ files);
-        if(files!=null) {
+
+        if(dto.getRev_sysname().equals("1")) {
             List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
 
             dto.setRev_sysname(gson.toJson(sysNameList));
 
-            System.out.println("주소 만듦 ");
         }else {
-            System.out.println("사진없음");
-            dto.setRev_sysname(null);
+
+            dto.setRev_sysname("");
         }
-        System.out.println("인서트 되기 전 "+dto.getRev_sysname());
+
         MyPageReviewMapper.reviewInsert(dto);
     }
 
@@ -61,8 +60,8 @@ public class MemberReviewService {
     }
 
     //리뷰출력
-    public List<StoreReviewDTO> getReviews() throws Exception{
-        return MyPageReviewMapper.getReviews();
+    public List<StoreReviewDTO> getReviews(int store_seq) throws Exception{
+        return MyPageReviewMapper.getReviews(store_seq);
     }
 
 }

@@ -1,7 +1,6 @@
 package kh.deli.domain.owner.controller.service;
 
 import kh.deli.domain.member.store.mapper.StoreStoreMapper;
-import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,9 +26,9 @@ public class StoreStoreService {
         return storeMapper.getReviewCount(store_seq);
     }
 
-    public List<StoreDTO> menuOrigin() throws Exception{
-        return storeMapper.menuOrigin();
-    }
+//    public String menuOrigin(int store_seq) throws Exception{
+//        return storeMapper.menuOrigin(store_seq);
+//    }
 
     //식당 삭제
     public int deleteStore(int store_seq) throws Exception{
@@ -44,4 +43,8 @@ public class StoreStoreService {
         return storeMapper.modifyStore(param);
     }
 
+    public StoreDTO findBySeq(int seq) {
+        StoreDTO store = storeMapper.findBySeq(seq);
+        return store;
+    }
 }

@@ -6,107 +6,54 @@ trClickEvent();
 $(".paginate_button").click(function () {
     trClickEvent();
 });
+
+
 function trClickEvent() {
     $("tr").click(function () {
 
-        if ($(this).find(".rev_display").val() == 'Y') {
-            $("#openReview").hide();
-            $("#privateReview").on("click", () => {
-                let rev_seq = $(this).find(".rev_seq").val();
-                $.ajax({
-                    url: "/admin/review/modifyReviewDisplay",
-                    data: {
-                        rev_seq: rev_seq,
-                        rev_display: 'N'
-                    },
-                    type: "post"
-                }).done(function (resp) {
-                    location.reload();
-                })
-            })
-        } else {
-            $("#privateReview").hide();
-            $("#openReview").on("click", () => {
-                let rev_seq = $(this).find(".rev_seq").val();
-                $.ajax({
-                    url: "/admin/review/modifyReviewDisplay",
-                    data: {
-                        rev_seq: rev_seq,
-                        rev_display: 'Y'
-                    },
-                    type: "post"
-                }).done(function (resp) {
-                    location.reload();
-                })
-            })
-        }
+        $("#frm").find(".email").val(
+            $(this).find(".acc_email").html());
 
-        $("#frm").find(".writer").val(
+        $("#frm").find(".name").val(
             $(this).find(".mem_name").html()
         );
 
-        $("#star").val(
-            $(this).find(".rev_star").val()
+        $("#frm").find(".phone").val(
+            $(this).find(".mem_phone").html()
+        )
+
+        $("#frm").find(".accsignupdate").val(
+            $(this).find(".acc_signupdate").html()
         );
 
-        $("#review_content").html(
-            $(this).find(".rev_content").html()
+        $("#frm").find(".memgrade").val(
+            $(this).find(".mem_grade").html()
         );
 
-        if (!$(this).find(".rev_content").html()) {
-            $("#review_content").html(
-                "리뷰 내용 x"
-            );
-        } else {
-            $("#review_content").html(
-                $(this).find(".rev_content").html()
-            );
-        }
 
-        $("#write_date").val(
-            $(this).find(".rev_writedate").find("#formed_rev_writedate").val()
-        );
-
-        // $(this).closest("tr").find(".rev_modified_date").val()
-        if ($(this).find(".rev_modified_date").val() != "") {
-            $("#modified_date").val(
-                $(".formed_rev_modified_date").val()
-            );
-        } else {
-            $("#modified_date").val("");
-        }
-
-        // rev_seq
-        $("#rseq").val($(this).find(".rev_seq").val());
-
+        $("#accseq").val($(this).find(".acc_seq").val());
         $(".modal").fadeIn();
 
     });
+
 };
 
-// function trClickEvent() {
-//     $("tr").click(function () {
-//
-//         $("#frm").find(".email").val(
-//             $(this).find(".acc_email").html());
-//
-//         $("#frm").find(".name").val(
-//             $(this).find(".mem_name").html()
-//         );
-//
-//         $("#frm").find(".phone").val(
-//             $(this).find(".mem_phone").html()
-//         )
-//
-//         $("#frm").find(".add").val(
-//             $(this).find(".mem_name").html()
-//         );
-//
-//
-//         $(".modal").fadeIn();
-//
-//     });
-//
-//
-//
-// };
+$(".closeModal").click(function () {
+    $(".modal").fadeOut();
+});
+
+$("#deleteAccount").on("click", function () {
+    let ans = confirm("회원정보를 삭제하시겠습니까?");
+    let acc_seq = $(this).closest(".modal").find("#accseq").val();
+
+    if (ans == true) {
+        $(".modal").fadeOut();
+        $.ajax({
+            url: "/admin/account/list/deleteAccount",
+            data: {acc_seq:acc_seq},
+            type: "post"
+        }).done(function (resp) {
+            location.reload();
+        })
+    }
+});

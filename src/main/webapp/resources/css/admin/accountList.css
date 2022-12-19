@@ -25,16 +25,8 @@
     cursor: pointer;
 }
 
-#account_list #reviewField {
-    position: relative;
-    left: -93px;
-}
 
-#account_list #review_content {
-    border: 1px solid black;
-    margin: auto;
-    width: 250px;
-}
+
 
 #myTable * {
     cursor: pointer;
