@@ -166,7 +166,7 @@
         <button type="button" id="btn_coupon_modal">할인쿠폰</button>
         <div id="coupon_modal" class="modal-overlay"></div>
         <div class="modal-window"></div>
-        <div>할인쿠폰 선택</div>x`
+        <div>할인쿠폰 선택</div>
     </div>
     <div>포인트
         <div>
@@ -196,6 +196,7 @@
 
 <form name="dataForm" action="orders/saveOrder" method="post">
 </form>
+
 <script>
 
     window.onload = function(){
@@ -203,7 +204,7 @@
         $("#payCard").hide();
         initPage();
     }
-
+        debugger;
     function initPage(){
         $.ajax({
             url: "/order/orders/selectInitInfo",
@@ -230,7 +231,6 @@
             data : {seq : 39},
             success : function (data){
                 var html = "";
-
                 for(var i = 0; i < data.length; i++){
                     html += "<div>" + data[i].couponInfo + "</div>";
                 }

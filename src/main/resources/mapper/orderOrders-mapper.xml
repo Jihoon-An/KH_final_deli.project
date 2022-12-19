@@ -36,10 +36,8 @@
             ACC_SEQ = #{orderOrdersDTO.seq}
             AND ADD_SEQ = 6
     </update>
-</mapper>
 
 
-<mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper">
 
     <select id="storeInfo" resultType="StoreInfoDTO">
         select
@@ -52,7 +50,6 @@
         and order_seq=${order_seq}
     </select>
 
-<select id=""></select>
 
     <select id="ordererInfo" resultType="OrdererInfoDTO">
         select

@@ -8,6 +8,7 @@ import kh.deli.global.util.FileUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,5 +49,10 @@ public class MenuController {
         storeMenuService.insertMenu(dto, file);
 
         return "redirect:/";
+    }
+
+    @RequestMapping("optionModify")
+    public void optionModify(){
+
     }
 }

@@ -23,4 +23,16 @@
         select * from orders where order_seq=#{order_seq}
     </select>
 
+    <select id="reviewList" resultType="reivewListDTO">
+        SELECT
+            M.ACC_SEQ,
+            M.MEM_NICK,
+            R.REV_SYSNAME,
+            R.REV_STAR,
+            R.REV_CONTENT,
+            O.MENU_LIST
+        FROM
+            MEMBER M JOIN REVIEW R ON M.ACC_SEQ = R.ACC_SEQ
+            JOIN ORDERS O ON R.ACC_SEQ = O.ACC_SEQ;
+    </select>
 </mapper>
