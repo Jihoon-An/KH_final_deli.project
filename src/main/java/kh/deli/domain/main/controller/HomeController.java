@@ -1,7 +1,11 @@
 package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.MemberMainService;
+import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
+import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
+import kh.deli.domain.owner.service.OwnerMainService;
 import kh.deli.global.entity.StoreDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +16,15 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class HomeController {
 
-    @Autowired
-    private HttpSession session;
 
-    @Autowired
-    private MemberMainService memberMainService;
+    private final HttpSession session;
+    private final MemberMainService memberMainService;
+    private final OwnerMainService ownerMainService;
+
+
 
     @RequestMapping("/")
     public String toHome(@CookieValue(value = "saved_email", required = false) String saved_email, Model model) throws Exception {
@@ -29,6 +35,7 @@ public class HomeController {
             int acc_seq = (Integer) session.getAttribute("acc_seq");
             String acc_type = memberMainService.selectType(acc_seq);
 
+            //toMemberMainPage
             if (acc_type.equals("client")) {
                 List<StoreDTO> list = memberMainService.selectAll();
 
@@ -37,6 +44,19 @@ public class HomeController {
                 model.addAttribute("starlist",starlist);
                 model.addAttribute("list", list);
                 return "main/memberMain";
+            }
+
+            //toOwnerMainPage
+            if (acc_type.equals("business")) {
+                int owner_seq=ownerMainService.selectOwnerSeq(acc_seq);
+                List<OwnerStoreInfoDTO> list=ownerMainService.selectByOwner(owner_seq);
+                List<OwnerDailySalesDTO> dslist=ownerMainService.selectSales(list);
+                int total= ownerMainService.calcul(dslist);
+
+                model.addAttribute("total",total);
+                model.addAttribute("dslist",dslist);
+                model.addAttribute("list", list);
+                return "owner/ownerMain";
             }
         }
 

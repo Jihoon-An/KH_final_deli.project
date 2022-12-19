@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.member.store.mapper.StoreMenuMapper">
+<mapper namespace="kh.deli.domain.owner.mapper.OwnerMenuMapper">
 
     <insert id="insertMenu" parameterType="kh.deli.global.entity.MenuDTO">
         INSERT INTO menu values (
-        menu_seq.nextval,
+       #{menu_seq},
         #{store_seq},
         #{menu_group},
         #{menu_name},
@@ -19,6 +19,20 @@
         #{menu_num}
         )
     </insert>
+
+
+    <insert id="insertMenuOption" parameterType="kh.deli.global.entity.MenuOptionDTO">
+        INSERT INTO menu_option values (
+        option_seq.nextval,
+        #{menu_seq},
+        #{option_group},
+        #{option_required},
+        #{option_name},
+        #{option_price}
+
+        )
+    </insert>
+
 
     <select id="menuInfo" resultType="String">
         select distinct menu_group from menu where store_seq=${store_seq}

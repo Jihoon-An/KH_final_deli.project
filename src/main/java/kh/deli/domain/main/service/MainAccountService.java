@@ -7,8 +7,7 @@ import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.Encryptor;
-import kh.deli.global.util.naverSms.NaverSensV2;
-import kh.deli.global.util.redis.RedisUtil;
+import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -240,13 +239,13 @@ public class MainAccountService {
         return mainAccountMapper.getAccSeq(acc_email);
     }
 
-    /** 연락처 문자 인증 전송 + 발송 정보를 Redis에 저장
+    /** 연락처 문자 인증 전송
      *
      * @param tel
      * @return
      */
     public String sendRandomMessage(String tel) {
-        NaverSensV2 message = new NaverSensV2();
+        NaverSms message = new NaverSms();
         Random rand = new Random();
         String numStr = "";
         for (int i = 0; i < 6; i++) {

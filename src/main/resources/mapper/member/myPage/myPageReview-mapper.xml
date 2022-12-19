@@ -15,7 +15,8 @@
         #{store_seq},
         #{order_seq},
         sysdate,
-        null
+        null,
+        default
         )
     </insert>
 
@@ -37,5 +38,6 @@
     <select id="getReviewAvg" resultType="double">
         select round(avg(rev_star),1) from review where store_seq=${store_seq}
     </select>
+
 
 </mapper>

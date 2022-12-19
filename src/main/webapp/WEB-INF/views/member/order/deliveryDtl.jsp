@@ -14,6 +14,9 @@
 
 <main id="storeSearch">
     <div class="container">
+        난수로 페이지 생성 /
+        혹은 라이더 번호 입력해야 볼 수 있는 페이지 ㄱㄱ
+
         <h1>고객배달영수증</h1>
         <h4>주문번호</h4>
         <div>${storeInfoDTO.order_seq}</div>

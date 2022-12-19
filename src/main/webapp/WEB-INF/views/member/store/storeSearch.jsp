@@ -66,8 +66,8 @@
 
 <main id="storeSearch">
     <div class="container">
-        <form action="/storeSearch/search">
-            <input type="text" placeholder="검색해라" name="SEARCH_TEXT">
+        <form action="/storeSearch">
+            <input type="text" placeholder="검색해라" name="search">
             <button>검색</button>
         </form>
         <hr>

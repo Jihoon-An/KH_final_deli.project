@@ -25,9 +25,15 @@ public class MemberReviewService {
     public void reviewInsert(HttpSession session, ReviewDTO dto, MultipartFile[] files) throws Exception {
         FileUtil fileUtil = new FileUtil();
 
-        List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
+        if(dto.getRev_sysname().equals("1")) {
+            List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
 
-        dto.setRev_sysname(gson.toJson(sysNameList));
+            dto.setRev_sysname(gson.toJson(sysNameList));
+
+        }else {
+
+            dto.setRev_sysname("");
+        }
 
         MyPageReviewMapper.reviewInsert(dto);
     }
