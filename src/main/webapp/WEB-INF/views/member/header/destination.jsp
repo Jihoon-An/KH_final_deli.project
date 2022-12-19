@@ -84,6 +84,7 @@
     $(".del").on("click", function () {
         console.log($(this).closest(".destination_box").find(".add_seq").val());
 
+        if()
         if(confirm("정말 삭제 하시겠습니까?")){
             // $(this).closest(".destination_box").remove();
             $.ajax({
