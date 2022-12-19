@@ -63,7 +63,9 @@
     float: left;
 }
 
-
+#memberInfo .pwSpan{
+    font-size: 12px;
+}
 
 
 

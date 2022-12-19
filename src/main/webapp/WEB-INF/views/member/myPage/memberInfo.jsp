@@ -26,14 +26,14 @@
 
     <div class="container">
 
-        <form id="modifyMemberInfo">
+        <form id="modifyMemberInfo" action="/myPage/memberInfo/modify" method="post">
 
             <div class="topBox">
                 <div class="topLeftBox">
-                    <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="/myPage"><i class="fa-solid fa-arrow-left"></i></a>
                 </div>
-
-                    <button>저장</button>
+                <div class="topRightBox">
+                    <button type="button" id="saveButton">저장</button>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     <span>이메일</span>
                 </div>
                 <div class="infoInputBox emailBox">
-                    <input type="text" name="acc_email" value="${accountInfo.acc_email}" placeholder="email@deli.me" readonly>
+                    <input type="text" id="email" name="acc_email" value="${accountInfo.acc_email}" placeholder="email@deli.me" readonly>
                 </div>
             </div>
 
@@ -60,17 +60,58 @@
                     <span>비밀번호</span>
                 </div>
                 <div class="infoInputBox passWordBox">
-                    <button type="button">변경</button>
+                    <button type="button" id="passWordModifyBtn">변경</button>
                 </div>
             </div>
 
+
+            <div class="infoBox modifyPwBox">
+                <div class="infoTitleBox">
+                    <span class="pwSpan">현재 비밀번호</span>
+                </div>
+                <div class="infoInputBox passWordBox">
+                    <input type="text" id="oldPassWord" name="oldPassWord">
+                </div>
+            </div>
+            <div class="infoBox modifyPwBox">
+                <div class="infoTitleBox">
+                    <span class="pwSpan">새 비밀번호</span>
+                </div>
+                <div class="infoInputBox passWordBox">
+                    <input type="text" id="newPassWord" name="newPassWord">
+                </div>
+            </div>
+            <div class="infoBox modifyPwBox">
+                <div class="infoTitleBox">
+                    <span class="pwSpan">새 비밀번호 확인</span>
+                </div>
+                <div class="infoInputBox passWordBox">
+                    <input type="text" id="confirmPassWord">
+                    <button type="button" id="modifyPasswordConfirmBtn">확인</button><br>
+                    <span id="pwCheckSpan"></span>
+                </div>
+            </div>
+
+
             <div class="infoBox">
                 <div class="infoTitleBox">
+                    <span>hidden</span><br>
                     <span>휴대폰번호</span>
                 </div>
                 <div class="infoInputBox phoneBox">
-                    <input type="text" name="mem_phone" value="${memberInfo.mem_phone}" placeholder="01011112222" readonly>
-                    <button type="button" id="recertification">재인증</button>
+                    <input type="text" id="oldPhoneNumber" value="${memberInfo.mem_phone}">
+                    <input type="text" id="phoneNumber" name="mem_phone" value="${memberInfo.mem_phone}" placeholder="01011112222" readonly>
+                    <button type="button" id="reCertificationBtn">재인증</button>
+                </div>
+            </div>
+
+            <div class="infoBox" id="certificationBox">
+                <div class="infoTitleBox">
+                    <span id="certificationNumberSpan">인증번호</span>
+                </div>
+                <div class="infoInputBox">
+                    <input type="text" id="certificationNumber">
+                    <button type="button" id="certificationConfirmBtn">확인</button>
                 </div>
             </div>
 
