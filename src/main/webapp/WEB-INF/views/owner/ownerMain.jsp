@@ -32,13 +32,18 @@
             </div>
             <hr>
             <div class="infoBox">
-                <div>하루 총 매출액 : </div>
+                <div>하루 총 매출액 : ${total}</div>
                 <c:choose>
-                    <c:when test="${not empty list}">
-                        <c:forEach var="i" items="${list}">
-                            <hr>
-                            <div>식당이름 : </div>
-                            <div>매출액 : </div>
+                    <c:when test="${not empty dslist}">
+                        <c:forEach var="j" items="${dslist}">
+                            <c:choose>
+                                <c:when test="${not empty j}">
+                                    <hr>
+                                    <div>식당번호 : ${j.store_seq}</div>
+                                    <div>식당이름 : ${j.store_name}</div>
+                                    <div>매출액 : ${j.daily_sales}</div>
+                                </c:when>
+                            </c:choose>
                         </c:forEach>
                     </c:when>
                 </c:choose>

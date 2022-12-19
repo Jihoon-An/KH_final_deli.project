@@ -58,9 +58,9 @@
                     <input type="hidden" value="${sysName.rev_star}" class="rev_star">
 
                     <c:choose>
-                        <c:when test="${sysName.rev_modifieddate!=null}">
+                        <c:when test="${sysName.rev_modified_date!=null}">
                             <td class="rev_modified_date">
-                                <fmt:parseDate value="${sysName.rev_modifieddate}" var="registered"
+                                <fmt:parseDate value="${sysName.rev_modified_date}" var="registered"
                                                pattern="yyyy-MM-dd HH:mm:ss"/>
                                 <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
                                     <%--  ${i.rev_modified_date}--%>

@@ -26,9 +26,9 @@ public class StoreStoreService {
         return storeMapper.getReviewCount(store_seq);
     }
 
-    public List<StoreDTO> menuOrigin() throws Exception{
-        return storeMapper.menuOrigin();
-    }
+//    public String menuOrigin(int store_seq) throws Exception{
+//        return storeMapper.menuOrigin(store_seq);
+//    }
 
     //식당 삭제
     public int deleteStore(int store_seq) throws Exception{
