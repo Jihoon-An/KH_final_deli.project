@@ -2,36 +2,36 @@
     box-sizing: border-box;
 }
 
-div {
+#storeDetail div {
     border: 1px solid black;
 }
 
-.container {
+#storeDetail .container {
     width: 375px;
-    height: auto;
+    height: fit-content;
     margin: auto;
     overflow: hidden;
 }
 
-.storeIntro {
+#storeDetail .storeIntro {
     width: 100%;
     height: 150px;
     margin: auto;
 }
 
-.fieldBox{overflow: hidden;}
-.fieldBox div{float: left; width: 33.3%;}
+#storeDetail .fieldBox{overflow: hidden;}
+#storeDetail .fieldBox div{float: left; width: 33.3%;}
 
-.menuInfo{overflow: hidden;}
-.menu_group{float: left;}
+#storeDetail .menuInfo{overflow: hidden;}
+#storeDetail .menu_group{float: left;}
 
 /*.menu_img{float: left;}*/
-.menuDetailInfo{overflow: hidden;}
-.menu{
+#storeDetail .menuDetailInfo{overflow: hidden;}
+#storeDetail .menu{
     float: left;}
 /*.bottom_menu_group{width: 100%;}*/
 
-.origin{overflow: hidden;}
-.origin .menu_origin{float: left;}
+#storeDetail .origin{overflow: hidden;}
+#storeDetail .origin .menu_origin{float: left;}
 
-.yyyy{float: left}
+#storeDetail .yyyy{float: left}

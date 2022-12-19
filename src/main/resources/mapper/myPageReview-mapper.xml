@@ -27,16 +27,4 @@
         select menu_name from menu where menu_seq=#{menu_seq}
     </select>
 
-    <select id="getReviewCount" resultType="int">
-        select
-        count(*)
-        from review
-        where store_seq=#{store_seq}
-    </select>
-
-    <select id="getReviewAvg" resultType="double">
-        select round(avg(rev_star),1) from review where store_seq=${store_seq}
-    </select>
-
-
 </mapper>
