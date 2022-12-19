@@ -72,17 +72,17 @@
         </form>
         <hr>
         <div class="d-inline-flex">
-            <div class="filter py-1 px-2 m-1">별점</div>
-            <div class="filter py-1 px-2 m-1">리뷰</div>
-            <div class="filter py-1 px-2 m-1">무료배달</div>
-            <div class="filter py-1 px-2 m-1">최소주문금액</div>
+            <a href="/storeSearch?filter=star"><div class="filter py-1 px-2 m-1">별점</div></a>
+            <a href="/storeSearch?filter=review"><div class="filter py-1 px-2 m-1">리뷰</div></a>
+            <a href="/storeSearch?filter=delifree"><div class="filter py-1 px-2 m-1">무료배달</div></a>
+            <a href="/storeSearch?filter=minprice"><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
         </div>
 
         <hr>
         <div class="d-flex flex-column">
             <c:choose>
                 <c:when test="${not empty store_list}">
-                    <c:forEach var="store_list" items="${store_list}">
+                    <c:forEach var="store_list" items="${store_list}" varStatus="status">
 
                         <div class="store_list d-inline-flex m-2">
                             <div class="m-2 store_logo_box"><img class="store_logo"
@@ -90,27 +90,20 @@
                             </div>
                                 ${store_list.STORE_LOGO}
                             <div class="m-2 store_info_box">
+                                최소주문금액${store_list.STORE_MIN_PRICE}<BR>
                                 <div>식당명: ${store_list.STORE_NAME}</div>
                                 <div>★${store_list.AVERAGE_STARS} / 리뷰개수:${store_list.COUNT_REVIEW}
                                     / ${store_list.DISTANCE}m
                                 </div>
                                 <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
-                                <div class="menu_name">메뉴명:
-                                    <c:choose>
-                                        <c:when test="${not empty menu_list}">
-                                            <c:forEach var="menu_list" items="${menu_list}" varStatus="status">
-                                                ${menu_list.menu_name}<c:if test="${!status.last}">, </c:if>
-                                            </c:forEach>
-                                        </c:when>
-                                    </c:choose>
+                                <div class="menu_name">
+                                    메뉴명:
+                                    <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}" varStatus="status2">
+                                        ${menu_list}<c:if test="${!status2.last}">, </c:if>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>
-
-
-                        <c:if test=""></c:if>
-
-
                     </c:forEach>
                 </c:when>
             </c:choose>

@@ -11,7 +11,7 @@ import java.util.Map;
 @Mapper
 public interface StoreSearchMapper {
 
-    List<Map<String, Object>> selectDistanceByAccSeq(int acc_seq, String search);
+    List<Map<String, Object>> selectDistanceByAccSeq(int acc_seq, String search, String filter);
 
     List<MenuDTO>selectMenuListByStoreSeq(int store_seq);
 

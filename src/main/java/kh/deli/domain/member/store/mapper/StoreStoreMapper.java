@@ -1,6 +1,5 @@
 package kh.deli.domain.member.store.mapper;
 
-import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -29,5 +28,6 @@ public interface StoreStoreMapper {
     //식당 수정
     int modifyStore(Map<String, Object> param);
 
-
+    @Select("SELECT * FROM STORE WHERE STORE_SEQ = #{seq}")
+    StoreDTO findBySeq(int seq);
 }

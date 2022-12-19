@@ -22,5 +22,6 @@ public interface StoreMenuMapper {
     @Select("select * from menu where menu_group=#{menu_group} and store_seq=#{store_seq}")
     List<MenuDTO> menuList(Map<String, Object> param);
 
-
+    @Select("SELECT * FROM MENU WHERE MENU_SEQ = #{seq}")
+    public MenuDTO findBySeq(int seq);
 }
