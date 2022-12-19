@@ -35,7 +35,7 @@ public class MyPageReviewViewController {
 
         @PostMapping("reviewInsert")
         public String reviewInsert(ReviewDTO dto, MultipartFile[] files) throws Exception {
-            System.out.println(files);
+
             memberReviewFormService.reviewInsert(session, dto, files);
 
             return "redirect:/";
