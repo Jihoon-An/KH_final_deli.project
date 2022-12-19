@@ -72,10 +72,10 @@
         </form>
         <hr>
         <div class="d-inline-flex">
-            <a href="/storeSearch/"><div class="filter py-1 px-2 m-1">별점</div></a>
-            <a><div class="filter py-1 px-2 m-1">리뷰</div></a>
-            <a><div class="filter py-1 px-2 m-1">무료배달</div></a>
-            <a><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
+            <a href="/storeSearch?filter=star"><div class="filter py-1 px-2 m-1">별점</div></a>
+            <a href="/storeSearch?filter=review"><div class="filter py-1 px-2 m-1">리뷰</div></a>
+            <a href="/storeSearch?filter=delifree"><div class="filter py-1 px-2 m-1">무료배달</div></a>
+            <a href="/storeSearch?filter=minprice"><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
         </div>
 
         <hr>
@@ -90,6 +90,7 @@
                             </div>
                                 ${store_list.STORE_LOGO}
                             <div class="m-2 store_info_box">
+                                최소주문금액${store_list.STORE_MIN_PRICE}<BR>
                                 <div>식당명: ${store_list.STORE_NAME}</div>
                                 <div>★${store_list.AVERAGE_STARS} / 리뷰개수:${store_list.COUNT_REVIEW}
                                     / ${store_list.DISTANCE}m

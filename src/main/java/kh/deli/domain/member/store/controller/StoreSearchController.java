@@ -23,9 +23,9 @@ public class StoreSearchController {
     private final StoreSearchService storeSearchService;
 
     @RequestMapping("")
-    public String selectDistanceByAccSeq(Model model, String search) {
+    public String selectDistanceByAccSeq(Model model, String search, String filter) {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-        List<Map<String, Object>> storeList = storeSearchService.selectDistanceByAccSeq(acc_seq, search);
+        List<Map<String, Object>> storeList = storeSearchService.selectDistanceByAccSeq(acc_seq, search, filter);
         List<Map<String, Object>> menuList = new ArrayList();
 
         for (int i = 0; i < storeList.size(); i++) {

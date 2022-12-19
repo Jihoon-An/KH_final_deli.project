@@ -53,8 +53,9 @@
         STORE_OPEN,
         STORE_DISPLAY,
         STORE_DESTINATION,
-        TRUNC((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360),3) AS DISTANCE,
-        TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1) AS AVERAGE_STARS,
+        TRUNC((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360),3) * 1000 AS DISTANCE,
+        NVL(TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1), 0) AS AVERAGE_STARS,
+<!--        TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1) AS AVERAGE_STARS,-->
         (SELECT COUNT(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS COUNT_REVIEW
         FROM
         (SELECT
@@ -86,6 +87,9 @@
         ON
         A.STORE_SEQ = B.STORE_SEQ
         WHERE
+        <if test='filter != null  and(filter eq "delifree".toString())'>
+            STORE_DELI_TIP = 0 AND
+        </if>
         ABS((X*X*10000)+(Y*Y*10000)) <![CDATA[<]]> ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
         AND(
         A.STORE_SEQ IN
@@ -99,7 +103,20 @@
         OR SEC_STORE.STORE_CATEGORY LIKE UPPER('%'||#{search, jdbcType=VARCHAR}||'%')
         OR SEC_STORE.STORE_CATEGORY LIKE LOWER('%'||#{search, jdbcType=VARCHAR}||'%'))
         )
-        ORDER BY 1
+        <choose>
+            <when test='filter != null and(filter eq "star".toString())'>
+                ORDER BY TO_NUMBER(AVERAGE_STARS) DESC
+            </when>
+            <when test='filter != null and(filter eq "review".toString())'>
+                ORDER BY TO_NUMBER(COUNT_REVIEW) DESC
+            </when>
+            <when test='filter != null and(filter eq "minprice".toString())'>
+                ORDER BY TO_NUMBER(STORE_MIN_PRICE)
+            </when>
+            <otherwise>
+                ORDER BY 1
+            </otherwise>
+        </choose>
     </select>
 
     <select id="selectMenuListByStoreSeq" resultType="MenuDTO" parameterType="MenuDTO">
