@@ -1,0 +1,22 @@
+#storeInfo * {
+    box-sizing: border-box
+}
+
+#storeInfo div {
+    border: 1px solid black;
+}
+
+#storeInfo .container {
+    width: 375px;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+}
+
+#storeInfo .storeInfo {
+    overflow: hidden
+}
+
+#storeInfo .store {
+    float: left;
+}

@@ -60,8 +60,8 @@ public class MemberReviewService {
     }
 
     //리뷰출력
-    public List<StoreReviewDTO> getReviews() throws Exception{
-        return MyPageReviewMapper.getReviews();
+    public List<StoreReviewDTO> getReviews(int store_seq) throws Exception{
+        return MyPageReviewMapper.getReviews(store_seq);
     }
 
 }
