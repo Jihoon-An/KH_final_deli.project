@@ -54,7 +54,7 @@
             <div class="menuBox"></div>
         </div>
         <div>
-            <button>작성하기</button>
+            <button type="button" id="writeBtn">작성하기</button>
         </div>
     </form>
 </div>
