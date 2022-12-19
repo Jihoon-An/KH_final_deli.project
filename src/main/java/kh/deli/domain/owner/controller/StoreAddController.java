@@ -47,7 +47,7 @@ public class StoreAddController {
         int owner_Seq=19;
         dto.setOwner_seq(owner_Seq);  //임시
 
-        String realPath=session.getServletContext().getRealPath("/resources/store");
+        String realPath=session.getServletContext().getRealPath("/resources/img/store");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성

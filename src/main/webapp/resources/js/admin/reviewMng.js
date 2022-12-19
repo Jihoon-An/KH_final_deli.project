@@ -88,6 +88,7 @@ $(".closeModal").click(function () {
     $(".modal").fadeOut();
 });
 
+
 $("#deleteReview").on("click", function () {
     let ans = confirm("리뷰를 삭제하시겠습니까?");
     let rev_seq = $(this).closest(".modal").find("#rseq").val();

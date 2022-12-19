@@ -44,6 +44,7 @@
         <c:forEach var="ac" items="${account_list}">
             <tr>
                 <td class="acc_seq"> ${ac.acc_seq}</td>
+                <input type="hidden"  class="acc_seq" value="${ac_acc_Seq}">
 
                 <td class="acc_email">${ac.acc_email} </td>
                 <td class="mem_name">${ac.mem_name}</td>
@@ -64,36 +65,36 @@
             <div class="closeModal">X</div>
 
             <div>
-                작성자 <input
-                    type="text" placeholder="작성자" id="writer" class="writer" disabled>
+                이메일 <input
+                    type="text" placeholder="이메일" id="email" class="email" disabled>
             </div>
             <div>
-                별점 <input
-                    type="text" placeholder="별점" disabled id="star" class="star">
+                이름<input
+                    type="text" placeholder="이름" disabled id="name" class="name">
             </div>
             <%--            <div>--%>
             <%--                리뷰 내용<input--%>
             <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
             <%--            </div>--%>
-            <div id="reviewField">리뷰 내용</div>
-            <div id="review_content" class="review_content">
+            <div id="phone" class="phone">연락처</div>
+            <div id="address" class="address">
             </div>
             <div>
-                작성일자<input
-                    type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
+                가입일<input
+                    type="text" placeholder="가입일자" disabled id="acc_signupdate" class="acc_signupdate">
             </div>
             <div>
-                수정일자<input
+               등급<input
                     type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
             </div>
 
             <div>
                 리뷰번호<input
-                    type="text" placeholder="리뷰번호" id="rseq" class="rseq">
+                    type="text" placeholder="회원번호" id="aseq" class="aseq">
             </div>
 
-            <button type="button">비공개</button>
-            <button type="button" id="deleteReview" type="button">삭제</button>
+
+            <button type="button" id="deleteAccount" type="button">삭제</button>
         </div>
     </div>
 </form>
