@@ -35,7 +35,11 @@ public class BasketController {
         model.addAttribute("totalCount", totalCount);
 
 //        Gson gson = new Gson();
-//        model.addAttribute("basketToJson", gson.toJson(sampleBasket));
+//        String basketJson = gson.toJson(sampleBasket);
+//        basketService.insertSampleBasket(basketJson);
+//
+//        OrderBasketDTO basket = gson.fromJson(basketJson, OrderBasketDTO.class);
+
 
 
 
