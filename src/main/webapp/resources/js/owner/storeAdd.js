@@ -88,13 +88,13 @@ function fileToBase64(file) {
     }
 }
 
-$("#profile_img").on("change", function () {
-    if ($("#profile_img").val() == "") {
+$("#menu_img").on("change", function () {
+    if ($("#menu_img").val() == "") {
         $("#profile").attr("src", "/resources/img/store/no_storelogo.png");
         return;
     }
-    console.log($("#profile_img").val());
-    let ext = $("#profile_img").val().split(".").pop().toLowerCase();
+    console.log($("#menu_img").val());
+    let ext = $("#menu_img").val().split(".").pop().toLowerCase();
 
     let accept = ["png", "jpg", "jpeg", "gif"];
 
@@ -104,12 +104,12 @@ $("#profile_img").on("change", function () {
 
     if (result == -1) {
         alert("이미지만 사용 가능합니다")
-        $("#profile_img").val("");//비워주기
+        $("#menu_img").val("");//비워주기
         $("#profile").attr("src", "/images/no_profile.png")//다른 사진들어올떄 #profile 도 비워주기
 
 
     } else {
-        fileToBase64(document.getElementById("profile_img").files[0]);
+        fileToBase64(document.getElementById("menu_img").files[0]);
     }
 });
 
