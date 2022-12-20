@@ -17,8 +17,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class OwnerMainService {
 
-    @Autowired
-    private OwnerMainMapper ownerMainMapper;
+
+    private final OwnerMainMapper ownerMainMapper;
 
     public List<OwnerStoreInfoDTO> selectByOwner(int owner_seq) throws Exception {
 
@@ -36,7 +36,6 @@ public class OwnerMainService {
             dslist.add(dto);
         }
 
-        System.out.println(dslist);
         return dslist ;
     }
 
