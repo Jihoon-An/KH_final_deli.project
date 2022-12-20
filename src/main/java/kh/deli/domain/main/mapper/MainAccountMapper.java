@@ -47,4 +47,8 @@ public interface MainAccountMapper {
 
     @Select("SELECT ACC_SEQ FROM ACCOUNT WHERE ACC_EMAIL = #{acc_email}")
     int getAccSeq(String acc_email);
+
+    //MemberMainPage
+    @Select("select acc_type from account where acc_seq=#{acc_seq}")
+    String selectType (int acc_seq);
 }
