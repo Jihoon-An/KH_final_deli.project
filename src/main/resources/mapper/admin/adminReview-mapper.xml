@@ -6,26 +6,18 @@
 <mapper namespace="kh.deli.domain.admin.mapper.AdminReviewMapper">
 
     <select id="selectAll" resultType="AdminReviewDTO">
-
-        select
-            rev_seq,
-            rev_star,
-            mem_name,
-            rev_content,
-            store_name,
-            rev_writedate,
-            rev_modified_date
-        from member,store,review
-        where review.acc_seq=member.acc_seq
-        and review.store_seq=store.store_seq
+        SELECT
+            REV_SEQ,
+            REV_STAR,
+            MEM_NAME,
+            REV_CONTENT,
+            STORE_NAME,
+            REV_WRITEDATE,
+            REV_MODIFIED_DATE,
+            REV_DISPLAY
+        FROM MEMBER,STORE,REVIEW
+        WHERE REVIEW.ACC_SEQ=MEMBER.ACC_SEQ
+        AND REVIEW.STORE_SEQ=STORE.STORE_SEQ
     </select>
-
-    <delete id="deleteReview" parameterType="int">
-        delete from review where rev_seq=${rev_seq}
-    </delete>
-
-    <update id="modifyReviewDisplay" >
-        update review set rev_display=#{rev_display} where rev_seq=${rev_seq}
-    </update>
 
 </mapper>

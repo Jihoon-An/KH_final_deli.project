@@ -15,21 +15,36 @@
         </resultMap>
 
         <select id="getReviewInfo" resultType="java.util.HashMap" resultMap="getReviewInfoMap">
-                select
-                MEM_NICK,
-                REV_WRITEDATE,
-                REV_MODIFIED_DATE,
-                REV_STAR,
-                REV_SYSNAME,
-                REV_CONTENT,
-                MENU_LIST
-                from REVIEW r
-                join MEMBER m on r.ACC_SEQ = m.ACC_SEQ
-                join ORDERS o on m.ACC_SEQ = o.ACC_SEQ
-                where r.ACC_SEQ = m.ACC_SEQ
-                and r.ORDER_SEQ = o.ORDER_SEQ
-                and r.STORE_SEQ =#{store_seq}
-                and rev_display='Y'
+<!--                select-->
+<!--                MEM_NICK,-->
+<!--                REV_WRITEDATE,-->
+<!--                REV_MODIFIED_DATE,-->
+<!--                REV_STAR,-->
+<!--                REV_SYSNAME,-->
+<!--                REV_CONTENT,-->
+<!--                MENU_LIST-->
+<!--                from REVIEW r-->
+<!--                join MEMBER m on r.ACC_SEQ = m.ACC_SEQ-->
+<!--                join ORDERS o on m.ACC_SEQ = o.ACC_SEQ-->
+<!--                where r.ACC_SEQ = m.ACC_SEQ-->
+<!--                and r.ORDER_SEQ = o.ORDER_SEQ-->
+<!--                and r.STORE_SEQ =#{store_seq}-->
+<!--                and rev_display='Y'-->
+
+                SELECT
+                        MEM_NICK,
+                        REV_WRITEDATE,
+                        REV_MODIFIED_DATE,
+                        REV_STAR,
+                        REV_SYSNAME,
+                        REV_CONTENT,
+                        MENU_LIST
+                FROM REVIEW r join MEMBER m
+                ON r.ACC_SEQ=m.ACC_SEQ
+                JOIN ORDERS o
+                on r.ACC_SEQ=o.ACC_SEQ
+                WHERE o.ORDER_SEQ=r.ORDER_SEQ
+                AND r.STORE_SEQ=#{store_seq} AND REV_DISPLAY='Y'
         </select>
 
 </mapper>

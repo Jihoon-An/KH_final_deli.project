@@ -23,7 +23,6 @@ public class StoreMenuService {
     private final HttpSession session;
     private final StoreMenuMapper storeMenuMapper;
 
-
     public void insertMenu(MenuDTO menu, MultipartFile file) throws IOException {
 
 
@@ -42,7 +41,6 @@ public class StoreMenuService {
 
             menu.setMenu_img(sysName);
         }
-
 
         storeMenuMapper.insertMenu(menu);
     }

@@ -7,6 +7,7 @@ import kh.deli.domain.member.order.dto.StoreInfoDTO;
 import kh.deli.global.entity.OrdersDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
                      
@@ -22,5 +23,8 @@ public interface OrderOrdersMapper {
     OrdererInfoDTO ordererInfo(int order_seq);
 
     PayInfoDTO payInfo(int order_seq);
+
+    @Select("select * from orders where order_seq = #{order_seq}")
+    OrdersDTO findOrdersBySeq(int order_seq);
 
 }

@@ -85,8 +85,17 @@
                     <c:forEach var="store_list" items="${store_list}" varStatus="status">
 
                         <div class="store_list d-inline-flex m-2">
-                            <div class="m-2 store_logo_box"><img class="store_logo"
-                                                                 src="https://shop-phinf.pstatic.net/20221209_61/1670570397926XRLOY_JPEG/%ED%8C%A8%EC%85%98%ED%83%80%EC%9A%B4_%ED%96%89%EC%82%AC%EB%B0%B0%EB%84%88%EC%9A%B4%EC%98%81%EA%B0%80%EC%9D%B4%EB%93%9C.jpg">
+                            <div class="m-2 store_logo_box">
+                                <c:choose>
+                                    <c:when test="${store_list.store_logo !=null}">
+                                        <div>
+                                            <img class="store_logo" src="/resources/img/store/${store_list.store_logo}">
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div>이미지: 사진없음</div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                                 ${store_list.STORE_LOGO}
                             <div class="m-2 store_info_box">

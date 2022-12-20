@@ -1,6 +1,7 @@
 package kh.deli.domain.owner.service;
 
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import kh.deli.domain.owner.mapper.OwnerMenuMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.MenuDTO;
@@ -24,12 +25,13 @@ public class OwnerMenuService {
 
     private final HttpSession session;
     @Autowired
-    private OwnerMenuMapper ownerMenuMapperr;
+    private OwnerMenuMapper ownerMenuMapper;
 
 
-    public void insertMenu(MenuDTO menuDTO, MenuOptionDTO menuOptionDTO, MultipartFile file) throws IOException {
 
-        int getNextMenuSeq = ownerMenuMapperr.getNextMenuSeq();//메뉴seq 생성
+    public void insertMenu(MenuDTO menuDTO,  MultipartFile file, int menu_seq) throws IOException {
+
+       //메뉴seq 생성
         String realPath=session.getServletContext().getRealPath("/resources/img/menu-img");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
@@ -45,20 +47,30 @@ public class OwnerMenuService {
 
             menuDTO.setMenu_img(sysName);
         }
-        menuDTO.setMenu_seq(getNextMenuSeq); //메뉴seq
-        ownerMenuMapperr.insertMenu(menuDTO);
-        menuOptionDTO.setMenu_seq(getNextMenuSeq); //메뉴옵션에 메뉴seq
-        ownerMenuMapperr.insertMenuOption(menuOptionDTO);
+          menuDTO.setMenu_seq(menu_seq); //메뉴seq
+        ownerMenuMapper.insertMenu(menuDTO);
+
+
+    } ///메뉴 insert문
+    public void insertMenuOption(MenuOptionDTO menuOptionDTO) throws  Exception{
+
+        System.out.println(menuOptionDTO.getOption_group());
+         //메뉴옵션에 메뉴seq
+        ownerMenuMapper.insertMenuOption(menuOptionDTO);
+
 
     }
 
     public List<String> menuInfo(int store_seq) throws Exception{
-        return ownerMenuMapperr.menuInfo(store_seq);
+        return ownerMenuMapper.menuInfo(store_seq);
     }
 
     public List<MenuDTO> menuList(String menu_group,int store_seq) throws Exception{
-        return ownerMenuMapperr.menuList(menu_group,store_seq);
+        return ownerMenuMapper.menuList(menu_group,store_seq);
     }
 
+    public int getNextMenuSeq(){
+      return  ownerMenuMapper.getNextMenuSeq();
+    }
 
 }

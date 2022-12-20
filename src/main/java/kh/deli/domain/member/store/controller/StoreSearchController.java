@@ -1,5 +1,6 @@
 package kh.deli.domain.member.store.controller;
 
+
 import kh.deli.domain.member.store.service.StoreSearchService;
 import kh.deli.global.entity.MenuDTO;
 import lombok.AllArgsConstructor;
@@ -46,6 +47,7 @@ public class StoreSearchController {
                 menuList.add(map);
             }
         }
+
         model.addAttribute("store_list", storeList);
         model.addAttribute("menu_list", menuList);
         return "member/store/storeSearch";
