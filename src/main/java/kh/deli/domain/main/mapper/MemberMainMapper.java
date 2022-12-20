@@ -2,6 +2,7 @@ package kh.deli.domain.main.mapper;
 
 import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,9 +11,7 @@ import java.util.List;
 @Mapper
 public interface MemberMainMapper {
 
-    public Integer selectStar (int store_seq);
+    @Select("select acc_type from account where acc_seq=#{acc_seq}")
+    String selectType (int acc_seq);
 
-    public String selectType (int acc_seq);
-
-    public List<StoreDTO> selectAll();
 }
