@@ -1,44 +1,85 @@
 $(".bs").on("change", function () {
     if ($(this).val() == '영업일') {
-        $(this).closest($(".bsnsdiv")).find($(".bs_time")).show();
+        $(this).closest($(".bsns_div")).find($(".bs_time")).show();
     } else {
-        $(this).closest($(".bsnsdiv")).find($(".bs_time")).find($(".bsns")).val("");
-        $(this).closest($(".bsnsdiv")).find($(".bs_time")).hide();
+        $(this).closest($(".bsns_div")).find($(".bs_time")).find($(".bsns")).val("");
+        $(this).closest($(".bsns_div")).find($(".bs_time")).hide();
     }
 })
 
 
-$("#add").on("click", function(){
-
-    var bsnsarr = [];
-
-    let b = document.getElementsByClassName("bsns")
-    let bs = document.getElementById("bsnsdata")
-
-
-    for (let i = 0; i < b.length; i++) {
-
-        bsnsarr.push(b[i].value);
-
-
+$("#add").on("click", function () {
+    let bsns_div = $(".bsns_div");
+    var bs_day = {
+        "mon": {
+            open: $(bsns_div[0]).find(".bs_open").val(),
+            open_time: $(bsns_div[0]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[0]).find(".bs_close_time").val()
+        },
+        "tue": {
+            open: $(bsns_div[1]).find(".bs_open").val(),
+            open_time: $(bsns_div[1]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[1]).find(".bs_close_time").val()
+        },
+        "wed": {
+            open: $(bsns_div[2]).find(".bs_open").val(),
+            open_time: $(bsns_div[2]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[2]).find(".bs_close_time").val()
+        },
+        "thu": {
+            open: $(bsns_div[3]).find(".bs_open").val(),
+            open_time: $(bsns_div[3]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[3]).find(".bs_close_time").val()
+        },
+        "fri": {
+            open: $(bsns_div[4]).find(".bs_open").val(),
+            open_time: $(bsns_div[4]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[4]).find(".bs_close_time").val()
+        },
+        "sat": {
+            open: $(bsns_div[5]).find(".bs_open").val(),
+            open_time: $(bsns_div[5]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[5]).find(".bs_close_time").val()
+        },
+        "sun": {
+            open: $(bsns_div[6]).find(".bs_open").val(),
+            open_time: $(bsns_div[6]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[6]).find(".bs_close_time").val()
+        }
     }
 
-    console.log(bsnsarr.toString())
-
-    bs.value= bsnsarr.toString()
-
-    console.log(bs.value)
+    $("#bsns_data").val(JSON.stringify(bs_day));
+    console.log(bs_day);
+    console.log($("#bsns_data").val());
+    let bsns_data = JSON.parse($("#bsns_data").val());
+    console.log(bsns_data); //이렇게 parsing해서 쓰면 돼요.
+    // var bsns_arr = [];
+    //
+    // let b = document.getElementsByClassName("bsns")
+    // let bs = document.getElementById("bsnsdata")
+    //
+    //
+    // for (let i = 0; i < b.length; i++) {
+    //
+    //     bsns_arr.push(b[i].value);
+    //
+    // }
+    //
+    // console.log(bsns_arr.toString())
+    //
+    // bs.value = bsns_arr.toString()
+    //
+    // console.log(bs.value)
 
 
     $("#frm").attr("action", "/store/add/storeAdd")
     $("#frm").submit()
 
 
-
-
 })
+
 //이미지미리보기
-function fileToBase64(file){
+function fileToBase64(file) {
     const reader = new FileReader();
     reader.readAsDataURL(file)
     reader.onload = () => {
@@ -46,37 +87,36 @@ function fileToBase64(file){
         $("#profile").attr("src", reader.result);
     }
 }
-$("#profile_img").on("change", function(){
-    if($("#profile_img").val()==""){
+
+$("#menu_img").on("change", function () {
+    if ($("#menu_img").val() == "") {
         $("#profile").attr("src", "/resources/img/store/no_storelogo.png");
         return;
     }
-    console.log($("#profile_img").val());
-    let ext=$("#profile_img").val().split(".").pop().toLowerCase();
+    console.log($("#menu_img").val());
+    let ext = $("#menu_img").val().split(".").pop().toLowerCase();
 
-    let accept=["png", "jpg", "jpeg", "gif"];
+    let accept = ["png", "jpg", "jpeg", "gif"];
 
-    let result=	$.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
+    let result = $.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
     console.log(result);
 
 
-
-    if(result==-1){
+    if (result == -1) {
         alert("이미지만 사용 가능합니다")
-        $("#profile_img").val("");//비워주기
+        $("#menu_img").val("");//비워주기
         $("#profile").attr("src", "/images/no_profile.png")//다른 사진들어올떄 #profile 도 비워주기
 
 
-    } else{
-        fileToBase64(document.getElementById("profile_img").files[0]);
+    } else {
+        fileToBase64(document.getElementById("menu_img").files[0]);
     }
 });
 
 
-
-$(document).on("click", ".postsearch", function() {
+$(document).on("click", ".postsearch", function () {
     new daum.Postcode({
-        oncomplete: function(data) {
+        oncomplete: function (data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
@@ -94,8 +134,8 @@ $(document).on("click", ".postsearch", function() {
 
             var callback = function (result, status) {
                 if (status === kakao.maps.services.Status.OK) {
-                    let x=result[0].x;
-                    let y= result[0].y;
+                    let x = result[0].x;
+                    let y = result[0].y;
                     console.log(x)
                     console.log(y)
                     document.getElementById("store_add_y").value = x;
