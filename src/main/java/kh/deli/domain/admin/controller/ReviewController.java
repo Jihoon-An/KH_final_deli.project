@@ -25,6 +25,8 @@ public class ReviewController {
         return "/admin/reviewMng";
     }
 
+
+    //리뷰 삭제
     @ResponseBody
     @PostMapping("/deleteReview")
     public void deleteReview(int rev_seq) throws Exception{
@@ -33,6 +35,7 @@ public class ReviewController {
 //        return "redirect:";
     }
 
+    //리뷰 비공개여부
     @ResponseBody
     @PostMapping("/modifyReviewDisplay")
     public void modifyReviewDisplay(int rev_seq,String rev_display) throws Exception{

@@ -19,7 +19,6 @@ public class StoreStoreService {
         storeMapper.insertStore(dto);
     }
 
-
     //가게 정보
     public StoreDTO storeInfo(int store_seq) throws Exception {
         return storeMapper.storeInfo(store_seq);

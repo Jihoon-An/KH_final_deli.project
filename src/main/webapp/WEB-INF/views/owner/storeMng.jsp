@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
@@ -36,7 +36,7 @@
             <form action="/store/mng/modify" id="frm" method="post" enctype="multipart/form-data">
                 <div>
 
-                    <%--store_seq--%>
+                        <%--store_seq--%>
                     <input type="hidden" name="store_seq" id="store_seq" value="${store.store_seq}">
 
                     <input type="text" name="store_name" value="${store.store_name}">
@@ -118,7 +118,7 @@
                     <div class="profile">
                         <div class="thumbnail">
                             <img src="/resources/img/store/no_storelogo.png" id="profile">
-<%--                            <img src="/resources" id="profile">--%>
+                                <%--                            <img src="/resources" id="profile">--%>
                         </div>
                         <div class="control">
                             <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
@@ -268,22 +268,22 @@
 
 
                     <p>오픈여부</p>
-                    <c:if test="${store.store_open=='Y'}">
+                    <c:if test="${store.store_open eq 'Y'}">
                         <label><input type="radio" name="store_open" value="Y" checked> Y</label>
                         <label><input type="radio" name="store_open" value="N"> N</label>
                     </c:if>
 
-                    <c:if test="${store.store_open=='N'}">
+                    <c:if test="${store.store_open eq'N'}">
                         <label><input type="radio" name="store_open" value="Y"> Y</label>
                         <label><input type="radio" name="store_open" value="N" checked> N</label>
                     </c:if>
 
                     <p>공개여부</p>
-                    <c:if test="${store.store_display=='Y'}">
+                    <c:if test="${store.store_display eq'Y'}">
                         <label><input type="radio" name="store_display" value="Y" checked>Y</label>
                         <label><input type="radio" name="store_display" value="N">N</label>
                     </c:if>
-                    <c:if test="${store.store_display=='N'}">
+                    <c:if test="${store.store_display eq'N'}">
                         <label><input type="radio" name="store_display" value="Y">Y</label>
                         <label><input type="radio" name="store_display" value="N" checked>N</label>
                     </c:if>

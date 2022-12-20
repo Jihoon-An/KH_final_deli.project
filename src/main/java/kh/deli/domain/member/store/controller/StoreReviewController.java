@@ -31,32 +31,29 @@ import java.util.Map;
 public class StoreReviewController {
 
     private final StoreStoreService storeStoreService;
-    private final MemberReviewService memberReviewService;
     private final StoreReviewService storeReviewService;
-
 
     @RequestMapping()
     public String toStoreReview(Model model) throws Exception {
         int store_seq = 19;
-//      int acc_seq = 9; //사업자 acc_seq
-        StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); //식당정보
 
+        StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); //식당정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); //식당리뷰개수
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); //식당별점평균
 
         List<StoreReviewDTO> storeReviewList = new ArrayList<>();
 
         List<Map<String, Object>> reviewInfoList = storeReviewService.getReviewInfo(store_seq); //식당 상세 리뷰페이지 리뷰 가져오기
-        System.out.println(reviewInfoList.get(1).get("REV_CONTENT"));
 
-        for (int i = 0; i < reviewInfoList.size(); i++) {
-            String memNick = (String) reviewInfoList.get(i).get("MEM_NICK");
-            String revWriteDate = String.valueOf(reviewInfoList.get(i).get("REV_WRITEDATE"));
-            String revModifiedDate = String.valueOf(reviewInfoList.get(i).get("REV_MODIFIED_DATE"));
-            int revStar = Integer.parseInt(reviewInfoList.get(i).get("REV_STAR").toString());
-            String revSysName = (String) reviewInfoList.get(i).get("REV_SYSNAME");
-            String revContent = (String) reviewInfoList.get(i).get("REV_CONTENT");
-            String menuList = (String) reviewInfoList.get(i).get("MENU_LIST");
+        for (int revInfo = 0; revInfo < reviewInfoList.size(); revInfo++) {
+            String memNick = (String) reviewInfoList.get(revInfo).get("MEM_NICK");
+            String revWriteDate = String.valueOf(reviewInfoList.get(revInfo).get("REV_WRITEDATE"));
+            String revModifiedDate = String.valueOf(reviewInfoList.get(revInfo).get("REV_MODIFIED_DATE"));
+            int revStar = Integer.parseInt(reviewInfoList.get(revInfo).get("REV_STAR").toString());
+            String revSysName = (String) reviewInfoList.get(revInfo).get("REV_SYSNAME");
+
+            String revContent = (String) reviewInfoList.get(revInfo).get("REV_CONTENT");
+            String menuList = (String) reviewInfoList.get(revInfo).get("MENU_LIST");
 
 //            ObjectMapper mapper = new ObjectMapper();
 //            List<List<Object>> tmp1 = mapper.readValue(revSysName, ArrayList.class);
@@ -92,7 +89,7 @@ public class StoreReviewController {
             );
 //            storeReviewList.add(new StoreReviewDTO(mem_nick, rev_writeDate, rev_modified_date, REV_STAR, storeRevSysname, revContent,
 //                    storeMenuList));
-        }
+    }
         model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("storeReviewCount", storeReviewCount);
         model.addAttribute("storeReviewAvg", storeReviewAvg);

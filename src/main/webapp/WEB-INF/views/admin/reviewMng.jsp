@@ -52,8 +52,7 @@
                                type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
                     </td>
 
-<%--                    <input type="hidden" value="${sysName.review_display}" class="rev_display">--%>
-                    <input type="hidden" value="Y" class="rev_display">
+                    <input type="hidden" value="${sysName.rev_display}" class="rev_display">
                     <input type="hidden" value="${sysName.rev_seq}" class="rev_seq">
                     <input type="hidden" value="${sysName.rev_star}" class="rev_star">
 

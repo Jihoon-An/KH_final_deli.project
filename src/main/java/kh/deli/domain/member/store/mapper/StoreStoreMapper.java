@@ -17,12 +17,12 @@ public interface StoreStoreMapper {
     public void insertStore(StoreDTO dto);
 
     //가게정보
-    @Select("select * from store where store_seq =#{store_seq}")
+    @Select("SELECT * FROM STORE WHERE STORE_SEQ =#{store_seq}")
     StoreDTO storeInfo(int store_seq);
 
 
     //식당 삭제
-    @Delete("delete from store where store_seq=#{store_seq}")
+    @Delete("DELETE FROM STORE WHERE STORE_SEQ=#{store_seq}")
     int deleteStore(int store_seq);
 
     //식당 수정

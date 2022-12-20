@@ -4,7 +4,5 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.owner.mapper.OwnerOwnerMapper">
-    <select id="bsInfo" resultType="kh.deli.global.entity.OwnerDTO">
 
-    </select>
 </mapper>

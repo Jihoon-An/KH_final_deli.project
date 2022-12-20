@@ -29,15 +29,4 @@
         )
     </insert>
 
-    <select id="storeInfo" resultType="StoreDTO">
-        select
-          *
-        from store
-        where store_seq=#{store_seq}
-    </select>
-
-    <select id="menuOrigin" resultType="StoreDTO">
-        select store_origin from store,menu where menu.store_seq=store.store_seq
-    </select>
-
 </mapper>

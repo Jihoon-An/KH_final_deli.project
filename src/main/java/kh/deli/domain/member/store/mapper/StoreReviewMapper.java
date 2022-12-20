@@ -10,11 +10,11 @@ import java.util.Map;
 public interface StoreReviewMapper {
 
     //가게 리뷰 개수
-    @Select("select count(*) from store where store_seq=#{store_seq}")
+    @Select("SELECT COUNT(*) FROM STORE WHERE STORE_SEQ=#{store_seq}")
     int getReviewCount(int store_seq);
 
     //가게 별점 평균
-    @Select("select round(avg(rev_star),1) from review where store_seq=#{store_seq}")
+    @Select("SELECT ROUND(avg(rev_star),1) FROM REVIEW WHERE STORE_SEQ=#{store_seq}")
     double getReviewAvg(int store_seq);
     
     //식당 상세 리뷰페이지 리뷰 가져오기
