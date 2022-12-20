@@ -44,7 +44,6 @@ public class OwnerStoreService {
             String sysName= UUID.randomUUID()+"_"+oriName;
             file.transferTo(new File(filePath+"/"+sysName));
             System.out.println("파일있을떄");
-
             storeDTO.setStore_logo(sysName);
         }
 

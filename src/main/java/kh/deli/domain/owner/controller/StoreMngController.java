@@ -47,7 +47,6 @@ public class StoreMngController {
 
     @PostMapping("/modify")
     public String modifyStore(StoreDTO storeDTO, Integer store_seq, MultipartFile file) throws Exception {
-
         ownerStoreService.modifyStore(storeDTO, store_seq, file);
         //내 식당 리스트로
         return "redirect:/";

@@ -31,7 +31,7 @@
 
     <update id="modifyStore" parameterType="kh.deli.global.entity.StoreDTO">
         UPDATE STORE
-            SET STORE_NAME=#{store_name},
+            SET store_name=#{store_name},
             STORE_CATEGORY=#{store_category},
             STORE_PHONE=#{store_phone},
             STORE_INTRO=#{store_intro},
@@ -39,7 +39,7 @@
             STORE_DELI_TIP=#{store_deli_tip},
             STORE_DELI_TIME=#{store_deli_time},
             STORE_BSNS_HOURS=#{store_bsns_hours},
-            STORE_CLOST_DAY=#{store_close_day},
+            STORE_CLOSE_DAY=#{store_close_day,jdbcType=VARCHAR},
             STORE_ADD_DETAIL1=#{store_add_detail1},
             STORE_ADD_DETAIL2=#{store_add_detail2},
             STORE_ADD_X=#{store_add_x},
@@ -49,8 +49,7 @@
             STORE_OPEN=#{store_open},
             STORE_DISPLAY=#{store_display},
             STORE_DESTINATION=#{store_destination},
-            OWNER_SEQ=#{owner_seq}
-        WHERE STORE_SEQ=#{STORE_SEQ}
+        WHERE STORE_SEQ=#{store_seq}
     </update>
 
 </mapper>
