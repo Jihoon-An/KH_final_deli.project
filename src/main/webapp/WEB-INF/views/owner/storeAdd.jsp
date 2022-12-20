@@ -1,4 +1,4 @@
-<%--
+s<%--
   Created by IntelliJ IDEA.
   User: ykm
   Date: 2022-12-13
@@ -72,91 +72,91 @@
         <input type="text" name="store_origin" placeholder="원산지">
         <Br>
 
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>월요일</span>
             <input type="hidden" class="bsns" value="월요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>화요일</span>
             <input type="hidden" class="bsns" value="화요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>수요일</span>
             <input type="hidden" class="bsns" value="수요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>목요일</span>
             <input type="hidden" class="bsns" value="목요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>금요일</span>
             <input type="hidden" class="bsns" value="금요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>토요일</span>
             <input type="hidden" class="bsns" value="토요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+             <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <div class="bsnsdiv">
+        <div class="bsns_div">
             <span>일요일</span>
             <input type="hidden" class="bsns" value="일요일">
-            <select name="store_bsns_hours" class="bsns bs">
+            <select name="test" class="bsns bs bs_open">
                 <option>영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns bs_open_time">
+            <input type="time" class="bsns bs_close_time">
         </span>
         </div>
-        <input type="hidden" id="bsnsdata" name="store_bsns_hours">
+        <input type="hidden" id="bsns_data" name="store_bsns_hours">
 
         <br>
         <input type="text" name="store_close_day" placeholder="휴무일">

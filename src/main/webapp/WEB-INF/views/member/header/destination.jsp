@@ -41,8 +41,8 @@
                         <div class="destination_box">
                             <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                             <input type="radio" name="radio_add_division" <c:if test="${i.add_division=='basics'}">checked</c:if>>
-                            <c:if test="${i.add_division=='basics'}">[기본]</c:if>
-                            <c:if test="${i.add_division!='basics'}">[선택]</c:if>
+                            <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
+                            <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
                             <input type="hidden" name="add_division" class="hidden_add_division" value="${i.add_division}">
                             ${i.add_name} <a class="del">x</a> <br>
                             ${i.add_detail1} <br>
@@ -82,17 +82,19 @@
 <script>
 
     $(".del").on("click", function () {
-        console.log($(this).closest(".destination_box").find(".add_seq").val());
-
-        if(confirm("정말 삭제 하시겠습니까?")){
-            // $(this).closest(".destination_box").remove();
-            $.ajax({
-                url: "/member/header/destination/delete",
-                type: "post",
-                data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
-            }).done(function () {
-                alert("삭제 성공/모달 새고고침처럼 다시 보여야함/지웠다가 다시 띄우기");
-            });
+        if($(this).closest(".destination_box").find(".pick").html() == "[기본]"){
+            confirm("기본 배송지는 삭제 불가합니다.기본 주소지 변경 후 삭제해주세요.")
+        } else {
+            if(confirm("정말 삭제 하시겠습니까?")){
+                // $(this).closest(".destination_box").remove();
+                $.ajax({
+                    url: "/member/header/destination/delete",
+                    type: "post",
+                    data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
+                }).done(function () {
+                    alert("삭제 성공/모달 새고고침처럼 다시 보여야함/지웠다가 다시 띄우기");
+                });
+            }
         }
     });
 

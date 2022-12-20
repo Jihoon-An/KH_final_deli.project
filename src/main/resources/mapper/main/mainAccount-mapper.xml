@@ -39,9 +39,9 @@
         INSERT INTO member VALUES(
         #{acc_seq},
         mem_seq.nextval,
-        #{mem_name},
-        #{mem_phone},
         null,
+        #{mem_phone},
+        #{mem_nick},
         null,
         null,
         'normal',

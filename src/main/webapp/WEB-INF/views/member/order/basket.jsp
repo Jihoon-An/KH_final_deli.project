@@ -42,12 +42,12 @@
                 메뉴 가격 : <span class="menuPrice">${menuList.menu.menu_price}</span><br>
                 메뉴 이미지 : ${menuList.menu.menu_img}<br>
                 <br>
-                <c:forEach var="option" items="${menuList.options}" varStatus="i">
-                    - 옵션 메뉴 SEQ : ${option.menu_seq}<br>
-                    - 옵션 SEQ : ${option.option_seq}<br>
-                    - 옵션 그룹 : ${option.option_group}<br>
-                    - 옵션명 : ${option.option_name}<br>
-                    - 옵션 가격 : <span class="optionPrice op${i.count}">${option.option_price}</span><br>
+                <c:forEach var="optionMap" items="${menuList.options}" varStatus="i">
+                    - 옵션 메뉴 SEQ : ${optionMap.menu_seq}<br>
+                    - 옵션 SEQ : ${optionMap.option_seq}<br>
+                    - 옵션 그룹 : ${optionMap.option_group}<br>
+                    - 옵션명 : ${optionMap.option_name}<br>
+                    - 옵션 가격 : <span class="optionPrice op${i.count}">${optionMap.option_price}</span><br>
                     <br>
                 </c:forEach>
                 <br>

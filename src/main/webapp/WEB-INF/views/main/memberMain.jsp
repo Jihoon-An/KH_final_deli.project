@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>회원 메인페이지</title>
@@ -20,35 +20,8 @@
 <body>
 <main id="memberMain">
 
-    <div id="fucking">
-        <h4><a href="/">임시 리모컨</a></h4><hr>
-        <a href="/storeSearch">[유저]식당검색</a><br>
-        <a href="/myPage">[유저]마이페이지</a><br>
-        <a href="/member/header/destination">[유저]배달지 선택 페이지</a><br>
-        <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>
-        <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>
-        <a href="/member/order/detail">[유저]결제결과 페이지</a><br>
-        <a href="/basket">[유저]장바구니</a><br>
-        <a href="/member/order/history">[유저]내주문내역</a><br>
-        <a href="/store/menu">[유저]식당상세(메뉴/정보/리뷰)</a><br>
-        <a href="/account/toMemberSignUp">[유저]일반회원가입</a><br>
-        <a href="/account/toKakaoSignUp">[유저]카카오회원가입</a><br>
-        <hr>
-        <a href="/ownerSignUp">[오너]사업자회원가입</a><br>
-        <a href="/store">[오너]식당추가</a><br>
-        <a href="/menu">[오너]메뉴추가</a><br>
-        <hr>
-        <a href="/admin/coupon/add">[운영자]쿠폰 추가 페이지</a><br>
-        <a href="/admin/coupon/list">[운영자]쿠폰 리스트 페이지</a><br>
-        <a href="/admin/review/">[운영자]리뷰 관리 페이지</a><br>
-        <a href="/admin/account/list/">[운영자]일반회원 관리 페이지</a><br>
-        <hr>
-        <hr>
-        <a href="/deliveryDtl">[배달기사]고객배달영수증</a><br>
-        <hr>
-        <a href="/account/logout">[유저+오너]로그아웃</a><br>
-        <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
-    </div>
+        <%@ include file="/WEB-INF/views/member/header/temporaryNavi.jsp" %>
+
     <div class="container">
         <table border="1px">
             <tr>
@@ -74,36 +47,46 @@
             </tr>
         </table>
         <c:choose>
-            <c:when test="${not empty list}">
-                <c:forEach var="sysName" items="${list}" varStatus="status">
+            <c:when test="${not empty store_list}">
+                <c:forEach var="store_list" items="${store_list}" varStatus="status">
                     <hr>
-                    <div>
-                        <div>가게시퀀스 : ${sysName.store_seq}</div>
-                        <c:choose>
-                            <c:when test="${not empty starlist[status.index]}">
-                                <div>평점: ${starlist[status.index]} </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div>평점: 0</div>
-                            </c:otherwise>
-                        </c:choose>
-                        <div>가게이름 : ${sysName.store_name}</div>
-                        <c:choose>
-                            <c:when test="${sysName.store_logo !=null}">
-                                <div>
-                                    <img class="logoImg" src="/resources/img/store/${sysName.store_logo}">
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div>이미지: 사진없음</div>
-                            </c:otherwise>
-                        </c:choose>
-                        <div>최소금액 : ${sysName.store_min_price},</div>
-                        <div>배달팁 : ${sysName.store_deli_tip},</div>
-                        <div>배달시간 : ${sysName.store_deli_time}</div>
+                    <div class="store_list d-inline-flex m-2">
+                        <div class="m-2 store_logo_box">
+                            <c:choose>
+                                <c:when test="${store_list.STORE_LOGO !=null}">
+                                    <div>
+                                        <img class="store_logo" src="/resources/img/store/${store_list.STORE_LOGO}">
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div>이미지: 사진없음</div>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                        <div class="m-2 store_info_box">
+                            <div>식당명: ${store_list.STORE_NAME}</div>
+                            <div>★${store_list.AVERAGE_STARS} / 리뷰 ${store_list.COUNT_REVIEW}개
+                                /
+                                <fmt:formatNumber var="DISTANCE" value="${store_list.DISTANCE}" pattern="#.##"/>
+                                <c:if test="${store_list.DISTANCE >= 1000}">
+                                    <fmt:formatNumber value="${(DISTANCE) / (1000)}" pattern=".0"/>km</c:if>
+                                <c:if test="${store_list.DISTANCE < 1000}">${store_list.DISTANCE}m</c:if>
+                            </div>
+                            <div>최소주문금액: ${store_list.STORE_MIN_PRICE}원</div>
+                            <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
+                            <div class="menu_name">
+                                메뉴명:
+                                <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}" varStatus="status2">
+                                    ${menu_list}<c:if test="${!status2.last}">, </c:if>
+                                </c:forEach>
+                            </div>
+                        </div>
                     </div>
                 </c:forEach>
             </c:when>
+            <c:otherwise>
+                <div>근처에 주문할 수 있는 가게가 없습니다.</div>
+            </c:otherwise>
         </c:choose>
     </div>
 </main>

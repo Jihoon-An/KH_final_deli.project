@@ -27,3 +27,10 @@
 ### 22-12-19
 - 리뷰 작성하기 사진 null값으로 들어가게 수정
 - 사업자메인페이지 하루 총 매출액과 소유식당 리스트 출력
+
+### 22-12-20
+- MemberMainPage 거리별 노출 가게 리스트 수정
+- MemberMainPage에 사용되는 service와 mapper 정리
+- 메타 테이블 생성
+- 일일매출테이블 생성(dd_sales)
+- db procedure 생성

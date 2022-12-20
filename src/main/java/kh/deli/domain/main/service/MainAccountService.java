@@ -11,6 +11,7 @@ import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -94,6 +95,7 @@ public class MainAccountService {
     /**
      * member 회원가입 메서드
      */
+    @Transactional
     public void memberSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
         int getNextAccSeq = mainAccountMapper.getNextAccSeq();
         accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
@@ -254,6 +256,11 @@ public class MainAccountService {
         }
         message.send_msg(tel, "딜리본인인증번호 ["+numStr+"]");
         return numStr;
+    }
+
+    //MemberMainPage
+    public String selectType(int acc_seq){
+        return mainAccountMapper.selectType(acc_seq);
     }
 
 }

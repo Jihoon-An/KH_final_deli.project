@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.owner.mapper.OwnerStoreMapper">
+    <insert id="insertStore" parameterType="kh.deli.global.entity.StoreDTO">
+        insert into store values(
+        store_seq.nextval,
+        #{store_name},
+        #{store_category},
+        #{store_phone},
+        #{store_intro},
+        #{store_min_price},
+        #{store_deli_tip},
+        #{store_deli_time},
+        #{store_bsns_hours},
+        #{store_close_day},
+        #{store_add_detail1},
+        #{store_add_detail2},
+        #{store_add_x},
+        #{store_add_y},
+        #{store_logo, jdbcType=VARCHAR},
+        #{store_origin},
+        #{store_open},
+        #{store_display},
+        #{store_destination},
+        #{owner_seq}
+        )
+    </insert>
+
+    <update id="modifyStore" parameterType="kh.deli.global.entity.StoreDTO">
+        UPDATE STORE
+            SET STORE_NAME=#{store_name},
+            STORE_CATEGORY=#{store_category},
+            STORE_PHONE=#{store_phone},
+            STORE_INTRO=#{store_intro},
+            STORE_MIN_PRICE=#{store_min_price},
+            STORE_DELI_TIP=#{store_deli_tip},
+            STORE_DELI_TIME=#{store_deli_time},
+            STORE_BSNS_HOURS=#{store_bsns_hours},
+            STORE_CLOST_DAY=#{store_close_day},
+            STORE_ADD_DETAIL1=#{store_add_detail1},
+            STORE_ADD_DETAIL2=#{store_add_detail2},
+            STORE_ADD_X=#{store_add_x},
+            STORE_ADD_Y=#{store_add_y},
+            STORE_LOGO=#{store_logo, jdbcType=VARCHAR},
+            STORE_ORIGIN=#{store_origin},
+            STORE_OPEN=#{store_open},
+            STORE_DISPLAY=#{store_display},
+            STORE_DESTINATION=#{store_destination},
+            OWNER_SEQ=#{owner_seq}
+        WHERE STORE_SEQ=#{STORE_SEQ}
+    </update>
+
+</mapper>

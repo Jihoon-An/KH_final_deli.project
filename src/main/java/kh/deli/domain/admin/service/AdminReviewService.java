@@ -18,8 +18,8 @@ public class AdminReviewService {
     public List<AdminReviewDTO> selectAll() throws Exception {
         return adminReviewMapper.selectAll();
     }
-    public int deleteReview(int rev_seq) throws Exception{
-        return adminReviewMapper.deleteReview(rev_seq);
+    public void deleteReview(int rev_seq) throws Exception{
+        adminReviewMapper.deleteReview(rev_seq);
     }
 
    public void modifyReviewDisplay(int rev_seq,String rev_display) throws Exception{
