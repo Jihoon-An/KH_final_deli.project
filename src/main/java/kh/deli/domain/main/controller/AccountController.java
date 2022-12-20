@@ -95,6 +95,14 @@ public class AccountController {
 
     }
 
+    @RequestMapping("kakaoUnLink")
+    public String kakaoUnLink() throws Exception {
+        String accessToken = (String)session.getAttribute("kakaoAccessToken");
+        mainAccountService.kakaoUnlink(accessToken);
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @ResponseBody
     @RequestMapping("deleteSavedEmail")
     public String deleteSavedEmail(HttpServletResponse response) throws Exception {
@@ -123,7 +131,7 @@ public class AccountController {
     @RequestMapping("toKakaoSignUp")
     public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
         model.addAttribute("acc_token", kakaoId);
-        return "main/kakaoSignUp";
+        return "main/memberSignUp";
     }
 
     @PostMapping("kakaoSignUp")
@@ -147,7 +155,7 @@ public class AccountController {
         // kakaoId 으로 카카오 회원 정보 DB 저장
         if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
             // 회원가입으로 페이지 이동
-            return "redirect:/account/toKakaoSignUp?kakaoId=" + kakaoId;
+            return "redirect:/account/toMemberSignUp?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
             String email = mainAccountService.getAccEmail(kakaoId);
@@ -166,17 +174,17 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
-    public String telCertify(String tel) {
-        String serverTelCertifyStr = mainAccountService.sendRandomMessage(tel);
-        redisUtil.setData(tel,serverTelCertifyStr); // 문자 인증번호 정보를 Redis에 저장
+    public String telCertify(String mem_phone) {
+        String serverTelCertifyStr = mainAccountService.sendRandomMessage(mem_phone);
+        redisUtil.setData(mem_phone,serverTelCertifyStr); // 문자 인증번호 정보를 Redis에 저장
         return serverTelCertifyStr;
     }
 
     @ResponseBody
     @RequestMapping(value="certify/telConfirm", method=RequestMethod.POST)
-    public boolean telConfirm(String tel, String telCertifyStr) {
-        String getServerTelCertifyStr = redisUtil.getData(tel);
-        return telCertifyStr.equals(getServerTelCertifyStr) ? true : false;
+    public boolean telConfirm(String mem_phone, String phone_confirm_input) {
+        String getServerTelCertifyStr = redisUtil.getData(mem_phone);
+        return phone_confirm_input.equals(getServerTelCertifyStr) ? true : false;
     }
 
     @PostMapping("/dupleCheck")

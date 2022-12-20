@@ -55,31 +55,34 @@
         <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
     </div>
 
-    <c:choose>
-        <c:when test="${loginEmail != null}">
-            ${acc_seq}
-            <div class="container">
-                <marquee>
-                    <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>
-                    <br>
-                    <a href="/memberMain/toMemberMain"><button>메인으로</button></a>
-                    <br>
-                    <h1>
-                        <a href="/account/logout"><button>로그아웃</button></a>
-                    </h1>
-                    <h2>
-                        <a href="/userMenu/toMyPage"><button>마이페이지</button></a>
-                    </h2>
-                    <h1>
-                        <a href="/basket"><button>고추장바구니모를찾아서</button></a>
-                    </h1>
-                    <br><br><br>
-                    <h3><a href="/account/withdrawal"><button>꺼지셈 너 필요없음 이제</button></a> </h3>
-                </marquee>
-            </div>
-        </c:when>
+<%--    <c:choose>--%>
+<%--        <c:when test="${loginEmail != null}">--%>
+<%--            ${acc_seq}--%>
+<%--            <div class="container">--%>
+<%--                <marquee>--%>
+<%--                    <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>--%>
+<%--                    <br>--%>
+<%--                    <a href="/memberMain/toMemberMain"><button>메인으로</button></a>--%>
+<%--                    <br>--%>
+<%--                    <h1>--%>
+<%--                        <a href="/account/logout"><button>로그아웃</button></a>--%>
+<%--                    </h1>--%>
+<%--                    <h2>--%>
+<%--                        <a href="/userMenu/toMyPage"><button>마이페이지</button></a>--%>
+<%--                    </h2>--%>
+<%--                    <h1>--%>
+<%--                        <a href="/basket"><button>고추장바구니모를찾아서</button></a>--%>
+<%--                    </h1>--%>
+<%--                    <br><br><br>--%>
+<%--                    <h3><a href="/account/withdrawal"><button>꺼지셈 너 필요없음 이제</button></a> </h3>--%>
+<%--                </marquee>--%>
+<%--            </div>--%>
+<%--        </c:when>--%>
 
-        <c:otherwise>
+<%--        <c:otherwise>--%>
+<%--        </c:otherwise>--%>
+<%--    </c:choose>--%>
+
             <div class="container">
 
                 <div class="loginBox">
@@ -107,8 +110,7 @@
                 </div>
 
             </div>
-        </c:otherwise>
-    </c:choose>
+
 
     <script src="/resources/js/main/home.js"></script>
 </main>
