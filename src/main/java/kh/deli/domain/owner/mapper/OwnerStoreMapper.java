@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
@@ -20,6 +21,9 @@ public interface OwnerStoreMapper {
 
     @Select(" SELECT STORE_ORIGIN FROM STORE,MENU WHERE MENU.STORE_SEQ=STORE.STORE_SEQ")
     public List<StoreDTO> menuOrigin();
+
+    //식당 수정
+    int modifyStore(Map<String, Object> param);
 
 
 

@@ -25,8 +25,6 @@ public interface StoreStoreMapper {
     @Delete("DELETE FROM STORE WHERE STORE_SEQ=#{store_seq}")
     int deleteStore(int store_seq);
 
-    //식당 수정
-    int modifyStore(Map<String, Object> param);
 
     @Select("SELECT * FROM STORE WHERE STORE_SEQ = #{seq}")
     StoreDTO findBySeq(int seq);

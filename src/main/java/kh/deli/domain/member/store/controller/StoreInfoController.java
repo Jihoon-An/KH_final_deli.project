@@ -34,6 +34,7 @@ public class StoreInfoController {
         model.addAttribute("storeReviewCount",storeReviewCount);
         model.addAttribute("storeReviewAvg",storeReviewAvg);
 
+
         return "/member/store/storeInfo";
     }
 
