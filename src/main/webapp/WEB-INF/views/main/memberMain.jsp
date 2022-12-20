@@ -74,36 +74,35 @@
             </tr>
         </table>
         <c:choose>
-            <c:when test="${not empty list}">
-                <c:forEach var="sysName" items="${list}" varStatus="status">
+            <c:when test="${not empty store_list}">
+                <c:forEach var="store_list" items="${store_list}" varStatus="status">
                     <hr>
-                    <div>
-                        <div>가게시퀀스 : ${sysName.store_seq}</div>
-                        <c:choose>
-                            <c:when test="${not empty starlist[status.index]}">
-                                <div>평점: ${starlist[status.index]} </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div>평점: 0</div>
-                            </c:otherwise>
-                        </c:choose>
-                        <div>가게이름 : ${sysName.store_name}</div>
-                        <c:choose>
-                            <c:when test="${sysName.store_logo !=null}">
-                                <div>
-                                    <img class="logoImg" src="/resources/img/store/${sysName.store_logo}">
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div>이미지: 사진없음</div>
-                            </c:otherwise>
-                        </c:choose>
-                        <div>최소금액 : ${sysName.store_min_price},</div>
-                        <div>배달팁 : ${sysName.store_deli_tip},</div>
-                        <div>배달시간 : ${sysName.store_deli_time}</div>
+                    <div class="store_list d-inline-flex m-2">
+                        <div class="m-2 store_logo_box">
+                            <img class="store_logo"
+                                 src="https://shop-phinf.pstatic.net/20221209_61/1670570397926XRLOY_JPEG/%ED%8C%A8%EC%85%98%ED%83%80%EC%9A%B4_%ED%96%89%EC%82%AC%EB%B0%B0%EB%84%88%EC%9A%B4%EC%98%81%EA%B0%80%EC%9D%B4%EB%93%9C.jpg">
+                        </div>
+                            ${store_list.STORE_LOGO}
+                        <div class="m-2 store_info_box">
+                            최소주문금액${store_list.STORE_MIN_PRICE}<BR>
+                            <div>식당명: ${store_list.STORE_NAME}</div>
+                            <div>★${store_list.AVERAGE_STARS} / 리뷰개수:${store_list.COUNT_REVIEW}
+                                / ${store_list.DISTANCE}m
+                            </div>
+                            <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
+                            <div class="menu_name">
+                                메뉴명:
+                                <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}" varStatus="status2">
+                                    ${menu_list}<c:if test="${!status2.last}">, </c:if>
+                                </c:forEach>
+                            </div>
+                        </div>
                     </div>
                 </c:forEach>
             </c:when>
+            <c:otherwise>
+                <div>근처에 주문할 수 있는 가게가 없습니다.</div>
+            </c:otherwise>
         </c:choose>
     </div>
 </main>
