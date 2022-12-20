@@ -1,14 +1,12 @@
 package kh.deli.domain.main.controller;
 
-import kh.deli.domain.main.service.MemberMainService;
+import kh.deli.domain.main.service.MainAccountService;
 import kh.deli.domain.member.store.service.StoreSearchService;
 import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import kh.deli.domain.owner.service.OwnerMainService;
 import kh.deli.global.entity.MenuDTO;
-import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -26,9 +24,10 @@ public class HomeController {
 
 
     private final HttpSession session;
-    private final MemberMainService memberMainService;
     private final OwnerMainService ownerMainService;
     private final StoreSearchService storeSearchService;
+
+    private final MainAccountService mainAccountService;
 
 
 
@@ -39,7 +38,7 @@ public class HomeController {
 
         if (session.getAttribute("acc_seq")!=null) {
             int acc_seq = (Integer) session.getAttribute("acc_seq");
-            String acc_type = memberMainService.selectType(acc_seq);
+            String acc_type = mainAccountService.selectType(acc_seq);
 
             //toMemberMainPage
             if (acc_type.equals("client")) {
