@@ -33,15 +33,15 @@
 
             <a href="/myPage/memberInfo">
                 <div class="profileBox">
-                    <i class="fa-regular fa-circle-user"></i> 닉네임
+                    <i class="fa-regular fa-circle-user"></i> ${memberInfo.mem_nick}
                     <div><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
             </a>
             <div class="linkBox">
-                <a href="/">
+                <a href="/myPage/couponPoint">
                     <div class="link couponAndPointBox">
                         <span class="icon"><i class="fa-solid fa-ticket"></i></span><br>
-                        <span class="text">쿠폰</span>
+                        <span class="text">쿠폰&포인트</span>
                     </div>
                 </a>
                 <a href="/myPage/dibs/">
@@ -50,7 +50,7 @@
                         <span class="text">찜</span>
                     </div>
                 </a>
-                <a href="/">
+                <a href="/member/order/history">
                     <div class="link orderHistoryBox">
                         <span class="icon"><i class="fa-solid fa-barcode"></i></span><br>
                         <span class="text">주문내역</span>

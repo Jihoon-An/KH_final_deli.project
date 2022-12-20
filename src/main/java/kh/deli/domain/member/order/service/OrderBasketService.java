@@ -2,6 +2,7 @@ package kh.deli.domain.member.order.service;
 
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
+import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,11 @@ public class OrderBasketService {
     private final OrderMenuOptionService optionService;
     private final OrderMenuService menuService;
     private final OrderStoreService storeService;
+    private final OrderOrdersMapper orderOrdersMapper;
+
+    public void insertSampleBasket(String orderBasketDTO) throws Exception {
+        orderOrdersMapper.insertSampleBasket(orderBasketDTO);
+    }
 
     public OrderBasketDTO getSample() throws Exception {
         List<OrderBasketMenuDTO> menuList = new ArrayList<>();
