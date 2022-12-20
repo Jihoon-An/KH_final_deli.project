@@ -41,20 +41,25 @@
         <div class="reviews">
             <c:choose>
                 <c:when test="${not empty storeReviewList}">
-                    <c:forEach var="i" items="${storeReviewList}">
-                        <div id="nickname">${i.mem_nick}</div>
-                        <div id="writeDate">${i.rev_writedate}</div>
-                        <div id="modifiedDate">${i.rev_modified_date}</div>
-                        <div id="reviewStar">${i.rev_star}</div>
-                        <c:forEach var="k" items="${i.rev_sysname}"><%--사진 출력되게해야함--%>
-                            <div id="reviewImgs">
-                                <img src="/resources/img/review">
-                            </div>
-                        </c:forEach>
-                        <div id="revieContent">${i.rev_content}</div>
-                        <c:forEach var="l" items="${i.menu_list}">
-                            <div id="reviewImgs">${l}</div>
-                        </c:forEach>
+                    <c:forEach var="reviews" items="${storeReviewList}">
+                        <div id="nickname">닉네임 : ${reviews.mem_nick}</div>
+                        <div id="writeDate">작성일자 : ${reviews.rev_writedate}</div>
+                        <div id="modifiedDate">수정일자 : ${reviews.rev_modified_date}</div>
+                        <div id="reviewStar">별점 : ${reviews.rev_star}</div>
+                        <c:choose>
+                            <c:when test="${not empty reviews.rev_sysname}">
+                                <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
+                                    <div id="reviewImgs">
+                                        <img src="/resources/img/review/${reviewImg}">
+                                    </div>
+                                </c:forEach>
+                            </c:when>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${not empty reviews.rev_content}">
+                                <div>리뷰 내용 : ${reviews.rev_content}</div>
+                            </c:when>
+                        </c:choose>
                         <br>
                     </c:forEach>
                 </c:when>

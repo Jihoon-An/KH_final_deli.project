@@ -26,20 +26,19 @@
         option_seq.nextval,
         #{menu_seq},
         #{option_group},
-        #{option_required},
         #{option_name},
-        #{option_price}
-
+        #{option_price},
+        #{option_required}
         )
     </insert>
 
 
     <select id="menuInfo" resultType="String">
-        select distinct menu_group from menu where store_seq=${store_seq}
+        SELECT DISTINCT MENU_GROUP FROM MENU WHERE STORE_SEQ=${store_seq}
     </select>
 
     <select id="menuList" resultType="MenuDTO" parameterType="MenuDTO">
-        select * from menu where menu_group=#{menu_group} and store_seq=${store_seq}
+        SELECT * FROM MENU WHERE MENU_GROUP=#{menu_group} AND STORE_SEQ=${store_seq}
     </select>
 
 </mapper>

@@ -28,10 +28,18 @@
 
 <body>
 <main id="menuAdd">
-    <form action="" id="frm" method="post" enctype="multipart/form-data">
+    <form action="/menu/add/menuAdd" id="frm" method="post" enctype="multipart/form-data">
+        <button type="button">메뉴그룹추가</button>
+        <hr>
+
         <div class="container">
+
+            <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"> <button
+                type="button">X</button>
+            <hr>
+            <button type="button">메뉴추가</button>
+
             <div class="menufrm">
-                <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요">
                 <div class="profile">
                     <div class="thumbnail">
                         <img src="/resources/img/menu-img/no_foodlogo.png" class="image-thumbnail" id="profile">
@@ -51,71 +59,54 @@
                 <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"><br>
                 <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"><br>
                 <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
-                <input type="text" id="menu_num" name="menu_num" placeholder="메뉴순서">
-                <hr>
                 <input type="hidden" name="store_seq" value="21">
-
-                <div class="col-12">
-                    <button type="button" class="btn_outline" id="btn_option_add">옵션추가</button>
-                    <p style="color: #808080;" class="text_mini">옵션 추가를 원하시면 버튼을 눌러
-                        추가 정보를 입력해주세요.</p>
-                </div>
-
-                <div class="col-12 option1">
-                    <p>필수, 선택 옵션</p>
-                    <label><input type="radio" class="menu_option option" name="option_required" value="필수"> 필수</label>
-                    <label><input type="radio" class="menu_option option" name="option_required" value="선택"> 선택</label>
-                    <input type="text" class="option_group" name="option_group" placeholder="옵션그룹명 입력">
-                    <!-- <input type="hidden" name="menu_option" id="menuoption"> -->
-
-
-
-                    <div class="opnamediv">
-                        <div class="text-start" style="width: 350px">
-                            <span style="color: #808080; font-size: x-small">옵션명</span>
-                        </div>
-                        <input type="text" id="option_name_input" name="option_name" class="option_name option"
-                               placeholder="옵션명을 입력하세요" maxlength="20">
-
-                        <div class="text-start" style="width: 350px">
-                            <span style="color: #808080; font-size: x-small">옵션가격</span>
-                        </div>
-                        <input type="text" id="option_price_input" name="option_price" class="option_price option"
-                               placeholder="옵션 가격" maxlength="11" oninput=validNum()>
-
-                    </div>
-
-                    <div class="opbtn">
-                        <button type="button" class="btn_outline btn_opnameadd" id="btn_optionname_add">옵션명추가</button>
-                        <p style="color: #808080;" class="text_mini">옵션명 추가를 원하시면 버튼을 눌러
-                            추가 정보를 입력해주세요.</p>
-                    </div>
-
-                </div>
-
-
                 <hr>
-                <!--
-                                    <button class="btn btn-outline-secondary modify_btn" type="submit"
-                                        style="--bs-btn-border-color: rgb(206,212,218);">등록
-                                    </button> -->
 
-                <button type="button" id="addop">
-                    등록
-                </button>
+                <div>
+                    <select name="option_required">
+                        <option value="Y">필수옵션</option>
+                        <option value="N">선택옵션</option>
+                    </select>
+                    <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group"><br>
+
+                    <button type="button">X</button> <input type="text" placeholder="옵션명을 입력하세요" name="option_name">
+                    <input type="text" placeholder="옵션가격을 입력하세요" name="option_price" ><br>
+                    <button type="button">X</button> <input type="text" placeholder="옵션명을 입력하세요"  name="option_name">
+                    <input type="text" placeholder="옵션가격을 입력하세요" name="option_price"><button type="button">+</button> <br>
+                </div>
+                <div>
+                    <select name="option_required">
+                        <option value="Y">필수옵션</option>
+                        <option value="N">선택옵션</option>
+                    </select>
+                    <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group"><br>
+
+                    <button type="button">X</button> <input type="text" placeholder="옵션명을 입력하세요" name="option_name">
+                    <input type="text" placeholder="옵션가격을 입력하세요" name="option_price"><br>
+                    <button type="button">X</button> <input type="text" placeholder="옵션명을 입력하세요"  name="option_name">
+                    <input type="text" placeholder="옵션가격을 입력하세요" name="option_price"><button type="button" class="btn_opnameadd" >+</button> <br>
+                </div>
 
             </div>
+
+            <hr>
+
+            <button type="button">취소하기</button>
+            <button class="btn btn-outline-secondary btn_add" type="submit"
+                    style="--bs-btn-border-color: rgb(206,212,218);">등록하기
+            </button>
+
         </div>
     </form>
 
-
-
-
-
-
-
 </main>
-<script src="/resources/js/owner/menuAdd.js"></script>
+            <script>
+                $(".btn_add").on("click", function(){
+                    $("input[name='option_required']").val();
+
+                })
+            </script>
 </body>
 
 </html>
+<script src="/resources/js/owner/menuAdd.js"></script>

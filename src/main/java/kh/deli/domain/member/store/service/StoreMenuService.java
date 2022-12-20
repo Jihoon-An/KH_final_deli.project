@@ -25,7 +25,6 @@ public class StoreMenuService {
     @Autowired
     private StoreMenuMapper storeMenuMapper;
 
-
     public void insertMenu(MenuDTO menu, MultipartFile file) throws IOException {
 
 
@@ -44,7 +43,6 @@ public class StoreMenuService {
 
             menu.setMenu_img(sysName);
         }
-
 
         storeMenuMapper.insertMenu(menu);
     }
