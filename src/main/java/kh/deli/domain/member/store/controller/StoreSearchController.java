@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("storeSearch")
+@RequestMapping("/store/search")
 public class StoreSearchController {
 
     private final HttpSession session;
