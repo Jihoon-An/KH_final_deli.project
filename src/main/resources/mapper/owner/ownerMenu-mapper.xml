@@ -26,10 +26,9 @@
         option_seq.nextval,
         #{menu_seq},
         #{option_group},
-        #{option_required},
         #{option_name},
-        #{option_price}
-
+        #{option_price},
+        #{option_required}
         )
     </insert>
 

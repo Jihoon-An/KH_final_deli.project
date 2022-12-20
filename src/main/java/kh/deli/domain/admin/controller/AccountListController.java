@@ -25,4 +25,13 @@ public class AccountListController {
         model.addAttribute("account_list", account_list);
         return "admin/adminAccountList";
     }
+
+
+    @RequestMapping("/deleteAccount")
+    public String AcoounDelete(int acc_seq) throws  Exception{
+        System.out.println(acc_seq);
+
+        adminAccountService.deleteAccount(acc_seq);
+        return"redirect:";
+    }
 }

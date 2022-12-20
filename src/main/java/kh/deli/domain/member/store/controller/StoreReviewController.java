@@ -1,10 +1,12 @@
 package kh.deli.domain.member.store.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+
 import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.domain.member.myPage.service.MemberReviewService;
 import kh.deli.domain.member.store.service.StoreReviewService;
@@ -12,14 +14,14 @@ import kh.deli.domain.member.store.service.StoreStoreService;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import javax.print.DocFlavor;
 import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +42,7 @@ public class StoreReviewController {
         StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); //식당정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); //식당리뷰개수
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); //식당별점평균
+
 
         List<StoreReviewDTO> storeReviewList = new ArrayList<>();
 
