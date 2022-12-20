@@ -115,6 +115,7 @@ public class AccountController {
         mainAccountService.memberSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
+        session.setAttribute("acc_seq", accountDTO.getAcc_seq());
         redisUtil.deleteData(memberDTO.getMem_phone());
         return "redirect:/";
     }
@@ -130,6 +131,7 @@ public class AccountController {
         mainAccountService.kakaoSignUp(accountDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
+        session.setAttribute("acc_seq", accountDTO.getAcc_seq());
         redisUtil.deleteData(memberDTO.getMem_phone());
         return "redirect:/";
     }

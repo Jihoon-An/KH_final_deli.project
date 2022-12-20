@@ -258,4 +258,9 @@ public class MainAccountService {
         return numStr;
     }
 
+    //MemberMainPage
+    public String selectType(int acc_seq){
+        return mainAccountMapper.selectType(acc_seq);
+    }
+
 }

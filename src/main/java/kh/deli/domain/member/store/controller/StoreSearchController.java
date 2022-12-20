@@ -46,6 +46,7 @@ public class StoreSearchController {
                 menuList.add(map);
             }
         }
+
         model.addAttribute("store_list", storeList);
         model.addAttribute("menu_list", menuList);
         return "member/store/storeSearch";
