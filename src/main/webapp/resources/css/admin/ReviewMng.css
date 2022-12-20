@@ -8,7 +8,7 @@
     display: none;
 }
 
-.modal_content {
+#review_mng .modal_content {
     width: 400px;
     height: auto;
     background: #fff;
@@ -25,17 +25,17 @@
     cursor: pointer;
 }
 
-#reviewField {
+#review_mng #reviewField {
     position: relative;
     left: -93px;
 }
 
-#review_content {
+#review_mng #review_content {
     border: 1px solid black;
     margin: auto;
     width: 250px;
 }
 
-#myTable * {
+#review_mng #myTable * {
     cursor: pointer;
 }

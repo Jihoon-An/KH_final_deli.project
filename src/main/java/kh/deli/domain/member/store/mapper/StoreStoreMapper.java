@@ -17,19 +17,14 @@ public interface StoreStoreMapper {
     public void insertStore(StoreDTO dto);
 
     //가게정보
-    @Select("select * from store where store_seq =#{store_seq}")
+    @Select("SELECT * FROM STORE WHERE STORE_SEQ =#{store_seq}")
     StoreDTO storeInfo(int store_seq);
 
-    //가게 리뷰 개수
-    @Select("select count(*) from store where store_seq=#{store_seq}")
-    int getReviewCount(int store_seq);
 
     //식당 삭제
-    @Delete("delete from store where store_seq=${store_seq}")
+    @Delete("DELETE FROM STORE WHERE STORE_SEQ=#{store_seq}")
     int deleteStore(int store_seq);
 
-    //식당 수정
-    int modifyStore(Map<String, Object> param);
 
     @Select("SELECT * FROM STORE WHERE STORE_SEQ = #{seq}")
     StoreDTO findBySeq(int seq);

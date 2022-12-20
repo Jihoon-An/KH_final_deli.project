@@ -58,10 +58,4 @@
 <!--    </select>-->
 
 
-    <update id="modifyStore" parameterType="StoreDTO">
-        <!--update store set-->
-    </update>
-
-
-
 </mapper>
