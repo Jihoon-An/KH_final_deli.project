@@ -6,7 +6,7 @@
 <mapper namespace="kh.deli.domain.admin.mapper.AdminAccountMapper">
 
         <select id="selectAccountList" resultType="AdminAccountDTO">
-            select a.acc_seq, a.acc_email, m.mem_name, ad.add_detail1, a.acc_signupdate,m.mem_phone,
+            select a.acc_seq, a.acc_email, m.mem_nick, ad.add_detail1, a.acc_signupdate,m.mem_phone,
             m.mem_grade from account a left  join member m on a.acc_seq = m.acc_Seq
             left join address ad on a.acc_seq = ad.acc_seq
             where  acc_type = 'client' order by acc_signupdate desc

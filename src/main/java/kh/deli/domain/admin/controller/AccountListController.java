@@ -28,7 +28,7 @@ public class AccountListController {
 
 
     @RequestMapping("/deleteAccount")
-    public String AcoounDelete(int acc_seq) throws  Exception{
+    public String acoounDelete(int acc_seq) throws  Exception{
         System.out.println(acc_seq);
 
         adminAccountService.deleteAccount(acc_seq);
