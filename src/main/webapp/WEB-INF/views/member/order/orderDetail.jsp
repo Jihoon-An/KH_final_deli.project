@@ -29,10 +29,23 @@
         </c:when>
     </c:choose>
     <hr>
-<%--    <c:choose>--%>
-<%--        <h3>주문내역</h3>--%>
-<%--        <div></div>--%>
-<%--    </c:choose>--%>
+        <h3>주문내역</h3>
+        <div>
+
+            <c:forEach var="menuList" items="${orderDetailDTOList}">
+                <div class="menuBox">
+                    메뉴 : ${menuList.menuDTO.menu_name} <br>
+                    <c:forEach var="optionList" items="${menuList.menuOptionDTO}">
+                        그룹 : ${optionList.option_group}<br>
+                        옵션 : ${optionList.option_name} <br><br>
+                    </c:forEach>
+                    ${menuList.count}개<br>
+                    ${menuList.price}원
+                </div>
+                <hr>
+            </c:forEach>
+
+        </div>
     <hr>
     <c:choose>
         <c:when test="${not empty payInfoDTO}">
