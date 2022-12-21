@@ -128,6 +128,8 @@ $(".btn_add").on("click", function () {
     //중첩for문돌리예정
     //let opgroup = $(".opgroup").val();
 
+    //let dupl = document.querySelectorAll(".dupli");
+
     let menu_seq;
 
     //menu seq를 메뉴테이블, 메뉴 옵션테이블에 각각 추가하기 위한 조치
