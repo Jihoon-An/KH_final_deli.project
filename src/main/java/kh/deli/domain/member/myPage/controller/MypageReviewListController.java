@@ -1,6 +1,5 @@
 package kh.deli.domain.member.myPage.controller;
 
-import kh.deli.domain.member.myPage.dto.MypageReviewListDTO;
 import kh.deli.domain.member.myPage.service.MemberReviewService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ public class MypageReviewListController {
     @RequestMapping("")
     public String toRivewList() throws Exception{
         int acc_seq = 49; // 회원정보를 기준으로 리뷰 출력
-        MypageReviewListDTO dto = (MypageReviewListDTO) memberReviewListService.getReviews();
+//        MypageReviewListDTO dto = (MypageReviewListDTO) memberReviewListService.getReviews();
         return "/";
     }
 
