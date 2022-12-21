@@ -70,7 +70,7 @@
                     </span>
                     <button id="optionBtn" type="button">검색</button>
                 </div>
-                <div>
+                <div class="storeSales">
 
                 </div>
             </div>

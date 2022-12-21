@@ -20,10 +20,9 @@ public class OwnerMainController {
     public List<OwnerDdSalesDTO> toMenuAdd(int store_seq, String startDate, String endDate) throws Exception{
 
         System.out.println(store_seq+" : "+startDate+" : "+endDate);
-        System.out.println("매출보기");
 
         List<OwnerDdSalesDTO> list=ownerMainService.selectSpecific(store_seq,startDate,endDate);
-        System.out.println(list+"sssssssssssssssssssssssssssssssssss");
+
         return list;
     }
 
