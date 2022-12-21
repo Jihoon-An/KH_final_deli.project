@@ -25,10 +25,10 @@ public class StoreInfoController {
 
         int store_seq=19;
 
-        StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq); //식당정보
-        OwnerDTO ownerInfoDTO=ownerOwnerService.bsInfo(store_seq); //사업자정보
-        int storeReviewCount = storeReviewService.getReviewCount(store_seq); //식당리뷰개수
-        double storeReviewAvg=storeReviewService.getReviewAvg(store_seq);//식당별점평균
+        StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq); // 식당정보
+        OwnerDTO ownerInfoDTO=ownerOwnerService.bsInfo(store_seq); // 사업자정보
+        int storeReviewCount = storeReviewService.getReviewCount(store_seq); // 식당리뷰개수
+        double storeReviewAvg=storeReviewService.getReviewAvg(store_seq);// 식당별점평균
         model.addAttribute("storeInfoDTO",storeInfoDTO);
         model.addAttribute("ownerInfoDTO",ownerInfoDTO);
         model.addAttribute("storeReviewCount",storeReviewCount);

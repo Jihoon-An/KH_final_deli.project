@@ -46,9 +46,9 @@ public class StoreMenuController {
 
         }
 
-        int storeReviewCount = storeReviewService.getReviewCount(store_seq);  //식당리뷰개수
+        int storeReviewCount = storeReviewService.getReviewCount(store_seq);  // 식당리뷰개수
 
-        double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); //식당별점평균
+        double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
         model.addAttribute("storeDTO", storeDTO);
         model.addAttribute("menuGroup", menuGroup);

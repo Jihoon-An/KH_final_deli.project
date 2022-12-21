@@ -18,13 +18,11 @@ public interface OwnerStoreMapper {
 
     public void insertStore(StoreDTO dto);
 
-    @Select(" SELECT * FROM STORE WHERE STORE_SEQ=#{store_seq}")
-    StoreDTO storeInfo(int store_seq);
-
     @Select(" SELECT STORE_ORIGIN FROM STORE,MENU WHERE MENU.STORE_SEQ=STORE.STORE_SEQ")
     public List<StoreDTO> menuOrigin();
 
     //식당 수정
-    int modifyStore(Map<String, Object>param);
+    int modifyStore(StoreDTO storeDTO);
+
 
 }

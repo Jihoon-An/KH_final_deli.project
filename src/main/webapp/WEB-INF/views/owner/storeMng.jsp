@@ -34,7 +34,6 @@
             </h1>
             <form action="/store/mng/modify" id="frm" method="post" enctype="multipart/form-data">
                 <div>
-
                         <%--store_seq--%>
                     <input type="hidden" name="store_seq" id="store_seq" value="${store.store_seq}">
 
@@ -116,8 +115,7 @@
                     <br>
                     <div class="profile">
                         <div class="thumbnail">
-                            <img src="/resources/img/store/no_storelogo.png" id="profile">
-                                <%--                            <img src="/resources" id="profile">--%>
+                            <img src="/resources/img/store/${store.store_logo}" id="profile">
                         </div>
                         <div class="control">
                             <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
@@ -126,90 +124,105 @@
                     <input type="text" name="store_intro" value="${store.store_intro}">
                     <br>
                     <input type="text" name="store_origin" value="${store.store_origin}">
-                    <Br>
-
+                    <br>
+                            
                     <div class="bsnsdiv">
                         <span>월요일</span>
                         <input type="hidden" class="bsns" value="월요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('mon').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('mon').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+            <input type="time" class="bsns" value="${parsingStr.get("mon").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("mon").get("close_time")}">
         </span>
+
                     </div>
                     <div class="bsnsdiv">
                         <span>화요일</span>
                         <input type="hidden" class="bsns" value="화요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('tue').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('tue').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+             <input type="time" class="bsns" value="${parsingStr.get("tue").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("tue").get("close_time")}">
         </span>
                     </div>
                     <div class="bsnsdiv">
                         <span>수요일</span>
                         <input type="hidden" class="bsns" value="수요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('wed').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('wed').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+              <input type="time" class="bsns" value="${parsingStr.get("wed").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("wed").get("close_time")}">
         </span>
                     </div>
                     <div class="bsnsdiv">
                         <span>목요일</span>
                         <input type="hidden" class="bsns" value="목요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('thu').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('thu').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+           <input type="time" class="bsns" value="${parsingStr.get("thu").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("thu").get("close_time")}">
         </span>
                     </div>
                     <div class="bsnsdiv">
                         <span>금요일</span>
                         <input type="hidden" class="bsns" value="금요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('fri').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('fri').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+           <input type="time" class="bsns" value="${parsingStr.get("fri").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("fri").get("close_time")}">
         </span>
                     </div>
                     <div class="bsnsdiv">
                         <span>토요일</span>
                         <input type="hidden" class="bsns" value="토요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('sat').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('sat').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+         <input type="time" class="bsns" value="${parsingStr.get("sat").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("sat").get("close_time")}">
         </span>
                     </div>
                     <div class="bsnsdiv">
                         <span>일요일</span>
                         <input type="hidden" class="bsns" value="일요일">
                         <select name="store_bsns_hours" class="bsns bs">
-                            <option>영업일</option>
-                            <option>휴무일</option>
+                            <option <c:if test="${parsingStr.get('sun').get('open') eq '영업일'}">selected</c:if>>영업일
+                            </option>
+                            <option <c:if test="${parsingStr.get('sun').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                            </option>
                         </select>
                         <span class="bs_time">
-            <input type="time" class="bsns">
-            <input type="time" class="bsns">
+        <input type="time" class="bsns" value="${parsingStr.get("sun").get("open_time")}">
+            <input type="time" class="bsns" value="${parsingStr.get("sun").get("close_time")}">
         </span>
                     </div>
                     <input type="hidden" id="bsnsdata" name="store_bsns_hours">

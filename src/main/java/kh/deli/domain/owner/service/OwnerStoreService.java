@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -24,12 +25,8 @@ public class OwnerStoreService {
         ownerStoreMapper.insertStore(dto);
     }
 
-    public StoreDTO storeInfo(int store_seq) throws Exception{
-        return ownerStoreMapper.storeInfo(store_seq);
-    }
-
     //식당 수정
-    public int modifyStore(StoreDTO storeDTO, Integer store_seq, MultipartFile file) throws Exception {
+    public int modifyStore(StoreDTO storeDTO, MultipartFile file) throws Exception {
 
         String realPath=session.getServletContext().getRealPath("/resources/store");
         File filePath=new File(realPath);
@@ -45,12 +42,7 @@ public class OwnerStoreService {
             System.out.println("파일있을떄");
             storeDTO.setStore_logo(sysName);
         }
-
-        Map<String, Object> param = new HashMap<>();
-        param.put("StoreDTO", storeDTO);
-        param.put("store_seq", store_seq);
-        param.put("file",file);
-        return ownerStoreMapper.modifyStore(param);
+        return ownerStoreMapper.modifyStore(storeDTO);
     }
 
 }
