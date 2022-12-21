@@ -5,6 +5,7 @@ import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrdererInfoDTO;
 import kh.deli.domain.member.order.dto.PayInfoDTO;
 import kh.deli.domain.member.order.dto.StoreInfoDTO;
+import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.order.service.OrderOrdersService;
 import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
@@ -19,13 +20,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/member/order/detail")
 public class OrdersDetailController {
     private final OrderOrdersService orderOrdersService;
+    private final OrderBasketService orderBasketService;
     private final Gson gson;
     @RequestMapping("")
     public String storeInfo(Model model) throws Exception{
         int order_seq=9;
-        StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq);
-        OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq);
-        PayInfoDTO payInfoDTO=orderOrdersService.payInfo(order_seq);
+        StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
+        OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보
+
+
+        PayInfoDTO payInfoDTO=orderOrdersService.payInfo(order_seq); // 결제정보
         model.addAttribute("storeInfoDTO",storeInfoDTO);
         model.addAttribute("ordererInfoDTO",ordererInfoDTO);
         model.addAttribute("payInfoDTO",payInfoDTO);
