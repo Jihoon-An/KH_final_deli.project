@@ -34,15 +34,12 @@ public class MyPageMemberInfoController {
 
     @ResponseBody
     @PostMapping("/modify")
-    public String modify(MemberDTO memberDTO, AccountDTO accountDTO) throws Exception {
+    public String modify(String mem_nick, String mem_phone) throws Exception {
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMem_nick(mem_nick);
+        memberDTO.setMem_phone(mem_phone);
         memberDTO.setAcc_seq((int) session.getAttribute("acc_seq"));
-        accountDTO.setAcc_seq((int) session.getAttribute("acc_seq"));
 
-        System.out.println("acc SEQ : " + accountDTO.getAcc_seq());
-        System.out.println("mem SEQ : " + memberDTO.getAcc_seq());
-        System.out.println("mem 닉네임 : " + memberDTO.getMem_nick());
-        System.out.println("acc 이메일 : " + accountDTO.getAcc_email());
-        System.out.println("acc 휴대폰번호 : " + memberDTO.getMem_phone());
         myPageMemberInfoService.modifyMemberInfo(memberDTO);
         return "";
     }
