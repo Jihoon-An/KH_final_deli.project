@@ -2,7 +2,9 @@ package kh.deli.domain.member.order.service;
 
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
+import kh.deli.domain.member.order.mapper.OrderMenuMapper;
 import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
+import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,7 @@ public class OrderBasketService {
     private final OrderMenuService menuService;
     private final OrderStoreService storeService;
     private final OrderOrdersMapper orderOrdersMapper;
+    private final OrderMenuMapper menuMapper;
 
     public void insertSampleBasket(String orderBasketDTO) throws Exception {
         orderOrdersMapper.insertSampleBasket(orderBasketDTO);
@@ -52,7 +55,7 @@ public class OrderBasketService {
         menuList.add(menu3);
 
         // total price 계산
-        int total_price = this.getTotalPrice(menuList);
+        int total_price = this.getTotalPriceByOrderBasketMenuDtoList(menuList);
 
         OrderBasketDTO basket = new OrderBasketDTO();
 
@@ -80,7 +83,7 @@ public class OrderBasketService {
         return totalCount;
     }
 
-    public int getTotalPrice(List<OrderBasketMenuDTO> menuList) {
+    public int getTotalPriceByOrderBasketMenuDtoList(List<OrderBasketMenuDTO> menuList) {
 
         int totalPrice = 0;
 
@@ -91,6 +94,19 @@ public class OrderBasketService {
                 onePrice += option.getOption_price();
             }
             totalPrice += onePrice * menu.getCount();
+        }
+
+        return  totalPrice;
+    }
+
+    public int getTotalPriceByMenuList(List<StoreBasketMenuRequestDTO> menuList){
+        int totalPrice = 0;
+
+        for (StoreBasketMenuRequestDTO menu : menuList) {
+
+            int menuPrice = menu.getPrice() * menu.getCount();
+
+            totalPrice += menuPrice;
         }
 
         return  totalPrice;

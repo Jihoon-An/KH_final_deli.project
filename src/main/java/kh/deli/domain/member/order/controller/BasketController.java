@@ -38,7 +38,7 @@ public class BasketController {
 //        String basketJson = gson.toJson(sampleBasket);
 //        basketService.insertSampleBasket(basketJson);
 //
-//        OrderBasketDTO basket = gson.fromJson(basketJson, OrderBasketDTO.class);
+//        StoreBasketDTO basket = gson.fromJson(basketJson, StoreBasketDTO.class);
 
 
 
