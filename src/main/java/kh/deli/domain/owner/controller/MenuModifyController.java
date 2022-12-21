@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/owner/menu")
 @AllArgsConstructor
-// owenrMenuController 로 이름 바꾸기
+// ownerMenuController 로 이름 바꾸기
 public class MenuModifyController {
 
     private final OwnerMenuService ownerMenuService;
 
-    @RequestMapping("modifyMenu")
-    public MenuDTO modifyMenu(MenuDTO menuDTO){OwnerMenuService.modifyMenu(menuDTO);}
+//    @RequestMapping("modifyMenu")
+//    public MenuDTO modifyMenu(MenuDTO menuDTO){OwnerMenuService.modifyMenu(menuDTO);}
 }
