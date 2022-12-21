@@ -3,9 +3,13 @@ package kh.deli.domain.member.store.controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import kh.deli.domain.member.order.service.OrderBasketService;
+import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.domain.member.store.service.StoreReviewService;
 import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.global.entity.MenuDTO;
+import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,6 +31,8 @@ public class StoreReviewController {
 
     private final StoreStoreService storeStoreService;
     private final StoreReviewService storeReviewService;
+    
+    private final OrderBasketService orderBasketService;
 
     @RequestMapping()
     public String toStoreReview(Model model) throws Exception {
@@ -47,19 +53,26 @@ public class StoreReviewController {
             String revModifiedDate = String.valueOf(reviewInfoList.get(revInfo).get("REV_MODIFIED_DATE"));
             int revStar = Integer.parseInt(reviewInfoList.get(revInfo).get("REV_STAR").toString());
             String revSysName = (String) reviewInfoList.get(revInfo).get("REV_SYSNAME");
-
             String revContent = (String) reviewInfoList.get(revInfo).get("REV_CONTENT");
             String menuList = (String) reviewInfoList.get(revInfo).get("MENU_LIST");
-
+            System.out.println(menuList);
 //            ObjectMapper mapper = new ObjectMapper();
 //            List<List<Object>> tmp1 = mapper.readValue(revSysName, ArrayList.class);
 //            List<List<Object>> tmp2 = mapper.readValue(menu_list, ArrayList.class);
 
             Gson gson = new Gson();
 
-            Type type = new TypeToken<List<String>>() {}.getType();
-            List<String> tmp1 = gson.fromJson(revSysName, type);
-            List<String> tmp2 = gson.fromJson(menuList, type);
+            BasketDTO basket = gson.fromJson(menuList, BasketDTO.class);
+
+            List<String>menu=new ArrayList<>();
+            for (int i = 0; basket.getMenuList().size() > i; i++) {
+                MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
+                menu.add(menuDTO.getMenu_name());
+            }
+//            Type type2 = new TypeToken<List<String>>(){}.getType();
+            Type type1 = new TypeToken<List<String>>() {}.getType();
+            List<String> tmp1 = gson.fromJson(revSysName, type1);
+//            List<String> tmp2 = gson.fromJson(menuList, basket);
 
 //            List<String> storeRevSysname = new ArrayList<>();
 //            for (int k = 0; k < tmp1.size(); k++) {
@@ -80,7 +93,7 @@ public class StoreReviewController {
                     rev_star(revStar).
                     rev_sysname(tmp1).
                     rev_content(revContent)
-                    .menu_list(tmp2)
+                    .menu_list(menu)
                     .build()
             );
 //            storeReviewList.add(new StoreReviewDTO(mem_nick, rev_writeDate, rev_modified_date, REV_STAR, storeRevSysname, revContent,
