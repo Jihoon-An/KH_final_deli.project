@@ -18,6 +18,7 @@
   <a href="/basket">[유저]장바구니</a><br>
   <a href="/member/order/history">[유저]내주문내역</a><br>
   <a href="/store/menu">[유저]식당상세(메뉴/정보/리뷰)</a><br>
+  <a href="/menu/detail">[유저]메뉴상세페이지</a>
   <a href="/account/toMemberSignUp">[유저]일반회원가입</a><br>
   <a href="/account/toKakaoSignUp">[유저]카카오회원가입</a><br>
   <hr>
