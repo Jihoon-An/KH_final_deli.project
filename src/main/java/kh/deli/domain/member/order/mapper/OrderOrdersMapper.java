@@ -1,6 +1,7 @@
 package kh.deli.domain.member.order.mapper;
 
 import kh.deli.domain.member.order.dto.*;
+import kh.deli.global.entity.OrdersDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
