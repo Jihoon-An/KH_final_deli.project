@@ -27,13 +27,14 @@ public class MemberReviewService {
 
         if(dto.getRev_sysname().equals("1")) {
             List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
-
             dto.setRev_sysname(gson.toJson(sysNameList));
 
         }else {
-
             dto.setRev_sysname("");
         }
+
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        dto.setAcc_seq(acc_seq);
 
         MyPageReviewMapper.reviewInsert(dto);
     }

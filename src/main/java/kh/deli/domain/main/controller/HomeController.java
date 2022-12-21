@@ -26,7 +26,6 @@ public class HomeController {
     private final HttpSession session;
     private final OwnerMainService ownerMainService;
     private final StoreSearchService storeSearchService;
-
     private final MainAccountService mainAccountService;
 
 
