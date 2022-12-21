@@ -50,13 +50,35 @@
             </div>
             <hr>
             <div>
+                <div>
+                    <select>
+                        <c:choose>
+                            <c:when test="${not empty list}">
+                                <c:forEach var="i" items="${list}">
+                                    <option value="${i.store_seq}">${i.store_name}</option>
+                                </c:forEach>
+                            </c:when>
+                        </c:choose>
+                    </select>
+                    <span>
+                        기간선택
+                        <input type="date" id="startDate"> - <input type="date" id="endDate">
+                    </span>
+                    <button id="optionBtn">검색</button>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <hr>
+            <div>
                 <a href="/account/logout">[유저+오너]로그아웃</a><br>
                 <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
             </div>
         </div>
     </div>
 
-        <script src="/resources/js/owner/ownerMain.js"></script>
+    <script src="/resources/js/owner/ownerMain.js"></script>
 </main>
 </body>
 </html>
