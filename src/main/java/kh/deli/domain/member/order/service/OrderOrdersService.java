@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderOrdersService {
@@ -17,7 +19,9 @@ public class OrderOrdersService {
     @Autowired
     private OrderOrdersMapper orderOrdersMapper;
 
-
+    public OrderOrdersDTO selectSessionInfo(OrderOrdersDTO param) {
+        return orderOrdersMapper.selectSessionInfo(param);
+    };
     public OrderOrdersDTO selectInitInfo(OrderOrdersDTO param) {
         return orderOrdersMapper.selectOrderMemberInfo(param);
     };
@@ -26,7 +30,20 @@ public class OrderOrdersService {
         orderOrdersMapper.updateMemberAddr(param);
     };
 
+    public void updateMemberPhone(OrderOrdersDTO param){orderOrdersMapper.updateMemberPhone(param);};
+    public List<OrderOrdersDTO> selectCouponList(OrderOrdersDTO param){
 
+        return orderOrdersMapper.selectCouponList(param);
+    }
+
+    public OrderOrdersDTO insertPayment(OrderOrdersDTO param){
+
+         return orderOrdersMapper.insertPayment(param);
+    }
+    public OrderOrdersDTO insertOrders(OrderOrdersDTO param){
+
+        return orderOrdersMapper.insertOrders(param);
+    }
 
     public StoreInfoDTO storeInfo(int order_seq) throws Exception{
         return orderOrdersMapper.storeInfo(order_seq);

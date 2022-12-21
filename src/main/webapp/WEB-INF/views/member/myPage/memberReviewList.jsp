@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>내가 쓴 리뷰 리스트</h2>
+    <div>내가 쓴 리뷰 총 *개</div>
     <div>작성자</div>
     <div>별점</div>
     <div>사진</div>
