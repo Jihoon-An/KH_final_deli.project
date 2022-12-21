@@ -1,9 +1,6 @@
 package kh.deli.domain.member.myPage.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import kh.deli.domain.member.myPage.service.MemberReviewService;
+import kh.deli.domain.member.myPage.service.MyPageReviewService;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MypageReviewModifyController {
 
     @Autowired
-    private MemberReviewService memberReviewService;
+    private MyPageReviewService memberReviewService;
 
     @RequestMapping()
     public String toModifyReviewForm(Model model) throws Exception {
