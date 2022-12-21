@@ -9,14 +9,10 @@ import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -29,6 +25,8 @@ public class MenuDetailContoller {
     private final StoreMenuService menuService;
     private final StoreMenuOptionService optionService;
     private final StoreBasketService basketService;
+
+    private final HttpSession session;
 
     private final Gson gson;
 
@@ -56,27 +54,10 @@ public class MenuDetailContoller {
 
     @RequestMapping("put")
     public String putBasket(
-            @RequestParam("basket_menu") String menuJson,
-            @CookieValue(value = "basket", required = false) String basketCookieJson,
-            HttpServletResponse response
-    ) throws UnsupportedEncodingException {
-        if (basketCookieJson == null) {
-            this.setBasketCookie(basketService.getNewBasket(menuJson), response);
-        } else {
-            String basketCookie = basketCookieJson;
-            this.setBasketCookie(basketService.addBasketMenuList(basketCookie, menuJson), response);
-        }
+            @RequestParam("basket_menu") String menuJson
+    ) {
+        basketService.setBasketInSession(session, menuJson);
 
         return "redirect:/store/info";
-    }
-
-    private void setBasketCookie(String basket, HttpServletResponse response) throws UnsupportedEncodingException {
-        basket = URLEncoder.encode(basket, "utf-8");
-        Cookie cookie = new Cookie("basket", basket);
-
-        cookie.setMaxAge(60 * 60 * 24 * 14);//14일
-        cookie.setPath("/");
-
-        response.addCookie(cookie);
     }
 }
