@@ -30,7 +30,7 @@
         <div>${ordererInfoDTO.mem_phone}</div>
         <h4>주소</h4>
         <div>${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
-        <h4>배송요청사항</h4>
+        <h4>라이더님에게 전달하는 말</h4>
         <div>${ordererInfoDTO.order_rider_req}</div>
         <hr>
         <h1>식당정보</h1>
