@@ -1,17 +1,11 @@
 package kh.deli.domain.member.store.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import kh.deli.domain.member.store.dto.StoreReviewDTO;
-import kh.deli.domain.member.myPage.service.MemberReviewService;
 import kh.deli.domain.member.store.service.StoreReviewService;
 import kh.deli.domain.member.store.service.StoreStoreService;
-import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-import javax.print.DocFlavor;
 import java.lang.reflect.Type;
 
 import java.util.ArrayList;
