@@ -26,7 +26,7 @@ public class OwnerStoreService {
     }
 
     //식당 수정
-    public int modifyStore(StoreDTO storeDTO, MultipartFile file) throws Exception {
+    public void modifyStore(StoreDTO storeDTO, MultipartFile file) throws Exception {
 
         String realPath=session.getServletContext().getRealPath("/resources/store");
         File filePath=new File(realPath);
@@ -42,7 +42,7 @@ public class OwnerStoreService {
             System.out.println("파일있을떄");
             storeDTO.setStore_logo(sysName);
         }
-        return ownerStoreMapper.modifyStore(storeDTO);
+         ownerStoreMapper.modifyStore(storeDTO);
     }
 
 }

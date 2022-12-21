@@ -1,8 +1,5 @@
 package kh.deli.domain.member.store.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import kh.deli.domain.member.myPage.service.MemberReviewService;
 import kh.deli.domain.member.store.dto.CategoryResponseDTO;
 import kh.deli.domain.member.store.service.StoreMenuService;
 import kh.deli.domain.member.store.service.StoreReviewService;
@@ -13,10 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/store/menu")

@@ -22,7 +22,6 @@ public interface OwnerStoreMapper {
     public List<StoreDTO> menuOrigin();
 
     //식당 수정
-    int modifyStore(StoreDTO storeDTO);
-
+    void modifyStore(StoreDTO storeDTO);
 
 }

@@ -29,7 +29,7 @@
         )
     </insert>
 
-    <update id="modifyStore">
+    <update id="modifyStore" parameterType="kh.deli.global.entity.StoreDTO" >
         UPDATE STORE
         SET
         STORE_NAME=#{store_name},
