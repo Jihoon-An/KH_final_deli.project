@@ -1,3 +1,5 @@
+# <span style="color: dodgerblue;">민섭 다이어리</span>
+
 ### 22-12-12 (월)
 - 로그인 (<span style="color: yellow">80%</span>)
 - 이메일 기억 기능(<span style="color: chartreuse">100%</span>)
@@ -39,3 +41,7 @@
 ---
 ### 22-12-20 (화)
 - 마이페이지 쿠폰, 포인트 페이지 (<span style="color: chartreuse">100%</span>) 완성
+- 아이디, 비밀번호 찾기 페이지 생성
+---
+### 22-12-21 (수)
+- .

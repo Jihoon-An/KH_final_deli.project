@@ -19,6 +19,34 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
 
     <style>
+        .modal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .modal_content {
+            width: 400px;
+            height: auto;
+            background: #fff;
+            border-radius: 10px;
+            position: relative;
+            top: 40%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -200px;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 74px 0;
+            /*line-height: 23px;*/
+            cursor: pointer;
+        }
+
+
         #destination .container {
             width: 375px;
             height: 800px;
@@ -59,9 +87,18 @@
         아래 다음 화면
         <button id="destination_add_box_btn">주소지 추가 등록</button>
         <hr>
+    </div>
+
+</main>
+
+
+<%--모달--%>
+<div class="modal">
+    <div class="modal_content">
+        <div class="closeModal" style="background-color: yellow">X</div>
         <div id="destination_add_box" style="display: none">
             <form id="destination_add_frm" method="post">
-            <h1>배달지 주소 등록</h1>
+                <h1>배달지 주소 등록</h1>
                 <input type="text" placeholder="주소지 별명을 입력해주세요." name="add_name"><br>
                 <input type="text" id="postcode" placeholder="우편번호">
                 <button type="button" class="postsearch">우편검색</button>
@@ -77,88 +114,105 @@
             </form>
         </div>
     </div>
-</main>
-
-<script>
-
-    $(".del").on("click", function () {
-        if($(this).closest(".destination_box").find(".pick").html() == "[기본]"){
-            confirm("기본 배송지는 삭제 불가합니다.기본 주소지 변경 후 삭제해주세요.")
-        } else {
-            if(confirm("정말 삭제 하시겠습니까?")){
-                // $(this).closest(".destination_box").remove();
-                $.ajax({
-                    url: "/member/header/destination/delete",
-                    type: "post",
-                    data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
-                }).done(function () {
-                    alert("삭제 성공/모달 새고고침처럼 다시 보여야함/지웠다가 다시 띄우기");
-                });
-            }
-        }
-    });
+</div>
 
 
-    $("#destination_select").on("click", function () {
-        $("input[name='radio_add_division']").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
-        if($("input[name='radio_add_division']:checked")){
-            $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".hidden_add_division")).val("basics");
-        } else {
-            $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
-        }
 
-        $.ajax({
-            url: "/member/header/destination/divisionChange",
-            type: "post",
-            data: $("#destination_select_frm").serialize(),
-            dataType: 'JSON'
-        }).done(function () {
-            alert("선택지 변경 성공/모달 사라져야함");
-        });
-    });
 
-    $("#destination_add_box_btn").on("click", function () {
-        $("input:not([name=acc_seq])").val("");
-        $("#destination_add_box").show();
-    });
 
-    $("#destination_add_btn").on("click", function () {
-        $.ajax({
-            url: "/member/header/destination/insert",
-            type: "post",
-            data: $("#destination_add_frm").serialize()
-        }).done(function () {
-            alert("추가 성공");
-            $("#destination_add_box").hide();
-        });
-    });
+<div id="loginModal" class="loginModal-overlay" align="center">
+    <div class="window">
 
-    $(document).on("click", ".postsearch", function () {
-        new daum.Postcode({
-            oncomplete: function (data) {
-                var addr = ''; // 주소 변수
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-                var geocoder = new kakao.maps.services.Geocoder();
-                var callback = function (result, status) {
-                    if (status === kakao.maps.services.Status.OK) {
-                        let x = result[0].x;
-                        let y = result[0].y;
-                        document.getElementById("add_y").value = x;
-                        document.getElementById("add_x").value = y;
-                    }
-                };
-                geocoder.addressSearch(addr, callback);
-                document.getElementById("postcode").value = data.zonecode;
-                document.getElementById("add_detail1").value = data.jibunAddress;
-                document.getElementById("add_detail1").value = data.roadAddress;
-                document.getElementById("add_detail2").focus();
-            }
-        }).open();
-    })
-</script>
+        <div class="col-12 text-end close-area" onclick=hideLoginModal()>
+            <a><i class="fa-solid fa-x" style="color: #808080"></i></a>
+        </div>
+
+        <div class="text_title title">회원 로그인</div>
+
+        <!-- 로그인 폼 -->
+        <form id="form_login">
+            <div class="row justify-content-center mt-3">
+                <div class="col-12 gy-3">
+                    <div class="text-start" style="width: 250px">
+                        <span style="color: #808080; font-size: x-small">이메일</span>
+                    </div>
+                    <input type="text" name="login_id" id="login_id"
+                           placeholder="이메일을 입력하세요." maxlength="40">
+                </div>
+                <div class="col-12 gy-4">
+                    <div class="text-start" style="width: 250px">
+                        <span style="color: #808080; font-size: x-small">비밀번호</span>
+                    </div>
+                    <input type="password" name="login_pw" id="login_pw"
+                           placeholder="비밀번호를 입력하세요." maxlength="20">
+                </div>
+                <div class="col-12 gy-4">
+                    <button type="button" class="btn_base" id="btn_login">로그인</button>
+                </div>
+                <div class="col-12 gy-1">
+
+                    <div class="checkbox-bsLogin">
+                        <label class="form-check-label" for="login_bs" style="color: #404040; font-size: 14px; letter-spacing: -1px;">
+                            <input class="form-check-input" type="checkbox" id="login_bs">
+                            <span class="checkbox__label"></span>
+                            사업자 로그인</label>
+                    </div>
+
+                </div>
+                <div class="col-12 gy-4" style="letter-spacing: -1px;">
+                    <span style="color: #404040;">계정이 없으신가요?</span> <a href="#"
+                                                                       onclick="showSignupModal(); return false;">회원가입</a>
+                </div>
+                <div class="col-12 gy-1"
+                     style="color: #808080; font-size: small; letter-spacing: -1px;">
+                    <a onclick="showSearchPw()">비밀번호를 잊으셨나요?</a>
+                </div>
+            </div>
+        </form>
+        <!-- 비밀번호 찾기 폼 -->
+        <form class="search" id="form_searchPw">
+            <div class="row justify-content-center mt-4">
+                <div class="col-12 gy-4">
+                    <input type="text" name="email" id="searchPw_email"
+                           placeholder="이메일" maxlength="40">
+                    <div class="text-start mt-1 mb-1" style="width: 250px">
+						<span style="color: #808080; font-size: x-small">회원 가입시 사용한
+							이메일을 입력하세요.</span>
+                    </div>
+                </div>
+                <div class="col-12 gy-3">
+                    <input type="text" name="phone" id="searchPw_phone"
+                           placeholder="핸드폰 번호" maxlength="14" oninput="validNum()">
+                    <div class="text-start mt-1 mb-1" style="width: 250px">
+						<span style="color: #808080; font-size: x-small">회원 가입시 사용한
+							핸드폰 번호를 입력하세요.</span>
+                    </div>
+                </div>
+                <div class="col-12 gy-3">
+                    <button class="btn_base" type="button" id="btn_search">찾기</button>
+                </div>
+                <div class="col-12 gy-1">
+                    <div class="checkbox-bsLogin">
+                        <label class="form-check-label" for="searchPw_bs" style="color: #404040; font-size: 14px; letter-spacing: -1px;">
+                            <input class="form-check-input" type="checkbox" id="searchPw_bs">
+                            <span class="checkbox__label"></span>
+                            사업자 입니다.</label>
+                    </div>
+                </div>
+                <div class="col-12 gy-3">
+                    <a style="color: #808080" onclick="toBackward()">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<li class="float-end">
+    <a class="header_a_tag" onclick="showLoginModal()">로그인</a>
+</li>
+
+
+<script src="/resources/js/member/header/destination.js"></script>
+
 </body>
 </html>

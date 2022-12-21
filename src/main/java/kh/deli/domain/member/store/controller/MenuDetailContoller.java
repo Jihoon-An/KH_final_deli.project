@@ -9,12 +9,10 @@ import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -27,6 +25,8 @@ public class MenuDetailContoller {
     private final StoreMenuService menuService;
     private final StoreMenuOptionService optionService;
     private final StoreBasketService basketService;
+
+    private final HttpSession session;
 
     private final Gson gson;
 
@@ -41,39 +41,21 @@ public class MenuDetailContoller {
 
         MenuDTO menu = menuService.findBySeq(menuSeq);
         List<MenuOptionDTO> menuOptionList = optionService.findByMenuSeq(menuSeq);
-        Map<String, List<Map<String, Object>>> menuOptions = optionService.toMap(menuOptionList);
+        Map<String, List<MenuOptionDTO>> menuOptions = optionService.toMap(menuOptionList);
 
 
         model.addAttribute("menu", menu);
-        model.addAttribute("menuJson", gson.toJson(menu));
         model.addAttribute("menuOptions", menuOptions);
-        model.addAttribute("OptionsJson", gson.toJson(menuOptions));
 
         return "member/store/menuDetail";
     }
 
     @RequestMapping("put")
     public String putBasket(
-            @RequestParam("basket_menu") String menuJson,
-            @CookieValue(value = "basket", required = false) String basketCookieJson,
-            HttpServletResponse response
+            @RequestParam("basket_menu") String menuJson
     ) {
-        if (basketCookieJson == null) {
-            this.setBasketCookie(basketService.getNewBasket(menuJson), response);
-        } else {
-            String basketCookie = basketCookieJson;
-            this.setBasketCookie(basketService.addBasketMenuList(basketCookie, menuJson), response);
-        }
+        basketService.setBasketInSession(session, menuJson);
 
-        return "redirect:/store/info";
-    }
-
-    private void setBasketCookie(String basket, HttpServletResponse response) {
-        Cookie cookie = new Cookie("basket", basket);
-
-        cookie.setMaxAge(1209600);//14일
-        cookie.setPath("/");
-
-        response.addCookie(cookie);
+        return "redirect:/store/info"; //seq 추가입력 필요
     }
 }

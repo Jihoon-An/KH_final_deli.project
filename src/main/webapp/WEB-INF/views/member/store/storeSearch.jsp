@@ -73,10 +73,10 @@
         </form>
         <hr>
         <div class="d-inline-flex">
-            <a href="/storeSearch?filter=star"><div class="filter py-1 px-2 m-1">별점</div></a>
-            <a href="/storeSearch?filter=review"><div class="filter py-1 px-2 m-1">리뷰</div></a>
-            <a href="/storeSearch?filter=delifree"><div class="filter py-1 px-2 m-1">무료배달</div></a>
-            <a href="/storeSearch?filter=minprice"><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
+            <a href="/store/search?filter=star"><div class="filter py-1 px-2 m-1">별점</div></a>
+            <a href="/store/search?filter=review"><div class="filter py-1 px-2 m-1">리뷰</div></a>
+            <a href="/store/search?filter=delifree"><div class="filter py-1 px-2 m-1">무료배달</div></a>
+            <a href="/store/search?filter=minprice"><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
         </div>
 
         <hr>
