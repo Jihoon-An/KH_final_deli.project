@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +41,9 @@ public class StoreMenuController {
 
         }
 
-        int storeReviewCount = storeReviewService.getReviewCount(store_seq);  //식당리뷰개수
+        int storeReviewCount = storeReviewService.getReviewCount(store_seq);  // 식당리뷰개수
 
-        double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); //식당별점평균
+        double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
         model.addAttribute("storeDTO", storeDTO);
         model.addAttribute("menuGroup", menuGroup);
