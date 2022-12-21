@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreSearchMapper">
+
+    <resultMap id="selectDistanceByAccSeqResult" type="HashMap">
+        <result property="STORE_SEQ" column="STORE_SEQ" />
+        <result property="STORE_NAME" column="STORE_NAME" />
+        <result property="STORE_CATEGORY" column="STORE_CATEGORY" />
+        <result property="STORE_PHONE" column="STORE_PHONE" />
+        <result property="STORE_INTRO" column="STORE_INTRO" />
+        <result property="STORE_MIN_PRICE" column="STORE_MIN_PRICE" />
+        <result property="STORE_DELI_TIP" column="STORE_DELI_TIP" />
+        <result property="STORE_DELI_TIME" column="STORE_DELI_TIME" />
+        <result property="STORE_BSNS_HOURS" column="STORE_BSNS_HOURS" />
+        <result property="STORE_CLOSE_DAY" column="STORE_CLOSE_DAY" />
+        <result property="STORE_ADD_DETAIL1" column="STORE_ADD_DETAIL1" />
+        <result property="STORE_ADD_DETAIL2" column="STORE_ADD_DETAIL2" />
+        <result property="STORE_ADD_X" column="STORE_ADD_X" />
+        <result property="STORE_ADD_Y" column="STORE_ADD_Y" />
+        <result property="STORE_LOGO" column="STORE_LOGO" />
+        <result property="STORE_ORIGIN" column="STORE_ORIGIN" jdbcType="NCLOB" javaType="java.lang.String" />
+        <result property="STORE_OPEN" column="STORE_OPEN" />
+        <result property="STORE_DISPLAY" column="STORE_DISPLAY" />
+        <result property="STORE_DISTANCE" column="STORE_DISTANCE" />
+        <result property="STORE_DESTINATION" column="STORE_DESTINATION" />
+        <result property="OWNER_SEQ" column="OWNER_SEQ" />
+        <result property="DISTANCE" column="DISTANCE" />
+        <result property="AVERAGE_STARS" column="AVERAGE_STARS" />
+        <result property="COUNT_REVIEW" column="COUNT_REVIEW" />
+    </resultMap>
+    <select id="selectDistanceByAccSeq" parameterType="java.util.HashMap" resultMap="selectDistanceByAccSeqResult">
+        SELECT
+        A.STORE_SEQ AS STORE_SEQ,
+        STORE_NAME,
+        STORE_CATEGORY,
+        STORE_PHONE,
+        STORE_INTRO,
+        to_char(STORE_MIN_PRICE,'FM9,999,999') AS STORE_MIN_PRICE,
+        to_char(STORE_DELI_TIP,'FM9,999,999') AS STORE_DELI_TIP,
+        STORE_DELI_TIME,
+        STORE_BSNS_HOURS,
+        STORE_CLOSE_DAY,
+        STORE_ADD_DETAIL1,
+        STORE_ADD_DETAIL2,
+        STORE_ADD_X,
+        STORE_ADD_Y,
+        STORE_LOGO,
+        <!--        to_char(STORE_ORIGIN) AS STORE_ORIGIN,-->
+        STORE_ORIGIN,
+        STORE_OPEN,
+        STORE_DISPLAY,
+        STORE_DESTINATION,
+        TRUNC((SQRT(ABS(POWER(X,2)+POWER(Y,2))) * 40075/360),3) * 1000 AS DISTANCE,
+        NVL(TRUNC((SELECT AVG(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ),1), 0) AS AVERAGE_STARS,
+        (SELECT COUNT(REV_STAR) FROM REVIEW REV WHERE REV.STORE_SEQ = A.STORE_SEQ) AS COUNT_REVIEW
+        FROM
+        (SELECT
+        STORE_SEQ,
+        ABS(STORE_X - MEMBER_X) AS X,
+        ABS(STORE_Y - MEMBER_Y) AS Y
+        FROM
+        (SELECT
+        STORE_SEQ,
+        STORE_ADD_X AS STORE_X,
+        STORE_ADD_Y AS STORE_Y
+        FROM
+        STORE
+        ),
+        (SELECT
+        ADD_X AS MEMBER_X,
+        ADD_Y AS MEMBER_Y,
+        ACC_SEQ,
+        ADD_DIVISION
+        FROM
+        ADDRESS
+        WHERE
+        ACC_SEQ = #{acc_seq} AND
+        ADD_DIVISION = 'basics'
+        )
+        ) A
+        LEFT JOIN
+        STORE B
+        ON
+        A.STORE_SEQ = B.STORE_SEQ
+        WHERE
+        <if test='filter != null  and(filter eq "delifree".toString())'>
+            STORE_DELI_TIP = 0 AND
+        </if>
+        ABS((X*X*10000)+(Y*Y*10000)) <![CDATA[<]]> ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
+        AND(
+        A.STORE_SEQ IN
+        (SELECT M.STORE_SEQ FROM MENU M WHERE M.MENU_NAME LIKE UPPER('%'||#{search, jdbcType=VARCHAR}||'%')
+        OR M.MENU_NAME LIKE LOWER('%'||#{search, jdbcType=VARCHAR}||'%'))
+        OR
+        A.STORE_SEQ IN
+        (SELECT SEC_STORE.STORE_SEQ FROM STORE SEC_STORE
+        WHERE SEC_STORE.STORE_NAME LIKE UPPER('%'||#{search, jdbcType=VARCHAR}||'%')
+        OR SEC_STORE.STORE_NAME LIKE LOWER('%'||#{search, jdbcType=VARCHAR}||'%')
+        OR SEC_STORE.STORE_CATEGORY LIKE UPPER('%'||#{search, jdbcType=VARCHAR}||'%')
+        OR SEC_STORE.STORE_CATEGORY LIKE LOWER('%'||#{search, jdbcType=VARCHAR}||'%'))
+        )
+        <choose>
+            <when test='filter != null and(filter eq "star".toString())'>
+                ORDER BY TO_NUMBER(AVERAGE_STARS) DESC
+            </when>
+            <when test='filter != null and(filter eq "review".toString())'>
+                ORDER BY TO_NUMBER(COUNT_REVIEW) DESC
+            </when>
+            <when test='filter != null and(filter eq "minprice".toString())'>
+                ORDER BY TO_NUMBER(STORE_MIN_PRICE)
+            </when>
+            <otherwise>
+                ORDER BY 1
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectMenuListByStoreSeq" resultType="MenuDTO">
+        select * from menu where store_seq=#{value}
+    </select>
+
+
+
+</mapper>

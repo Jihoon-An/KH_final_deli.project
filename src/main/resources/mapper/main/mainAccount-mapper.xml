@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.main.mapper.MainAccountMapper">
+
+    <insert id="insertOwner" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO ACCOUNT(ACC_SEQ, ACC_EMAIL, ACC_PW, ACC_TYPE)
+        VALUES (
+        #{acc.acc_seq},
+        #{acc.acc_email},
+        #{acc.acc_pw},
+        'business'
+        )
+    </insert>
+
+    <!-- 멤버 로그인 -->
+    <select id="login" resultType="int">
+        SELECT COUNT(*) FROM ACCOUNT
+        WHERE ACC_EMAIL = #{email} AND ACC_PW = #{pw} AND ACC_SNS = 'normal'
+    </select>
+
+    <!-- 멤버 회원가입(sns회원가입x) -->
+    <insert id="memberSignUp" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO account VALUES(
+        #{acc_seq},
+        #{acc_email},
+        #{acc_pw},
+        'client',
+        'normal',
+        null,
+        sysdate,
+        'Y'
+        )
+    </insert>
+
+    <insert id="insertMember" parameterType="kh.deli.global.entity.MemberDTO">
+        INSERT INTO member VALUES(
+        #{acc_seq},
+        mem_seq.nextval,
+        null,
+        #{mem_phone},
+        #{mem_nick},
+        null,
+        null,
+        'normal',
+        null
+        )
+    </insert>
+    <insert id="insertAddress" parameterType="kh.deli.global.entity.AddressDTO">
+        INSERT INTO address VALUES(
+        add_seq.nextval,
+        #{acc_seq},
+        'basics',
+        #{add_name},
+        #{add_detail1},
+        #{add_detail2},
+        #{add_x},
+        #{add_y},
+        null
+        )
+    </insert>
+
+    <!-- kakao 회원가입 -->
+    <insert id="kakaoSignUp" parameterType="kh.deli.global.entity.AccountDTO">
+        INSERT INTO account VALUES(
+        acc_seq.nextval,
+        #{acc_email},
+        #{acc_pw},
+        'client',
+        'kakao',
+        #{acc_token},
+        sysdate,
+        'Y'
+        )
+    </insert>
+
+    <!-- 카카오 회원가입 확인(아이디 존재 여부 확인) -->
+    <select id="findByAccToken" resultType="int">
+        SELECT COUNT(*) FROM ACCOUNT
+        WHERE acc_token = #{acc_token}
+    </select>
+
+    <!-- 카카오 아이디(토큰) 값으로 이메일 확인(카카오 로그인시 이메일로 로그인하기 위함) -->
+    <select id="getAccEmail" resultType="String">
+        SELECT ACC_EMAIL FROM ACCOUNT
+        WHERE acc_token = #{acc_token}
+    </select>
+
+
+</mapper>

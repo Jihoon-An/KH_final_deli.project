@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.member.store.mapper.StoreReviewMapper">
+
+        <resultMap type="HashMap" id="getReviewInfoMap">
+                <result property="MEM_NICK" column="MEM_NICK" />
+                <result property="REV_WRITEDATE" column="REV_WRITEDATE" />
+                <result property="REV_STAR" column="REV_STAR" />
+                <result property="REV_SYSNAME" column="REV_SYSNAME" jdbcType="NCLOB" javaType="java.lang.String" />
+                <result property="REV_CONTENT" column="REV_CONTENT" />
+                <result property="MENU_LIST" column="MENU_LIST" />
+        </resultMap>
+
+        <select id="getReviewInfo" resultType="java.util.HashMap" resultMap="getReviewInfoMap">
+<!--                select-->
+<!--                MEM_NICK,-->
+<!--                REV_WRITEDATE,-->
+<!--                REV_MODIFIED_DATE,-->
+<!--                REV_STAR,-->
+<!--                REV_SYSNAME,-->
+<!--                REV_CONTENT,-->
+<!--                MENU_LIST-->
+<!--                from REVIEW r-->
+<!--                join MEMBER m on r.ACC_SEQ = m.ACC_SEQ-->
+<!--                join ORDERS o on m.ACC_SEQ = o.ACC_SEQ-->
+<!--                where r.ACC_SEQ = m.ACC_SEQ-->
+<!--                and r.ORDER_SEQ = o.ORDER_SEQ-->
+<!--                and r.STORE_SEQ =#{store_seq}-->
+<!--                and rev_display='Y'-->
+
+                SELECT
+                        MEM_NICK,
+                        REV_WRITEDATE,
+                        REV_MODIFIED_DATE,
+                        REV_STAR,
+                        REV_SYSNAME,
+                        REV_CONTENT,
+                        MENU_LIST
+                FROM REVIEW r join MEMBER m
+                ON r.ACC_SEQ=m.ACC_SEQ
+                JOIN ORDERS o
+                on r.ACC_SEQ=o.ACC_SEQ
+                WHERE o.ORDER_SEQ=r.ORDER_SEQ
+                AND r.STORE_SEQ=#{store_seq} AND REV_DISPLAY='Y'
+        </select>
+
+</mapper>

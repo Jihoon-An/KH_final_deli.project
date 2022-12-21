@@ -5,6 +5,7 @@ import kh.deli.domain.member.order.dto.OrdererInfoDTO;
 import kh.deli.domain.member.order.dto.PayInfoDTO;
 import kh.deli.domain.member.order.dto.StoreInfoDTO;
 import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
+import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,9 @@ public class OrderOrdersService {
 
     public PayInfoDTO payInfo(int order_seq) throws Exception{
         return orderOrdersMapper.payInfo(order_seq);
+    }
+
+    public OrdersDTO findOrdersBySeq(int order_seq) throws Exception {
+        return orderOrdersMapper.findOrdersBySeq(order_seq);
     }
 }

@@ -26,11 +26,4 @@ public interface MyPageReviewMapper {
     @Select("SELECT * FROM STORE WHERE STORE_SEQ=${store_seq}")
     StoreDTO selectByStoreSeq(@Param("store_seq") int store_seq);
 
-    int getReviewCount(int store_seq);
-
-    double getReviewAvg(int store_seq);
-
-    List<MypageReviewListDTO> getReviews();
-
-
 }

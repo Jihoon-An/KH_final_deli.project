@@ -26,9 +26,16 @@ public class MemberReviewService {
     public void reviewInsert(HttpSession session, ReviewDTO dto, MultipartFile[] files) throws Exception {
         FileUtil fileUtil = new FileUtil();
 
-        List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
+        if(dto.getRev_sysname().equals("1")) {
+            List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
+            dto.setRev_sysname(gson.toJson(sysNameList));
 
-        dto.setRev_sysname(gson.toJson(sysNameList));
+        }else {
+            dto.setRev_sysname("");
+        }
+
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        dto.setAcc_seq(acc_seq);
 
         MyPageReviewMapper.reviewInsert(dto);
     }
@@ -41,22 +48,9 @@ public class MemberReviewService {
         return MyPageReviewMapper.selectByReviewSeq(rev_seq);
     }
 
-    public int getReviewCount(int store_seq)throws Exception{
-        return MyPageReviewMapper.getReviewCount(store_seq);
-    }
 
     public StoreDTO selectByStoreSeq(int store_seq) throws Exception {
         return MyPageReviewMapper.selectByStoreSeq(store_seq);
-    }
-
-    //별점
-    public double getReviewAvg(int store_seq) throws Exception{
-        return MyPageReviewMapper.getReviewAvg(store_seq);
-    }
-
-    //리뷰출력
-    public List<MypageReviewListDTO> getReviews() throws Exception{
-        return MyPageReviewMapper.getReviews();
     }
 
 }

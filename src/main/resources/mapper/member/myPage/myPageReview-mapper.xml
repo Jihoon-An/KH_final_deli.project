@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.member.myPage.mapper.MyPageReviewMapper">
+
+    <insert id="reviewInsert" parameterType="kh.deli.global.entity.ReviewDTO">
+        INSERT INTO review values (
+        rev_seq.nextval,
+        #{acc_seq},
+        #{rev_sysname},
+        #{rev_star},
+        #{rev_content},
+        #{store_seq},
+        #{order_seq},
+        sysdate,
+        null,
+        default
+        )
+    </insert>
+
+    <select id="selectByOrderSeq" resultType="kh.deli.global.entity.OrdersDTO">
+        select * from orders where order_seq=#{order_seq}
+    </select>
+
+    <select id="selectMenuName" resultType="String">
+        select menu_name from menu where menu_seq=#{menu_seq}
+    </select>
+
+</mapper>

@@ -13,8 +13,8 @@ import java.util.Map;
 public class StoreSearchService {
 
     private final StoreSearchMapper storeSearchMapper;
-    public List<Map<String, Object>> selectDistanceByAccSeq(int acc_seq, String search) {
-        return storeSearchMapper.selectDistanceByAccSeq(acc_seq, search);
+    public List<Map<String, Object>> selectDistanceByAccSeq(int acc_seq, String search, String filter) {
+        return storeSearchMapper.selectDistanceByAccSeq(acc_seq, search, filter);
     }
     public List<MenuDTO> selectMenuListByStoreSeq(int store_seq) {
         return storeSearchMapper.selectMenuListByStoreSeq(store_seq);

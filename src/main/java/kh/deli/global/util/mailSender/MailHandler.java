@@ -66,6 +66,7 @@ public class MailHandler {
     public void send() {
         try {
             sender.send(message);
+            System.out.println(message);
         }catch(Exception e) {
             e.printStackTrace();
         }

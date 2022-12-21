@@ -12,10 +12,10 @@ public class AdminReviewDTO {
     private String rev_content;
     private String store_name;
     private String rev_writedate;
-    private String rev_modifieddate;
+    private String rev_modified_date;
     private int rev_seq;
     private int rev_star;
-    private String review_display;
+    private String rev_display;
 }
 
 

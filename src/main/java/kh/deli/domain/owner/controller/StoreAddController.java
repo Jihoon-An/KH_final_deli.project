@@ -29,8 +29,9 @@ public class StoreAddController {
     @RequestMapping("storeAdd")
     public String add(StoreDTO dto, MultipartFile file ) throws IOException {
 
-        System.out.println(dto.getStore_name());
         System.out.println(dto.getStore_bsns_hours());
+        System.out.println(dto.getStore_name());
+
         System.out.println(dto.getStore_deli_tip());
         System.out.println(file);
         System.out.println(dto.getStore_add_x());
@@ -44,10 +45,10 @@ public class StoreAddController {
 
        // int owner_Seq = (Integer) session.getAttribute("owner_seq");
      
-        int owner_Seq=19;
+        int owner_Seq=14;
         dto.setOwner_seq(owner_Seq);  //임시
 
-        String realPath=session.getServletContext().getRealPath("/resources/store");
+        String realPath=session.getServletContext().getRealPath("/resources/img/store");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성

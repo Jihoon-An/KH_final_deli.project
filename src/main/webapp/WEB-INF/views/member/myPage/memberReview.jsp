@@ -40,21 +40,22 @@
         <div>글자수</div>
         <div>
             <div class="imgbox fileBtnBox">
+                <input type="hidden" name="rev_sysname" id="rev_sysmname">
                 <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
             </div>
-
+            <div class="imgName"> </div>
         </div>
         <div>
             <div> 주문한 메뉴</div>
             주문번호: <input type="text" value="${dto.order_seq}" name="order_seq">
-            회원번호: <input type="text" value="${dto.acc_seq}" name="acc_seq">
+<%--            회원번호: <input type="text" value="${dto.acc_seq}" name="acc_seq">--%>
             가게번호: <input type="text" value="${dto.store_seq}" name="store_seq">
             주문금액: <input type="text" value="${dto.order_price}">
             <input type="hidden" value="${dto.menu_list}" id="menu">
             <div class="menuBox"></div>
         </div>
         <div>
-            <button>작성하기</button>
+            <button type="button" id="writeBtn">작성하기</button>
         </div>
     </form>
 </div>

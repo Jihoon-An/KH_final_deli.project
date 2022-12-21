@@ -17,4 +17,9 @@ public class AdminAccountService {
     public List<AdminAccountDTO> selectAccountList(){
         return adminAccountMapper.selectAccountList();
     }
+
+
+    public int deleteAccount(int acc_seq){
+        return adminAccountMapper.deleteAccount(acc_seq);
+    }
 }

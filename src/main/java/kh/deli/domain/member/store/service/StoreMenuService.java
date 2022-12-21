@@ -5,7 +5,6 @@ package kh.deli.domain.member.store.service;
 import kh.deli.domain.member.store.mapper.StoreMenuMapper;
 import kh.deli.global.entity.MenuDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,9 +21,7 @@ import java.util.UUID;
 public class StoreMenuService {
 
     private final HttpSession session;
-    @Autowired
-    private StoreMenuMapper storeMenuMapper;
-
+    private final StoreMenuMapper storeMenuMapper;
 
     public void insertMenu(MenuDTO menu, MultipartFile file) throws IOException {
 
@@ -45,7 +42,6 @@ public class StoreMenuService {
             menu.setMenu_img(sysName);
         }
 
-
         storeMenuMapper.insertMenu(menu);
     }
 
@@ -60,4 +56,7 @@ public class StoreMenuService {
         return storeMenuMapper.menuList(param);
     }
 
+    public MenuDTO findBySeq(int seq) {
+        return storeMenuMapper.findBySeq(seq);
+    }
 }

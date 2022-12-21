@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>식당 검색 리스트</title>
@@ -66,53 +67,61 @@
 
 <main id="storeSearch">
     <div class="container">
-        <form action="/storeSearch">
+        <form action="/store/search">
             <input type="text" placeholder="검색해라" name="search">
             <button>검색</button>
         </form>
         <hr>
         <div class="d-inline-flex">
-            <div class="filter py-1 px-2 m-1">별점</div>
-            <div class="filter py-1 px-2 m-1">리뷰</div>
-            <div class="filter py-1 px-2 m-1">무료배달</div>
-            <div class="filter py-1 px-2 m-1">최소주문금액</div>
+            <a href="/storeSearch?filter=star"><div class="filter py-1 px-2 m-1">별점</div></a>
+            <a href="/storeSearch?filter=review"><div class="filter py-1 px-2 m-1">리뷰</div></a>
+            <a href="/storeSearch?filter=delifree"><div class="filter py-1 px-2 m-1">무료배달</div></a>
+            <a href="/storeSearch?filter=minprice"><div class="filter py-1 px-2 m-1">최소주문금액</div></a>
         </div>
 
         <hr>
         <div class="d-flex flex-column">
             <c:choose>
                 <c:when test="${not empty store_list}">
-                    <c:forEach var="store_list" items="${store_list}">
+                    <c:forEach var="store_list" items="${store_list}" varStatus="status">
 
                         <div class="store_list d-inline-flex m-2">
-                            <div class="m-2 store_logo_box"><img class="store_logo"
-                                                                 src="https://shop-phinf.pstatic.net/20221209_61/1670570397926XRLOY_JPEG/%ED%8C%A8%EC%85%98%ED%83%80%EC%9A%B4_%ED%96%89%EC%82%AC%EB%B0%B0%EB%84%88%EC%9A%B4%EC%98%81%EA%B0%80%EC%9D%B4%EB%93%9C.jpg">
+                            <div class="m-2 store_logo_box">
+                                <c:choose>
+                                    <c:when test="${store_list.STORE_LOGO !=null}">
+                                        <div>
+                                            <img class="store_logo" src="/resources/img/store/${store_list.STORE_LOGO}">
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div>이미지: 사진없음</div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
-                                ${store_list.STORE_LOGO}
                             <div class="m-2 store_info_box">
                                 <div>식당명: ${store_list.STORE_NAME}</div>
-                                <div>★${store_list.AVERAGE_STARS} / 리뷰개수:${store_list.COUNT_REVIEW}
-                                    / ${store_list.DISTANCE}m
+                                <div>★${store_list.AVERAGE_STARS} / 리뷰 ${store_list.COUNT_REVIEW}개
+                                    /
+                                    <fmt:formatNumber var="DISTANCE" value="${store_list.DISTANCE}" pattern="#.##"/>
+                                    <c:if test="${store_list.DISTANCE >= 1000}">
+                                    <fmt:formatNumber value="${(DISTANCE) / (1000)}" pattern=".0"/>km</c:if>
+                                    <c:if test="${store_list.DISTANCE < 1000}">${store_list.DISTANCE}m</c:if>
                                 </div>
+                                <div>최소주문금액: ${store_list.STORE_MIN_PRICE}원</div>
                                 <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
-                                <div class="menu_name">메뉴명:
-                                    <c:choose>
-                                        <c:when test="${not empty menu_list}">
-                                            <c:forEach var="menu_list" items="${menu_list}" varStatus="status">
-                                                ${menu_list.menu_name}<c:if test="${!status.last}">, </c:if>
-                                            </c:forEach>
-                                        </c:when>
-                                    </c:choose>
+                                <div class="menu_name">
+                                    메뉴명:
+                                    <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}" varStatus="status2">
+                                        ${menu_list}<c:if test="${!status2.last}">, </c:if>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>
-
-
-                        <c:if test=""></c:if>
-
-
                     </c:forEach>
                 </c:when>
+                <c:otherwise>
+                    근처에 주문할 수 있는 가게가 없습니다.
+                </c:otherwise>
             </c:choose>
 
             <!--
