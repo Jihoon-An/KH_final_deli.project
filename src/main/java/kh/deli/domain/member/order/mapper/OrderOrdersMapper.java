@@ -8,14 +8,22 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-                     
+import java.util.List;
+
+
 @Repository
 @Mapper
 public interface OrderOrdersMapper {
-
+    public OrderOrdersDTO selectSessionInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
     public OrderOrdersDTO selectOrderMemberInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
+    List<OrderOrdersDTO> selectCouponList(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
     public void updateMemberAddr(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
-    
+
+    public void updateMemberPhone(@Param("orderOrdersDTO")OrderOrdersDTO ordersDTO);
+    public OrderOrdersDTO insertPayment(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
+
+    public OrderOrdersDTO insertOrders(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
+
     StoreInfoDTO storeInfo(int order_seq);
 
     OrdererInfoDTO ordererInfo(int order_seq);

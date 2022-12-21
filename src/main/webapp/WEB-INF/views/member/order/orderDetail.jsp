@@ -29,7 +29,10 @@
         </c:when>
     </c:choose>
     <hr>
-    <h3>주문내역</h3>
+<%--    <c:choose>--%>
+<%--        <h3>주문내역</h3>--%>
+<%--        <div></div>--%>
+<%--    </c:choose>--%>
     <hr>
     <c:choose>
         <c:when test="${not empty payInfoDTO}">

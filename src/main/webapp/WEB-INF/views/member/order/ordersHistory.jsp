@@ -98,11 +98,11 @@
     }
 </style>
 <body>
-<c:choose>
-    <c:when test="${not empty list}">
-        <c:forEach var="i" items="${list}">
-<div class="container">
 
+<div class="container">
+    <c:choose>
+    <c:when test="${not empty list}">
+    <c:forEach var="i" items="${list}">
     <div class="box1">
         <div class="box2">
             <span class="headdeli">배달주문</span>
@@ -127,12 +127,12 @@
         </div>
 
     </div>
-
-</div>
-        </c:forEach>
+    </c:forEach>
     </c:when>
-    <c:otherwise>결제내역없음</c:otherwise>
-</c:choose>
+        <c:otherwise>결제내역없음</c:otherwise>
+    </c:choose>
+</div>
+
 
 
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.admin.mapper.AdminOwnerMapper">
+
+    <select id="selectOwnerList" resultType="AdminOwnerDTO">
+        select o.owner_num, o.owner_seq, o.acc_Seq, o.owner_phone, o.owner_name,a.acc_email,
+        a.acc_signupdate, store_count from owner o inner join account a
+        on o.acc_Seq = a.acc_seq left outer join (select owner_seq, count(*) store_count
+        from store group by owner_seq) c on o.owner_seq=c.owner_Seq order by acc_signupdate desc
+    </select>
+
+
+
+
+</mapper>
