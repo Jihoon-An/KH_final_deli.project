@@ -9,7 +9,7 @@ import java.sql.NClob;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MypageReviewListDTO {
+public class MypageReviewDTO {
     private int acc_seq;
     private String mem_nick;
     private NClob rev_sysname;

@@ -47,7 +47,7 @@
                 <input type="hidden"  class="acc_seq" value="${ac_acc_Seq}">
 
                 <td class="acc_email">${ac.acc_email} </td>
-                <td class="mem_name">${ac.mem_name}</td>
+                <td class="mem_nick">${ac.mem_nick}</td>
                 <td class="mem_phone">${ac.mem_phone} </td>
                 <td class="add_detail1">${ac.add_detail1} </td>
                 <td class="acc_signupdate">${ac.acc_signupdate} </td>
@@ -69,8 +69,8 @@
                     type="text" placeholder="이메일" id="email" class="email" disabled>
             </div>
             <div>
-                이름<input
-                    type="text" placeholder="이름" disabled id="name" class="name">
+                닉네임<input
+                    type="text" placeholder="이름" disabled id="nick" class="nick">
             </div>
             <div>
                 연락처<input

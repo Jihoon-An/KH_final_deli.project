@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 @AllArgsConstructor
 public class MyPageReviewViewController {
 
-        private final MyPageReviewService memberReviewFormService;
+        private final MyPageReviewService myPageReviewService;
         private final HttpSession session;
 
         @RequestMapping("")
         public String toMemberMain(Model model) throws Exception {
-            int order_seq = 11; // 내 주문리스트에서 order_seq 파라미터로 가져오기
-            OrdersDTO dto = memberReviewFormService.selectByOrderSeq(order_seq);
+            int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
+            OrdersDTO dto = myPageReviewService.selectByOrderSeq(order_seq);
 
             model.addAttribute("dto", dto);
 
@@ -34,7 +34,7 @@ public class MyPageReviewViewController {
         @PostMapping("reviewInsert")
         public String reviewInsert(ReviewDTO dto, MultipartFile[] files) throws Exception {
 
-            memberReviewFormService.reviewInsert(session, dto, files);
+            myPageReviewService.reviewInsert(session, dto, files);
 
             return "redirect:/";
         }

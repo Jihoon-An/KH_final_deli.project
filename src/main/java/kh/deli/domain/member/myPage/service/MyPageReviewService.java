@@ -1,7 +1,7 @@
 package kh.deli.domain.member.myPage.service;
 
 import com.google.gson.Gson;
-import kh.deli.domain.member.myPage.dto.MypageReviewListDTO;
+import kh.deli.domain.member.myPage.dto.MypageReviewDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageReviewMapper;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MyPageReviewService {
 
-    private final MyPageReviewMapper MyPageReviewMapper;
+    private final MyPageReviewMapper myPageReviewService;
 
     private final Gson gson;
 
@@ -36,23 +36,23 @@ public class MyPageReviewService {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
         dto.setAcc_seq(acc_seq);
 
-        MyPageReviewMapper.reviewInsert(dto);
+        myPageReviewService.reviewInsert(dto);
     }
 
     public OrdersDTO selectByOrderSeq(int order_seq) throws Exception {
-        return MyPageReviewMapper.selectByOrderSeq(order_seq);
+        return myPageReviewService.selectByOrderSeq(order_seq);
     }
 
     public ReviewDTO selectByReviewSeq(int rev_seq) throws Exception {
-        return MyPageReviewMapper.selectByReviewSeq(rev_seq);
+        return myPageReviewService.selectByReviewSeq(rev_seq);
     }
 
 
     public StoreDTO selectByStoreSeq(int store_seq) throws Exception {
-        return MyPageReviewMapper.selectByStoreSeq(store_seq);
+        return myPageReviewService.selectByStoreSeq(store_seq);
     }
 
-    public List<MypageReviewListDTO> getReviews() {
+    public List<MypageReviewDTO> getReviews() {
         return MyPageReviewMapper.getReviews();
     }
 }

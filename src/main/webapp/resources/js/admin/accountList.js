@@ -14,8 +14,8 @@ function trClickEvent() {
         $("#frm").find(".email").val(
             $(this).find(".acc_email").html());
 
-        $("#frm").find(".name").val(
-            $(this).find(".mem_name").html()
+        $("#frm").find(".nick").val(
+            $(this).find(".mem_nick").html()
         );
 
         $("#frm").find(".phone").val(
