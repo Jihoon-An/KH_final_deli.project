@@ -2,9 +2,11 @@ package kh.deli.domain.member.order.service;
 
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
+import kh.deli.domain.member.order.mapper.OrderBasketMapper;
 import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
+import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,19 @@ public class OrderBasketService {
     private final OrderMenuService menuService;
     private final OrderStoreService storeService;
     private final OrderOrdersMapper orderOrdersMapper;
+    private final OrderBasketMapper orderBasketMapper;
+
+
+    public StoreDTO findStoreBySeq(int storeSeq) throws Exception {
+        return orderBasketMapper.findStoreBySeq(storeSeq);
+    }
+    public MenuDTO findMenuBySeq(int menuSeq) throws Exception {
+        return orderBasketMapper.findMenuBySeq(menuSeq);
+    }
+    public MenuOptionDTO findMenuOptionBySeq(int optionSeq) throws Exception {
+        return orderBasketMapper.findMenuOptionBySeq(optionSeq);
+    }
+
 
     public void insertSampleBasket(String orderBasketDTO) throws Exception {
         orderOrdersMapper.insertSampleBasket(orderBasketDTO);

@@ -110,7 +110,7 @@ function phone_check() {
     } else {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#008000");
-        $("#phone_msg").html("핸드폰을 인증해주세요.");
+        $("#phone_msg").html("인증번호를 입력해주세요");
         // $("#phone_msg").html("");
         // $("#phone_msg").css("color", "#000000");
         // $("#phone_msg").hide();
@@ -227,8 +227,9 @@ $("#phone_confirm_btn").click(function () {
 
 
 function phone_confirm() {
+    console.log("시발련아");
     if (phoneRegex.test($("#mem_phone").val())
-        && $("#phone_msg").html() == "핸드폰을 인증해주세요.") {
+        && $("#phone_msg").html() == "인증번호를 입력해주세요") {
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
@@ -240,12 +241,15 @@ function phone_confirm() {
                 $("#certificationBox").hide();
                 $("#mem_phone").attr("disabled", true);
                 phone_ok = true;
+                console.log(phone_ok);
             } else if ($("#phone_count").html() == "시간초과") {
                 alert("인증을 다시 해주세요");
                 phone_ok = false;
+                console.log(phone_ok);
             } else {
                 alert("인증 번호를 확인해주세요");
                 phone_ok = false;
+                console.log(phone_ok);
             }
         })
     }
@@ -258,13 +262,33 @@ function phone_confirm() {
  */
 $("#saveButton").on("click" ,()=>{
 
-    $.ajax({
-        url: "/myPage/memberInfo/modify",
-        type: "post",
-        data: $("#modifyMemberInfo").serialize()
-    }).done(function(){
-        alert("수정 성공");
-    });
+    let newNick = $("#nickName").val();
+    let newPhone = $("#mem_phone").val();
+    let oldPhone = $("#oldPhoneNumber").val();
+
+    if (phone_ok === true) {
+        $.ajax({
+            url: "/myPage/memberInfo/modify",
+            type: "post",
+            data: {
+                "mem_nick" : newNick,
+                "mem_phone" : newPhone
+            }
+        }).done(function(){
+            alert("수정 성공");
+        });
+    }else {
+        $.ajax({
+            url: "/myPage/memberInfo/modify",
+            type: "post",
+            data: {
+                "mem_nick" : newNick,
+                "mem_phone" : oldPhone
+            }
+        }).done(function(){
+            alert("수정 성공");
+        });
+    }
 
 });
 

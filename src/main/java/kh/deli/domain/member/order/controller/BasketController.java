@@ -24,6 +24,13 @@ public class BasketController {
 
         OrderBasketDTO basketDTO = (OrderBasketDTO) session.getAttribute("basket");
 
+
+        basketService.findStoreBySeq(0);
+        basketService.findMenuBySeq(0);
+        basketService.findMenuOptionBySeq(0);
+
+
+
 //        OrderBasketDTO basketDTO = gson.fromJson(basket, OrderBasketDTO.class);
 
 //        System.out.println(basket);
