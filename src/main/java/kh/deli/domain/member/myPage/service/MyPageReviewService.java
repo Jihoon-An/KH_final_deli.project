@@ -2,7 +2,6 @@ package kh.deli.domain.member.myPage.service;
 
 import com.google.gson.Gson;
 import kh.deli.domain.member.myPage.dto.MypageReviewListDTO;
-import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageReviewMapper;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
@@ -17,7 +16,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class MemberReviewService {
+public class MyPageReviewService {
 
     private final MyPageReviewMapper MyPageReviewMapper;
 
@@ -53,4 +52,7 @@ public class MemberReviewService {
         return MyPageReviewMapper.selectByStoreSeq(store_seq);
     }
 
+    public List<MypageReviewListDTO> getReviews() {
+        return MyPageReviewMapper.getReviews();
+    }
 }

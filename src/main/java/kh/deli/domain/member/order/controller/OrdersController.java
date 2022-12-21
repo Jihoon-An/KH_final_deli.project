@@ -39,7 +39,6 @@ public class OrdersController {
         return mav;
     }
 
-
     @RequestMapping("selectInitInfo")
     @ResponseBody
     public OrderOrdersDTO selectInitInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO){

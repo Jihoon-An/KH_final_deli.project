@@ -1,6 +1,5 @@
 package kh.deli.domain.member.store.controller;
 
-import kh.deli.domain.member.myPage.service.MemberReviewService;
 import kh.deli.domain.member.store.service.StoreReviewService;
 import kh.deli.domain.member.store.service.StoreStoreService;
 import kh.deli.domain.owner.service.OwnerOwnerService;

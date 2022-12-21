@@ -31,6 +31,44 @@
         #{option_required}
         )
     </insert>
+<!--    메뉴 수정 진행중-->
+    <update id="modifyMenu" parameterType="kh.deli.global.entity.MenuDTO">
+        UPDATE MENU SET
+            #{MENU_GROPUP},
+            #{MENU_NAME},
+            #{MENU_PRICE},
+            #{MENU_INTRO},
+            #{MENU_IMG},
+            #{MENU_SOLD_OUT},
+            #{MENU_DISPLAY},
+            #{MENU_NUM}
+        WHERE
+            STORE_SEQ = #{STORE_SEQ}
+
+
+
+        UPDATE STORE
+        SET STORE_NAME=#{store_name},
+        STORE_CATEGORY=#{store_category},
+        STORE_PHONE=#{store_phone},
+        STORE_INTRO=#{store_intro},
+        STORE_MIN_PRICE=#{store_min_price},
+        STORE_DELI_TIP=#{store_deli_tip},
+        STORE_DELI_TIME=#{store_deli_time},
+        STORE_BSNS_HOURS=#{store_bsns_hours},
+        STORE_CLOST_DAY=#{store_close_day},
+        STORE_ADD_DETAIL1=#{store_add_detail1},
+        STORE_ADD_DETAIL2=#{store_add_detail2},
+        STORE_ADD_X=#{store_add_x},
+        STORE_ADD_Y=#{store_add_y},
+        STORE_LOGO=#{store_logo, jdbcType=VARCHAR},
+        STORE_ORIGIN=#{store_origin},
+        STORE_OPEN=#{store_open},
+        STORE_DISPLAY=#{store_display},
+        STORE_DESTINATION=#{store_destination},
+        OWNER_SEQ=#{owner_seq}
+        WHERE STORE_SEQ=#{STORE_SEQ}
+    </update>
 
 
     <select id="menuInfo" resultType="String">

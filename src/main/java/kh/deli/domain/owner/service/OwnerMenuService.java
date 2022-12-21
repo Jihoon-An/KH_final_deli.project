@@ -8,6 +8,7 @@ import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,8 +58,10 @@ public class OwnerMenuService {
         System.out.println(menuOptionDTO.getOption_group());
          //메뉴옵션에 메뉴seq
         ownerMenuMapper.insertMenuOption(menuOptionDTO);
-
-
+    }
+    // 메뉴 수정 진행중
+    public void modifyMenu(MenuDTO menuDTO){
+        ownerMenuMapper.modifyMenu(menuDTO);
     }
 
     public List<String> menuInfo(int store_seq) throws Exception{
@@ -72,5 +75,7 @@ public class OwnerMenuService {
     public int getNextMenuSeq(){
       return  ownerMenuMapper.getNextMenuSeq();
     }
+
+
 
 }

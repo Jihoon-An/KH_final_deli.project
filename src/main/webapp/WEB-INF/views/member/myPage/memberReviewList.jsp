@@ -12,12 +12,17 @@
     <title>reviewList</title>
 </head>
 <body>
-<h2>내가 쓴 리뷰 리스트</h2>
-    <div>내가 쓴 리뷰 총 *개</div>
-    <div>작성자</div>
-    <div>별점</div>
-    <div>사진</div>
-    <div>리뷰 내용</div>
+<main id="reviewList">
 
+    <div class="container">
+        <h2>내가 쓴 리뷰 리스트</h2>
+            <div class="store_name">상호명</div>
+            <div class="member_review">내가 쓴 리뷰 총 *개</div>
+            <div class="member_nick_name">작성자</div>
+            <div class="member_review_star">별점</div>
+            <div class="member_menu_img">사진</div>
+            <div class="member_content" >리뷰 내용</div>
+    </div>
+</main>
 </body>
 </html>

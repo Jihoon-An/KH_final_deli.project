@@ -349,7 +349,7 @@
             alert(msg);
             return;
         }else{$.ajax({
-                debugger;
+
                 url:"order/orders/updateMemberPhone",
                 type:"post",
                 dataType:"json",

@@ -1,7 +1,6 @@
 package kh.deli.domain.member.myPage.controller;
 
-import kh.deli.domain.member.myPage.service.MemberReviewService;
-import kh.deli.global.entity.DibsDTO;
+import kh.deli.domain.member.myPage.service.MyPageReviewService;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import lombok.AllArgsConstructor;
@@ -12,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/myPage/reviewWrite/")
 @AllArgsConstructor
 public class MyPageReviewViewController {
 
-        private final MemberReviewService memberReviewFormService;
+        private final MyPageReviewService memberReviewFormService;
         private final HttpSession session;
 
         @RequestMapping("")
