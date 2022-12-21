@@ -61,4 +61,13 @@ public class OwnerMainService {
         return ownerMainMapper.selectOwnerSeq(acc_seq);
     }
 
+    public String selectSpecific(int store_seq,String startDate, String endDate) throws Exception{
+        System.out.println("서비스::::::::::::"+store_seq+" : "+startDate+" : "+endDate);
+
+
+
+
+        String result="";
+        return result;
+    }
 }

@@ -17,4 +17,7 @@ public interface OwnerMainMapper {
     public OwnerDailySalesDTO selectSales(int store_seq, LocalDate now);
 
     public int selectOwnerSeq(int acc_seq);
+
+    public String selectSpecific();
+
 }
