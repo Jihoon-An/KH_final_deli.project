@@ -114,15 +114,18 @@
 
 
 
+//중복체크 o
 $(".btn_add").on("click", function () {
 
 
-    let selb = $("select[name=option_required] option:selected").val();
-    // let sela = document.querySelectorAll(".required:selected")
+  //  let selb = $("select[name=option_required] option:selected").val();
+    //let dupl = $("select[name=option_duplichk] option:selected").val();
+
     let opgroup = document.querySelectorAll(".opgroup");
     console.log(opgroup)
     console.log(opgroup.length)
     let sela = document.querySelectorAll(".required");
+    let duplchk = document.querySelectorAll(".opdupli");
     console.log(sela)
     console.log(sela.length)
     //중첩for문돌리예정
@@ -142,7 +145,7 @@ $(".btn_add").on("click", function () {
 
         //메뉴 옵션추가
         for(let i=0; i<opgroup.length; i++ ) { //중첩 for문 사용
-           let opname= $(document.querySelectorAll(".group")[i]).find(".opname")
+            let opname= $(document.querySelectorAll(".group")[i]).find(".opname")
             let opprice = $(document.querySelectorAll(".group")[i]).find(".opprice")
             //기본 opname 길이 2
             for (let j = 0; j < opname.length; j++) {
@@ -153,6 +156,7 @@ $(".btn_add").on("click", function () {
                 let data = {
                     "menu_seq":menu_seq,
                     "option_required": sela[i].value,
+                    "option_duplichk":duplchk[i].value,
                     "option_group": opgroup[i].value,
                     "option_name": opnameVal,
                     "option_price": Number(oppriceVal)
@@ -171,6 +175,10 @@ $(".btn_add").on("click", function () {
 
             }
         }
+
+
+
+
 
 
 

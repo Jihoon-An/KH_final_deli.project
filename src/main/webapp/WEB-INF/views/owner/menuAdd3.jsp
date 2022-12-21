@@ -67,6 +67,10 @@
                             <option value="Y">필수옵션</option>
                             <option value="N">선택옵션</option>
                         </select>
+                        <select name="option_duplichk" class="opdupli">
+                            <option value="Y">중복가능</option>
+                            <option value="N">중복불가능</option>
+                        </select>
                         <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group" class="opgroup"><br>
                     <div class="group">
                         <button type="button">X</button> <input type="text" placeholder="옵션명을 입력하세요" name="option_name" class="opname">
@@ -81,6 +85,10 @@
                         <select name="option_required"  class="required">
                             <option value="Y">필수옵션</option>
                             <option value="N">선택옵션</option>
+                        </select>
+                        <select name="option_duplichk" class="opdupli">
+                            <option value="Y">중복가능</option>
+                            <option value="N">중복불가능</option>
                         </select>
                         <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group" class="opgroup"><br>
                        <div class="group">

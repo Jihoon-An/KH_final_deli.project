@@ -28,7 +28,8 @@
         #{option_group},
         #{option_name},
         #{option_price},
-        #{option_required}
+        #{option_required},
+        #{option_duplichk}
         )
     </insert>
 

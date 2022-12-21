@@ -10,6 +10,7 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -28,7 +29,7 @@ public class OwnerMenuService {
     private OwnerMenuMapper ownerMenuMapper;
 
 
-
+    @Transactional
     public void insertMenu(MenuDTO menuDTO,  MultipartFile file, int menu_seq) throws IOException {
 
        //메뉴seq 생성
