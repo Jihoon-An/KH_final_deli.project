@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>식당 검색 리스트</title>
@@ -66,7 +67,7 @@
 
 <main id="storeSearch">
     <div class="container">
-        <form action="/storeSearch">
+        <form action="/store/search">
             <input type="text" placeholder="검색해라" name="search">
             <button>검색</button>
         </form>
@@ -87,9 +88,9 @@
                         <div class="store_list d-inline-flex m-2">
                             <div class="m-2 store_logo_box">
                                 <c:choose>
-                                    <c:when test="${store_list.store_logo !=null}">
+                                    <c:when test="${store_list.STORE_LOGO !=null}">
                                         <div>
-                                            <img class="store_logo" src="/resources/img/store/${store_list.store_logo}">
+                                            <img class="store_logo" src="/resources/img/store/${store_list.STORE_LOGO}">
                                         </div>
                                     </c:when>
                                     <c:otherwise>
@@ -97,13 +98,16 @@
                                     </c:otherwise>
                                 </c:choose>
                             </div>
-                                ${store_list.STORE_LOGO}
                             <div class="m-2 store_info_box">
-                                최소주문금액${store_list.STORE_MIN_PRICE}<BR>
                                 <div>식당명: ${store_list.STORE_NAME}</div>
-                                <div>★${store_list.AVERAGE_STARS} / 리뷰개수:${store_list.COUNT_REVIEW}
-                                    / ${store_list.DISTANCE}m
+                                <div>★${store_list.AVERAGE_STARS} / 리뷰 ${store_list.COUNT_REVIEW}개
+                                    /
+                                    <fmt:formatNumber var="DISTANCE" value="${store_list.DISTANCE}" pattern="#.##"/>
+                                    <c:if test="${store_list.DISTANCE >= 1000}">
+                                    <fmt:formatNumber value="${(DISTANCE) / (1000)}" pattern=".0"/>km</c:if>
+                                    <c:if test="${store_list.DISTANCE < 1000}">${store_list.DISTANCE}m</c:if>
                                 </div>
+                                <div>최소주문금액: ${store_list.STORE_MIN_PRICE}원</div>
                                 <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
                                 <div class="menu_name">
                                     메뉴명:
@@ -115,6 +119,9 @@
                         </div>
                     </c:forEach>
                 </c:when>
+                <c:otherwise>
+                    근처에 주문할 수 있는 가게가 없습니다.
+                </c:otherwise>
             </c:choose>
 
             <!--

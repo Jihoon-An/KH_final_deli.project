@@ -1,0 +1,7 @@
+#memberCouponPoint *{box-sizing: border-box;}
+#memberCouponPoint .container{
+    width: 375px;
+    height: 800px;
+    border: 1px solid gray;
+    margin: auto;
+}
