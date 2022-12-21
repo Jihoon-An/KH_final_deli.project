@@ -41,13 +41,11 @@ public class MenuDetailContoller {
 
         MenuDTO menu = menuService.findBySeq(menuSeq);
         List<MenuOptionDTO> menuOptionList = optionService.findByMenuSeq(menuSeq);
-        Map<String, List<Map<String, Object>>> menuOptions = optionService.toMap(menuOptionList);
+        Map<String, List<MenuOptionDTO>> menuOptions = optionService.toMap(menuOptionList);
 
 
         model.addAttribute("menu", menu);
-        model.addAttribute("menuJson", gson.toJson(menu));
         model.addAttribute("menuOptions", menuOptions);
-        model.addAttribute("OptionsJson", gson.toJson(menuOptions));
 
         return "member/store/menuDetail";
     }
@@ -58,6 +56,6 @@ public class MenuDetailContoller {
     ) {
         basketService.setBasketInSession(session, menuJson);
 
-        return "redirect:/store/info";
+        return "redirect:/store/info"; //seq 추가입력 필요
     }
 }
