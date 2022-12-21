@@ -4,6 +4,15 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper">
+    <select id="selectSessionInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        SELECT
+            A.ACC_EMAIL AS accEmail,
+            M.MEM_NAME AS memName
+        FROM ACCOUNT A
+        INNER JOIN MEMBER M ON ( A.ACC_SEQ = M.ACC_SEQ )
+        WHERE A.ACC_SEQ = #{orderOrdersDTO.seq}
+    </select>
+
     <select id="selectOrderMemberInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         select
             seq,
@@ -18,7 +27,7 @@
             A.add_detail1 as address1,
             A.add_detail2 as address2,
             M.mem_phone as phoneNum,
-            M.mem_point as ownPoint
+            NVL(M.mem_point, 0) as ownPoint
             from member M
             inner join address A ON (A.acc_seq = M.acc_seq)
             where add_seq = 6
@@ -36,6 +45,54 @@
             ACC_SEQ = #{orderOrdersDTO.seq}
             AND ADD_SEQ = 6
     </update>
+
+    <update id="updateMemberPhone" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        UPDATE ADDRESS
+        SET
+            MEM_PHONE = #{orderOrdersDTO.phoneNum}
+        WHERE
+            ACC_SEQ = #{orderOrdersDTO.seq}
+            AND ADD_SEQ = 6
+    </update>
+
+    <select id="selectCouponList" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        SELECT
+            M.MC_SEQ AS mcSeq,
+            M.CP_SEQ AS cpSeq,
+            C.CP_NAME AS cpName,
+            C.CP_CONTENT As cpContent,
+            C.CP_DISCOUNT AS cpDiscount,
+            C.CP_PERIOD AS cpPeriod,
+            C.CP_TYPE As cpType
+        FROM MEMBER_COUPON M
+        INNER JOIN COUPON C ON ( M.CP_SEQ = C.CP_SEQ )
+        WHERE M.ACC_SEQ = #{orderOrdersDTO.seq}
+    </select>
+
+    <insert id="insertPayment" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        INSERT INTO
+        PAYMENT (PAY_SEQ,PAY_DATE,PAY_PRICE,PAY_PERIOD)
+        VALUES(
+        PAY_SEQ.NEXTVAL,
+        #{PAY_DATE},
+        #{PAY_PRICE},
+        #{PAY_PERIOD}
+        )
+
+    </insert>
+
+    <insert id="insertOrders" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        INSERT INTO
+        ORDERS (ORDER_SEQ,MENU_LIST,ORDER_DISPOSABLE,ORDER_STORE_REQ,ORDER_RIDER_REQ)
+        VALUES(
+        ORDER_SEQ.NEXTVAL,
+        #{MENU_LIST},
+        #{ORDER_DISPOSABLE},
+        #{ORDER_STORE_REQ},
+        #{ORDER_RIDER_REQ}
+        )
+
+    </insert>
 
     <select id="storeInfo" resultType="StoreInfoDTO">
         select

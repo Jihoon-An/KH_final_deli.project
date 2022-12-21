@@ -1,6 +1,7 @@
 package kh.deli.domain.member.myPage.service;
 
 import com.google.gson.Gson;
+import kh.deli.domain.member.myPage.dto.MypageReviewListDTO;
 import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageReviewMapper;
 import kh.deli.global.entity.OrdersDTO;
@@ -54,7 +55,7 @@ public class MemberReviewService {
     }
 
     //리뷰출력
-    public List<StoreReviewDTO> getReviews() throws Exception{
+    public List<MypageReviewListDTO> getReviews() throws Exception{
         return MyPageReviewMapper.getReviews();
     }
 
