@@ -16,11 +16,9 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="/resources/css/admin/ReviewMng.css">
 
 </head>
@@ -28,15 +26,15 @@
 <main id="review_mng">
     <table id="myTable" class="display">
         <thead>
-        <tr>
-            <th>작성자</th>
-            <th>리뷰내용</th>
-            <th>상호명</th>
-            <th>작성일자</th>
-            <th>수정일자</th>
-        </tr>
+            <tr>
+                <th>작성자</th>
+                <th>리뷰내용</th>
+                <th>상호명</th>
+                <th>작성일자</th>
+                <th>수정일자</th>
+            </tr>
         </thead>
-        <tbody id="66">
+        <tbody>
         <c:if test="${not empty nev_list}">
             <c:forEach var="sysName" items="${nev_list}">
                 <tr>
@@ -44,10 +42,8 @@
                     <td class="rev_content">${sysName.rev_content}</td>
                     <td class="store_name">${sysName.store_name}</td>
                     <td class="rev_writedate">
-
                         <fmt:parseDate value="${sysName.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
-
                         <input id="formed_rev_writedate" class="formed_rev_writedate"
                                type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
                     </td>
@@ -62,7 +58,7 @@
                                 <fmt:parseDate value="${sysName.rev_modified_date}" var="registered"
                                                pattern="yyyy-MM-dd HH:mm:ss"/>
                                 <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
-                                    <%--  ${i.rev_modified_date}--%>
+
                                 <input id="formed_rev_modified_date" class="formed_rev_modified_date"
                                        type="hidden" value=<fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
                             </td>
@@ -77,6 +73,7 @@
         </tbody>
     </table>
 
+
     <%--모달--%>
     <form action="/admin/review/deleteReview" id="frm">
         <div class="modal">
@@ -88,14 +85,10 @@
                 </div>
                 <div>
                     별점 <input
-                        type="text" placeholder="별점" disabled id="star" class="star">
+                        type="text" placeholder="별점" disabled id="star" class="star" disabled>
                 </div>
-                <%--            <div>--%>
-                <%--                리뷰 내용<input--%>
-                <%--                    type="text" placeholder="리뷰내용" disabled id="review_content" class="review_content">--%>
-                <%--            </div>--%>
                 <div id="reviewField">리뷰 내용</div>
-                <div id="review_content" class="review_content"></div>
+                <div id="review_content" class="review_content" disabled></div>
                 <div>
                     작성일자<input
                         type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
@@ -118,7 +111,7 @@
         </div>
     </form>
 
-    <script src="/resources/js/admin/reviewMng.js"></script>
 </main>
+<script src="/resources/js/admin/reviewMng.js"></script>
 </body>
 </html>

@@ -60,6 +60,13 @@
                                 <div>리뷰 내용 : ${reviews.rev_content}</div>
                             </c:when>
                         </c:choose>
+                        <c:choose>
+                            <c:when test="${not empty reviews.menu_list}">
+                                <c:forEach var="i" items="${reviews.menu_list}">
+                                    <div>메뉴명 : ${i}</div>
+                                </c:forEach>
+                            </c:when>
+                        </c:choose>
                         <br>
                     </c:forEach>
                 </c:when>

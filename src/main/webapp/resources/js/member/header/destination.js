@@ -1,7 +1,26 @@
-// 버튼 누르면 모달닫기
-$(".closeModal").click(function () {
-    $(".modal").fadeOut();
+// 배송지 모달 열기
+$("#destination_change").click(function (){
+    $(".modal").fadeIn();
+    $(".modal_destination_add").hide();
+    $("input").val("");
+    $(".modal_destination_container").show();
+})
+
+// 주소지 추가 열기
+$("#destination_add_box_btn").click(function () {
+    $(".modal").fadeIn();
 });
+
+// 주소지 추가 닫기
+function closeDestinationAdd () {
+    $(".modal_destination_add").fadeOut();
+}
+
+// 버튼 누르면 모달닫기
+function closeModal () {
+    $(".modal").fadeOut();
+}
+
 // ESC 누르면 Modal 닫기
 $(window).on("keyup", e => {
     if ($(".modal")[0].style.display == "block" && e.keyCode == 27) { $(".modal").fadeOut(); }
@@ -13,39 +32,8 @@ $(".modal").on("click", e => {
     if (e.target.classList.contains("modal")) { $(".modal").fadeOut(); }
 });
 
-// 모달 열기
-$("#destination_add_box_btn").click(function () {
-    $(".modal").fadeIn();
-});
 
 
-
-// 비밀번호 찾기 페이지 처리
-function showSearchPw() {
-    $("#form_login").attr("style", "display:none");
-    $("#form_searchPw").attr("style", "display:inline");
-    $("#loginModal .title").text("비밀번호 찾기");
-    $("#loginModal .window").attr("style", "height:450px");
-}
-
-// 뒤로가기 처리
-function toBackward() {
-    $(".search").attr("style", "display:none");
-    $("#loginModal input:not([type='checkbox']").val("");
-    $("#form_login").attr("style", "display:inline");
-    $("#loginModal .title").text("회원 로그인");
-    $("#loginModal .window").attr("style", "height:475px");
-}
-
-// ESC 누르면 Modal 닫기
-$(window).on("keyup", e => {
-    if ($("#loginModal")[0].style.display == "inline-flex" && e.keyCode == 27) { hideLoginModal(); }
-});
-
-// 창 바깥쪽 클릭하면 Modal 닫기
-$("#loginModal").on("click", e => {
-    if (e.target.classList.contains("loginModal-overlay")) { hideLoginModal(); }
-});
 
 // 엔터 = 버튼 클릭
 $("#login_id, #login_pw").on("keyup", (e) => { if (e.keyCode == 13) { $("#btn_login").click() } });
@@ -73,13 +61,12 @@ $(".del").on("click", function () {
         confirm("기본 배송지는 삭제 불가합니다.기본 주소지 변경 후 삭제해주세요.")
     } else {
         if(confirm("정말 삭제 하시겠습니까?")){
-            // $(this).closest(".destination_box").remove();
             $.ajax({
                 url: "/member/header/destination/delete",
                 type: "post",
                 data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
             }).done(function () {
-                alert("삭제 성공/모달 새고고침처럼 다시 보여야함/지웠다가 다시 띄우기");
+                $("#destination_select_frm").load("/member/header/destination #destination_select_frm")
             });
         }
     }
@@ -87,26 +74,28 @@ $(".del").on("click", function () {
 
 
 $("#destination_select").on("click", function () {
-    $("input[name='radio_add_division']").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
-    if($("input[name='radio_add_division']:checked")){
-        $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".hidden_add_division")).val("basics");
-    } else {
-        $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
+    if($("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".pick")).html()=="[선택]") {
+        if(confirm('기본 선택지를 변경하면 초기 화면으로 돌아갑니다.')){
+            $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
+            $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".hidden_add_division")).val("basics");
+            $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".pick")).html("[기본]");
+            $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".pick")).html("[선택]");
+            $.ajax({
+                url: "/member/header/destination/divisionChange",
+                type: "post",
+                data: $("#destination_select_frm").serialize()
+            }).done(function() {
+                location.replace('/');
+            });
+        } else {
+            return false;
+        }
     }
-
-    $.ajax({
-        url: "/member/header/destination/divisionChange",
-        type: "post",
-        data: $("#destination_select_frm").serialize(),
-        dataType: 'JSON'
-    }).done(function () {
-        alert("선택지 변경 성공/모달 사라지고 메인으로 돌아가야함");
-    });
 });
 
 $("#destination_add_box_btn").on("click", function () {
     $("input:not([name=acc_seq])").val("");
-    $("#destination_add_box").show();
+    $(".modal_destination_add").show();
 });
 
 
@@ -173,6 +162,7 @@ $("#destination_add_btn").on("click", function () {
         type: "post",
         data: $("#destination_add_frm").serialize()
     }).done(function () {
-        $("#destination_add_box").hide();
+        $("#destination_select_frm").load("/member/header/destination #destination_select_frm")
+        $(".modal_destination_add").hide();
     });
 });
