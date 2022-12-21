@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -57,7 +59,7 @@ public class MenuDetailContoller {
             @RequestParam("basket_menu") String menuJson,
             @CookieValue(value = "basket", required = false) String basketCookieJson,
             HttpServletResponse response
-    ) {
+    ) throws UnsupportedEncodingException {
         if (basketCookieJson == null) {
             this.setBasketCookie(basketService.getNewBasket(menuJson), response);
         } else {
@@ -68,10 +70,11 @@ public class MenuDetailContoller {
         return "redirect:/store/info";
     }
 
-    private void setBasketCookie(String basket, HttpServletResponse response) {
+    private void setBasketCookie(String basket, HttpServletResponse response) throws UnsupportedEncodingException {
+        basket = URLEncoder.encode(basket, "utf-8");
         Cookie cookie = new Cookie("basket", basket);
 
-        cookie.setMaxAge(1209600);//14일
+        cookie.setMaxAge(60 * 60 * 24 * 14);//14일
         cookie.setPath("/");
 
         response.addCookie(cookie);
