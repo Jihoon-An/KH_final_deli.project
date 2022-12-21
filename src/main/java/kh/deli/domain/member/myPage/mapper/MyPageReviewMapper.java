@@ -8,9 +8,11 @@ import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
@@ -26,4 +28,6 @@ public interface MyPageReviewMapper {
     @Select("SELECT * FROM STORE WHERE STORE_SEQ=${store_seq}")
     StoreDTO selectByStoreSeq(@Param("store_seq") int store_seq);
 
+    @Update("update review set rev_star=#{rev_star},rev_content=#{rev_content},rev_modified_date=sysdate,rev_sysname=#{rev_sysname} where rev_seq=#{rev_seq}")
+    public void modifyReview(Map<String,Object>param);
 }
