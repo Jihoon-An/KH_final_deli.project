@@ -24,4 +24,8 @@
         WHERE a.ACC_SEQ =#{acc_seq}
     </select>
 
+    <select id="selectSpecific" resultType="kh.deli.domain.owner.dto.OwnerDdSalesDTO">
+        SELECT * FROM DD_SALES ds WHERE DAILY_DATE >= ${startDate}  AND DAILY_DATE &lt;= ${endDate} AND STORE_SEQ =${store_seq}
+    </select>
+
 </mapper>

@@ -1,6 +1,7 @@
 package kh.deli.domain.owner.mapper;
 
 import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
+import kh.deli.domain.owner.dto.OwnerDdSalesDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,6 @@ public interface OwnerMainMapper {
 
     public int selectOwnerSeq(int acc_seq);
 
-    public String selectSpecific();
+    public List<OwnerDdSalesDTO> selectSpecific(int store_seq, String startDate, String endDate);
 
 }
