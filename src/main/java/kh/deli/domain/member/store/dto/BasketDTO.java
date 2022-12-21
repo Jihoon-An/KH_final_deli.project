@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StoreBasketDTO {
+public class BasketDTO {
     private Integer storeSeq;
     private List<StoreBasketMenuRequestDTO> menuList;
     private Integer totalPrice;

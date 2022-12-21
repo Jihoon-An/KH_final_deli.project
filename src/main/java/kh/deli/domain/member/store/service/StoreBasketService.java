@@ -2,7 +2,7 @@ package kh.deli.domain.member.store.service;
 
 import com.google.gson.Gson;
 import kh.deli.domain.member.order.service.OrderBasketService;
-import kh.deli.domain.member.store.dto.StoreBasketDTO;
+import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,14 @@ public class StoreBasketService {
     private final Gson gson;
 
     public void setBasketInSession(HttpSession session, String newMenuJson) {
-        StoreBasketDTO basket = (StoreBasketDTO) session.getAttribute("basket");
+        BasketDTO basket = (BasketDTO) session.getAttribute("basket");
         if (basket == null) {
             StoreBasketMenuRequestDTO basketMenu = gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class);
 
             List<StoreBasketMenuRequestDTO> menuList = new ArrayList<>();
             menuList.add(basketMenu);
 
-            StoreBasketDTO newBasket = StoreBasketDTO.builder()
+            BasketDTO newBasket = BasketDTO.builder()
                     .storeSeq(basketMenu.getStoreSeq())
                     .menuList(menuList)
                     .totalPrice(basketService.getTotalPriceByMenuList(menuList))
