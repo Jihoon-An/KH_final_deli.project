@@ -27,10 +27,10 @@ public class OrdersDetailController {
     private final OrderOrdersService orderOrdersService;
     private final OrderBasketService orderBasketService;
     private final Gson gson;
-    @RequestMapping()
-    public String storeInfo(Model model) throws Exception{
+    @RequestMapping("")
+    public String storeInfo(Model model, int order_seq) throws Exception{
 
-        int order_seq=17; //결제페이지에서 seq
+    //    int order_seq=18;
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보

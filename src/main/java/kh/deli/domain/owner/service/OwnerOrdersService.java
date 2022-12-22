@@ -5,6 +5,7 @@ import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,5 +17,11 @@ public class OwnerOrdersService {
     public OrdersDTO findBySeq(int seq) {
         Optional<OrdersDTO> order = Optional.ofNullable(ordersMapper.findBySeq(seq));
         return order.orElse(new OrdersDTO());
+    }
+
+    public List<OrdersDTO> getListByOwnerSeq(Integer ownerSeq) {
+
+
+        return null;
     }
 }

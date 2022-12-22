@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 
 @Data
@@ -18,7 +19,7 @@ public class OrderHistoryDTO {
     private String add_detail2;
     private String store_bsns_hours;
     private String store_logo;
-    Timestamp order_date;
+    private Timestamp order_date;
     private int order_seq;
     private int acc_seq;
     private String menu_list;

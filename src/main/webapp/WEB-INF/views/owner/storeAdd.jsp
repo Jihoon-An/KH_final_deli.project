@@ -57,6 +57,27 @@
             <option value="중식">
                 중식
             </option>
+            <option value="분식">
+                분식
+            </option>
+            <option value="찜·탕·찌개">
+                찜·탕·찌개
+            </option>
+            <option value="치킨">
+                치킨
+            </option>
+            <option value="피자">
+                피자
+            </option>
+            <option value="버거">
+                버거
+            </option>
+            <option value="도시락">
+                도시락
+            </option>
+            <option value="카페·디저트">
+                카페·디저트
+            </option>
         </select>
         <br>
         <div class="profile">
