@@ -36,7 +36,7 @@ public class MenuAddController {
     public String toMenuAdd(){
 
 
-        return "/owner/menuAdd3";
+        return "/owner/menuAdd";
     }
 
     @RequestMapping("/menuAdd")
@@ -62,6 +62,7 @@ public class MenuAddController {
 
         ownerMenuService.insertMenu(menuDTO, file, menu_seq);
 
+
         return "redirect:/";
     }
 
@@ -77,18 +78,15 @@ public class MenuAddController {
 
         ownerMenuService.insertMenuOption(menuOptionDTO);
 
-
-
-
-
-
         return "redirect:/";
     }
 
-    @RequestMapping("getMenuSeq")
+    @RequestMapping("/getMenuSeq")
     @ResponseBody
-    public int getMenuSeq(){
-        return ownerMenuService.getNextMenuSeq();
+    public int getMenuSeq() {
+        int seq = ownerMenuService.getNextMenuSeq();
+        System.out.println(seq);
+        return seq;
     }
 
 }
