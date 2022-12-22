@@ -29,7 +29,7 @@
         #{option_name},
         #{option_price},
         #{option_required},
-        #{option_duplichk}
+        #{option_multiple}
         )
     </insert>
 <!--    메뉴 수정 진행중-->

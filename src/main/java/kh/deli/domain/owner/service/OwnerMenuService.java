@@ -27,11 +27,11 @@ import java.util.UUID;
 public class OwnerMenuService {
 
     private final HttpSession session;
-    @Autowired
-    private static OwnerMenuMapper ownerMenuMapper;
+
+    private final OwnerMenuMapper ownerMenuMapper;
 
 
-    @Transactional
+   @Transactional
     public void insertMenu(MenuDTO menuDTO,  MultipartFile file, int menu_seq) throws IOException {
 
        //메뉴seq 생성
@@ -55,7 +55,10 @@ public class OwnerMenuService {
 
 
 
-    } ///메뉴 insert문
+    }
+
+    @Transactional
+    ///메뉴 insert문
     public void insertMenuOption(MenuOptionDTO menuOptionDTO) throws  Exception{
 
         System.out.println(menuOptionDTO.getOption_group());
@@ -92,7 +95,6 @@ public class OwnerMenuService {
     }
 
     public int getNextMenuSeq(){
-
       return  ownerMenuMapper.getNextMenuSeq();
     }
 

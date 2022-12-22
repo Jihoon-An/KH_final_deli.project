@@ -18,7 +18,7 @@ public interface OwnerMenuMapper {
     // 메뉴 수정 진행중
     public void modifyMenu(MenuDTO menuDTO);
 
-    @Select("select menu_seq.nextval from dual")
+    @Select("SELECT menu_seq.NEXTVAL FROM DUAL")
     int getNextMenuSeq();
 
 
