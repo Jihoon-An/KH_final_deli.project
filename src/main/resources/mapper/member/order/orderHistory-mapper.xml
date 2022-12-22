@@ -11,7 +11,7 @@
         select  s.store_seq, store_name, store_add_detail2, add_detail2, store_bsns_hours,
         store_logo, order_date, order_seq, acc_seq, menu_list,order_price,
         pay_price, order_Status, order_rider_req, order_store_req  from store s,
-        orders o where s.store_seq = o.store_seq and acc_seq=#{acc_seq}
+        orders o where s.store_seq = o.store_seq and acc_seq=#{acc_seq} order by order_date desc
     </select>
 
 

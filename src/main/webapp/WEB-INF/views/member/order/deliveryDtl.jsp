@@ -6,13 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>배달기사전용페이지</title>
 </head>
 <body>
 
-<main id="storeSearch">
+<main id="deliveryDtl">
     <div class="container">
         난수로 페이지 생성 /
         혹은 라이더 번호 입력해야 볼 수 있는 페이지 ㄱㄱ
@@ -23,7 +25,20 @@
         <h4>주문시간</h4>
         <div>${storeInfoDTO.order_date}</div>
         <h4>주문내역</h4>
-        <div>메뉴 출력</div>
+        <div>
+            <c:forEach var="menuList" items="${orderDetailDTOList}">
+                <div class="menuBox">
+                    메뉴 : ${menuList.menuDTO.menu_name} <br>
+                    <c:forEach var="optionList" items="${menuList.menuOptionDTO}">
+                        그룹 : ${optionList.option_group}<br>
+                        옵션 : ${optionList.option_name} <br><br>
+                    </c:forEach>
+                        ${menuList.count}개<br>
+                        ${menuList.price}원
+                </div>
+                <hr>
+            </c:forEach>
+        </div>
         <hr>
         <h1>주문자정보</h1>
         <h4>연락처</h4>
@@ -46,7 +61,6 @@
         누르면 확인 창 한번 더 뜨고 완료 누르면 controller에서 배달완료로 변경 됨
     </div>
     배달 예상 시간 : ${storeInfoDTO.store_deli_time}분
-
 
 </main>
 </body>

@@ -20,7 +20,7 @@
 <body>
 <main id="memberMain">
 
-        <%@ include file="/WEB-INF/views/member/header/temporaryNavi.jsp" %>
+        <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
 
     <div class="container">
         <table border="1px">
