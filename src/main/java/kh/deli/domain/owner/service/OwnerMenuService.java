@@ -54,6 +54,7 @@ public class OwnerMenuService {
         ownerMenuMapper.insertMenu(menuDTO);
 
 
+
     } ///메뉴 insert문
     public void insertMenuOption(MenuOptionDTO menuOptionDTO) throws  Exception{
 
@@ -91,6 +92,7 @@ public class OwnerMenuService {
     }
 
     public int getNextMenuSeq(){
+        System.out.println(ownerMenuMapper.getNextMenuSeq());
       return  ownerMenuMapper.getNextMenuSeq();
     }
 

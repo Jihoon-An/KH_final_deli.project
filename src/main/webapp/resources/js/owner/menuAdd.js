@@ -115,19 +115,87 @@
 
 
 //중복체크 o
+// $(".btn_add").on("click", function () {
+//
+//
+//   //  let selb = $("select[name=option_required] option:selected").val();
+//     //let dupl = $("select[name=option_duplichk] option:selected").val();
+//
+//     let opgroup = document.querySelectorAll(".opgroup");
+//     console.log(opgroup)
+//     console.log(opgroup.length)
+//     let sela = document.querySelectorAll(".required");
+//     let duplchk = document.querySelectorAll(".opdupli");
+//     console.log(sela)
+//     console.log(sela.length)
+//     //중첩for문돌리예정
+//     //let opgroup = $(".opgroup").val();
+//
+//     //let dupl = document.querySelectorAll(".dupli");
+//
+//     let menu_seq;
+//
+//     //menu seq를 메뉴테이블, 메뉴 옵션테이블에 각각 추가하기 위한 조치
+//     $.ajax({
+//         url: "/menu/add/getMenuSeq",
+//         type: "get",
+//
+//     }).done(res => {
+//         menu_seq = res
+//         console.log(menu_seq)
+//         //메뉴 옵션추가
+//         for(let i=0; i<opgroup.length; i++ ) { //중첩 for문 사용
+//             let opname= $(document.querySelectorAll(".group")[i]).find(".opname")
+//             let opprice = $(document.querySelectorAll(".group")[i]).find(".opprice")
+//             //기본 opname 길이 2
+//             for (let j = 0; j < opname.length; j++) {
+//
+//                 let opnameVal = opname[j].value;
+//                 let oppriceVal = opprice[j].value;
+//
+//                 let data = {
+//                     "menu_seq":menu_seq,
+//                     "option_required": sela[i].value,
+//                     "option_duplichk":duplchk[i].value,
+//                     "option_group": opgroup[i].value,
+//                     "option_name": opnameVal,
+//                     "option_price": Number(oppriceVal)
+//                 }
+//
+//                 console.log(data)
+//
+//                 $.ajax({
+//                     url: "/menu/add/menuAddAjax",
+//                     type: "post",
+//                     data: data
+//                 })
+//
+//                 //메뉴추가
+//                 $("#frm").attr("action","/menu/add/menuAdd?menu_seq="+menu_seq);
+//                 // $("#frm").submit();
+//
+//             }
+//         }
+//
+//     })
+//
+//     console.log(menu_seq)
+// })
+
+
+
 $(".btn_add").on("click", function () {
 
 
-  //  let selb = $("select[name=option_required] option:selected").val();
-    //let dupl = $("select[name=option_duplichk] option:selected").val();
-
+    let selb = $("select[name=option_required] option:selected").val();
+    // let sela = document.querySelectorAll(".required:selected")
     let opgroup = document.querySelectorAll(".opgroup");
     console.log(opgroup)
     console.log(opgroup.length)
     let sela = document.querySelectorAll(".required");
-    let duplchk = document.querySelectorAll(".opdupli");
     console.log(sela)
     console.log(sela.length)
+    let multiple = document.querySelectorAll(".opmulti");
     //중첩for문돌리예정
     //let opgroup = $(".opgroup").val();
 
@@ -138,11 +206,9 @@ $(".btn_add").on("click", function () {
     //menu seq를 메뉴테이블, 메뉴 옵션테이블에 각각 추가하기 위한 조치
     $.ajax({
         url: "/menu/add/getMenuSeq",
-        type: "get",
-
+        type: "get"
     }).done(res => {
         menu_seq = res
-
         //메뉴 옵션추가
         for(let i=0; i<opgroup.length; i++ ) { //중첩 for문 사용
             let opname= $(document.querySelectorAll(".group")[i]).find(".opname")
@@ -156,7 +222,7 @@ $(".btn_add").on("click", function () {
                 let data = {
                     "menu_seq":menu_seq,
                     "option_required": sela[i].value,
-                    "option_duplichk":duplchk[i].value,
+                    "option_multiple":multiple[i].value,
                     "option_group": opgroup[i].value,
                     "option_name": opnameVal,
                     "option_price": Number(oppriceVal)
@@ -171,26 +237,15 @@ $(".btn_add").on("click", function () {
 
                 //메뉴추가
                 $("#frm").attr("action","/menu/add/menuAdd?menu_seq="+menu_seq);
-                $("#frm").submit();
+                // $("#frm").submit();
 
             }
         }
 
 
-
-
-
-
-
-
-
-
-
     })
 
     console.log(menu_seq)
-
-
 
 })
 
