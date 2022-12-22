@@ -23,6 +23,7 @@
     <div class="container">
         <div class="storeIntro">
             <div class="store_name">상호명 : ${storeDTO.store_name}</div>
+            <div><button class="heart">찜<input type="hidden" value="${storeDTO.store_seq}"></button></div>
             <div class="store_deli_time">배달시간 : ${storeDTO.store_deli_time}분</div>
             <div class="store_deli_tip">배달팁 : ${storeDTO.store_deli_tip}원</div>
             <div class="store_deli_tip">식당소개 : ${storeDTO.store_intro}</div>
@@ -96,6 +97,7 @@
             ${storeDTO.store_origin}
         </div>
     </div>
+    <script src="/resources/js/member/store/storeDetail.js"></script>
 </main>
 </body>
 </html>

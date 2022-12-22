@@ -24,7 +24,7 @@ public class StoreBasketService {
     public void setBasketInSession(HttpSession session, String newMenuJson) throws ParseException {
         BasketDTO basket = (BasketDTO) session.getAttribute("basket");
         StoreBasketMenuRequestDTO basketMenu = gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class);
-        checker.storeBsTimeCheckToError(basketMenu.getStoreSeq());
+//        checker.storeBsTimeCheckToError(basketMenu.getStoreSeq());
 
         if (basket == null) {
 
@@ -41,6 +41,7 @@ public class StoreBasketService {
         } else {
             basket.getMenuList()
                     .add(gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class));
+            basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
             session.setAttribute("basket", basket);
         }
     }

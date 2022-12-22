@@ -28,6 +28,7 @@
         <div id="map" style="width:100%; height:200px;"></div>
         <div class="storeIntro">
             <div class="store_name">상호명 : ${storeInfoDTO.store_name}</div>
+            <div><button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button></div>
             <div class="store_deli_time">배달시간 : ${storeInfoDTO.store_deli_time}분</div>
             <div class="store_deli_tip">배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
             <div class="store_deli_tip">식당소개 : ${storeInfoDTO.store_intro}</div>
