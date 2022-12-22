@@ -1,7 +1,6 @@
 package kh.deli.domain.member.myPage.mapper;
 
-import kh.deli.domain.member.myPage.dto.MypageReviewListDTO;
-import kh.deli.domain.member.store.dto.StoreReviewDTO;
+import kh.deli.domain.member.myPage.dto.MypageReviewDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
@@ -27,6 +26,17 @@ public interface MyPageReviewMapper {
 
     @Select("SELECT * FROM STORE WHERE STORE_SEQ=${store_seq}")
     StoreDTO selectByStoreSeq(@Param("store_seq") int store_seq);
+
+    public List<Map<String, Object>> getReviews(@Param("myReviewDTO") MypageReviewDTO param);
+
+    @Select("SELECT COUNT(*) AS CNT FROM REVIEW WHERE ACC_SEQ = #{acc_seq};")
+    static int getReviewCount(@Param("MypageReviewDTO") MypageReviewDTO reviewDTO) {
+        return 0;
+    }
+
+//    static int getReviewCount(@Param("reviewCount") MypageReviewDTO param) {
+//        return 0;
+//    }
 
     @Update("update review set rev_star=#{rev_star},rev_content=#{rev_content},rev_modified_date=sysdate,rev_sysname=#{rev_sysname} where rev_seq=#{rev_seq}")
     public void modifyReview(Map<String,Object>param);

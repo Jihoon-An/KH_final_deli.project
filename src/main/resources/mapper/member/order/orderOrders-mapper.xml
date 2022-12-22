@@ -47,12 +47,11 @@
     </update>
 
     <update id="updateMemberPhone" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
-        UPDATE ADDRESS
+        UPDATE MEMBER
         SET
             MEM_PHONE = #{orderOrdersDTO.phoneNum}
         WHERE
             ACC_SEQ = #{orderOrdersDTO.seq}
-            AND ADD_SEQ = 6
     </update>
 
     <select id="selectCouponList" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">

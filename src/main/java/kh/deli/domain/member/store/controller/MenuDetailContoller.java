@@ -6,6 +6,7 @@ import kh.deli.domain.member.store.service.StoreMenuOptionService;
 import kh.deli.domain.member.store.service.StoreMenuService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
+import kh.deli.global.util.checker.Checker;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,6 +27,7 @@ public class MenuDetailContoller {
     private final StoreMenuService menuService;
     private final StoreMenuOptionService optionService;
     private final StoreBasketService basketService;
+    private final Checker checker;
 
     private final HttpSession session;
 
@@ -53,7 +56,7 @@ public class MenuDetailContoller {
     @RequestMapping("put")
     public String putBasket(
             @RequestParam("basket_menu") String menuJson
-    ) {
+    ) throws ParseException {
         basketService.setBasketInSession(session, menuJson);
 
         return "redirect:/store/info"; //seq 추가입력 필요
