@@ -25,7 +25,7 @@ function updateBasket() {
     let basketMenuDTOList = [];
 
     // menuBox Div 갯수
-    let menuBoxCount = $(".menuBox").siblings(".menuBox").length;
+    let menuBoxCount = $(".container").children(".menuBox").length;
 
     for (let i = 0; menuBoxCount > i; i++) {
         let inputMenuSeq = $(".menuBox").eq(i).find(".inputMenuSeq").val();
