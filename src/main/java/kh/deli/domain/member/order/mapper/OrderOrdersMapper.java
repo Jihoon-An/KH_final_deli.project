@@ -19,11 +19,12 @@ public interface OrderOrdersMapper {
     List<OrderOrdersDTO> selectCouponList(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
     public void updateMemberAddr(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 
-    public void updateMemberPhone(@Param("orderOrdersDTO")OrderOrdersDTO ordersDTO);
+    public int updateMemberPhone(@Param("orderOrdersDTO")OrderOrdersDTO ordersDTO);
     public OrderOrdersDTO insertPayment(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 
     public OrderOrdersDTO insertOrders(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 
+    
     StoreInfoDTO storeInfo(int order_seq);
 
     OrdererInfoDTO ordererInfo(int order_seq);
