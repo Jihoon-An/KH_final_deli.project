@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<main id="storeInfo">
+<main id="storeReview">
     <%--영업정보--%>
     <div class="container">
         <div class="storeIntro">
