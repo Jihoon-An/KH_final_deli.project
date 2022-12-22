@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="/resources/css/member/myPage/memberReviewForm.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/myPage/myPage.css" type="text/css">
 
+    <link rel="stylesheet" href="/resources/css/member/header/destination.css" type="text/css">
+
     <link rel="stylesheet" href="/resources/css/member/order/basket.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/order/orderDetail.css" type="text/css">
 

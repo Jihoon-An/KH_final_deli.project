@@ -1,22 +1,22 @@
-#storeInfo * {
+#storeReview * {
     box-sizing: border-box
 }
 
-#storeInfo div {
+#storeReview div {
     border: 1px solid black;
 }
 
-#storeInfo .container {
+#storeReview .container {
     width: 375px;
     height: auto;
     margin: auto;
     overflow: hidden;
 }
 
-#storeInfo .storeInfo {
+#storeReview .storeInfo {
     overflow: hidden
 }
 
-#storeInfo .store {
+#storeReview .store {
     float: left;
 }

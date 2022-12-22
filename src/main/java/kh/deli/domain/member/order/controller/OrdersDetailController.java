@@ -46,10 +46,12 @@ public class OrdersDetailController {
         for (int i = 0; i<basket.getMenuList().size(); i++) {
             MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
             List<MenuOptionDTO> menuOptionDTOList = new ArrayList<>();
+
             for (int k = 0; k < basket.getMenuList().get(i).getOptionSeqList().size(); k++) {
                 MenuOptionDTO menuOptionDTO = orderBasketService.findMenuOptionBySeq(basket.getMenuList().get(i).getOptionSeqList().get(k));
                 menuOptionDTOList.add(menuOptionDTO);
             }
+
             int count = basket.getMenuList().get(i).getCount();
             int price = basket.getMenuList().get(i).getPrice();
 
