@@ -1,17 +1,4 @@
 
-$(document).ready(function () {
-
-    let contact = $.extend(true, [], list);
-
-    for (let i = 0; i < contact.length; i++) {
-        console.log(contact[i]);
-        let div = $("<div>")
-        div.text(contact[i]);
-        $(".menuBox").append(div);
-    }
-})
-
-
 $("#back").on("click", function () {
     location.href = "/";
 })
