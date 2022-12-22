@@ -74,7 +74,7 @@ $(".minus").click(function() {
         // 메뉴 가격
         let menuPrice = parseInt($(this).closest(".menuBox").find(".menuPrice").html());
         // 첫 번째 옵션 가격의 형제들
-        let optionCount = $(this).closest(".menuBox").find(".optionPrice").siblings(".optionPrice");
+        let optionCount = $(this).closest(".menuBox").children(".optionPrice");
         // 메뉴 + 옵션 가격들
         for (let i = 1; optionCount.length >= i; i++){
             menuPrice += parseInt($(this).closest(".menuBox").find(".op"+i).html())
@@ -116,7 +116,7 @@ $(".plus").click(function() {
         // 메뉴 가격
         let menuPrice = parseInt($(this).closest(".menuBox").find(".menuPrice").html());
         // 첫 번째 옵션 가격의 형제들
-        let optionCount = $(this).closest(".menuBox").find(".optionPrice").siblings(".optionPrice");
+        let optionCount = $(this).closest(".menuBox").children(".optionPrice");
         // 메뉴 + 옵션 가격들
         for (let i = 1; optionCount.length >= i; i++) {
             menuPrice += parseInt($(this).closest(".menuBox").find(".op" + i).html())

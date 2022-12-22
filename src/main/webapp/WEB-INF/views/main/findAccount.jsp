@@ -18,6 +18,18 @@
 
         <div class="container">
 
+            <div class="topBox">
+                <div class="topLeftBox">
+                    <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+                <div class="topRightBox">
+                    <a href="/"><i class="fa-solid fa-house"></i></a>
+                </div>
+            </div>
+
+            <div class="titleBox">
+                이메일|비밀번호 찾기
+            </div>
 
 
         </div>
