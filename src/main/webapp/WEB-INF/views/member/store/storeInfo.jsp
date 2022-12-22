@@ -28,7 +28,9 @@
         <div id="map" style="width:100%; height:200px;"></div>
         <div class="storeIntro">
             <div class="store_name">상호명 : ${storeInfoDTO.store_name}</div>
-            <div><button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button></div>
+            <div>
+                <button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button>
+            </div>
             <div class="store_deli_time">배달시간 : ${storeInfoDTO.store_deli_time}분</div>
             <div class="store_deli_tip">배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
             <div class="store_deli_tip">식당소개 : ${storeInfoDTO.store_intro}</div>
@@ -44,8 +46,53 @@
             <div class="store">
                 <div>가게명 :${storeInfoDTO.store_name}</div>
                 <div>전화번호 :${storeInfoDTO.store_phone}</div>
-                <div>영업일 :${storeInfoDTO.store_bsns_hours}</div>
+<%--                <c:forEach var="i" items="${bsnsHours}" varStatus="status">--%>
+<%--                    <div>${i.key}</div>--%>
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${i.value.get(\"open\") eq '영업일'}">--%>
+<%--                            <div>오픈타임 ${i.value.get("open_time")} || 클로즈타임 ${i.value.get("close_time")}</div>--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise>--%>
+<%--                                    휴무일--%>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
+<%--                </c:forEach>--%>
+                <div>월요일 : ${bsnsHours.get("mon").get("open")}</div>
+                <c:if test="${bsnsHours.get('mon').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("mon").get("open_time")} ~ ${bsnsHours.get("mon").get("close_time")}</div>
+                </c:if>
+
+                <div>화요일 : ${bsnsHours.get("thu").get("open")}</div>
+                <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("thu").get("open_time")} ~ ${bsnsHours.get("thu").get("close_time")}</div>
+                </c:if>
+                <div>수요일 : ${bsnsHours.get("wed").get("open")}</div>
+                <c:if test="${bsnsHours.get('wed').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("wed").get("open_time")} ~ ${bsnsHours.get("wed").get("close_time")}</div>
+                </c:if>
+                <div>목요일 : ${bsnsHours.get("thu").get("open")}</div>
+                <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("thu").get("open_time")} ~ ${bsnsHours.get("thu").get("close_time")}</div>
+                </c:if>
+
+                <div>금요일 : ${bsnsHours.get("fri").get("open")}</div>
+                <c:if test="${bsnsHours.get('fri').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("fri").get("open_time")} ~ ${bsnsHours.get("fri").get("close_time")}</div>
+                </c:if>
+
+                <div>토요일 : ${bsnsHours.get("sat").get("open")}</div>
+                <c:if test="${bsnsHours.get('sat').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("sat").get("open_time")} ~ ${bsnsHours.get("sat").get("close_time")}</div>
+                </c:if>
+
+                <div>일요일 : ${bsnsHours.get("sun").get("open")}</div>
+                <c:if test="${bsnsHours.get('sun').get('open') eq '영업일'}">
+                    <div>영업시간 : ${bsnsHours.get("sun").get("open_time")} ~ ${bsnsHours.get("sun").get("close_time")}</div>
+                </c:if>
+
                 <div>휴무일 :${storeInfoDTO.store_close_day}</div>
+
+
             </div>
             <%--배달정보--%>
             <div class="deliveryInfo">

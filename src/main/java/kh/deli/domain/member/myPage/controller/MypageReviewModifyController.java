@@ -65,13 +65,6 @@ public class MypageReviewModifyController {
             }
         }
 
-
-        List<String> frmImgList = new ArrayList<>();
-        Type type = new TypeToken<List<String>>() {
-        }.getType();
-        List<String> frmImg = gson.fromJson(review_dto.getRev_sysname(), type);
-//        System.out.println(frmImg);
-
         StoreDTO store_dto = reviewService.selectByStoreSeq(store_seq);
         model.addAttribute("orders_dto", orders_dto);
         model.addAttribute("review_dto", review_dto);
