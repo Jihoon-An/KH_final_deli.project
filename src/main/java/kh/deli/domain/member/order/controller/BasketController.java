@@ -1,15 +1,14 @@
 package kh.deli.domain.member.order.controller;
 
+import com.google.gson.Gson;
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
-import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
 import kh.deli.domain.member.order.service.OrderBasketService;
-import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
@@ -17,19 +16,37 @@ import java.util.List;
 public class BasketController {
 
     private final OrderBasketService basketService;
+    private final HttpSession session;
+    private final Gson gson;
 
     @RequestMapping("")
     public String toBasket(Model model) throws Exception {
 
-        OrderBasketDTO sampleBasket = basketService.getSample();
+        OrderBasketDTO basketDTO = (OrderBasketDTO) session.getAttribute("basket");
 
-        StoreDTO storeDTO = sampleBasket.getStore();
-        List<OrderBasketMenuDTO> menuList = sampleBasket.getMenuList();
-        int totalPrice = sampleBasket.getTotalPrice();
-        int deliveryTip = sampleBasket.getStore().getStore_deli_tip();
-        int totalCount = basketService.getTotalCount(sampleBasket.getMenuList());
 
-        model.addAttribute("basket", sampleBasket);
+        basketService.findStoreBySeq(0);
+        basketService.findMenuBySeq(0);
+        basketService.findMenuOptionBySeq(0);
+
+
+
+//        OrderBasketDTO basketDTO = gson.fromJson(basket, OrderBasketDTO.class);
+
+//        System.out.println(basket);
+//        System.out.println(basketDTO);
+
+
+//        OrderBasketDTO sampleBasket = basketService.getSample();
+
+
+//        StoreDTO storeDTO = basketDTO.getStore();
+//        List<OrderBasketMenuDTO> menuList = basketDTO.getMenuList();
+        int totalPrice = basketDTO.getTotalPrice();
+        int deliveryTip = basketDTO.getStore().getStore_deli_tip();
+        int totalCount = basketService.getTotalCount(basketDTO.getMenuList());
+
+        model.addAttribute("basket", basketDTO);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("payAmount", (totalPrice + deliveryTip));
         model.addAttribute("totalCount", totalCount);
@@ -38,7 +55,7 @@ public class BasketController {
 //        String basketJson = gson.toJson(sampleBasket);
 //        basketService.insertSampleBasket(basketJson);
 //
-//        OrderBasketDTO basket = gson.fromJson(basketJson, OrderBasketDTO.class);
+//        StoreBasketDTO basket = gson.fromJson(basketJson, StoreBasketDTO.class);
 
 
 
@@ -47,4 +64,15 @@ public class BasketController {
     }
 
 
+//    private void setBasketCookie(String basket, HttpServletResponse response) throws UnsupportedEncodingException {
+//        basket = URLEncoder.encode(basket, "utf-8");
+//        Cookie cookie = new Cookie("basket", basket);
+//
+//        cookie.setMaxAge(60 * 60 * 24 * 14);//14일
+//        cookie.setPath("/");
+//
+//        response.addCookie(cookie);
+//    }
+
 }
+

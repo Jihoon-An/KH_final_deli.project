@@ -66,7 +66,7 @@
                         <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
                         <button>로그인</button>
                         <br><br>
-                        <a href="#">이메일|비밀번호 찾기</a>
+                        <a href="/account/findAccount">이메일|비밀번호 찾기</a>
                         <br><br>
                         <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
                             <img src="/resources/img/kakao_login.png" id="kakao_login_img">

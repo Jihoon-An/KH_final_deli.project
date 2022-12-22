@@ -36,12 +36,13 @@ public class DestinationController {
 
     @ResponseBody
     @RequestMapping("divisionChange")
-    public void divisionChange(@RequestParam(value = "add_seq", required = false) List<String> addSeqList,
+    public String divisionChange(@RequestParam(value = "add_seq", required = false) List<String> addSeqList,
                                @RequestParam(value = "add_division", required = false) List<String> addDivisionList
     ) {
         for(int i = 0; i < addSeqList.size(); i++) {
             destinationService.modify(Integer.valueOf(addSeqList.get(i)), addDivisionList.get(i));
         }
+        return "success";
     }
 
     @ResponseBody

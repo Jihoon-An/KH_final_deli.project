@@ -194,5 +194,11 @@ public class AccountController {
     }
 
 
+    @RequestMapping("/findAccount")
+    public String toFindAccountPage() throws Exception {
+        return "main/findAccount";
+    }
+
+
 }
 
