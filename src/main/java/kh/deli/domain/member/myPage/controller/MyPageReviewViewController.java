@@ -31,11 +31,10 @@ public class MyPageReviewViewController {
         int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
         OrdersDTO dto = myPageReviewService.selectByOrderSeq(order_seq);
 
-        JSONParser parser = new JSONParser();
-        Object obj = parser.parse(dto.getMenu_list());
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject =(JSONObject)jsonParser.parse(dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
 
-        JSONObject jsonMain = (JSONObject) obj;
-        JSONArray jsonArr = (JSONArray) jsonMain.get("menuList");
+        JSONArray jsonArr = (JSONArray) jsonObject.get("menuList"); //menuListarray를 jsonarray에 저장
 
         List<String> menuNameList=new ArrayList<>();
 
@@ -53,8 +52,8 @@ public class MyPageReviewViewController {
 
         model.addAttribute("dto", dto);
         model.addAttribute("menuNameList",menuNameList);
-        return "/member/myPage/memberReview";
 
+        return "/member/myPage/memberReview";
     }
 
     @PostMapping("reviewInsert")
