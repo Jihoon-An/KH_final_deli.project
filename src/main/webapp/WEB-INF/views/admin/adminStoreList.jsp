@@ -29,7 +29,7 @@
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
-    <link rel="stylesheet" href="/resources/css/admin/">
+    <link rel="stylesheet" href="/resources/css/admin/storeList.css">
 
     <%--sweetalert--%>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -42,30 +42,28 @@
 
         <table id="myTable" class="display">
             <thead>
-                <tr>
-                    <th class="store_seq">식당번호</th>
-                    <th class="store_name">상호명</th>
-                    <th class="store_category">업종</th>
-                    <th class="store_phone">연락처</th>
-                    <th class="store_add_detail1">주소</th>
-                    <th class="store_add_detail2">상세주소</th>
-                    <th class="owner_num">사업자 등록번호</th>
-                    <th class="owner_name">대표자명</th>
-                </tr>
+            <tr>
+                <th class="seq">식당번호</th>
+                <th class="sName">상호명</th>
+                <th class="category">업종</th>
+                <th class="phone">연락처</th>
+                <th class="add_detail1">주소</th>
+                <th class="oNum">사업자 등록번호</th>
+                <th class="oName">대표자명</th>
+            </tr>
             </thead>
             <tbody>
             <c:choose>
                 <c:when test="${not empty list}">
                     <c:forEach var="sysName" items="${list}">
                         <tr class="store">
-                            <td class="name">${sysName.store_seq}</td>
-                            <td class="name">${sysName.store_name}</td>
-                            <td class="name">${sysName.store_category}</td>
-                            <td class="name">${sysName.store_phone}</td>
-                            <td class="name">${sysName.store_add_detail1}</td>
-                            <td class="name">${sysName.store_add_detail2}</td>
-                            <td class="name">${sysName.owner_num}</td>
-                            <td class="name">${sysName.owner_name}</td>
+                            <td class="store_seq">${sysName.store_seq}</td>
+                            <td class="store_name">${sysName.store_name}</td>
+                            <td class="store_category">${sysName.store_category}</td>
+                            <td class="store_phone">${sysName.store_phone}</td>
+                            <td class="store_add_detail1">${sysName.store_add_detail1}, ${sysName.store_add_detail2}</td>
+                            <td class="owner_num">${sysName.owner_num}</td>
+                            <td class="owner_name">${sysName.owner_name}</td>
                         </tr>
                     </c:forEach>
                 </c:when>
@@ -76,29 +74,44 @@
 
 
     <!-- 모달 -->
-    <%--    <div id="modal">--%>
-    <%--        <div id="close_modal">X</div>--%>
-    <%--        <div id="modal_content">--%>
-    <%--            modal_cp_seq wheat--%>
-    <%--            <input type="hidden" id="modal_cp_seq" placeholder="seq" style="background-color: wheat;" readonly>--%>
-    <%--            modal_cp_name Red--%>
-    <%--            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;" readonly>--%>
-    <%--            modal_cp_code Dodgerblue--%>
-    <%--            <input type="text" id="modal_cp_code" placeholder="code" style="background-color: dodgerblue;" readonly>--%>
-    <%--            modal_cp_content white--%>
-    <%--            <input type="text" id="modal_cp_content" placeholder="content" style="background-color: white;" readonly>--%>
-    <%--            modal_cp_type yellow--%>
-    <%--            <input type="text" id="modal_cp_type" placeholder="cp_type" style="background-color: yellow;" readonly>--%>
-    <%--            modal_cp_discount Green--%>
-    <%--            <input type="text" id="modal_cp_discount" placeholder="cp_discount" style="background-color: green;" readonly>--%>
-    <%--            modal_cp_period Salmon--%>
-    <%--            <input type="text" id="modal_cp_period" placeholder="cp_period" style="background-color: salmon;" readonly>--%>
-    <%--        </div>--%>
-    <%--        <div id="modal_btn_area">--%>
-    <%--            <button id="publish_btn" type="button">발행</button>--%>
-    <%--            <button id="delete_btn" type="button">삭제</button>--%>
-    <%--        </div>--%>
-    <%--    </div>--%>
+    <div class="modal">
+        <div class="modal_content">
+            <div class="closeBtn">X</div>
+            <div>
+                식당번호
+                <input type="text" placeholder="식당번호" disabled id="store_seq">
+            </div>
+            <div>
+                상호명
+                <input type="text" placeholder="상호명" disabled id="store_name">
+            </div>
+            <div>업종
+                <input type="text" placeholder="업종" disabled id="store_category">
+            </div>
+            <div>
+                연락처
+                <input type="text" placeholder="연락처" disabled id="store_phone">
+            </div>
+            <div>
+                주소
+                <input type="text" placeholder="주소" disabled id="store_add_detail1">
+            </div>
+            <div>
+                사업자 등록번호
+                <input type="text" placeholder="사업자 등록번호" disabled id="owner_num">
+            </div>
+            <div>
+                대표자명
+                <input type="text" placeholder="대표자명" disabled id="owner_name">
+            </div>
+
+            <div class="btnBox">
+                <button type="button" id="deleteBtn">삭제</button>
+                <button type="button" id="privateReview">비공개</button>
+                <button type="button" id="openReview">공개</button>
+            </div>
+        </div>
+    </div>
 
 </main>
 

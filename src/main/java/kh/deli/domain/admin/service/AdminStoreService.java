@@ -18,9 +18,9 @@ public class AdminStoreService {
         return adminStoreMapper.selectAllStore();
     }
 
-    public AdminStoreDTO selectByStore_seq(int store_seq) throws Exception{
+    public void deleteByStoreSeq(int store_seq) throws Exception{
 
-        return adminStoreMapper.selectByStore_seq(store_seq);
+       adminStoreMapper.deleteByStoreSeq(store_seq);
     }
 
 }

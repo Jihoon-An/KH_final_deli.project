@@ -5,12 +5,6 @@
 
 <mapper namespace="kh.deli.domain.admin.mapper.AdminStoreMapper">
 
-    <select id="selectByStore_seq" resultType="kh.deli.domain.admin.dto.AdminStoreDTO">
-        SELECT s.STORE_SEQ ,s.STORE_NAME ,s.STORE_PHONE,s.STORE_CATEGORY ,s.STORE_ADD_DETAIL1 ,s.STORE_ADD_DETAIL2  , o.OWNER_NUM,o.OWNER_NAME
-        FROM STORE s INNER JOIN OWNER o ON s.OWNER_SEQ =o.OWNER_SEQ
-        WHERE STORE_SEQ =#{store_seq}
-    </select>
-
     <select id="selectAllStore" resultType="kh.deli.domain.admin.dto.AdminStoreDTO">
         SELECT s.STORE_SEQ ,s.STORE_NAME ,s.STORE_PHONE,s.STORE_CATEGORY ,s.STORE_ADD_DETAIL1 ,s.STORE_ADD_DETAIL2  , o.OWNER_NUM,o.OWNER_NAME
         FROM STORE s INNER JOIN OWNER o ON s.OWNER_SEQ =o.OWNER_SEQ
