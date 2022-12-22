@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.batch.core.configuration.xml.ExceptionElementParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -30,7 +31,7 @@ public class OwnerMenuService {
     private static OwnerMenuMapper ownerMenuMapper;
 
 
-
+    @Transactional
     public void insertMenu(MenuDTO menuDTO,  MultipartFile file, int menu_seq) throws IOException {
 
        //메뉴seq 생성
@@ -51,6 +52,7 @@ public class OwnerMenuService {
         }
           menuDTO.setMenu_seq(menu_seq); //메뉴seq
         ownerMenuMapper.insertMenu(menuDTO);
+
 
 
     } ///메뉴 insert문
@@ -90,6 +92,7 @@ public class OwnerMenuService {
     }
 
     public int getNextMenuSeq(){
+        System.out.println(ownerMenuMapper.getNextMenuSeq());
       return  ownerMenuMapper.getNextMenuSeq();
     }
 

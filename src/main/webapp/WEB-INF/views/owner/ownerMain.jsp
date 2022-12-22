@@ -13,7 +13,7 @@
 </head>
 <body>
 <main id="ownerMain">
-    <%@ include file="/WEB-INF/views/member/header/temporaryNavi.jsp" %>
+    <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
     <div class="container">
         <div>
             메인페이지

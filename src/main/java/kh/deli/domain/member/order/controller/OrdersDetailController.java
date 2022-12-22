@@ -27,10 +27,10 @@ public class OrdersDetailController {
     private final OrderOrdersService orderOrdersService;
     private final OrderBasketService orderBasketService;
     private final Gson gson;
-    @RequestMapping()
-    public String storeInfo(Model model) throws Exception{
+    @RequestMapping("")
+    public String storeInfo(Model model, int order_seq) throws Exception{
 
-        int order_seq=17; //결제페이지에서 seq
+    //    int order_seq=18;
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보
@@ -46,10 +46,12 @@ public class OrdersDetailController {
         for (int i = 0; i<basket.getMenuList().size(); i++) {
             MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
             List<MenuOptionDTO> menuOptionDTOList = new ArrayList<>();
+
             for (int k = 0; k < basket.getMenuList().get(i).getOptionSeqList().size(); k++) {
                 MenuOptionDTO menuOptionDTO = orderBasketService.findMenuOptionBySeq(basket.getMenuList().get(i).getOptionSeqList().get(k));
                 menuOptionDTOList.add(menuOptionDTO);
             }
+
             int count = basket.getMenuList().get(i).getCount();
             int price = basket.getMenuList().get(i).getPrice();
 

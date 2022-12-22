@@ -10,6 +10,7 @@ import kh.deli.global.util.checker.Checker;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,8 +37,8 @@ public class MenuDetailContoller {
     /**
      * <h2>Request에 menuSeq 또는 menu_seq를 담아서 보내면 해당 메뉴의 상세페이지 출력</h2>
      */
-    @RequestMapping("")
-    public String toMenuDetail(Integer menuSeq, Integer menu_seq, Model model) {
+    @RequestMapping("/{menuSeq}")
+    public String toMenuDetail(@PathVariable("menuSeq") Integer menuSeq, Integer menu_seq, Model model) {
 
         Optional<Integer> optional = Optional.ofNullable(menuSeq);
         menuSeq = optional.orElse(Optional.ofNullable(menu_seq).orElse(0));
@@ -45,7 +46,6 @@ public class MenuDetailContoller {
         MenuDTO menu = menuService.findBySeq(menuSeq);
         List<MenuOptionDTO> menuOptionList = optionService.findByMenuSeq(menuSeq);
         Map<String, List<MenuOptionDTO>> menuOptions = optionService.toMap(menuOptionList);
-
 
         model.addAttribute("menu", menu);
         model.addAttribute("menuOptions", menuOptions);
