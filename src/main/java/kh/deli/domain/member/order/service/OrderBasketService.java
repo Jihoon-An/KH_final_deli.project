@@ -1,10 +1,13 @@
 package kh.deli.domain.member.order.service;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
 import kh.deli.domain.member.order.mapper.OrderBasketMapper;
 import kh.deli.domain.member.order.mapper.OrderMenuMapper;
 import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
+import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
@@ -12,6 +15,8 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +29,7 @@ public class OrderBasketService {
     private final OrderOrdersMapper orderOrdersMapper;
     private final OrderBasketMapper orderBasketMapper;
     private final OrderMenuMapper menuMapper;
+    private final Gson gson;
 
     public StoreDTO findStoreBySeq(int storeSeq) throws Exception {
         return orderBasketMapper.findStoreBySeq(storeSeq);
@@ -34,6 +40,16 @@ public class OrderBasketService {
     public MenuOptionDTO findMenuOptionBySeq(int optionSeq) throws Exception {
         return orderBasketMapper.findMenuOptionBySeq(optionSeq);
     }
+
+    public void updateBasketInSession(HttpSession session, String BasketJson) {
+        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
+        Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {}.getType();
+        basketDTO.setMenuList(gson.fromJson(BasketJson, type));
+        session.setAttribute("basket", basketDTO);
+    }
+
+
+
     
     public void insertSampleBasket(String orderBasketDTO) throws Exception {
         orderOrdersMapper.insertSampleBasket(orderBasketDTO);
@@ -87,10 +103,10 @@ public class OrderBasketService {
         return price * count;
     }
 
-    public int getTotalCount(List<OrderBasketMenuDTO> orderBasketMenuDTOList) {
+    public int getTotalCount(List<StoreBasketMenuRequestDTO> storeBasketMenuRequestDTOList) {
         int totalCount = 0;
 
-        for (OrderBasketMenuDTO menu : orderBasketMenuDTOList) {
+        for (StoreBasketMenuRequestDTO menu : storeBasketMenuRequestDTOList) {
             totalCount += menu.getCount();
         }
         return totalCount;
