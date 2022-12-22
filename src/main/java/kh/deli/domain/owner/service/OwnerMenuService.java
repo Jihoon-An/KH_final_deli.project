@@ -92,7 +92,7 @@ public class OwnerMenuService {
     }
 
     public int getNextMenuSeq(){
-        System.out.println(ownerMenuMapper.getNextMenuSeq());
+
       return  ownerMenuMapper.getNextMenuSeq();
     }
 
