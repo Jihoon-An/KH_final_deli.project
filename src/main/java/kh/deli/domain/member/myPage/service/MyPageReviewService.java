@@ -11,44 +11,56 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
 public class MyPageReviewService {
 
-    private final MyPageReviewMapper myPageReviewService;
+    private final MyPageReviewMapper myPageReviewMapper;
 
     private final Gson gson;
 
     public void reviewInsert(HttpSession session, ReviewDTO dto, MultipartFile[] files) throws Exception {
         FileUtil fileUtil = new FileUtil();
 
-        if(dto.getRev_sysname().equals("1")) {
+        if (dto.getRev_sysname().equals("1")) {
             List<String> sysNameList = fileUtil.saves(session, "/resources/img/review", files);
             dto.setRev_sysname(gson.toJson(sysNameList));
 
-        }else {
+        } else {
             dto.setRev_sysname("");
         }
 
         int acc_seq = (Integer) session.getAttribute("acc_seq");
         dto.setAcc_seq(acc_seq);
 
-        myPageReviewService.reviewInsert(dto);
+        myPageReviewMapper.reviewInsert(dto);
     }
 
     public OrdersDTO selectByOrderSeq(int order_seq) throws Exception {
-        return myPageReviewService.selectByOrderSeq(order_seq);
+        return myPageReviewMapper.selectByOrderSeq(order_seq);
     }
 
     public ReviewDTO selectByReviewSeq(int rev_seq) throws Exception {
-        return myPageReviewService.selectByReviewSeq(rev_seq);
+        return myPageReviewMapper.selectByReviewSeq(rev_seq);
     }
 
 
     public StoreDTO selectByStoreSeq(int store_seq) throws Exception {
-        return myPageReviewService.selectByStoreSeq(store_seq);
+        return myPageReviewMapper.selectByStoreSeq(store_seq);
+    }
+
+    public void modifyReview(ReviewDTO dto) throws Exception {
+        Map<String, Object> param = new HashMap<>();
+        param.put("rev_star", dto.getRev_star());
+        param.put("rev_content", dto.getRev_content());
+        param.put("rev_seq", dto.getRev_seq());
+        param.put("rev_sysname", dto.getRev_sysname());
+        myPageReviewMapper.modifyReview(param);
+
     }
 
 }

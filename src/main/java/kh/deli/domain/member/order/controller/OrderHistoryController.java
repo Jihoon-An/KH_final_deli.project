@@ -1,6 +1,7 @@
 package kh.deli.domain.member.order.controller;
 
 
+import ch.qos.logback.core.BasicStatusManager;
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -10,6 +11,7 @@ import com.google.gson.*;
 
 import com.google.gson.reflect.TypeToken;
 import com.mchange.v2.sql.filter.SynchronizedFilterDataSource;
+import kh.deli.domain.member.order.dto.OrderDetailDTO;
 import kh.deli.domain.member.order.dto.OrderHistoryDTO;
 import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.order.service.OrderHistoryService;
@@ -51,28 +53,59 @@ public class OrderHistoryController {
     public String history(Model model) throws Exception {
 
 
-
-
         int acc_seq=31;//임시
         List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
 
-
-            //acc_seq로 가져와야되고 리스트
-            List<BasketDTO> basket = gson.fromJson(menuList, BasketDTO.class);
-
-        MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
-        List<MenuOptionDTO> menuOptionDTOList = new ArrayList<>();
-        for (int k = 0; basket.getMenuList().get(i).getOptionSeqList().size() > k; k++) {
-            MenuOptionDTO menuOptionDTO = orderBasketService.findMenuOptionBySeq(basket.getMenuList().get(i).getOptionSeqList().get(k));
-            menuOptionDTOList.add(menuOptionDTO);
+        BasketDTO basket = new BasketDTO();
+        for(int i = 0; i<menuList.size(); i++) {
+            String menu_list = menuList.get(i).getMenu_list();
+             basket = gson.fromJson(menu_list, BasketDTO.class);
         }
-        int count = basket.getMenuList().get(i).getCount();
-        int price = basket.getMenuList().get(i).getPrice();
 
-        OrderDetailDTO orderDetailDTO = new OrderDetailDTO(menuDTO, menuOptionDTOList, count, price);
+        List<OrderDetailDTO> orderDetailDTOList = new ArrayList<>();
 
-        orderDetailDTOList.add(orderDetailDTO);
-    }
+        for(int i = 0; i< basket.getMenuList().size(); i++){
+            MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
+            List<MenuOptionDTO> menuOptionDTOList = new ArrayList<>();
+//            for (int k = 0; basket.getMenuList().get(i).getOptionSeqList().size() > k; k++) {
+//                MenuOptionDTO menuOptionDTO = orderBasketService.findMenuOptionBySeq(basket.getMenuList().get(i).getOptionSeqList().get(k));
+//                menuOptionDTOList.add(menuOptionDTO);
+//            }
+            int count = basket.getMenuList().get(i).getCount();
+            int price = basket.getMenuList().get(i).getPrice();
+
+//            System.out.println(menuDTO.getMenu_name());
+//            System.out.println(menuDTO.getMenu_price());
+//            System.out.println(count);
+
+            OrderDetailDTO orderDetailDTO = new OrderDetailDTO(menuDTO, menuOptionDTOList, count, price);
+
+            orderDetailDTOList.add(orderDetailDTO);
+        }
+
+        //        for(int i = 0; i< basket.getMenuList().size(); i++){
+//            MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
+//
+//            int count =basket.getMenuList().get(i).getCount();
+//            int price =basket.getMenuList().get(i).getPrice();
+//        }
+
+
+//        // 다시
+//        List<OrdersDTO> ordersDTO = orderHistoryService.findOrdersByAccSeq(acc_seq);
+//
+//        BasketDTO basket = new BasketDTO();
+//
+//        for(int i = 0; i<ordersDTO.size(); i++) {
+//            String menu_list = ordersDTO.get(i).getMenu_list();
+//             basket = gson.fromJson(menu_list, BasketDTO.class);
+//        }
+
+
+/////////////////////////
+
+
+
 
             //        int acc_seq=31;//임시
 //        List<OrderHistoryDTO> list = orderHistoryService.selectOrderHistory(acc_seq);
@@ -147,7 +180,7 @@ public class OrderHistoryController {
 
 
 
-
+        model.addAttribute("orderDetailDTOList", orderDetailDTOList);
         model.addAttribute("list", menuList);
         return "/member/order/ordersHistory";
     }

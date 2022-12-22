@@ -107,7 +107,13 @@
         <div class="box2">
             <span class="headdeli">배달주문</span>
             <span class="headdate">${i.formDate}</span>
-            <span class="headstatus">${i.order_status}</span>
+            <span class="headstatus">
+                <c:if test="${i.order_status=='order'}">미접수</c:if>
+                <c:if test="${i.order_status=='take'}">접수</c:if>
+                <c:if test="${i.order_status=='cooking'}">조리중</c:if>
+                <c:if test="${i.order_status=='delivering'}">배달중</c:if>
+                <c:if test="${i.order_status=='complete'}">배달완료</c:if>
+            </span>
         </div>
         <div class="box3">
             <c:if test="${i.store_logo==null}">
@@ -117,9 +123,16 @@
                 <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${i.store_logo }" id="profile"></div>
             </c:if>
             <div class="info">
-                <span class="storename ">${i.store_name}</span>
-                <span class="storeloca ">-${i.add_detail2}</span>
-                <p><span class="meinfo">${i.menu_list}</span><span class="meinfo">${i.pay_price}</span></p>
+                <span class="storename">${i.store_name}</span>
+                <p class="meinfo">
+                        ${orderDetailDTOList[0].menuDTO.menu_name}
+                    <c:if test="${orderDetailDTOList[1].menuDTO.menu_name!=null}">
+                        <c:forEach var="menu" items="${orderDetailDTOList}" varStatus="n">
+                            <c:if test="${n.index > 1}">외 ${n.index-1}건</c:if>
+                        </c:forEach>
+                    </c:if>
+
+                </p>
                 <a href="/"><button>메인으로</button></a>
                 <a href="/myPage/reviewWrite/"><button>리뷰작성</button></a>
                 <button>재주문</button>
