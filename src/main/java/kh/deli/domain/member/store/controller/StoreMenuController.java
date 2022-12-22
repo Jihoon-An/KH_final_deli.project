@@ -25,7 +25,7 @@ public class StoreMenuController {
     @RequestMapping()
     public String toStoreDetail(Model model) throws Exception {
 
-        int store_seq = 19;
+        int store_seq = 19; //식당검색리스트에서 seq
 
         StoreDTO storeDTO = storeStoreService.storeInfo(store_seq); //가게 정보
 
