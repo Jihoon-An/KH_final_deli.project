@@ -122,16 +122,29 @@
     </select>
 
     <select id="payInfo" resultType="PayInfoDTO">
-        select
-            order_price,
-            (pay_price*cp_discount/100) as discountByCoupon,
-            order_point,
-            delivery_tip,
-            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,
-            pay_method
-        from orders,coupon
-        where orders.cp_seq=coupon.cp_seq
-        and order_seq=${order_seq}
+<!--        select-->
+<!--            order_price,-->
+<!--            (pay_price*cp_discount/100) as discountByCoupon,-->
+<!--            order_point,-->
+<!--            delivery_tip,-->
+<!--            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,-->
+<!--            pay_method-->
+<!--        from orders-->
+<!--        ,coupon-->
+<!--        where-->
+<!--        orders.cp_seq=coupon.cp_seq and-->
+<!--        order_seq=${order_seq}-->
+
+        SELECT
+        ORDER_PRICE,
+        (PAY_PRICE*CP_DISCOUNT/100) AS discountByCoupon,
+        ORDER_POINT,
+        DELIVERY_TIP,
+        (ORDER_PRICE-(PAY_PRICE*CP_DISCOUNT/100)-ORDER_POINT+DELIVERY_TIP) AS pay_price,
+        PAY_METHOD
+        FROM ORDERS LEFT JOIN COUPON
+        ON ORDERS.CP_SEQ=COUPON.CP_SEQ
+        WHERE ORDER_SEQ=#{order_seq}
     </select>
 
 

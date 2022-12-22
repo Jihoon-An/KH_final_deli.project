@@ -20,14 +20,6 @@
         )
     </insert>
 
-    <select id="selectByOrderSeq" resultType="kh.deli.global.entity.OrdersDTO">
-        select * from orders where order_seq=#{order_seq}
-    </select>
-
-    <select id="selectMenuName" resultType="String">
-        select menu_name from menu where menu_seq=#{menu_seq}
-    </select>
-
     <resultMap type="HashMap" id="getReviewsMap">
         <result property="MEM_NICK" column="MEM_NICK" />
         <result property="REV_WRITETIME" column="REV_WRITETIME" />
