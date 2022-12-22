@@ -11,7 +11,6 @@ public class AllExceptionHandler {
     @ExceptionHandler(StoreBsTimeOutException.class)
     public String storeBsTimeOutExceptionHandler(StoreBsTimeOutException e) {
         log.error("식당이 현재 운영시간이 아닙니다.");
-        log.info("식당이 현재 운영시간이 아닙니다.");
         return "error";
     }
 
