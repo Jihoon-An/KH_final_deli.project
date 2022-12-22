@@ -7,97 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title>배송지 선택</title>
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<%@ include file="/WEB-INF/views/member/header/header.jsp" %>
 
-    <style>
-
-        .modal_destination_container::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .modal_destination_container::-webkit-scrollbar-thumb {
-            background-color: #ddd;
-            border-radius: 10px;
-        }
-
-        .modal_destination_container::-webkit-scrollbar-track {
-            background-color: #ffffff;
-            border-radius: 10px;
-        }
-
-        .modal_destination_container::-webkit-scrollbar-corner {
-            display: none;
-        }
-
-        .modal_destination_container::-webkit-scrollbar-button:start {
-            opacity: 0;
-        }
-
-        .modal_destination_container::-webkit-scrollbar-button:end {
-            opacity: 0;
-        }
-
-        .modal {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            top: 0;
-            left: 0;
-            display: none;
-        }
-
-        .modal_destination_add {
-            padding-top: 20px;
-            position: fixed;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 375px;
-            height: 300px;
-            background: #ffffff;
-            border-radius: 10px 10px 0 0;
-            overflow: hidden;
-            text-align: center;
-            box-sizing: border-box;
-            display: none;
-        }
-
-        .modal_destination_container {
-            position: fixed;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 375px;
-            height: 300px;
-            background: #ffffff;
-            border-radius: 10px 10px 0 0;
-            text-align: center;
-            overflow-y: scroll;
-            display: none;
-        }
-
-        a {
-            cursor: pointer;
-        }
-
-    </style>
-</head>
-<body>
 ${acc_seq}
 <button id="destination_change">주소지 변경</button>
 
@@ -117,7 +29,7 @@ ${acc_seq}
                         <c:when test="${not empty address_List}">
                             <c:forEach var="i" items="${address_List}">
                                 <div class="destination_box">
-                                    <input type="text" name="add_seq" class="add_seq" value="${i.add_seq}">
+                                    <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                                     <input type="radio" name="radio_add_division"
                                            <c:if test="${i.add_division=='basics'}">checked</c:if>>
                                     <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
@@ -136,7 +48,6 @@ ${acc_seq}
                 </div>
             </form>
         </div>
-
 
         <div class="modal_destination_add">
             <div onclick="closeDestinationAdd()">X</div>
@@ -160,7 +71,6 @@ ${acc_seq}
 
 
 </main>
-
 
 <script src="/resources/js/member/header/destination.js"></script>
 
