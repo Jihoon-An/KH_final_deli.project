@@ -41,6 +41,7 @@ public class StoreBasketService {
         } else {
             basket.getMenuList()
                     .add(gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class));
+            basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
             session.setAttribute("basket", basket);
         }
     }

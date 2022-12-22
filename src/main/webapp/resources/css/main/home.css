@@ -1,3 +1,6 @@
+body,main{
+    background-color: #2d2d33; color: white;
+}
 #home .container{
     width: 375px;
     height: 800px;
