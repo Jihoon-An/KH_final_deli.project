@@ -30,41 +30,58 @@
 </head>
 <body>
 <main id="menu_detail">
-        <img src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
-        <div id="menu_name">${menu.menu_name}</div>
-        <div id="menu_intro">${menu.menu_intro}</div>
-        <hr>
-        <div id="menu_price">${menu.menu_price}</div>
+    <img src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
+    <div id="menu_name">${menu.menu_name}</div>
+    <div id="menu_intro">${menu.menu_intro}</div>
+    <hr>
+    <div id="menu_price">${menu.menu_price}</div>
 
-        <c:forEach var="optionMap" items="${menuOptions}">
-            <div class="option_group">${optionMap.key}</div>
-            <div class="option_select">
-                <c:forEach var="option" items="${optionMap.value}">
-                    <div class="option">
-                        <input class="option_check" type="checkbox">
+    <c:forEach var="optionMap" items="${menuOptions}">
+        <div class="option_group">${optionMap.key}</div>
+        <div class="option_select">
+            <c:forEach var="option" items="${optionMap.value}">
+                <c:choose>
+                    <c:when test="${option.option_multiple eq 'Y'}">
+                        <div class="option">
+                            <input class="option_check" name="${optionMap.key}" type="radio">
 
-                        <span>${option.option_name}</span>
-                        <span>+${option.option_price}</span>
+                            <span>${option.option_name}</span>
+                            <span>+${option.option_price}</span>
 
-                        <input class="option_seq" type="hidden" value='${option.option_seq}'>
-                        <input class="option_price" type="hidden" value="${option.option_price}">
-                    </div>
-                </c:forEach>
-            </div>
-        </c:forEach>
+                            <input class="option_seq" type="hidden" value='${option.option_seq}'>
+                            <input class="option_price" type="hidden"
+                                   value="${option.option_price}">
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="option">
+                            <input class="option_check" type="checkbox">
 
-        <hr>
-        수량선택
-        <div>
-            <button type="button" id="minus_btn">-</button>
-            <input type="number" id="menu_count" min="1" value="1"/>
-            <button type="button" id="plus_btn">+</button>
+                            <span>${option.option_name}</span>
+                            <span>+${option.option_price}</span>
+
+                            <input class="option_seq" type="hidden" value='${option.option_seq}'>
+                            <input class="option_price" type="hidden"
+                                   value="${option.option_price}">
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
         </div>
-        총주문금액
-        <div id="total_price">
-            ${menu.menu_price}
-        </div>
-        <button type="button" onclick="putBasket()">장바구니 담기</button>
+    </c:forEach>
+
+    <hr>
+    수량선택
+    <div>
+        <button type="button" id="minus_btn">-</button>
+        <input type="number" id="menu_count" min="1" value="1"/>
+        <button type="button" id="plus_btn">+</button>
+    </div>
+    총주문금액
+    <div id="total_price">
+        ${menu.menu_price}
+    </div>
+    <button type="button" onclick="putBasket()">장바구니 담기</button>
     <form action="/menu/detail/put" method="post" id="put_basket">
         <input type="hidden" name="basket_menu" id="basket_menu">
     </form>
@@ -77,7 +94,7 @@
     class BasketMenuDTO {
         constructor(options, count, price) {
             this.storeSeq = ${menu.store_seq}
-            this.menuSeq = ${menu.menu_seq};
+                this.menuSeq = ${menu.menu_seq};
             this.optionSeqList = options;
             this.count = count;
             this.price = price;

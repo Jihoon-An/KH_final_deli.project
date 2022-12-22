@@ -16,5 +16,5 @@ public class MenuOptionDTO {
     private String option_name;
     private int option_price;
     private String option_required;
-    private String option_duplichk;
+    private String option_multiple;
 }
