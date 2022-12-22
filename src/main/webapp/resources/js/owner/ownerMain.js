@@ -35,11 +35,8 @@ $("#startDate").on("change",function (){
     let startDateRange=$("#startDate").val();
 
     $("#startDate").attr("max",today);
-    if(startDateRange >= today){
+    if(startDateRange > today){
         alert("오늘 이전으로 ㄱㄱ");
-        $("#startDate").val("");
-    }else if(startDateRange = today){
-        alert("오늘 이 ㄱㄱ");
         $("#startDate").val("");
     }
 })

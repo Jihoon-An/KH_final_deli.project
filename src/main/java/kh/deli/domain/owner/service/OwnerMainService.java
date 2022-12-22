@@ -63,11 +63,6 @@ public class OwnerMainService {
     }
 
     public List<OwnerDdSalesDTO> selectSpecific(int store_seq, String startDate, String endDate) throws Exception{
-        System.out.println("서비스::::::::::::"+store_seq+" : "+startDate+" : "+endDate);
-
-
-
-
         List<OwnerDdSalesDTO> list = ownerMainMapper.selectSpecific(store_seq,startDate,endDate);
         return list;
     }
