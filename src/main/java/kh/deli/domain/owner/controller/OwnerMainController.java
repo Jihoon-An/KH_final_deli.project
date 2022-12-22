@@ -19,8 +19,6 @@ public class OwnerMainController {
     @RequestMapping("selectSales")
     public List<OwnerDdSalesDTO> toMenuAdd(int store_seq, String startDate, String endDate) throws Exception{
 
-        System.out.println(store_seq+" : "+startDate+" : "+endDate);
-
         List<OwnerDdSalesDTO> list=ownerMainService.selectSpecific(store_seq,startDate,endDate);
 
         return list;

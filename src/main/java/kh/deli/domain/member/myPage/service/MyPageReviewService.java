@@ -1,12 +1,14 @@
 package kh.deli.domain.member.myPage.service;
 
 import com.google.gson.Gson;
+import kh.deli.domain.member.myPage.dto.MypageReviewDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageReviewMapper;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
 import kh.deli.global.util.FileUtil;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -63,4 +65,15 @@ public class MyPageReviewService {
 
     }
 
+
+    public List<Map<String, Object>> getReviews(MypageReviewDTO param){
+        return myPageReviewMapper.getReviews(param);
+    }
+    public int getReviewCount(MypageReviewDTO param) throws Exception{
+        return MyPageReviewMapper.getReviewCount(param);
+    }
+
+    public String selectMenuName(String menuSeq) throws Exception{
+        return myPageReviewMapper.selectMenuName(menuSeq);
+    }
 }

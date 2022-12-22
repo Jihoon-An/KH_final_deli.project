@@ -22,8 +22,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-
 @Controller
 @AllArgsConstructor
 @RequestMapping("/store/review")
@@ -31,17 +29,15 @@ public class StoreReviewController {
 
     private final StoreStoreService storeStoreService;
     private final StoreReviewService storeReviewService;
-    
     private final OrderBasketService orderBasketService;
 
     @RequestMapping()
     public String toStoreReview(Model model) throws Exception {
-        int store_seq = 19;
+        int store_seq = 19; //식당상세정보에서 seq
 
         StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); // 식당정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); // 식당리뷰개수
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
-
 
         List<StoreReviewDTO> storeReviewList = new ArrayList<>();
 
@@ -55,7 +51,8 @@ public class StoreReviewController {
             String revSysName = (String) reviewInfoList.get(revInfo).get("REV_SYSNAME");
             String revContent = (String) reviewInfoList.get(revInfo).get("REV_CONTENT");
             String menuList = (String) reviewInfoList.get(revInfo).get("MENU_LIST");
-            System.out.println(menuList);
+
+
 //            ObjectMapper mapper = new ObjectMapper();
 //            List<List<Object>> tmp1 = mapper.readValue(revSysName, ArrayList.class);
 //            List<List<Object>> tmp2 = mapper.readValue(menu_list, ArrayList.class);
@@ -65,26 +62,13 @@ public class StoreReviewController {
             BasketDTO basket = gson.fromJson(menuList, BasketDTO.class);
 
             List<String>menu=new ArrayList<>();
-            for (int i = 0; basket.getMenuList().size() > i; i++) {
+            for (int i = 0; i < basket.getMenuList().size(); i++) {
                 MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
                 menu.add(menuDTO.getMenu_name());
             }
 //            Type type2 = new TypeToken<List<String>>(){}.getType();
             Type type1 = new TypeToken<List<String>>() {}.getType();
             List<String> tmp1 = gson.fromJson(revSysName, type1);
-//            List<String> tmp2 = gson.fromJson(menuList, basket);
-
-//            List<String> storeRevSysname = new ArrayList<>();
-//            for (int k = 0; k < tmp1.size(); k++) {
-//                System.out.println("파싱 : " + tmp1.get(k));
-//                storeRevSysname.add(String.valueOf(tmp1.get(k)));
-//            }
-//
-//            List<String> storeMenuList = new ArrayList<>();
-//            for (int k = 0; k < tmp2.size(); k++) {
-//                System.out.println("파싱 : " + tmp2.get(k));
-//                storeMenuList.add(String.valueOf(tmp2.get(k)));
-//            }
 
             storeReviewList.add(StoreReviewDTO.builder().
                     mem_nick(memNick).

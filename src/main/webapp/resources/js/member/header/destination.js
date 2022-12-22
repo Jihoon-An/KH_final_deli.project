@@ -2,7 +2,6 @@
 $("#destination_change").click(function (){
     $(".modal").fadeIn();
     $(".modal_destination_add").hide();
-    $("input").val("");
     $(".modal_destination_container").show();
 })
 
@@ -35,30 +34,10 @@ $(".modal").on("click", e => {
 
 
 
-// 엔터 = 버튼 클릭
-$("#login_id, #login_pw").on("keyup", (e) => { if (e.keyCode == 13) { $("#btn_login").click() } });
-$("#searchPw_email, #searchPw_phone").on("keyup", (e) => { if (e.keyCode == 13) { $("#btn_search").click() } });;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(".del").on("click", function () {
+$(document).on("click",".del", function () { // 정적바인딩
     if($(this).closest(".destination_box").find(".pick").html() == "[기본]"){
-        confirm("기본 배송지는 삭제 불가합니다.기본 주소지 변경 후 삭제해주세요.")
+        alert("기본 배송지는 삭제 불가합니다.기본 주소지 변경 후 삭제해주세요.")
     } else {
         if(confirm("정말 삭제 하시겠습니까?")){
             $.ajax({
@@ -66,14 +45,19 @@ $(".del").on("click", function () {
                 type: "post",
                 data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
             }).done(function () {
-                $("#destination_select_frm").load("/member/header/destination #destination_select_frm")
+                // $(this).closest(".destination_box").remove();
+                $("#destination_select_frm").load("/member/header/destination #destination_select_box"); // 동적바인딩 이슈
+                // 이거 왜 안될까 del 이랑 기본 주소지 선택 동작 안할까
+                // 삭제 _ 주소지 추가 버튼 눌러도 안됨
             });
+        } else {
+            return false;
         }
     }
 });
 
 
-$("#destination_select").on("click", function () {
+$(document).on("click","#destination_select", function () {
     if($("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".pick")).html()=="[선택]") {
         if(confirm('기본 선택지를 변경하면 초기 화면으로 돌아갑니다.')){
             $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
@@ -93,7 +77,7 @@ $("#destination_select").on("click", function () {
     }
 });
 
-$("#destination_add_box_btn").on("click", function () {
+$(document).on("click","#destination_add_box_btn", function () {
     $("input:not([name=acc_seq])").val("");
     $(".modal_destination_add").show();
 });
@@ -126,10 +110,13 @@ $(document).on("click", ".postsearch", function () {
     }).open();
 })
 
-let addNameRegex = /^[가-힣a-zA-Z0-9]{1,10}$/;
 
-$("#destination_add_btn").on("click", function () {
-    if (!addNameRegex.test($("#add_name").val())) {
+
+// 엔터 = 버튼 클릭
+$("#add_name, #postcode, #add_detail1, #add_detail2").on("keyup", (e) => { if (e.keyCode == 13) { $("#destination_add_btn").click() } });
+
+$(document).on("click","#destination_add_btn", function () {
+    if ($("#add_name").val()=="") {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
@@ -162,7 +149,7 @@ $("#destination_add_btn").on("click", function () {
         type: "post",
         data: $("#destination_add_frm").serialize()
     }).done(function () {
-        $("#destination_select_frm").load("/member/header/destination #destination_select_frm")
+        $("#destination_select_frm").load("/member/header/destination #destination_select_box");
         $(".modal_destination_add").hide();
     });
 });

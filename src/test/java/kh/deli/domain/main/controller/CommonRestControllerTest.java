@@ -1,29 +1,36 @@
 package kh.deli.domain.main.controller;
 
-import kh.deli.global.util.mailSender.MailRestController;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-@WebMvcTest(MailRestController.class)
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@WebMvcTest(MailRestController.class)
 class CommonRestControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+//    @Autowired
+//    private MockMvc mvc;
 
     @Test
-    void mailCerti() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/mailCerti"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print());
+    void timeTest() throws ParseException {
+
+        Logger log = LoggerFactory.getLogger(CommonRestControllerTest.class);
+
+        String timeJson = "9:48";
+
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+
+        Date now = new Date(System.currentTimeMillis());
+        Date time = formatter.parse(timeJson);
+
+        List<String> weekList = List.of("sun", "mon", "tue", "wed", "thu", "fri", "sat");
+
+        System.out.println(weekList);
     }
 }
