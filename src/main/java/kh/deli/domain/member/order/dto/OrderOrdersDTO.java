@@ -25,6 +25,8 @@ public class OrderOrdersDTO {
     private String address2;    //주소 2
     private String phoneNum;    //핸드폰 번호
     private String ownPoint;    //보유 포인트
+    private int order_price;    // 주문 금액
+    private int delivery_tip;   // 배달팁
 
     /* 쿠폰리스트 관련 변수 */
     private int mcSeq;
