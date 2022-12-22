@@ -40,4 +40,6 @@ public interface MyPageReviewMapper {
 
     @Update("update review set rev_star=#{rev_star},rev_content=#{rev_content},rev_modified_date=sysdate,rev_sysname=#{rev_sysname} where rev_seq=#{rev_seq}")
     public void modifyReview(Map<String,Object>param);
+
+    public String selectMenuName(String menuSeq);
 }
