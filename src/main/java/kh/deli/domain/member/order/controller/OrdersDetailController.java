@@ -32,7 +32,6 @@ public class OrdersDetailController {
 
     //    int order_seq=18;
 
-
         StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보
         PayInfoDTO payInfoDTO=orderOrdersService.payInfo(order_seq); // 결제정보
