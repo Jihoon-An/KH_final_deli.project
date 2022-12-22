@@ -8,62 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
-<head>
-    <title>식당 검색 리스트</title>
-
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <style>
-        #storeSearch .container {
-            width: 375px;
-            height: 800px;
-            border: 1px solid black;
-            margin: auto;
-            text-align: center;
-            padding-top: 50px;
-        }
 
 
-        .filter {
-            border-radius: 20px;
-            border: #e84c4f solid 1px;
-        }
-
-        .store_list {
-            border: #e84c4f solid 1px;
-        }
-
-        .store_logo {
-            width: 90px;
-            height: 100px;
-            object-fit: cover;
-        }
-
-        .store_info_box {
-            overflow: hidden;
-        }
-
-        .menu_name {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    </style>
-
-</head>
-<body>
-
+<%@ include file="/WEB-INF/views/member/header/header.jsp" %>
 
 <main id="storeSearch">
     <div class="container">
@@ -149,13 +96,9 @@
 
 -->
 
-
         </div>
     </div>
 </main>
-
-<script>
-</script>
 
 </body>
 </html>

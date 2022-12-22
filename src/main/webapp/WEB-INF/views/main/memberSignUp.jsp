@@ -85,7 +85,7 @@
     <br>
     <input type="text" id="add_detail1" name="add_detail1" placeholder="기본주소" readonly>
     <br>
-    <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소">
+    <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소" maxlength='50'>
     <br>
     <input type="hidden" id="add_x" name="add_x">
     <input type="hidden" id="add_y" name="add_y">
