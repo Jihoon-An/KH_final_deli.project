@@ -14,6 +14,9 @@ import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
 import kh.deli.global.util.FileUtil;
 import lombok.AllArgsConstructor;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +34,7 @@ import java.util.List;
 public class MypageReviewModifyController {
 
     private final MyPageReviewService reviewService;
-    private final OrderOrdersService orderOrdersService;
+    private final MyPageReviewService myPageReviewService;
     private final HttpSession session;
     private final Gson gson;
 
@@ -42,8 +45,26 @@ public class MypageReviewModifyController {
         int store_seq = 19;
         OrdersDTO orders_dto = reviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = reviewService.selectByReviewSeq(rev_seq);
-
         //내가 주문한 메뉴명 가져오기
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject =(JSONObject)jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
+
+        JSONArray jsonArr = (JSONArray) jsonObject.get("menuList"); //menuListarray를 jsonarray에 저장
+
+        List<String> menuNameList=new ArrayList<>();
+
+        if (jsonArr.size() > 0) {
+
+            for (int i = 0; i < jsonArr.size(); i++) {
+
+                JSONObject jsonObj = (JSONObject)jsonArr.get(i);
+                String menuSeq= jsonObj.get("menuSeq").toString();
+                String menuName=myPageReviewService.selectMenuName(menuSeq);
+                menuNameList.add(menuName);
+
+            }
+        }
+
 
         List<String> frmImgList = new ArrayList<>();
         Type type = new TypeToken<List<String>>() {
@@ -55,6 +76,7 @@ public class MypageReviewModifyController {
         model.addAttribute("orders_dto", orders_dto);
         model.addAttribute("review_dto", review_dto);
         model.addAttribute("store_dto", store_dto);
+        model.addAttribute("menuNameList", menuNameList);
 
         return "/member/myPage/modifyReview";
     }

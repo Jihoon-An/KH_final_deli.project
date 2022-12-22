@@ -143,9 +143,9 @@
             <div>
                 <div> 주문한 메뉴</div>
                 <c:choose>
-                    <c:when test="${not empty menu}">
-                        <c:forEach var="i" items="${menu}">
-                            <div>${i.menu_name}</div>
+                    <c:when test="${not empty menuNameList}">
+                        <c:forEach var="i" items="${menuNameList}">
+                            <div>${i}</div>
                         </c:forEach>
                     </c:when>
                 </c:choose>
