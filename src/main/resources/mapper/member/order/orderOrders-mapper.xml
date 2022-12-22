@@ -119,6 +119,7 @@
         where orders.acc_seq=member.acc_seq
         and address.add_seq=orders.add_seq
         and order_seq=${order_seq}
+
     </select>
 
     <select id="payInfo" resultType="PayInfoDTO">
