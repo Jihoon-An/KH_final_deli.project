@@ -142,6 +142,13 @@
             </div>
             <div>
                 <div> 주문한 메뉴</div>
+                <c:choose>
+                    <c:when test="${not empty menu}">
+                        <c:forEach var="i" items="${menu}">
+                            <div>${i.menu_name}</div>
+                        </c:forEach>
+                    </c:when>
+                </c:choose>
                 <input type="text" value="${orders_dto.order_seq}" name="order_seq">
                 <input type="text" value="${orders_dto.acc_seq}" name="acc_seq">
                 <input type="text" value="${orders_dto.store_seq}" name="store_seq">
