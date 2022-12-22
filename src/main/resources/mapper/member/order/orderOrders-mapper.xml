@@ -109,17 +109,17 @@
 
     <select id="ordererInfo" resultType="OrdererInfoDTO">
         select
-            mem_phone,
-            order_store_req,
-            order_rider_req,
-            order_disposable,
-            address.add_detail1 as address_add_detail1,
-            orders.add_detail2 as orders_add_detail2
-        from member,orders,address
-        where orders.acc_seq=member.acc_seq
-        and address.add_seq=orders.add_seq
-        and order_seq=${order_seq}
-
+        mem_phone,
+        order_store_req,
+        order_rider_req,
+        order_disposable,
+        address.add_detail1 as address_add_detail1,
+        orders.add_detail2 as orders_add_detail2
+        from member join orders
+        on orders.acc_seq=member.acc_seq
+        join address
+        on address.add_seq=orders.add_seq
+        where order_seq=#{order_seq}
     </select>
 
     <select id="payInfo" resultType="PayInfoDTO">

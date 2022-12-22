@@ -27,6 +27,7 @@ public interface OrderOrdersMapper {
     
     StoreInfoDTO storeInfo(int order_seq);
 
+
     OrdererInfoDTO ordererInfo(int order_seq);
 
     PayInfoDTO payInfo(int order_seq);
