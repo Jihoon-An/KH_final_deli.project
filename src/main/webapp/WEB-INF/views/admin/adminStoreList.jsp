@@ -50,6 +50,7 @@
                 <th class="add_detail1">주소</th>
                 <th class="oNum">사업자 등록번호</th>
                 <th class="oName">대표자명</th>
+                <th class="display">공개여부</th>
             </tr>
             </thead>
             <tbody>
@@ -64,6 +65,7 @@
                             <td class="store_add_detail1">${sysName.store_add_detail1}, ${sysName.store_add_detail2}</td>
                             <td class="owner_num">${sysName.owner_num}</td>
                             <td class="owner_name">${sysName.owner_name}</td>
+                            <td class="store_display">${sysName.store_display}</td>
                         </tr>
                     </c:forEach>
                 </c:when>
@@ -104,11 +106,14 @@
                 대표자명
                 <input type="text" placeholder="대표자명" disabled id="owner_name">
             </div>
+            <div>
+                공개여부
+                <input type="text" placeholder="공개여부" disabled id="store_display">
+            </div>
 
             <div class="btnBox">
                 <button type="button" id="deleteBtn">삭제</button>
-                <button type="button" id="privateReview">비공개</button>
-                <button type="button" id="openReview">공개</button>
+                <button type="button" id="statusBtn">비공개</button>
             </div>
         </div>
     </div>

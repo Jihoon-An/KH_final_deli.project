@@ -37,5 +37,21 @@ public class StoreListController {
         adminStoreService.deleteByStoreSeq(store_seq);
     }
 
+    @ResponseBody
+    @PostMapping("updateDisplayAsY")
+    public void updateDisplayAsY(int store_seq) throws Exception{
+        System.out.println("공개처리");
+        adminStoreService.updateDisplayAsY(store_seq);
+        System.out.println("공개처리성공");
+    }
+
+    @ResponseBody
+    @PostMapping("updateDisplayAsN")
+    public void updateDisplayAsN(int store_seq) throws Exception{
+        System.out.println("비공개처리");
+        adminStoreService.updateDisplayAsN(store_seq);
+        System.out.println("비공개처리성공");
+    }
+
 
 }

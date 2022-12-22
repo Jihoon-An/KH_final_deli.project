@@ -23,4 +23,13 @@ public class AdminStoreService {
        adminStoreMapper.deleteByStoreSeq(store_seq);
     }
 
+    public void updateDisplayAsY(int store_seq) throws Exception{
+
+        adminStoreMapper.updateDisplayAsY(store_seq);
+    }
+
+    public void updateDisplayAsN(int store_seq) throws Exception{
+
+        adminStoreMapper.updateDisplayAsN(store_seq);
+    }
 }
