@@ -29,7 +29,6 @@ public class OwnerListController {
     @RequestMapping("/deleteOwner")
     public String ownerDelete(int owner_seq){
         adminOwnerService.deleteOwner(owner_seq);
-
         return "redirect:";
    }
 }
