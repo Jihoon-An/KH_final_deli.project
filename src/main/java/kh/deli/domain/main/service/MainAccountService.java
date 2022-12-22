@@ -9,7 +9,10 @@ import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.Encryptor;
 import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -20,6 +23,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -262,5 +266,29 @@ public class MainAccountService {
     public String selectType(int acc_seq){
         return mainAccountMapper.selectType(acc_seq);
     }
+
+
+    /**
+     * 이메일 찾기
+     */
+    public List<String> findEmailByPhoneNumber(String phoneNumber) {
+        return mainAccountMapper.findEmailByPhoneNumber(phoneNumber);
+    }
+
+    /**
+     * 비밀번호 찾기
+     */
+    public String findPassWordByPhoneNumber(String email, String phoneNumber) {
+        Map<String, String> param = new HashMap<>();
+        param.put("acc_email", email);
+        param.put("mem_phone", phoneNumber);
+        return mainAccountMapper.findPassWordByPhoneNumber(param);
+    }
+
+
+
+
+
+
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -197,6 +198,24 @@ public class AccountController {
     @RequestMapping("/findAccount")
     public String toFindAccountPage() throws Exception {
         return "main/findAccount";
+    }
+
+    @ResponseBody
+    @PostMapping("/findAccount/email")
+    public List<String> findEmail(String phoneNumber) throws Exception {
+        System.out.println(phoneNumber);
+        List<String> email = mainAccountService.findEmailByPhoneNumber(phoneNumber);
+        System.out.println(email);
+        return email;
+    }
+
+    @ResponseBody
+    @PostMapping("/findAccount/passWord")
+    public String findPassWord(String email, String phoneNumber) throws Exception {
+        System.out.println(phoneNumber);
+        String passWord = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
+        System.out.println(passWord);
+        return passWord;
     }
 
 

@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -51,4 +52,13 @@ public interface MainAccountMapper {
     //MemberMainPage
     @Select("select acc_type from account where acc_seq=#{acc_seq}")
     String selectType (int acc_seq);
+
+    @Select("SELECT ACC_EMAIL FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ WHERE M.MEM_PHONE = #{mem_phone}")
+    List<String> findEmailByPhoneNumber(@Param("mem_phone") String phoneNumber);
+
+    @Select("SELECT ACC_PW " +
+            "FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ " +
+            "WHERE A.ACC_EMAIL = #{acc_email} and M.MEM_PHONE = #{mem_phone}")
+    String findPassWordByPhoneNumber(Map<String, String> param);
+
 }

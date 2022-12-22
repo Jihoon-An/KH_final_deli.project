@@ -29,6 +29,50 @@
     font-size: 24px;
     line-height: 75px;
 }
+#findAccount #emailBox{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+}
+
+#findAccount .emailResultBox{
+    width: 350px;
+    height: fit-content;
+    float: left;
+}
+#findAccount .emailDiv{
+    width: 200px;
+    height: 30px;
+    float: left;
+    font-size: 14px;
+}
+#findAccount .signUpDateDiv{
+    width: 150px;
+    height: 30px;
+    float: left;
+    font-size: 14px;
+}
+
+#findAccount #passWordBox{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+}
+
+#findAccount .passWordResultBox{
+    width: 350px;
+    height: fit-content;
+    float: left;
+}
+#findAccount .passWordDiv{
+    width: 350px;
+    height: 30px;
+    float: left;
+    font-size: 14px;
+    text-align: center;
+}
+
+
 #findAccount a{
     text-decoration: none;
     color: black;
