@@ -26,6 +26,7 @@
     <!--<marquee><Strong><h1>🎉나경이 생일축하했어~🎂🎉</h1></Strong></marquee>-->
 
     <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
+    <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
 
 <%--    <c:choose>--%>
 <%--        <c:when test="${loginEmail != null}">--%>
