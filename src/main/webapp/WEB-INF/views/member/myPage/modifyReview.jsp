@@ -128,8 +128,6 @@
                                 <button type="button" class="del_img_btn">지우기</button>
                             </div>
                         </c:forEach>
-
-
                     </c:when>
                 </c:choose>
             </div>

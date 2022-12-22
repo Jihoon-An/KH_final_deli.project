@@ -22,7 +22,7 @@ public class StoreInfoController {
     @RequestMapping()
     public String storeInfo(Model model) throws Exception{
 
-        int store_seq=19;
+        int store_seq=19; //가게상세메뉴에서 seq
 
         StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq); // 식당정보
         OwnerDTO ownerInfoDTO=ownerOwnerService.bsInfo(store_seq); // 사업자정보
