@@ -16,7 +16,7 @@
     background-color: cadetblue;
 }
 
-#fucking{
+#ownerMain #fucking{
     width: 275px;
     height: fit-content;
     position: absolute;
@@ -29,10 +29,10 @@
     line-height: 40px;
     text-align: center;
 }
- #fucking a{
+#ownerMain #fucking a{
     color: #3e4462;
     font-weight: bolder;
     text-decoration: none;
 }
 
-#fucking hr{border: 2px dashed #e84c4f;}
+#ownerMain #fucking hr{border: 2px dashed #e84c4f;}
