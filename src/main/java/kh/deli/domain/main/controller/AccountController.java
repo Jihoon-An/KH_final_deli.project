@@ -114,7 +114,8 @@ public class AccountController {
     }
 
     @RequestMapping("toMemberSignUp")
-    public String toMemberSignUp() throws Exception {
+    public String toMemberSignUp(String kakaoId, Model model) throws Exception {
+        model.addAttribute("acc_token", kakaoId);
         return "main/memberSignUp";
     }
 
@@ -128,15 +129,15 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping("toKakaoSignUp")
-    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
-        model.addAttribute("acc_token", kakaoId);
-        return "main/memberSignUp";
-    }
+//    @RequestMapping("toKakaoSignUp")
+//    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
+//        model.addAttribute("acc_token", kakaoId);
+//        return "main/memberSignUp";
+//    }
 
     @PostMapping("kakaoSignUp")
-    public String kakaoSignUp(AccountDTO accountDTO, MemberDTO memberDTO) throws Exception {
-        mainAccountService.kakaoSignUp(accountDTO);
+    public String kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        mainAccountService.kakaoSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq", accountDTO.getAcc_seq());

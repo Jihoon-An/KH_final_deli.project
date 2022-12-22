@@ -225,12 +225,19 @@ public class MainAccountService {
     /**
      * kakao 회원가입 메서드
      *
-     * @param dto
+     * @param accountDTO
      * @throws Exception
      */
-    public void kakaoSignUp(AccountDTO dto) throws Exception {
-        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
-        mainAccountMapper.kakaoSignUp(dto);
+    @Transactional
+    public void kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        int getNextAccSeq = mainAccountMapper.getNextAccSeq();
+        accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
+        accountDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.kakaoSignUp(accountDTO);
+        memberDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertMember(memberDTO);
+        addressDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertAddress(addressDTO);
     }
 
     public String getAccEmail(String acc_token) {
