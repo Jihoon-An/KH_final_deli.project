@@ -7,6 +7,7 @@ import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -35,5 +36,8 @@ public interface MyPageReviewMapper {
 
 //    static int getReviewCount(@Param("reviewCount") MypageReviewDTO param) {
 //        return 0;
-    }
+//    }
 
+    @Update("update review set rev_star=#{rev_star},rev_content=#{rev_content},rev_modified_date=sysdate,rev_sysname=#{rev_sysname} where rev_seq=#{rev_seq}")
+    public void modifyReview(Map<String,Object>param);
+}

@@ -100,18 +100,22 @@
                 </div>
                 <div class="infoInputBox phoneBox">
                     <input type="text" id="oldPhoneNumber" value="${memberInfo.mem_phone}">
-                    <input type="text" id="phoneNumber" name="mem_phone" value="${memberInfo.mem_phone}" placeholder="01011112222" readonly>
+                    <input type="text" id="mem_phone" name="mem_phone" value="${memberInfo.mem_phone}" placeholder="핸드폰 번호 숫자만 입력" maxlength='11' oninput=validNum()>
                     <button type="button" id="reCertificationBtn">재인증</button>
+                    <button type="button" id="phone_certi_btn">발송</button>
+                    <br><br>
+                    <p id="phone_msg" style="display: none">양식에 맞는지 확인 중입니다.</p>
                 </div>
             </div>
 
-            <div class="infoBox" id="certificationBox">
+            <div class="infoBox" id="certificationBox" style="height: 200px;">
                 <div class="infoTitleBox">
                     <span id="certificationNumberSpan">인증번호</span>
                 </div>
                 <div class="infoInputBox">
-                    <input type="text" id="certificationNumber">
-                    <button type="button" id="certificationConfirmBtn">확인</button>
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input" maxlength='6' oninput=validNum()>
+                    <button type="button" id="phone_confirm_btn">확인</button>
+                    <span id="phone_count"></span>
                 </div>
             </div>
 

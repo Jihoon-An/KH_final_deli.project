@@ -147,6 +147,7 @@ $("#email_confirm_btn").click(function () {
 
 function email_confirm() {
     if ($("#email_confirm_input").val() == confirm_text && $("#email_count").html() != "시간초과") {
+        $("#email_confirm_input").val("");
         $("#email_msg").html("");
         $("#email_msg").css("color", "#000000");
         $("#email_msg").hide();
@@ -167,7 +168,7 @@ function email_confirm() {
 function phone_check() {
     if ($("#mem_phone").val() == "") {
         $("#phone_msg").show();
-        $("#pw_msg").css("color", "#000000");
+        $("#phone_msg").css("color", "#000000");
         $("#phone_msg").html("숫자만 입력 가능합니다");
     } else if (!phoneRegex.test($("#mem_phone").val())) {
         $("#phone_msg").show();
@@ -177,9 +178,6 @@ function phone_check() {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#008000");
         $("#phone_msg").html("핸드폰을 인증해주세요.");
-        // $("#phone_msg").html("");
-        // $("#phone_msg").css("color", "#000000");
-        // $("#phone_msg").hide();
     }
 }
 
@@ -239,6 +237,9 @@ function phone_confirm() {
             data: {mem_phone: $("#mem_phone").val(), phone_confirm_input: $("#phone_confirm_input").val()}
         }).done(function (result) {
             if (result == true && $("#phone_count").html() != "시간초과") {
+                $("#phone_confirm_input").val("");
+                $("#phone_msg").css("color", "#000000");
+                $("#phone_msg").html("");
                 $("#phone_msg").hide();
                 $("#phone_confirm_box").hide();
                 $("#mem_phone").attr("disabled", true);

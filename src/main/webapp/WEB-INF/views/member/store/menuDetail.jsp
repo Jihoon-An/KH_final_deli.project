@@ -43,11 +43,11 @@
                     <div class="option">
                         <input class="option_check" type="checkbox">
 
-                        <span>${option.object.option_name}</span>
-                        <span>+${option.object.option_price}</span>
+                        <span>${option.option_name}</span>
+                        <span>+${option.option_price}</span>
 
-                        <input class="optionDTO" type="hidden" value='${option.json}'>
-                        <input class="option_price" type="hidden" value="${option.object.option_price}">
+                        <input class="option_seq" type="hidden" value='${option.option_seq}'>
+                        <input class="option_price" type="hidden" value="${option.option_price}">
                     </div>
                 </c:forEach>
             </div>
@@ -72,15 +72,13 @@
 <script>
     var count = 1;
     var select_option = new Array();
-    var one_price = 0;
-
-    var ori_menu = ${menuJson};
-    <%--//var ori_options = ${OptionsJson};--%>
+    var one_price = ${menu.menu_price};
 
     class BasketMenuDTO {
         constructor(options, count, price) {
-            this.menu = ori_menu;
-            this.options = options;
+            this.storeSeq = ${menu.store_seq}
+            this.menuSeq = ${menu.menu_seq};
+            this.optionSeqList = options;
             this.count = count;
             this.price = price;
         }
