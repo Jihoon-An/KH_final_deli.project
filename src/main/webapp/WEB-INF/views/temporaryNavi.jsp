@@ -30,10 +30,11 @@
   <a href="/owner/order">[오너]주문관리</a><br>
   <hr>
   <a href="/admin">[운영자]메인 페이지</a><br>
-  <a href="/admin/coupon/add">[운영자]쿠폰 추가 페이지</a><br>
-  <a href="/admin/coupon/list">[운영자]쿠폰 리스트 페이지</a><br>
-  <a href="/admin/review/">[운영자]리뷰 관리 페이지</a><br>
-  <a href="/admin/account/list/">[운영자]일반회원 관리 페이지</a><br>
+  <a href="/admin/coupon/add">[운영자]쿠폰 추가페이지</a><br>
+  <a href="/admin/coupon/list">[운영자]쿠폰 리스트페이지</a><br>
+  <a href="/admin/review/">[운영자]리뷰 관리페이지</a><br>
+  <a href="/admin/account/list/">[운영자]일반회원 관리페이지</a><br>
+  <a href="/admin/owner/list">[운영자]오너회원 관리페이지</a><br>
   <hr>
   <a href="/deliveryDtl?order_seq=17">[배달기사]고객배달영수증</a><br>
   <hr>
