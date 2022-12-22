@@ -54,7 +54,10 @@ public class OrdersController {
 
     @RequestMapping("updateMemberPhone")
     @ResponseBody
-    public void updateMemberPhone(OrderOrdersDTO ordersDTO){orderOrdersService.updateMemberPhone(ordersDTO);}
+    public int updateMemberPhone(OrderOrdersDTO ordersDTO){
+        int result = orderOrdersService.updateMemberPhone(ordersDTO);
+        return result;
+    }
     @RequestMapping("selectCouponList")
     @ResponseBody
     public List<OrderOrdersDTO> selectCouponList(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO){

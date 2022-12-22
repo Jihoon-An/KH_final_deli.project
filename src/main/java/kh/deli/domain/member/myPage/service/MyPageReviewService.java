@@ -8,11 +8,13 @@ import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
 import kh.deli.global.util.FileUtil;
 import lombok.AllArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -52,7 +54,11 @@ public class MyPageReviewService {
         return myPageReviewService.selectByStoreSeq(store_seq);
     }
 
-    public List<MypageReviewDTO> getReviews() {
-        return MyPageReviewMapper.getReviews();
+
+    public List<Map<String, Object>> getReviews(MypageReviewDTO param){
+        return myPageReviewService.getReviews(param);
+    }
+    public int getReviewCount(MypageReviewDTO param) throws Exception{
+        return MyPageReviewMapper.getReviewCount(param);
     }
 }

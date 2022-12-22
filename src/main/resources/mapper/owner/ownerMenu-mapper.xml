@@ -34,7 +34,7 @@
 <!--    메뉴 수정 진행중-->
     <update id="modifyMenu" parameterType="kh.deli.global.entity.MenuDTO">
         UPDATE MENU SET
-            #{MENU_GROPUP},
+            #{MENU_GROUP},
             #{MENU_NAME},
             #{MENU_PRICE},
             #{MENU_INTRO},

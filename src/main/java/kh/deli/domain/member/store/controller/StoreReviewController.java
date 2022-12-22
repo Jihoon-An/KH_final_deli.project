@@ -32,9 +32,9 @@ public class StoreReviewController {
     public String toStoreReview(Model model) throws Exception {
         int store_seq = 19;
 
-        StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); // 식당정보
+        //StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); // 식당정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); // 식당리뷰개수
-        double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
+        //double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
 
         List<StoreReviewDTO> storeReviewList = new ArrayList<>();
@@ -86,9 +86,9 @@ public class StoreReviewController {
 //            storeReviewList.add(new StoreReviewDTO(mem_nick, rev_writeDate, rev_modified_date, REV_STAR, storeRevSysname, revContent,
 //                    storeMenuList));
     }
-        model.addAttribute("storeInfoDTO", storeInfoDTO);
+        //model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("storeReviewCount", storeReviewCount);
-        model.addAttribute("storeReviewAvg", storeReviewAvg);
+        //model.addAttribute("storeReviewAvg", storeReviewAvg);
         model.addAttribute("storeReviewList", storeReviewList);
         return "/member/store/storeReview";
     }

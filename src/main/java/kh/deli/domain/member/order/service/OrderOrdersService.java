@@ -30,7 +30,10 @@ public class OrderOrdersService {
         orderOrdersMapper.updateMemberAddr(param);
     };
 
-    public void updateMemberPhone(OrderOrdersDTO param){orderOrdersMapper.updateMemberPhone(param);};
+    public int updateMemberPhone(OrderOrdersDTO param){
+        int result = orderOrdersMapper.updateMemberPhone(param);
+        return result;
+    };
 
     public List<OrderOrdersDTO> selectCouponList(OrderOrdersDTO param){
 

@@ -107,7 +107,7 @@
                 </div>
                 <div class="close-area">X</div>
                 <div class="content">
-                    <input type="text" value="" id="postcode" placeholder="우편번호">
+                    <input type="text" id="postcode" placeholder="우편번호">
                     <input type="button" onclick="postcode()" value="찾기" id="btnSearch"><br>
                     <input type="text" id="address1" placeholder="도로명 / 지번주소">
                     <input type="text" id="address2" placeholder="상세주소"><br>
@@ -178,16 +178,14 @@
             <input  type="text" value="" id="usePoint"  placeholder="사용할 포인트">
         </div>
         <hr>
-        <div>구매 가격 출력</div>
+        <div id="order_price">주문 금액 출력</div>
         <div id="selectCoupon">쿠폰할인
             <input type="text" name="distcount_coupon" value=""  placeholder="쿠폰 할인 출력">
         </div>
         <div>포인트 할인
             <input type="text" name="order_point" value=""  placeholder="포인트 할인 출력">
         </div>
-        <div>배달팁
-            <input type="text" value="${store_deli_tip}"  placeholder="사용할 포인트 출력">
-        </div>
+        <div id="delivery_tip">배달팁</div>
         <div>총 결제 금액 출력</div>
         <hr>
         <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
@@ -226,6 +224,8 @@
                 $("#add_2").val(data.address2);
                 $("#phoneNumber").val(data.phoneNum);
                 $("#ownPoint").val(data.ownPoint);
+                $("#order_price").val(data.order_price);
+                $("#delivery_tip").val(data.delivery_tip);
                 onchangeOwnPoint();
             },
             error : function (data){
@@ -322,21 +322,27 @@
                     address1 : address1,
                     address2 : address2
                 },
-                success : function (){
-
+                success : function (e){
+                    if(e == 1){
+                        alert("주소가 변경되었습니다.")
+                        var modal = document.getElementById('modal');
+                        modal.style.display="none";
+                        $("#address1").val(address1);
+                        $("#address2").val(address2);
+                    }
                 },
                 error : function (){
 
                 }
             }).done(function () {
-                alert("주소변경 되었습니다.");
-                location.href="/home";
+                // alert("주소변경 되었습니다.");
+                // location.href="/home";
             });
         }
     }
     // 여기-------------------------------
     function onclickBtnChgPhone() {
-        var phoneNum = $("#phoneNumber").val();
+        var phoneNum = $("#phoneNum").val();
         var msg = "";
         var inptFlag = 0;
 
@@ -350,23 +356,29 @@
             return;
         }else{$.ajax({
 
-                url:"order/orders/updateMemberPhone",
+                url:"orders/updateMemberPhone",
                 type:"post",
                 dataType:"json",
                 data:{
                     seq : 39,
                     phoneNum : phoneNum
                 },
-                success : function(){
+                success : function(e){
+                    if(e == 1) {
+                        alert("핸드폰 번호가 변경되었습니다.")
+                        var modal3 = document.getElementById('modal3');
+                        modal3.style.display ="none";
+                        $("#phoneNumber").val(phoneNum);
+                    }
 
                 },
-                error : function (){
+                error : function (e){
 
                 }
 
             }).done(function(){
-                alert("핸드폰 변경이 완료되었습니다.");
-                location.href="/";
+                //alert("핸드폰 변경이 완료되었습니다.");
+                //location.href="/";
             })
         }
     }
@@ -498,6 +510,7 @@
             buyer_tel: '010-1234-5678',//구매자 연락처
             buyer_addr: '서울특별시 강남구 삼성동',//구매자 주소
             buyer_postcode: '123-456'//구매자 우편번호
+
         }, function (rsp) {
             var result = '';
             if (rsp.success) {

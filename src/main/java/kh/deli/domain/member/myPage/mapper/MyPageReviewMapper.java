@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
@@ -25,7 +26,14 @@ public interface MyPageReviewMapper {
     @Select("SELECT * FROM STORE WHERE STORE_SEQ=${store_seq}")
     StoreDTO selectByStoreSeq(@Param("store_seq") int store_seq);
 
-    public static List<MypageReviewDTO> getReviews() {
-        return null;
+    public List<Map<String, Object>> getReviews(@Param("myReviewDTO") MypageReviewDTO param);
+
+    @Select("SELECT COUNT(*) AS CNT FROM REVIEW WHERE ACC_SEQ = #{acc_seq};")
+    static int getReviewCount(@Param("MypageReviewDTO") MypageReviewDTO reviewDTO) {
+        return 0;
     }
-}
+
+//    static int getReviewCount(@Param("reviewCount") MypageReviewDTO param) {
+//        return 0;
+    }
+
