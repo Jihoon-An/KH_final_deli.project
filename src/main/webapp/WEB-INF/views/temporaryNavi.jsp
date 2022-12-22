@@ -57,6 +57,7 @@
   <a href="/admin/review/">[운영자]리뷰 관리페이지</a><br>
   <a href="/admin/account/list/">[운영자]일반회원 관리페이지</a><br>
   <a href="/admin/owner/list">[운영자]오너회원 관리페이지</a><br>
+  <a href="/admin/store/list/">[운영자]식당 관리페이지</a><br>
   <hr>
   <a href="/deliveryDtl?order_seq=17">[배달기사]고객배달영수증</a><br>
   <a href="/account/logout">[유저+오너]로그아웃</a><br>
