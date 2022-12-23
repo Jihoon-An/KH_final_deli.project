@@ -90,6 +90,7 @@ public class AccountController {
                 mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
                 mainAccountService.withdrawal(acc_seq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
                 session.invalidate();
+                break;
 //                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
         }
         return "redirect:/";

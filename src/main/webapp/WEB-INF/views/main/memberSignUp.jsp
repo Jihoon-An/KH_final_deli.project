@@ -31,6 +31,7 @@
     <input type="text" name="acc_token" value="${acc_token}">
 
     <h1>회원가입 추가 정보 입력</h1>
+    스크립트에 카카오 아이디 있으면 회원탈퇴로 안내해주기.
     <a href="/account/kakaoUnLink"><button type="button">그냥 가입안할래요. 연동 해지해주세요.</button></a><br>
     </c:when>
     <c:otherwise>

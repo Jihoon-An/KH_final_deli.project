@@ -1,6 +1,17 @@
-body,main{
-    background-color: #2d2d33; color: white;
+body {
+    background: #333333;
+    overflow-y: auto;
 }
+
+main {
+    background-color: #FFFFFF;
+    position: relative;
+    margin: 0 auto;
+    min-width: 360px;
+    max-width: 420px;
+    min-height: 100vh;
+}
+
 #home .container{
     width: 375px;
     height: 800px;
