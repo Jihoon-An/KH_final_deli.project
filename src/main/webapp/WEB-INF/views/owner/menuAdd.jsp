@@ -75,7 +75,7 @@
                     </select>
                     <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group" class="opgroup"><br>
                     <div class="group">
-                        <div class="option_div">
+                        <div class="optionName_div">
                             <input type="text" placeholder="옵션명을 입력하세요" name="option_name" class="opname">
                             <input type="text" placeholder="옵션가격을 입력하세요" name="option_price" class="opprice"></div>
                         <button type="button" class="btn_opnameadd">+</button>
@@ -95,7 +95,7 @@
                     </select>
                     <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group" class="opgroup"><br>
                     <div class="group">
-                        <div class="option_div">
+                        <div class="optionName_div">
                             <input type="text" placeholder="옵션명을 입력하세요" name="option_name" class="opname">
                             <input type="text" placeholder="옵션가격을 입력하세요" name="option_price" class="opprice">
                         </div>
