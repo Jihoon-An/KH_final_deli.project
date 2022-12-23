@@ -76,4 +76,22 @@ public class StoreBasketService {
                 .totalPrice(dto.getTotalPrice())
                 .build();
     }
+
+    public List<BasketMenu> basketMenuListDtoToObject(List<StoreBasketMenuRequestDTO> basketDtoList) {
+        List<BasketMenu> newBasketMenuList = new ArrayList<>();
+
+        for (StoreBasketMenuRequestDTO basketDto : basketDtoList) {
+            List<MenuOptionDTO> options = basketService.optionSeqListToObject(basketDto.getOptionSeqList());
+
+            MenuDTO menu = menuService.findBySeq(basketDto.getMenuSeq());
+
+            newBasketMenuList.add(BasketMenu.builder()
+                    .menu(menu)
+                    .optionList(options)
+                    .count(basketDto.getCount())
+                    .price(basketDto.getPrice())
+                    .build());
+        }
+        return newBasketMenuList;
+    }
 }
