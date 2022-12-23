@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class OwnerOwnerService {
     private final OwnerOwnerMapper ownerOwnerMapper;
-    public OwnerDTO bsInfo(int store_seq) throws Exception{
-        return ownerOwnerMapper.bsInfo(store_seq);
+    public OwnerDTO getBsInfo(int store_seq) throws Exception{
+        return ownerOwnerMapper.getBsInfo(store_seq);
     }
 
 }

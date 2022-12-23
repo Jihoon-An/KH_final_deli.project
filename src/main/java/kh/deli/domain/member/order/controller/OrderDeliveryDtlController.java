@@ -32,9 +32,9 @@ public class OrderDeliveryDtlController {
     @RequestMapping("")
     public String toDeliveryDtl(Model model, int order_seq) throws Exception {
 
-        StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
-        OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보
-        PayInfoDTO payInfoDTO=orderOrdersService.payInfo(order_seq); // 결제정보
+        StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
+        OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(order_seq); // 주문자정보
+        PayInfoDTO payInfoDTO=orderOrdersService.getPayInfo(order_seq); // 결제정보
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq); //주문정보
 
         String menu_list = ordersDTO.getMenu_list();

@@ -29,14 +29,13 @@ public class OrdersDetailController {
     private final OrderBasketService orderBasketService;
     private final Gson gson;
     @RequestMapping("")
-    public String storeInfo(Model model, int order_seq) throws Exception{
+    public String getStoreInfo(Model model) throws Exception{
 
-//        order_seq=18;
+       int order_seq=18;
 
-        StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
-        OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보
-//        System.out.println("!!!!!!!!!!!!!!!!!!! :" +ordererInfoDTO.getMem_phone());
-        PayInfoDTO payInfoDTO=orderOrdersService.payInfo(order_seq); // 결제정보
+        StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
+        OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(order_seq); // 주문자정보
+        PayInfoDTO payInfoDTO=orderOrdersService.getPayInfo(order_seq); // 결제정보
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq); //주문정보
 
         String menu_list = ordersDTO.getMenu_list();

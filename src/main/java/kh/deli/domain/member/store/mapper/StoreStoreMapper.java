@@ -17,7 +17,7 @@ public interface StoreStoreMapper {
 
     //가게정보
     @Select("SELECT * FROM STORE WHERE STORE_SEQ =#{store_seq}")
-    StoreDTO storeInfo(int store_seq);
+    StoreDTO getStoreInfo(int store_seq);
 
 
     //식당 삭제

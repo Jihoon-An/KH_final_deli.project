@@ -38,17 +38,17 @@ public class MypageReviewModifyController {
     private final HttpSession session;
     private final Gson gson;
 
-    @RequestMapping()
+    @RequestMapping("")
     public String toModifyReviewForm(Model model) throws Exception {
         int order_seq = 18; //리뷰관리페이지에서
-        int rev_seq = 181;
+        int rev_seq = 181; //리뷰작성하기에서
         int store_seq = 19;
         OrdersDTO orders_dto = reviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = reviewService.selectByReviewSeq(rev_seq);
+
         //내가 주문한 메뉴명 가져오기
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject =(JSONObject)jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
-
         JSONArray jsonArr = (JSONArray) jsonObject.get("menuList"); //menuListarray를 jsonarray에 저장
 
         List<String> menuNameList=new ArrayList<>();
@@ -56,12 +56,10 @@ public class MypageReviewModifyController {
         if (jsonArr.size() > 0) {
 
             for (int i = 0; i < jsonArr.size(); i++) {
-
                 JSONObject jsonObj = (JSONObject)jsonArr.get(i);
                 String menuSeq= jsonObj.get("menuSeq").toString();
                 String menuName=myPageReviewService.selectMenuName(menuSeq);
                 menuNameList.add(menuName);
-
             }
         }
 

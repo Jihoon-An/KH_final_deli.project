@@ -23,12 +23,12 @@ public class StoreInfoController {
     private final StoreReviewService storeReviewService;
 
     @RequestMapping()
-    public String storeInfo(Model model) throws Exception{
+    public String toStoreInfo(Model model) throws Exception{
 
         int store_seq=21; //가게상세메뉴에서 seq
 
-        StoreDTO storeInfoDTO=storeStoreService.storeInfo(store_seq); // 식당정보
-        OwnerDTO ownerInfoDTO=ownerOwnerService.bsInfo(store_seq); // 사업자정보
+        StoreDTO storeInfoDTO=storeStoreService.getStoreInfo(store_seq); // 식당정보
+        OwnerDTO ownerInfoDTO=ownerOwnerService.getBsInfo(store_seq); // 사업자정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); // 식당리뷰개수
         double storeReviewAvg=storeReviewService.getReviewAvg(store_seq);// 식당별점평균
 
