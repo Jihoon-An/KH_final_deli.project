@@ -29,19 +29,14 @@ function updateBasket() {
 
     for (let i = 0; menuBoxCount > i; i++) {
         let inputMenuSeq = $(".menuBox").eq(i).find(".inputMenuSeq").val();
-        console.log(i +" 번 : " + inputMenuSeq);
 
         let inputOptionSeqCount = $(".menuBox").eq(i).children(".inputOptionSeq").length;
-        console.log(i + " 번째 렝스 :  " + inputOptionSeqCount);
         let optionSeqList = [];
         for (let k = 0; inputOptionSeqCount > k; k++) {
             optionSeqList.push($(".menuBox").eq(i).find(".inputOptionSeq").eq(k).val());
-            console.log(i +" "+k+" 번 : " + $(".menuBox").eq(i).find(".inputOptionSeq").eq(k).val());
         }
         let count = $(".menuBox").eq(i).find(".countSpan").html();
         let price = $(".menuBox").eq(i).find(".priceSpan").html();
-        console.log(i +" 번 : " + count);
-        console.log(i +" 번 : " + price);
 
         let basketMenuDTO = new BasketMenuDTO(inputMenuSeq, optionSeqList, count, price);
 
@@ -74,7 +69,7 @@ $(".minus").click(function() {
         // 메뉴 가격
         let menuPrice = parseInt($(this).closest(".menuBox").find(".menuPrice").html());
         // 첫 번째 옵션 가격의 형제들
-        let optionCount = $(this).closest(".menuBox").find(".optionPrice").siblings(".optionPrice");
+        let optionCount = $(this).closest(".menuBox").children(".optionPrice");
         // 메뉴 + 옵션 가격들
         for (let i = 1; optionCount.length >= i; i++){
             menuPrice += parseInt($(this).closest(".menuBox").find(".op"+i).html())
@@ -116,7 +111,7 @@ $(".plus").click(function() {
         // 메뉴 가격
         let menuPrice = parseInt($(this).closest(".menuBox").find(".menuPrice").html());
         // 첫 번째 옵션 가격의 형제들
-        let optionCount = $(this).closest(".menuBox").find(".optionPrice").siblings(".optionPrice");
+        let optionCount = $(this).closest(".menuBox").children(".optionPrice");
         // 메뉴 + 옵션 가격들
         for (let i = 1; optionCount.length >= i; i++) {
             menuPrice += parseInt($(this).closest(".menuBox").find(".op" + i).html())
@@ -170,6 +165,10 @@ $(".deleteBtn").click(function(){
 
     // 장바구니 업데이트
     updateBasket();
+
+    if ($("#container").children(".menuBox").length < 1) {
+        location.reload();
+    }
 });
 
 

@@ -19,29 +19,37 @@
 ### 22-12-15 (목)
 - 일반 회원탈퇴 및 카카오 회원탈퇴 구현
 - 메인페이지 home.jsp 임시 리모트 생성
-- 장바구니 페이지 (<span style="color: yellow">30%</span>) 완성
+- 장바구니 페이지 (<span style="color: yellow">30%</span>)
 ---
 ### 22-12-16
 - 장바구니 수량 + - 기능 구현
-- 장바구니 페이지 (<span style="color: yellow">70%</span>) 완성
+- 장바구니 페이지 (<span style="color: yellow">70%</span>)
 ---
 ### <h3 style="color: #E84C4F">22-12-17 (토)</h3>
 - 장바구니 삭제 기능 구현
-- 장바구니 페이지 (<span style="color: yellow">80%</span>) 완성
+- 장바구니 페이지 (<span style="color: yellow">80%</span>)
 <br>(장바구니 데이터 담기 기능 완성되면 코드 수정 및 완성 예정)
 - 이메일 저장기능 버그 유지보수
-- 일반회원 정보 수정 페이지 (<span style="color: yellow">15%</span>) 완성
+- 일반회원 정보 수정 페이지 (<span style="color: yellow">15%</span>)
 ---
 ### <h3 style="color: #E84C4F">22-12-18 (일)</h3>
-- 일반회원 정보 수정 페이지 (<span style="color: yellow">70%</span>) 완성
+- 일반회원 정보 수정 페이지 (<span style="color: yellow">70%</span>)
 <br>(이메일 인증, 전화번호 인증 기능 완성되면 추가 예정)
 ---
 ### 22-12-19 (월)
-- 비밀번호 변경 (<span style="color: chartreuse">100%</span>) 완성
+- 비밀번호 변경 (<span style="color: chartreuse">100%</span>)
 ---
 ### 22-12-20 (화)
-- 마이페이지 쿠폰, 포인트 페이지 (<span style="color: chartreuse">100%</span>) 완성
+- 마이페이지 쿠폰, 포인트 페이지 (<span style="color: chartreuse">100%</span>)
 - 아이디, 비밀번호 찾기 페이지 생성
 ---
 ### 22-12-21 (수)
-- 아무것도 못했죠 시팔
+- 장바구니 데이터 수정 기능 (<span style="color: yellow">90%</span>)
+---
+### 22-12-22 (목)
+- 장바구니 데이터 수정 기능 (<span style="color: chartreuse">100%</span>)
+- 이메일, 비밀번호 찾기 기능 (<span style="color: chartreuse">100%</span>)
+  - 비밀번호 찾기 기능 -> 임시비밀번호 발급 기능으로 변경 고민
+---
+### 22-12-23 (금)
+- .

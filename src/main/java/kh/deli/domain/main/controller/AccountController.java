@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -114,7 +115,8 @@ public class AccountController {
     }
 
     @RequestMapping("toMemberSignUp")
-    public String toMemberSignUp() throws Exception {
+    public String toMemberSignUp(String kakaoId, Model model) throws Exception {
+        model.addAttribute("acc_token", kakaoId);
         return "main/memberSignUp";
     }
 
@@ -128,15 +130,15 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping("toKakaoSignUp")
-    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
-        model.addAttribute("acc_token", kakaoId);
-        return "main/memberSignUp";
-    }
+//    @RequestMapping("toKakaoSignUp")
+//    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
+//        model.addAttribute("acc_token", kakaoId);
+//        return "main/memberSignUp";
+//    }
 
     @PostMapping("kakaoSignUp")
-    public String kakaoSignUp(AccountDTO accountDTO, MemberDTO memberDTO) throws Exception {
-        mainAccountService.kakaoSignUp(accountDTO);
+    public String kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        mainAccountService.kakaoSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq", accountDTO.getAcc_seq());
@@ -197,6 +199,24 @@ public class AccountController {
     @RequestMapping("/findAccount")
     public String toFindAccountPage() throws Exception {
         return "main/findAccount";
+    }
+
+    @ResponseBody
+    @PostMapping("/findAccount/email")
+    public List<String> findEmail(String phoneNumber) throws Exception {
+        System.out.println(phoneNumber);
+        List<String> email = mainAccountService.findEmailByPhoneNumber(phoneNumber);
+        System.out.println(email);
+        return email;
+    }
+
+    @ResponseBody
+    @PostMapping("/findAccount/passWord")
+    public String findPassWord(String email, String phoneNumber) throws Exception {
+        System.out.println(phoneNumber);
+        String passWord = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
+        System.out.println(passWord);
+        return passWord;
     }
 
 
