@@ -2,8 +2,6 @@ package kh.deli.domain.owner.service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kh.deli.domain.member.store.dto.Basket;
-import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.BasketMenu;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreBasketService;
@@ -36,11 +34,10 @@ public class OwnerOrderMngService {
             String link = "preset link" + orderMngReq.getOrder_seq();
 
             Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-            List<StoreBasketMenuRequestDTO> basketDtoList = gson.fromJson(orderMngReq.getMenu_list(), type);
+            List<StoreBasketMenuRequestDTO> basketMenuDtoList = gson.fromJson(orderMngReq.getMenu_list(), type);
 
-            Basket basket = basketService.basketDtoToObject((BasketDTO) basketDtoList);
-
-            List<BasketMenu> basketMenuList = basketService.basketMenuListDtoToObject(basketDtoList);
+//            Basket basket = basketService.basketDtoToObject();
+            List<BasketMenu> basketMenuList = basketService.basketMenuListDtoToObject(basketMenuDtoList);
 
             List<String> menuStrList = new ArrayList<>();
 

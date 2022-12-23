@@ -34,16 +34,19 @@ public class OrderBasketService {
     public StoreDTO findStoreBySeq(int storeSeq) throws Exception {
         return orderBasketMapper.findStoreBySeq(storeSeq);
     }
+
     public MenuDTO findMenuBySeq(int menuSeq) throws Exception {
         return orderBasketMapper.findMenuBySeq(menuSeq);
     }
+
     public MenuOptionDTO findMenuOptionBySeq(int optionSeq) throws Exception {
         return orderBasketMapper.findMenuOptionBySeq(optionSeq);
     }
 
     public void updateBasketInSession(HttpSession session, String BasketJson) {
         BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
-        Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {}.getType();
+        Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {
+        }.getType();
         basketDTO.setMenuList(gson.fromJson(BasketJson, type));
         session.setAttribute("basket", basketDTO);
     }
@@ -122,10 +125,10 @@ public class OrderBasketService {
             totalPrice += onePrice * menu.getCount();
         }
 
-        return  totalPrice;
+        return totalPrice;
     }
 
-    public int getTotalPriceByMenuList(List<StoreBasketMenuRequestDTO> menuList){
+    public int getTotalPriceByMenuList(List<StoreBasketMenuRequestDTO> menuList) {
         int totalPrice = 0;
 
         for (StoreBasketMenuRequestDTO menu : menuList) {
@@ -135,17 +138,20 @@ public class OrderBasketService {
             totalPrice += menuPrice;
         }
 
-        return  totalPrice;
+        return totalPrice;
     }
 
-    public List<MenuOptionDTO> optionSeqToObject(List<Integer> optionSeqList) {
-        String seqListStr = optionSeqList.toString();
+    public List<MenuOptionDTO> optionSeqListToObject(List<Integer> optionSeqList) {
+        if (optionSeqList.size() > 0) {
+            String seqListStr = optionSeqList.toString();
 
-        seqListStr = seqListStr.replace("[", "(");
-        seqListStr = seqListStr.replace("]", ")");
+            seqListStr = seqListStr.replace("[", "(");
+            seqListStr = seqListStr.replace("]", ")");
 
-        List<MenuOptionDTO> optionsListObject = optionService.seqToObject(seqListStr);
+            List<MenuOptionDTO> optionsListObject = optionService.seqListToObject(seqListStr);
 
-        return optionsListObject;
+            return optionsListObject;
+        }
+        return new ArrayList<>();
     }
 }

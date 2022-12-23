@@ -78,11 +78,20 @@ public class StoreBasketService {
     }
 
     public List<BasketMenu> basketMenuListDtoToObject(List<StoreBasketMenuRequestDTO> basketDtoList) {
-        List<BasketMenu> newBasketMenu = new ArrayList<>();
+        List<BasketMenu> newBasketMenuList = new ArrayList<>();
 
         for (StoreBasketMenuRequestDTO basketDto : basketDtoList) {
-            List<MenuOptionDTO> options = basketService.optionSeqToObject(basketDto.getOptionSeqList());
+            List<MenuOptionDTO> options = basketService.optionSeqListToObject(basketDto.getOptionSeqList());
+
+            MenuDTO menu = menuService.findBySeq(basketDto.getMenuSeq());
+
+            newBasketMenuList.add(BasketMenu.builder()
+                    .menu(menu)
+                    .optionList(options)
+                    .count(basketDto.getCount())
+                    .price(basketDto.getPrice())
+                    .build());
         }
-        return newBasketMenu;
+        return newBasketMenuList;
     }
 }

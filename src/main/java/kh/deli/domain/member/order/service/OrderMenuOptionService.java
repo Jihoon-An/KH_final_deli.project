@@ -22,7 +22,7 @@ public class OrderMenuOptionService {
         return optionMapper.findByMenuSeq(menuSeq);
     }
 
-    public List<MenuOptionDTO> seqToObject(String seqListStr) {
+    public List<MenuOptionDTO> seqListToObject(String seqListStr) {
         Optional<List<MenuOptionDTO>> menuOptionList = Optional.ofNullable(optionMapper.getListBySeq(seqListStr));
         return menuOptionList.orElse(new ArrayList<>());
     }
