@@ -1,9 +1,17 @@
+
+var posY;
+
 // 배송지 모달 열기
 $("#destination_change").click(function (){
     $(".modal").fadeIn();
     $(".modal_destination_add").hide();
     $(".modal_destination_container").show();
+
+    posY = $(window).scrollTop();
+    $("html, body").addClass("not_scroll");
+    $(".cont").css("top",-posY);
 })
+
 
 // 주소지 추가 열기
 $("#destination_add_box_btn").click(function () {
@@ -17,18 +25,20 @@ function closeDestinationAdd () {
 
 // 버튼 누르면 모달닫기
 function closeModal () {
+    $("html, body").removeClass("not_scroll");
+    posY = $(window).scrollTop(posY);
     $(".modal").fadeOut();
 }
 
 // ESC 누르면 Modal 닫기
 $(window).on("keyup", e => {
-    if ($(".modal")[0].style.display == "block" && e.keyCode == 27) { $(".modal").fadeOut(); }
+    if ($(".modal")[0].style.display == "block" && e.keyCode == 27) { closeModal(); }
 });
 
 
 // 창 바깥쪽 클릭하면 Modal 닫기
 $(".modal").on("click", e => {
-    if (e.target.classList.contains("modal")) { $(".modal").fadeOut(); }
+    if (e.target.classList.contains("modal")) { closeModal(); }
 });
 
 

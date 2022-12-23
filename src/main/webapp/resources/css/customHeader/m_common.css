@@ -1,0 +1,19 @@
+body {
+    background: #333333 !important;
+    overflow-y: auto;
+}
+
+main {
+    background-color: #FFFFFF !important;
+    position: relative !important;
+    margin: 0 auto !important;
+    min-width: 360px !important;
+    max-width: 420px !important;
+    min-height: 100vh !important;
+}
+
+.mt70 {
+    height: 70px;
+    margin: 0;
+    padding: 0;
+}

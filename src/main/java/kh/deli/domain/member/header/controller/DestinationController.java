@@ -22,6 +22,7 @@ public class DestinationController {
 
     @RequestMapping("")
     public String selectAll(Model model) throws Exception {
+        System.out.println("A");
         int acc_seq = (Integer) session.getAttribute("acc_seq");
         List<AddressDTO> addressList = destinationService.selectAll(acc_seq);
         model.addAttribute("address_List", addressList);
