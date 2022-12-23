@@ -88,31 +88,37 @@
 // })
 
 
-
 //옵션명추가버튼
-// $(".btn_opnameadd").on("click", function () {
-//
-//     let opadd_box_main = $("<div class='col-12 name_add_box_main'>");
-//     let opadd_box = $("<div class='name_add_box row'>")
-//
-//     opadd_box_main.append(opadd_box)
-//     let delBtn = $("<a>")
-//     delBtn.append("<i class='fa-solid fa-x' style='color:#808080'>");
-//     delBtn.addClass("del").on("click", function () {
-//         $(this).closest(".name_add_box_main").remove();
-//     });
-//     opadd_box.append(delBtn)
-//     opadd_box.append("<div class='text-start' style='width: 350px'> <span style='color: #808080; font - size:x-small'>옵션명</span></div> <input type='text' id='option_name_input' name='option_name' class='option_name option' placeholder='옵션명을 입력하세요' maxlength='20'><div class='text - start' style='width: 350px'><span span style = 'color: #808080; font-size: x-small' > 옵션가격</span ></div > <input type='text' id='option_price_input' name='option_price' class='option_price option' placeholder = '옵션 가격' maxlength = '11' oninput = validNum() > ")
-//
-//     //  $(this).closest(".name_add_box").append("<div class='text-start' style='width: 350px'> <span style='color: #808080; font - size:x-small'>옵션명</span></div> <input type='text' id='option_name_input' name='option_name' class='option_name' placeholder='옵션명을 입력하세요' maxlength='20'><div class='text - start' style='width: 350px'><span span style = 'color: #808080; font-size: x-small' > 옵션가격</span ></div > <input type='text' id='option_price_input' name='option_price' class='option_price'placeholder = '옵션 가격' maxlength = '11' oninput = validNum() > ")
-//
-//     opadd_box_main.hide();
-//     $(".opnamediv").append(opadd_box_main); //버튼뒤에 생성
-//
-//     opadd_box_main.fadeIn(1000);
-// })
+
+$(document).on("click", ".btn_opnameadd", function () {
 
 
+
+
+
+    let opadd_box = $("<div class='option_div_add'>");
+
+    let delBtn = $("<button type='button'>")
+    delBtn.append("X");
+
+
+    delBtn.addClass("del_btn").on("click", function () {
+        $(this).closest(".option_div_add").remove();
+        addBtnCount=addBtnCount-1;
+    });
+    opadd_box.append(delBtn)
+    opadd_box.append("<input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='opname'> <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='opprice'> </div> <br> ")
+
+
+    //  $(this).closest(".name_add_box").append("<div class='text-start' style='width: 350px'> <span style='color: #808080; font - size:x-small'>옵션명</span></div> <input type='text' id='option_name_input' name='option_name' class='option_name' placeholder='옵션명을 입력하세요' maxlength='20'><div class='text - start' style='width: 350px'><span span style = 'color: #808080; font-size: x-small' > 옵션가격</span ></div > <input type='text' id='option_price_input' name='option_price' class='option_price'placeholder = '옵션 가격' maxlength = '11' oninput = validNum() > ")
+
+    opadd_box.hide();
+    $(this).closest(".group").find(".option_div").append(opadd_box);
+    //버튼뒤에 생성
+
+    opadd_box.fadeIn(1000);
+
+})
 
 
 
@@ -121,7 +127,7 @@
 $(".btn_add").on("click", function () {
 
 
-    let selb = $("select[name=option_required] option:selected").val();
+   // let selb = $("select[name=option_required] option:selected").val();
     // let sela = document.querySelectorAll(".required:selected")
     let opgroup = document.querySelectorAll(".opgroup");
     console.log(opgroup)
@@ -171,7 +177,7 @@ $(".btn_add").on("click", function () {
 
                 //메뉴추가
                 $("#frm").attr("action","/menu/add/menuAdd?menu_seq="+menu_seq);
-                $("#frm").submit();
+                  $("#frm").submit();
 
             }
         }
