@@ -28,6 +28,15 @@ public class DestinationController {
         return "/member/header/destination";
     }
 
+    @RequestMapping("click")
+    public String selectBasicsName(Model model) throws Exception {
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        List<AddressDTO> addressList = destinationService.selectAll(acc_seq);
+        String add_name_basics = addressList.get(0).getAdd_name();
+        model.addAttribute("add_name_basics", add_name_basics);
+        return "/customHeader/m_destinationChange";
+    }
+
     @ResponseBody
     @RequestMapping("insert")
     public void insert(AddressDTO addressDTO) throws Exception {
