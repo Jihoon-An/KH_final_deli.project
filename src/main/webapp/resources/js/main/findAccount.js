@@ -254,10 +254,10 @@ function pw_phone_confirm() {
                     $("#passWordBox").append(
                         "<div class='passWordResultBox'>" +
                         "<div class='passWordDiv'>" +
-                        "<span class='passWordResult'>비밀번호 : "+result+"</span>" +
+                        "<span class='passWordResult'>변경된 임시 비밀번호</span>" +
                         "</div>" +
                         "<div class='signUpDateDiv'>" +
-                        "<span class='signUpDateSpan'>가입날짜 : "+"1999.08.26"+"</span>" +
+                        "<span class='signUpDateSpan'>"+result+"</span>" +
                         "</div>" +
                         "</div>"
                     )

@@ -23,7 +23,7 @@ public class StoreMenuOptionService {
     /**
      * @return Map<option_group, options>
      */
-    public Map<String, List<MenuOptionDTO>> toMap (List<MenuOptionDTO> options) {
+    public Map<String, List<MenuOptionDTO>> toMap(List<MenuOptionDTO> options) {
 
         Map<String, List<MenuOptionDTO>> optionGroupMap = new HashMap<>();
 
@@ -43,5 +43,16 @@ public class StoreMenuOptionService {
         }
 
         return optionGroupMap;
+    }
+
+    public List<MenuOptionDTO> parseSeqToObjectList(List<Integer> optionSeqList) {
+
+        String optionSeqListStr = gson.toJson(optionSeqList);
+
+        optionSeqListStr = optionSeqListStr.replace("[","(");
+        optionSeqListStr = optionSeqListStr.replace("[",")");
+
+        Optional<List<MenuOptionDTO>> options = Optional.ofNullable(optionMapper.getList(optionSeqListStr));
+        return options.orElse(new ArrayList<>());
     }
 }

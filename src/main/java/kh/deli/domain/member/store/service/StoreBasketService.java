@@ -2,8 +2,12 @@ package kh.deli.domain.member.store.service;
 
 import com.google.gson.Gson;
 import kh.deli.domain.member.order.service.OrderBasketService;
+import kh.deli.domain.member.store.dto.Basket;
 import kh.deli.domain.member.store.dto.BasketDTO;
+import kh.deli.domain.member.store.dto.BasketMenu;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
+import kh.deli.global.entity.MenuDTO;
+import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.util.checker.Checker;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,9 @@ import java.util.List;
 public class StoreBasketService {
 
     private final OrderBasketService basketService;
+    private final StoreStoreService storeService;
+    private final StoreMenuService menuService;
+    private final StoreMenuOptionService optionService;
     private final Gson gson;
     private final Checker checker;
 
@@ -44,5 +51,29 @@ public class StoreBasketService {
             basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
             session.setAttribute("basket", basket);
         }
+    }
+
+    public Basket basketDtoToObject(BasketDTO dto) {
+
+        List<BasketMenu> basketMenus = new ArrayList<>();
+
+        for (StoreBasketMenuRequestDTO basketMenuSeq : dto.getMenuList()) {
+            MenuDTO menu = menuService.findBySeq(basketMenuSeq.getMenuSeq());
+            List<MenuOptionDTO> options = optionService.parseSeqToObjectList(basketMenuSeq.getOptionSeqList());
+
+            basketMenus.add(BasketMenu.builder()
+                    .menu(menu)
+                    .optionList(options)
+                    .count(basketMenuSeq.getCount())
+                    .price(basketMenuSeq.getPrice())
+                    .build()
+            );
+        }
+
+        return Basket.builder()
+                .store(storeService.findBySeq(dto.getStoreSeq()))
+                .menuList(basketMenus)
+                .totalPrice(dto.getTotalPrice())
+                .build();
     }
 }
