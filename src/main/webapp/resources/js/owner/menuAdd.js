@@ -1,91 +1,33 @@
 
-/* 아래로 옵션추가수정본*/
 
-// $("#addop").on("click", function(){
-//     $("#frm").attr("action", "/menu/add/menuAdd")
-//     $("#frm").submit();
-
-    //  var bsnsarr = [];
-
-    // let b = document.getElementsByClassName("option")
-    // let c = document.getElementsByName("menu_option")
-    // let option_group=document.getElementsByName("option_group");
-    // console.log(option_group.value())
-    // // let bs = document.getElementById("bsnsdata")
-    //  var select = $('input[name=menu_option]:checked').val();
-    //  console.log(select)
-
-    // $.ajax({
-    //     url:"/menu/add/menuAdd",
-    //     type:"post",
-    //     data:{
-    //         option_group:select,
-    //     }
-    // })
-    // for (let i = 0; i < b.length; i++) {
-
-    //     //bsnsarr.push(b[i].value);
-    //  bsnsarr.push(select[i].value);
-    //  bsnsarr.push()
-
-
-    // }
-    //     console.log(bsnsarr)
-
-    //  $(this).closest(".menufrm").find(".option1")
-
-    //     console.log(a);
-// })
 
 //옵션추가
-// var menuOptionCount = 0;
-// //메뉴옵션 박스
-// var addBtnCount = 0;
-// $("#btn_option_add").on("click", function () {
+$(document).on("click", ".btn_option_add", function () {
 
-//     if ($(".option_name").val() != ""
-//         && $(".option_price").val() != ""
 
-//     ) {
 
-//         addBtnCount++;
 
-//         if (addBtnCount < 4) {
-//             let add_box_main = $("<div class='col-12 menu_add_box_main'>");
-//             let add_box = $("<div class='menu_add_box row'>")
-//             add_box_main.append(add_box)
-//             let delBtn = $("<a>")
-//             delBtn.append("<i class='fa-solid fa-x' style='color:#808080'>");
-//             delBtn.addClass("del").on("click", function () {
-//                 $(this).closest(".menu_add_box_main").remove();
-//             });
-//             add_box.append(delBtn);
+    let add_box = $("<div class='option_div_add'>");
 
-//             add_box.append("<p>필수, 선택옵션</p><span><label><input type='radio' class='menu_option' name='option" + ++menuOptionCount + "' value='필수'>필수</label><label><input type='radio' class='menu_option' name='option" + menuOptionCount + "' value='선택'>선택</label></span><input type='text' class='option_group' name='option_group' placeholder='옵션그룹명 입력'><div class='col-12'><div class='text-start' style='width:350px'><span style='color:#808080; font-size:x-small'>옵션명</span></div><input type='text' id='option_name_input' name='option_name' class='option_name' placeholder='옵션명을 입력하세요' maxlength='20'><div class='text-start' style='width:350px'><span style='color:#808080; font-size:x-small'>옵션가격</span></div><input type='text' id='option_price_input' name='option_price' class='option_price' placeholder='옵션가격을 입력하세요' maxlength='15' oninput=validNum()> <div class='opbtn'>  <button type='button' class='btn_outline btn_opnameadd' id='btn_optionname_add'>옵션명추가</button>   <p style='color: #808080;' class='text_mini'>옵션명 추가를 원하시면 버튼을 눌러  추가 정보를 입력해주세요.</p></div>")
 
-//             add_box_main.hide();
+    let delBtn = $("<button type='button'>")
+    delBtn.append("옵션삭제");
 
-//             $(".option1").append(add_box_main); //버튼뒤에 생성
 
-//             add_box_main.fadeIn(1000);
-//         } else {
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: '메뉴옵션 추가 불가',
-//                 text: '더이상의 시설 추가가 불가능합니다. 관리자에게 문의해주세요.',
-//             })
-//             return;
-//         }
+    delBtn.addClass("btn_del_option").on("click", function () {
+        $(this).closest(".option_div_add").remove();
 
-//     } else {
-//         Swal.fire({
-//             icon: 'error',
-//             title: '내용 미입력',
-//             text: '모든 내용을 작성 후 추가해주세요.',
-//         })
-//         return;
-//     }
-// })
+    });
+    add_box.append(delBtn)
+    add_box.append(" <select name='option_required' class='required'> <option value='Y'>필수옵션</option> <option value='N'>선택옵션</option></select><select name='option_multiple' class='opmulti'>  <option value='Y'>중복가능</option><option value='N'>중복불가능</option></select>  <input type='text' placeholder='옵션그룹명을 입력하세요' name='option_group' class='opgroup'><br><div class='group'> <div class='optionName_div'><input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='opname'>  <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='opprice'> </div> <button type='button' class='btn_opnameadd'>옵션명추가</button><br></div></div>")
+
+    add_box.hide();
+
+    $(this).closest(".option_div").find(".option_div2").append(add_box); //버튼뒤에 생성
+
+    add_box.fadeIn(1000);
+
+})
 
 
 //옵션명추가버튼

@@ -23,6 +23,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
+
     <link rel="stylesheet" href="/resources/css/owner/menuAdd.css" type="text/css">
 </head>
 
@@ -61,30 +62,11 @@
                 <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"><br>
                 <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"><br>
                 <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
-                <input type="hidden" name="store_seq" value="34">
+                <input type="hidden" name="store_seq" value="57">
                 <hr>
 
-                <div>
-                    <select name="option_required" class="required">
-                        <option value="Y">필수옵션</option>
-                        <option value="N">선택옵션</option>
-                    </select>
-                    <select name="option_multiple" class="opmulti">
-                        <option value="Y">중복가능</option>
-                        <option value="N">중복불가능</option>
-                    </select>
-                    <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group" class="opgroup"><br>
-                    <div class="group">
-                        <div class="optionName_div">
-                            <input type="text" placeholder="옵션명을 입력하세요" name="option_name" class="opname">
-                            <input type="text" placeholder="옵션가격을 입력하세요" name="option_price" class="opprice"></div>
-                        <button type="button" class="btn_opnameadd">+</button>
-                        <br>
-                    </div>
+                <div class="option_div">
 
-
-                </div>
-                <div>
                     <select name="option_required" class="required">
                         <option value="Y">필수옵션</option>
                         <option value="N">선택옵션</option>
@@ -99,10 +81,34 @@
                             <input type="text" placeholder="옵션명을 입력하세요" name="option_name" class="opname">
                             <input type="text" placeholder="옵션가격을 입력하세요" name="option_price" class="opprice">
                         </div>
-                        <button type="button" class="btn_opnameadd">+</button>
+                        <button type="button" class="btn_opnameadd">옵션명추가</button>
                         <br>
                     </div>
 
+
+                </div>
+                <div class="option_div">
+                    <div class="option_div2">
+                        <select name="option_required" class="required">
+                            <option value="Y">필수옵션</option>
+                            <option value="N">선택옵션</option>
+                        </select>
+                        <select name="option_multiple" class="opmulti">
+                            <option value="Y">중복가능</option>
+                            <option value="N">중복불가능</option>
+                        </select>
+                        <input type="text" placeholder="옵션그룹명을 입력하세요" name="option_group" class="opgroup"><br>
+                        <div class="group">
+                            <div class="optionName_div">
+                                <input type="text" placeholder="옵션명을 입력하세요" name="option_name" class="opname">
+                                <input type="text" placeholder="옵션가격을 입력하세요" name="option_price"
+                                       class="opprice">
+                            </div>
+                            <button type="button" class="btn_opnameadd">옵션명추가</button>
+                            <br>
+                        </div>
+                    </div>
+                    <button type="button" class="btn_option_add" style="float: right">옵션그룹추가</button>
                 </div>
 
             </div>
