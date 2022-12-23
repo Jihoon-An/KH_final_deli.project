@@ -63,7 +63,7 @@ $("#email_certi_btn").on("click", function () {
         }).done(function (result) {
             if (!result) { // 아이디가 존재하지않으므로 사용할 수 있는 경우
                 // 이메일 보내기
-                confirm_text = randomString();
+                confirmText = randomString();
                 sendAuthNum("#email_count");
                 $.ajax({
                     url: "/mailCerti",
@@ -146,7 +146,7 @@ $("#email_confirm_btn").click(function () {
 
 
 function email_confirm() {
-    if ($("#email_confirm_input").val() == confirm_text && $("#email_count").html() != "시간초과") {
+    if ($("#email_confirm_input").val() == confirmText && $("#email_count").html() != "시간초과") {
         $("#email_confirm_input").val("");
         $("#email_msg").html("");
         $("#email_msg").css("color", "#000000");

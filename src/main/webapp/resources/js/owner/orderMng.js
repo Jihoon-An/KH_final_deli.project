@@ -57,3 +57,13 @@ var lang_kor = {
         "sortDescending": " :  내림차순 정렬"
     }
 };
+
+// 상태 바꾸기 버튼 이벤트
+$("#status_btn").click(() => {
+    let newStatus = $("#new_status").val();
+
+    let checkBox = $("tbody .check_box");
+
+    console.log();
+
+});
