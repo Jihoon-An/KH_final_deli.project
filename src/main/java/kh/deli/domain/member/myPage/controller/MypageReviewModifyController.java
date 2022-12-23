@@ -1,13 +1,17 @@
 package kh.deli.domain.member.myPage.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.member.myPage.service.MyPageReviewService;
 import kh.deli.domain.member.order.dto.OrderBasketDTO;
 import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
 import kh.deli.domain.member.order.service.OrderOrdersService;
+import kh.deli.domain.member.store.dto.Basket;
 import kh.deli.domain.member.store.dto.BasketDTO;
+import kh.deli.domain.member.store.dto.BasketMenu;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
+import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
@@ -35,6 +39,7 @@ public class MypageReviewModifyController {
 
     private final MyPageReviewService reviewService;
     private final MyPageReviewService myPageReviewService;
+    private final StoreBasketService storeBasketService;
     private final HttpSession session;
     private final Gson gson;
 
@@ -45,25 +50,24 @@ public class MypageReviewModifyController {
         int store_seq = 19;
         OrdersDTO orders_dto = reviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = reviewService.selectByReviewSeq(rev_seq);
+        StoreDTO store_dto = reviewService.selectByStoreSeq(store_seq);
 
         //내가 주문한 메뉴명 가져오기
         JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject =(JSONObject)jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
-        JSONArray jsonArr = (JSONArray) jsonObject.get("menuList"); //menuListarray를 jsonarray에 저장
+        JSONArray jsonArr = (JSONArray) jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
 
-        List<String> menuNameList=new ArrayList<>();
+        List<String> menuNameList = new ArrayList<>();
 
         if (jsonArr.size() > 0) {
 
             for (int i = 0; i < jsonArr.size(); i++) {
-                JSONObject jsonObj = (JSONObject)jsonArr.get(i);
-                String menuSeq= jsonObj.get("menuSeq").toString();
-                String menuName=myPageReviewService.selectMenuName(menuSeq);
+                JSONObject jsonObj = (JSONObject) jsonArr.get(i);
+                String menuSeq = jsonObj.get("menuSeq").toString();
+                String menuName = myPageReviewService.selectMenuName(menuSeq);
                 menuNameList.add(menuName);
             }
         }
 
-        StoreDTO store_dto = reviewService.selectByStoreSeq(store_seq);
         model.addAttribute("orders_dto", orders_dto);
         model.addAttribute("review_dto", review_dto);
         model.addAttribute("store_dto", store_dto);
@@ -85,9 +89,11 @@ public class MypageReviewModifyController {
         //기존파일 지우기
         List<String> del_files = gson.fromJson(del_files_json, stringInListType);
 
-        for (String del_file : del_files) {
-            fileUtil.delete(session, "/resources/img/review", del_file);
-            newFileList.remove(del_file);
+        if(del_files.size()>0) {
+            for (String del_file : del_files) {
+                fileUtil.delete(session, "/resources/img/review", del_file);
+                newFileList.remove(del_file);
+            }
         }
 
         //새로운 파일 리스트 만들기
