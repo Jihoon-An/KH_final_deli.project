@@ -22,7 +22,7 @@
 
 <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
 
-<%@ include file="/WEB-INF/views/customHeader/nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 
 <main id="memberMain">
     <div class="container">
