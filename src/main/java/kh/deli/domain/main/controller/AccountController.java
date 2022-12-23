@@ -213,10 +213,8 @@ public class AccountController {
     @ResponseBody
     @PostMapping("/findAccount/passWord")
     public String findPassWord(String email, String phoneNumber) throws Exception {
-        System.out.println(phoneNumber);
-        String passWord = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
-        System.out.println(passWord);
-        return passWord;
+        Integer accSeq = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
+        return mainAccountService.modifyPassWordWithRandomCodeBySeq(accSeq);
     }
 
 
