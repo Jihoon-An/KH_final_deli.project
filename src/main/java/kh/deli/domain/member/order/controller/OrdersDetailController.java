@@ -1,6 +1,7 @@
 package kh.deli.domain.member.order.controller;
 
 import com.google.gson.Gson;
+import io.lettuce.core.ScriptOutputType;
 import kh.deli.domain.member.order.dto.*;
 import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.order.service.OrderOrdersService;
@@ -30,10 +31,11 @@ public class OrdersDetailController {
     @RequestMapping("")
     public String storeInfo(Model model, int order_seq) throws Exception{
 
-    //    int order_seq=18;
+//        order_seq=18;
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(order_seq); // 주문자정보
+//        System.out.println("!!!!!!!!!!!!!!!!!!! :" +ordererInfoDTO.getMem_phone());
         PayInfoDTO payInfoDTO=orderOrdersService.payInfo(order_seq); // 결제정보
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq); //주문정보
 

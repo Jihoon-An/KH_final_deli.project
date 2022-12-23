@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="/resources/css/main/memberMain.css" type="text/css">
 </head>
 <body>
-<main id="memberMain">
 
-        <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/nav.jsp" %>
+<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
+
+<main id="memberMain">
 
     <div class="container">
         <table border="1px">

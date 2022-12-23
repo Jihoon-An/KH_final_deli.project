@@ -7,9 +7,13 @@ import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.Encryptor;
+import kh.deli.global.util.GenerateRandomCode;
 import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -20,6 +24,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -28,6 +33,7 @@ import java.util.Random;
 public class MainAccountService {
     private final MainAccountMapper mainAccountMapper;
     private final RestTemplate restTemplate;
+    private final GenerateRandomCode generateRandomCode;
 
     /**
      * <h2>email 중복체크</h2>
@@ -225,12 +231,19 @@ public class MainAccountService {
     /**
      * kakao 회원가입 메서드
      *
-     * @param dto
+     * @param accountDTO
      * @throws Exception
      */
-    public void kakaoSignUp(AccountDTO dto) throws Exception {
-        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
-        mainAccountMapper.kakaoSignUp(dto);
+    @Transactional
+    public void kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        int getNextAccSeq = mainAccountMapper.getNextAccSeq();
+        accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
+        accountDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.kakaoSignUp(accountDTO);
+        memberDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertMember(memberDTO);
+        addressDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertAddress(addressDTO);
     }
 
     public String getAccEmail(String acc_token) {
@@ -262,5 +275,37 @@ public class MainAccountService {
     public String selectType(int acc_seq){
         return mainAccountMapper.selectType(acc_seq);
     }
+
+
+    /**
+     * 이메일 찾기
+     */
+    public List<String> findEmailByPhoneNumber(String phoneNumber) {
+        return mainAccountMapper.findEmailByPhoneNumber(phoneNumber);
+    }
+
+    /**
+     * 비밀번호 찾기
+     */
+    public Integer findPassWordByPhoneNumber(String email, String phoneNumber) {
+        Map<String, String> param = new HashMap<>();
+        param.put("acc_email", email);
+        param.put("mem_phone", phoneNumber);
+        return mainAccountMapper.findSeqByEmailAndPhone(param);
+    }
+
+    public String modifyPassWordWithRandomCodeBySeq(int accSeq) {
+        String randomCode = generateRandomCode.excuteGenerate();
+        Map<String, Object> param = new HashMap<>();
+        param.put("acc_seq", accSeq);
+        param.put("acc_pw", Encryptor.getSHA512(randomCode));
+        mainAccountMapper.modifyPassWordWithRandomCodeBySeq(param);
+        return randomCode;
+    }
+
+
+
+
+
 
 }

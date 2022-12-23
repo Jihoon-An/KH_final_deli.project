@@ -81,10 +81,12 @@ public class MenuAddController {
         return "redirect:/";
     }
 
-    @RequestMapping("/getMenuSeq")
+    @RequestMapping("getMenuSeq")
     @ResponseBody
     public int getMenuSeq() {
         int seq = ownerMenuService.getNextMenuSeq();
+
+        System.out.println("AJAX");
         System.out.println(seq);
         return seq;
     }

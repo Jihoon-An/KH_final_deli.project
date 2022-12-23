@@ -153,6 +153,8 @@ function email_confirm() {
         $("#email_msg").hide();
         $("#email_confirm_box").hide();
         $("#acc_email").attr("disabled",true);
+        let acc_email_val = $("#acc_email").val();
+        $("#acc_email_hidden").val(acc_email_val);
         email_ok = true;
     } else if ($("#email_count").html() == "시간초과") {
         alert("인증을 다시 해주세요");
@@ -162,7 +164,6 @@ function email_confirm() {
         email_ok = false;
     }
 }
-
 
 // 휴대폰번호 - 값 입력 유효성 검사 display
 function phone_check() {
@@ -243,6 +244,8 @@ function phone_confirm() {
                 $("#phone_msg").hide();
                 $("#phone_confirm_box").hide();
                 $("#mem_phone").attr("disabled", true);
+                let mem_phone_val = $("#mem_phone").val();
+                $("#mem_phone_hidden").val(mem_phone_val);
                 phone_ok = true;
             } else if ($("#phone_count").html() == "시간초과") {
                 alert("인증을 다시 해주세요");

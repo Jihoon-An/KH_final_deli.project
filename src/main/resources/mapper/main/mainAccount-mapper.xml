@@ -45,7 +45,7 @@
         null,
         null,
         'normal',
-        null
+        0
         )
     </insert>
     <insert id="insertAddress" parameterType="kh.deli.global.entity.AddressDTO">
