@@ -27,8 +27,8 @@ public class MyPageReviewViewController {
     private final HttpSession session;
 
     @RequestMapping("")
-    public String toMemberMain(Model model) throws Exception {
-        int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
+    public String toMemberMain(int order_seq,Model model) throws Exception {
+        //int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
         OrdersDTO dto = myPageReviewService.selectByOrderSeq(order_seq);
 
         JSONParser jsonParser = new JSONParser();

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>찜</title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
@@ -26,7 +27,7 @@
         <div>
             <c:choose>
                 <c:when test="${not empty list}">
-                    <c:forEach var="i" items="${list}" varStatus="status">
+                    <c:forEach var="i" items="${list}">
                         <c:choose>
                             <c:when test="${i.STORE_LOGO !=null}">
                                 <div>
