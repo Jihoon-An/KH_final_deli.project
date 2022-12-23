@@ -25,6 +25,6 @@ class CommonRestControllerTest {
         list.add(3);
         list.add(4);
 
-        System.out.println(gson.toJson(list));
+        System.out.println(list.toString());
     }
 }
