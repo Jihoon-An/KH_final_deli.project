@@ -1,10 +1,7 @@
 #storeSearch .container {
-    width: 375px;
-    height: 800px;
+    width: 360px;
     border: 1px solid black;
-    margin: auto;
     text-align: center;
-    padding-top: 50px;
 }
 
 #storeSearch .filter {

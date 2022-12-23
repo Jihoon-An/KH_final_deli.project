@@ -9,7 +9,8 @@
 <style>
   #fucking{
     width: 250px;
-    height: fit-content;
+    height: 700px;
+    overflow-y: auto;
     position: absolute;
     top:10px;
     left: 10px;
@@ -20,6 +21,7 @@
     line-height: 30px;
     text-align: center;
     font-size: 13px;
+    z-index: 100;
   }
   #fucking a{
     color: #3e4462;
