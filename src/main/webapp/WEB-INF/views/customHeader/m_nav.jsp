@@ -68,7 +68,7 @@
     </a>
     <a href="/myPage/dibs/">
         <div>
-            <i class="fa-solid fa-inbox"></i>
+            <i class="fa-solid fa-heart"></i>
             <p>찜</p>
         </div>
     </a>

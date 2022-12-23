@@ -4,11 +4,11 @@
     width: 50px;
     position: fixed;
     margin: 0 auto;
-    left: -350px;
+    left: -320px;
     right: 0;
     top: 0;
     height: 50px;
-    padding-top: 15px;
+    padding-top: 16px;
     color: #FFFFFF;
     text-align: center;
   }

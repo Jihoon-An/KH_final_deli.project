@@ -52,8 +52,8 @@ public class StoreSearchController {
         }
 
 
-//        List<AddressDTO> addressList = destinationService.selectAll(acc_seq);
-//        model.addAttribute("address_List", addressList);
+        List<AddressDTO> addressList = destinationService.selectAll(acc_seq);
+        model.addAttribute("address_List", addressList);
 
         model.addAttribute("store_list", storeList);
         model.addAttribute("menu_list", menuList);
