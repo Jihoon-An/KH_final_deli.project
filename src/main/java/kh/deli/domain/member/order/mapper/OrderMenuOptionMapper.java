@@ -14,4 +14,7 @@ public interface OrderMenuOptionMapper {
 
     @Select("SELECT * FROM MENU_OPTION WHERE MENU_SEQ = ${menu_seq}")
     List<MenuOptionDTO> findByMenuSeq(@Param("menu_seq") int menuSeq);
+
+    @Select("SELECT * FROM MENU_OPTION WHERE OPTION_SEQ IN ${seqListStr}")
+    List<MenuOptionDTO> getListBySeq(@Param("seqListStr") String seqListStr);
 }

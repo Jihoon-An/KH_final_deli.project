@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>회원 메인페이지</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
@@ -19,33 +20,63 @@
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/customHeader/nav.jsp" %>
 <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
 
-<main id="memberMain">
+<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 
+<main id="memberMain">
     <div class="container">
         <table border="1px">
             <tr>
-                <td><a><img src="/resources/img/memberMain/korean.png" class="categoryIcon"><div>한식</div></a></td>
-                <td><a><img src="/resources/img/memberMain/bunsik.png" class="categoryIcon"> <div>분식</div></a></td>
-                <td><a><img src="/resources/img/memberMain/jjim.png" class="categoryIcon"><div>찜</div></a></td>
-                <td><a><img src="/resources/img/memberMain/chicken.png" class="categoryIcon"><div>치킨</div></a></td>
-                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon"><div>도시락</div></a></td>
+                <td><a><img src="/resources/img/memberMain/korean.png" class="categoryIcon">
+                    <div>한식</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/bunsik.png" class="categoryIcon">
+                    <div>분식</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/jjim.png" class="categoryIcon">
+                    <div>찜</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/chicken.png" class="categoryIcon">
+                    <div>치킨</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon">
+                    <div>도시락</div>
+                </a></td>
             </tr>
             <tr>
-                <td><a><img src="/resources/img/memberMain/china.png" class="categoryIcon"><div>중식</div></a></td>
-                <td><a><img src="/resources/img/memberMain/japan.png" class="categoryIcon"><div>일식</div></a></td>
-                <td><a><img src="/resources/img/memberMain/western.png" class="categoryIcon"><div>양식</div></a></td>
-                <td><a><img src="/resources/img/memberMain/pizza.png" class="categoryIcon"><div>피자</div></a></td>
-                <td><a><img src="/resources/img/memberMain/burger.png" class="categoryIcon"><div>버거</div></a></td>
+                <td><a><img src="/resources/img/memberMain/china.png" class="categoryIcon">
+                    <div>중식</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/japan.png" class="categoryIcon">
+                    <div>일식</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/western.png" class="categoryIcon">
+                    <div>양식</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/pizza.png" class="categoryIcon">
+                    <div>피자</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/burger.png" class="categoryIcon">
+                    <div>버거</div>
+                </a></td>
             </tr>
             <tr>
-                <td><a><img src="/resources/img/memberMain/salad.png" class="categoryIcon"><div>샐러드</div></a></td>
-                <td><a><img src="/resources/img/memberMain/cafe.png" class="categoryIcon"><div>카페</div></a></td>
-                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon"><div>도시락</div></a></td>
-                <td><a><img src="/resources/img/memberMain/franchise.png" class="categoryIcon"><div>프랜차이즈</div></a></td>
-                <td><a><img src="/resources/img/memberMain/newstore.png" class="categoryIcon"><div>신규맛집</div></a></td>
+                <td><a><img src="/resources/img/memberMain/salad.png" class="categoryIcon">
+                    <div>샐러드</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/cafe.png" class="categoryIcon">
+                    <div>카페</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon">
+                    <div>도시락</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/franchise.png" class="categoryIcon">
+                    <div>프랜차이즈</div>
+                </a></td>
+                <td><a><img src="/resources/img/memberMain/newstore.png" class="categoryIcon">
+                    <div>신규맛집</div>
+                </a></td>
             </tr>
         </table>
         <c:choose>
@@ -78,7 +109,8 @@
                             <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
                             <div class="menu_name">
                                 메뉴명:
-                                <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}" varStatus="status2">
+                                <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}"
+                                           varStatus="status2">
                                     ${menu_list}<c:if test="${!status2.last}">, </c:if>
                                 </c:forEach>
                             </div>
@@ -88,6 +120,16 @@
             </c:when>
             <c:otherwise>
                 <div>근처에 주문할 수 있는 가게가 없습니다.</div>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
             </c:otherwise>
         </c:choose>
     </div>

@@ -1,8 +1,7 @@
 #memberMain .container{
-    width: 375px;
-    border: 1px solid black;
+    width:360px;
+    border: 1px solid #000000;
     margin: auto;
-    height: 100%;
     background-color: #FFFFFF;
 }
 
@@ -15,3 +14,4 @@
     width: 50px;
     height: 50px;
 }
+

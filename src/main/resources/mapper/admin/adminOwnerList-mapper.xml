@@ -12,6 +12,15 @@
         from store group by owner_seq) c on o.owner_seq=c.owner_Seq order by acc_signupdate desc
     </select>
 
+    <select id="selectStoreSeq" resultType="int">
+        select store_seq from store where owner_seq = ${owner_seq}
+    </select>
+
+    <select id="selectMenuSeq" resultType="int">
+        select menu_seq from menu where store_seq = ${store_seq}
+    </select>
+
+
 
 
 

@@ -1,14 +1,17 @@
 package kh.deli.domain.owner.service;
 
 import com.google.gson.Gson;
-import kh.deli.domain.member.store.dto.Basket;
-import kh.deli.domain.member.store.dto.BasketDTO;
+import com.google.gson.reflect.TypeToken;
+import kh.deli.domain.member.store.dto.BasketMenu;
+import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.domain.owner.dto.OwnerOrderMngRequestDTO;
 import kh.deli.domain.owner.dto.OwnerOrderMngResponseDTO;
+import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +30,30 @@ public class OwnerOrderMngService {
 
         for (OwnerOrderMngRequestDTO orderMngReq : orderMngReqList) {
             String address = orderMngReq.getAdd_detail1() + " " + orderMngReq.getAdd_detail2();
+
             String link = "preset link" + orderMngReq.getOrder_seq();
 
-            BasketDTO basketDto = gson.fromJson(orderMngReq.getMenu_list(), BasketDTO.class);
-            Basket basket = basketService.basketDtoToObject(basketDto);
+            Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+            List<StoreBasketMenuRequestDTO> basketMenuDtoList = gson.fromJson(orderMngReq.getMenu_list(), type);
 
+//            Basket basket = basketService.basketDtoToObject();
+            List<BasketMenu> basketMenuList = basketService.basketMenuListDtoToObject(basketMenuDtoList);
 
+            List<String> menuStrList = new ArrayList<>();
 
-            List<String> menuStrList = new ArrayList<>();//////////
+            // 메뉴명 및 옵션 String 만들기
+            for (BasketMenu basketMenu : basketMenuList) {
+                StringBuilder menuStr = new StringBuilder();
+
+                menuStr.append(basketMenu.getMenu().getMenu_name());
+                menuStr.append(" : 3개 - ");
+
+                for (MenuOptionDTO option : basketMenu.getOptionList()) {
+                    menuStr.append(option.getOption_name()+" ");
+                }
+
+                menuStrList.add(menuStr.toString());
+            }
 
             orderMngList.add(
                     OwnerOrderMngResponseDTO.builder()

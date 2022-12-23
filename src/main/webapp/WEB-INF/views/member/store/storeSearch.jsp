@@ -27,11 +27,27 @@
 
     <!-- StyleSheet-->
     <link rel="stylesheet" href="/resources/css/member/store/storeSearch.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
+
 </head>
 <body>
 
+<%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
+<jsp:include page="/member/header/destination/click" />
+<%--<%@ include file="/WEB-INF/views/customHeader/m_destinationChange.jsp" %>--%>
+<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+
+
+<c:import url="/member/header/destination" />
+
+<%--<jsp:include page="/member/header/destination"/>--%>
+
 
 <main id="storeSearch">
+    <hr class="mt70">
     <div class="container">
         <form action="/store/search">
             <input type="text" placeholder="검색해라" name="search">

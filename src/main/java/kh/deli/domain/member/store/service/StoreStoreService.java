@@ -5,6 +5,8 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class StoreStoreService {
@@ -28,7 +30,7 @@ public class StoreStoreService {
 
 
     public StoreDTO findBySeq(int seq) {
-        StoreDTO store = storeMapper.findBySeq(seq);
-        return store;
+        Optional<StoreDTO> store = Optional.ofNullable(storeMapper.findBySeq(seq));
+        return store.orElse(new StoreDTO());
     }
 }
