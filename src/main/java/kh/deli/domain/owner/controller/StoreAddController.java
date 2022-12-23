@@ -45,7 +45,7 @@ public class StoreAddController {
 
        // int owner_Seq = (Integer) session.getAttribute("owner_seq");
      
-        int owner_Seq=14;
+        int owner_Seq=12;
         dto.setOwner_seq(owner_Seq);  //임시
 
         String realPath=session.getServletContext().getRealPath("/resources/img/store");
