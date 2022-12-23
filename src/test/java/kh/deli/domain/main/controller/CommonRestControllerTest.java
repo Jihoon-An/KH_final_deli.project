@@ -1,12 +1,10 @@
 package kh.deli.domain.main.controller;
 
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 //@SpringBootTest
@@ -20,17 +18,13 @@ class CommonRestControllerTest {
     @Test
     void timeTest() throws ParseException {
 
-        Logger log = LoggerFactory.getLogger(CommonRestControllerTest.class);
+        Gson gson = new Gson();
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
 
-        String timeJson = "9:48";
-
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-
-        Date now = new Date(System.currentTimeMillis());
-        Date time = formatter.parse(timeJson);
-
-        List<String> weekList = List.of("sun", "mon", "tue", "wed", "thu", "fri", "sat");
-
-        System.out.println(weekList);
+        System.out.println(gson.toJson(list));
     }
 }
