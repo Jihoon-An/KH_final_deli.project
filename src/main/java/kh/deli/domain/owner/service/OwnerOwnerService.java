@@ -5,6 +5,8 @@ import kh.deli.global.entity.OwnerDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class OwnerOwnerService {
@@ -13,4 +15,8 @@ public class OwnerOwnerService {
         return ownerOwnerMapper.bsInfo(store_seq);
     }
 
+    public int convertAccSeqToOwnerSeq(int ownerAccSeq) {
+        Optional<Integer> ownerSeq = Optional.ofNullable(ownerOwnerMapper.getOwnerSeqByAcc(ownerAccSeq));
+        return ownerSeq.orElse(19); //sample data
+    }
 }

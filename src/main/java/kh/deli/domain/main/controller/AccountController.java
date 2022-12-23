@@ -90,6 +90,7 @@ public class AccountController {
                 mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
                 mainAccountService.withdrawal(acc_seq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
                 session.invalidate();
+                break;
 //                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
         }
         return "redirect:/";
@@ -213,10 +214,8 @@ public class AccountController {
     @ResponseBody
     @PostMapping("/findAccount/passWord")
     public String findPassWord(String email, String phoneNumber) throws Exception {
-        System.out.println(phoneNumber);
-        String passWord = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
-        System.out.println(passWord);
-        return passWord;
+        Integer accSeq = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
+        return mainAccountService.modifyPassWordWithRandomCodeBySeq(accSeq);
     }
 
 

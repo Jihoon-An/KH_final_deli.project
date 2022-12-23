@@ -24,13 +24,13 @@
 
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-
++
     <!-- StyleSheet-->
     <link rel="stylesheet" href="/resources/css/member/store/storeSearch.css" type="text/css">
 </head>
 <body>
 
-
+<%@ include file="/WEB-INF/views/customHeader/nav.jsp" %>
 <main id="storeSearch">
     <div class="container">
         <form action="/store/search">

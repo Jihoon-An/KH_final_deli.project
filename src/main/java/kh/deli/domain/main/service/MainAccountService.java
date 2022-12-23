@@ -7,6 +7,7 @@ import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.Encryptor;
+import kh.deli.global.util.GenerateRandomCode;
 import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -32,6 +33,7 @@ import java.util.Random;
 public class MainAccountService {
     private final MainAccountMapper mainAccountMapper;
     private final RestTemplate restTemplate;
+    private final GenerateRandomCode generateRandomCode;
 
     /**
      * <h2>email 중복체크</h2>
@@ -285,13 +287,21 @@ public class MainAccountService {
     /**
      * 비밀번호 찾기
      */
-    public String findPassWordByPhoneNumber(String email, String phoneNumber) {
+    public Integer findPassWordByPhoneNumber(String email, String phoneNumber) {
         Map<String, String> param = new HashMap<>();
         param.put("acc_email", email);
         param.put("mem_phone", phoneNumber);
-        return mainAccountMapper.findPassWordByPhoneNumber(param);
+        return mainAccountMapper.findSeqByEmailAndPhone(param);
     }
 
+    public String modifyPassWordWithRandomCodeBySeq(int accSeq) {
+        String randomCode = generateRandomCode.excuteGenerate();
+        Map<String, Object> param = new HashMap<>();
+        param.put("acc_seq", accSeq);
+        param.put("acc_pw", Encryptor.getSHA512(randomCode));
+        mainAccountMapper.modifyPassWordWithRandomCodeBySeq(param);
+        return randomCode;
+    }
 
 
 
