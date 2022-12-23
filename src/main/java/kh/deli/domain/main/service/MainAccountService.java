@@ -294,6 +294,10 @@ public class MainAccountService {
         return mainAccountMapper.findSeqByEmailAndPhone(param);
     }
 
+    /**
+     * 임시 비밀번호 발급
+     * @return 변경된 임시 비밀번호
+     */
     public String modifyPassWordWithRandomCodeBySeq(int accSeq) {
         String randomCode = generateRandomCode.excuteGenerate();
         Map<String, Object> param = new HashMap<>();
