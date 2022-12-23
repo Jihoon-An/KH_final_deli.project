@@ -76,4 +76,13 @@ public class StoreBasketService {
                 .totalPrice(dto.getTotalPrice())
                 .build();
     }
+
+    public List<BasketMenu> basketMenuListDtoToObject(List<StoreBasketMenuRequestDTO> basketDtoList) {
+        List<BasketMenu> newBasketMenu = new ArrayList<>();
+
+        for (StoreBasketMenuRequestDTO basketDto : basketDtoList) {
+            List<MenuOptionDTO> options = basketService.optionSeqToObject(basketDto.getOptionSeqList());
+        }
+        return newBasketMenu;
+    }
 }

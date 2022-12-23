@@ -48,9 +48,6 @@ public class OrderBasketService {
         session.setAttribute("basket", basketDTO);
     }
 
-
-
-    
     public void insertSampleBasket(String orderBasketDTO) throws Exception {
         orderOrdersMapper.insertSampleBasket(orderBasketDTO);
     }
@@ -139,5 +136,16 @@ public class OrderBasketService {
         }
 
         return  totalPrice;
+    }
+
+    public List<MenuOptionDTO> optionSeqToObject(List<Integer> optionSeqList) {
+        String seqListStr = optionSeqList.toString();
+
+        seqListStr = seqListStr.replace("[", "(");
+        seqListStr = seqListStr.replace("]", ")");
+
+        List<MenuOptionDTO> optionsListObject = optionService.seqToObject(seqListStr);
+
+        return optionsListObject;
     }
 }

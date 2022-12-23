@@ -15,7 +15,7 @@ public class OwnerOrderMngRequestDTO {
     private Integer order_seq;
     private String order_status;
     private String mem_name;
-    private String menu_list; //json
+    private String menu_list; //json from List<StoreBasketMenuRequestDTO>
     private String add_detail1;
     private String add_detail2;
     private String mem_phone;
