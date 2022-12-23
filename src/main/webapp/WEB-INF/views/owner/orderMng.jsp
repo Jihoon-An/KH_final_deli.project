@@ -26,7 +26,8 @@
             crossorigin="anonymous"></script>
 
     <%--data tables--%>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
@@ -39,6 +40,32 @@
 </head>
 <body>
 <main id="order_mng" class="container">
+<%--한줄의 요약해서 보이고 줄을 넘어가는 거는 ... 처리하고 마우스를 올리면 다 보이는 형태,
+storeSeq가 다른 링크를 달아서 매장마다 관리할 수 있도록 함.--%>
+
+    <table id="order_table" class="table table-borded">
+        <thead>
+        <tr>
+            <td>상태</td>
+            <td>주문자이름</td>
+            <td>메뉴</td>
+            <td>배송지</td>
+            <td>배송링크</td>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="order" items="${orders}">
+            <tr>
+                <input type="hidden" class="">
+                <td>${order.order_status}</td>
+                <td>${order.}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
 </main>
 

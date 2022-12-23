@@ -1,16 +1,13 @@
 package kh.deli.domain.owner.mapper;
 
-import kh.deli.domain.member.order.dto.OrderBasketMenuDTO;
-import kh.deli.global.entity.MenuDTO;
-import kh.deli.global.entity.OwnerDTO;
+import kh.deli.domain.owner.dto.StoreNameAndSeqRequestDTO;
 import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 @Mapper
@@ -24,4 +21,9 @@ public interface OwnerStoreMapper {
     //식당 수정
     void modifyStore(StoreDTO storeDTO);
 
+    @Select("SELECT STORE_NAME, STORE_SEQ FROM STORE WHERE OWNER_SEQ = #{ownerSeq}")
+    List<StoreNameAndSeqRequestDTO> getSeqAndNameListByOwnerAccSeq(@Param("ownerSeq") int ownerSeq);
+
+    @Select("SELECT OWNER_SEQ FROM STORE WHERE STORE_SEQ = #{storeSeq}")
+    Integer getOwnerByStore(@Param("storeSeq") int storeSeq);
 }
