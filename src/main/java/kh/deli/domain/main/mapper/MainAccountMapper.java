@@ -3,12 +3,10 @@ package kh.deli.domain.main.mapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -51,4 +49,16 @@ public interface MainAccountMapper {
     //MemberMainPage
     @Select("select acc_type from account where acc_seq=#{acc_seq}")
     String selectType (int acc_seq);
+
+    @Select("SELECT ACC_EMAIL FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ WHERE M.MEM_PHONE = #{mem_phone}")
+    List<String> findEmailByPhoneNumber(@Param("mem_phone") String phoneNumber);
+
+    @Select("SELECT A.ACC_SEQ " +
+            "FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ " +
+            "WHERE A.ACC_EMAIL = #{acc_email} and M.MEM_PHONE = #{mem_phone}")
+    Integer findSeqByEmailAndPhone(Map<String, String> param);
+
+    @Update("UPDATE ACCOUNT SET ACC_PW = #{acc_pw} WHERE ACC_SEQ = #{acc_seq}")
+    void modifyPassWordWithRandomCodeBySeq(Map<String, Object> param);
+
 }

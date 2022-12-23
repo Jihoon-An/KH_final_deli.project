@@ -15,6 +15,7 @@ import kh.deli.global.util.naverSensV2.NaverNShortURL;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -29,8 +30,9 @@ public class OrderDeliveryDtlController {
     private final OrderBasketService orderBasketService;
     private final Gson gson;
 
-    @RequestMapping("")
-    public String toDeliveryDtl(Model model, int order_seq) throws Exception {
+    @RequestMapping("{orderSeq}")
+    public String toDeliveryDtl(Model model, @PathVariable int orderSeq) throws Exception {
+
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(order_seq); // 주문자정보
