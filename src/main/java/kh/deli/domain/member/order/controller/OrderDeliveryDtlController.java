@@ -33,9 +33,10 @@ public class OrderDeliveryDtlController {
     @RequestMapping("{orderSeq}")
     public String toDeliveryDtl(Model model, @PathVariable int orderSeq) throws Exception {
 
-        StoreInfoDTO storeInfoDTO = orderOrdersService.storeInfo(orderSeq); // 가게정보
-        OrdererInfoDTO ordererInfoDTO =orderOrdersService.ordererInfo(orderSeq); // 주문자정보
-        PayInfoDTO payInfoDTO=orderOrdersService.payInfo(orderSeq); // 결제정보
+
+        StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(orderSeq); // 가게정보
+        OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(orderSeq); // 주문자정보
+        PayInfoDTO payInfoDTO=orderOrdersService.getPayInfo(orderSeq); // 결제정보
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(orderSeq); //주문정보
 
         String menu_list = ordersDTO.getMenu_list();

@@ -38,7 +38,7 @@
         <c:if test="${not empty nev_list}">
             <c:forEach var="sysName" items="${nev_list}">
                 <tr>
-                    <td class="mem_name">${sysName.mem_name}</td>
+                    <td class="mem_name">${sysName.mem_nick}</td>
                     <td class="rev_content">${sysName.rev_content}</td>
                     <td class="store_name">${sysName.store_name}</td>
                     <td class="rev_writedate">

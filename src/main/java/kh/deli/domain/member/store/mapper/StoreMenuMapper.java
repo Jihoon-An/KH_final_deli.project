@@ -17,10 +17,10 @@ public interface StoreMenuMapper {
     public void insertMenu(MenuDTO dto);
 
     @Select("SELECT DISTINCT MENU_GROUP FROM MENU WHERE STORE_SEQ=#{store_seq}")
-    List<String> menuInfo(@Param("store_seq") int store_seq);
+    List<String> getMenuInfo(@Param("store_seq") int store_seq);
 
     @Select("SELECT * FROM MENU WHERE MENU_GROUP=#{menu_group} AND STORE_SEQ=#{store_seq}")
-    List<MenuDTO> menuList(Map<String, Object> param);
+    List<MenuDTO> getMenuList(Map<String, Object> param);
 
     @Select("SELECT * FROM MENU WHERE MENU_SEQ = #{seq}")
     public MenuDTO findBySeq(int seq);

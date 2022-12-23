@@ -28,7 +28,7 @@ public class StoreMngController {
     @RequestMapping()
     public String toStoreMng(Model model) throws Exception {
         int store_seq = 33;
-        StoreDTO store = storeStoreService.storeInfo(store_seq); // 식당정보
+        StoreDTO store = storeStoreService.getStoreInfo(store_seq); // 식당정보
 
         //식당 영업시간
         Map<String, Object> storeBsnsHours = new HashMap<>();

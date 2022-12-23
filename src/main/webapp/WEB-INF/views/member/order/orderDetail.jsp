@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>memberOrder</title>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -32,12 +33,14 @@
         <h3>주문내역</h3>
         <div>
 
-            <c:forEach var="menuList" items="${orderDetailDTOList}">
+            <c:forEach var="menuList" items="${basketMenu}">
                 <div class="menuBox">
-                    메뉴 : ${menuList.menuDTO.menu_name} <br>
-                    <c:forEach var="optionList" items="${menuList.menuOptionDTO}">
+                    메뉴 : ${menuList.menu.menu_name} <br>
+                    <c:forEach var="optionList" items="${menuList.optionList}">
                         그룹 : ${optionList.option_group}<br>
-                        옵션 : ${optionList.option_name} <br><br>
+                        옵션 : ${optionList.option_name} <br>
+                        옵션 수량 : ${optionList.option_multiple} <br>
+                        가격 : ${optionList.option_price} <br><br>
                     </c:forEach>
                     ${menuList.count}개<br>
                     ${menuList.price}원
