@@ -61,9 +61,31 @@ var lang_kor = {
 // 상태 바꾸기 버튼 이벤트
 $("#status_btn").click(() => {
     let newStatus = $("#new_status").val();
-
     let checkBox = $("tbody .check_box");
+    let checkedSeqList = new Array();
 
-    console.log();
+    for (let i = 0; i < checkBox.length; i++) {
+        let checked = $(checkBox[i]).find('input').is(':checked');
 
+        // 태그내용 변경, 변경 seq 저장
+        if (checked){
+            $(checkBox[i]).closest("tr").find(".status").html(newStatus);
+            $(checkBox[i]).find('input').val(false);
+
+            checkedSeqList.push(parseInt($(checkBox[i]).closest("tr").find(".order_seq").val()));
+        }
+    }
+
+    //DB변경 요청
+    $.ajax({
+        url: "/owner/order/updateStatus",
+        type: "post",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify({
+            checkedSeqListJson: JSON.stringify(checkedSeqList),
+            newStatus: newStatus
+        })
+    }).done(function () {
+        location.reload();
+    });
 });
