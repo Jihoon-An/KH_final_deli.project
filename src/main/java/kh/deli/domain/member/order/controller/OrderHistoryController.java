@@ -17,6 +17,7 @@ import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.order.service.OrderHistoryService;
 import kh.deli.domain.member.order.service.OrderOrdersService;
 import kh.deli.domain.member.store.dto.BasketDTO;
+import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.OrdersDTO;
@@ -27,9 +28,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +52,7 @@ public class OrderHistoryController {
     private final OrderOrdersService orderOrdersService;
     private final OrderBasketService orderBasketService;
     private final Gson gson;
+    private final StoreBasketService storeBasketService;
     @RequestMapping("history")
     public String history(Model model) throws Exception {
 
@@ -56,32 +60,46 @@ public class OrderHistoryController {
         int acc_seq=31;//임시
         List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
 
-        BasketDTO basket = new BasketDTO();
-        for(int i = 0; i<menuList.size(); i++) {
-            String menu_list = menuList.get(i).getMenu_list();
-             basket = gson.fromJson(menu_list, BasketDTO.class);
+
+        for(int i =0; i<menuList.size(); i++){
+         String s=   menuList.get(i).getMenu_list();
+            storeBasketService.basketMenuListDtoToObject()
         }
 
-        List<OrderDetailDTO> orderDetailDTOList = new ArrayList<>();
 
-        for(int i = 0; i< basket.getMenuList().size(); i++){
-            MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
-            List<MenuOptionDTO> menuOptionDTOList = new ArrayList<>();
-//            for (int k = 0; basket.getMenuList().get(i).getOptionSeqList().size() > k; k++) {
-//                MenuOptionDTO menuOptionDTO = orderBasketService.findMenuOptionBySeq(basket.getMenuList().get(i).getOptionSeqList().get(k));
-//                menuOptionDTOList.add(menuOptionDTO);
-//            }
-            int count = basket.getMenuList().get(i).getCount();
-            int price = basket.getMenuList().get(i).getPrice();
 
-//            System.out.println(menuDTO.getMenu_name());
-//            System.out.println(menuDTO.getMenu_price());
-//            System.out.println(count);
 
-            OrderDetailDTO orderDetailDTO = new OrderDetailDTO(menuDTO, menuOptionDTOList, count, price);
 
-            orderDetailDTOList.add(orderDetailDTO);
-        }
+//        BasketDTO basket = new BasketDTO();
+//        for(int i = 0; i<menuList.size(); i++) {
+//            String menu_list = menuList.get(i).getMenu_list();
+//             basket = gson.fromJson(menu_list, BasketDTO.class);
+//        }
+
+
+
+//        List<OrderDetailDTO> orderDetailDTOList = new ArrayList<>();
+//
+//        for(int i = 0; i< basket.getMenuList().size(); i++){
+//            MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
+//            List<MenuOptionDTO> menuOptionDTOList = new ArrayList<>();
+////            for (int k = 0; basket.getMenuList().get(i).getOptionSeqList().size() > k; k++) {
+////                MenuOptionDTO menuOptionDTO = orderBasketService.findMenuOptionBySeq(basket.getMenuList().get(i).getOptionSeqList().get(k));
+////                menuOptionDTOList.add(menuOptionDTO);
+////            }
+//            int count = basket.getMenuList().get(i).getCount();
+//            int price = basket.getMenuList().get(i).getPrice();
+//
+////            System.out.println(menuDTO.getMenu_name());
+////            System.out.println(menuDTO.getMenu_price());
+////            System.out.println(count);
+//
+//            OrderDetailDTO orderDetailDTO = new OrderDetailDTO(menuDTO, menuOptionDTOList, count, price);
+//
+//            orderDetailDTOList.add(orderDetailDTO);
+//        }
+//
+        /////////////////////
 
         //        for(int i = 0; i< basket.getMenuList().size(); i++){
 //            MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
