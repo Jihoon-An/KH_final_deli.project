@@ -58,7 +58,9 @@ var lang_kor = {
     }
 };
 
-// 상태 바꾸기 버튼 이벤트
+/**
+ *상태 바꾸기 버튼 이벤트
+ */
 $("#status_btn").click(() => {
     let newStatus = $("#new_status").val();
     let checkBox = $("tbody .check_box");
@@ -85,7 +87,19 @@ $("#status_btn").click(() => {
             checkedSeqListJson: JSON.stringify(checkedSeqList),
             newStatus: newStatus
         })
-    }).done(function () {
-        location.reload();
     });
+});
+
+/**
+ * 전체 선택
+ */
+$('#all_check').click(function () {
+    if ($('#all_check').is(':checked')) {
+        $('tbody .check_box_input').prop('checked', true);
+    } else {
+        $('tbody .check_box_input').prop('checked', false);
+    }
+});
+$('.check_box_input').click(function () {
+    $('#all_check').prop('checked', false);
 });

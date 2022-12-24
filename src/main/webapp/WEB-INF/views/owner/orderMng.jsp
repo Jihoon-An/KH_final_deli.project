@@ -59,7 +59,7 @@ storeSeq가 다른 링크를 달아서 매장마다 관리할 수 있도록 함.
     <table id="order_table" class="table table-borded">
         <thead>
         <tr>
-            <td class="check_box"><input type="checkbox"></td>
+            <td class="check_box"><input type="checkbox" id="all_check"></td>
             <td class="status">상태</td>
             <td class="mem_name">주문자이름</td>
             <td class="mem_phone">전화번호</td>
