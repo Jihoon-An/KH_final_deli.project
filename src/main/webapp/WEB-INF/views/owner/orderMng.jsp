@@ -43,30 +43,46 @@
 <%--한줄의 요약해서 보이고 줄을 넘어가는 거는 ... 처리하고 마우스를 올리면 다 보이는 형태,
 storeSeq가 다른 링크를 달아서 매장마다 관리할 수 있도록 함.--%>
 
+    <div><button type="button">새 주문 보기</button></div>
+
+    <div>
+        <button type="button" id="status_btn">선택항목 상태 바꾸기</button>
+        <select name="status" id="new_status">
+            <option value="미접수">미접수</option>
+            <option value="접수">접수</option>
+            <option value="조리중">조리중</option>
+            <option value="배달중">배달중</option>
+            <option value="배달완료">배달완료</option>
+        </select>
+    </div>
+
     <table id="order_table" class="table table-borded">
         <thead>
         <tr>
-            <td>상태</td>
-            <td>주문자이름</td>
-            <td>메뉴</td>
-            <td>배송지</td>
-            <td>배송링크</td>
+            <td class="check_box"><input type="checkbox"></td>
+            <td class="status">상태</td>
+            <td class="mem_name">주문자이름</td>
+            <td class="mem_phone">전화번호</td>
+            <td class="menu_name">메뉴이름</td>
+            <td class="mem_add">주소</td>
+            <td class="deli_link">배송링크</td>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="order" items="${orders}">
+        <c:forEach var="order" items="${orderList}">
             <tr>
-                <input type="hidden" class="">
-                <td>${order.order_status}</td>
-                <td>${order.}</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <input type="hidden" class="order_seq" value="${order.orderSeq}">
+                <td class="check_box"><input type="checkbox" class="check_box_input"></td>
+                <td class="status">${order.status}</td>
+                <td class="mem_name">${order.memberName}</td>
+                <td class="mem_phone">${order.phone}</td>
+                <td class="menu_name">${order.menuStrList}</td>
+                <td class="mem_add">${order.address}</td>
+                <td class="deli_link">${order.link}</td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-
 </main>
 
 <script src="/resources/js/owner/orderMng.js"></script>

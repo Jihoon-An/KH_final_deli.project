@@ -10,11 +10,11 @@ import kh.deli.global.exception.PermissionException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 //optional로 떡칠해보기
@@ -72,5 +72,11 @@ public class OrderMngController {
         model.addAttribute("orderList", orderList);
 
         return "owner/orderMng";
+    }
+
+    @PostMapping("updateStatus")
+    @ResponseBody
+    public void updateStatus(@RequestBody Map<String, String> statusInfo) {
+        ordersService.updateStatus(statusInfo);
     }
 }

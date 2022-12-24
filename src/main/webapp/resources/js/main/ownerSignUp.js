@@ -1,19 +1,19 @@
-var email_ok = true;
-var pw_ok = true;
-var name_ok = true;
-var phone_ok = true;
-var bs_num_ok = true;
-var bs_card_ok = true;
+var emailOk = true;
+var pwOk = true;
+var nameOk = true;
+var phoneOk = true;
+var bsNumOk = true;
+var bsCardOk = true;
 
-var confirm_text;
-var confirm_count;
-var count_stopper = false;  //true: 돌고있는 count를 멈춤.
-var count_status = false;   //true: count가 돌고있는 중.
+var confirmText;
+var confirmCount;
+var countStopper = false;  //true: 돌고있는 count를 멈춤.
+var countStatus = false;   //true: count가 돌고있는 중.
 
 //이메일 시간 카운트다운
 function countdown(elementName, minutes, seconds) {
-    count_status = true;
-    count_stopper = false;
+    countStatus = true;
+    countStopper = false;
     var element, endTime, hours, mins, msLeft, time;    //
 
     function twoDigits(n) {
@@ -24,14 +24,14 @@ function countdown(elementName, minutes, seconds) {
         msLeft = endTime - (+new Date);
         if (msLeft < 1000) {
             element.innerHTML = "시간초과"; //시간 다 되면 카운트에 숫자 대신 "시간초과"입력.
-            count_status = false;
+            countStatus = false;
         } else {
             time = new Date(msLeft);
             hours = time.getUTCHours();
             mins = time.getUTCMinutes();
             element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
-            if (count_stopper) {        //count_stopper가 true면 count loop를 멈추고 상태를 변경.
-                count_status = false;   //count 상태 바꾸기.
+            if (countStopper) {        //count_stopper가 true면 count loop를 멈추고 상태를 변경.
+                countStatus = false;   //count 상태 바꾸기.
                 return;
             } else {
                 setTimeout(updateTimer, time.getUTCMilliseconds() + 300);   //타이머 도는 딜레이설정
@@ -45,8 +45,8 @@ function countdown(elementName, minutes, seconds) {
 }
 
 function count_starter() {
-    if (count_status) {         //count가 돌고있으면 기존 카운트를 멈추고 새로운 딜레이 시작
-        count_stopper = true;   //기존 count loop를 멈추고 새로운 count를 시작함.
+    if (countStatus) {         //count가 돌고있으면 기존 카운트를 멈추고 새로운 딜레이 시작
+        countStopper = true;   //기존 count loop를 멈추고 새로운 count를 시작함.
         setTimeout(count_starter, 300); //새 count 시작, 실패시 딜레이
     } else {
         countdown("confirm_count", 3, 0);   //기존에 count가 돌고있지 않았다면 새로운 카운트 시작.
@@ -69,7 +69,7 @@ $("#email_btn").on("click", function () {
         } else {
             Swal.fire('가입 가능한 이메일입니다.');
             // 이메일 보내기
-            confirm_text = randomString();
+            confirmText = randomString();
 
             $.ajax({
                 url: "/mailCerti",
@@ -77,12 +77,12 @@ $("#email_btn").on("click", function () {
                 data: {
                     address: $("#email").val(),
                     title: "Deli email confirm",
-                    message: "<h1>" + confirm_text + "</h1>"
+                    message: "<h1>" + confirmText + "</h1>"
                 }
             });
             $("#email_confirm_table").css("display", "block");
 
-            count_stopper = true;
+            countStopper = true;
             count_starter();
         }
     });
@@ -120,21 +120,21 @@ $("#email_confirm_btn").click(function () {
 });
 
 function email_confirm() {
-    if ($("#email_confirm_input").val() == confirm_text && $("#confirm_count").html() != "시간초과") {
+    if ($("#email_confirm_input").val() == confirmText && $("#confirm_count").html() != "시간초과") {
         $("#email_confirm_table").css("display", "none");
-        email_ok = true;
+        emailOk = true;
     } else {
         Swal.fire({
             icon: 'error',
             title: '땡!',
             text: '일치하지 않습니다.',
         })
-        email_ok = false;
+        emailOk = false;
     }
 }
 
 $("#submit_btn").click(function () {
-    if (!email_ok) {
+    if (!emailOk) {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
@@ -143,7 +143,7 @@ $("#submit_btn").click(function () {
         $("#email").focus();
         return;
     }
-    if (!pw_ok) {
+    if (!pwOk) {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
@@ -152,7 +152,7 @@ $("#submit_btn").click(function () {
         $("#pw1").focus();
         return;
     }
-    if (!name_ok) {
+    if (!nameOk) {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
@@ -161,7 +161,7 @@ $("#submit_btn").click(function () {
         $("#name").focus();
         return;
     }
-    if (!bs_num_ok) {
+    if (!bsNumOk) {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
@@ -170,7 +170,7 @@ $("#submit_btn").click(function () {
         $("#num").focus();
         return;
     }
-    if (!bs_card_ok) {
+    if (!bsCardOk) {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',

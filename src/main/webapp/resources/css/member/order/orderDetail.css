@@ -2,20 +2,20 @@
     box-sizing: border-box;
 }
 
-.container {
-    width: 375px;
+#orderDetail .container {
+    width: 360px;
     height: auto;
     border: 1px solid black;
     margin: auto;
 }
 
-.btn {
-
+#orderDetail .btn {
+    margin-top: 20px;
     width: 100%;
     height: 50px;
 }
 
-#complete {
+#orderDetail #complete {
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -24,3 +24,4 @@
     border-radius: 5px;
     border-style: none;
 }
+

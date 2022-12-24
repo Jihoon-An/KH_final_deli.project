@@ -12,7 +12,7 @@ import java.util.Map;
 @Mapper
 public interface AdminReviewMapper {
 
-    List<AdminReviewDTO> selectAll();
+    List<AdminReviewDTO> selectReviews();
 
     @Delete("DELETE FROM REVIEW WHERE REV_SEQ=#{rev_seq}")
     void deleteReview(int rev_seq);

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminReviewDTO {
-    private String mem_name;
+    private String mem_nick;
     private String rev_content;
     private String store_name;
     private String rev_writedate;
