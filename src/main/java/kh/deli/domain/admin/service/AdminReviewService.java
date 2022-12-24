@@ -15,8 +15,8 @@ import java.util.Map;
 public class AdminReviewService {
     private final AdminReviewMapper adminReviewMapper;
 
-    public List<AdminReviewDTO> selectAll() throws Exception {
-        return adminReviewMapper.selectAll();
+    public List<AdminReviewDTO> selectReviews() throws Exception {
+        return adminReviewMapper.selectReviews();
     }
     public void deleteReview(int rev_seq) throws Exception{
         adminReviewMapper.deleteReview(rev_seq);

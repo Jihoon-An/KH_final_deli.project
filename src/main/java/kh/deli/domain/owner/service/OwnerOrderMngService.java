@@ -31,7 +31,7 @@ public class OwnerOrderMngService {
         for (OwnerOrderMngRequestDTO orderMngReq : orderMngReqList) {
             String address = orderMngReq.getAdd_detail1() + " " + orderMngReq.getAdd_detail2();
 
-            String link = "preset link" + orderMngReq.getOrder_seq();
+            String link = "http://localhost/deliveryDtl/" + orderMngReq.getOrder_seq();
 
             Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
             List<StoreBasketMenuRequestDTO> basketMenuDtoList = gson.fromJson(orderMngReq.getMenu_list(), type);

@@ -5,11 +5,11 @@
 
 <mapper namespace="kh.deli.domain.admin.mapper.AdminReviewMapper">
 
-    <select id="selectAll" resultType="AdminReviewDTO">
+    <select id="selectReviews" resultType="AdminReviewDTO">
         SELECT
             REV_SEQ,
             REV_STAR,
-            MEM_NAME,
+            MEM_NICK,
             REV_CONTENT,
             STORE_NAME,
             REV_WRITEDATE,

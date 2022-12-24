@@ -41,7 +41,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    width: 375px;
+    min-width: 360px;
+    max-width: 420px;
     height: 300px;
     background: #ffffff;
     border-radius: 10px 10px 0 0;
@@ -57,7 +58,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    width: 375px;
+    min-width: 360px;
+    max-width: 420px;
     height: 300px;
     background: #ffffff;
     border-radius: 10px 10px 0 0;
@@ -68,4 +70,16 @@
 
 #destination a {
     cursor: pointer;
+}
+
+/* 바디에 스크롤 막는 방법 */
+.not_scroll{
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%
+}
+.not_scroll .cont {
+    position: relative;
+    top: 0;
 }
