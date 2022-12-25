@@ -37,7 +37,7 @@ public class MyPageDibsController {
 
     @ResponseBody
     @PostMapping(value = "like")
-    public void insertDibs(int store_seq) throws Exception{
+    public int  insertDibs(int store_seq) throws Exception{
         
         System.out.println("컨트롤러 : "+" + "+store_seq);
 
@@ -47,9 +47,11 @@ public class MyPageDibsController {
         if(result==0){
             System.out.println("추가");
             myPageDibsService.insertDibs(acc_seq,store_seq);
+            return 1;
         }else {
             System.out.println("삭제");
             myPageDibsService.deleteDibs(acc_seq,store_seq);
+            return 0;
         }
     }
 
