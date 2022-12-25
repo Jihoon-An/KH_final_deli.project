@@ -17,14 +17,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
 </head>
 <body>
+
+<%--<%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>--%>
+<%--<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>--%>
+<%--<jsp:include page="/member/header/destination/click" />--%>
+<%--<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>--%>
+<%--<%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>--%>
+<%--<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>--%>
+<%--<c:import url="/member/header/destination" />--%>
+
 <main id="dibs">
     <div class="container">
         <div id="pageTitle">찜</div>
-        <div id="dibCountSec">내가 찜한 맛집 1개</div>
-<%--        <div id="dibSec">--%>
+        <div id="dibCountSec">내가 찜한 맛집 ${dibCount}개</div>
             <c:choose>
                 <c:when test="${not empty list}">
                     <c:forEach var="i" items="${list}">
+                        <hr>
                         <div class="dibBox">
                             <c:choose>
                                 <c:when test="${i.STORE_LOGO !=null}">
@@ -37,23 +46,22 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="info">
-                                <div class="store_name">${i.STORE_NAME}</div>
-                                <div class="avg_star"><i class="fa-solid fa-star"></i>${i.avg_star}</div>
+                                <div class="store_name"><a href="/store/menu?store_seq=${i.STORE_SEQ}">${i.STORE_NAME}</a></div>
+                                <div class="avg_star"><i class="fa-solid fa-star"></i> ${i.avg_star}</div>
                                 <div class="store_min">최소주문금액: ${i.STORE_MIN_PRICE}, 배달팁: ${i.STORE_DELI_TIP}</div>
                                 <div class="store_deli_time">배달시간: ${i.STORE_DELI_TIME}분</div>
                             </div>
                             <div id="btnBox">
                                 <button class="heart">
                                     <input class="store_seq" type="hidden" value="${i.STORE_SEQ}">
-                                    <label id="heartIcon"><i class="fa-solid fa-heart"></i> </label>
+                                    <label class="heartIcon"><i class="fa-solid fa-heart  fa-lg"></i></label>
                                 </button>
                             </div>
                         </div>
-                        <hr>
+
                     </c:forEach>
                 </c:when>
             </c:choose>
-<%--        </div>--%>
     </div>
 </main>
 <script src="/resources/js/member/myPage/dibs.js"></script>

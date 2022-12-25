@@ -2,12 +2,18 @@
 
 /*#dibs div{border: 1px solid black;}*/
 
+#dibs a{
+    text-decoration: none;
+    color: black;
+}
+
 #dibs .container>div{ width: 95%;margin: auto;}
 
 #dibs .container{
     width: 360px;
     border: 1px solid black;
     margin: auto;
+    min-height: 950px;
 }
 
 #dibs #pageTitle{
@@ -38,7 +44,7 @@
 }
 
 #dibs .storeLogo{
-    width: 100%;
+    width: 95%;
     height: 80px;
 }
 
@@ -66,19 +72,21 @@ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 #dibs #btnBox{
     display: inline-block;
     width:10%;
+    height: 50px;
 }
 #dibs .heart{
     border: 0;
     background-color: unset;
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
-#dibs #heartIcon{
+#dibs .heartIcon{
     text-shadow: 0 0 0 rgba(232,76,79);
     color: transparent;
 }
-#dibs #heartIcon:hover{
+#dibs .heartIcon:hover{
     cursor: pointer;
 }
 

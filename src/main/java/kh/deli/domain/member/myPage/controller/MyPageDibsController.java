@@ -29,8 +29,10 @@ public class MyPageDibsController {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
 
         List<MyPageDibsDTO> list = myPageDibsService.select(acc_seq);
+        int dibCount=list.size();
 
         model.addAttribute("list",list);
+        model.addAttribute("dibCount",dibCount);
 
         return "/member/myPage/dibs";
     }
