@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NoticeRequestDTO {
     private Integer to_acc_seq;
+    private String user_type;
     private String title;
     private String content;
 }
