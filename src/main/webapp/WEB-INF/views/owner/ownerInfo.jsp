@@ -24,15 +24,15 @@
 <main id="ownerInfo">
 
     <div class="container">
-        <form action="" id="ownerFor">
-
+        <form action="/owner/info/modifyOwner" id="ownerForm" method="post" enctype="multipart/form-data">
+            <img src="/resources/img/owner-card/${ownerInfo.owner_card_img}">
             <div class="titleBox">
                 사업자 회원 정보 수정
             </div>
 
             <div class="emailBox">
                 <span>이메일</span><br>
-                <input type="text" id="emailInput" name="acc_seq" placeholder="이메일" value="${acc_email}">
+                <input type="text" id="emailInput" name="acc_email" placeholder="이메일" value="${acc_email}" readonly>
             </div>
 
             <div class="passWordBox">
@@ -42,14 +42,26 @@
 
             <div class="nameBox">
                 <span>이름</span><br>
-                <input type="text" id="nameInput" name="mem_name" placeholder="이름" value="${ownerInfo.owner_name}">
+                <input type="text" id="nameInput" name="owner_name" placeholder="이름" value="${ownerInfo.owner_name}">
             </div>
 
             <div class="phoneBox">
                 <span>핸드폰번호</span><br>
-                <input type="text" id="oldPhoneNumber" value="${ownerInfo.owner_phone}">
-                <input type="text" id="phoneInput" name="mem_phone" placeholder="핸드폰번호" value="${ownerInfo.owner_phone}">
-                <button id="certificationButton">인증</button>
+                <input type="hidden" id="oldPhoneNumber" value="${ownerInfo.owner_phone}">
+                <input type="text" id="phoneInput" name="owner_phone" placeholder="핸드폰번호" value="${ownerInfo.owner_phone}" maxlength='11' oninput=validNum() readonly>
+                <button type="button" id="modifyPhoneButton">변경</button>
+                <button type="button" id="phone_certi_btn" style="display: none">발송</button>
+                <br><br>
+                <p id="phone_msg" style="display: none">양식에 맞는지 확인 중입니다.</p>
+            </div>
+
+            <div id="certificationBox" style="height: 200px; display: none;">
+                <span id="certificationNumberSpan">인증번호</span>
+                <div class="infoInputBox">
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input" maxlength='6' oninput=validNum()>
+                    <button type="button" id="phone_confirm_btn">확인</button>
+                    <span id="phone_count"></span>
+                </div>
             </div>
 
             <div class="ownerNumBox">
@@ -59,14 +71,16 @@
 
             <div class="ownerCardBox">
                 <span>사업자등록증</span><br>
-                <input type="text" id="ownerCardInput" name="owner_card" placeholder="사업자등록증">
+                <input type="file" id="ownerCardInput" name="file" placeholder="사업자등록증">
                 <button id="ownerCardUpLoadButton">업로드</button>
             </div>
 
 
             <div class="buttonBox">
-                <button id="cancleButton">취소</button>
-                <button id="modifyButton">수정</button>
+                <a href="">
+                    <button type="button" id="cancleButton">취소</button>
+                </a>
+                <button type="button" id="modifyButton">수정</button>
             </div>
 
 

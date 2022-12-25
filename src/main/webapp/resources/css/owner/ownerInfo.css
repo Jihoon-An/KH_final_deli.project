@@ -52,6 +52,11 @@
     border-width: 0;
     margin: 0;
 }
+#ownerInfo #certificationBox{
+    width: 300px;
+    margin: auto;
+    text-align: left;
+}
 #ownerInfo .phoneBox > #certificationButton{
     width: 30%;
     height: 40px;

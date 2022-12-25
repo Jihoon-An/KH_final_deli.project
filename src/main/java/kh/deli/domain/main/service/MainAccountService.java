@@ -20,6 +20,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -34,6 +35,7 @@ public class MainAccountService {
     private final MainAccountMapper mainAccountMapper;
     private final RestTemplate restTemplate;
     private final GenerateRandomCode generateRandomCode;
+    private final HttpSession session;
 
     /**
      * <h2>email 중복체크</h2>
@@ -64,12 +66,22 @@ public class MainAccountService {
 
     /**
      * <h2>회원탈퇴 (Address -> Member -> Account)</h2>
-     * @param acc_seq
      */
-    public void withdrawal(int acc_seq) throws Exception {
-        mainAccountMapper.deleteAddress(acc_seq);
-        mainAccountMapper.deleteMember(acc_seq);
-        mainAccountMapper.deleteAccount(acc_seq);
+    public void withdrawal(int accSeq) throws Exception {
+//        String accType = this.selectType(accSeq);
+//
+//        if (accType.equals("business")){
+//
+//            FileUtil fileUtil = new FileUtil();
+//            String originalFile = mainAccountMapper.findOwnerCardBySeq(accSeq);
+//            fileUtil.delete(session, "/resources/img/owner-card", originalFile);
+//            mainAccountMapper.deleteOwner(accSeq);
+//            mainAccountMapper.deleteAccount(accSeq);
+//        }else {
+            mainAccountMapper.deleteAddress(accSeq);
+            mainAccountMapper.deleteMember(accSeq);
+            mainAccountMapper.deleteAccount(accSeq);
+//        }
     }
 
 

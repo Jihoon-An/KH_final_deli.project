@@ -77,4 +77,9 @@
 <span style="color: red; font-size:25px; font-weight: bold;">~</span>
 <span style="color: green; font-size:25px; font-weight: bold;">~</span>
 <span style="font-size:25px;">🎄</span>
+- 사업자 정보 수정페이지 비밀번호 변경 기능 (<span style="color: chartreuse">100%</span>)
+- 사업자 정보 수정페이지 정보 수정 기능 (<span style="color: chartreuse">100%</span>)
+- 사업자 회원탈퇴 (<span style="color: yellow">50%</span>)
+---
+### 22-12-26 (월)
 - .

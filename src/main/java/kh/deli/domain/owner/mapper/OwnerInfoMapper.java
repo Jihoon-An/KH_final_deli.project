@@ -26,5 +26,19 @@ public interface OwnerInfoMapper {
     @Update("UPDATE ACCOUNT SET ACC_PW = #{acc_pw} WHERE ACC_SEQ = #{acc_seq}")
     void modifyAccountPW(Map<String, Object> param);
 
+    @Update("UPDATE OWNER " +
+            "SET " +
+            "OWNER_NAME = #{owner_name}, " +
+            "OWNER_PHONE = #{owner_phone}, " +
+            "OWNER_NUM = #{owner_num} " +
+            "WHERE " +
+            "ACC_SEQ = #{acc_seq}")
+    void modifyOwnerInfo(OwnerDTO ownerDTO);
+
+    @Update("UPDATE OWNER SET OWNER_CARD_IMG = #{owner_card_img} WHERE ACC_SEQ = #{acc_seq}")
+    void modifyOwnerCardImg(@Param("owner_card_img") String ownerCardImg, @Param("acc_seq") int accSeq);
+
+    @Select("SELECT OWNER_CARD_IMG FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
+    String findOwnerCardBySeq(@Param("acc_seq") int accSeq);
 
 }

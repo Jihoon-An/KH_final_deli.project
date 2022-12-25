@@ -3,9 +3,12 @@ package kh.deli.domain.owner.service;
 import kh.deli.domain.owner.mapper.OwnerInfoMapper;
 import kh.deli.global.entity.OwnerDTO;
 import kh.deli.global.util.Encryptor;
+import kh.deli.global.util.FileUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +16,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class OwnerInfoService {
 
+    private final HttpSession session;
     private final OwnerInfoMapper ownerInfoMapper;
 
     public String findEmailBySeq(int accSeq) throws Exception {
@@ -37,6 +41,23 @@ public class OwnerInfoService {
             return true;
         }else {
             return false;
+        }
+    }
+
+    public void modifyOwnerInfo(OwnerDTO ownerDTO, MultipartFile file) throws Exception {
+
+        if (!file.isEmpty()) {
+            FileUtil fileUtil = new FileUtil();
+            String path = "/resources/img/owner-card/";
+            String sysName = fileUtil.save(session, path, file);
+
+            String originalFile = ownerInfoMapper.findOwnerCardBySeq(ownerDTO.getAcc_seq());
+            fileUtil.delete(session, "/resources/img/owner-card", originalFile);
+
+            ownerInfoMapper.modifyOwnerInfo(ownerDTO);
+            ownerInfoMapper.modifyOwnerCardImg(sysName, ownerDTO.getAcc_seq());
+        } else {
+            ownerInfoMapper.modifyOwnerInfo(ownerDTO);
         }
     }
 

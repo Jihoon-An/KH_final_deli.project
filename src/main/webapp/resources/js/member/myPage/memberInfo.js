@@ -223,7 +223,6 @@ $("#phone_confirm_btn").click(function () {
 
 
 function phone_confirm() {
-    console.log("시발련아");
     if (phoneRegex.test($("#mem_phone").val())
         && $("#phone_msg").html() == "인증번호를 입력해주세요") {
         $.ajax({
