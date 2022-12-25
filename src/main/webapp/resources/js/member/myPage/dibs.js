@@ -5,7 +5,8 @@ $(".heart").on("click",function (){
 
     // let like_val=$(this).children().val();
     // console.log("찜 시퀀스 : "+like_val);
-    let store_seq=$(this).parent().prev().val();
+    // let store_seq=$(this).parent().prev().val();
+    let store_seq=$(this).children().val();
     console.log("식당시퀀스 : "+store_seq);
 
     $.ajax({

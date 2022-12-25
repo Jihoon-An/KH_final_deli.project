@@ -39,3 +39,5 @@ $("#writeBtn").on("click", function () {
     }
     $("#reviewPost").submit();
 })
+
+
