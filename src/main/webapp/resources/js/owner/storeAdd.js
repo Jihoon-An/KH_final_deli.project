@@ -51,7 +51,7 @@ $("#add").on("click", function () {
     $("#bsns_data").val(JSON.stringify(bs_day));
     console.log(bs_day);
     console.log($("#bsns_data").val());
-    let bsns_data = JSON.parse($("#bsns_data").val());
+    let bsnsData = JSON.parse($("#bsns_data").val());
     console.log(bsns_data); //이렇게 parsing해서 쓰면 돼요.
     // var bsns_arr = [];
     //

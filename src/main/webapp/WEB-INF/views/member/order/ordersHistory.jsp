@@ -19,100 +19,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
+
+
+    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+    <link rel="stylesheet" href="/resources/css/member/order/orderHistory.css" type="text/css">
 </head>
-<style>
-    * {
-        box-sizing: border-box;
-    }
 
-    div {
-        border: 1px solid black;
-    }
-
-    .container {
-        width: 375px;
-        height: 800px;
-        margin-top: 30px;
-        overflow: hidden;
-    }
-    .box1{
-        width: 100%;
-        height: 100px;
-        margin-top: 40px;
-    }
-    .box2{
-        width: 100%;
-        height: 15%;
-        /* font-size: 10px; */
-    }
-    .box3{
-        width: 100%;
-        height: 85%;
-    }
-
-    .headdeli{
-        margin-right: 15px;
-        height: 100%;
-        padding-left: 3px;
-    }
-    .headdate{
-        margin-right: 10px;
-        padding-left: 3px;
-    }
-    .headstatus{
-        float:right;
-        padding-right: 3px;
-    }
-    .image-box {
-        width:100px;
-        height:60px;
-        overflow:hidden;
-        margin:0 auto;
-        float: left;
-    }
-    .image-thumbnail {
-        width:100%;
-        height:100%;
-        object-fit:scale-down;
-    }
-    .info{
-        margin: 9px;
-        width: 65%;
-        height: 60px;
-        float: left;
-
-    }
-
-    .storename{
-        margin-left :2px;
-        /* font-size: 10px; */
-    }
-    .storeloca{
-        /* font-size: 10px; */
-    }
-    p{
-        height: 10px;
-    }
-    .meinfo{
-        /* font-size: 8px; */
-    }
-</style>
 <body>
-
+<main id = "order_history">
 <div class="container">
     <c:choose>
-    <c:when test="${not empty list}">
-    <c:forEach var="i" items="${list}">
+    <c:when test="${not empty menu_list}">
+    <c:forEach var="i" items="${menu_list}">
     <div class="box1">
         <div class="box2">
-            <span class="headdeli">배달주문</span>
-            <span class="headdate">${i.formDate}</span>
-            <span class="headstatus">
-                <c:if test="${i.order_status=='order'}">미접수</c:if>
-                <c:if test="${i.order_status=='take'}">접수</c:if>
-                <c:if test="${i.order_status=='cooking'}">조리중</c:if>
-                <c:if test="${i.order_status=='delivering'}">배달중</c:if>
-                <c:if test="${i.order_status=='complete'}">배달완료</c:if>
+            <span class="head_deli">배달주문</span>
+            <span class="head_date">${i.formDate}</span>
+            <span class="head_status">
+                ${i.order_status}
+<%--                <c:if test="${i.order_status=='order'}">미접수</c:if>--%>
+<%--                <c:if test="${i.order_status=='take'}">접수</c:if>--%>
+<%--                <c:if test="${i.order_status=='cooking'}">조리중</c:if>--%>
+<%--                <c:if test="${i.order_status=='delivering'}">배달중</c:if>--%>
+<%--                <c:if test="${i.order_status=='complete'}">배달완료</c:if>--%>
             </span>
         </div>
         <div class="box3">
@@ -125,10 +54,10 @@
             <div class="info">
                 <span class="storename">${i.store_name}</span>
                 <p class="meinfo">
-                        ${orderDetailDTOList[0].menuDTO.menu_name}
-                    <c:if test="${orderDetailDTOList[1].menuDTO.menu_name!=null}">
-                        <c:forEach var="menu" items="${orderDetailDTOList}" varStatus="n">
-                            <c:if test="${n.index > 1}">외 ${n.index-1}건</c:if>
+                        ${basketMenu[0].menu.menu_name}
+                    <c:if test="${basketMenu[1].menu.menu_name!=null}">
+                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">
+                            <c:if test="${n.index >1}">외 ${n.index-1}건</c:if>
                         </c:forEach>
                     </c:if>
 
@@ -149,6 +78,6 @@
 
 
 
-
+</main>
 </body>
 </html>

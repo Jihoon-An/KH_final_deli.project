@@ -17,6 +17,8 @@ import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.order.service.OrderHistoryService;
 import kh.deli.domain.member.order.service.OrderOrdersService;
 import kh.deli.domain.member.store.dto.BasketDTO;
+import kh.deli.domain.member.store.dto.BasketMenu;
+import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
@@ -60,22 +62,18 @@ public class OrderHistoryController {
         int acc_seq=31;//임시
         List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
 
+        List<BasketMenu> basketMenu = new ArrayList<>();
 
-        for(int i =0; i<menuList.size(); i++){
-         String s=   menuList.get(i).getMenu_list();
-            storeBasketService.basketMenuListDtoToObject()
+        for(int i = 0; i<menuList.size(); i++) {
+            String menu_list = menuList.get(i).getMenu_list();
+            Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+            List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+
+
+           basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
+
+            System.out.println(basketMenu.get(i).getMenu());
         }
-
-
-
-
-
-//        BasketDTO basket = new BasketDTO();
-//        for(int i = 0; i<menuList.size(); i++) {
-//            String menu_list = menuList.get(i).getMenu_list();
-//             basket = gson.fromJson(menu_list, BasketDTO.class);
-//        }
-
 
 
 //        List<OrderDetailDTO> orderDetailDTOList = new ArrayList<>();
@@ -148,58 +146,10 @@ public class OrderHistoryController {
 //
 //
 
-            //Gson gson = new Gson();
 
-//        JsonParser parser = new JsonParser();
-//        for(int i = 0; i<menuList.size();i++) {
-//            JsonArray jsonArray = (JsonArray) parser.parse(menuList.get(i).getMenu_list());
-//            System.out.println(jsonArray);
-//        }
-
-       // Map<String, Object> storeBsnsHours = new HashMap<>();
-//        String menu="";
-//        for(int i = 0; i<menuList.size(); i++){
-//            menu = String.valueOf(menuList.get(i).getMenu_list());
-//
-//        }
-//
-//        System.out.println(menu);
-//
-//
-//        Type type = new TypeToken<List<Map<String,Object>>>() {
-//        }.getType();
-//
-//            List<Map<String,Map<String,Object>>> parseMenuList = gson.fromJson(menu, type);
-//
-//            System.out.println(parseMenuList);
-
-//        Gson gson = new Gson();
-//        Type listString = new TypeToken<List<Map<String,Map<String,Object>>>>() {
-//        }.getType();
-//        List<Map<String,Map<String,Object>>> menuList = gson.fromJson(list.get(), listString);
-
-
-//        int acc_seq = (Integer) session.getAttribute("acc_seq"); //사용자 세션
-
-
-//        Type listString = new TypeToken<Map<String,Map<String,Object>>>() {
-//        }.getType();
-//        Map<String,Map<String,Object>> menuList = gson.fromJson(menuL, listString);
-//
-//    for(int i =0; i<list.size(); i++) {
-//        System.out.println(list.get(i).getMenu_list());
-//        System.out.println(list.get(i).getAcc_seq());
-//    }
-
-//        for(int i =0; i<menuList.size(); i++) {
-//            System.out.println(menuList.get(i).getMenu_list());
-//        }
-//        System.out.println(menuList.get(0).getMenu_list());
-
-
-
-        model.addAttribute("orderDetailDTOList", orderDetailDTOList);
-        model.addAttribute("list", menuList);
+        model.addAttribute("basketMenu", basketMenu);
+//        model.addAttribute("orderDetailDTOList", orderDetailDTOList);
+        model.addAttribute("menu_list", menuList);
         return "/member/order/ordersHistory";
     }
 }
