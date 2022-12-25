@@ -55,10 +55,7 @@ $(document).on("click",".del", function () { // 정적바인딩
                 type: "post",
                 data: {add_seq:$(this).closest(".destination_box").find(".add_seq").val()}
             }).done(function () {
-                // $(this).closest(".destination_box").remove();
                 $("#destination_select_frm").load("/member/header/destination #destination_select_box"); // 동적바인딩 이슈
-                // 이거 왜 안될까 del 이랑 기본 주소지 선택 동작 안할까
-                // 삭제 _ 주소지 추가 버튼 눌러도 안됨
             });
         } else {
             return false;

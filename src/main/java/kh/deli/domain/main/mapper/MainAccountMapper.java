@@ -18,6 +18,9 @@ public interface MainAccountMapper {
 
     void insertOwner(@Param("acc") AccountDTO acc);
 
+    @Delete("DELETE FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
+    void deleteOwner(@Param("acc_seq") Integer accSeq);
+
     @Select("SELECT ACC_SEQ.NEXTVAL FROM DUAL")
     int getNextAccSeq();
 
@@ -61,4 +64,6 @@ public interface MainAccountMapper {
     @Update("UPDATE ACCOUNT SET ACC_PW = #{acc_pw} WHERE ACC_SEQ = #{acc_seq}")
     void modifyPassWordWithRandomCodeBySeq(Map<String, Object> param);
 
+    @Select("SELECT OWNER_CARD_IMG FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
+    String findOwnerCardBySeq(@Param("acc_seq") int accSeq);
 }

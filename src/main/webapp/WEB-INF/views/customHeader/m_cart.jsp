@@ -9,7 +9,7 @@
     top: 0;
     height: 50px;
     padding-top: 16px;
-    color: #FFFFFF;
+    color: #E84C4F;
     text-align: center;
   }
 </style>

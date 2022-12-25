@@ -52,6 +52,7 @@
   <a href="/menu/add">[오너]메뉴추가</a><br>
   <a href="/store/mng">[오너]식당 수정/삭제</a><br>
   <a href="/owner/order">[오너]주문관리</a><br>
+  <a href="/owner/info">[오너]사업자개인정보</a><br>
   <hr>
   <a href="/admin">[운영자]메인 페이지</a><br>
   <a href="/admin/coupon/add">[운영자]쿠폰 추가페이지</a><br>
