@@ -18,13 +18,12 @@ public class ReviewController {
 
     private final AdminReviewService adminReviewService;
 
-    @RequestMapping()
-    public String selectAll(Model model) throws Exception {
-        List<AdminReviewDTO> nev_list = adminReviewService.selectAll();
+    @RequestMapping("")
+    public String selectReviews(Model model) throws Exception {
+        List<AdminReviewDTO> nev_list = adminReviewService.selectReviews();
         model.addAttribute("nev_list", nev_list);
         return "/admin/reviewMng";
     }
-
 
     //리뷰 삭제
     @ResponseBody
@@ -32,10 +31,9 @@ public class ReviewController {
     public void deleteReview(int rev_seq) throws Exception{
         System.out.println(rev_seq);
         adminReviewService.deleteReview(rev_seq);
-//        return "redirect:";
     }
 
-    //리뷰 비공개여부
+    //리뷰 공개/비공개
     @ResponseBody
     @PostMapping("/modifyReviewDisplay")
     public void modifyReviewDisplay(int rev_seq,String rev_display) throws Exception{

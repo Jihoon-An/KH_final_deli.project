@@ -45,15 +45,15 @@ public class StoreMenuService {
         storeMenuMapper.insertMenu(menu);
     }
 
-    public List<String> menuInfo(int store_seq) throws Exception {
-        return storeMenuMapper.menuInfo(store_seq);
+    public List<String> getMenuInfo(int store_seq) throws Exception {
+        return storeMenuMapper.getMenuInfo(store_seq);
     }
 
-    public List<MenuDTO> menuList(String menu_group, int store_seq) throws Exception {
+    public List<MenuDTO> getMenuList(String menu_group, int store_seq) throws Exception {
         Map<String, Object> param = new HashMap<>();
         param.put("menu_group", menu_group);
         param.put("store_seq", store_seq);
-        return storeMenuMapper.menuList(param);
+        return storeMenuMapper.getMenuList(param);
     }
 
     public MenuDTO findBySeq(int seq) {

@@ -5,6 +5,7 @@ import kh.deli.global.entity.OrdersDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,4 +25,11 @@ public interface OwnerOrdersMapper {
             "LEFT JOIN (SELECT MEM_NAME, MEM_PHONE, ACC_SEQ FROM MEMBER) M ON M.ACC_SEQ = O.ACC_SEQ " +
             "LEFT JOIN (SELECT ADD_DETAIL1, ADD_SEQ FROM ADDRESS WHERE ADD_DIVISION = 'basics') A ON A.ADD_SEQ = O.ADD_SEQ")
     List<OwnerOrderMngRequestDTO> getOrderMngList(@Param("storeSeq") int storeSeq);
+
+    @Update("UPDATE ORDERS SET ORDER_STATUS = #{newStatus} WHERE ORDER_SEQ IN ${seqList}")
+    void updateStatus(
+            @Param("seqList") String checkedSeqListJson
+            ,@Param("newStatus") String newStatus
+    );
+
 }

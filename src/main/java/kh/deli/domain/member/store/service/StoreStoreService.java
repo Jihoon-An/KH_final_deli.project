@@ -19,8 +19,8 @@ public class StoreStoreService {
     }
 
     //가게 정보
-    public StoreDTO storeInfo(int store_seq) throws Exception {
-        return storeMapper.storeInfo(store_seq);
+    public StoreDTO getStoreInfo(int store_seq) throws Exception {
+        return storeMapper.getStoreInfo(store_seq);
     }
     
     //식당 삭제
