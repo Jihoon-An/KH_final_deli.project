@@ -35,7 +35,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
+
 <main id="adminStore">
 
     <div id="container">
@@ -121,6 +123,6 @@
 </main>
 
 <script src="/resources/js/admin/storeList.js"></script>
-
+</div>
 </body>
 </html>
