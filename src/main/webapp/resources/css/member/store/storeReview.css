@@ -1,22 +1,83 @@
 #storeReview * {
-    box-sizing: border-box
-}
-
-#storeReview div {
-    border: 1px solid black;
+    box-sizing: border-box;
 }
 
 #storeReview .container {
-    width: 375px;
-    height: auto;
+    width: 360px;
+    margin: auto;
+}
+
+#storeReview .header {
+    overflow: hidden;
+}
+
+#storeReview .header > div {
+    text-align: center;
+    width: 95%;
+    margin: auto;
+}
+
+#storeReview .header #storeName {
+    line-height: 70px;
+}
+
+#storeReview .header #star {
+    width: 95%;
+}
+
+#storeReview .header #reviewCount {
+    width: 95%;
+}
+
+#storeReview .header #storeInfo {
+    word-wrap: break-word;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#storeReview .deliveryInfo {
+    width: 95%;
+}
+
+#storeReview .deliveryInfo {
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+#storeReview .deliveryInfo div {
+    line-height: 27px;
+}
+
+#storeReview .fieldBox {
+    width: 95%;
     margin: auto;
     overflow: hidden;
 }
 
-#storeReview .storeInfo {
-    overflow: hidden
+#storeReview .fieldBox div {
+    float: left;
+    width: 33.33%;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    margin-top: 10px;
 }
 
-#storeReview .store {
+#storeReview .fieldBox div a {
+    text-decoration: none;
+    color: black;
+}
+
+#storeReview #map{width: 95%;}
+
+#storeReview #review {
+    font-weight: bold;
+    font-size: 1.4em;
     float: left;
 }
+
+#storeReview .store{
+    line-height: 25px;
+}
+
+div{border: 1px solid black;}
