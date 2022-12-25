@@ -1,5 +1,4 @@
 #ownerInfo *{box-sizing: border-box;}
-body, main{background-color: #2d2d33; color: white;}
 #ownerInfo .container{
     max-width: 100vw;
     max-height: 100vh;
@@ -11,7 +10,7 @@ body, main{background-color: #2d2d33; color: white;}
     font-size: 1.5em;
     font-weight: bold;
 }
-#ownerInfo input{outline: none;}
+#ownerInfo input{outline: none; padding-left: 10px;}
 #ownerInfo .emailBox{
     width: 300px;
     margin: auto;
@@ -28,13 +27,8 @@ body, main{background-color: #2d2d33; color: white;}
     margin-top: 15px;
     text-align: left;
 }
-#ownerInfo .passWordBox > #passWordInput{
-    width: 100%;
-    height: 40px;
-}
-#ownerInfo .passWordBox > #passWordConfirmInput{
-    width: 100%;
-    height: 40px;
+#ownerInfo .passWordBox > #modifyPassWordModalButton{
+
 }
 #ownerInfo .nameBox{
     width: 300px;
@@ -100,3 +94,59 @@ body, main{background-color: #2d2d33; color: white;}
     margin: auto;
     margin-top: 30px;
 }
+
+#ownerInfo .modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#ownerInfo .modal_content {
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 74px 0;
+}
+#ownerInfo input{
+    height: 35px;
+}
+#ownerInfo .infoBox{
+    margin-top: 20px;
+}
+#ownerInfo .modalHeadBox{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#ownerInfo .infoTitleBox{
+    margin-left: 20px;
+    width: 130px;
+    height: 50px;
+    float: left;
+    line-height: 65px;
+    text-align: left;
+}
+#ownerInfo .infoInputBox{
+    width: 250px;
+    height: 50px;
+    float: left;
+}
+#ownerInfo .modalButtonBox{
+    margin-top: 235px;
+}
+
+/*#ownerInfo .pwSpan{*/
+/*    font-size: 12px;*/
+/*}*/

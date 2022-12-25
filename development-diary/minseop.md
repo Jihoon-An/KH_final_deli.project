@@ -25,14 +25,14 @@
 - 장바구니 수량 + - 기능 구현
 - 장바구니 페이지 (<span style="color: yellow">70%</span>)
 ---
-### <h3 style="color: #E84C4F">22-12-17 (토)</h3>
+### <span style="color: #E84C4F">22-12-17 (토)</span>
 - 장바구니 삭제 기능 구현
 - 장바구니 페이지 (<span style="color: yellow">80%</span>)
 <br>(장바구니 데이터 담기 기능 완성되면 코드 수정 및 완성 예정)
 - 이메일 저장기능 버그 유지보수
 - 일반회원 정보 수정 페이지 (<span style="color: yellow">15%</span>)
 ---
-### <h3 style="color: #E84C4F">22-12-18 (일)</h3>
+### <span style="color: #E84C4F">22-12-18 (일)</span>
 - 일반회원 정보 수정 페이지 (<span style="color: yellow">70%</span>)
 <br>(이메일 인증, 전화번호 인증 기능 완성되면 추가 예정)
 ---
@@ -52,4 +52,29 @@
   - 비밀번호 찾기 기능 -> 임시비밀번호 발급 기능으로 변경 고민
 ---
 ### 22-12-23 (금)
+- 랜덤 코드 생성 유틸 구현
+- 비밀번호 찾기 기능 -> 임시비밀번호 발급 기능으로 변경 (<span style="color: chartreuse">100%</span>)
+---
+### <span style="color: #E84C4F">22-12-24 (토)</span>
+- 사업자 정보 수정페이지 기본 레이아웃 제작
+---
+### <span style="color: #E84C4F">22-12-25 (일)</span>
+<span style="font-size:25px;">🎅</span>
+<span style="color: red; font-size:25px; font-weight: bold;">M</span>
+<span style="color: green; font-size:25px; font-weight: bold;">e</span>
+<span style="color: red; font-size:25px; font-weight: bold;">r</span>
+<span style="color: green; font-size:25px; font-weight: bold;">r</span>
+<span style="color: red; font-size:25px; font-weight: bold;">y</span>
+<span style="color: green; font-size:25px; font-weight: bold;">C</span>
+<span style="color: red; font-size:25px; font-weight: bold;">h</span>
+<span style="color: green; font-size:25px; font-weight: bold;">r</span>
+<span style="color: red; font-size:25px; font-weight: bold;">i</span>
+<span style="color: green; font-size:25px; font-weight: bold;">s</span>
+<span style="color: red; font-size:25px; font-weight: bold;">t</span>
+<span style="color: green; font-size:25px; font-weight: bold;">m</span>
+<span style="color: red; font-size:25px; font-weight: bold;">a</span>
+<span style="color: green; font-size:25px; font-weight: bold;">s</span>
+<span style="color: red; font-size:25px; font-weight: bold;">~</span>
+<span style="color: green; font-size:25px; font-weight: bold;">~</span>
+<span style="font-size:25px;">🎄</span>
 - .

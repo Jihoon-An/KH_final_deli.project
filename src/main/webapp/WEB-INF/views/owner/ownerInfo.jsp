@@ -32,29 +32,29 @@
 
             <div class="emailBox">
                 <span>이메일</span><br>
-                <input type="text" id="emailInput" name="acc_seq" placeholder="이메일">
+                <input type="text" id="emailInput" name="acc_seq" placeholder="이메일" value="${acc_email}">
             </div>
 
             <div class="passWordBox">
                 <span>비밀번호</span><br>
-                <input type="text" id="passWordInput" name="acc_pw" placeholder="비밀번호"><br>
-                <input type="text" id="passWordConfirmInput" placeholder="비밀번호 확인">
+                <button type="button" id="modifyPassWordModalButton">비밀번호 변경</button>
             </div>
 
             <div class="nameBox">
                 <span>이름</span><br>
-                <input type="text" id="nameInput" name="mem_name" placeholder="이름">
+                <input type="text" id="nameInput" name="mem_name" placeholder="이름" value="${ownerInfo.owner_name}">
             </div>
 
             <div class="phoneBox">
                 <span>핸드폰번호</span><br>
-                <input type="text" id="phoneInput" name="mem_phone" placeholder="핸드폰번호">
+                <input type="text" id="oldPhoneNumber" value="${ownerInfo.owner_phone}">
+                <input type="text" id="phoneInput" name="mem_phone" placeholder="핸드폰번호" value="${ownerInfo.owner_phone}">
                 <button id="certificationButton">인증</button>
             </div>
 
             <div class="ownerNumBox">
                 <span>사업자번호</span><br>
-                <input type="text" id="ownerNumInput" name="owner_num" placeholder="사업자번호">
+                <input type="text" id="ownerNumInput" name="owner_num" placeholder="사업자번호" value="${ownerInfo.owner_num}">
             </div>
 
             <div class="ownerCardBox">
@@ -74,6 +74,51 @@
 
     </div>
 
+    <%--모달--%>
+    <form id="modifyPassWordForm" action="/owner/info/modifyPassWord" method="post">
+        <div class="modal">
+            <div class="modal_content">
+                <div class="modalHeadBox">
+                    비밀번호 변경
+                </div>
+
+                <div class="infoBox modifyPwBox">
+                    <div class="infoTitleBox">
+                        <span class="pwSpan">현재 비밀번호</span>
+                    </div>
+                    <div class="infoInputBox passWordBox">
+                        <input type="text" id="oldPassWord" name="oldPassWord">
+                    </div>
+                </div>
+                <div class="infoBox modifyPwBox">
+                    <div class="infoTitleBox">
+                        <span class="pwSpan">새 비밀번호</span>
+                    </div>
+                    <div class="infoInputBox passWordBox">
+                        <input type="text" id="newPassWord" name="newPassWord">
+                    </div>
+                </div>
+                <div class="infoBox modifyPwBox">
+                    <div class="infoTitleBox">
+                        <span class="pwSpan">새 비밀번호 확인</span>
+                    </div>
+                    <div class="infoInputBox passWordBox">
+                        <input type="text" id="confirmPassWord">
+                        <span id="pwCheckSpan"></span>
+                    </div>
+                </div>
+                <div class="modalButtonBox">
+                    <button type="button" id="closeModalButton">닫기</button>
+                    <button type="button" id="modifyPasswordConfirmBtn">변경</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+    <script src="/resources/js/owner/ownerInfo.js"></script>
 </main>
 
 </body>

@@ -34,10 +34,6 @@ $("#passWordModifyBtn").click(function (){
         let conPW = $("#confirmPassWord");
         let pwCheckSpan = $("#pwCheckSpan");
 
-        console.log(oldPW.val());
-        console.log(newPW.val());
-        console.log(conPW.val());
-        console.log(pwCheckSpan.html());
         pwCheckSpan.text('');
 
         if (!oldPW.val().trim()) {
