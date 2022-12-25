@@ -28,7 +28,7 @@ public class JobConfiguration {
     private final OwnerBatchService ownerBatchService;
     private final JobLauncher jobLauncher;
 
-    @Scheduled(cron = "0 0 0 * * *") //초분시일월주년
+    @Scheduled(cron = "0 0 5 * * *") //초분시일월주년
     public void runJob(){
         log.info("스케줄러 가동");
         Map<String, JobParameter> param = new HashMap<>();
