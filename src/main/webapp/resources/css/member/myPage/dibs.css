@@ -46,8 +46,12 @@
 }
 
 .info{
-    width: 75%;
+    width: 70%;
     float: right;
+
+
+
+    float: left
 }
 
 #dibs .heart{
@@ -61,4 +65,9 @@ label{
 label:hover{
     cursor: pointer;
     text-shadow: 0 0 0 rgba(232,76,79);
+}
+
+#btnSec{
+    display: inline-block;
+    width: 5%;
 }

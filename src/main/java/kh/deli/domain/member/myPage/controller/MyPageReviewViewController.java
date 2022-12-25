@@ -27,14 +27,12 @@ public class MyPageReviewViewController {
     private final HttpSession session;
 
     @RequestMapping("")
-    public String toMemberMain(int order_seq,Model model) throws Exception {
-        //int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
+    public String toMemberMain(Model model) throws Exception {
+        int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
         OrdersDTO dto = myPageReviewService.selectByOrderSeq(order_seq);
 
         JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject =(JSONObject)jsonParser.parse(dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
-
-        JSONArray jsonArr = (JSONArray) jsonObject.get("menuList"); //menuListarray를 jsonarray에 저장
+        JSONArray jsonArr = (JSONArray) jsonParser.parse(dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
 
         List<String> menuNameList=new ArrayList<>();
 
@@ -49,6 +47,10 @@ public class MyPageReviewViewController {
 
             }
         }
+
+
+
+
 
         model.addAttribute("dto", dto);
         model.addAttribute("menuNameList",menuNameList);

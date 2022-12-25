@@ -42,13 +42,12 @@
                                 <div>최소주문금액: ${i.STORE_MIN_PRICE}</div>
                                 <div>배달팁: ${i.STORE_DELI_TIP}</div>
                                 <div>배달시간: ${i.STORE_DELI_TIME}</div>
-                                <input type="hidden" class="name" value="${i.STORE_SEQ}">
-                                <div>
-                                    <button class="heart">
-                                        <label><i class="fa-solid fa-heart"></i> </label>
-                                        <input class="inlike" type="hidden" value="${i.DIBS_SEQ}">
-                                    </button>
-                                </div>
+                            </div>
+                            <div id="btnSec">
+                                <button class="heart">
+                                    <input class="store_seq" type="hidden" value="${i.STORE_SEQ}">
+                                    <label><i class="fa-solid fa-heart"></i> </label>
+                                </button>
                             </div>
                         </div>
                     </c:forEach>
