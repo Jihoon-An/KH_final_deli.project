@@ -1,6 +1,68 @@
+#reviewWrite * {box-sizing: border-box;}
+
+#reviewWrite div{border: 1px solid black}
+
+#reviewWrite .container{
+ border:1px solid black;
+ width: 360px;
+ margin: auto;
+}
+
+#reviewWrite #pageTitle{
+ height: 50px;
+ text-align: center;
+ font-size: large;
+ line-height: 50px;
+}
+
+#reviewWrite #storeName{
+ height: 50px;
+ text-align: center;
+ font-size: medium;
+ line-height: 70px;
+}
+
+#reviewWrite #starFiled{
+ display: inline-block;
+ direction: rtl;
+ border:0;
+ position: relative;
+ left: 50%;
+ transform: translate(-50%,0);
+}
+
+#reviewWrite input[type=radio]{
+ display: none;
+}
+
+#reviewWrite label{
+ font-size: 2em;
+ color: transparent;
+ text-shadow: 0 0 0 #f0f0f0;
+}
+
+#reviewWrite label:hover{
+ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewWrite label:hover ~ label{
+ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewWrite input[type=radio]:checked ~ label{
+ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewWrite #revContent{
+ width: 94%;
+ margin-left: 9px;
+
+}
+
 #reviewWrite .imgbox {
  /*border: 1px solid black;*/
 width:100px;
  height: 100px;
 }
+
 

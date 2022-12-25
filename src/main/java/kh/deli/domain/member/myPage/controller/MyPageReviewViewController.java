@@ -32,9 +32,7 @@ public class MyPageReviewViewController {
         OrdersDTO dto = myPageReviewService.selectByOrderSeq(order_seq);
 
         JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject =(JSONObject)jsonParser.parse(dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
-
-        JSONArray jsonArr = (JSONArray) jsonObject.get("menuList"); //menuListarray를 jsonarray에 저장
+        JSONArray jsonArr = (JSONArray) jsonParser.parse(dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
 
         List<String> menuNameList=new ArrayList<>();
 
@@ -49,6 +47,10 @@ public class MyPageReviewViewController {
 
             }
         }
+
+
+
+
 
         model.addAttribute("dto", dto);
         model.addAttribute("menuNameList",menuNameList);
