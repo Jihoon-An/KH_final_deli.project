@@ -63,7 +63,7 @@
 
                 </p>
                 <a href="/"><button>메인으로</button></a>
-                <a href="/myPage/reviewWrite/"><button>리뷰작성</button></a>
+                <a href="/myPage/reviewWrite/?order_seq=${i.order_seq}"><button>리뷰작성</button></a>
                 <a href="/member/order/detail?order_seq=${i.order_seq}"><button>주문상세</button></a>
                 <button>재주문</button>
             </div>
