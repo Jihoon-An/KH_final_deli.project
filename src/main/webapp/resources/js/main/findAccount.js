@@ -133,7 +133,7 @@ function phone_confirm() {
                 $("#phone_confirm_box").hide();
                 // $("#mem_phone").attr("disabled", true);
                 alert("인증에 성공하였습니다")
-                phone_ok = true;
+                phoneOk = true;
 
                 $.ajax({
                     url: "/account/findAccount/email",
@@ -156,10 +156,10 @@ function phone_confirm() {
                 })
             } else if ($("#phone_count").html() == "시간초과") {
                 alert("인증을 다시 해주세요");
-                phone_ok = false;
+                phoneOk = false;
             } else {
                 alert("인증 번호를 확인해주세요");
-                phone_ok = false;
+                phoneOk = false;
             }
         })
     }
@@ -243,7 +243,7 @@ function pw_phone_confirm() {
                 $("#pw_phone_confirm_box").hide();
                 // $("#mem_phone").attr("disabled", true);
                 alert("인증에 성공하였습니다")
-                phone_ok = true;
+                phoneOk = true;
 
                 $.ajax({
                     url: "/account/findAccount/passWord",
@@ -264,10 +264,10 @@ function pw_phone_confirm() {
                 })
             } else if ($("#pw_phone_count").html() == "시간초과") {
                 alert("인증을 다시 해주세요");
-                phone_ok = false;
+                phoneOk = false;
             } else {
                 alert("인증 번호를 확인해주세요");
-                phone_ok = false;
+                phoneOk = false;
             }
         })
     }

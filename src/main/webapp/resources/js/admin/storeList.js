@@ -6,6 +6,7 @@ $("#myTable_paginate").on("click",function () {
     trClickEvent();
 });
 
+//모달
 $(".store").on("click",function (){
 
     let store_seq=$(this).find(".store_seq").text();
@@ -26,7 +27,6 @@ $(".store").on("click",function (){
     $(".modal").find("#owner_name").val(owner_name);
     $(".modal").find("#store_display").val(store_display);
 
-
     if($("#store_display").val() == 'Y'){
         $("#statusBtn").text("비공개");
     }else {
@@ -36,6 +36,7 @@ $(".store").on("click",function (){
     $(".modal").fadeIn();
 })
 
+//모달끄기
 $(".closeBtn").on("click",function () {
     $(".modal").fadeOut();
 });

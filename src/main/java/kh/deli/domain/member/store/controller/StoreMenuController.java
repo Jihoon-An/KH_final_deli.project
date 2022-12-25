@@ -27,16 +27,16 @@ public class StoreMenuController {
 
         int store_seq = 19; //식당검색리스트에서 seq
 
-        StoreDTO storeDTO = storeStoreService.storeInfo(store_seq); //가게 정보
+        StoreDTO storeDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
 
-        List<String> menuGroup = storeMenuService.menuInfo(store_seq); //메뉴 카테고리
+        List<String> menuGroup = storeMenuService.getMenuInfo(store_seq); //메뉴 카테고리
 
         List<CategoryResponseDTO> categoryList = new ArrayList<>();
 
         for (int mgroup = 0; mgroup < menuGroup.size(); mgroup++) {
 
             //카테고리별 메뉴들 뽑아오기
-            List<MenuDTO> menuList = storeMenuService.menuList(menuGroup.get(mgroup), store_seq);
+            List<MenuDTO> menuList = storeMenuService.getMenuList(menuGroup.get(mgroup), store_seq);
             categoryList.add(new CategoryResponseDTO(menuGroup.get(mgroup), menuList));
 
         }

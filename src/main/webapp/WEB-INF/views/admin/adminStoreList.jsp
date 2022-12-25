@@ -31,8 +31,6 @@
 
     <link rel="stylesheet" href="/resources/css/admin/storeList.css">
 
-    <%--sweetalert--%>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
@@ -42,7 +40,7 @@
 
     <div id="container">
 
-        <table id="myTable" class="display">
+        <table id="myTable">
             <thead>
             <tr>
                 <th class="seq">식당번호</th>
