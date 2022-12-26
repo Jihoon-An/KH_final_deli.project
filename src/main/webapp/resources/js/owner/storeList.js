@@ -24,3 +24,21 @@ $(".del_btn").click(function () {
         }
     })
 });
+
+$(".display_toggle").click(function () {
+    let storeSeq =$(this).closest(".store").find(".store_seq").val();
+    let orgVal = $(this).siblings(".display_val").val();
+    let newVal;
+    if (orgVal == 'Y') {
+        newVal = 'N';
+    } else {
+        newVal = 'Y';
+    }
+    $(this).siblings(".display_val").val(newVal);
+
+    $.ajax({
+        url: "/owner/store/list/displayToggle",
+        method: "post",
+        data: {storeSeq: storeSeq, newVal: newVal}
+    })
+});

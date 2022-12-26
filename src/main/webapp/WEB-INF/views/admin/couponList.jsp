@@ -10,7 +10,8 @@
 <html>
 <head>
     <title>Title</title>
-
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -37,6 +38,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="coupon_list">
     <div id="table_area">
         <!-- 테이블 -->

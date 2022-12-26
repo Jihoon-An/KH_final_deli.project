@@ -6,9 +6,7 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -35,9 +33,16 @@ public class OwnerStoreListController {
     }
 
     @PostMapping("delete")
-    public String delStore(int store_seq) throws Exception {
-        storeStoreService.deleteStore(store_seq);
+    public String delStore(@RequestParam("store_seq") int storeSeq) throws Exception {
+        storeStoreService.deleteStore(storeSeq);
 
         return "/owner/storeList";
     }
+
+    @PostMapping("displayToggle")
+    @ResponseBody
+    public void displayToggle(int storeSeq, String newVal) {
+        ownerStoreService.toggleDisplay(storeSeq, newVal);
+    }
+
 }

@@ -37,11 +37,11 @@
     }
 
     #deli_nav div {
-        width: 90px;
+        width: 72px;
     }
 
     #deli_nav i {
-        font-size: 23px;
+        font-size: 18px;
         margin-bottom: 7px;
     }
 
@@ -62,6 +62,12 @@
         <div>
             <i class="fa-solid fa-heart"></i>
             <p>찜</p>
+        </div>
+    </a>
+    <a href="/member/order/history">
+        <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <p>검색</p>
         </div>
     </a>
     <a href="/member/order/history">

@@ -129,6 +129,12 @@
         </div>
     </form>
 
+    <div class="logOutBox">
+        <a href="/account/logout">
+            <button>로그아웃</button>
+        </a>
+        <button>회원탈퇴미구현</button>
+    </div>
 
 
 
