@@ -16,7 +16,7 @@ $(".heart").on("click",function (){
     }).done(function(resp){
 
         if(resp==0){
-            heartIcon.css('text-shadow','0 0 0 #f0f0f0');
+            heartIcon.css('text-shadow','0 0 0 rgba(217, 216, 214, 0.99)');
         }else {
             heartIcon.css('text-shadow','0 0 0 rgba(232,76,79)');
         }
