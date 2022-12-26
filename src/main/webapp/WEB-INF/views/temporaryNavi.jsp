@@ -39,7 +39,7 @@
 <%--  <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>--%>
 <%--  <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>--%>
   <a href="/order/orders">[유저]결제하기</a><br>
-  <a href="/member/order/detail?order_seq=17">[유저]결제결과 페이지</a><br>
+  <a href="/member/order/detail/17">[유저]결제결과 페이지</a><br>
 <%--  <a href="/basket">[유저]장바구니</a><br>--%>
 <%--  <a href="/member/order/history">[유저]내주문내역</a><br>--%>
 <%--  <a href="/store/menu">[유저]식당상세(메뉴/정보/리뷰)</a><br>--%>
@@ -63,7 +63,7 @@
 <%--  <a href="/admin/owner/list">[운영자]오너회원 관리페이지</a><br>--%>
 <%--  <a href="/admin/store/list/">[운영자]식당 관리페이지</a><br>--%>
   <hr>
-  <a href="/deliveryDtl?order_seq=17">[배달기사]고객배달영수증</a><br>
+  <a href="/deliveryDtl/17">[배달기사]고객배달영수증</a><br>
 <%--  <a href="/account/logout">[유저+오너]로그아웃</a><br>--%>
 <%--  <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>--%>
 </div>
