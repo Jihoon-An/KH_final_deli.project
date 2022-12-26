@@ -33,24 +33,25 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
 <body>
-
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <main id ="storeAdd">
 <h1>
     식당추가
 </h1>
 <form action="" id="frm" method="post" enctype="multipart/form-data">
     <div>
-        <input type="text" name="store_name" placeholder="상호명입력" id = "store_name">
+        <span>상호명</span> <input type="text" name="store_name" placeholder="상호명입력" id = "store_name">
         <br>
-        <input type="text" name="store_phone" placeholder="폰번호입력" id ="store_phone" oninput=validNum() >
+        <span>핸드폰 번호</span>  <input type="text" name="store_phone" placeholder="폰번호입력" id ="store_phone" oninput=validNum() >
         <br>
-        <input type="text" id="postcode" placeholder="우편번호">
+        <span>우편번호</span> <input type="text" id="postcode" placeholder="우편번호">
         <button type="button" class="postsearch">우편검색</button>
         <br>
         <input type="text" id="add1" name="store_add_detail1" placeholder="기본주소" id = "store_add_detail1">
@@ -112,7 +113,7 @@
         <div class="bsns_div">
             <span>월요일</span>
             <input type="hidden" class="bsns" value="월요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>

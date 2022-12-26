@@ -66,6 +66,6 @@ public class StoreAddController {
 
         storeService.insertStore(dto);
 
-        return "redirect:/";
+        return "redirect:/owner/store/list";
     }
 }

@@ -59,37 +59,37 @@ function storeSubmitCheck() {
 
         $("#store_destination").focus();
     }
-    else if ($("select[name=test]").eq(0).val()=="영업일" && $(".bs_open_time").eq(0).val()=="" && $(".bs_close_time").eq(0).val()=="") {
+    else if ($("select[name=select_bs]").eq(0).val()=="영업일" && $(".bs_open_time").eq(0).val()=="" && $(".bs_close_time").eq(0).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
     }
-    else if ($("select[name=test]").eq(1).val()=="영업일" && $(".bs_open_time").eq(1).val()=="" && $(".bs_close_time").eq(1).val()=="") {
+    else if ($("select[name=select_bs]").eq(1).val()=="영업일" && $(".bs_open_time").eq(1).val()=="" && $(".bs_close_time").eq(1).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
     }
-    else if ($("select[name=test]").eq(2).val()=="영업일" && $(".bs_open_time").eq(2).val()=="" && $(".bs_close_time").eq(2).val()=="") {
+    else if ($("select[name=select_bs]").eq(2).val()=="영업일" && $(".bs_open_time").eq(2).val()=="" && $(".bs_close_time").eq(2).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
     }
-    else if ($("select[name=test]").eq(3).val()=="영업일" && $(".bs_open_time").eq(3).val()=="" && $(".bs_close_time").eq(3).val()=="") {
+    else if ($("select[name=select_bs]").eq(3).val()=="영업일" && $(".bs_open_time").eq(3).val()=="" && $(".bs_close_time").eq(3).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
     }
-    else if ($("select[name=test]").eq(4).val()=="영업일" && $(".bs_open_time").eq(4).val()=="" && $(".bs_close_time").eq(4).val()=="") {
+    else if ($("select[name=select_bs]").eq(4).val()=="영업일" && $(".bs_open_time").eq(4).val()=="" && $(".bs_close_time").eq(4).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
     }
-    else if ($("select[name=test]").eq(5).val()=="영업일" && $(".bs_open_time").eq(5).val()=="" && $(".bs_close_time").eq(5).val()=="") {
+    else if ($("select[name=select_bs]").eq(5).val()=="영업일" && $(".bs_open_time").eq(5).val()=="" && $(".bs_close_time").eq(5).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
     }
-    else if ($("select[name=test]").eq(6).val()=="영업일" && $(".bs_open_time").eq(6).val()=="" && $(".bs_close_time").eq(6).val()=="") {
+    else if ($("select[name=select_bs]").eq(6).val()=="영업일" && $(".bs_open_time").eq(6).val()=="" && $(".bs_close_time").eq(6).val()=="") {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
@@ -177,7 +177,7 @@ $("#add").on("click", function () {
 
 
 
-    $("#frm").attr("action", "owner/store/add/storeAdd")
+    $("#frm").attr("action", "/owner/store/add/storeAdd")
     if (storeSubmitCheck()) {
         $("#frm").submit();
     }
