@@ -50,7 +50,7 @@ public class StoreMenuController {
 
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
-        int acc_seq = (Integer) session.getAttribute("acc_seq");
+        int acc_seq = (Integer) session.getAttribute("acc_seq"); //찜
        int result= myPageDibsService.isExistDibs(acc_seq,store_seq);
 
         model.addAttribute("storeInfoDTO", storeInfoDTO);
