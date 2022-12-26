@@ -55,7 +55,9 @@
 <%--<jsp:include page="/member/header/destination"/>--%>
 
 <main id="storeSearch">
-    <hr class="mt70">
+
+    <hr class="mt65">
+
     <div class="container">
         <form action="/store/search">
             <input type="text" placeholder="검색해라" name="search">
@@ -156,7 +158,9 @@
     </div>
 
     <hr class="mt90">
+
 </main>
+
 
 </body>
 </html>

@@ -12,14 +12,8 @@ main {
     min-height: 100vh !important;
 }
 
-.mt70 {
-    height: 70px;
-    margin: 0;
-    padding: 0;
-}
-
-.mt55 {
-    height: 55px;
+.mt65 {
+    height: 65px;
     margin: 0;
     padding: 0;
 }
