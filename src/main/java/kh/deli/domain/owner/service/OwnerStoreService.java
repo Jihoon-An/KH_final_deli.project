@@ -60,4 +60,8 @@ public class OwnerStoreService {
                 = Optional.ofNullable(ownerStoreMapper.findByAccSeq(accSeq));
         return storeList.orElse(new ArrayList<>());
     }
+
+    public void toggleDisplay(int storeSeq, String newVal) {
+        ownerStoreMapper.toggleDisplay(storeSeq, newVal);
+    }
 }

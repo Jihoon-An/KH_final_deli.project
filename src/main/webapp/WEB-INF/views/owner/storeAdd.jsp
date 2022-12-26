@@ -19,11 +19,22 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
 
+
+    <!-- Bootstrap - css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="/resources/css/owner/storeAdd.css" type="text/css">
 
 
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <!-- sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
@@ -35,16 +46,16 @@
 </h1>
 <form action="" id="frm" method="post" enctype="multipart/form-data">
     <div>
-        <input type="text" name="store_name" placeholder="상호명입력" id = "input_id">
+        <input type="text" name="store_name" placeholder="상호명입력" id = "store_name">
         <br>
-        <input type="text" name="store_phone" placeholder="폰번호입력" id = >
+        <input type="text" name="store_phone" placeholder="폰번호입력" id ="store_phone" oninput=validNum() >
         <br>
         <input type="text" id="postcode" placeholder="우편번호">
         <button type="button" class="postsearch">우편검색</button>
         <br>
-        <input type="text" id="add1" name="store_add_detail1" placeholder="기본주소">
+        <input type="text" id="add1" name="store_add_detail1" placeholder="기본주소" id = "store_add_detail1">
         <br>
-        <input type="text" id="add2" name="store_add_detail2" placeholder="상세주소">
+        <input type="text" id="add2" name="store_add_detail2" placeholder="상세주소" id = "store_add_detail2">
         <br>
         <input type="hidden" id="store_add_x" name="store_add_x" >
         <input type="hidden" id ="store_add_y"  name="store_add_y" >
@@ -93,9 +104,9 @@
                 <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
             </div>
         </div>
-        <input type="text" name="store_intro" placeholder="식당소개">
+        <input type="text" name="store_intro" placeholder="식당소개" id="store_intro">
         <br>
-        <input type="text" name="store_origin" placeholder="원산지">
+        <input type="text" name="store_origin" placeholder="원산지" id="store_origin">
         <Br>
 
         <div class="bsns_div">
@@ -187,8 +198,8 @@
         <br>
         <input type="text" name="store_close_day" placeholder="휴무일">
         <br>
-        <input type="text" name="store_min_price" placeholder="주문 최소 금액" oninput=validNum()>
-        <input type="text" name="store_deli_tip" placeholder="배달팁" oninput=validNum()>
+        <input type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price" oninput=validNum()>
+        <input type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" oninput=validNum()>
         <br>
         <select name="store_deli_time" id="time">
             <option value="20">20분</option>
@@ -204,7 +215,7 @@
         <label><input type="radio" name="store_display" value="Y"> Y</label>
         <label><input type="radio" name="store_display" value="N"> N</label>
         <br>
-        <input type="text" name="store_destination">
+        <input type="text" name="store_destination" id ="store_destination">
     </div>
     <button id = add type="button">식당추가</button>
 </form>

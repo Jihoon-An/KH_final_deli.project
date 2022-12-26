@@ -33,6 +33,7 @@
     <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+
     <main id="myPage">
 
         <div class="container">

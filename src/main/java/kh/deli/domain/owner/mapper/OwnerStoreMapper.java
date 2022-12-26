@@ -5,6 +5,7 @@ import kh.deli.global.entity.StoreDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface OwnerStoreMapper {
     @Select("SELECT OWNER_SEQ FROM STORE WHERE STORE_SEQ = #{storeSeq}")
     Integer getOwnerByStore(@Param("storeSeq") int storeSeq);
 
-    @Select("SELECT OWNER_SEQ FROM OWNER o WHERE ACC_SEQ =${acc_seq} ")
+    @Select("SELECT OWNER_SEQ FROM OWNER o WHERE ACC_SEQ =${acc_seq}")
     Integer selectOwnerByAcc(int acc_seq);
 
     @Select("SELECT  * FROM store WHERE OWNER_SEQ =#{owner_seq}")
@@ -36,4 +37,7 @@ public interface OwnerStoreMapper {
     @Select("SELECT * FROM STORE WHERE OWNER_SEQ = " +
             "(SELECT OWNER_SEQ FROM OWNER WHERE ACC_SEQ = #{accSeq})")
     List<StoreDTO> findByAccSeq(@Param("accSeq") int accSeq);
+
+    @Update("UPDATE STORE SET STORE_OPEN = #{newVal} WHERE STORE_SEQ = #{storeSeq}")
+    void toggleDisplay(int storeSeq, String newVal);
 }
