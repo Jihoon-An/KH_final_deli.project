@@ -3,6 +3,7 @@ package kh.deli.domain.main.mapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
+import kh.deli.global.entity.MenuDTO;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -18,8 +19,6 @@ public interface MainAccountMapper {
 
     void insertOwner(@Param("acc") AccountDTO acc);
 
-    @Delete("DELETE FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
-    void deleteOwner(@Param("acc_seq") Integer accSeq);
 
     @Select("SELECT ACC_SEQ.NEXTVAL FROM DUAL")
     int getNextAccSeq();
@@ -31,14 +30,8 @@ public interface MainAccountMapper {
     void insertMember(MemberDTO memberDTO);
     void insertAddress(AddressDTO addressDTO);
 
-    @Delete("DELETE FROM ACCOUNT WHERE ACC_SEQ = #{acc_seq}")
-    void deleteAccount(int acc_seq);
 
-    @Delete("DELETE FROM MEMBER WHERE ACC_SEQ = #{acc_seq}")
-    void deleteMember(int acc_seq);
 
-    @Delete("DELETE FROM ADDRESS WHERE ACC_SEQ = #{acc_seq}")
-    void deleteAddress(int acc_seq);
 
     void kakaoSignUp(AccountDTO accountDTO);
 
@@ -66,4 +59,55 @@ public interface MainAccountMapper {
 
     @Select("SELECT OWNER_CARD_IMG FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
     String findOwnerCardBySeq(@Param("acc_seq") int accSeq);
+
+
+    /**
+     * <h1>[오너] 회원탈퇴 매퍼</h1>
+     */
+    @Select("SELECT OWNER_SEQ FROM OWNER WHERE ACC_SEQ = #{acc_seq")
+    Integer getOwnerSeqByAccSeq(@Param("acc_seq") int accSeq);
+    @Select("SELECT STORE_SEQ FROM STROE WHERE OWNER_SEQ = #{owner_seq}")
+    List<Integer> getStoreSeqListByOwnerSeq(@Param("owner_seq") int ownerSeq);
+    @Select("SELECT REV_SYSNAME FROM REVIEW WHERE STORE_SEQ = #{store_seq}")
+    List<String> getReviewImgListByStoreSeq(@Param("store_seq") int storeSeq);
+    @Select("SELECT MENU_IMG FROM MENU WHERE STORE_SEQ = #{store_seq}")
+    List<MenuDTO> getMenuImgListByStoreSeq(@Param("store_seq") int storeSeq);
+
+    @Delete("DELETE FROM DIBS WHERE STORE_SEQ = #{store_seq}")
+    void deleteDibsByStoreSeq(@Param("store_seq") int storeSeq);
+    @Delete("DELETE FROM REVIEW WHERE STORE_SEQ = #{store_seq}")
+    void deleteReviewByStoreSeq(@Param("store_seq") int storeSeq);
+    @Delete("DELETE FROM MENU_OPTION WHERE MENU_SEQ = #{menu_seq}")
+    void deleteMenuOptionByMenuOption(@Param("menu_seq") int menuSeq);
+    @Delete("DELETE FROM MENU WHERE STORE_SEQ = #{store_seq}")
+    void deleteMenuByStoreSeq(@Param("store_seq") int storeSeq);
+    @Delete("DELETE FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
+    void deleteOwner(@Param("acc_seq") Integer accSeq);
+    @Delete("DELETE FROM ACCOUNT WHERE ACC_SEQ = #{acc_seq}")
+    void deleteAccount(@Param("acc_seq") int accSeq);
+
+    /**
+     * <h1>[일반] 회원탈퇴 매퍼</h1>
+     */
+    @Delete("DELETE FROM DIBS WHERE ACC_SEQ = #{acc_seq}")
+    void deleteDibsByAccSeq(@Param("acc_seq") int accSeq);
+    @Delete("DELETE FROM REVIEW WHERE ACC_SEQ = #{acc_seq}")
+    void deleteReviewByAccSeq(@Param("acc_seq") int accSeq);
+    @Delete("DELETE FROM MEMBER_COUPON WHERE ACC_SEQ = #{acc_seq}")
+    void deleteMemberCouponByAccSeq(@Param("acc_seq") int accSeq);
+    @Delete("DELETE FROM ADDRESS WHERE ACC_SEQ = #{acc_seq}")
+    void deleteAddress(@Param("acc_seq") int accSeq);
+    @Delete("DELETE FROM MEMBER WHERE ACC_SEQ = #{acc_seq}")
+    void deleteMember(@Param("acc_seq") int accSeq);
+
+
+
+
+
+
+
+
+
+
+
 }

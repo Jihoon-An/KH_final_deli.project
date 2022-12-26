@@ -52,7 +52,7 @@ public class OwnerInfoService {
             String sysName = fileUtil.save(session, path, file);
 
             String originalFile = ownerInfoMapper.findOwnerCardBySeq(ownerDTO.getAcc_seq());
-            fileUtil.delete(session, "/resources/img/owner-card", originalFile);
+            fileUtil.delete(session, path, originalFile);
 
             ownerInfoMapper.modifyOwnerInfo(ownerDTO);
             ownerInfoMapper.modifyOwnerCardImg(sysName, ownerDTO.getAcc_seq());
