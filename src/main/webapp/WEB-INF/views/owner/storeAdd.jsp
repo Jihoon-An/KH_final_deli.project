@@ -216,7 +216,7 @@
         <label><input type="radio" name="store_display" value="Y"> Y</label>
         <label><input type="radio" name="store_display" value="N"> N</label>
         <br>
-        <input type="text" name="store_destination" id ="store_destination">
+        <input type="text" name="store_destination" id ="store_destination" placeholder="배달 가능 지역">
     </div>
     <button id = add type="button">식당추가</button>
 </form>
