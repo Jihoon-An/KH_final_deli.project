@@ -47,7 +47,7 @@
                                 <div class="destination_box">
                                     <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                                     <input type="radio" name="radio_add_division"
-                                           <c:if test="${i.add_division=='basics'}">checked</c:if>>
+                                           <c:if test="${i.add_division=='basics'}">id="basics" checked</c:if>>
                                     <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
                                     <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
                                     <input type="hidden" name="add_division" class="hidden_add_division"
