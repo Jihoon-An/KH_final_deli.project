@@ -54,4 +54,12 @@ public class OwnerStoreService {
                 = Optional.ofNullable(ownerStoreMapper.getOwnerByStore(storeSeq));
         return ownerSeq.orElse(19); //sample data
     }
+
+    public int selectOwnerByAcc(int acc_seq){
+        return ownerStoreMapper.selectOwnerByAcc(acc_seq);
+    }
+
+    public List<StoreDTO> selectAllByOwner(int owner_seq){
+        return ownerStoreMapper.selectAllByOwner(owner_seq);
+    }
 }

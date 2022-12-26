@@ -48,6 +48,7 @@
 <%--  <a href="/account/toKakaoSignUp">[유저]카카오회원가입-삭제예정</a><br>--%>
   <hr>
   <a href="/ownerSignUp">[오너]사업자회원가입</a><br>
+  <a href="/store/list">[오너]식당출력</a><br>
   <a href="/store/add">[오너]식당추가</a><br>
   <a href="/menu/add">[오너]메뉴추가</a><br>
   <a href="/store/mng">[오너]식당 수정/삭제</a><br>
