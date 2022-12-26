@@ -16,7 +16,9 @@
 
     <link rel="stylesheet" href="/resources/css/owner/storeList.css">
 </head>
-<body>
+<div>
+
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 
 <main id="ownerStore">
 
@@ -65,7 +67,6 @@
     <a href="/owner/store/add"><button>식당추가</button></a>
 
 </main>
-
 <script src="/resources/js/owner/storeList.js"></script>
 </div>
 </body>
