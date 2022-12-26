@@ -129,21 +129,30 @@ public class MainAccountService {
             // Account 테이블 데이터 삭제
             mainAccountMapper.deleteAccount(accSeq);
 
-
-
         }else { // 일반 클라이언트 탈퇴
 
             // 리뷰 사진 img 파일 삭제
+            List<String> reviewImgJsonList = mainAccountMapper.getReviewImgListByAccSeq(accSeq);
 
+            for (int i = 0; reviewImgJsonList.size() > i; i++) {
+                Type reviewImgListType = new TypeToken<List<String>>(){}.getType();
+                List<String> reviewImgList = new ArrayList<>();
+                reviewImgList.add(gson.fromJson(reviewImgJsonList.get(i), reviewImgListType));
+
+                for (int k = 0; reviewImgList.size() > k; k++) {
+                    FileUtil fileUtil = new FileUtil();
+                    fileUtil.delete(session, "/resources/img/review", reviewImgList.get(k));
+                }
+            }
 
             // Review 테이블 데이터 삭제
-
+            mainAccountMapper.deleteReviewByAccSeq(accSeq);
 
             // Dibs 테이블 데이터 삭제
-
+            mainAccountMapper.deleteDibsByAccSeq(accSeq);
 
             // Member_coupon 테이블 데이터 삭제
-
+            mainAccountMapper.deleteMemberCouponByAccSeq(accSeq);
 
             // Address 테이블 데이터 삭제
             mainAccountMapper.deleteAddress(accSeq);

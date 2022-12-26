@@ -89,6 +89,8 @@ public interface MainAccountMapper {
     /**
      * <h1>[일반] 회원탈퇴 매퍼</h1>
      */
+    @Select("SELECT REV_SYSNAME FROM REVIEW WHERE ACC_SEQ = #{acc_seq}")
+    List<String> getReviewImgListByAccSeq(@Param("acc_seq") int accSeq);
     @Delete("DELETE FROM DIBS WHERE ACC_SEQ = #{acc_seq}")
     void deleteDibsByAccSeq(@Param("acc_seq") int accSeq);
     @Delete("DELETE FROM REVIEW WHERE ACC_SEQ = #{acc_seq}")
