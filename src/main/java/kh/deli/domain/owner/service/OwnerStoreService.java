@@ -54,4 +54,10 @@ public class OwnerStoreService {
                 = Optional.ofNullable(ownerStoreMapper.getOwnerByStore(storeSeq));
         return ownerSeq.orElse(19); //sample data
     }
+
+    public List<StoreDTO> findByAccSeq(int accSeq) {
+        Optional<List<StoreDTO>> storeList
+                = Optional.ofNullable(ownerStoreMapper.findByAccSeq(accSeq));
+        return storeList.orElse(new ArrayList<>());
+    }
 }

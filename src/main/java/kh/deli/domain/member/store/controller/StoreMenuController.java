@@ -23,11 +23,9 @@ public class StoreMenuController {
     private final StoreReviewService storeReviewService;
 
     @RequestMapping()
-    public String toStoreDetail(Model model) throws Exception {
+    public String toStoreDetail(Model model, int store_seq) throws Exception {
 
-        int store_seq = 19; //식당검색리스트에서 seq
-
-        StoreDTO storeDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
+        StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
 
         List<String> menuGroup = storeMenuService.getMenuInfo(store_seq); //메뉴 카테고리
 
@@ -45,7 +43,7 @@ public class StoreMenuController {
 
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
-        model.addAttribute("storeDTO", storeDTO);
+        model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("menuGroup", menuGroup);
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("storeReviewCount", storeReviewCount);

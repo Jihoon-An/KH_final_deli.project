@@ -11,6 +11,9 @@
 <head>
     <title>운영자 - 식당관리</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -56,16 +59,16 @@
             <tbody>
             <c:choose>
                 <c:when test="${not empty list}">
-                    <c:forEach var="sysName" items="${list}">
+                    <c:forEach var="store" items="${list}">
                         <tr class="store">
-                            <td class="store_seq">${sysName.store_seq}</td>
-                            <td class="store_name">${sysName.store_name}</td>
-                            <td class="store_category">${sysName.store_category}</td>
-                            <td class="store_phone">${sysName.store_phone}</td>
-                            <td class="store_add_detail1">${sysName.store_add_detail1}, ${sysName.store_add_detail2}</td>
-                            <td class="owner_num">${sysName.owner_num}</td>
-                            <td class="owner_name">${sysName.owner_name}</td>
-                            <td class="store_display">${sysName.store_display}</td>
+                            <td class="store_seq">${store.store_seq}</td>
+                            <td class="store_name">${store.store_name}</td>
+                            <td class="store_category">${store.store_category}</td>
+                            <td class="store_phone">${store.store_phone}</td>
+                            <td class="store_add_detail1">${store.store_add_detail1}, ${store.store_add_detail2}</td>
+                            <td class="owner_num">${store.owner_num}</td>
+                            <td class="owner_name">${store.owner_name}</td>
+                            <td class="store_display">${store.store_display}</td>
                         </tr>
                     </c:forEach>
                 </c:when>

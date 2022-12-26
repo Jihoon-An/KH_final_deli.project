@@ -36,26 +36,26 @@
         </thead>
         <tbody>
         <c:if test="${not empty nev_list}">
-            <c:forEach var="sysName" items="${nev_list}">
+            <c:forEach var="store" items="${nev_list}">
                 <tr>
-                    <td class="mem_name">${sysName.mem_nick}</td>
-                    <td class="rev_content">${sysName.rev_content}</td>
-                    <td class="store_name">${sysName.store_name}</td>
+                    <td class="mem_name">${store.mem_nick}</td>
+                    <td class="rev_content">${store.rev_content}</td>
+                    <td class="store_name">${store.store_name}</td>
                     <td class="rev_writedate">
-                        <fmt:parseDate value="${sysName.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        <fmt:parseDate value="${store.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
                         <input id="formed_rev_writedate" class="formed_rev_writedate"
                                type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
                     </td>
 
-                    <input type="hidden" value="${sysName.rev_display}" class="rev_display">
-                    <input type="hidden" value="${sysName.rev_seq}" class="rev_seq">
-                    <input type="hidden" value="${sysName.rev_star}" class="rev_star">
+                    <input type="hidden" value="${store.rev_display}" class="rev_display">
+                    <input type="hidden" value="${store.rev_seq}" class="rev_seq">
+                    <input type="hidden" value="${store.rev_star}" class="rev_star">
 
                     <c:choose>
-                        <c:when test="${sysName.rev_modified_date!=null}">
+                        <c:when test="${store.rev_modified_date!=null}">
                             <td class="rev_modified_date">
-                                <fmt:parseDate value="${sysName.rev_modified_date}" var="registered"
+                                <fmt:parseDate value="${store.rev_modified_date}" var="registered"
                                                pattern="yyyy-MM-dd HH:mm:ss"/>
                                 <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
 

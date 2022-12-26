@@ -9,8 +9,18 @@
     margin: auto;
 }
 
+#orderDetail .container > div {
+    width: 95%;
+    margin: auto;
+}
+
+.container .store {
+    line-height: 30px;
+}
+
+/*hr{width: 95%; border-width:0.25px;}*/
 #orderDetail .btn {
-    margin-top: 20px;
+    padding: 10px 0px;
     width: 100%;
     height: 50px;
 }
@@ -24,4 +34,24 @@
     border-radius: 5px;
     border-style: none;
 }
+
+#orderDetail .orderer * {
+    font-size: 14px;
+    line-height: 25px;
+}
+
+#orderDetail #phone {
+}
+
+#orderDetail .orderer #destination, #phone, #store_req,
+#del_req {
+    color: #888888
+}
+
+#orderDetail .orderer #detail_destination {
+    color: #888888
+}
+
+
+/*div{border: 1px solid black;}*/
 
