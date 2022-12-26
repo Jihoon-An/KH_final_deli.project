@@ -33,17 +33,17 @@
 </style>
 
 <div id="fucking">
-  <a href="/store/search">[유저]식당검색</a><br>
+<%--  <a href="/store/search">[유저]식당검색</a><br>--%>
 <%--  <a href="/myPage">[유저]마이페이지</a><br>--%>
 <%--  <a href="/member/header/destination">[유저]배달지 선택 페이지</a><br>--%>
-  <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>
-  <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>
+<%--  <a href="/myPage/reviewWrite/">[유저]리뷰 작성 페이지</a><br>--%>
+<%--  <a href="/myPage/review/">[유저]리뷰 수정 페이지</a><br>--%>
   <a href="/order/orders">[유저]결제하기</a><br>
   <a href="/member/order/detail?order_seq=17">[유저]결제결과 페이지</a><br>
 <%--  <a href="/basket">[유저]장바구니</a><br>--%>
 <%--  <a href="/member/order/history">[유저]내주문내역</a><br>--%>
 <%--  <a href="/store/menu">[유저]식당상세(메뉴/정보/리뷰)</a><br>--%>
-  <a href="/menu/detail/0">[유저]메뉴상세페이지</a><br>
+<%--  <a href="/menu/detail/0">[유저]메뉴상세페이지</a><br>--%>
 <%--  <a href="/account/toMemberSignUp">[유저]일반회원가입</a><br>--%>
 <%--  <a href="/account/toKakaoSignUp">[유저]카카오회원가입-삭제예정</a><br>--%>
 <%--  <hr>--%>
