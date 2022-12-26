@@ -1,30 +1,11 @@
 
-// 기존 휴대폰번호
-const oldPhoneNumber = $("#oldPhoneNumber").val();
-
-// 패스워드 변경 Div Hide
-$(".modifyPwBox").hide();
-
-// 휴대폰 인증 Div Hide
-$("#certificationBox").hide();
-$("#phone_certi_btn").hide();
-
 
 
 /**
- * 닉네임 Remove 버튼 기능
+ * 비밀번호 변경 버튼 기능
  */
-$("#nameRemoveLabel").click(function (){
-    $("#nickName").val("");
-})
-
-
-
-/**
- * 패스워드 변경 버튼 기능
- */
-$("#passWordModifyBtn").click(function (){
-    $(".modifyPwBox").show();
+$("#modifyPassWordModalButton").click(()=>{
+    $(".modal").fadeIn();
 
     // 비밀번호 변경 확인 버튼 기능
     $("#modifyPasswordConfirmBtn").click(function (){
@@ -61,9 +42,9 @@ $("#passWordModifyBtn").click(function (){
 
         if(oldPW.val().trim() !== '' && newPW.val().trim() !== '' && conPW.val().trim() !== ''){
             $.ajax({
-                url: "/myPage/memberInfo/modify/passWord",
+                url: "/owner/info/modifyPassWord",
                 type: "post",
-                data: $("#modifyMemberInfo").serialize(),
+                data: $("#modifyPassWordForm").serialize(),
                 success:function (resp){
                     oldPW.val("");
                     newPW.val("");
@@ -71,7 +52,7 @@ $("#passWordModifyBtn").click(function (){
                     pwCheckSpan.text("");
                     if (resp == 'true'){
                         alert("비밀번호 변경 성공");
-                        $(".modifyPwBox").hide();
+                        $(".modal").fadeOut();
                     }else {
                         alert("비밀번호 변경 실패");
                     }
@@ -81,12 +62,20 @@ $("#passWordModifyBtn").click(function (){
         }
 
     });
-});
 
+})
 
 
 /**
- * 휴대폰번호 재인증 버튼 기능
+ * 비밀번호 모달 닫기 기능
+ */
+$("#closeModalButton").click(()=>{
+    $(".modal").fadeOut();
+})
+
+
+/**
+ * 휴대폰 번호 인증 기능
  */
 
 // input 칸에 숫자 외에 입력 안되게 막기
@@ -95,11 +84,11 @@ function validNum() {
 }
 
 function phone_check() {
-    if ($("#mem_phone").val() == "") {
+    if ($("#phoneInput").val() == "") {
         $("#phone_msg").show();
         $("#pw_msg").css("color", "#000000");
         $("#phone_msg").html("숫자만 입력 가능합니다");
-    } else if (!phoneRegex.test($("#mem_phone").val())) {
+    } else if (!phoneRegex.test($("#phoneInput").val())) {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#FF0000");
         $("#phone_msg").html("핸드폰 번호 형식을 확인해주세요");
@@ -113,27 +102,17 @@ function phone_check() {
     }
 }
 
-$("#reCertificationBtn").click(function (){
-    let phoneNumber = $("#phoneNumber");
+$("#modifyPhoneButton").click(function (){
+    let phoneNumber = $("#phoneInput");
     phoneNumber.attr('readonly', false).val("").focus();
     $(this).hide();
     $("#phone_certi_btn").show();
     $("#certificationBox").show();
-
-    // 인증번호 확인 버튼 기능
-    $("#certificationConfirmBtn").click(function (){
-        $("#certificationBox").hide();
-        phoneNumber.attr('readonly', true);
-        $("#reCertificationBtn").text("재인증");
-    });
-
 });
 
 
 
-/**
- * 휴대폰 번호 인증 기능
- */
+
 
 let phoneRegex = /^0[\d]{9,10}$/;
 var phone_ok = false;
@@ -177,15 +156,11 @@ function startTimer(count, display) {
 
 
 $("#phone_certi_btn").on("click", function () {
-    if($("#mem_phone").is(":disabled")){
-        $("#mem_phone").val("");
-        $("#mem_phone").attr("disabled",false);
-    }
-    if (phoneRegex.test($("#mem_phone").val())) {
+    if (phoneRegex.test($("#phoneInput").val())) {
         $.ajax({
             url: "/account/certify/tel",
             type: "post",
-            data: {mem_phone: $("#mem_phone").val()}
+            data: {mem_phone: $("#phoneInput").val()}
         }).done(function (result) {
             if (result != null) {
                 sendAuthNum("#phone_count");
@@ -202,11 +177,11 @@ $("#phone_certi_btn").on("click", function () {
 
 
 
-$("#mem_phone").on("focus", function () {
+$("#phoneInput").on("focus", function () {
     phone_check();
 })
 
-$("#mem_phone").on("keyup", function () {
+$("#phoneInput").on("keyup", function () {
     phone_check();
 })
 
@@ -223,18 +198,18 @@ $("#phone_confirm_btn").click(function () {
 
 
 function phone_confirm() {
-    if (phoneRegex.test($("#mem_phone").val())
+    if (phoneRegex.test($("#phoneInput").val())
         && $("#phone_msg").html() == "인증번호를 입력해주세요") {
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
-            data: {mem_phone: $("#mem_phone").val(), phone_confirm_input: $("#phone_confirm_input").val()}
+            data: {mem_phone: $("#phoneInput").val(), phone_confirm_input: $("#phone_confirm_input").val()}
         }).done(function (result) {
             if (result == true && $("#phone_count").html() != "시간초과") {
                 $("#phone_msg").hide();
                 $("#phone_confirm_box").hide();
                 $("#certificationBox").hide();
-                $("#mem_phone").attr("disabled", true);
+                $("#phoneInput").attr("readonly", true);
                 phone_ok = true;
                 console.log(phone_ok);
             } else if ($("#phone_count").html() == "시간초과") {
@@ -252,41 +227,39 @@ function phone_confirm() {
 
 
 
+
 /**
  * 정보 수정 버튼 기능
  */
-$("#saveButton").on("click" ,()=>{
+$("#modifyButton").click(function (){
 
-    let newNick = $("#nickName").val();
-    let newPhone = $("#mem_phone").val();
     let oldPhone = $("#oldPhoneNumber").val();
 
-    if (phone_ok === true) {
-        $.ajax({
-            url: "/myPage/memberInfo/modify",
-            type: "post",
-            data: {
-                "mem_nick" : newNick,
-                "mem_phone" : newPhone
-            }
-        }).done(function(){
-            alert("수정 성공");
-        });
-    }else {
-        $.ajax({
-            url: "/myPage/memberInfo/modify",
-            type: "post",
-            data: {
-                "mem_nick" : newNick,
-                "mem_phone" : oldPhone
-            }
-        }).done(function(){
-            alert("수정 성공");
-        });
+    if (phone_ok !== true) {
+        $("#phoneInput").val(oldPhone);
     }
 
-});
+    $("#ownerForm").submit();
 
-
-
-
+    // $.ajax({
+    //     url: "/owner/info/modifyOwner",
+    //     type: "post",
+    //     // data: $("#ownerForm").serialize(),
+    //     data: {
+    //         owner_name: $("#owner_name").val(),
+    //         owner_phone: $("#phoneInput").val(),
+    //         owner_num: $("#owner_num").val(),
+    //         file: $("#ownerCardInput").val()
+    //     },
+    //     contentType: false,
+    //     processData: false,
+    //     success:function (resp){
+    //         if (resp == 'true'){
+    //             alert("사업자 정보 변경 성공");
+    //             $(".modal").fadeOut();
+    //         }else {
+    //             alert("사업자 정보 변경 실패");
+    //         }
+    //     }
+    // });
+})

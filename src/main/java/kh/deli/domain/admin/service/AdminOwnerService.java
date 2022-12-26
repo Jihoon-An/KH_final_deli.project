@@ -23,6 +23,7 @@ public class AdminOwnerService {
     }
 
     public int deleteOwner(int owner_seq){
+
         return adminOwnerMapper.deleteOwner(owner_seq);
     }
 

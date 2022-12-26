@@ -1,5 +1,8 @@
 
+//정규식
 
+
+let input_id = $("#input_id").val();
 
 
 

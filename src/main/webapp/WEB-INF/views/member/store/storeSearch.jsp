@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>DELI</title>
+    <title>Deli Search</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 
     <!--jQuery-->
@@ -35,16 +35,13 @@
 <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <jsp:include page="/member/header/destination/click" />
-<%--<%@ include file="/WEB-INF/views/customHeader/m_destinationChange.jsp" %>--%>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-
-
 <c:import url="/member/header/destination" />
 
+<%--<%@ include file="/WEB-INF/views/customHeader/m_destinationChange.jsp" %>--%>
 <%--<jsp:include page="/member/header/destination"/>--%>
-
 
 <main id="storeSearch">
     <hr class="mt70">

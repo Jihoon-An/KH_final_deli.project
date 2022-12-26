@@ -1,6 +1,11 @@
 #dibs *{box-sizing: border-box;}
 
-#dibs div{border: 1px solid black;}
+/*#dibs div{border: 1px solid black;}*/
+
+#dibs a{
+    text-decoration: none;
+    color: black;
+}
 
 #dibs .container>div{ width: 95%;margin: auto;}
 
@@ -8,6 +13,7 @@
     width: 360px;
     border: 1px solid black;
     margin: auto;
+    min-height: 950px;
 }
 
 #dibs #pageTitle{
@@ -22,52 +28,70 @@
     font-size: small;
 }
 
+
 #dibs .dibBox{
-    margin-bottom: 10px;
-    height: 100%;
-}
-.dibBox>div{
-    height: inherit;
+    padding: 10px 0px;
+    height: fit-content;
+    overflow: hidden;
 }
 
 #dibs .imgBox{
-    height: 100%;
-    background-color: #e84c4f;
     float: left;
-    /*height: inherit;*/
     width: 25%;
+    border-radius: 20px;
+    overflow: hidden;
+    padding-right: 5px;
 }
 
 #dibs .storeLogo{
-    width: 100%;
-    /*height: 80px;*/
-    border-radius: 5px;
-    border: 5px solid blue;
+    width: 95%;
+    height: 80px;
 }
 
-.info{
-    width: 70%;
-    float: right;
-
-
-
+#dibs .info{
+    width: 65%;
     float: left
 }
 
+#dibs .info>div{
+    padding: 5px 0px;
+}
+
+#dibs .store_name{
+    font-weight: bolder;
+}
+#dibs .avg_star,.store_min, .store_deli_tip,.store_deli_time{
+    font-size: small;
+}
+
+.fa-star{
+color: transparent;
+text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#dibs #btnBox{
+    display: inline-block;
+    width:10%;
+    height: 50px;
+}
 #dibs .heart{
     border: 0;
     background-color: unset;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
-label{
-    text-shadow: 0 0 0 #f0f0f0;
+#dibs .heartIcon{
+    text-shadow: 0 0 0 rgba(232,76,79);
     color: transparent;
 }
-label:hover{
+#dibs .heartIcon:hover{
     cursor: pointer;
-    text-shadow: 0 0 0 rgba(232,76,79);
 }
 
-#btnSec{
-    display: inline-block;
-    width: 5%;
+#dibs hr{
+    border-width: 0.25px;
 }
+
+

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/resources/css/admin/ownerList.css" type="text/css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="owner_list">
     <table id="myTable" class="display">
         <thead>

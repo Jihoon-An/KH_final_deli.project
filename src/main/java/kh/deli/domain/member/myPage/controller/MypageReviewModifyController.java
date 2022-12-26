@@ -45,9 +45,9 @@ public class MypageReviewModifyController {
 
     @RequestMapping("")
     public String toModifyReviewForm(Model model) throws Exception {
-        int order_seq = 18; //리뷰관리페이지에서
-        int rev_seq = 181; //리뷰작성하기에서
-        int store_seq = 19;
+        Integer order_seq = 18; //리뷰관리페이지에서
+        Integer rev_seq = 242; //리뷰작성하기에서
+        Integer store_seq = 19;
         OrdersDTO orders_dto = reviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = reviewService.selectByReviewSeq(rev_seq);
         StoreDTO store_dto = reviewService.selectByStoreSeq(store_seq);
@@ -60,7 +60,7 @@ public class MypageReviewModifyController {
 
         if (jsonArr.size() > 0) {
 
-            for (int i = 0; i < jsonArr.size(); i++) {
+            for (Integer i = 0; i < jsonArr.size(); i++) {
                 JSONObject jsonObj = (JSONObject) jsonArr.get(i);
                 String menuSeq = jsonObj.get("menuSeq").toString();
                 String menuName = myPageReviewService.selectMenuName(menuSeq);
@@ -84,22 +84,31 @@ public class MypageReviewModifyController {
         List<String> newFileList = new ArrayList<>();
         //기존파일 리스트 불러오기
         ReviewDTO orgReview = reviewService.selectByReviewSeq(dto.getRev_seq());
-        //기존파일 지우기
-        List<String> del_files = gson.fromJson(del_files_json, stringInListType);
 
-        if(del_files.size()>0) {
-            for (String del_file : del_files) {
-                fileUtil.delete(session, "/resources/img/review", del_file);
-                newFileList.remove(del_file);
+
+        if (orgReview.getRev_sysname() != null) {
+            newFileList.addAll(gson.fromJson(orgReview.getRev_sysname(), stringInListType));
+
+            //기존파일 지우기
+            List<String> del_files = gson.fromJson(del_files_json, stringInListType);
+
+
+            if (del_files != null) {
+                for (String del_file : del_files) {
+                    fileUtil.delete(session, "/resources/img/review", del_file);
+                    newFileList.remove(del_file);
+                }
             }
         }
-
-        //새로운 파일 리스트 만들기
-        List<String> addFileNames = fileUtil.saves(session, "/resources/img/review", files);
-        newFileList.addAll(addFileNames);
-
+        if (!files[0].isEmpty()) {
+            //새로운 파일 리스트 만들기
+            List<String> addFileNames = fileUtil.saves(session, "/resources/img/review", files);
+            newFileList.addAll(addFileNames);
+        }
+//            dto.setRev_sysname(gson.toJson(newFileList));
+//        }
         dto.setRev_sysname(gson.toJson(newFileList));
-        dto.setRev_seq(181); //임시리뷰번호
+        dto.setRev_seq(242); //임시리뷰번호
         reviewService.modifyReview(dto);
         return "redirect:/myPage/review";
     }
