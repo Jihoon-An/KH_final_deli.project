@@ -18,7 +18,22 @@
 </head>
 <body>
 <div class="header">
-    <div id="storeName">${storeInfoDTO.store_name}</div>
+    <div id="storeName">${storeInfoDTO.store_name}
+        <button class="heart">
+            <input class="store_seq" type="hidden" value="${storeInfoDTO.store_seq}">
+            <%--찜 store_Seq--%>
+            <c:choose>
+                <c:when test="${result==1}">
+                    <label class="heartIcon" style=" text-shadow: 0 0 0 rgba(232,76,79);"><i
+                            class="fa-solid fa-heart  fa-lg"></i></label>
+                </c:when>
+                <c:otherwise>
+                    <label class="heartIcon" style="text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);"><i class=" fa-solid
+                           fa-heart fa-lg"></i></label>
+                </c:otherwise>
+            </c:choose>
+        </button>
+    </div>
     <div id="star"> 별 (${storeReviewAvg})</div>
     <div id="reviewCount">리뷰수(${storeReviewCount})</div>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>
