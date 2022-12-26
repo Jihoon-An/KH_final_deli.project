@@ -11,9 +11,8 @@
 
 #dibs .container{
     width: 360px;
-    border: 1px solid black;
     margin: auto;
-    min-height: 700px;
+    min-height: 900px;
     padding-top: 40px;
 }
 
@@ -31,7 +30,7 @@
 
 
 #dibs .dibBox{
-    padding: 10px 0px;
+    padding: 5px 0px;
     height: fit-content;
     overflow: hidden;
 }

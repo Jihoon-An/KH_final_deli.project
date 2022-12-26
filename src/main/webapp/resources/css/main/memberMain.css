@@ -1,8 +1,10 @@
 #memberMain .container{
     width:360px;
-    border: 1px solid #000000;
+    /*border: 1px solid #000000;*/
     margin: auto;
-    background-color: #FFFFFF;
+    /*background-color: #FFFFFF;*/
+    padding-top: 60px;
+    padding-bottom: 80px;
 }
 
 #memberMain .categoryIcon{
