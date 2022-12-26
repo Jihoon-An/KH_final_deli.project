@@ -47,6 +47,7 @@
 </h1>
 <form action="" id="frm" method="post" enctype="multipart/form-data">
     <div>
+        <input type="hidden" name="acc_seq" value="${acc_seq}">
         <span>상호명</span> <input type="text" name="store_name" placeholder="상호명입력" id = "store_name">
         <br>
         <span>핸드폰 번호</span>  <input type="text" name="store_phone" placeholder="폰번호입력" id ="store_phone" oninput=validNum() >
@@ -54,14 +55,14 @@
         <span>우편번호</span> <input type="text" id="postcode" placeholder="우편번호">
         <button type="button" class="postsearch">우편검색</button>
         <br>
-        <input type="text" id="add1" name="store_add_detail1" placeholder="기본주소" id = "store_add_detail1">
+        <span>기본주소</span><input type="text" id="add1" name="store_add_detail1" placeholder="기본주소" id = "store_add_detail1">
         <br>
-        <input type="text" id="add2" name="store_add_detail2" placeholder="상세주소" id = "store_add_detail2">
+        <span>상세주소</span><input type="text" id="add2" name="store_add_detail2" placeholder="상세주소" id = "store_add_detail2">
         <br>
         <input type="hidden" id="store_add_x" name="store_add_x" >
         <input type="hidden" id ="store_add_y"  name="store_add_y" >
 
-        <select name="store_category" >
+       <span>음식 카테고리</span> <select name="store_category" >
             <option value="한식">
                 한식
             </option>
@@ -105,11 +106,11 @@
                 <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
             </div>
         </div>
-        <input type="text" name="store_intro" placeholder="식당소개" id="store_intro">
+        <span>식당 소개</span>   <input type="text" name="store_intro" placeholder="식당소개" id="store_intro">
         <br>
-        <input type="text" name="store_origin" placeholder="원산지" id="store_origin">
+      <span>주요 원산지</span>  <input type="text" name="store_origin" placeholder="원산지" id="store_origin">
         <Br>
-
+        <span>영업시간</span>
         <div class="bsns_div">
             <span>월요일</span>
             <input type="hidden" class="bsns" value="월요일">
@@ -125,7 +126,7 @@
         <div class="bsns_div">
             <span>화요일</span>
             <input type="hidden" class="bsns" value="화요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
@@ -137,7 +138,7 @@
         <div class="bsns_div">
             <span>수요일</span>
             <input type="hidden" class="bsns" value="수요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
@@ -149,7 +150,7 @@
         <div class="bsns_div">
             <span>목요일</span>
             <input type="hidden" class="bsns" value="목요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
@@ -161,7 +162,7 @@
         <div class="bsns_div">
             <span>금요일</span>
             <input type="hidden" class="bsns" value="금요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
@@ -173,7 +174,7 @@
         <div class="bsns_div">
             <span>토요일</span>
             <input type="hidden" class="bsns" value="토요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
@@ -185,7 +186,7 @@
         <div class="bsns_div">
             <span>일요일</span>
             <input type="hidden" class="bsns" value="일요일">
-            <select name="test" class="bsns bs bs_open">
+            <select name="select_bs" class="bsns bs bs_open">
                 <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
@@ -197,12 +198,12 @@
         <input type="hidden" id="bsns_data" name="store_bsns_hours">
 
         <br>
-        <input type="text" name="store_close_day" placeholder="휴무일">
+        <span>휴무일</span> <input type="text" name="store_close_day" placeholder="휴무일">
         <br>
         <input type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price" oninput=validNum()>
         <input type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" oninput=validNum()>
         <br>
-        <select name="store_deli_time" id="time">
+        <span>배달 예상시간</span>   <select name="store_deli_time" id="time">
             <option value="20">20분</option>
             <option value="30">30분</option>
             <option value="40">40분</option>
@@ -216,7 +217,7 @@
         <label><input type="radio" name="store_display" value="Y"> Y</label>
         <label><input type="radio" name="store_display" value="N"> N</label>
         <br>
-        <input type="text" name="store_destination" id ="store_destination" placeholder="배달 가능 지역">
+       <span>배달 가능 지역</span> <input type="text" name="store_destination" id ="store_destination" placeholder="배달 가능 지역">
     </div>
     <button id = add type="button">식당추가</button>
 </form>
