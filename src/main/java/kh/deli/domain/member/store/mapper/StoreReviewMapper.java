@@ -12,7 +12,7 @@ import java.util.Map;
 public interface StoreReviewMapper {
 
     //가게 리뷰 개수
-    @Select("SELECT COUNT(*) FROM STORE WHERE STORE_SEQ=#{store_seq}")
+    @Select("SELECT COUNT(*) FROM REVIEW WHERE STORE_SEQ=#{store_seq}")
     int getReviewCount(int store_seq);
 
     //가게 별점 평균
