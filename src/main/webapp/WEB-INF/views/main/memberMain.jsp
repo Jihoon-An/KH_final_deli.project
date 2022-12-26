@@ -12,7 +12,7 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>회원 메인페이지</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
@@ -28,12 +28,22 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/resources/css/main/memberMain.css" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 </head>
 <body>
 
 <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
-
+<%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
+<jsp:include page="/member/header/destination/click"/>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<c:import url="/member/header/destination"/>
 
 <main id="memberMain">
     <div class="container">

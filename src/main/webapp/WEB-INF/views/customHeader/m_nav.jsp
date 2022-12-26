@@ -64,7 +64,7 @@
             <p>찜</p>
         </div>
     </a>
-    <a href="/member/order/history">
+    <a href="/store/search">
         <div>
             <i class="fa-solid fa-magnifying-glass"></i>
             <p>검색</p>
