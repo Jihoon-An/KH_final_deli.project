@@ -123,14 +123,14 @@
                             <div class="bottom_menu_group">${categories.menu_group}
                                 <hr>
                                 <c:forEach var="menuList" items="${categories.menuList}">
-                                    <div class="menu">
+                                <a herf="menu/detail/${menuList.menu_seq}"><div class="menu">
                                         <div class="yyyy">
                                             <div>${menuList.menu_name}</div>
                                             <div id="menu_intro">${menuList.menu_intro}</div>
                                             <div>${menuList.menu_price}원</div>
                                         </div>
                                     </div>
-                                    <div class="menu_img">
+                                    <div class="menu_img"></a>
                                             <%--                                <img src="/resources/img/menu-img/ramyun.png">--%>
                                         <c:choose>
                                             <c:when test="${not empty menuList.menu_img}">

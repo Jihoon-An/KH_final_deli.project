@@ -12,9 +12,10 @@ import lombok.AllArgsConstructor;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/store/info")
+@RequestMapping("/store/info/")
 @AllArgsConstructor
 public class StoreInfoController {
 
@@ -22,8 +23,8 @@ public class StoreInfoController {
     private final OwnerOwnerService ownerOwnerService;
     private final StoreReviewService storeReviewService;
 
-    @RequestMapping()
-    public String toStoreInfo(Model model,int store_seq) throws Exception{
+    @RequestMapping("{storeSeq}")
+    public String toStoreInfo(Model model,@PathVariable("storeSeq") Integer store_seq) throws Exception{
 
 //        int store_seq=19; //가게상세메뉴에서 seq
 

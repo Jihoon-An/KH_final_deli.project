@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,9 +27,9 @@ public class MyPageReviewViewController {
     private final MyPageReviewService myPageReviewService;
     private final HttpSession session;
 
-    @RequestMapping("")
-    public String toMemberMain(Model model) throws Exception {
-        int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
+    @RequestMapping("{orderSeq}")
+    public String toMemberMain(Model model,@PathVariable("orderSeq") Integer order_seq) throws Exception {
+//        int order_seq = 18; // 내 주문리스트에서 order_seq 파라미터로 가져오기
         OrdersDTO dto = myPageReviewService.selectByOrderSeq(order_seq);
 
         JSONParser jsonParser = new JSONParser();
