@@ -48,9 +48,6 @@ public class MyPageMemberInfoController {
     @PostMapping("/modify/passWord")
     public String modifyPassWord(String oldPassWord, String newPassWord) throws Exception {
         int accSeq = (int) session.getAttribute("acc_seq");
-        System.out.println("현재 비밀번호 : " + oldPassWord);
-        System.out.println("새 비밀번호 : " + newPassWord);
-
         boolean result = myPageMemberInfoService.modifyAccountPW(accSeq, oldPassWord, newPassWord);
         if (result) {return "true";}else {return "false";}
     }

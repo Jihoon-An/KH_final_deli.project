@@ -37,4 +37,13 @@ public interface AdminOwnerMapper {
 
     @Delete("delete from menu_option where menu_seq =#{menu_seq}")
     int deleteMenuOption(@Param("menu_seq") int menu_seq);
+
+    @Delete("delete from review where store_seq = ${store_seq}")
+    int deleteReview(@Param("store_seq") int store_seq);
+
+    @Delete("delete from account where acc_seq = ${acc_seq}")
+    int deleteAccount(@Param("acc_seq") int acc_seq);
+
+     List<String> selectRevSysName(int store_seq);
+
 }

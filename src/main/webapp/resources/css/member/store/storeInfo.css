@@ -1,22 +1,83 @@
-#storeInfo * {
-    box-sizing: border-box
+#store_info * {
+    box-sizing: border-box;
 }
 
-#storeInfo div {
-    border: 1px solid black;
+#store_info .container {
+    width: 360px;
+    margin: auto;
 }
 
-#storeInfo .container {
-    width: 375px;
-    height: auto;
+#store_info .header {
+    overflow: hidden;
+}
+
+#store_info .header > div {
+    text-align: center;
+    width: 95%;
+    margin: auto;
+}
+
+#store_info .header #storeName {
+    line-height: 70px;
+}
+
+#store_info .header #star {
+    width: 95%;
+}
+
+#store_info .header #reviewCount {
+    width: 95%;
+}
+
+#store_info .header #storeInfo {
+    word-wrap: break-word;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#store_info .deliveryInfo {
+    width: 95%;
+}
+
+#store_info .deliveryInfo {
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+#store_info .deliveryInfo div {
+    line-height: 27px;
+}
+
+#store_info .fieldBox {
+    width: 95%;
     margin: auto;
     overflow: hidden;
 }
 
-#storeInfo .storeInfo {
-    overflow: hidden
+#store_info .fieldBox div {
+    float: left;
+    width: 33.33%;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    margin-top: 10px;
 }
 
-#storeInfo .store {
+#store_info .fieldBox div a {
+    text-decoration: none;
+    color: black;
+}
+
+#store_info #map{width: 95%;}
+
+#store_info #info {
+    font-weight: bold;
+    font-size: 1.4em;
     float: left;
 }
+
+#store_info .store{
+    line-height: 25px;
+}
+
+/*div{border: 1px solid black;}*/

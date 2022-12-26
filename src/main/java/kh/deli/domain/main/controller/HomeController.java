@@ -31,9 +31,13 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String toHome(@CookieValue(value = "saved_email", required = false) String saved_email, Model model,String search, String filter) throws Exception {
-        // @CookieValue 를 통해 쿠키 값 불러와 String 에 담기
-        // required = false 안 하면 NullPointException
+    public String toHome(
+            @CookieValue(value = "saved_email", required = false) String saved_email, // @CookieValue 를 통해 쿠키 값 불러와 String 에 담기
+            Model model,                                                              // required = false 안 하면 NullPointException
+            String search,
+            String filter
+    ) throws Exception {
+
 
         if (session.getAttribute("acc_seq")!=null) {
             int acc_seq = (Integer) session.getAttribute("acc_seq");
