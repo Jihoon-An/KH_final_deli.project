@@ -1,5 +1,6 @@
 package kh.deli.domain.member.store.controller;
 
+import kh.deli.domain.member.myPage.service.MyPageDibsService;
 import kh.deli.domain.member.store.dto.CategoryResponseDTO;
 import kh.deli.domain.member.store.service.StoreMenuService;
 import kh.deli.domain.member.store.service.StoreReviewService;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,9 @@ public class StoreMenuController {
     private final StoreStoreService storeStoreService;
     private final StoreMenuService storeMenuService;
     private final StoreReviewService storeReviewService;
+
+    private final MyPageDibsService myPageDibsService;
+    private final HttpSession session;
 
     @RequestMapping("/{storeSeq}")
     public String toStoreDetail(@PathVariable("storeSeq") Integer store_seq, Model model) throws Exception {
@@ -44,11 +50,15 @@ public class StoreMenuController {
 
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
+       int result= myPageDibsService.isExistDibs(acc_seq,store_seq);
+
         model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("menuGroup", menuGroup);
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("storeReviewCount", storeReviewCount);
         model.addAttribute("storeReviewAvg", storeReviewAvg);
+        model.addAttribute("result", result);
         return "/member/store/storeDetail";
     }
 }

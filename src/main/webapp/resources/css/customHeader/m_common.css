@@ -12,8 +12,14 @@ main {
     min-height: 100vh !important;
 }
 
-.mt70 {
-    height: 70px;
+.mt65 {
+    height: 65px;
+    margin: 0;
+    padding: 0;
+}
+
+.mt90 {
+    height: 90px;
     margin: 0;
     padding: 0;
 }
