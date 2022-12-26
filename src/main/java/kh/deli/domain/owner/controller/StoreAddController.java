@@ -26,7 +26,7 @@ public class StoreAddController {
     public String toAdd(){
         return "/owner/storeAdd";
     }
-    @RequestMapping("storeAdd")
+    @RequestMapping("/storeAdd")
     public String add(StoreDTO dto, MultipartFile file ) throws IOException {
 
         System.out.println(dto.getStore_bsns_hours());

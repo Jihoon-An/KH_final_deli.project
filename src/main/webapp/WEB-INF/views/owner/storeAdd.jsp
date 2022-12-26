@@ -113,7 +113,7 @@
             <span>월요일</span>
             <input type="hidden" class="bsns" value="월요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -125,7 +125,7 @@
             <span>화요일</span>
             <input type="hidden" class="bsns" value="화요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -137,7 +137,7 @@
             <span>수요일</span>
             <input type="hidden" class="bsns" value="수요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -149,7 +149,7 @@
             <span>목요일</span>
             <input type="hidden" class="bsns" value="목요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -161,7 +161,7 @@
             <span>금요일</span>
             <input type="hidden" class="bsns" value="금요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -173,7 +173,7 @@
             <span>토요일</span>
             <input type="hidden" class="bsns" value="토요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -185,7 +185,7 @@
             <span>일요일</span>
             <input type="hidden" class="bsns" value="일요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">

@@ -17,57 +17,93 @@ function wobble(element) {
     element.animate(seq, {duration: 300});
 }
 //비어있는지 확인
-
+//let selectBs = document.querySelectorAll('.bs_open');
 
 function storeSubmitCheck() {
     if ($("#store_name").val() == "") {
-        wobble($("#store_name"));
+
         $("#store_name").focus();
     }
     else if ($("#store_phone").val() == "") {
-        wobble($("#store_phone"));
+
         $("#store_phone").focus();
     }
     else if ($("#gym_price").val() == "") {
-        wobble($("#gym_price"));
+
         $("#gym_price").focus();
     }
     else if ($("#store_intro").val() == "") {
-        wobble($("#store_intro"));
+
         $("#store_intro").focus();
     }
     else if ($("#store_origin").val() == "") {
-        wobble($("#store_origin"));
+
         $("#store_origin").focus();
     } else if ($("#store_min_price").val() == "") {
-        wobble($("#store_min_price"));
+
         $("#store_min_price").focus();
     }
     else if ($("#store_deli_tip").val() == "") {
-        wobble($("#store_deli_tip"));
+
         $("#store_deli_tip").focus();
     }
     else if ($("#store_add_detail1").val() == "") {
-        wobble($(".store_add_detail1"));
+
         $(".store_add_detail1").focus();
     }
     else if ($("#store_add_detail2").val() == "") {
-        wobble($("#store_add_detail2"));
+
         $("#store_add_detail2").focus();
     }
     else if ($("#store_destination").val() == "") {
-        wobble($("#store_destination"));
+
         $("#store_destination").focus();
     }
-    else if ($(".bs_open").val() == "영업일" && $(".bs_open_time").val()=="" && $(".bs_close_time").val()=="") {
+    else if ($("select[name=test]").eq(0).val()=="영업일" && $(".bs_open_time").eq(0).val()=="" && $(".bs_close_time").eq(0).val()=="") {
 
-        Swal.fire({title: "지정 권장", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
     }
+    else if ($("select[name=test]").eq(1).val()=="영업일" && $(".bs_open_time").eq(1).val()=="" && $(".bs_close_time").eq(1).val()=="") {
+
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
+    }
+    else if ($("select[name=test]").eq(2).val()=="영업일" && $(".bs_open_time").eq(2).val()=="" && $(".bs_close_time").eq(2).val()=="") {
+
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
+    }
+    else if ($("select[name=test]").eq(3).val()=="영업일" && $(".bs_open_time").eq(3).val()=="" && $(".bs_close_time").eq(3).val()=="") {
+
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
+    }
+    else if ($("select[name=test]").eq(4).val()=="영업일" && $(".bs_open_time").eq(4).val()=="" && $(".bs_close_time").eq(4).val()=="") {
+
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
+    }
+    else if ($("select[name=test]").eq(5).val()=="영업일" && $(".bs_open_time").eq(5).val()=="" && $(".bs_close_time").eq(5).val()=="") {
+
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
+    }
+    else if ($("select[name=test]").eq(6).val()=="영업일" && $(".bs_open_time").eq(6).val()=="" && $(".bs_close_time").eq(6).val()=="") {
+
+        Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+        return false;
+    }
+
+
+
     else if($("input[name=store_open]:radio:checked").length<1){
-        Swal.fire({title: "체크 권장", icon: "error", text: "오픈 여부를 체크해주세요"});
+        Swal.fire({title: "체크 필수", icon: "error", text: "오픈 여부를 체크해주세요"});
+        return false;
     }
     else if($("input[name=store_display]:radio:checked").length<1){
-        Swal.fire({title: "체크 권장", icon: "error", text: "공개 여부를 체크해주세요"});
+        Swal.fire({title: "체크 필수", icon: "error", text: "공개 여부를 체크해주세요"});
+        return false;
     }
     else {
         Swal.fire({title: "등록 성공", icon: "success", text: "등록이 완료되었습니다"});
@@ -141,7 +177,7 @@ $("#add").on("click", function () {
 
 
 
-    $("#frm").attr("action", "/store/add/storeAdd")
+    $("#frm").attr("action", "owner/store/add/storeAdd")
     if (storeSubmitCheck()) {
         $("#frm").submit();
     }
