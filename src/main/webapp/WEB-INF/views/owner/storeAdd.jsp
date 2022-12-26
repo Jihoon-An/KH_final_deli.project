@@ -30,7 +30,7 @@
 </h1>
 <form action="" id="frm" method="post" enctype="multipart/form-data">
     <div>
-        <input type="text" name="store_name" placeholder="상호명입력">
+        <input type="text" name="store_name" placeholder="상호명입력" id = "inputId">
         <br>
         <input type="text" name="store_phone" placeholder="폰번호입력">
         <br>

@@ -32,6 +32,7 @@
         <tr>
             <th>사업자 번호</th>
             <th>사업자 회원번호</th>
+            <th>회원번호</th>
             <th>사업자 이름</th>
             <th>연락처</th>
             <th>이메일</th>
@@ -45,7 +46,7 @@
                 <tr>
                     <td class="owner_num"> ${ow.owner_num}</td>
                     <td class="owner_seq">${ow.owner_seq}</td>
-                    <input type="hidden"  class="acc_seq" value="${ow.acc_seq}">
+                    <td class="acc_seq">${ow.acc_seq}</td>
                     <td class="owner_name">${ow.owner_name}</td>
                     <td class="owner_phone">${ow.owner_phone} </td>
                     <td class="acc_email">${ow.acc_email} </td>
@@ -70,7 +71,11 @@
                 </div>
                 <div>
                     사업자 회원번호<input
-                        type="text" placeholder="사업자 회원번호" disabled id="oseq" class="oseq">
+                        type="text" placeholder="사업자 회원번호" disabled id="owner_seq" class="owner_seq">
+                </div>
+                <div>
+                    회원번호<input
+                        type="text" placeholder="회원번호" disabled id="acc_seq" class="acc_seq">
                 </div>
                 <div>
                     사업자 이름<input
@@ -78,7 +83,7 @@
                 </div>
                 <div>
                     연락처<input
-                        type="text" placeholder="연락처" disabled id="ophone" class="ophone">
+                        type="text" placeholder="연락처" disabled id="ownerPhone" class="ownerPhone">
                 </div>
                 <div>
                     이메일<input

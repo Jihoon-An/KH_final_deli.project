@@ -21,11 +21,17 @@
             crossorigin="anonymous"></script>
 
 
-    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/order/orderHistory.css" type="text/css">
 </head>
 
 <body>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+<%--<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>--%>
+<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+
 <main id = "order_history">
 <div class="container">
     <c:choose>
