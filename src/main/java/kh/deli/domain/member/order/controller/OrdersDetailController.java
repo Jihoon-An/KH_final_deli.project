@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,10 +35,10 @@ public class OrdersDetailController {
 
     private final StoreBasketService storeBasketService;
     private final Gson gson;
-    @RequestMapping("")
-    public String getStoreInfo(Model model) throws Exception{
+    @RequestMapping("/{orderSeq}")
+    public String getStoreInfo(@PathVariable("orderSeq") Integer order_seq, Model model) throws Exception{
 
-       int order_seq=31;
+        order_seq=31;
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(order_seq); // 주문자정보

@@ -5,6 +5,7 @@
 #storeDetail .container {
     width: 360px;
     margin: auto;
+    padding-top:40px ;
 }
 
 #storeDetail .header {
