@@ -6,7 +6,7 @@ import kh.deli.domain.member.store.service.StoreMenuOptionService;
 import kh.deli.domain.member.store.service.StoreMenuService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
-import kh.deli.global.util.checker.Checker;
+import kh.deli.global.util.checker.CheckerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +28,7 @@ public class MenuDetailContoller {
     private final StoreMenuService menuService;
     private final StoreMenuOptionService optionService;
     private final StoreBasketService basketService;
-    private final Checker checker;
+    private final CheckerService checkerService;
 
     private final HttpSession session;
 

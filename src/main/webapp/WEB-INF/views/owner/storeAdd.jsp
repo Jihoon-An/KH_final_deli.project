@@ -20,19 +20,24 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
 
     <link rel="stylesheet" href="/resources/css/owner/storeAdd.css" type="text/css">
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 
 
 <body>
+
 <main id ="storeAdd">
 <h1>
     식당추가
 </h1>
 <form action="" id="frm" method="post" enctype="multipart/form-data">
     <div>
-        <input type="text" name="store_name" placeholder="상호명입력">
+        <input type="text" name="store_name" placeholder="상호명입력" id = "input_id">
         <br>
-        <input type="text" name="store_phone" placeholder="폰번호입력">
+        <input type="text" name="store_phone" placeholder="폰번호입력" id = >
         <br>
         <input type="text" id="postcode" placeholder="우편번호">
         <button type="button" class="postsearch">우편검색</button>
@@ -182,8 +187,8 @@
         <br>
         <input type="text" name="store_close_day" placeholder="휴무일">
         <br>
-        <input type="text" name="store_min_price" placeholder="주문 최소 금액">
-        <input type="text" name="store_deli_tip" placeholder="배달팁">
+        <input type="text" name="store_min_price" placeholder="주문 최소 금액" oninput=validNum()>
+        <input type="text" name="store_deli_tip" placeholder="배달팁" oninput=validNum()>
         <br>
         <select name="store_deli_time" id="time">
             <option value="20">20분</option>

@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/admin/coupon/add")
 @AllArgsConstructor
@@ -19,7 +17,7 @@ public class AddCouponController {
 
     //쿠폰 추가 페이지로 이동
     @RequestMapping("")
-    public String toAddCoupon() throws Exception {
+    public String toPage() throws Exception {
         return "admin/addCoupon";
     }
 
@@ -34,7 +32,7 @@ public class AddCouponController {
 
         couponService.put(coupon);
 
-        return "redirect:/";
+        return "redirect:/admin/coupon/list";
     }
 
     @PostMapping("/dupleCheck")
