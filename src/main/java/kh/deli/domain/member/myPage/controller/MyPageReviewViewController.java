@@ -47,13 +47,11 @@ public class MyPageReviewViewController {
 
             }
         }
-
-
-
-
+        String store_name=myPageReviewService.selectByStoreSeq(dto.getStore_seq()).getStore_name();
 
         model.addAttribute("dto", dto);
         model.addAttribute("menuNameList",menuNameList);
+        model.addAttribute("store_name",store_name);
 
         return "/member/myPage/memberReview";
     }
