@@ -12,8 +12,10 @@
 
 </head>
 <body>
+
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+
 <main id="ownerMain">
-    <%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
     <div class="container">
         <div>
             메인페이지
@@ -84,5 +86,6 @@
 
     <script src="/resources/js/owner/ownerMain.js"></script>
 </main>
+</body>
 </body>
 </html>

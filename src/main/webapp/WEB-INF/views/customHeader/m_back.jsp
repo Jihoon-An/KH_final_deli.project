@@ -12,6 +12,9 @@
         color: #E84C4F;
         text-align: center;
     }
+    #deli_back:hover{
+        cursor: pointer;
+    }
 </style>
 
 <div id="deli_back"><i class="fa-solid fa-arrow-left"></i></div>
