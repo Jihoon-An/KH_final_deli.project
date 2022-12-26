@@ -5,6 +5,7 @@
 #storeReview .container {
     width: 360px;
     margin: auto;
+    padding-top: 40px;
 }
 
 #storeReview .header {
@@ -80,4 +81,4 @@
     line-height: 25px;
 }
 
-div{border: 1px solid black;}
+/*div{border: 1px solid black;}*/

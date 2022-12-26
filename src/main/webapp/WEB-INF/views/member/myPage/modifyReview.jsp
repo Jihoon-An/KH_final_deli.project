@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/resources/css/member/myPage/modifyReview.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 <main id="modify_review">
     <div>
         <form action="/myPage/review/modify" id="reviewPost" method="post" enctype="multipart/form-data">

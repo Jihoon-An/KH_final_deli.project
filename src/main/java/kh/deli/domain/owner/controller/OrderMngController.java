@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 //optional로 떡칠해보기
+
 /**
  * <h2>개발단계 DB수정시 기본값 점검요함</h2>
  */
@@ -35,23 +36,28 @@ public class OrderMngController {
     @RequestMapping("")
     public String toPage() {
         Optional<Integer> ownerAccSeqOptional = Optional.ofNullable((Integer) session.getAttribute("acc_seq"));
-        int ownerAccSeq = ownerAccSeqOptional.orElse(31);
+        int ownerAccSeq = ownerAccSeqOptional.orElse(94);
         int ownerSeq = ownerService.convertAccSeqToOwnerSeq(ownerAccSeq); //(sample data)
 
         List<StoreNameAndSeqRequestDTO> storeList = storeService.getStoreListByOwnerSeq(ownerSeq);
 
-        Optional<Integer> firstStoreSeq = Optional.ofNullable(storeList.get(0).getStore_seq());
+        if (storeList.size() == 0) {
+            return "redirect:/owner/store/add";
+        }
 
-        return "redirect:/owner/order/" + firstStoreSeq.orElse(21); //없으면 기본값 21(sample data)
+        Integer firstStoreSeq = storeList.get(0).getStore_seq();
+
+        return "redirect:/owner/order/" + firstStoreSeq;
     }
 
     @RequestMapping("/{storeSeq}")
-    public String toMngPage(Model model, @PathVariable(value = "storeSeq") Integer inputStoreSeq) {
+    public String toMngPage(Model model, @PathVariable(value = "storeSeq") Integer storeSeq) {
 
-        Optional<Integer> ownerAccSeqOptional = Optional.ofNullable((Integer) session.getAttribute("acc_seq"));
-        int ownerAccSeq = ownerAccSeqOptional.orElse(31); //없으면 기본값 31(sample data)
+//        Optional<Integer> ownerAccSeqOptional = Optional.ofNullable((Integer) session.getAttribute("acc_seq"));
+//        int ownerAccSeq = ownerAccSeqOptional.orElse(94); //없으면 기본값 31(sample data)
+        int ownerAccSeq = (Integer) session.getAttribute("acc_seq");
         int ownerSeq = ownerService.convertAccSeqToOwnerSeq(ownerAccSeq); //(sample data)
-        int storeSeq = Optional.ofNullable(inputStoreSeq).orElse(21); // 기본값 21(sample data)
+//        int storeSeq = Optional.ofNullable(inputStoreSeq).orElse(21); // 기본값 21(sample data)
 
         //storeList 만들기
         //사업자별 가게주문관리 전환 출력을 위한 List
@@ -66,7 +72,7 @@ public class OrderMngController {
         }
 
         //orderList 만들기
-        List<OwnerOrderMngResponseDTO> orderList =  mngService.getOrderMngResponseDTO(storeSeq);
+        List<OwnerOrderMngResponseDTO> orderList = mngService.getOrderMngResponseDTO(storeSeq);
 
         model.addAttribute("storeList", storeList);
         model.addAttribute("orderList", orderList);
