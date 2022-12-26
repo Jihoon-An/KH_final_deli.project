@@ -1,4 +1,4 @@
-package kh.deli.global.entity;
+package kh.deli.global.util.alarm;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,13 +9,12 @@ import java.sql.Timestamp;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class NoticeDTO {
+@NoArgsConstructor
+public class NoticeResponseDTO {
     private Integer notice_seq;
-    private Integer from_acc_seq;
-    private Integer to_acc_seq;
+    private String from_name;
     private String notice_title;
     private String notice_content;
-    Timestamp notice_time;
+    private Timestamp notice_time;
 }
