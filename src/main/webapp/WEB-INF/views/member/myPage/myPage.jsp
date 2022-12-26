@@ -30,7 +30,7 @@
 <body>
 
     <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+<%--    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>--%>
     <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 
@@ -68,7 +68,7 @@
                         <span class="text">주문내역</span>
                     </div>
                 </a>
-                <a href="/">
+                <a href="/myPage/reviewList">
                     <div class="link reviewManagerBox">
                         <span class="icon"><i class="fa-solid fa-comments"></i></span><br>
                         <span class="text">리뷰관리</span>

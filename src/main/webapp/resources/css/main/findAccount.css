@@ -1,76 +1,61 @@
+body{background-color: #F8F5F2}
 #findAccount *{box-sizing: border-box;}
 #findAccount .container{
-    width: 375px;
+    width: 360px;
     height: 800px;
     border: 1px solid gray;
     margin: auto;
 }
-#findAccount .topBox{
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 25px;
-}
-#findAccount .topBox > .topLeftBox{
-    width: 50px;
-    height: 50px;
-    float: left;
-}
-#findAccount .topBox > .topRightBox{
-    width: 50px;
-    height: 50px;
-    float: right;
-}
+
 #findAccount .titleBox{
     width: 100%;
     height: 75px;
     text-align: center;
     font-size: 24px;
     line-height: 75px;
+    margin-top: 50px;
 }
-#findAccount #emailBox{
+
+#findAccount .choiceBox{
     width: 100%;
-    height: fit-content;
-    padding: 10px;
-}
-
-#findAccount .emailResultBox{
-    width: 350px;
-    height: fit-content;
-    float: left;
-}
-#findAccount .emailDiv{
-    width: 200px;
-    height: 30px;
-    float: left;
-    font-size: 14px;
-}
-#findAccount .signUpDateDiv{
-    width: 150px;
-    height: 30px;
-    float: left;
-    font-size: 14px;
-}
-
-#findAccount #passWordBox{
-    width: 100%;
-    height: fit-content;
-    padding: 10px;
-}
-
-#findAccount .passWordResultBox{
-    width: 350px;
-    height: fit-content;
-    float: left;
-}
-#findAccount .passWordDiv{
-    width: 350px;
-    height: 30px;
-    float: left;
-    font-size: 14px;
+    height: 50px;
     text-align: center;
+    margin-top: 25px;
 }
+#findAccount .choiceBox > label{
+    width: 40%;
+    height: 50px;
+    background-color: #F8F5F2;
+    border: 5px solid #e84c4f;
+    padding: 15px;
+    border-radius: 7px;
+    color: #3e4462;
+    font-weight: bold;
+}
+
+
+#findAccount #findEmailBox{
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid green;
+}
+#findAccount #findEmailBox > #mem_phone{
+    width: 200px;
+    height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+#findAccount #findEmailBox > #phone_certi_btn{
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+}
+
+
+
+
 
 
 #findAccount a{

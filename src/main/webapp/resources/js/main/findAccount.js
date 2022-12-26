@@ -1,4 +1,34 @@
 
+
+$("#choiceEmail").change(()=>{
+    if ($("#choiceEmail").is(":checked")){
+        $("#findEmailButton").css({
+            "background-color":"#e84c4f",
+            "color":"white"
+        });
+        $("#findPassWordButton").css({
+            "background-color":"#F8F5F2",
+            "border":"5px solid #e84c4f",
+            "color":"#3e4462"
+        });
+    }
+})
+$("#choicePassWord").change(()=>{
+    if ($("#choicePassWord").is(":checked")){
+        $("#findPassWordButton").css({
+            "background-color":"#e84c4f",
+            "color":"white"
+        });
+        $("#findEmailButton").css({
+            "background-color":"#F8F5F2",
+            "border":"5px solid #e84c4f",
+            "color":"#3e4462"
+        });
+    }
+})
+
+
+
 $("#findEmailBox").hide();
 $("#findPassWordBox").hide();
 

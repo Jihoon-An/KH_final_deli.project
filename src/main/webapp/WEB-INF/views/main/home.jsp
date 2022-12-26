@@ -56,9 +56,11 @@
                 </div>
                 <br><br>
                 <br><br>
-                <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
-                    <img src="/resources/img/kakao_login.png" id="kakao_login_img">
-                </a>
+                <div id="kakaoBox">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
+                        <img src="/resources/img/kakao_login.png" id="kakao_login_img">
+                    </a>
+                </div>
 <%--                <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">--%>
 <%--                    카카오로그아웃--%>
 <%--                </a>--%>
