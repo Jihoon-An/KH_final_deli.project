@@ -81,4 +81,21 @@
     line-height: 25px;
 }
 
+/*찜*/
+#storeReview button{border:0;}
+#storeReview.heart{
+    border: 0;
+    background-color: unset;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#storeReview .heartIcon{
+    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
+    color: transparent;
+}
+#storeReview .heartIcon:hover{
+    cursor: pointer;
+}
 /*div{border: 1px solid black;}*/

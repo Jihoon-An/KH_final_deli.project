@@ -81,4 +81,21 @@
     line-height: 25px;
 }
 
+/*찜*/
+#store_info button{border:0;}
+#store_info.heart{
+    border: 0;
+    background-color: unset;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#store_info .heartIcon{
+    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
+    color: transparent;
+}
+#store_info .heartIcon:hover{
+    cursor: pointer;
+}
 /*div{border: 1px solid black;}*/

@@ -18,7 +18,12 @@
 </head>
 <body>
 <div class="header">
-    <div id="storeName">${storeInfoDTO.store_name}</div>
+    <div id="storeName">${storeInfoDTO.store_name}
+        <button class="heart" >
+            <%--찜 store_Seq--%>
+            <input class="store_seq" type="hidden" value="${storeInfoDTO.store_seq}">
+            <label class="heartIcon"><i class="fa-solid fa-heart  fa-lg"></i></label>
+        </button></div>
     <div id="star"> 별 (${storeReviewAvg})</div>
     <div id="reviewCount">리뷰수(${storeReviewCount})</div>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>

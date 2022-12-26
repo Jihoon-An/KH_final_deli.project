@@ -47,7 +47,7 @@
 
     <%--이메일 입력--%>
     <input type="text" placeholder="이메일 주소 입력" id="acc_email" maxlength='38'>
-    <input type="text" placeholder="이메일 주소 입력" name="acc_email" id="acc_email_hidden" maxlength='38'>
+    <input type="hidden" placeholder="이메일 주소 입력" name="acc_email" id="acc_email_hidden" maxlength='38'>
     <button type="button" id="email_certi_btn">인증</button><br>
     <p id="email_msg" style="display: none">이메일 양식에 맞게 썼는지 + 중복 확인 중입니다.</p>
     <%--이메일 인증--%>
@@ -69,7 +69,7 @@
 
     <%--phone 입력--%>
     <input type="text" placeholder="핸드폰 번호 숫자만 입력" id="mem_phone" maxlength='11' oninput=validNum()>
-    <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden" maxlength='11' oninput=validNum()>
+    <input type="hidden" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden" maxlength='11' oninput=validNum()>
 
     <button type="button" id="phone_certi_btn">인증</button><br>
     <p id="phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>

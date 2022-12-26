@@ -39,7 +39,7 @@ public class MyPageDibsController {
 
     @ResponseBody
     @PostMapping(value = "like")
-    public int  insertDibs(int store_seq) throws Exception{
+    public int  insertDibs(Integer store_seq) throws Exception{
         
         System.out.println("컨트롤러 : "+" + "+store_seq);
 

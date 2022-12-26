@@ -70,7 +70,7 @@
                 </div>
                 <div class="businessSignUpLinkBox signUpBox">
                     <span>딜리의 사장님이 아니신가요?</span>
-                    <a href="/account/toMemberSignUp">사업자회원가입</a>
+                    <a href="/ownerSignUp">사업자회원가입</a>
                 </div>
             </form>
         </div>

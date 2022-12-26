@@ -71,7 +71,7 @@ $("#email_certi_btn").on("click", function () {
                     data: {
                         address: $("#acc_email").val(),
                         title: "Deli email confirm",
-                        message: "<h1>" + confirm_text + "</h1>"
+                        message: "<h1>" + confirmText + "</h1>"
                     }
                 });
                 $("#email_confirm_box").show();
