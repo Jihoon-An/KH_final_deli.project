@@ -325,7 +325,7 @@ $("#submit_btn").click(function () {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
-            text: '비밀번호를 다시 확인해주세요.',
+            text: '핸드폰을 다시 확인해주세요.',
         });
         $("#pw").focus();
         return;
