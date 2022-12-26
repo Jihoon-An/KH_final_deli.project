@@ -53,7 +53,7 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="info">
-                                <div class="store_name"><a href="/store/menu?store_seq=${i.STORE_SEQ}">${i.STORE_NAME}</a></div>
+                                <div class="store_name"><a href="/store/menu/${i.STORE_SEQ}">${i.STORE_NAME}</a></div>
                                 <div class="avg_star"><i class="fa-solid fa-star"></i> ${i.avg_star}</div>
                                 <div class="store_min">최소주문금액: ${i.STORE_MIN_PRICE}, 배달팁: ${i.STORE_DELI_TIP}</div>
                                 <div class="store_deli_time">배달시간: ${i.STORE_DELI_TIME}분</div>
@@ -68,6 +68,9 @@
 
                     </c:forEach>
                 </c:when>
+                <c:otherwise>
+                    <div class="dibBox">찜한 가게가 없습니다.</div>
+                </c:otherwise>
             </c:choose>
     </div>
 </main>

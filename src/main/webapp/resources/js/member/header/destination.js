@@ -28,6 +28,7 @@ function closeModal () {
     $("html, body").removeClass("not_scroll");
     posY = $(window).scrollTop(posY);
     $(".modal").fadeOut();
+    $("input:radio[name='radio_add_division']:radio[id='basics']").prop("checked", true);
 }
 
 // ESC 누르면 Modal 닫기
