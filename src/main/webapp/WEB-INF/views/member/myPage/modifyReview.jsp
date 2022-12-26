@@ -122,10 +122,10 @@
                         <%--                                <button type="button" class="del_img_btn">지우기</button>--%>
                         <%--                            </div>--%>
                         <%--                        </c:forEach>--%>
-                        <c:forEach var="sysName" items="${review_img_list}">
+                        <c:forEach var="store" items="${review_img_list}">
                             <div class="review_img_div">
-                                <img src="/resources/img/review/${sysName}">
-                                <input type="hidden" class="img_name" value="${sysName}">
+                                <img src="/resources/img/review/${store}">
+                                <input type="hidden" class="img_name" value="${store}">
                                 <button type="button" class="del_img_btn">지우기</button>
                             </div>
                         </c:forEach>

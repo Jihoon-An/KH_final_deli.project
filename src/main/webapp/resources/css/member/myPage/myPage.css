@@ -1,7 +1,6 @@
 #myPage *{box-sizing: border-box;}
 #myPage .container{
     width: 360px;
-    height: 800px;
     margin: auto;
     padding-top: 40px;
 }
@@ -52,11 +51,10 @@
     border-bottom: 2px solid gray;
 }
 #myPage .buttonBox{
-    width: 350px;
+    width: 300px;
     height: 35px;
-    float: left;
-    margin-left: 10px;
-    margin-top: 200px;
+    margin: auto;
+    margin-top: 400px;
 }
 #myPage .buttonBox button{
     width: 100%;
