@@ -30,26 +30,47 @@
     </resultMap>
 
     <select id="getReviews" resultType="java.util.HashMap" resultMap="getReviewsMap">
+<!--        SELECT-->
+<!--            R.REV_SEQ,        &#45;&#45;리뷰번호-->
+<!--            R.STORE_SEQ,      &#45;&#45;식당번호(참조용)-->
+<!--            (SELECT STORE_NAME FROM STORE WHERE STORE_SEQ = R.STORE_SEQ) AS STORE_NAME, &#45;&#45; 식당이름-->
+<!--            R.REV_STAR,       &#45;&#45;별점-->
+<!--            R.REV_CONTENT,    &#45;&#45;리뷰 내용-->
+<!--            R.REV_SYSNAME,    &#45;&#45;리뷰 사진-->
+<!--            R.ORDER_SEQ,      &#45;&#45;주문번호 (메뉴리스트 참조용)-->
+<!--            O.MENU_LIST,    &#45;&#45;메뉴리스트-->
+<!--            TO_CHAR(R.rev_writedate,'YYYY/MM/DD HH24:MI:SS')  AS REV_WRITETIME,  &#45;&#45;리뷰 작성시간 (수정시간)-->
+<!--            CASE-->
+<!--                WHEN TO_CHAR(R.rev_writedate + NUMTODSINTERVAL(3,'day'), 'YYYY/MM/DD HH24:MI:SS.FF' ) <![CDATA[>]]> TO_CHAR(SYSTIMESTAMP,'YYYY/MM/DD HH24:MI:SS.FF') THEN 'Y'-->
+<!--            ELSE 'N'-->
+<!--            END FLAG_UDT-->
+<!--        FROM-->
+<!--            REVIEW R-->
+<!--            INNER JOIN ORDERS O ON( R.ORDER_SEQ = O.ORDER_SEQ )-->
+<!--        WHERE-->
+<!--            R.ACC_SEQ = #{myReviewDTO.acc_seq}-->
+<!--        ORDER BY WRITE_TIME DESC-->
+
         SELECT
-            R.REV_SEQ,        --리뷰번호
-            R.STORE_SEQ,      --식당번호(참조용)
-            (SELECT STORE_NAME FROM STORE WHERE STORE_SEQ = R.STORE_SEQ) AS STORE_NAME, -- 식당이름
-            R.REV_STAR,       --별점
-            R.REV_CONTENT,    --리뷰 내용
-            R.REV_SYSNAME,    --리뷰 사진
-            R.ORDER_SEQ,      --주문번호 (메뉴리스트 참조용)
-            O.MENU_LIST,    --메뉴리스트
-            TO_CHAR(R.rev_writedate,'YYYY/MM/DD HH24:MI:SS')  AS REV_WRITETIME,  --리뷰 작성시간 (수정시간)
-            CASE
-                WHEN TO_CHAR(R.rev_writedate + NUMTODSINTERVAL(3,'day'), 'YYYY/MM/DD HH24:MI:SS.FF' ) <![CDATA[>]]> TO_CHAR(SYSTIMESTAMP,'YYYY/MM/DD HH24:MI:SS.FF') THEN 'Y'
-            ELSE 'N'
-            END FLAG_UDT
+        R.REV_SEQ,
+        R.STORE_SEQ,
+        (SELECT STORE_NAME FROM STORE WHERE STORE_SEQ = R.STORE_SEQ) AS STORE_NAME,
+        R.REV_STAR,
+        R.REV_CONTENT,
+        R.REV_SYSNAME,
+        R.ORDER_SEQ,
+        O.MENU_LIST,
+        TO_CHAR(R.rev_writedate,'YYYY/MM/DD HH24:MI:SS')  AS REV_WRITETIME,
+        CASE
+        WHEN TO_CHAR(R.rev_writedate + NUMTODSINTERVAL(3,'day'), 'YYYY/MM/DD HH24:MI:SS.FF' ) > TO_CHAR(SYSTIMESTAMP,'YYYY/MM/DD HH24:MI:SS.FF') THEN 'Y'
+        ELSE 'N'
+        END FLAG_UDT
         FROM
-            REVIEW R
-            INNER JOIN ORDERS O ON( R.ORDER_SEQ = O.ORDER_SEQ )
+        REVIEW R
+        INNER JOIN ORDERS O ON( R.ORDER_SEQ = O.ORDER_SEQ )
         WHERE
-            R.ACC_SEQ = #{myReviewDTO.acc_seq}
-        ORDER BY WRITE_TIME DESC
+        R.ACC_SEQ = #{myReviewDTO.acc_seq}
+        ORDER BY REV_WRITETIME DESC
     </select>
 
 </mapper>

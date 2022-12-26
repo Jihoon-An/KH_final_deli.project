@@ -15,6 +15,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class MypageReviewDTO {
     private int acc_seq;    //회원번호
+    private int rev_seq;    //리뷰번호
     private String mem_nick;    //닉네임
     private List<String> rev_sysname;  //리뷰사진
     private int rev_star;       //리뷰별점

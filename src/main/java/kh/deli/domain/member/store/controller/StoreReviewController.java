@@ -36,8 +36,8 @@ public class StoreReviewController {
     private final OrderBasketService orderBasketService;
 
     @RequestMapping()
-    public String toStoreReview(Model model) throws Exception {
-        int store_seq = 19; //식당상세정보에서 seq
+    public String toStoreReview(Model model,int store_seq) throws Exception {
+//        int store_seq = 19; //식당상세정보에서 seq
 
         StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); // 식당정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); // 식당리뷰개수
