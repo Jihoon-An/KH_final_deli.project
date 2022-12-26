@@ -32,4 +32,8 @@ public interface OwnerStoreMapper {
 
     @Select("SELECT  * FROM store WHERE OWNER_SEQ =#{owner_seq}")
     List<StoreDTO> selectAllByOwner(int owner_seq);
+
+    @Select("SELECT * FROM STORE WHERE OWNER_SEQ = " +
+            "(SELECT OWNER_SEQ FROM OWNER WHERE ACC_SEQ = #{accSeq})")
+    List<StoreDTO> findByAccSeq(@Param("accSeq") int accSeq);
 }

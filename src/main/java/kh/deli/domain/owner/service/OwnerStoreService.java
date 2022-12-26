@@ -55,11 +55,9 @@ public class OwnerStoreService {
         return ownerSeq.orElse(19); //sample data
     }
 
-    public int selectOwnerByAcc(int acc_seq){
-        return ownerStoreMapper.selectOwnerByAcc(acc_seq);
-    }
-
-    public List<StoreDTO> selectAllByOwner(int owner_seq){
-        return ownerStoreMapper.selectAllByOwner(owner_seq);
+    public List<StoreDTO> findByAccSeq(int accSeq) {
+        Optional<List<StoreDTO>> storeList
+                = Optional.ofNullable(ownerStoreMapper.findByAccSeq(accSeq));
+        return storeList.orElse(new ArrayList<>());
     }
 }

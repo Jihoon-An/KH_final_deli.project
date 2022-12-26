@@ -5,6 +5,7 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -19,17 +20,14 @@ public class OwnerStoreListController {
 
     private final HttpSession session;
 
-    @RequestMapping("")
+    @GetMapping("")
     public String toStoreMng(Model model) throws Exception {
 
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-        int owner_seq=ownerStoreService.selectOwnerByAcc(acc_seq);
-        List<StoreDTO> list=ownerStoreService.selectAllByOwner((owner_seq));
+        List<StoreDTO> storeList=ownerStoreService.findByAccSeq(acc_seq);
 
-        model.addAttribute("list",list);
+        model.addAttribute("list",storeList);
 
         return "/owner/storeList";
     }
-
-
 }
