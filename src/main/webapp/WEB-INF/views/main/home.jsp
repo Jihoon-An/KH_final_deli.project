@@ -25,14 +25,14 @@
 </head>
 <body>
 
-<%--<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>--%>
+<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
 
 <main id="home">
 
     <div class="container">
 
         <div class="logoBox">
-            <img src="/resources/img/임시로고.png">
+            <img src="/resources/img/deli_logo.png">
         </div>
 
         <div class="loginBox">
@@ -56,19 +56,21 @@
                 </div>
                 <br><br>
                 <br><br>
-                <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
-                    <img src="/resources/img/kakao_login.png" id="kakao_login_img">
-                </a>
+                <div id="kakaoBox">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
+                        <img src="/resources/img/kakao_login.png" id="kakao_login_img">
+                    </a>
+                </div>
 <%--                <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">--%>
 <%--                    카카오로그아웃--%>
 <%--                </a>--%>
                 <div class="clientSignUpLinkBox signUpBox">
                     <span>아직 딜리의 회원이 아니신가요?</span>
-                    <a href="/account/toMemberSignUp">회원가입</a>
+                    <a href="/account/toMemberSignUp">일반회원가입</a>
                 </div>
                 <div class="businessSignUpLinkBox signUpBox">
                     <span>딜리의 사장님이 아니신가요?</span>
-                    <a href="/account/toMemberSignUp">사업자 회원가입</a>
+                    <a href="/account/toMemberSignUp">사업자회원가입</a>
                 </div>
             </form>
         </div>

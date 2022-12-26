@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -18,22 +19,16 @@
 
         <div class="container">
 
-            <div class="topBox">
-                <div class="topLeftBox">
-                    <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-                <div class="topRightBox">
-                    <a href="/"><i class="fa-solid fa-house"></i></a>
-                </div>
-            </div>
 
             <div class="titleBox">
-                이메일|비밀번호 찾기
+                이메일l비밀번호 찾기
             </div>
 
             <div class="choiceBox">
-                <button id="findEmailButton">이메일 찾기</button>
-                <button id="findPassWordButton">비밀번호 찾기</button>
+                <input type="radio" id="choiceEmail" name="choice" style="display: none">
+                <input type="radio" id="choicePassWord" name="choice" style="display: none">
+                <label id="findEmailButton" for="choiceEmail">이메일 찾기</label>
+                <label id="findPassWordButton" for="choicePassWord">비밀번호 찾기</label>
             </div>
 
             <div id="findEmailBox">
