@@ -2,8 +2,51 @@
 //정규식
 
 
-let input_id = $("#input_id").val();
+//input 칸 안에 숫자값 외에 값 받지 않기
+function validNum() {
+    event.target.value = event.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+}
 
+//비어있는지 확인
+
+let inputId = $("#input_id").val();
+
+function storeSubmitCheck() {
+    if ($("#gym_name").val() == "") {
+        wobble($("#gym_name"));
+        $("#gym_name").focus();
+    }
+    else if ($("#gym_phone").val() == "") {
+        wobble($("#gym_phone"));
+        $("#gym_phone").focus();
+    }
+    else if ($("#gym_price").val() == "") {
+        wobble($("#gym_price"));
+        $("#gym_price").focus();
+    }
+    else if ($("#gym_open").val() == "") {
+        wobble($("#gym_open"));
+        $("#gym_open").focus();
+    }
+    else if ($("#gym_close").val() == "") {
+        wobble($("#gym_close"));
+        $("#gym_close").focus();
+    }
+    else if ($("#gym_address1").val() == "") {
+        wobble($(".lb_gym_address1"));
+        $(".lb_gym_address1").focus();
+    }
+    else if ($("#gym_address2").val() == "") {
+        wobble($("#gym_address2"));
+        $("#gym_address2").focus();
+    }
+    else {
+        Swal.fire({title: "등록 성공", icon: "success", text: "등록이 완료되었습니다"});
+        return true;
+    }
+    Swal.fire({title: "수정 실패", icon: "error", text: "수정에 실패하였습니다. 관리자에게 문의해주세요"});
+    return false;
+}
 
 
 
@@ -66,23 +109,7 @@ $("#add").on("click", function () {
     console.log($("#bsns_data").val());
     let bsnsData = JSON.parse($("#bsns_data").val());
     console.log(bsns_data); //이렇게 parsing해서 쓰면 돼요.
-    // var bsns_arr = [];
-    //
-    // let b = document.getElementsByClassName("bsns")
-    // let bs = document.getElementById("bsnsdata")
-    //
-    //
-    // for (let i = 0; i < b.length; i++) {
-    //
-    //     bsns_arr.push(b[i].value);
-    //
-    // }
-    //
-    // console.log(bsns_arr.toString())
-    //
-    // bs.value = bsns_arr.toString()
-    //
-    // console.log(bs.value)
+
 
 
     $("#frm").attr("action", "/store/add/storeAdd")
