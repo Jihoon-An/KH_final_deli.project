@@ -41,3 +41,11 @@ $("#writeBtn").on("click", function () {
 })
 
 
+$("#revContent").on("keyup",function (){
+    let content = $(this).val();
+    $("#count").html(content.length+" / 300");
+
+    if(content.length > 300){
+        alert("최대 300글자까지 입력 가능합니다.");
+    }
+})

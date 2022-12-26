@@ -35,23 +35,24 @@
     border-style: none;
 }
 
-#orderDetail .orderer * {
-    font-size: 14px;
+#orderDetail .pay * {
+
+    font-size: 15px;
     line-height: 25px;
 }
-
-#orderDetail #phone {
+#orderDetail #total_money{float: left}
+#orderDetail #destination,#orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {
+    font-size: small;
+    color: #888888;
 }
 
-#orderDetail .orderer #destination, #phone, #store_req,
-#del_req {
-    color: #888888
+#orderDetail .orderer * {
+    font-size: 15px;
+    line-height: 25px;
 }
-
-#orderDetail .orderer #detail_destination {
-    color: #888888
+#orderDetail #destination,#orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {
+    font-size: small;
+    color: #888888;
 }
-
-
-/*div{border: 1px solid black;}*/
+div{border: 1px solid black;}
 

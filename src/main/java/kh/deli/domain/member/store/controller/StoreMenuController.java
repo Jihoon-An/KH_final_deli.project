@@ -9,6 +9,7 @@ import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,10 @@ public class StoreMenuController {
     private final StoreMenuService storeMenuService;
     private final StoreReviewService storeReviewService;
 
-    @RequestMapping()
-    public String toStoreDetail(Model model, int store_seq) throws Exception {
+    @RequestMapping("/{storeSeq}")
+    public String toStoreDetail(@PathVariable("storeSeq") Integer store_seq, Model model) throws Exception {
 
-        StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
+                StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
 
         List<String> menuGroup = storeMenuService.getMenuInfo(store_seq); //메뉴 카테고리
 

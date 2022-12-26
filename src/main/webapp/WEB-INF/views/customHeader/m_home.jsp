@@ -12,6 +12,9 @@
     color: #E84C4F;
     text-align: center;
   }
+  #deli_home:hover{
+      cursor: pointer;
+  }
 </style>
 
 <div id="deli_home"><i class="fa-solid fa-house"></i></div>

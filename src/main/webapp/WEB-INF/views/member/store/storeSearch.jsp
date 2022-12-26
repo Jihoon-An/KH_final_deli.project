@@ -83,8 +83,7 @@
             <c:choose>
                 <c:when test="${not empty store_list}">
                     <c:forEach var="store_list" items="${store_list}" varStatus="status">
-
-                        <a href="/store/menu?store_seq=${store_list.STORE_SEQ}">
+                        <a href="/store/menu/${store_list.STORE_SEQ}">
                             <div class="store_list d-inline-flex m-2">
                                 <div class="m-2 store_logo_box">
                                     <c:choose>
