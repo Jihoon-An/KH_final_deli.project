@@ -9,7 +9,8 @@
     </script>
 
     <%--data tables--%>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
@@ -24,25 +25,35 @@
         <table id="myTable">
             <thead>
             <tr>
-                <th class="seq">식당번호</th>
                 <th class="sName">상호명</th>
-                <th class="category">업종</th>
                 <th class="phone">연락처</th>
-                <th class="add_detail1">주소</th>
+                <th class="add_detail">주소</th>
                 <th class="display">공개여부</th>
+                <th class="btn"></th>
             </tr>
             </thead>
             <tbody>
             <c:choose>
                 <c:when test="${not empty list}">
-                    <c:forEach var="sysName" items="${list}">
+                    <c:forEach var="store" items="${list}">
                         <tr class="store">
-                            <td class="store_seq">${sysName.store_seq}</td>
-                            <td class="store_name">${sysName.store_name}</td>
-                            <td class="store_category">${sysName.store_category}</td>
-                            <td class="store_phone">${sysName.store_phone}</td>
-                            <td class="store_add_detail1">${sysName.store_add_detail1}, ${sysName.store_add_detail2}</td>
-                            <td class="store_display">${sysName.store_display}</td>
+                            <td class="name">${store.store_name}</td>
+                            <td class="phone">${store.store_phone}</td>
+                            <td class="add_detail">${store.store_add_detail1}, ${store.store_add_detail2}</td>
+                            <td class="display">${store.store_display}</td>
+                            <td class="btn">
+                                <a href="/store/mng?store_seq=${store.store_seq}">
+                                    <button type="button">정보수정</button>
+                                </a>
+                                <a href="/owner/menu?store_seq=${store.store_seq}">
+                                    <button type="button">메뉴수정</button>
+                                </a>
+                                <form action="/owner/store/list/delete" method="post">
+                                    <input type="hidden" class="store_seq" name="store_seq"
+                                           value="${store.store_seq}">
+                                    <button type="button" class="del_btn">삭제</button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </c:when>
