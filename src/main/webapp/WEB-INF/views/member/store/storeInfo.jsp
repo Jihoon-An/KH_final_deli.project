@@ -124,17 +124,18 @@
 <%--        </div>--%>
 
     <div class="container">
-        <div class="header">
-            <div id="storeName">${storeInfoDTO.store_name}</div>
-            <div id="star"> 별 (${storeReviewAvg})</div>
-            <div id="reviewCount">리뷰수(${storeReviewCount})</div>
-            <div id="storeInfo">${storeInfoDTO.store_intro}</div>
-            <div class="deliveryInfo" style="text-align: left;">
-                <div>최소주문금액 : ${storeInfoDTO.store_min_price}원</div>
-                <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
-                <div>배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
-            </div>
-        </div>
+<%--        <div class="header">--%>
+<%--            <div id="storeName">${storeInfoDTO.store_name}</div>--%>
+<%--            <div id="star"> 별 (${storeReviewAvg})</div>--%>
+<%--            <div id="reviewCount">리뷰수(${storeReviewCount})</div>--%>
+<%--            <div id="storeInfo">${storeInfoDTO.store_intro}</div>--%>
+<%--            <div class="deliveryInfo" style="text-align: left;">--%>
+<%--                <div>최소주문금액 : ${storeInfoDTO.store_min_price}원</div>--%>
+<%--                <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>--%>
+<%--                <div>배달팁 : ${storeInfoDTO.store_deli_tip}원</div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+    <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
         <div class="fieldBox">
             <div id="menu"><a href="/store/menu">메뉴</a></div>
             <div id="info"><a href="#" id="to_info">정보</a></div>

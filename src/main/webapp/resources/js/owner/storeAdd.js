@@ -7,44 +7,73 @@ function validNum() {
     event.target.value = event.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 }
 
+
+function wobble(element) {
+    let order = [0, -8, 8, -4, 4, -2, 2, -1, 1, 0];
+    let seq = [];
+    order.forEach(function (y) {
+        seq.push({transform: "translate(0," + y + "px)"});
+    });
+    element.animate(seq, {duration: 300});
+}
 //비어있는지 확인
 
-let inputId = $("#input_id").val();
 
 function storeSubmitCheck() {
-    if ($("#gym_name").val() == "") {
-        wobble($("#gym_name"));
-        $("#gym_name").focus();
+    if ($("#store_name").val() == "") {
+        wobble($("#store_name"));
+        $("#store_name").focus();
     }
-    else if ($("#gym_phone").val() == "") {
-        wobble($("#gym_phone"));
-        $("#gym_phone").focus();
+    else if ($("#store_phone").val() == "") {
+        wobble($("#store_phone"));
+        $("#store_phone").focus();
     }
     else if ($("#gym_price").val() == "") {
         wobble($("#gym_price"));
         $("#gym_price").focus();
     }
-    else if ($("#gym_open").val() == "") {
-        wobble($("#gym_open"));
-        $("#gym_open").focus();
+    else if ($("#store_intro").val() == "") {
+        wobble($("#store_intro"));
+        $("#store_intro").focus();
     }
-    else if ($("#gym_close").val() == "") {
-        wobble($("#gym_close"));
-        $("#gym_close").focus();
+    else if ($("#store_origin").val() == "") {
+        wobble($("#store_origin"));
+        $("#store_origin").focus();
+    } else if ($("#store_min_price").val() == "") {
+        wobble($("#store_min_price"));
+        $("#store_min_price").focus();
     }
-    else if ($("#gym_address1").val() == "") {
-        wobble($(".lb_gym_address1"));
-        $(".lb_gym_address1").focus();
+    else if ($("#store_deli_tip").val() == "") {
+        wobble($("#store_deli_tip"));
+        $("#store_deli_tip").focus();
     }
-    else if ($("#gym_address2").val() == "") {
-        wobble($("#gym_address2"));
-        $("#gym_address2").focus();
+    else if ($("#store_add_detail1").val() == "") {
+        wobble($(".store_add_detail1"));
+        $(".store_add_detail1").focus();
+    }
+    else if ($("#store_add_detail2").val() == "") {
+        wobble($("#store_add_detail2"));
+        $("#store_add_detail2").focus();
+    }
+    else if ($("#store_destination").val() == "") {
+        wobble($("#store_destination"));
+        $("#store_destination").focus();
+    }
+    else if ($(".bs_open").val() == "영업일" && $(".bs_open_time").val()=="" && $(".bs_close_time").val()=="") {
+
+        Swal.fire({title: "지정 권장", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
+    }
+    else if($("input[name=store_open]:radio:checked").length<1){
+        Swal.fire({title: "체크 권장", icon: "error", text: "오픈 여부를 체크해주세요"});
+    }
+    else if($("input[name=store_display]:radio:checked").length<1){
+        Swal.fire({title: "체크 권장", icon: "error", text: "공개 여부를 체크해주세요"});
     }
     else {
         Swal.fire({title: "등록 성공", icon: "success", text: "등록이 완료되었습니다"});
         return true;
     }
-    Swal.fire({title: "수정 실패", icon: "error", text: "수정에 실패하였습니다. 관리자에게 문의해주세요"});
+    Swal.fire({title: "등록 실패", icon: "error", text: "등록에 실패하였습니다. 관리자에게 문의해주세요"});
     return false;
 }
 
@@ -113,7 +142,9 @@ $("#add").on("click", function () {
 
 
     $("#frm").attr("action", "/store/add/storeAdd")
-    $("#frm").submit()
+    if (storeSubmitCheck()) {
+        $("#frm").submit();
+    }
 
 
 })
