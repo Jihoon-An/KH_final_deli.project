@@ -32,9 +32,14 @@ public class OwnerMainService {
 
         for(int i=0;i<list.size();i++){
             int store_seq=list.get(i).getStore_seq();
+
             LocalDate now = LocalDate.now();
+
             OwnerDailySalesDTO dto= ownerMainMapper.selectSales(store_seq,now);
-            dslist.add(dto);
+            if(dto!=null){
+                dslist.add(dto);
+            }
+
         }
 
         return dslist ;
