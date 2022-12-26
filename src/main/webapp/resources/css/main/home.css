@@ -39,10 +39,9 @@ body{
 }
 #home .logoBox img{
     width: 250px;
-    height: 100px;
 }
 #home .loginBox{
-    margin-top: 50px;
+    margin-top: 25px;
 }
 #home .inputBox{
     width: 300px;

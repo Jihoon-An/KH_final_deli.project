@@ -32,7 +32,7 @@
     <div class="container">
 
         <div class="logoBox">
-            <img src="/resources/img/임시로고.png">
+            <img src="/resources/img/deli_logo.png">
         </div>
 
         <div class="loginBox">
