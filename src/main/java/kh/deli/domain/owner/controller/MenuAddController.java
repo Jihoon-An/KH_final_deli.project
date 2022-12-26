@@ -23,7 +23,7 @@ import java.util.Map;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/menu/add")
+@RequestMapping("owner/menu/add")
 public class MenuAddController {
 
 

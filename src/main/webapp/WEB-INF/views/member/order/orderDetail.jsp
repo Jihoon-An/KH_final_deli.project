@@ -24,7 +24,7 @@
         <div class="store">
             <c:choose>
                 <c:when test="${not empty storeInfoDTO}">
-                    <h2> ${storeInfoDTO.store_name}</h2>
+                    <h3> ${storeInfoDTO.store_name}</h3>
                     <%--            <div>주문 시간 : ${storeInfoDTO.order_date}</div>--%>
                     <div>주문 시간 :
                         <fmt:parseDate value="${storeInfoDTO.order_date}" var="registered"
@@ -39,7 +39,7 @@
         </div>
         <hr>
         <div class="order">
-            <h2>주문내역</h2>
+            <h3>주문내역</h3>
             <div>
                 <c:forEach var="menuList" items="${basketMenu}">
                     <div class="menuBox">
@@ -62,8 +62,9 @@
         <div class="pay">
             <c:choose>
                 <c:when test="${not empty payInfoDTO}">
-                    <h2>결제정보</h2>
-                    <div>총주문금액 ${payInfoDTO.order_price}원</div>
+                    <h3>결제정보</h3>
+                    <div id="total_money">총주문금액</div>
+                    <div>${payInfoDTO.order_price}원</div>
                     <div>쿠폰할인 -${payInfoDTO.discountByCoupon}</div>
                     <div>포인트할인 -${payInfoDTO.order_point}</div>
                     <div>배달팁 +${payInfoDTO.delivery_tip}</div>
@@ -77,9 +78,9 @@
         <div class="orderer">
             <c:choose>
             <c:when test="${not empty ordererInfoDTO}">
-            <h2>주문자 정보</h2>
+            <h3>주문자 정보</h3>
             <div id="del_destination">배달주소</div>
-            <div id="destination">
+            <div id="destination" style="font-size: small;">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
             <hr>
             <div>전화번호
@@ -101,6 +102,7 @@
             </div>
 
             <script src="/resources/js/member/order/orderDetail.js"></script>
+<%--            <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>--%>
 </main>
 </body>
 </html>

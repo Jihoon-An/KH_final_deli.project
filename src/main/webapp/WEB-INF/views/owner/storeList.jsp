@@ -42,7 +42,7 @@
                             <td class="name">${store.store_name}</td>
                             <td class="phone">${store.store_phone}</td>
                             <td class="add_detail">${store.store_add_detail1}, ${store.store_add_detail2}</td>
-                            <td class="display">${store.store_display}</td>
+                            <td class="display"><span class="display_val">${store.store_display}</span> <button class="display_toggle">전환하기</button></td>
                             <td class="btn">
                                 <a href="/store/mng?store_seq=${store.store_seq}">
                                     <button type="button">정보수정</button>
@@ -50,7 +50,7 @@
                                 <a href="/owner/menu?store_seq=${store.store_seq}">
                                     <button type="button">메뉴수정</button>
                                 </a>
-                                <form action="/owner/store/list/delete" method="post">
+                                <form action="/owner/store/list/delete" method="post" style="display: inline">
                                     <input type="hidden" class="store_seq" name="store_seq"
                                            value="${store.store_seq}">
                                     <button type="button" class="del_btn">삭제</button>

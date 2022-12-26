@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/store/add")
+@RequestMapping("owner/store/add")
 public class StoreAddController {
 
 
