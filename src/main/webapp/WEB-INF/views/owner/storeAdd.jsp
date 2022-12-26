@@ -37,7 +37,7 @@
     <div>
         <input type="text" name="store_name" placeholder="상호명입력" id = "input_id">
         <br>
-        <input type="text" name="store_phone" placeholder="폰번호입력">
+        <input type="text" name="store_phone" placeholder="폰번호입력" id = >
         <br>
         <input type="text" id="postcode" placeholder="우편번호">
         <button type="button" class="postsearch">우편검색</button>
@@ -187,8 +187,8 @@
         <br>
         <input type="text" name="store_close_day" placeholder="휴무일">
         <br>
-        <input type="text" name="store_min_price" placeholder="주문 최소 금액">
-        <input type="text" name="store_deli_tip" placeholder="배달팁">
+        <input type="text" name="store_min_price" placeholder="주문 최소 금액" oninput=validNum()>
+        <input type="text" name="store_deli_tip" placeholder="배달팁" oninput=validNum()>
         <br>
         <select name="store_deli_time" id="time">
             <option value="20">20분</option>
