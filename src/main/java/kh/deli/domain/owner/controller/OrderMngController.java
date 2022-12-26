@@ -47,10 +47,10 @@ public class OrderMngController {
 
         Integer firstStoreSeq = storeList.get(0).getStore_seq();
 
-        return "redirect:/owner/order/#" + firstStoreSeq;
+        return "redirect:/owner/order/" + firstStoreSeq;
     }
 
-    @RequestMapping("/#{storeSeq}")
+    @RequestMapping("/{storeSeq}")
     public String toMngPage(Model model, @PathVariable(value = "storeSeq") Integer storeSeq) {
 
 //        Optional<Integer> ownerAccSeqOptional = Optional.ofNullable((Integer) session.getAttribute("acc_seq"));
