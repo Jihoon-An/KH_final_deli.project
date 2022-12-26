@@ -18,6 +18,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -35,8 +36,8 @@ public class StoreReviewController {
     private final StoreReviewService storeReviewService;
     private final OrderBasketService orderBasketService;
 
-    @RequestMapping()
-    public String toStoreReview(Model model,int store_seq) throws Exception {
+    @RequestMapping("/{storeSeq}")
+    public String toStoreReview(Model model,@PathVariable("storeSeq") Integer store_seq) throws Exception {
 //        int store_seq = 19; //식당상세정보에서 seq
 
         StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); // 식당정보
