@@ -126,23 +126,17 @@ public class AccountController {
         mainAccountService.memberSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
-        session.setAttribute("acc_seq", accountDTO.getAcc_seq());
+        session.setAttribute("acc_seq", mainAccountService.getAccSeq(accountDTO.getAcc_email()));
         redisUtil.deleteData(memberDTO.getMem_phone());
         return "redirect:/";
     }
-
-//    @RequestMapping("toKakaoSignUp")
-//    public String toKakaoSignUp(String kakaoId, Model model) throws Exception {
-//        model.addAttribute("acc_token", kakaoId);
-//        return "main/memberSignUp";
-//    }
 
     @PostMapping("kakaoSignUp")
     public String kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
         mainAccountService.kakaoSignUp(accountDTO,memberDTO,addressDTO);
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
-        session.setAttribute("acc_seq", accountDTO.getAcc_seq());
+        session.setAttribute("acc_seq",  mainAccountService.getAccSeq(accountDTO.getAcc_email()));
         redisUtil.deleteData(memberDTO.getMem_phone());
         return "redirect:/";
     }

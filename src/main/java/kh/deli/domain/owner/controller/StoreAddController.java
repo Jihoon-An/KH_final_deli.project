@@ -1,5 +1,6 @@
 package kh.deli.domain.owner.controller;
 
+import io.lettuce.core.ScriptOutputType;
 import kh.deli.domain.owner.service.OwnerStoreService;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
@@ -26,27 +27,33 @@ public class StoreAddController {
     public String toAdd(){
         return "/owner/storeAdd";
     }
-    @RequestMapping("storeAdd")
-    public String add(StoreDTO dto, MultipartFile file ) throws IOException {
+    @RequestMapping("/storeAdd")
+    public String add(StoreDTO dto, MultipartFile file, int acc_seq) throws IOException {
 
-        System.out.println(dto.getStore_bsns_hours());
-        System.out.println(dto.getStore_name());
-
-        System.out.println(dto.getStore_deli_tip());
-        System.out.println(file);
-        System.out.println(dto.getStore_add_x());
-        System.out.println(dto.getStore_add_y());
-        System.out.println(dto.getStore_close_day());
-        System.out.println(dto.getStore_deli_time());
-        System.out.println(dto.getStore_destination());
-        System.out.println(dto.getStore_deli_tip());
-        System.out.println(dto.getStore_display()+"공개여부");
-        System.out.println(dto.getStore_open()+"품절여부");
+        System.out.println("ACC"+acc_seq);
+//        System.out.println(dto.getStore_bsns_hours());
+//        System.out.println(dto.getStore_name());
+//
+//        System.out.println(dto.getStore_deli_tip());
+//        System.out.println(file);
+//        System.out.println(dto.getStore_add_x());
+//        System.out.println(dto.getStore_add_y());
+//        System.out.println(dto.getStore_close_day());
+//        System.out.println(dto.getStore_deli_time());
+//        System.out.println(dto.getStore_destination());
+//        System.out.println(dto.getStore_deli_tip());
+//        System.out.println(dto.getStore_display()+"공개여부");
+//        System.out.println(dto.getStore_open()+"품절여부");
 
        // int owner_Seq = (Integer) session.getAttribute("owner_seq");
      
-        int owner_Seq=12;
-        dto.setOwner_seq(owner_Seq);  //임시
+//        int owner_Seq=12;
+//        dto.setOwner_seq(owner_Seq);  //임시
+
+        int owner_seq = storeService.selectOwnerSeq(acc_seq); //acc_seq로 owner_seq 조히
+        System.out.println(owner_seq);
+        dto.setOwner_seq(owner_seq); //owner_seq dq입력
+
 
         String realPath=session.getServletContext().getRealPath("/resources/img/store");
         File filePath=new File(realPath);
@@ -64,8 +71,8 @@ public class StoreAddController {
             dto.setStore_logo(sysName);
         }
 
-        storeService.insertStore(dto);
+      storeService.insertStore(dto);
 
-        return "redirect:/";
+        return "redirect:/owner/store/list";
     }
 }

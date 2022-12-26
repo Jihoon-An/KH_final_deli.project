@@ -32,7 +32,6 @@
 <body>
 <main id="menuAdd">
     <form action="" id="frm" method="post" enctype="multipart/form-data">
-        <button type="button">메뉴그룹추가</button>
         <hr>
 
         <div class="container">
@@ -40,7 +39,7 @@
             <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"> <button
                 type="button">X</button>
             <hr>
-            <button type="button">메뉴추가</button>
+
 
             <div class="menufrm">
                 <div class="profile">

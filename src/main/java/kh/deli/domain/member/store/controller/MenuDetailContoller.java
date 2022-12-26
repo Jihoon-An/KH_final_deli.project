@@ -57,8 +57,8 @@ public class MenuDetailContoller {
     public String putBasket(
             @RequestParam("basket_menu") String menuJson
     ) throws ParseException {
-        basketService.setBasketInSession(session, menuJson);
+        Integer storeSeq = basketService.setBasketInSession(session, menuJson);
 
-        return "redirect:/store/info"; //seq 추가입력 필요
+        return "redirect:/store/info/" + storeSeq; //seq 추가입력 필요
     }
 }

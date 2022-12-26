@@ -64,4 +64,8 @@ public class OwnerStoreService {
     public void toggleDisplay(int storeSeq, String newVal) {
         ownerStoreMapper.toggleDisplay(storeSeq, newVal);
     }
+
+    public int selectOwnerSeq(int acc_seq){
+        return ownerStoreMapper.selectOwnerSeq(acc_seq);
+    }
 }

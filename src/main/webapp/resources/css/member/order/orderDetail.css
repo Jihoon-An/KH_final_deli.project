@@ -7,6 +7,7 @@
     height: auto;
     border: 1px solid black;
     margin: auto;
+    margin-top: 45px;
 }
 
 #orderDetail .container > div {
@@ -87,5 +88,5 @@
     /*color: #888888;*/
 }
 
-/*div{border: 1px solid black;}*/
+div{border: 1px solid black;}
 

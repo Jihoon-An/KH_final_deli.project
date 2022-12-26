@@ -28,6 +28,7 @@ function closeModal () {
     $("html, body").removeClass("not_scroll");
     posY = $(window).scrollTop(posY);
     $(".modal").fadeOut();
+    $("input:radio[name='radio_add_division']:radio[id='basics']").prop("checked", true);
 }
 
 // ESC 누르면 Modal 닫기
@@ -96,8 +97,10 @@ $(document).on("click", ".postsearch", function () {
             var addr = ''; // 주소 변수
             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                 addr = data.roadAddress;
+                document.getElementById("add_detail1").value = data.roadAddress;
             } else { // 사용자가 지번 주소를 선택했을 경우(J)
                 addr = data.jibunAddress;
+                document.getElementById("add_detail1").value = data.jibunAddress;
             }
             var geocoder = new kakao.maps.services.Geocoder();
             var callback = function (result, status) {
@@ -110,8 +113,6 @@ $(document).on("click", ".postsearch", function () {
             };
             geocoder.addressSearch(addr, callback);
             document.getElementById("postcode").value = data.zonecode;
-            document.getElementById("add_detail1").value = data.jibunAddress;
-            document.getElementById("add_detail1").value = data.roadAddress;
             document.getElementById("add_detail2").focus();
         }
     }).open();

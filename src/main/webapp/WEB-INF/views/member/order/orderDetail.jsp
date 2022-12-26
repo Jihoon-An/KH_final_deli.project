@@ -18,8 +18,20 @@
 
     <link rel="stylesheet" href="/resources/css/member/order/orderDetail.css">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+    <!-- bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 <main id="orderDetail">
     <div class="container">
         <div class="store">
@@ -36,27 +48,25 @@
                 </c:when>
             </c:choose>
         </div>
-        <hr>
         <div class="order">
             <h3>주문내역</h3>
             <div>
                 <c:forEach var="menuList" items="${basketMenu}">
                     <div class="menuBox">
                         <div id="menu_name">${menuList.menu.menu_name} ${menuList.count}개</div>
-<%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
-                            <div>그룹 : ${optionList.option_group}음료</div>
-                            <div>옵션 : ${optionList.option_name}</div>
-                            <div>옵션 수량 : ${optionList.option_multiple}</div>
-                            <div>가격 : ${optionList.option_price}</div>
-<%--                        </c:forEach>--%>
+                            <%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
+                        <div>그룹 : ${optionList.option_group}음료</div>
+                        <div>옵션 : ${optionList.option_name}</div>
+                        <div>옵션 수량 : ${optionList.option_multiple}</div>
+                        <div>가격 : ${optionList.option_price}</div>
+                            <%--                        </c:forEach>--%>
                         <div>${menuList.price}원</div>
                     </div>
-                    <hr>
                 </c:forEach>
 
             </div>
         </div>
-        <hr>
+
         <div class="pay">
             <c:choose>
                 <c:when test="${not empty payInfoDTO}">
@@ -87,7 +97,7 @@
                 </c:when>
             </c:choose>
         </div>
-        <hr>
+
         <div class="orderer">
             <c:choose>
             <c:when test="${not empty ordererInfoDTO}">
@@ -95,13 +105,11 @@
             <div id="del_destination">배달주소</div>
             <div id="destination" style="font-size: small;">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
-            <hr>
+
             <div>전화번호
                 <div id="phone">${ordererInfoDTO.mem_phone}</div>
-                <hr>
                 <div>가게요청사항
                     <div id="store_req">${ordererInfoDTO.order_store_req}</div>
-                    <hr>
                     <div>배달요청사항
                         <div id="del_req">${ordererInfoDTO.order_rider_req}</div>
                     </div>
@@ -115,7 +123,6 @@
             </div>
 
             <script src="/resources/js/member/order/orderDetail.js"></script>
-            <%--            <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>--%>
 </main>
 </body>
 </html>
