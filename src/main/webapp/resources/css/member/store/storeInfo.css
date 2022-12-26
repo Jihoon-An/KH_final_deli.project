@@ -5,6 +5,7 @@
 #store_info .container {
     width: 360px;
     margin: auto;
+    padding-top: 40px;
 }
 
 #store_info .header {
