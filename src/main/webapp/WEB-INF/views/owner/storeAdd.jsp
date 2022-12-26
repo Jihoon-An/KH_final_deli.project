@@ -33,24 +33,25 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
 <body>
-
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <main id ="storeAdd">
 <h1>
     식당추가
 </h1>
 <form action="" id="frm" method="post" enctype="multipart/form-data">
     <div>
-        <input type="text" name="store_name" placeholder="상호명입력" id = "store_name">
+        <span>상호명</span> <input type="text" name="store_name" placeholder="상호명입력" id = "store_name">
         <br>
-        <input type="text" name="store_phone" placeholder="폰번호입력" id ="store_phone" oninput=validNum() >
+        <span>핸드폰 번호</span>  <input type="text" name="store_phone" placeholder="폰번호입력" id ="store_phone" oninput=validNum() >
         <br>
-        <input type="text" id="postcode" placeholder="우편번호">
+        <span>우편번호</span> <input type="text" id="postcode" placeholder="우편번호">
         <button type="button" class="postsearch">우편검색</button>
         <br>
         <input type="text" id="add1" name="store_add_detail1" placeholder="기본주소" id = "store_add_detail1">
@@ -112,8 +113,8 @@
         <div class="bsns_div">
             <span>월요일</span>
             <input type="hidden" class="bsns" value="월요일">
-            <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+            <select name="select_bs" class="bsns bs bs_open">
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -125,7 +126,7 @@
             <span>화요일</span>
             <input type="hidden" class="bsns" value="화요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -137,7 +138,7 @@
             <span>수요일</span>
             <input type="hidden" class="bsns" value="수요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -149,7 +150,7 @@
             <span>목요일</span>
             <input type="hidden" class="bsns" value="목요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -161,7 +162,7 @@
             <span>금요일</span>
             <input type="hidden" class="bsns" value="금요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -173,7 +174,7 @@
             <span>토요일</span>
             <input type="hidden" class="bsns" value="토요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -185,7 +186,7 @@
             <span>일요일</span>
             <input type="hidden" class="bsns" value="일요일">
             <select name="test" class="bsns bs bs_open">
-                <option>영업일</option>
+                <option value="영업일">영업일</option>
                 <option>휴무일</option>
             </select>
             <span class="bs_time">
@@ -215,7 +216,7 @@
         <label><input type="radio" name="store_display" value="Y"> Y</label>
         <label><input type="radio" name="store_display" value="N"> N</label>
         <br>
-        <input type="text" name="store_destination" id ="store_destination">
+        <input type="text" name="store_destination" id ="store_destination" placeholder="배달 가능 지역">
     </div>
     <button id = add type="button">식당추가</button>
 </form>
