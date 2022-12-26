@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <html>
 <head>
 
-    <title>Home</title>
-
+    <title>딜리 - Deli</title>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <link href="/resources/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -23,67 +25,55 @@
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
+<%--<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>--%>
 
 <main id="home">
-    <!--<marquee><Strong><h1>🎉나경이 생일축하했어~🎂🎉</h1></Strong></marquee>-->
 
+    <div class="container">
 
-<%--    <c:choose>--%>
-<%--        <c:when test="${loginEmail != null}">--%>
-<%--            ${acc_seq}--%>
-<%--            <div class="container">--%>
-<%--                <marquee>--%>
-<%--                    <h1>로그인 성공이다 이 짜식아ㄴㄴ.</h1>--%>
-<%--                    <br>--%>
-<%--                    <a href="/memberMain/toMemberMain"><button>메인으로</button></a>--%>
-<%--                    <br>--%>
-<%--                    <h1>--%>
-<%--                        <a href="/account/logout"><button>로그아웃</button></a>--%>
-<%--                    </h1>--%>
-<%--                    <h2>--%>
-<%--                        <a href="/userMenu/toMyPage"><button>마이페이지</button></a>--%>
-<%--                    </h2>--%>
-<%--                    <h1>--%>
-<%--                        <a href="/basket"><button>고추장바구니모를찾아서</button></a>--%>
-<%--                    </h1>--%>
-<%--                    <br><br><br>--%>
-<%--                    <h3><a href="/account/withdrawal"><button>꺼지셈 너 필요없음 이제</button></a> </h3>--%>
-<%--                </marquee>--%>
-<%--            </div>--%>
-<%--        </c:when>--%>
+        <div class="logoBox">
+            <img src="/resources/img/임시로고.png">
+        </div>
 
-<%--        <c:otherwise>--%>
-<%--        </c:otherwise>--%>
-<%--    </c:choose>--%>
+        <div class="loginBox">
 
-            <div class="container">
+            <form id="loginForm" action="/account/login" method="post">
 
-                <div class="loginBox">
-                    <form id="loginForm" action="/account/login" method="post">
-                        <input type="text" placeholder="이메일" name="email" <c:if test="${not empty saved_email}"> value="${saved_email}"</c:if>>
-                        <input type="password" placeholder="비밀번호" name="pw">
-                        <br>
-                        <label for="emailSave">이메일저장</label>
-                        <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
-                        <button>로그인</button>
-                        <br><br>
-                        <a href="/account/findAccount">이메일|비밀번호 찾기</a>
-                        <br><br>
-                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
-                            <img src="/resources/img/kakao_login.png" id="kakao_login_img">
-                        </a>
-                        <br>
-                        <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">
-                            카카오로그아웃
-                        </a>
-                        <br><br>
-                        <span>아직 딜리의 회원이 아니신가요?</span>
-                        <a href="/account/toMemberSignUp">회원가입</a>
-                    </form>
+                <div class="inputBox">
+                    <input type="text" id="emailInput" placeholder="이메일" name="email" <c:if test="${not empty saved_email}"> value="${saved_email}"</c:if>>
+                    <input type="password" id="passWordInput" placeholder="비밀번호" name="pw">
                 </div>
 
-            </div>
+                <div class="buttonBox">
+                    <button>로그인</button>
+                    <div class="saveBox">
+                        <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
+                        <label for="emailSave">이메일저장</label>
+                    </div>
+                    <div class="findBox">
+                        <a href="/account/findAccount">이메일|비밀번호 찾기</a>
+                    </div>
+                </div>
+                <br><br>
+                <br><br>
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
+                    <img src="/resources/img/kakao_login.png" id="kakao_login_img">
+                </a>
+<%--                <a href="https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout">--%>
+<%--                    카카오로그아웃--%>
+<%--                </a>--%>
+                <div class="clientSignUpLinkBox signUpBox">
+                    <span>아직 딜리의 회원이 아니신가요?</span>
+                    <a href="/account/toMemberSignUp">회원가입</a>
+                </div>
+                <div class="businessSignUpLinkBox signUpBox">
+                    <span>딜리의 사장님이 아니신가요?</span>
+                    <a href="/account/toMemberSignUp">사업자 회원가입</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
 
 
     <script src="/resources/js/main/home.js"></script>
