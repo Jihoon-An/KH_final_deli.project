@@ -22,101 +22,103 @@
 <body>
 <main id="storeReview">
     <%--영업정보--%>
-<%--    <div class="container">--%>
-<%--        <div class="storeIntro">--%>
-<%--            <div class="store_name">상호명 : ${storeInfoDTO.store_name}</div>--%>
-<%--            <div><button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button></div>--%>
-<%--            <div class="store_deli_time">배달시간 : ${storeInfoDTO.store_deli_time}분</div>--%>
-<%--            <div class="store_deli_tip">배달팁 : ${storeInfoDTO.store_deli_tip}원</div>--%>
-<%--            <div class="store_deli_tip">식당소개 : ${storeInfoDTO.store_intro}</div>--%>
-<%--            <div class="store_deli_tip">리뷰개수 : ${storeReviewCount}</div>--%>
-<%--            <div>리뷰 평균 : ${storeReviewAvg}</div--%>
-<%--        </div>--%>
+    <%--    <div class="container">--%>
+    <%--        <div class="storeIntro">--%>
+    <%--            <div class="store_name">상호명 : ${storeInfoDTO.store_name}</div>--%>
+    <%--            <div><button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button></div>--%>
+    <%--            <div class="store_deli_time">배달시간 : ${storeInfoDTO.store_deli_time}분</div>--%>
+    <%--            <div class="store_deli_tip">배달팁 : ${storeInfoDTO.store_deli_tip}원</div>--%>
+    <%--            <div class="store_deli_tip">식당소개 : ${storeInfoDTO.store_intro}</div>--%>
+    <%--            <div class="store_deli_tip">리뷰개수 : ${storeReviewCount}</div>--%>
+    <%--            <div>리뷰 평균 : ${storeReviewAvg}</div--%>
+    <%--        </div>--%>
 
-<%--        <div class="fieldBox">--%>
-<%--            <div id="menu"><a href="/store/menu">메뉴</a></div>--%>
-<%--            <div id="info"><a href="/store/info">정보</a></div>--%>
-<%--            <div id="review"><a href="#"><h2>리뷰</h2></a></div>--%>
-<%--        </div>--%>
+    <%--        <div class="fieldBox">--%>
+    <%--            <div id="menu"><a href="/store/menu">메뉴</a></div>--%>
+    <%--            <div id="info"><a href="/store/info">정보</a></div>--%>
+    <%--            <div id="review"><a href="#"><h2>리뷰</h2></a></div>--%>
+    <%--        </div>--%>
 
-<%--        <div class="reviews">--%>
-<%--            <c:choose>--%>
-<%--                <c:when test="${not empty storeReviewList}">--%>
-<%--                    <c:forEach var="reviews" items="${storeReviewList}">--%>
-<%--                        <div id="nickname">닉네임 : ${reviews.mem_nick}</div>--%>
-<%--                        <div id="writeDate">작성일자 : ${reviews.rev_writedate}</div>--%>
-<%--                        <div id="modifiedDate">수정일자 : ${reviews.rev_modified_date}</div>--%>
-<%--                        <div id="reviewStar">별점 : ${reviews.rev_star}</div>--%>
-<%--                        <c:choose>--%>
-<%--                            <c:when test="${not empty reviews.rev_sysname}">--%>
-<%--                                <c:forEach var="reviewImg" items="${reviews.rev_sysname}">--%>
-<%--                                    <div id="reviewImgs">--%>
-<%--                                        <img src="/resources/img/review/${reviewImg}">--%>
-<%--                                    </div>--%>
-<%--                                </c:forEach>--%>
-<%--                            </c:when>--%>
-<%--                        </c:choose>--%>
-<%--                        <c:choose>--%>
-<%--                            <c:when test="${not empty reviews.rev_content}">--%>
-<%--                                <div>리뷰 내용 : ${reviews.rev_content}</div>--%>
-<%--                            </c:when>--%>
-<%--                        </c:choose>--%>
-<%--                        <c:choose>--%>
-<%--                            <c:when test="${not empty reviews.menu_list}">--%>
-<%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
-<%--                                    <div>메뉴명 : ${i}</div>--%>
-<%--                                </c:forEach>--%>
-<%--                            </c:when>--%>
-<%--                        </c:choose>--%>
-<%--                        <br>--%>
-<%--                    </c:forEach>--%>
-<%--                </c:when>--%>
-<%--            </c:choose>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-        <div class="container">
-            <div class="header">
-                <div id="storeName">${storeInfoDTO.store_name}</div>
-                <div id="star"> 별 (${storeReviewAvg})</div>
-                <div id="reviewCount">리뷰수(${storeReviewCount})</div>
-                <div id="storeInfo">${storeInfoDTO.store_intro}</div>
-                <div class="deliveryInfo" style="text-align: left;">
-                    <div>최소주문금액 : ${storeInfoDTO.store_min_price}원</div>
-                    <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
-                    <div>배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
-                </div>
-            </div>
-            <div class="fieldBox">
-                <div id="menu"><a href="/store/menu">메뉴</a></div>
-                <div id="info"><a href="/store/info">정보</a></div>
-                <div id="review"><a href="#">리뷰</a></div>
-            </div>
-            <hr>
-            <div class="store">
-                <h3>영업정보</h3>
-                <div>가게명 : ${storeInfoDTO.store_name}</div>
-                <div>전화번호 : ${storeInfoDTO.store_phone}</div>
-            </div>
-            <hr>
-            <div class="delivery">
-                <h3>배달정보</h3>
-                <div>최소주문금액 :${storeInfoDTO.store_min_price}</div>
-                <div>배달팁:${storeInfoDTO.store_deli_tip}</div>
-                <div>배달가능지역 :${storeInfoDTO.store_destination}</div>
-                <div>배달예상시간 :${storeInfoDTO.store_deli_time}분</div>
-            </div>
-            <hr>
-            <div class="businessman">
-                <h3>사업자정보</h3>
-                <div>대표자명 :${ownerInfoDTO.owner_name}</div>
-                <div>상호명:${storeInfoDTO.store_name}</div>
-                <div> 가게주소:${storeInfoDTO.store_add_detail1}<br>
-                    ${storeInfoDTO.store_add_detail2}</div>
-                <div>사업자번호 :${ownerInfoDTO.owner_num}</div>
-            </div>
+    <%--        <div class="reviews">--%>
+    <%--            <c:choose>--%>
+    <%--                <c:when test="${not empty storeReviewList}">--%>
+    <%--                    <c:forEach var="reviews" items="${storeReviewList}">--%>
+    <%--                        <div id="nickname">닉네임 : ${reviews.mem_nick}</div>--%>
+    <%--                        <div id="writeDate">작성일자 : ${reviews.rev_writedate}</div>--%>
+    <%--                        <div id="modifiedDate">수정일자 : ${reviews.rev_modified_date}</div>--%>
+    <%--                        <div id="reviewStar">별점 : ${reviews.rev_star}</div>--%>
+    <%--                        <c:choose>--%>
+    <%--                            <c:when test="${not empty reviews.rev_sysname}">--%>
+    <%--                                <c:forEach var="reviewImg" items="${reviews.rev_sysname}">--%>
+    <%--                                    <div id="reviewImgs">--%>
+    <%--                                        <img src="/resources/img/review/${reviewImg}">--%>
+    <%--                                    </div>--%>
+    <%--                                </c:forEach>--%>
+    <%--                            </c:when>--%>
+    <%--                        </c:choose>--%>
+    <%--                        <c:choose>--%>
+    <%--                            <c:when test="${not empty reviews.rev_content}">--%>
+    <%--                                <div>리뷰 내용 : ${reviews.rev_content}</div>--%>
+    <%--                            </c:when>--%>
+    <%--                        </c:choose>--%>
+    <%--                        <c:choose>--%>
+    <%--                            <c:when test="${not empty reviews.menu_list}">--%>
+    <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
+    <%--                                    <div>메뉴명 : ${i}</div>--%>
+    <%--                                </c:forEach>--%>
+    <%--                            </c:when>--%>
+    <%--                        </c:choose>--%>
+    <%--                        <br>--%>
+    <%--                    </c:forEach>--%>
+    <%--                </c:when>--%>
+    <%--            </c:choose>--%>
+    <%--        </div>--%>
+    <%--    </div>--%>
+    <div class="container">
+        <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
+        <div class="fieldBox">
+            <div id="menu"><a href="/store/menu">메뉴</a></div>
+            <div id="info"><a href="/store/info">정보</a></div>
+            <div id="review"><a href="#">리뷰</a></div>
         </div>
+        <hr>
+        <div class="reviews">
+            <c:choose>
+                <c:when test="${not empty storeReviewList}">
+                    <c:forEach var="reviews" items="${storeReviewList}">
+                        <div id="nickname">닉네임 : ${reviews.mem_nick}</div>
+                        <div id="writeDate">작성일자 : ${reviews.rev_writedate}</div>
+                        <div id="modifiedDate">수정일자 : ${reviews.rev_modified_date}</div>
+                        <div id="reviewStar">별점 : ${reviews.rev_star}</div>
+                        <c:choose>
+                            <c:when test="${not empty reviews.rev_sysname}">
+                                <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
+                                    <div id="reviewImgs">
+                                        <img src="/resources/img/review/${reviewImg}">
+                                    </div>
+                                </c:forEach>
+                            </c:when>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${not empty reviews.rev_content}">
+                                <div>리뷰 내용 : ${reviews.rev_content}</div>
+                            </c:when>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${not empty reviews.menu_list}">
+                                <c:forEach var="i" items="${reviews.menu_list}">
+                                    <div>메뉴명 : ${i}</div>
+                                </c:forEach>
+                            </c:when>
+                        </c:choose>
+                        <br>
+                    </c:forEach>
+                </c:when>
+            </c:choose>
+        </div>
+    </div>
 
-        <script src="/resources/js/member/store/storeReview.js"></script>
+    <script src="/resources/js/member/store/storeReview.js"></script>
 </main>
 </body>
 </html>

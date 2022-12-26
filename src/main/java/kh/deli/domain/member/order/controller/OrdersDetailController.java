@@ -37,7 +37,7 @@ public class OrdersDetailController {
     @RequestMapping("")
     public String getStoreInfo(Model model) throws Exception{
 
-       int order_seq=18;
+       int order_seq=31;
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(order_seq); // 주문자정보
