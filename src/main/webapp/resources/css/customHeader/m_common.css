@@ -1,10 +1,10 @@
 body {
-    background: #333333 !important;
+    background: #f8f5f2 !important;
     overflow-y: auto;
 }
 
 main {
-    background-color: #FFFFFF !important;
+    background-color: #F8F5F2 !important;
     position: relative !important;
     margin: 0 auto !important;
     min-width: 360px !important;
