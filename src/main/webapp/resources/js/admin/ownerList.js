@@ -14,14 +14,17 @@ function trClickEvent() {
         $("#frm").find(".ownernum").val(
             $(this).find(".owner_num").html());
 
-        $("#frm").find(".oseq").val(
+        $("#frm").find(".owner_seq").val(
             $(this).find(".owner_seq").html()
+        );
+        $("#frm").find(".acc_seq").val(
+            $(this).find(".acc_seq").html()
         );
 
         $("#frm").find(".name").val(
             $(this).find(".owner_name").html()
         )
-        $("#frm").find(".ophone").val(
+        $("#frm").find(".ownerPhone").val(
             $(this).find(".owner_phone").html()
         );
 
@@ -38,7 +41,7 @@ function trClickEvent() {
         );
 
 
-        $("#accseq").val($(this).find(".acc_seq").val());
+
         $(".modal").fadeIn();
 
     });
@@ -51,16 +54,21 @@ $(".closeModal").click(function () {
 
 $("#deleteOwner").on("click", function () {
     let ans = confirm("사업자회원정보를 삭제하시겠습니까?");
-    let owner_seq = $(this).closest(".modal").find("#oseq").val();
-
+    let ownerSeq = $(this).closest(".modal").find("#owner_seq").val();
+     let accSeq = $(this).closest(".modal").find("#acc_seq").val();
+    console.log(ownerSeq)
+   // console.log(accSeq)
+    // let acc_count = $(this.)
     if (ans == true) {
         $(".modal").fadeOut();
         $.ajax({
             url: "/admin/owner/list/deleteOwner",
-            data: {owner_seq:owner_seq},
+            data: {owner_seq:ownerSeq,
+                   acc_seq:accSeq
+                    },
             type: "post"
         }).done(function (resp) {
-            location.reload();
+           location.reload();
         })
     }
 });

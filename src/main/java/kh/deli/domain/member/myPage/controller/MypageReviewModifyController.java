@@ -84,11 +84,14 @@ public class MypageReviewModifyController {
         List<String> newFileList = new ArrayList<>();
         //기존파일 리스트 불러오기
         ReviewDTO orgReview = reviewService.selectByReviewSeq(dto.getRev_seq());
+
+
         if (orgReview.getRev_sysname() != null) {
             newFileList.addAll(gson.fromJson(orgReview.getRev_sysname(), stringInListType));
 
             //기존파일 지우기
             List<String> del_files = gson.fromJson(del_files_json, stringInListType);
+
 
             if (del_files != null) {
                 for (String del_file : del_files) {

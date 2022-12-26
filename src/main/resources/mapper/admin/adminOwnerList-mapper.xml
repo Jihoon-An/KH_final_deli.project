@@ -21,7 +21,9 @@
     </select>
 
 
-
+    <select id="selectRevSysName" resultType="string">
+        select rev_sysname from review where store_seq = ${store_seq}
+    </select>
 
 
 </mapper>
