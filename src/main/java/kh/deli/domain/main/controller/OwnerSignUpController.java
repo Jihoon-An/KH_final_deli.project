@@ -33,6 +33,10 @@ public class OwnerSignUpController {
         //signUp 데이터 처리
         ownerSignUpService.signUp(owner, account, file);
 
+        session.setAttribute("loginEmail", account.getAcc_email());
+        session.setAttribute("loginType", "normal");
+        session.setAttribute("acc_seq", mainAccountService.getAccSeq(account.getAcc_email()));
+
         return "redirect:/";
     }
 

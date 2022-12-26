@@ -13,3 +13,14 @@ $(".heart").on("click",function (){
 
     })
 });
+
+// $("#to_info").on("click",function(){
+//     $.ajax({
+//         url:"/store/info",
+//         data: "storeInfo.jsp",
+//         datatype: "html",
+//         type: "post"
+//     }).done(function(resp){
+//         $(".contents").html(resp);
+//     })
+// })

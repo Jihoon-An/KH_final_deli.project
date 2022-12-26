@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
-<head>
+<%--<html>--%>
+<%--<head>--%>
     <title>식당상세정보</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <!--jQuery-->
@@ -21,109 +21,157 @@
     <link rel="stylesheet" href="/resources/css/member/store/storeInfo.css">
 </head>
 <body>
-<main
-        id="storeInfo">
-    <%--영업정보--%>
+<main id="store_info">
+<%--    영업정보--%>
+<%--        <div class="container">--%>
+<%--            <div id="map" style="width:100%; height:200px;"></div>--%>
+<%--            <div class="header">--%>
+<%--                <div id="storeName">${storeDTO.store_name}</div>--%>
+<%--                <div id="star"> 별 (${storeReviewAvg})</div>--%>
+<%--                <div id="reviewCount">리뷰수(${storeReviewCount})</div>--%>
+<%--                <div id="store_intro">${storeDTO.store_intro}</div>--%>
+<%--                            <div class="deliveryInfo" style="text-align: left;">--%>
+<%--                                <div>최소주문금액 : ${storeDTO.store_min_price}원</div>--%>
+<%--                                <div>배달예상시간 : ${storeDTO.store_deli_time}분</div>--%>
+<%--                                <div>배달팁 : ${storeDTO.store_deli_tip}원</div>--%>
+<%--                            </div>--%>
+<%--            </div>--%>
+<%--                    <div class="fieldBox">--%>
+<%--                        <div id="menu"><a href="/store/menu">메뉴</a></div>--%>
+<%--                        <div id="info"><a href="#"><h2>정보</h2></a></div>--%>
+<%--                        <div id="review"><a href="/store/review">리뷰</a></div>--%>
+<%--                    </div>--%>
+<%--            <div class="storeInfo">--%>
+<%--                <div class="store">--%>
+<%--                    <div>가게명 :${storeInfoDTO.store_name}</div>--%>
+<%--                    <div>전화번호 :${storeInfoDTO.store_phone}</div>--%>
+<%--                    &lt;%&ndash;                <c:forEach var="i" items="${bsnsHours}" varStatus="status">&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                    <div>${i.key}</div>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                    <c:choose>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                        <c:when test="${i.value.get(\"open\") eq '영업일'}">&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                            <div>오픈타임 ${i.value.get("open_time")} || 클로즈타임 ${i.value.get("close_time")}</div>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                        </c:when>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                        <c:otherwise>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                                    휴무일&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                        </c:otherwise>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                    </c:choose>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                </c:forEach>&ndash;%&gt;--%>
+<%--                    <div>월요일 : ${bsnsHours.get("mon").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('mon').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("mon").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("mon").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+
+<%--                    <div>화요일 : ${bsnsHours.get("thu").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("thu").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("thu").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+<%--                    <div>수요일 : ${bsnsHours.get("wed").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('wed').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("wed").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("wed").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+<%--                    <div>목요일 : ${bsnsHours.get("thu").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("thu").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("thu").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+
+<%--                    <div>금요일 : ${bsnsHours.get("fri").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('fri').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("fri").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("fri").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+
+<%--                    <div>토요일 : ${bsnsHours.get("sat").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('sat').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("sat").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("sat").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+
+<%--                    <div>일요일 : ${bsnsHours.get("sun").get("open")}</div>--%>
+<%--                    <c:if test="${bsnsHours.get('sun').get('open') eq '영업일'}">--%>
+<%--                        <div>영업시간 : ${bsnsHours.get("sun").get("open_time")}--%>
+<%--                            ~ ${bsnsHours.get("sun").get("close_time")}</div>--%>
+<%--                    </c:if>--%>
+
+<%--                    <div>휴무일 :${storeInfoDTO.store_close_day}</div>--%>
+
+
+<%--                </div>--%>
+<%--                &lt;%&ndash;배달정보&ndash;%&gt;--%>
+<%--                <div class="deliveryInfo">--%>
+<%--                    <div class="store">--%>
+<%--                        <div>최소주문금액 :${storeInfoDTO.store_min_price}</div>--%>
+<%--                        <div>배달팁:${storeInfoDTO.store_deli_tip}</div>--%>
+<%--                        <div>배달가능지역 :${storeInfoDTO.store_destination}</div>--%>
+<%--                        <div>배달예상시간 :${storeInfoDTO.store_deli_time}</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+<%--                &lt;%&ndash;사업자 정보&ndash;%&gt;--%>
+<%--                <div class="bsInfo">--%>
+<%--                    <div class="store">--%>
+<%--                        <div>대표자명 :${ownerInfoDTO.owner_name}</div>--%>
+<%--                        <div>상호명:${storeInfoDTO.store_name}</div>--%>
+<%--                        <div> 가게주소:${storeInfoDTO.store_add_detail1}<br>--%>
+<%--                            ${storeInfoDTO.store_add_detail2}</div>--%>
+<%--                        <div>사업자번호 :${ownerInfoDTO.owner_num}</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+
     <div class="container">
-        <div id="map" style="width:100%; height:200px;"></div>
-        <div class="storeIntro">
-            <div class="store_name">상호명 : ${storeInfoDTO.store_name}</div>
-            <div>
-                <button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button>
+        <div class="header">
+            <div id="storeName">${storeInfoDTO.store_name}</div>
+            <div id="star"> 별 (${storeReviewAvg})</div>
+            <div id="reviewCount">리뷰수(${storeReviewCount})</div>
+            <div id="storeInfo">${storeInfoDTO.store_intro}</div>
+            <div class="deliveryInfo" style="text-align: left;">
+                <div>최소주문금액 : ${storeInfoDTO.store_min_price}원</div>
+                <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
+                <div>배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
             </div>
-            <div class="store_deli_time">배달시간 : ${storeInfoDTO.store_deli_time}분</div>
-            <div class="store_deli_tip">배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
-            <div class="store_deli_tip">식당소개 : ${storeInfoDTO.store_intro}</div>
-            <div class="store_deli_tip">리뷰개수 : ${storeReviewCount}</div>
-            <div>리뷰 평균 : ${storeReviewAvg}</div>
         </div>
         <div class="fieldBox">
             <div id="menu"><a href="/store/menu">메뉴</a></div>
-            <div id="info"><a href="#"><h2>정보</h2></a></div>
+            <div id="info"><a href="#" id="to_info">정보</a></div>
             <div id="review"><a href="/store/review">리뷰</a></div>
         </div>
-        <div class="storeInfo">
-            <div class="store">
-                <div>가게명 :${storeInfoDTO.store_name}</div>
-                <div>전화번호 :${storeInfoDTO.store_phone}</div>
-<%--                <c:forEach var="i" items="${bsnsHours}" varStatus="status">--%>
-<%--                    <div>${i.key}</div>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${i.value.get(\"open\") eq '영업일'}">--%>
-<%--                            <div>오픈타임 ${i.value.get("open_time")} || 클로즈타임 ${i.value.get("close_time")}</div>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                                    휴무일--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                </c:forEach>--%>
-                <div>월요일 : ${bsnsHours.get("mon").get("open")}</div>
-                <c:if test="${bsnsHours.get('mon').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("mon").get("open_time")} ~ ${bsnsHours.get("mon").get("close_time")}</div>
-                </c:if>
-
-                <div>화요일 : ${bsnsHours.get("thu").get("open")}</div>
-                <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("thu").get("open_time")} ~ ${bsnsHours.get("thu").get("close_time")}</div>
-                </c:if>
-                <div>수요일 : ${bsnsHours.get("wed").get("open")}</div>
-                <c:if test="${bsnsHours.get('wed').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("wed").get("open_time")} ~ ${bsnsHours.get("wed").get("close_time")}</div>
-                </c:if>
-                <div>목요일 : ${bsnsHours.get("thu").get("open")}</div>
-                <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("thu").get("open_time")} ~ ${bsnsHours.get("thu").get("close_time")}</div>
-                </c:if>
-
-                <div>금요일 : ${bsnsHours.get("fri").get("open")}</div>
-                <c:if test="${bsnsHours.get('fri').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("fri").get("open_time")} ~ ${bsnsHours.get("fri").get("close_time")}</div>
-                </c:if>
-
-                <div>토요일 : ${bsnsHours.get("sat").get("open")}</div>
-                <c:if test="${bsnsHours.get('sat').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("sat").get("open_time")} ~ ${bsnsHours.get("sat").get("close_time")}</div>
-                </c:if>
-
-                <div>일요일 : ${bsnsHours.get("sun").get("open")}</div>
-                <c:if test="${bsnsHours.get('sun').get('open') eq '영업일'}">
-                    <div>영업시간 : ${bsnsHours.get("sun").get("open_time")} ~ ${bsnsHours.get("sun").get("close_time")}</div>
-                </c:if>
-
-                <div>휴무일 :${storeInfoDTO.store_close_day}</div>
-
-
-            </div>
-            <%--배달정보--%>
-            <div class="deliveryInfo">
-                <div class="store">
-                    <div>최소주문금액 :${storeInfoDTO.store_min_price}</div>
-                    <div>배달팁:${storeInfoDTO.store_deli_tip}</div>
-                    <div>배달가능지역 :${storeInfoDTO.store_destination}</div>
-                    <div>배달예상시간 :${storeInfoDTO.store_deli_time}</div>
-                </div>
-            </div>
-
-            <%--사업자 정보--%>
-            <div class="bsInfo">
-                <div class="store">
-                    <div>대표자명 :${ownerInfoDTO.owner_name}</div>
-                    <div>상호명:${storeInfoDTO.store_name}</div>
-                    <div> 가게주소:${storeInfoDTO.store_add_detail1}<br>
-                        ${storeInfoDTO.store_add_detail2}</div>
-                    <div>사업자번호 :${ownerInfoDTO.owner_num}</div>
-                </div>
-            </div>
+        <hr>
+        <div id="map" style="width:100%; height:200px;"></div>
+        <hr>
+        <div class="store">
+            <h3>영업정보</h3>
+            <div>가게명 : ${storeInfoDTO.store_name}</div>
+            <div>전화번호 : ${storeInfoDTO.store_phone}</div>
+        </div>
+        <hr>
+        <div class="delivery">
+            <h3>배달정보</h3>
+            <div>최소주문금액 :${storeInfoDTO.store_min_price}</div>
+            <div>배달팁:${storeInfoDTO.store_deli_tip}</div>
+            <div>배달가능지역 :${storeInfoDTO.store_destination}</div>
+            <div>배달예상시간 :${storeInfoDTO.store_deli_time}분</div>
+        </div>
+        <hr>
+        <div class="businessman">
+            <h3>사업자정보</h3>
+            <div>대표자명 :${ownerInfoDTO.owner_name}</div>
+            <div>상호명:${storeInfoDTO.store_name}</div>
+            <div> 가게주소:${storeInfoDTO.store_add_detail1}<br>
+                ${storeInfoDTO.store_add_detail2}</div>
+            <div>사업자번호 :${ownerInfoDTO.owner_num}</div>
         </div>
     </div>
 
     <script>
-        var latitude =${storeInfoDTO.store_add_x};
-        var longitude =${storeInfoDTO.store_add_y};
-    </script>
+    var latitude =${storeInfoDTO.store_add_x};
+    var longitude =${storeInfoDTO.store_add_y};
+</script>
     <script src="/resources/js/member/store/storeInfo.js"></script>
 </main>
-
-</body>
-
-</html>
+<%--</body>--%>
+<%--</html>--%>

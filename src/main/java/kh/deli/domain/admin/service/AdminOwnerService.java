@@ -23,6 +23,7 @@ public class AdminOwnerService {
     }
 
     public int deleteOwner(int owner_seq){
+
         return adminOwnerMapper.deleteOwner(owner_seq);
     }
 
@@ -69,4 +70,21 @@ public class AdminOwnerService {
         return adminOwnerMapper.deleteMenuOption(menu_seq);
     }
 
+
+    /**
+     * 리뷰 삭제
+     * @param store_seq
+     * @return
+     */
+    public int deleteReview(int store_seq){
+        return adminOwnerMapper.deleteReview(store_seq);
+    }
+
+    public int deleteAccount(int acc_seq){
+        return adminOwnerMapper.deleteAccount(acc_seq);
+    }
+
+    public List<String> selectRevSysName(int store_seq){
+      return    adminOwnerMapper.selectRevSysName(store_seq);
+    }
 }

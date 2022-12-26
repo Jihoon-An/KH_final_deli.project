@@ -8,7 +8,7 @@ import kh.deli.domain.member.store.dto.BasketMenu;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
-import kh.deli.global.util.checker.Checker;
+import kh.deli.global.util.checker.CheckerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class StoreBasketService {
     private final StoreMenuService menuService;
     private final StoreMenuOptionService optionService;
     private final Gson gson;
-    private final Checker checker;
+    private final CheckerService checkerService;
 
     public void setBasketInSession(HttpSession session, String newMenuJson) throws ParseException {
         BasketDTO basket = (BasketDTO) session.getAttribute("basket");

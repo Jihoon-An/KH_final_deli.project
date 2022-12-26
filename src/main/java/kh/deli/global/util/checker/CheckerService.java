@@ -5,16 +5,19 @@ import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.member.store.mapper.StoreStoreMapper;
 import kh.deli.global.exception.StoreBsTimeOutException;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
-@Component
+@Service
 @AllArgsConstructor
-public class Checker {
+public class CheckerService {
 
     private final StoreStoreMapper storeMapper;
     private final Gson gson;
