@@ -62,6 +62,8 @@
         </table>
     </div>
 
+    <a href="/owner/store/add"><button>식당추가</button></a>
+
 </main>
 
 <script src="/resources/js/owner/storeList.js"></script>
