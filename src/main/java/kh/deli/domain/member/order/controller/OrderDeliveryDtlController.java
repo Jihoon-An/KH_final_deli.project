@@ -67,11 +67,11 @@ public class OrderDeliveryDtlController {
         model.addAttribute("ordererInfoDTO",ordererInfoDTO);
         model.addAttribute("payInfoDTO",payInfoDTO);
 
-        // 아래는 주소 줄이는 shortURL 코드
-        String url = "https://developers.naver.com/forum/posts/33899";
-        NaverNShortURL nShortURL = new NaverNShortURL();
-        nShortURL.toShortURL(url);
-        System.out.println(url);
+//        // 아래는 주소 줄이는 shortURL 코드
+//        String url = "https://developers.naver.com/forum/posts/33899";
+//        NaverNShortURL nShortURL = new NaverNShortURL();
+//        nShortURL.toShortURL(url);
+//        System.out.println(url);
 
         return "member/order/deliveryDtl";
     }
