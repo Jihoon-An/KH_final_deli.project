@@ -1,15 +1,18 @@
-body {
-    background: #333333;
-    overflow-y: auto;
-}
+/*body {*/
+/*    background: #333333;*/
+/*    overflow-y: auto;*/
+/*}*/
 
-main {
-    background-color: #FFFFFF;
-    position: relative;
-    margin: 0 auto;
-    min-width: 360px;
-    max-width: 420px;
-    min-height: 100vh;
+/*main {*/
+/*    background-color: #FFFFFF;*/
+/*    position: relative;*/
+/*    margin: 0 auto;*/
+/*    min-width: 360px;*/
+/*    max-width: 420px;*/
+/*    min-height: 100vh;*/
+/*}*/
+body{
+    background-color: #F8F5F2;
 }
 
 #home * {box-sizing: border-box}
@@ -19,9 +22,11 @@ main {
     margin: auto;
     text-align: center;
     padding-top: 50px;
+    background-color: #F8F5F2;
 }
 #home #kakao_login_img{
     width: 300px;
+    height: 50px;
 }
 #home .logoBox img{
     width: 250px;
@@ -41,6 +46,8 @@ main {
     border-radius: 7px;
     border-width: 0.5px;
     outline: none;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 #home #passWordInput{
     margin-top: 10px;

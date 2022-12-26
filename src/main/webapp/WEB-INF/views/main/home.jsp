@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <html>
 <head>
 
     <title>딜리 - Deli</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <link href="/resources/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!--jQuery-->
@@ -51,7 +51,7 @@
                         <label for="emailSave">이메일저장</label>
                     </div>
                     <div class="findBox">
-                        <a href="/account/findAccount">이메일|비밀번호 찾기</a>
+                        <a href="/account/findAccount">이메일l비밀번호 찾기</a>
                     </div>
                 </div>
                 <br><br>
