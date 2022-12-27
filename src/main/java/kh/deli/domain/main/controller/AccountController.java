@@ -1,6 +1,7 @@
 package kh.deli.domain.main.controller;
 
 import kh.deli.domain.main.service.MainAccountService;
+import kh.deli.domain.main.service.MainMemberCouponService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
@@ -24,6 +25,7 @@ import java.util.List;
 public class AccountController {
 
     private final MainAccountService mainAccountService;
+    private final MainMemberCouponService mcpService;
     private final HttpSession session;
     private final RedisUtil redisUtil;
 
@@ -124,20 +126,32 @@ public class AccountController {
     @PostMapping("memberSignUp")
     public String memberSignUp(AccountDTO accountDTO, MemberDTO memberDTO, AddressDTO addressDTO) throws Exception {
         mainAccountService.memberSignUp(accountDTO,memberDTO,addressDTO);
+        Integer accSeq = mainAccountService.getAccSeq(accountDTO.getAcc_email());
+
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "normal");
-        session.setAttribute("acc_seq", mainAccountService.getAccSeq(accountDTO.getAcc_email()));
+        session.setAttribute("acc_seq", accSeq);
+
+        mcpService.giveSignUpCp(accSeq);
+
         redisUtil.deleteData(memberDTO.getMem_phone());
+
         return "redirect:/";
     }
 
     @PostMapping("kakaoSignUp")
     public String kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
         mainAccountService.kakaoSignUp(accountDTO,memberDTO,addressDTO);
+        Integer accSeq = mainAccountService.getAccSeq(accountDTO.getAcc_email());
+
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
-        session.setAttribute("acc_seq",  mainAccountService.getAccSeq(accountDTO.getAcc_email()));
+        session.setAttribute("acc_seq",  accSeq);
+
+        mcpService.giveSignUpCp(accSeq);
+
         redisUtil.deleteData(memberDTO.getMem_phone());
+
         return "redirect:/";
     }
 
@@ -211,7 +225,5 @@ public class AccountController {
         Integer accSeq = mainAccountService.findPassWordByPhoneNumber(email, phoneNumber);
         return mainAccountService.modifyPassWordWithRandomCodeBySeq(accSeq);
     }
-
-
 }
 

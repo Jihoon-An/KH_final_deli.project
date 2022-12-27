@@ -41,8 +41,8 @@
             <c:choose>
                 <c:when test="${not empty list}">
                     <c:forEach var="i" items="${list}">
-                        <hr>
-                        <div class="dibBox">
+
+                        <div class="dibBox m-3">
                             <c:choose>
                                 <c:when test="${i.STORE_LOGO !=null}">
                                     <div class="imgBox">
@@ -55,9 +55,10 @@
                             </c:choose>
                             <div class="info">
                                 <div class="store_name"><a href="/store/menu/${i.STORE_SEQ}">${i.STORE_NAME}</a></div>
-                                <div class="avg_star"><i class="fa-solid fa-star"></i> ${i.avg_star}</div>
-                                <div class="store_min">최소주문금액: ${i.STORE_MIN_PRICE}, 배달팁: ${i.STORE_DELI_TIP}</div>
-                                <div class="store_deli_time">배달시간: ${i.STORE_DELI_TIME}분</div>
+                                <div class="avg_star"><i class="fa-solid fa-star"></i> <span class="fontColor">${i.avg_star}</span></div>
+                                <div class="store_min">최소주문금액 <span class="fontColor">${i.STORE_MIN_PRICE}원</span></div>
+                                <div class="store_min">배달요금 <span class="fontColor">${i.STORE_DELI_TIP}원</span></div>
+                                <div class="store_deli_time">배달시간 <span class="fontColor">${i.STORE_DELI_TIME}분</span></div>
                             </div>
                             <div id="btnBox">
                                 <button class="heart">

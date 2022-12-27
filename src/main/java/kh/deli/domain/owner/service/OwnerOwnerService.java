@@ -17,6 +17,6 @@ public class OwnerOwnerService {
 
     public int convertAccSeqToOwnerSeq(int ownerAccSeq) {
         Optional<Integer> ownerSeq = Optional.ofNullable(ownerOwnerMapper.getOwnerSeqByAcc(ownerAccSeq));
-        return ownerSeq.orElse(19); //sample data
+        return ownerSeq.orElse(0);
     }
 }
