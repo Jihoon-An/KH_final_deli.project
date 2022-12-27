@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import io.lettuce.core.ScriptOutputType;
 import kh.deli.domain.admin.dto.AdminOwnerDTO;
 import kh.deli.domain.admin.service.AdminOwnerService;
+import kh.deli.domain.main.service.MainAccountService;
 import kh.deli.global.entity.StoreDTO;
 import kh.deli.global.util.FileUtil;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ import java.util.List;
 public class OwnerListController {
 
     private  final AdminOwnerService adminOwnerService;
-
+    private final MainAccountService mainAccountService;
     private final HttpSession session;
     @RequestMapping("")
     public String toAdminOwner(Model model){
