@@ -68,7 +68,7 @@ public class MyPageReviewService {
         return myPageReviewMapper.getReviews(param);
     }
     public int getReviewCount(MypageReviewDTO param) throws Exception{
-        return MyPageReviewMapper.getReviewCount(param);
+        return myPageReviewMapper.getReviewCount(param);
     }
 
     public String selectMenuName(String menuSeq) throws Exception{

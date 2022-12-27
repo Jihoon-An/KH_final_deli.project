@@ -82,9 +82,9 @@ public interface MainAccountMapper {
     @Delete("DELETE FROM MENU WHERE STORE_SEQ = #{store_seq}")
     void deleteMenuByStoreSeq(@Param("store_seq") int storeSeq);
     @Delete("DELETE FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
-    void deleteOwner(@Param("acc_seq") Integer accSeq);
+    void deleteOwnerByAccSeq(@Param("acc_seq") Integer accSeq);
     @Delete("DELETE FROM ACCOUNT WHERE ACC_SEQ = #{acc_seq}")
-    void deleteAccount(@Param("acc_seq") int accSeq);
+    void deleteAccountByAccSeq(@Param("acc_seq") int accSeq);
 
     /**
      * <h1>[일반] 회원탈퇴 매퍼</h1>
@@ -98,9 +98,9 @@ public interface MainAccountMapper {
     @Delete("DELETE FROM MEMBER_COUPON WHERE ACC_SEQ = #{acc_seq}")
     void deleteMemberCouponByAccSeq(@Param("acc_seq") int accSeq);
     @Delete("DELETE FROM ADDRESS WHERE ACC_SEQ = #{acc_seq}")
-    void deleteAddress(@Param("acc_seq") int accSeq);
+    void deleteAddressByAccSeq(@Param("acc_seq") int accSeq);
     @Delete("DELETE FROM MEMBER WHERE ACC_SEQ = #{acc_seq}")
-    void deleteMember(@Param("acc_seq") int accSeq);
+    void deleteMemberByAccSeq(@Param("acc_seq") int accSeq);
 
 
 

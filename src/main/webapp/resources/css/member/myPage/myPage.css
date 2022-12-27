@@ -17,7 +17,7 @@
     height: 60px;
     line-height: 40px;
     border-top: 2px solid gray;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
     font-size: 20px;
     padding: 10px;
     padding-left: 25px;
@@ -41,7 +41,7 @@
     width: 50%;
     height: 50%;
     float: left;
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
     text-align: center;
     padding-top: 30px;
 }

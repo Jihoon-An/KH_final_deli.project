@@ -12,10 +12,13 @@
     <title>reviewList</title>
 </head>
 <script>
-    <%--window.onload = function(){--%>
-    <%--    var a = "${myPageReviewList}";--%>
-    <%--    console.log(JSON.stringify(a));--%>
-    <%--}--%>
+    window.onload = function () {
+        debugger;
+    }
+    function onclickDeleteBtn(param){
+        debugger;
+        var revSeq = param.getAttribute('revSeq');
+    }
 
 </script>
 <body>
@@ -23,42 +26,77 @@
 
     <div class="container">
         <h2>내가 쓴 리뷰 리스트</h2>
-        <div class="member_review">내가 쓴 리뷰 총 ${myPageReivewCount}개</div>
-        <button id="modify_review">수정</button>
-        <button id="delete_review">삭제</button>
+        <div class="member_review">내가 쓴 리뷰 총 ${myPageReviewCount}개</div>
+
         <div class="reviews">
-        <c:choose>
+            <c:choose>
             <c:when test="${not empty myPageReviewList}">
-                <c:forEach var="reviews" items="${myPageReviewList}">
-                    <div class="store_name">식당명 : ${reviews.store_name}</div>
-                    <div id="writeTime">작성일자 : ${reviews.rev_writetime}</div>
-                    <div id="reviewStar">별점 : ${reviews.rev_star}</div>
-                    <c:choose>
-                        <c:when test="${not empty reviews.rev_sysname}">
-                            <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
-                                <div>
-                                    <img src="/resources/img/review/${reviewImg}">
-                                </div>
-                            </c:forEach>
-                        </c:when>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${not empty reviews.rev_content}">
-                            <div>리뷰 내용 : ${reviews.rev_content}</div>
-                        </c:when>
-                    </c:choose>
+            <c:forEach var="reviews" items="${myPageReviewList}">
+                <c:choose>
+                <c:when test="${reviews.flag_udt == 'N'}">
+                    <button name="modify_review" disabled>수정</button>
+
+                </c:when>
+                <c:otherwise>
+                <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}"><button name="modify_review" revSeq="${reviews.rev_seq}">수정</button></a>
+
+                    <input type="hidden" value="${reviews.rev_seq}">
+                    <input type="hidden" value="${reviews.store_seq}">
+                    <input type="hidden" value="${reviews.order_seq}">
+
+                </c:otherwise>
+                </c:choose>
+                <button name="delete_review" onclick="onclickDeleteBtn(this)" revSeq="${reviews.rev_seq}">삭제</button>
+            <c:choose>
+            <c:when test="${not empty reviews.menu}">
+            <div>메뉴명 :
+                <c:forEach var="i" items="${reviews.menu}">
+                    ${i.menuDTO.menu_name}
+                <c:choose>
+                <c:when test="${not empty i.menuOptionDTO}">
+                <c:forEach var="k" items="${i.menuOptionDTO}">
+                    <span> ${k.option_name} </span>
                 </c:forEach>
+            </div>
             </c:when>
             <c:otherwise>
-                <h2>작성한 리뷰가 없습니다.</h2>
-            </c:otherwise>
-        </c:choose>
         </div>
-            <div class="store_name">상호명</div>
-            <div class="member_nick_name">작성자</div>
-            <div class="member_review_star">별점</div>
-            <div class="member_menu_img">사진</div>
-            <div class="member_content" >리뷰 내용</div>
+        </c:otherwise>
+        </c:choose>
+        </c:forEach>
+        </c:when>
+
+        </c:choose>
+
+        <div class="store_name">식당명 : ${reviews.store_name}</div>
+        <div id="writeTime">작성일자 : ${reviews.rev_writetime}</div>
+        <div id="reviewStar">별점 : ${reviews.rev_star}</div>
+        <c:choose>
+            <c:when test="${not empty reviews.rev_sysname}">
+                <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
+                    <div>
+                        <img src="/resources/img/review/${reviewImg}">
+                    </div>
+                </c:forEach>
+            </c:when>
+        </c:choose>
+        <c:choose>
+            <c:when test="${not empty reviews.rev_content}">
+                <div>리뷰 내용 : ${reviews.rev_content}</div>
+            </c:when>
+        </c:choose>
+        </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <h2>작성한 리뷰가 없습니다.</h2>
+        </c:otherwise>
+        </c:choose>
+    </div>
+    <div class="store_name">상호명</div>
+    <div class="member_nick_name">작성자</div>
+    <div class="member_review_star">별점</div>
+    <div class="member_menu_img">사진</div>
+    <div class="member_content">리뷰 내용</div>
     </div>
 </main>
 </body>

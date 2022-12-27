@@ -58,8 +58,7 @@ public class OrderHistoryController {
     @RequestMapping("history")
     public String history(Model model) throws Exception {
 
-
-        int acc_seq=31;//임시
+        int acc_seq = (Integer) session.getAttribute("acc_seq");
         List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
 
         List<BasketMenu> basketMenu = new ArrayList<>();
