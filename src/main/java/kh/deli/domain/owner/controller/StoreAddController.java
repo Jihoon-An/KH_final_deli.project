@@ -33,22 +33,7 @@ public class StoreAddController {
         System.out.println("ACC"+acc_seq);
 //        System.out.println(dto.getStore_bsns_hours());
 //        System.out.println(dto.getStore_name());
-//
-//        System.out.println(dto.getStore_deli_tip());
-//        System.out.println(file);
-//        System.out.println(dto.getStore_add_x());
-//        System.out.println(dto.getStore_add_y());
-//        System.out.println(dto.getStore_close_day());
-//        System.out.println(dto.getStore_deli_time());
-//        System.out.println(dto.getStore_destination());
-//        System.out.println(dto.getStore_deli_tip());
-//        System.out.println(dto.getStore_display()+"공개여부");
-//        System.out.println(dto.getStore_open()+"품절여부");
 
-       // int owner_Seq = (Integer) session.getAttribute("owner_seq");
-     
-//        int owner_Seq=12;
-//        dto.setOwner_seq(owner_Seq);  //임시
 
         int owner_seq = storeService.selectOwnerSeq(acc_seq); //acc_seq로 owner_seq 조히
         System.out.println(owner_seq);
