@@ -28,7 +28,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/member/order/detail")
+@RequestMapping("/order/detail")
 public class OrdersDetailController {
     private final OrderOrdersService orderOrdersService;
     private final OrderBasketService orderBasketService;

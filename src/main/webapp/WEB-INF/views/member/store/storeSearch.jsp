@@ -60,33 +60,38 @@
 
     <div class="container">
         <form action="/store/search">
-            <input type="text" placeholder="검색해라" name="search">
-            <button>검색</button>
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="가게나 메뉴를 검색해보세요" name="search" maxlength="19">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </form>
-        <hr>
-        <div class="d-inline-flex">
-            <a href="/store/search?filter=star">
-                <div class="filter py-1 px-2 m-1">별점</div>
-            </a>
-            <a href="/store/search?filter=review">
-                <div class="filter py-1 px-2 m-1">리뷰</div>
-            </a>
-            <a href="/store/search?filter=delifree">
-                <div class="filter py-1 px-2 m-1">무료배달</div>
-            </a>
-            <a href="/store/search?filter=minprice">
-                <div class="filter py-1 px-2 m-1">최소주문금액</div>
-            </a>
+
+        <div class="filter_box">
+            <div style="margin: 0 auto" class="d-inline-flex">
+                <a href="/store/search?filter=star">
+                    <div class="filter" style="margin-right: 7px">별점순</div>
+                </a>
+                <a href="/store/search?filter=review">
+                    <div class="filter" style="margin-right: 7px">리뷰순</div>
+                </a>
+                <a href="/store/search?filter=delifree">
+                    <div class="filter" style="margin-right: 7px">무료배달만</div>
+                </a>
+                <a href="/store/search?filter=minprice">
+                    <div class="filter">최소주문금액순</div>
+                </a>
+            </div>
         </div>
 
-        <hr>
         <div class="d-flex flex-column">
-            식당(${fn:length(store_list)})
+            <p class="p1_font">식당<span class="span1_font">(${fn:length(store_list)})</span></p>
             <c:choose>
                 <c:when test="${not empty store_list}">
                     <c:forEach var="store_list" items="${store_list}" varStatus="status">
                         <a href="/store/menu/${store_list.STORE_SEQ}">
-                            <div class="store_list d-inline-flex m-2">
+                            <div class="store_list d-inline-flex">
                                 <div class="m-2 store_logo_box">
                                     <c:choose>
                                         <c:when test="${store_list.STORE_LOGO !=null}">
@@ -96,23 +101,22 @@
                                             </div>
                                         </c:when>
                                         <c:otherwise>
-                                            <div>이미지: 사진없음</div>
+                                            <div><p class="store_logo">사진없음</p></div>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
                                 <div class="m-2 store_info_box">
-                                    <div>식당명: ${store_list.STORE_NAME}</div>
-                                    <div>★${store_list.AVERAGE_STARS} / 리뷰 ${store_list.COUNT_REVIEW}개
+                                    <div class="p2_font">${store_list.STORE_NAME}</div>
+                                    <div class="p3_font"><i class="fa-solid fa-star"></i> ${store_list.AVERAGE_STARS} / 리뷰 ${store_list.COUNT_REVIEW}개
                                         /
                                         <fmt:formatNumber var="DISTANCE" value="${store_list.DISTANCE}" pattern="#.##"/>
                                         <c:if test="${store_list.DISTANCE >= 1000}">
                                             <fmt:formatNumber value="${(DISTANCE) / (1000)}" pattern=".0"/>km</c:if>
                                         <c:if test="${store_list.DISTANCE < 1000}">${store_list.DISTANCE}m</c:if>
                                     </div>
-                                    <div>최소주문금액: ${store_list.STORE_MIN_PRICE}원</div>
-                                    <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
+                                    <div><span class="title_font">최소주문금액</span> ${store_list.STORE_MIN_PRICE}원</div>
+                                    <div><span class="title_font">배달요금</span> ${store_list.STORE_DELI_TIP}원</div>
                                     <div class="menu_name">
-                                        메뉴명:
                                         <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}"
                                                    varStatus="status2">
                                             ${menu_list}<c:if test="${!status2.last}">, </c:if>
@@ -150,7 +154,6 @@
 <%--          거리 ${store_list.DISTANCE}<BR>--%>
 <%--          평균별점 ${store_list.AVERAGE_STARS}<BR>--%>
 <%--          리뷰개수 ${store_list.COUNT_REVIEW}<BR>--%>
-
 -->
 
 
@@ -161,6 +164,40 @@
 
 </main>
 
+<script>
+    function getUrlParams() {
+        var params = {};
+
+        window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+            function(str, key, value) {
+                params[key] = value;
+            }
+        );
+
+        return params;
+    }
+
+    window.onload = function (){
+        oParams = getUrlParams();
+        if(oParams.filter == "star"){
+            $(".filter").eq(0).css("color","#e84c4f");
+            $(".filter").eq(0).css("font-weight","bolder");
+        }
+        if(oParams.filter == "review"){
+            $(".filter").eq(1).css("color","#e84c4f");
+            $(".filter").eq(1).css("font-weight","bolder");
+        }
+        if(oParams.filter == "delifree"){
+            $(".filter").eq(2).css("color","#e84c4f");
+            $(".filter").eq(2).css("font-weight","bolder");
+        }
+        if(oParams.filter == "minprice"){
+            $(".filter").eq(3).css("color","#e84c4f");
+            $(".filter").eq(3).css("font-weight","bolder");
+        }
+    }
+
+</script>
 
 </body>
 </html>

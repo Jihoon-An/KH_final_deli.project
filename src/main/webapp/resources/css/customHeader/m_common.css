@@ -25,10 +25,12 @@ main {
     height: 65px;
     margin: 0;
     padding: 0;
+    border: none;
 }
 
 .mt90 {
     height: 90px;
     margin: 0;
     padding: 0;
+    border: none;
 }

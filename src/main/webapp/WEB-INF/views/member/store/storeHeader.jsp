@@ -14,6 +14,18 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
 </script>
+<style>
+    .deliveryInfo {
+        border-radius: 20px;
+        width: 350px;
+        height: 100px;
+        padding: 10px 20px 20px 20px;
+        margin-bottom: 10px;
+        background-color: #FFFFFF;
+        font-size: 13px;
+        box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
+    }
+</style>
 
 <div class="header">
     <div id="storeName">${storeInfoDTO.store_name}
@@ -33,12 +45,18 @@
         </button>
     </div>
     <div id="star"> 별 (${storeReviewAvg})</div>
-    <div id="reviewCount">리뷰수(${storeReviewCount})</div>
+    <div id="reviewCount">리뷰(${storeReviewCount})</div>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>
-    <div class="deliveryInfo" style="text-align: left; border-color: #e84c4f; padding-left: 5px;" >
+    <div class="deliveryInfo" style="text-align: left;" >
         <div>최소주문금액 : <fmt:formatNumber value="${storeInfoDTO.store_min_price}" pattern="#,###"/>원</div>
         <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
         <div>배달팁 : <fmt:formatNumber value="${storeInfoDTO.store_deli_tip}" pattern="#,###"/>원</div>
     </div>
+    <div class="fieldBox">
+        <div id="menu"><a href="/store/menu/${storeInfoDTO.store_seq}">메뉴</a></div>
+        <div id="info"><a href="/store/info/${storeInfoDTO.store_seq}" id="to_info">정보</a></div>
+        <div id="review"><a href="/store/review/${storeInfoDTO.store_seq}">리뷰</a></div>
+    </div>
+
 </div>
 
