@@ -119,7 +119,7 @@
             </c:choose>
             <div class="btn">
                 <%--메인으로?--%>
-                <button id="complete">완료</button>
+                <button id="complete">확인</button>
             </div>
 
             <script src="/resources/js/member/order/orderDetail.js"></script>

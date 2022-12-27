@@ -45,6 +45,7 @@
     color: white;
     border-radius: 5px;
     border-style: none;
+    font-size: 16px;
 }
 
 /*결제정보*/
@@ -72,18 +73,14 @@
 
 
 /*주문자정보*/
-#orderDetail #destination, #orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {
-    font-size: small;
-}
-
 #orderDetail .orderer div {
     font-size: 14px;
     line-height: 27px;
 }
 
-#orderDetail #destination, #orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {
-    font-size: 14px;
-}
+/*#orderDetail #destination, #orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {*/
+/*    font-size: 14px;*/
+/*}*/
 
 #orderDetail .info{font-size: 18px !important; font-weight: bold;}
 #orderDetail .orderTitle{

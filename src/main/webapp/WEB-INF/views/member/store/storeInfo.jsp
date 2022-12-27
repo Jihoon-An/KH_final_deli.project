@@ -184,11 +184,11 @@
         <hr>
         <div class="businessman">
             <div class="field">사업자정보</div>
-            <div class="contents">
-                <div>대표자명<div>
-                <div>상호명<div>
-                <div>사업자주소<div>
-                <div>사업자등록번호<div>
+            <div class="contents title">
+                <div>대표자명</div>
+                <div>상호명</div>
+                <div>사업자주소</div>
+                <div>사업자등록번호</div>
             </div>
             <div class="detail_contents">
                 <div>${ownerInfoDTO.owner_name}</div>
@@ -197,8 +197,8 @@
                     ${storeInfoDTO.store_add_detail2}</div>
                 <div>${ownerInfoDTO.owner_num}</div>
             </div>
+
         </div>
-                </div>
     <script>
         var latitude =${storeInfoDTO.store_add_x};
         var longitude =${storeInfoDTO.store_add_y};

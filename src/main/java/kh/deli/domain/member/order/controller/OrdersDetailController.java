@@ -35,8 +35,8 @@ public class OrdersDetailController {
 
     private final StoreBasketService storeBasketService;
     private final Gson gson;
-    @RequestMapping("")
-    public String getStoreInfo(Integer order_seq, Model model) throws Exception{
+    @RequestMapping("{orderSeq}")
+    public String getStoreInfo(@PathVariable("orderSeq") Integer order_seq, Model model) throws Exception{
 
 //        order_seq=31;
 
