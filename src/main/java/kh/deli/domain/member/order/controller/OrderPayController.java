@@ -7,7 +7,6 @@ import kh.deli.domain.member.order.service.OrderPaymentService;
 import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreStoreService;
-import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.PaymentDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
@@ -31,7 +30,7 @@ public class OrderPayController {
     private final StoreStoreService storeStoreService;
     private final OrderPaymentService paymentService;
 
-    private final OrderOrdersService ordersService;
+    private final Gson gson;
 
     // 주문 페이지로 이동
     @RequestMapping("")
@@ -98,22 +97,27 @@ public class OrderPayController {
     @ResponseBody
     public ModelAndView saveOrder(OrderOrdersDTO orderOrdersDTO) throws Exception {
 
+        //Insert orders table
         BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
+
         int storeSeq = basketDTO.getStoreSeq();
         int accSeq = (Integer) session.getAttribute("acc_seq");
+
         List<StoreBasketMenuRequestDTO> manuList = basketDTO.getMenuList();
-        Gson gson = new Gson();
         String manuListStr = gson.toJson(manuList);
+
         orderOrdersDTO.setMenuList(manuListStr);
+
         StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
+
         int tip = storeDTO.getStore_deli_tip();
+
         orderOrdersDTO.setDelivery_tip(tip);
         orderOrdersDTO.setAcc_seq(accSeq);
         orderOrdersDTO.setStore_seq(storeSeq);
 
         int orderSeq = orderOrdersService.insertOrder(orderOrdersDTO);
         orderOrdersService.deleteCouponList(orderOrdersDTO);
-
 
         //보유포인트 차감 & 적립
         int orgPoint = Integer.parseInt(orderOrdersDTO.getOwnPoint());
@@ -125,20 +129,22 @@ public class OrderPayController {
         orderOrdersDTO.setOwnPoint(String.valueOf(ownPoint));
         orderOrdersService.updateOwnPoint(orderOrdersDTO);
 
-        PaymentDTO payment = PaymentDTO.builder()
+        //Insert payment table
+        paymentService.put(PaymentDTO.builder()
                 .order_seq(orderSeq)
                 .pay_price(orderOrdersDTO.getPay_price())
                 .pay_method(orderOrdersDTO.getPay_method())
-                .build();
+                .build());
 
-        paymentService.put(payment);
+        //Delete session
+        session.removeAttribute("basket");
 
+        //Input data model, set view
         ModelAndView mav = new ModelAndView();
         mav.setViewName("redirect:/order/detail/" + orderSeq);
         mav.addObject("orderOrdersDTO", orderOrdersDTO);
 
         return mav;
-
     }
 
 
