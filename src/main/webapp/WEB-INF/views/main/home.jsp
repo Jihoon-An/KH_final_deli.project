@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
+<%--<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>--%>
 
 <main id="home">
 
