@@ -53,11 +53,8 @@ public class OrderMngController {
     @RequestMapping("/{storeSeq}")
     public String toMngPage(Model model, @PathVariable(value = "storeSeq") Integer storeSeq) {
 
-//        Optional<Integer> ownerAccSeqOptional = Optional.ofNullable((Integer) session.getAttribute("acc_seq"));
-//        int ownerAccSeq = ownerAccSeqOptional.orElse(94); //없으면 기본값 31(sample data)
         int ownerAccSeq = (Integer) session.getAttribute("acc_seq");
         int ownerSeq = ownerService.convertAccSeqToOwnerSeq(ownerAccSeq); //(sample data)
-//        int storeSeq = Optional.ofNullable(inputStoreSeq).orElse(21); // 기본값 21(sample data)
 
         //storeList 만들기
         //사업자별 가게주문관리 전환 출력을 위한 List
