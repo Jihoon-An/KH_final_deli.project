@@ -40,15 +40,43 @@ function get_total_price() {
 
 //장바구니 담기
 function putBasket() {
-
     var basket = new BasketMenuDTO(select_option, count, one_price);
     $("#basket_menu").val(JSON.stringify(basket));
 
     $("#put_basket").submit();
 }
 
+//장바구니 담고 결제하러 가기
+function toPayment() {
+    var basket = new BasketMenuDTO(select_option, count, one_price);
+    $("#basket_menu").val(JSON.stringify(basket));
 
+    $("#put_basket").attr("action", "/menu/detail/toPay").submit();
+}
 
+const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+        confirmButton: 'btn btn-success mx-2',
+        cancelButton: 'btn btn-danger mx-2'
+    },
+    buttonsStyling: false
+})
+function onModal() {
+
+    swalWithBootstrapButtons.fire({
+        showCancelButton: true,
+        confirmButtonText: '결제 하러 가기',
+        cancelButtonText: '다른 메뉴 보기',
+        reverseButtons: true,
+        width: 380
+    }).then((result) => {
+        if (result.isConfirmed) {
+            putBasket();
+        } else{
+
+        }
+    })
+}
 
 
 
