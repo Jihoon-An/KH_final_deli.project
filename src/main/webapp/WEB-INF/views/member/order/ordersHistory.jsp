@@ -21,6 +21,10 @@
             crossorigin="anonymous"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/order/orderHistory.css" type="text/css">
 
@@ -61,17 +65,18 @@
             <div class="info">
                 <span class="storename">${i.store_name}</span>
                 <p class="meinfo">
-                        ${basketMenu[0].menu.menu_name}
+                        ${basketMenu[0].menu.menu_name} x ${basketMenu[0].count}
+
                     <c:if test="${basketMenu[1].menu.menu_name!=null}">
                         <c:forEach var="menu" items="${basketMenu}" varStatus="n">
-                            <c:if test="${n.index >1}">외 ${n.index-1}건</c:if>
+                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>
                         </c:forEach>
                     </c:if>
 
                 </p>
                 <a href="/"><button>메인으로</button></a>
                 <a href="/myPage/reviewWrite/${i.order_seq}"><button>리뷰작성</button></a>
-                <a href="/member/order/detail/${i.order_seq}"><button>주문상세</button></a>
+                <a href="/order/detail/${i.order_seq}"><button>주문상세</button></a>
                 <button>재주문</button>
             </div>
         </div>
