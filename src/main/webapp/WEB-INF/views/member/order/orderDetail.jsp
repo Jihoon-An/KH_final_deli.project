@@ -48,7 +48,6 @@
                 </c:when>
             </c:choose>
         </div>
-        <hr>
         <div class="order">
             <h3>주문내역</h3>
             <div>
@@ -63,12 +62,11 @@
                             <%--                        </c:forEach>--%>
                         <div>${menuList.price}원</div>
                     </div>
-                    <hr>
                 </c:forEach>
 
             </div>
         </div>
-        <hr>
+
         <div class="pay">
             <c:choose>
                 <c:when test="${not empty payInfoDTO}">
@@ -99,7 +97,7 @@
                 </c:when>
             </c:choose>
         </div>
-        <hr>
+
         <div class="orderer">
             <c:choose>
             <c:when test="${not empty ordererInfoDTO}">
@@ -107,13 +105,11 @@
             <div id="del_destination">배달주소</div>
             <div id="destination" style="font-size: small;">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
-            <hr>
+
             <div>전화번호
                 <div id="phone">${ordererInfoDTO.mem_phone}</div>
-                <hr>
                 <div>가게요청사항
                     <div id="store_req">${ordererInfoDTO.order_store_req}</div>
-                    <hr>
                     <div>배달요청사항
                         <div id="del_req">${ordererInfoDTO.order_rider_req}</div>
                     </div>

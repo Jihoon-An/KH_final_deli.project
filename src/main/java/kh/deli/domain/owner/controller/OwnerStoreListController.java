@@ -27,6 +27,10 @@ public class OwnerStoreListController {
 //        int acc_seq = 38;
         List<StoreDTO> storeList=ownerStoreService.findByAccSeq(acc_seq);
 
+        if (storeList.size() == 0) {
+            return "redirect:/owner/store/add";
+        }
+
         model.addAttribute("list",storeList);
 
         return "/owner/storeList";

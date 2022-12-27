@@ -3,6 +3,7 @@ package kh.deli.domain.member.store.controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import kh.deli.domain.member.myPage.service.MyPageDibsService;
 import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Type;
 
 import java.util.ArrayList;
@@ -35,6 +37,9 @@ public class StoreReviewController {
     private final StoreStoreService storeStoreService;
     private final StoreReviewService storeReviewService;
     private final OrderBasketService orderBasketService;
+
+    private final HttpSession session;
+    private final MyPageDibsService myPageDibsService;
 
     @RequestMapping("/{storeSeq}")
     public String toStoreReview(Model model,@PathVariable("storeSeq") Integer store_seq) throws Exception {
@@ -105,10 +110,15 @@ public class StoreReviewController {
 //            storeReviewList.add(new StoreReviewDTO(mem_nick, rev_writeDate, rev_modified_date, REV_STAR, storeRevSysname, revContent,
 //                    storeMenuList));
     }
+
+        int acc_seq = (Integer) session.getAttribute("acc_seq"); //찜
+        int result= myPageDibsService.isExistDibs(acc_seq,store_seq);
+
         model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("storeReviewCount", storeReviewCount);
         model.addAttribute("storeReviewAvg", storeReviewAvg);
         model.addAttribute("storeReviewList", storeReviewList);
+        model.addAttribute("result", result);
         return "/member/store/storeReview";
     }
 }
