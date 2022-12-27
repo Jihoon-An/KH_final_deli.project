@@ -1,14 +1,61 @@
 
 
+//
+function menuSubmitCheck() {
+    if ($("#menu_group").val() == "") {
+
+        $("#menu_group").focus();
+    }
+
+    else if($("input[name=menu_sold_out]:radio:checked").length<1){
+        Swal.fire({title: "체크 필수", icon: "error", text: "주문 가능 여부를 체크 해주세요"});
+        return false;
+    }
+    else if($("input[name=menu_display]:radio:checked").length<1){
+        Swal.fire({title: "체크 필수", icon: "error", text: "메뉴 공개 여부를 체크해주세요"});
+        return false;
+    }
+    
+    else if ($("#menu_name").val() == "") {
+
+        $("#menu_name").focus();
+    }
+    else if ($("#menu_price").val() == "") {
+
+        $("#menu_price").focus();
+    }
+    else if ($("#menu_intro").val() == "") {
+
+        $("#menu_intro").focus();
+    }
+    else if ($(".op_group").val() == "") {
+
+        $(".op_group").focus();
+    } else if ($(".op_name").val() == "") {
+
+        $(".op_name").focus();
+    }
+    else if ($(".op_price").val() == "") {
+
+        $(".op_price").focus();
+    }
+    else {
+        Swal.fire({title: "등록 성공", icon: "success", text: "등록이 완료되었습니다"});
+        return true;
+    }
+    Swal.fire({title: "등록 실패", icon: "error", text: "등록에 실패하였습니다. 관리자에게 문의해주세요"});
+    return false;
+}
+
+
+
+
+
 
 //옵션추가
 $(document).on("click", ".btn_option_add", function () {
 
-
-
-
     let addBox = $("<div class='option_div_add'>");
-
 
     let delBtn = $("<button type='button'>")
     delBtn.append("옵션삭제");
@@ -19,7 +66,7 @@ $(document).on("click", ".btn_option_add", function () {
 
     });
     addBox.append(delBtn)
-    addBox.append(" <select name='option_required' class='required'> <option value='Y'>필수옵션</option> <option value='N'>선택옵션</option></select><select name='option_multiple' class='opmulti'>  <option value='Y'>중복가능</option><option value='N'>중복불가능</option></select>  <input type='text' placeholder='옵션그룹명을 입력하세요' name='option_group' class='opgroup'><br><div class='group'> <div class='optionName_div'><input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='opname'>  <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='opprice'> </div> <button type='button' class='btn_opnameadd'>옵션명추가</button><br></div></div>")
+    addBox.append(" <select name='option_required' class='required'> <option value='Y'>필수옵션</option> <option value='N'>선택옵션</option></select><select name='option_multiple' class='op_multi'>  <option value='Y'>중복가능</option><option value='N'>중복불가능</option></select>  <input type='text' placeholder='옵션그룹명을 입력하세요' name='option_group' class='op_group'><br><div class='group'> <div class='optionName_div'><input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name'>  <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='op_price'> </div> <button type='button' class='btn_opnameadd'>옵션명추가</button><br></div></div>")
 
     addBox.hide();
 
@@ -49,7 +96,7 @@ $(document).on("click", ".btn_opnameadd", function () {
         addBtnCount=addBtnCount-1;
     });
     opAddBox.append(delBtn)
-    opAddBox.append("<input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='opname'> <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='opprice'> </div> <br> ")
+    opAddBox.append("<input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name'> <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='op_price'> </div> <br> ")
 
 
     //  $(this).closest(".name_add_box").append("<div class='text-start' style='width: 350px'> <span style='color: #808080; font - size:x-small'>옵션명</span></div> <input type='text' id='option_name_input' name='option_name' class='option_name' placeholder='옵션명을 입력하세요' maxlength='20'><div class='text - start' style='width: 350px'><span span style = 'color: #808080; font-size: x-small' > 옵션가격</span ></div > <input type='text' id='option_price_input' name='option_price' class='option_price'placeholder = '옵션 가격' maxlength = '11' oninput = validNum() > ")
@@ -71,13 +118,13 @@ $(".btn_add").on("click", function () {
 
    // let selb = $("select[name=option_required] option:selected").val();
     // let sela = document.querySelectorAll(".required:selected")
-    let opGroup = document.querySelectorAll(".opgroup");
+    let opGroup = document.querySelectorAll(".op_group");
     console.log(opGroup)
     console.log(opGroup.length)
     let sela = document.querySelectorAll(".required");
     console.log(sela)
     console.log(sela.length)
-    let multiPle = document.querySelectorAll(".opmulti");
+    let multiPle = document.querySelectorAll(".op_multi");
     //중첩for문돌리예정
     //let opgroup = $(".opgroup").val();
 
@@ -87,14 +134,14 @@ $(".btn_add").on("click", function () {
 
     //menu seq를 메뉴테이블, 메뉴 옵션테이블에 각각 추가하기 위한 조치
     $.ajax({
-        url: "/menu/add/getMenuSeq",
+        url: "/owner/menu/add/getMenuSeq",
         type: "get",
     }).done(res => {
-        menu_seq = res
+        menuSeq = res
         //메뉴 옵션추가
         for(let i=0; i<opGroup.length; i++ ) { //중첩 for문 사용
-            let opName= $(document.querySelectorAll(".group")[i]).find(".opname")
-            let opPrice = $(document.querySelectorAll(".group")[i]).find(".opprice")
+            let opName= $(document.querySelectorAll(".group")[i]).find(".op_name")
+            let opPrice = $(document.querySelectorAll(".group")[i]).find(".op_price")
             //기본 opname 길이 2
             for (let j = 0; j < opName.length; j++) {
 
@@ -104,7 +151,7 @@ $(".btn_add").on("click", function () {
                 let data = {
                     "menu_seq":menuSeq,
                     "option_required": sela[i].value,
-                    "option_multiple":multiple[i].value,
+                    "option_multiple":multiPle[i].value,
                     "option_group": opGroup[i].value,
                     "option_name": opNameVal,
                     "option_price": Number(opPriceVal)
@@ -112,14 +159,20 @@ $(".btn_add").on("click", function () {
 
                 console.log(data)
                 $.ajax({
-                    url: "/menu/add/menuAddAjax",
+                    url: "/owner/menu/add/menuAddAjax",
                     type: "post",
                     data: data
                 })
 
                 //메뉴추가
-                $("#frm").attr("action","/menu/add/menuAdd?menu_seq="+menu_seq);
-                  $("#frm").submit();
+                $("#frm").attr("action","/owner/menu/add/menuAdd?menu_seq="+menuSeq);
+                console.log(data)
+                if(menuSubmitCheck()){
+                    $("#frm").submit();
+
+
+                }
+
 
             }
         }
@@ -127,7 +180,7 @@ $(".btn_add").on("click", function () {
 
     })
 
-    console.log(menu_seq)
+    // console.log(menu_seq)
 
 })
 
