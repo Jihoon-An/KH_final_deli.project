@@ -124,10 +124,10 @@ public class MainAccountService {
             fileUtil.delete(session, "/resources/img/owner-card", originalFile);
 
             // Owner 테이블 데이터 삭제
-            mainAccountMapper.deleteOwner(accSeq);
+            mainAccountMapper.deleteOwnerByAccSeq(accSeq);
 
             // Account 테이블 데이터 삭제
-            mainAccountMapper.deleteAccount(accSeq);
+            mainAccountMapper.deleteAccountByAccSeq(accSeq);
 
         }else { // 일반 클라이언트 탈퇴
 
@@ -155,13 +155,13 @@ public class MainAccountService {
             mainAccountMapper.deleteMemberCouponByAccSeq(accSeq);
 
             // Address 테이블 데이터 삭제
-            mainAccountMapper.deleteAddress(accSeq);
+            mainAccountMapper.deleteAddressByAccSeq(accSeq);
 
             // Member 테이블 데이터 삭제
-            mainAccountMapper.deleteMember(accSeq);
+            mainAccountMapper.deleteMemberByAccSeq(accSeq);
 
             // Account 테이블 데이터 삭제
-            mainAccountMapper.deleteAccount(accSeq);
+            mainAccountMapper.deleteAccountByAccSeq(accSeq);
         }
     }
 
