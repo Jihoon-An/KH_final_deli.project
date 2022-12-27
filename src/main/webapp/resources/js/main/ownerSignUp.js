@@ -469,6 +469,8 @@ $('#phone').keyup(function (event) {
     var _val = this.value.trim();
     this.value = autoHypenTel(_val);
 });
+
+
 //////////////// 눈 /////////////////
 const MIN_DURATION = 10;
 

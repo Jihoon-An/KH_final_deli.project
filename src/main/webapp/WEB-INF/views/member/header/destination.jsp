@@ -33,18 +33,16 @@
     <%--모달--%>
     <div class="modal">
         <div class="modal_destination_container">
-            <h2>주소지 변경</h2>
-            <button type="button" id="destination_add_box_btn">주소지 추가 등록</button>
-            <hr>
+            <button type="button" class="button-4" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가</button>
 
             <form id="destination_select_frm" method="post">
                 <div id="destination_select_box">
-                    <button type="button" id="destination_select">기본 주소지 선택</button>
+                    <button type="button" class="button-4" id="destination_select">주소지 변경</button>
                     <hr>
                     <c:choose>
                         <c:when test="${not empty address_List}">
                             <c:forEach var="i" items="${address_List}">
-                                <div class="destination_box">
+                                <div class="destination_box form-check">
                                     <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                                     <input type="radio" name="radio_add_division"
                                            <c:if test="${i.add_division=='basics'}">id="basics" checked</c:if>>
@@ -52,10 +50,9 @@
                                     <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
                                     <input type="hidden" name="add_division" class="hidden_add_division"
                                            value="${i.add_division}">
-                                        ${i.add_name} <a class="del">x</a> <br>
+                                        ${i.add_name} <a class="del">x</a>
                                         ${i.add_detail1} <br>
-                                    상세주소 : ${i.add_detail2} <br>
-                                        ${i.add_msg} <br>
+                                    상세주소 : ${i.add_detail2}
                                     <hr>
                                 </div>
                             </c:forEach>

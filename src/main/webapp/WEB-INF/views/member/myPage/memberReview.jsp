@@ -65,12 +65,7 @@
                     <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
                     </label>
                 </div>
-                <div>
-                    <div class="imgName imgName1"><img id="img1" src=""></div>
-                    <div class="imgName imgName2"><img id="img2" src=""></div>
-                    <div class="imgName imgName3"><img id="img3" src=""></div>
-                    <div class="imgName imgName4"><img id="img4" src=""></div>
-                </div>
+                <div id="imgSec"><img id="imgtest"><img id="imgtest2"></div>
             </div>
             <hr>
             <div>

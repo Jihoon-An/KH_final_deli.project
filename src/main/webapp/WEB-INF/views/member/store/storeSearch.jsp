@@ -56,7 +56,7 @@
 
 <main id="storeSearch">
 
-    <hr class="mt65">
+    <hr class="mt55">
 
     <div class="container">
         <form action="/store/search">
@@ -71,13 +71,13 @@
         <div class="filter_box">
             <div style="margin: 0 auto" class="d-inline-flex">
                 <a href="/store/search?filter=star">
-                    <div class="filter" style="margin-right: 7px">별점순</div>
+                    <div class="filter" style="margin-right: 8px">별점순</div>
                 </a>
                 <a href="/store/search?filter=review">
-                    <div class="filter" style="margin-right: 7px">리뷰순</div>
+                    <div class="filter" style="margin-right: 8px">리뷰순</div>
                 </a>
                 <a href="/store/search?filter=delifree">
-                    <div class="filter" style="margin-right: 7px">무료배달만</div>
+                    <div class="filter" style="margin-right: 8px">무료배달만</div>
                 </a>
                 <a href="/store/search?filter=minprice">
                     <div class="filter">최소주문금액순</div>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="d-flex flex-column">
-            <p class="p1_font">식당<span class="span1_font">(${fn:length(store_list)})</span></p>
+            <p class="p1_font">검색결과<span class="span1_font">(${fn:length(store_list)})</span>개</p>
             <c:choose>
                 <c:when test="${not empty store_list}">
                     <c:forEach var="store_list" items="${store_list}" varStatus="status">
@@ -164,40 +164,7 @@
 
 </main>
 
-<script>
-    function getUrlParams() {
-        var params = {};
-
-        window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,
-            function(str, key, value) {
-                params[key] = value;
-            }
-        );
-
-        return params;
-    }
-
-    window.onload = function (){
-        oParams = getUrlParams();
-        if(oParams.filter == "star"){
-            $(".filter").eq(0).css("color","#e84c4f");
-            $(".filter").eq(0).css("font-weight","bolder");
-        }
-        if(oParams.filter == "review"){
-            $(".filter").eq(1).css("color","#e84c4f");
-            $(".filter").eq(1).css("font-weight","bolder");
-        }
-        if(oParams.filter == "delifree"){
-            $(".filter").eq(2).css("color","#e84c4f");
-            $(".filter").eq(2).css("font-weight","bolder");
-        }
-        if(oParams.filter == "minprice"){
-            $(".filter").eq(3).css("color","#e84c4f");
-            $(".filter").eq(3).css("font-weight","bolder");
-        }
-    }
-
-</script>
+<script src="/resources/js/member/store/storeSearch.js"></script>
 
 </body>
 </html>

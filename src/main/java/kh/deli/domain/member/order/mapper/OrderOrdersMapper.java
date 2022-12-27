@@ -15,9 +15,7 @@ import java.util.List;
 @Mapper
 public interface OrderOrdersMapper {
     public OrderOrdersDTO selectSessionInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
-
-    public OrderOrdersDTO selectOrderMemberInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
-
+    public OrderOrdersDTO selectOrderMemberInfo(@Param("accSeq") int accSeq);
     List<OrderOrdersDTO> selectCouponList(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 
     public void updateMemberAddr(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
@@ -39,12 +37,14 @@ public interface OrderOrdersMapper {
     @Select("select * from orders where order_seq = #{order_seq}")
     OrdersDTO findOrdersBySeq(int order_seq);
 
-    void insertOrder(@Param("orderOrdersDTO")OrderOrdersDTO orderOrdersDTO);
+    void insertOrder(@Param("orderOrdersDTO") OrderOrdersDTO orderOrdersDTO, @Param("orderSeq") int orderSeq);
 
     // UpdateCouponList, UpdateOwnPointMinus, UpdateOwnPointPlus
 
-    void deleteCouponList(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
+    void deleteCouponList(@Param("orderOrderDTO") OrderOrdersDTO orderOrdersDTO);
 
     void updateOwnPoint(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
 
+    @Select("SELECT ORDER_SEQ.NEXTVAL FROM DUAL")
+    int getNextSeq();
 }

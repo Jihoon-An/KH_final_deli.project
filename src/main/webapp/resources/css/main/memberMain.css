@@ -1,19 +1,102 @@
+#memberMain *{box-sizing: border-box;}
+
 #memberMain .container{
     width:360px;
-    /*border: 1px solid #000000;*/
     margin: auto;
-    /*background-color: #FFFFFF;*/
     padding-top: 60px;
     padding-bottom: 80px;
 }
+#memberMain .container>div{
+    width: 95%;
+}
+
+#memberMain a{
+    text-decoration: none;
+    color: black;
+}
+
+#memberMain #categorySec{
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+#memberMain .categoryBox {
+    display: inline-block;
+    width: 76px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: small;
+}
 
 #memberMain .categoryIcon{
-    width: 50px;
-    height: 50px;
+    width: 58px;
+    height: 58px;
 }
 
+#memberMain .categoryName{
+    margin-top: 10px;
+}
+
+#memberMain .storeList{
+    border-radius: 20px;
+    width: 350px;
+    height: fit-content;
+    padding: 6px 13px 6px 13px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0,0,0,0.1);
+}
+
+#memberMain .fa-star{
+    color: transparent;
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#memberMain .storeLink{
+    width: 100%;
+}
+
+#memberMain .logoBox{
+    min-height: 100px;
+    margin: 10px 0px;
+}
+
+#memberMain .infoBox{
+    margin: 10px 0px;
+}
 #memberMain .store_logo{
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
 }
 
+#memberMain .storeName{
+    font-weight: bold;
+    font-size: large;
+}
+
+#memberMain .storeEtc{
+    font-size: x-small;
+    /*float: right;*/
+    font-weight: lighter;
+    line-height: 29px;
+}
+
+#memberMain .storePrice{
+    font-size: small;
+    color: gray;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+#memberMain .priceFont{
+    color: black;
+}
+
+#memberMain .distance{
+    font-size: x-small;
+}
