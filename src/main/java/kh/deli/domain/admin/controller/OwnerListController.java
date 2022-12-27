@@ -39,7 +39,7 @@ public class OwnerListController {
     }
 
     @RequestMapping("/deleteOwner")
-    public String ownerDelete(int owner_seq, int acc_seq){
+    public String deleteOwner(int owner_seq, int acc_seq){
         Gson gson = new Gson();
         FileUtil file = new FileUtil();
         System.out.println(owner_seq+"acc"+acc_seq);
@@ -69,7 +69,7 @@ public class OwnerListController {
             for (int j = 0; j < menuSeqList.size(); j++) {
                 System.out.println(menuSeqList.get(j).intValue());//menu_seq 리스트출력
                 int menu_seq = menuSeqList.get(j).intValue();
-//            //    System.out.println(menu_seq);
+            //    System.out.println(menu_seq);
                // adminOwnerService.deleteMenuOption(menu_seq); //menu_seq로 menu_option 삭제
                // adminOwnerService.deleteMenu(store_seq);  //store_seq로 menu삭제
            //   adminOwnerService.deleteReview(store_seq);//store_Seq 로 review삭제

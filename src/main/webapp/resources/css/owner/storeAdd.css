@@ -46,12 +46,12 @@
 #storeAdd .control {
     width: 70%;
 
-    line-height: 100px;
+    line-height: 50px;
 }
 
 #storeAdd .control input {
     width: 100%;
-    height: 100%;
+    height: 70%;
 }
 
 /*#storeAdd #store_name{*/
@@ -113,9 +113,15 @@
     width: 180px;
     height: 50px;
     line-height: 30px;
+    text-align: center;
 }
 
 #storeAdd .contents{
+
     height: 50px;
 
+}
+
+#storeAdd .foot_btn{
+    text-align: right;
 }

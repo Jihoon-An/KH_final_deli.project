@@ -43,9 +43,7 @@
 <body>
 <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <main id="storeAdd">
-    <h1>
-        식당추가
-    </h1>
+
     <form action="" id="frm" method="post" enctype="multipart/form-data">
         <div class="container">
             <input type="hidden" name="acc_seq" value="${acc_seq}">
@@ -318,11 +316,11 @@
                                               placeholder="배달 가능 지역" class="input"></div>
             </div>
 
-            <button id=add type="button">식당추가</button>
-            <button type="button">취소</button>
-        </div>
+            <div class="foot_btn"><button id=add type="button">식당추가</button>
+                <a href="/owner/store/list"><button type="button">취소</button></a></div>
 
         </div>
+
 
     </form>
 
