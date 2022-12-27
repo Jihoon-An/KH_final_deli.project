@@ -24,6 +24,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,10 +45,10 @@ public class MypageReviewModifyController {
     private final Gson gson;
 
     @RequestMapping("")
-    public String toModifyReviewForm(Model model) throws Exception {
-        Integer order_seq = 18; //리뷰관리페이지에서
-        Integer rev_seq = 242; //리뷰작성하기에서
-        Integer store_seq = 19;
+    public String toModifyReviewForm(Model model,Integer order_seq,Integer rev_seq,Integer store_seq) throws Exception {
+//        Integer order_seq = 18; //리뷰관리페이지에서
+//        Integer rev_seq = 242; // 리뷰작성하기에서
+//        Integer store_seq = 19;
         OrdersDTO orders_dto = reviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = reviewService.selectByReviewSeq(rev_seq);
         StoreDTO store_dto = reviewService.selectByStoreSeq(store_seq);

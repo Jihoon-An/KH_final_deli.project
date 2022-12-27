@@ -37,6 +37,9 @@
     margin-bottom: 10px;
 }
 
+#store_info .delivery{overflow: hidden;}
+#store_info .businessman{overflow: hidden;}
+
 #store_info .deliveryInfo {
     width: 95%;
 }
@@ -44,6 +47,7 @@
 #store_info .deliveryInfo {
     border: 3px solid black;
     border-radius: 10px;
+
 }
 
 #store_info .deliveryInfo div {
@@ -70,8 +74,11 @@
     color: black;
 }
 
-#store_info .field{font-size:18px; font-weight: bold; line-height: 27px; margin-bottom: 5px;}
+#store_info .field{font-size:18px; font-weight: bold; line-height: 27px; margin-bottom: 5px; }
 #store_info .contents{font-size:14px; }
+#store_info .title{float: left; width:30%; }
+#store_info .detail_contents{font-size:14px; }
+#store_info .detail_contents{width: 70%; display: inline-block; text-align: right;}
 
 #store_info #map{width: 95%; border-radius: 7px;}
 

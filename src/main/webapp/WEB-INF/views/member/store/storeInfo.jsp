@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--<html>--%>
-<%--<head>--%>
+<html>
+<head>
 <title>식당상세정보</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <!--jQuery-->
@@ -168,13 +168,13 @@
         <hr>
         <div class="delivery">
             <div class="field">배달정보</div>
-            <div class="contents">
+            <div class="contents title">
                 <div>최소주문금액</div>
                 <div>배달팁</div>
                 <div>배달가능지역</div>
                 <div>배달예상시간</div>
             </div>
-            <div class="">
+            <div class="detail_contents">
                 <div><fmt:formatNumber value="${storeInfoDTO.store_min_price}" pattern="#,###"/>원</div>
                 <div><fmt:formatNumber value="${storeInfoDTO.store_deli_tip}" pattern="#,###"/>원</div>
                 <div>${storeInfoDTO.store_destination}</div>
@@ -185,20 +185,25 @@
         <div class="businessman">
             <div class="field">사업자정보</div>
             <div class="contents">
-                <div>대표자명 : ${ownerInfoDTO.owner_name}</div>
-                <div>상호명 : ${storeInfoDTO.store_name}</div>
-                <div> 사업자주소:${storeInfoDTO.store_add_detail1}<br>
+                <div>대표자명<div>
+                <div>상호명<div>
+                <div>사업자주소<div>
+                <div>사업자등록번호<div>
+            </div>
+            <div class="detail_contents">
+                <div>${ownerInfoDTO.owner_name}</div>
+                <div>${storeInfoDTO.store_name}</div>
+                <div>${storeInfoDTO.store_add_detail1}<br>
                     ${storeInfoDTO.store_add_detail2}</div>
-                <div>사업자등록번호 :${ownerInfoDTO.owner_num}</div>
+                <div>${ownerInfoDTO.owner_num}</div>
             </div>
         </div>
-    </div>
-
+                </div>
     <script>
         var latitude =${storeInfoDTO.store_add_x};
         var longitude =${storeInfoDTO.store_add_y};
     </script>
     <script src="/resources/js/member/store/storeInfo.js"></script>
 </main>
-<%--</body>--%>
-<%--</html>--%>
+</body>
+</html>
