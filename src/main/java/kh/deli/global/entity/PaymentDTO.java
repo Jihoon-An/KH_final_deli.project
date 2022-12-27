@@ -12,8 +12,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentDTO {
-    private int pay_seq;
+    private Integer pay_seq;
     private Timestamp pay_date;
-    private int order_seq;
-    private int pay_price;
+    private Integer order_seq;
+    private Integer pay_price;
+    private String pay_method;
 }

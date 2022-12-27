@@ -3,13 +3,15 @@ package kh.deli.domain.member.order.controller;
 import com.google.gson.Gson;
 import kh.deli.domain.member.order.dto.OrderOrdersDTO;
 import kh.deli.domain.member.order.service.OrderOrdersService;
+import kh.deli.domain.member.order.service.OrderPaymentService;
 import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.global.entity.OrdersDTO;
+import kh.deli.global.entity.PaymentDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,11 +27,9 @@ import java.util.List;
 public class OrderPayController {
 
     private final HttpSession session;
-
-    @Autowired
-    OrderOrdersService orderOrdersService;
-    @Autowired
-    StoreStoreService storeStoreService;
+    private final OrderOrdersService orderOrdersService;
+    private final StoreStoreService storeStoreService;
+    private final OrderPaymentService paymentService;
 
     private final OrderOrdersService ordersService;
 
@@ -125,6 +125,13 @@ public class OrderPayController {
         orderOrdersDTO.setOwnPoint(String.valueOf(ownPoint));
         orderOrdersService.updateOwnPoint(orderOrdersDTO);
 
+        PaymentDTO payment = PaymentDTO.builder()
+                .order_seq(orderSeq)
+                .pay_price(orderOrdersDTO.getPay_price())
+                .pay_method(orderOrdersDTO.getPay_method())
+                .build();
+
+        paymentService.put(payment);
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("redirect:/order/detail/" + orderSeq);
