@@ -23,6 +23,6 @@ public class OwnerMemberService {
      */
     public List<MemberDTO> getSeqNamePhoneListByStoreSeq(int storeSeq) {
         Optional<List<MemberDTO>> member = Optional.ofNullable(memberMapper.getListByStoreSeqWithOrder(storeSeq));
-        return new ArrayList<>();
+        return member.orElse(new ArrayList<>());
     }
 }

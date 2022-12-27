@@ -4,69 +4,72 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper">
-    <select id="selectSessionInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
-        SELECT
-            A.ACC_EMAIL AS accEmail,
-            M.MEM_NAME AS memName
-        FROM ACCOUNT A
-        INNER JOIN MEMBER M ON ( A.ACC_SEQ = M.ACC_SEQ )
-        WHERE A.ACC_SEQ = #{orderOrdersDTO.seq}
-    </select>
+    <!--    <select id="selectSessionInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">-->
+    <!--        SELECT-->
+    <!--            A.ACC_EMAIL AS accEmail,-->
+    <!--            M.MEM_NAME AS memName-->
+    <!--        FROM ACCOUNT A-->
+    <!--        INNER JOIN MEMBER M ON ( A.ACC_SEQ = M.ACC_SEQ )-->
+    <!--        WHERE A.ACC_SEQ = #{orderOrdersDTO.seq}-->
+    <!--    </select>-->
 
-    <select id="selectOrderMemberInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+    <select id="selectOrderMemberInfo" parameterType="int" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         select
-            seq,
-            address1,
-            address2,
-            phoneNum,
-            ownPoint
+        acc_seq,
+        add_seq,
+        address1,
+        address2,
+        phoneNum,
+        ownPoint
         from
         (
-            select
-            A.acc_seq as seq,
-            A.add_detail1 as address1,
-            A.add_detail2 as address2,
-            M.mem_phone as phoneNum,
-            NVL(M.mem_point, 0) as ownPoint
-            from member M
-            inner join address A ON (A.acc_seq = M.acc_seq)
-            where add_seq = 6
+        select
+        A.acc_seq as acc_seq,
+        A.add_seq as add_seq,
+        A.add_detail1 as address1,
+        A.add_detail2 as address2,
+        M.mem_phone as phoneNum,
+        NVL(M.mem_point, 0) as ownPoint
+        from member M
+        inner join address A ON (A.acc_seq = M.acc_seq)
+        where add_division = 'basics'
         )
-        where
-            seq = #{orderOrdersDTO.seq}
+        where acc_seq = #{accSeq}
 
     </select>
-    <update id="updateMemberAddr"  parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+    <update id="updateMemberAddr" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         UPDATE ADDRESS
         SET
-            ADD_DETAIL1 = #{orderOrdersDTO.address1},
-            ADD_DETAIL2 = #{orderOrdersDTO.address2}
+        ADD_DETAIL1 = #{orderOrdersDTO.address1},
+        ADD_DETAIL2 = #{orderOrdersDTO.address2}
         WHERE
-            ACC_SEQ = #{orderOrdersDTO.seq}
-            AND ADD_SEQ = 6
+        ACC_SEQ = #{orderOrdersDTO.acc_seq}
+        AND ADD_SEQ = 6
     </update>
 
     <update id="updateMemberPhone" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         UPDATE MEMBER
         SET
-            MEM_PHONE = #{orderOrdersDTO.phoneNum}
+        MEM_PHONE = #{orderOrdersDTO.phoneNum}
         WHERE
-            ACC_SEQ = #{orderOrdersDTO.seq}
+        ACC_SEQ = #{orderOrdersDTO.acc_seq}
     </update>
 
-    <select id="selectCouponList" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+    <select id="selectCouponList" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO"
+            resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         SELECT
-            M.MC_SEQ AS mcSeq,
-            M.CP_SEQ AS cpSeq,
-            C.CP_NAME AS cpName,
-            C.CP_CONTENT As cpContent,
-            C.CP_DISCOUNT AS cpDiscount,
-            C.CP_PERIOD AS cpPeriod,
-            C.CP_TYPE As cpType
+        M.MC_SEQ AS mc_seq,
+        M.CP_SEQ AS cp_seq,
+        C.CP_NAME AS cpName,
+        C.CP_CONTENT As cpContent,
+        C.CP_DISCOUNT AS discount_coupon,
+        C.CP_PERIOD AS cpPeriod,
+        C.CP_TYPE As cpType
         FROM MEMBER_COUPON M
         INNER JOIN COUPON C ON ( M.CP_SEQ = C.CP_SEQ )
-        WHERE M.ACC_SEQ = #{orderOrdersDTO.seq}
+        WHERE M.ACC_SEQ = #{orderOrdersDTO.acc_seq}
     </select>
+
 
     <insert id="insertPayment" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         INSERT INTO
@@ -95,13 +98,13 @@
 
     <select id="getStoreInfo" resultType="StoreInfoDTO">
         SELECT
-            STORE_PHONE,
-            STORE_ADD_DETAIL1,
-            STORE_ADD_DETAIL2,
-            STORE_NAME,
-            STORE_DELI_TIME,
-            ORDERS.ORDER_SEQ,
-            ORDER_DATE
+        STORE_PHONE,
+        STORE_ADD_DETAIL1,
+        STORE_ADD_DETAIL2,
+        STORE_NAME,
+        STORE_DELI_TIME,
+        ORDERS.ORDER_SEQ,
+        ORDER_DATE
         FROM STORE,ORDERS
         WHERE STORE.STORE_SEQ=ORDERS.STORE_SEQ
         AND ORDER_SEQ=${order_seq}
@@ -123,31 +126,86 @@
     </select>
 
     <select id="getPayInfo" resultType="PayInfoDTO">
-<!--        select-->
-<!--            order_price,-->
-<!--            (pay_price*cp_discount/100) as discountByCoupon,-->
-<!--            order_point,-->
-<!--            delivery_tip,-->
-<!--            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,-->
-<!--            pay_method-->
-<!--        from orders-->
-<!--        ,coupon-->
-<!--        where-->
-<!--        orders.cp_seq=coupon.cp_seq and-->
-<!--        order_seq=${order_seq}-->
+        <!--&lt;!&ndash;        select&ndash;&gt;-->
+        <!--&lt;!&ndash;            order_price,&ndash;&gt;-->
+        <!--&lt;!&ndash;            (pay_price*cp_discount/100) as discountByCoupon,&ndash;&gt;-->
+        <!--&lt;!&ndash;            order_point,&ndash;&gt;-->
+        <!--&lt;!&ndash;            delivery_tip,&ndash;&gt;-->
+        <!--&lt;!&ndash;            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,&ndash;&gt;-->
+        <!--&lt;!&ndash;            pay_method&ndash;&gt;-->
+        <!--&lt;!&ndash;        from orders&ndash;&gt;-->
+        <!--&lt;!&ndash;        ,coupon&ndash;&gt;-->
+        <!--&lt;!&ndash;        where&ndash;&gt;-->
+        <!--&lt;!&ndash;        orders.cp_seq=coupon.cp_seq and&ndash;&gt;-->
+        <!--&lt;!&ndash;        order_seq=${order_seq}&ndash;&gt;-->
 
         SELECT
         ORDER_PRICE,
-        (PAY_PRICE*CP_DISCOUNT/100) AS discountByCoupon,
+        (ORDER_PRICE*CP_DISCOUNT/100) AS discountByCoupon,
         ORDER_POINT,
         DELIVERY_TIP,
-        (ORDER_PRICE-(PAY_PRICE*CP_DISCOUNT/100)-ORDER_POINT+DELIVERY_TIP) AS pay_price,
+        (ORDER_PRICE-(ORDER_PRICE*CP_DISCOUNT/100)-ORDER_POINT+DELIVERY_TIP) AS pay_price,
         PAY_METHOD
         FROM ORDERS LEFT JOIN COUPON
         ON ORDERS.CP_SEQ=COUPON.CP_SEQ
         WHERE ORDER_SEQ=#{order_seq}
+
     </select>
 
+    <insert id="insertOrder" parameterType="java.util.HashMap">
+        insert into orders (
+        ORDER_SEQ,
+        ACC_SEQ,
+        STORE_SEQ,
+        MENU_LIST,
+        ORDER_PRICE,
+        ORDER_DATE,
+        ADD_SEQ,
+        ADD_DETAIL2,
+        ORDER_PHONE,
+        ORDER_STATUS,
+        ORDER_DISPOSABLE,
+        ORDER_RIDER_REQ,
+        PAY_METHOD,
+        CP_SEQ,
+        ORDER_POINT,
+        ORDER_STORE_REQ,
+        DELIVERY_TIP,
+        PAY_PRICE
 
+        )values(
+        #{orderSeq},
+        #{orderOrdersDTO.acc_seq},
+        #{orderOrdersDTO.store_seq},
+        #{orderOrdersDTO.menuList},
+        #{orderOrdersDTO.order_price},
+        sysdate,
+        #{orderOrdersDTO.add_seq},
+        #{orderOrdersDTO.address2},
+        #{orderOrdersDTO.phoneNum},
+        '미접수',
+        #{orderOrdersDTO.order_disposable},
+        #{orderOrdersDTO.order_rider_req},
+        #{orderOrdersDTO.pay_method},
+        #{orderOrdersDTO.cp_seq},
+        #{orderOrdersDTO.usePoint},
+        #{orderOrdersDTO.order_store_req},
+        #{orderOrdersDTO.delivery_tip},
+        #{orderOrdersDTO.pay_price}
+        )
+    </insert>
+
+    <delete id="deleteCouponList" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        delete member_coupon
+        where acc_seq =#{orderOrderDTO.acc_seq}
+        and cp_seq=#{orderOrderDTO.cp_seq}
+        and mc_seq=#{orderOrderDTO.mc_seq}
+    </delete>
+
+    <update id="updateOwnPoint" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        update member
+        set mem_point = #{orderOrderDTO.ownPoint}
+        where acc_seq = #{orderOrderDTO.acc_seq}
+    </update>
 </mapper>
 

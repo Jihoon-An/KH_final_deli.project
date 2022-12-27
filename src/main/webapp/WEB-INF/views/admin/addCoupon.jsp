@@ -34,7 +34,7 @@
 <%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="add_coupon">
     <h1>쿠폰 등록</h1>
-    <form id="cp_add_frm" action="/admin/addCoupon/add" method="post">
+    <form id="cp_add_frm" action="/admin/coupon/add/add" method="post">
         <%--이름--%>
         <div class="row" id="name_area">
             <div class="col-3">

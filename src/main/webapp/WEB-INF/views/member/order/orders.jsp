@@ -92,12 +92,13 @@
 </style>
 <body>
 
+<form name="dataForm" id="insertForm" action="orders/insertOrder" method="post">
 
 <div class="container">
     <h2>배달 정보</h2>
     <hr>
     <div id="mainAddress">address1출력
-        <input type="text" id="add_1" name="add_1" placeholder="Address1">
+        <input type="text" id="address1" name="address1" placeholder="Address1">
         <!-- <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%> -->
         <button type="button" id="btn_modal">주소 변경</button>
         <div id="modal" class="modal-overlay">
@@ -109,8 +110,8 @@
                 <div class="content">
                     <input type="text" id="postcode" placeholder="우편번호">
                     <input type="button" onclick="postcode()" value="찾기" id="btnSearch"><br>
-                    <input type="text" id="address1" placeholder="도로명 / 지번주소">
-                    <input type="text" id="address2" placeholder="상세주소"><br>
+                    <input type="text" id="add1" placeholder="도로명 / 지번주소">
+                    <input type="text" id="add2" placeholder="상세주소"><br>
                     <button onclick="onclickBtnChgAddr()" id="btnChgAddr">완료</button>
                 </div>
             </div>
@@ -128,8 +129,8 @@
         </div>
 
     </div>
-    <input type="text" id="add_2" name="add_detail2" placeholder="Address2">
-ㅇ  <input type="text" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber">
+    <input type="text" id="address2" name="address2" placeholder="Address2">
+    <input type="text" id="phoneNum" name="phoneNum" placeholder="phoneNum">
     <%--핸드폰 번호 변경 모달--%>
     <button type="button" id="btn_modal3">핸드폰 번호 변경</button>
     <div id="modal3" class="modal-overlay">
@@ -139,7 +140,7 @@
             </div>
             <div class="close-area">X</div>
             <div class="content">
-                <input type="text" value="" id="phoneNum">
+                <input type="text" value="" id="phoneNumber" name="phoneNumber">
                 <button onclick="onclickBtnChgPhone()" id="btnChgPhone">완료</button>
             </div>
         </div>
@@ -148,14 +149,13 @@
     <hr>
     <div>요청사항</div>
     <div style="border: 1px solid black">
-        <input type="checkbox" name="" value="">일회용 수저,포크 안주셔도 돼요!<br>
-        <input type="checkbox" name="" value="">단무지, 김치 안주셔도 돼요!
+        <input type="checkbox" name="order_disposable" value="N">일회용 수저,포크 안주셔도 돼요!<br>
     </div>
     <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말">
     <input type="text" name="order_rider_req" value="" placeholder="라이더님한테 전달할 말">
     <hr>
     <div>결제수단
-        <select id="payment" onchange="onchangePayment()">
+        <select id="payment" name="pay_method" onchange="onchangePayment()">
             <option name="payMethod" value="">선택</option>
             <option name="payMethod" value="kakaoPay">카카오페이</option>
             <option name="payMethod" value="creditCard">신용/체크카드</option>
@@ -174,42 +174,54 @@
     </div>
     <div>포인트
         <div>
-            <input  type="text" id="ownPoint" placeholder="보유포인트 0" readonly="true" onchange="onchangeOwnPoint()">
-            <input  type="text" value="" id="usePoint"  placeholder="사용할 포인트">
+            <input  type="text" name="ownPoint" id="ownPoint" placeholder="보유포인트 0" readonly="true" onchange="onchangeOwnPoint()">
+            <input  type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" placeholder="사용할 포인트">
         </div>
         <hr>
-        <div id="order_price">주문 금액 출력</div>
+        <div>주문 금액 출력
+            <input type="text" id="order_price" name="order_price" readonly>
+        </div>
         <div id="selectCoupon">쿠폰할인
-            <input type="text" name="distcount_coupon" value=""  placeholder="쿠폰 할인 출력">
+            <input type="hidden" id="cp_seq" name="cp_seq">
+            <input type="hidden" id="mc_seq" name="mc_seq" >
+            <input type="text" value=0 id="discountPrice" name="discountPrice" disabled="disabled" placeholder="쿠폰 할인 금액 출력">
         </div>
         <div>포인트 할인
-            <input type="text" name="order_point" value=""  placeholder="포인트 할인 출력">
+            <input type="text" value=0 id="use_point" name="use_point" placeholder="포인트 할인 출력" readonly>
         </div>
-        <div id="delivery_tip">배달팁</div>
-        <div>총 결제 금액 출력</div>
+        <div>배달팁
+            <input type="text" id="delivery_tip" name="delivery_tip" placeholder="배달팁">
+        </div>
+        <hr>
+        <div>총 결제 금액 출력
+            <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액">
+        </div>
         <hr>
         <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
         <button type="button" id="payCard" class="btn_payment">다른 결제 수단으로 결제</button>
     </div>
 
-    <button type="submit">확인</button>
-    <input type="hidden" id="accEmail" value="${userInfo.accEmail}" />
-    <input type="hidden" id="memName" value="${userInfo.memName}" />
+    <input type="hidden" id="accEmail" name="accEmail" value="${userInfo.accEmail}" />
+    <input type="hidden" id="memName" name="memName" value="${userInfo.memName}" />
+    <input type="hidden" id="add_seq" name="add_seq" />
 </div>
-
-<form name="dataForm" id="insertForm" action="orders/saveOrder" method="post">
-
 </form>
-
 <script>
 
     window.onload = function(){
         $("#payCard").hide();
         $("#payment").val('kakaoPay');
-        console.log($("#accEmail").val());
-        console.log($("#memName").val());
+        $("#order_price").val(${orderOrdersDTO.order_price})
+        $("#delivery_tip").val(${orderOrdersDTO.delivery_tip})
         initPage();
         setCouponList();
+        var orderPrice = $("#order_price").val();
+        var deliveryPrice = $("#delivery_tip").val() || 0;
+
+        console.log(orderPrice);
+        console.log("ghfhfhgf");
+        console.log(deliveryPrice);
+        $("#pay_price").val(orderPrice - deliveryPrice);
 
     }
 
@@ -218,13 +230,12 @@
             url: "/order/orders/selectInitInfo",
             type: "post",
             dataType: "json",
-            data : {seq : 39},
             success : function (data){
-                $("#add_1").val(data.address1);
-                $("#add_2").val(data.address2);
-                $("#phoneNumber").val(data.phoneNum);
+                $("#add_seq").val(data.add_seq);
+                $("#address1").val(data.address1);
+                $("#address2").val(data.address2);
+                $("#phoneNum").val(data.phoneNum);
                 $("#ownPoint").val(data.ownPoint);
-                $("#order_price").val(data.order_price);
                 $("#delivery_tip").val(data.delivery_tip);
                 onchangeOwnPoint();
             },
@@ -239,7 +250,7 @@
             url: "/order/orders/selectCouponList",
             type: "post",
             dataType: "json",
-            data : {seq : 39},
+            data : {acc_seq : 31},
             success : function (data){
                 var html = "";
                 if(data.length > 0){
@@ -249,11 +260,12 @@
                         var type = '';
                         if(data[i].cpType == 'percent') type = '%';
                         else type = data[i].cpType;
-                        html += '<a class="couponInfo" id="coupon' + i + '" href="javascript:choiceCoupon(' + i +');">' + data[i].cpName + " || " + data[i].cpContent + " || " + data[i].cpDiscount + type + '</a>';
-                        html += '<input type="hidden" value="' + data[i].cpSeq + '" id="cpSeq' + i+ '"> ';
+                        html += '<a class="couponInfo" id="coupon' + i + '" href="javascript:choiceCoupon(' + i +');">' + data[i].cpName + " || " + data[i].cpContent + " || " + data[i].discount_coupon + type + '</a><br>';
+                        html += '<input type="hidden" value="' + data[i].cp_seq + '" id="cpSeq' + i+ '"> ';
                         html += '<input type="hidden" value="' + data[i].cpName + '" id="cpName' + i+ '"> ';
                         html += '<input type="hidden" value="' + data[i].cpDiscount + '" id="cpDiscount' + i+ '"> ';
                         html += '<input type="hidden" value="' + data[i].cpType + '" id="cpType' + i+ '"> ';
+                        html += '<input type="hidden" value="' + data[i].mc_seq + '" id="mcSeq' + i+ '"> ';
                     }
                 }else{
                     html += '<p>사용 가능한 쿠폰이 없습니다.</p>';
@@ -274,6 +286,7 @@
         var cpSeq = $("#cpSeq" + param).val();
         var cpDiscount = $("#cpDiscount" + param).val();
         var cpType = $("#cpType" + param).val();
+        var mcSeq = $("#mcSeq" + param).val();
 
         var html = "";
         html += "<li id='chCp' cpSeq = '"+ cpSeq + "' cpName = '"+ cpName + "' cpDiscount = '"+ cpDiscount + "' cpType = '"+ cpType + "'>" + cpName + "</li>";
@@ -281,7 +294,27 @@
         $("#choiceCoupon").html(html);
         var modal2 = document.getElementById('modal2');
         modal2.style.display ="none"
+        $("#cp_seq").val(cpSeq);
+        $("#mc_seq").val(mcSeq);
+        // 결제금액 출력
+        var orderPrice = Number($("#order_price").val());
+        // var discountPrice = $("#discount_coupon").val();
+        // var discountPrice = orderPrice * (1 - cpName.replace(/\D/g,'')/100);
 
+        var discountPrice = orderPrice * Number(cpName.replace(/\D/g,'')/100);
+        var usePoint = Number($("#use_point").val());
+        var deliveryTip = Number($("#delivery_tip").val());
+        var payPrice = orderPrice - (discountPrice + usePoint) + deliveryTip;
+        $("#discountPrice").val(discountPrice);
+        $("#pay_price").val(payPrice);
+        // $("#discountPrice").val(discountPrice);
+        // $("#discount_coupon").val(discountPrice);
+        // $("#discount_coupon").text(discountPrice);
+
+        console.log($("#delivery_tip").val());
+        console.log($("#order_price").val());
+        console.log(discountPrice);
+        console.log(payPrice);
         /*
         * 쿠폰 정보 빼오는 방법
         *
@@ -291,8 +324,8 @@
 
     function onclickBtnChgAddr(){
         var postCd = $("#postcode").val();
-        var address1 = $("#address1").val();
-        var address2 = $("#address2").val();
+        var address1 = $("#add1").val();
+        var address2 = $("#add2").val();
         var msg = "";
         var inptFlag = 0;
 
@@ -318,7 +351,7 @@
                 type: "post",
                 dataType: "json",
                 data : {
-                    seq : 39,
+                    acc_seq : 39,
                     address1 : address1,
                     address2 : address2
                 },
@@ -332,7 +365,6 @@
                     }
                 },
                 error : function (){
-
                 }
             }).done(function () {
                 // alert("주소변경 되었습니다.");
@@ -340,13 +372,12 @@
             });
         }
     }
-    // 여기-------------------------------
     function onclickBtnChgPhone() {
-        var phoneNum = $("#phoneNum").val();
+        var phoneNumber = $("#phoneNumber").val();
         var msg = "";
         var inptFlag = 0;
 
-        if(phoneNum == "") {
+        if(phoneNumber == "") {
             msg ="핸드폰 번호";
             inptFlag = 1;
         }
@@ -360,22 +391,19 @@
                 type:"post",
                 dataType:"json",
                 data:{
-                    seq : 39,
-                    phoneNum : phoneNum
+                    acc_seq : 39,
+                    phoneNum : phoneNumber
                 },
                 success : function(e){
                     if(e == 1) {
                         alert("핸드폰 번호가 변경되었습니다.")
                         var modal3 = document.getElementById('modal3');
                         modal3.style.display ="none";
-                        $("#phoneNumber").val(phoneNum);
+                        $("#phoneNumber").val(phoneNumber);
                     }
-
                 },
                 error : function (e){
-
                 }
-
             }).done(function(){
                 //alert("핸드폰 변경이 완료되었습니다.");
                 //location.href="/";
@@ -398,10 +426,7 @@
             case "cash" :
                 //협의필요
                 break;
-
-
         }
-
     }
 
     function onchangeOwnPoint(){
@@ -409,11 +434,21 @@
         if(ownPoint == "0"){
             $("#usePoint").attr('readonly', true);
             $("#usePoint").attr('placeholder', '사용 가능 포인트가 없습니다');
+            $("#usePoint").val(0);
         }else{
             $("#usePoint").removeAttr('readonly');
             $("#usePoint").attr('placeholder', '사용하실 포인트를 입력해주세요.');
         }
     }
+    function onchangeUsePoint(){
+        var usePoint = $("#usePoint").val();
+        $("#use_point").val(usePoint);
+
+        var orderPrice = $("#order_price").val();
+        var payPrice = orderPrice - usePoint;
+        $("#pay_price").val(payPrice);
+    }
+
     // 버튼 클릭 시 주소 변경 모달창 오픈
     const modal = document.getElementById("modal")
     const btnModal = document.getElementById("btn_modal")
@@ -499,34 +534,33 @@
         //class가 btn_payment인 태그를 선택했을 때 작동한다.
         IMP.init("imp52685667");
         //결제시 전달되는 정보
+        var email = $("#accEmail").val();
+        var name = $("#memName").val();
+        var phoneNum = $("#phoneNum").val();
+        var address = $("#add1").val() + " " + $("#add2").val();
+        var payPrice = $("#pay_price").val();
+
         IMP.request_pay({
             pg: 'html5_inicis',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
-            name: '결제테스트',// 상품명,
-            amount: 100,//상품 가격,
-            buyer_email: 'iamport@siot.do',//구매자 이메일,
-            buyer_name: '구매자이름',
-            buyer_tel: '010-1234-5678',//구매자 연락처
-            buyer_addr: '서울특별시 강남구 삼성동',//구매자 주소
+            name: '결제',// 상품명,
+            amount: payPrice,//상품 가격,
+            buyer_email: email,//구매자 이메일,
+            buyer_name: name,
+            buyer_tel: phoneNum,//구매자 연락처
+            buyer_addr: address,//구매자 주소
             buyer_postcode: '123-456'//구매자 우편번호
 
         }, function (rsp) {
             var result = '';
             if (rsp.success) {
+                $("#insertForm").submit();
                 var msg = '결제가 완료되었습니다.';
-                msg += '고유ID : ' + rsp.imp_uid;
-                msg += '상점 거래ID : ' + rsp.merchant_uid;
-                msg += '결제 금액 : ' + rsp.paid_amount;
-                msg += '카드 승인번호 : ' + rsp.apply_num;
-                result = '0';
+
             } else {
                 var msg = '결제에 실패하였습니다.';
-                msg += '에러내용 : ' + rsp.error_msg;
-                result = '1';
-            }
-            if (result == '0') {
-                location.href = $.getContextPath() + "/main/success";
+
             }
             alert(msg);
         });
@@ -540,31 +574,34 @@
         // 아이디는 백단에서
         var email = $("#accEmail").val();
         var name = $("#memName").val();
-        var phoneNum = $("#phoneNumber").val();
+        var phoneNum = $("#phoneNum").val();
         var address = $("#add1").val() + " " + $("#add2").val();
+        var payPrice = $("#pay_price").val();
+
         //결재정보  JSON
         var payInfo = {
             pg: 'kakaopay',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '결제',
-            amount: 100,//'가격 입력',
+            amount: payPrice,//'가격 입력',
             buyer_email: email,//'구매자 이메일',
             buyer_name: name,//'구매자 이름'
             buyer_tel: phoneNum,
             buyer_addr: address
         };
 
+        $("#insertForm").submit();
         IMP.request_pay(payInfo, function (rsp) {
             if (rsp.success) {
+
                 var msg = '결제가 완료되었습니다.';
+
                 //window.parent.location.href = "/payComplete.paymem?payGoodsSeq=" + goodsSeq + "&payMemberEmail=" + userEmail;
-                //Ajax
             } else {
                 var msg = '결제에 실패하였습니다.';
-                rsp.error_msg;
-
             }
+            alert(msg);
         });
     }
 

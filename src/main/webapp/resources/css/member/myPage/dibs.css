@@ -25,13 +25,19 @@
 
 #dibs #dibCountSec{
     font-size: small;
+    margin-bottom: 20px;
 }
 
 
 #dibs .dibBox{
-    padding: 5px 0px;
-    height: fit-content;
-    overflow: hidden;
+    border-radius: 20px;
+    width: 350px;
+    min-height: 150px;
+    padding: 6px 13px 6px 13px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0,0,0,0.1);
 }
 
 #dibs .imgBox{
@@ -40,12 +46,12 @@
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    top: 20px;
+    top: 30px;
 }
 
 #dibs .storeLogo{
     width: 90%;
-    height: 75px;
+    height: 70px;
 
 }
 
@@ -54,15 +60,19 @@
     float: left
 }
 
-#dibs .info>div{
-    padding: 5px 0px;
-}
 
 #dibs .store_name{
     font-weight: bolder;
+    padding: 5px 0px;
 }
 #dibs .avg_star,.store_min, .store_deli_tip,.store_deli_time{
     font-size: small;
+    padding: 3px 0px;
+    color: gray;
+}
+
+#dibs .fontColor{
+    color:black;
 }
 
 #dibs .fa-star{

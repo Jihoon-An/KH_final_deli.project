@@ -33,6 +33,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 
 <main id="reviewWrite">
+    <hr class="mt65">
     <div class="container">
         <form action="/myPage/reviewWrite/reviewInsert" id="reviewPost" method="post" enctype="multipart/form-data">
 
@@ -41,15 +42,15 @@
             <div id="starSec">
                 <fieldset id="starFiled">
                     <input type="radio" name="rev_star" value="5" id="rate1"><label
-                        for="rate1"><i class="fa-solid fa-star"></i></label>
+                        for="rate1" class="starCustom"><i class="fa-solid fa-star"></i></label>
                     <input type="radio" name="rev_star" value="4" id="rate2"><label
-                        for="rate2"><i class="fa-solid fa-star"></i></label>
+                        for="rate2" class="starCustom"><i class="fa-solid fa-star"></i></label>
                     <input type="radio" name="rev_star" value="3" id="rate3"><label
-                        for="rate3"><i class="fa-solid fa-star"></i></label>
+                        for="rate3" class="starCustom"><i class="fa-solid fa-star"></i></label>
                     <input type="radio" name="rev_star" value="2" id="rate4"><label
-                        for="rate4"><i class="fa-solid fa-star"></i></label>
+                        for="rate4" class="starCustom"><i class="fa-solid fa-star"></i></label>
                     <input type="radio" name="rev_star" value="1" id="rate5"><label
-                        for="rate5"><i class="fa-solid fa-star"></i></label>
+                        for="rate5" class="starCustom"><i class="fa-solid fa-star"></i></label>
                 </fieldset>
             </div>
 
@@ -60,9 +61,11 @@
             <div>
                 <div class="imgBox fileBtnBox">
                     <input type="hidden" name="rev_sysname" id="rev_sysmname">
+                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가
                     <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
+                    </label>
                 </div>
-                <div class="imgName"></div>
+                <div id="imgSec"><img id="imgtest"><img id="imgtest2"></div>
             </div>
             <hr>
             <div>

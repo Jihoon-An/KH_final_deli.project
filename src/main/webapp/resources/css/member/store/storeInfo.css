@@ -6,6 +6,7 @@
     width: 360px;
     margin: auto;
     padding-top: 40px;
+    min-height: 800px;
 }
 
 #store_info .header {
@@ -36,13 +37,29 @@
     margin-bottom: 10px;
 }
 
-#store_info .deliveryInfo {
-    width: 95%;
+#store_info .delivery{overflow: hidden;}
+#store_info .businessman{overflow: hidden;}
+#store_info .store{overflow: hidden;}
+
+#store_info #store_name,
+#store_info #store_phone,
+#store_info .time,
+#store_info #holiday,
+#store_info #min_price,
+#store_info #tip,
+#store_info #del_des,
+#store_info #del_time,
+#store_info #bs_name,
+#store_info #bs_store_name,
+#store_info #bs_store_des,
+#store_info #bs_code
+{
+    word-wrap: break-word;
 }
 
+
 #store_info .deliveryInfo {
-    border: 3px solid black;
-    border-radius: 10px;
+    width: 95%;
 }
 
 #store_info .deliveryInfo div {
@@ -69,16 +86,26 @@
     color: black;
 }
 
-#store_info #map{width: 95%;}
+#store_info .field{font-size:18px; font-weight: bold; line-height: 27px; margin-bottom: 5px; }
+#store_info .contents{font-size:14px; }
+#store_info .title{float: left; width:35%;  font-size :14px;}
+#store_info .detail_contents{ font-size:14px; width: 65%; display: inline-block; text-align: left;}
+
+#store_info #map{width: 95%; border-radius: 7px;}
 
 #store_info #info {
-    font-weight: bold;
+font-weight: bold;
     font-size: 1.4em;
     float: left;
 }
 
-#store_info .store{
+#store_info .store,
+#store_info .delivery,
+#store_info .businessman{
     line-height: 25px;
+}
+#store_info .businessman{
+    padding-bottom: 15px;
 }
 
 /*찜*/
@@ -98,4 +125,11 @@
 #store_info .heartIcon:hover{
     cursor: pointer;
 }
+#store_info .time{
+    text-align: left;
+}
 /*div{border: 1px solid black;}*/
+
+.box > div {
+    float: left;
+}

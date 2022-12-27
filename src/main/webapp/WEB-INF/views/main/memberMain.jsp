@@ -29,7 +29,7 @@
 
     <link rel="stylesheet" href="/resources/css/main/memberMain.css" type="text/css">
 
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
@@ -47,110 +47,90 @@
 
 <main id="memberMain">
     <div class="container">
-        <table border="1px">
-            <tr>
-                <td><a><img src="/resources/img/memberMain/korean.png" class="categoryIcon">
-                    <div>한식</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/bunsik.png" class="categoryIcon">
-                    <div>분식</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/jjim.png" class="categoryIcon">
-                    <div>찜</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/chicken.png" class="categoryIcon">
-                    <div>치킨</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon">
-                    <div>도시락</div>
-                </a></td>
-            </tr>
-            <tr>
-                <td><a><img src="/resources/img/memberMain/china.png" class="categoryIcon">
-                    <div>중식</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/japan.png" class="categoryIcon">
-                    <div>일식</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/western.png" class="categoryIcon">
-                    <div>양식</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/pizza.png" class="categoryIcon">
-                    <div>피자</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/burger.png" class="categoryIcon">
-                    <div>버거</div>
-                </a></td>
-            </tr>
-            <tr>
-                <td><a><img src="/resources/img/memberMain/salad.png" class="categoryIcon">
-                    <div>샐러드</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/cafe.png" class="categoryIcon">
-                    <div>카페</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/dosirak.png" class="categoryIcon">
-                    <div>도시락</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/franchise.png" class="categoryIcon">
-                    <div>프랜차이즈</div>
-                </a></td>
-                <td><a><img src="/resources/img/memberMain/newstore.png" class="categoryIcon">
-                    <div>신규맛집</div>
-                </a></td>
-            </tr>
-        </table>
+        <div id="categorySec">
+            <div class="categoryBox"><a href="/store/search?filter=한식"> <img src="/resources/img/memberMain/korean.png"
+                                                                             class="categoryIcon">
+                <div class="categoryName">한식</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=분식"><img src="/resources/img/memberMain/bunsik.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">분식</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=찜·탕·찌개"><img src="/resources/img/memberMain/jjim.png"
+                                                                                class="categoryIcon">
+                <div class="categoryName">찜·탕·찌개</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=치킨"><img src="/resources/img/memberMain/chicken.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">치킨</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=버거"><img src="/resources/img/memberMain/burger.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">버거</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=중식"><img src="/resources/img/memberMain/china.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">중식</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=일식"><img src="/resources/img/memberMain/japan.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">일식</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=양식"><img src="/resources/img/memberMain/western.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">양식</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=피자"><img src="/resources/img/memberMain/pizza.png"
+                                                                            class="categoryIcon">
+                <div class="categoryName">피자</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=샐러드"><img src="/resources/img/memberMain/salad.png"
+                                                                             class="categoryIcon">
+                <div class="categoryName">샐러드</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=카페·디저트"><img src="/resources/img/memberMain/cafe.png"
+                                                                                class="categoryIcon">
+                <div class="categoryName">카페·디저트</div>
+            </a></div>
+            <div class="categoryBox"><a href="/store/search?filter=도시락"><img src="/resources/img/memberMain/dosirak.png"
+                                                                             class="categoryIcon">
+                <div class="categoryName">도시락</div>
+            </a></div>
+        </div>
+        <hr>
         <c:choose>
             <c:when test="${not empty store_list}">
                 <c:forEach var="store_list" items="${store_list}" varStatus="status">
-                    <hr>
-                    <div class="store_list d-inline-flex m-2">
-                        <div class="m-2 store_logo_box">
-                            <c:choose>
-                                <c:when test="${store_list.STORE_LOGO !=null}">
-                                    <div>
+                    <div class="storeList d-inline-flex m-2">
+                        <a href="/store/menu/${store_list.STORE_SEQ}" class="storeLink">
+                            <div class="logoBox">
+                                <c:choose>
+                                    <c:when test="${store_list.STORE_LOGO !=null}">
                                         <img class="store_logo" src="/resources/img/store/${store_list.STORE_LOGO}">
-                                    </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <div>이미지: 사진없음</div>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-                        <div class="m-2 store_info_box">
-                            <div>식당명: ${store_list.STORE_NAME}</div>
-                            <div>★${store_list.AVERAGE_STARS} / 리뷰 ${store_list.COUNT_REVIEW}개
-                                /
-                                <fmt:formatNumber var="DISTANCE" value="${store_list.DISTANCE}" pattern="#.##"/>
-                                <c:if test="${store_list.DISTANCE >= 1000}">
-                                    <fmt:formatNumber value="${(DISTANCE) / (1000)}" pattern=".0"/>km</c:if>
-                                <c:if test="${store_list.DISTANCE < 1000}">${store_list.DISTANCE}m</c:if>
+                                    </c:when>
+                                    <c:otherwise>
+                                        사진없음
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
-                            <div>최소주문금액: ${store_list.STORE_MIN_PRICE}원</div>
-                            <div>배달요금: ${store_list.STORE_DELI_TIP}원</div>
-                            <div class="menu_name">
-                                메뉴명:
-                                <c:forEach var="menu_list" items="${menu_list[status.index].menu_name}"
-                                           varStatus="status2">
-                                    ${menu_list}<c:if test="${!status2.last}">, </c:if>
-                                </c:forEach>
+                            <div class="infoBox">
+                                <div class="storeName">${store_list.STORE_NAME}
+                                    <span class="storeEtc">    <i class="fa-solid fa-star"></i>  ${store_list.AVERAGE_STARS}
+                                </span>
+                                </div>
+                                <div class="storePrice">최소주문금액 <span class="priceFont">${store_list.STORE_MIN_PRICE}원</span> ·
+                                    배달요금 <span class="priceFont">${store_list.STORE_DELI_TIP}원</span> · <span class="distance priceFont"><fmt:formatNumber var="DISTANCE" value="${store_list.DISTANCE}" pattern="#.##"/>
+                                    <c:if test="${store_list.DISTANCE >= 1000}">
+                                        <fmt:formatNumber value="${(DISTANCE) / (1000)}" pattern=".0"/>km</c:if>
+                                    <c:if test="${store_list.DISTANCE < 1000}">${store_list.DISTANCE}m</c:if></span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </c:forEach>
             </c:when>
             <c:otherwise>
                 <div>근처에 주문할 수 있는 가게가 없습니다.</div>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
             </c:otherwise>
         </c:choose>
     </div>

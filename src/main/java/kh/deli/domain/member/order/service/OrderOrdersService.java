@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -22,8 +23,8 @@ public class OrderOrdersService {
     public OrderOrdersDTO selectSessionInfo(OrderOrdersDTO param) {
         return orderOrdersMapper.selectSessionInfo(param);
     };
-    public OrderOrdersDTO selectInitInfo(OrderOrdersDTO param) {
-        return orderOrdersMapper.selectOrderMemberInfo(param);
+    public OrderOrdersDTO selectInitInfo(int accSeq) {
+        return orderOrdersMapper.selectOrderMemberInfo(accSeq);
     };
 
     public void updateMemberAddr(OrderOrdersDTO param) {
@@ -40,14 +41,6 @@ public class OrderOrdersService {
         return orderOrdersMapper.selectCouponList(param);
     }
 
-    public OrderOrdersDTO insertPayment(OrderOrdersDTO param){
-
-         return orderOrdersMapper.insertPayment(param);
-    }
-    public OrderOrdersDTO insertOrders(OrderOrdersDTO param){
-
-        return orderOrdersMapper.insertOrders(param);
-    }
 
     public StoreInfoDTO getStoreInfo(int order_seq) throws Exception{
         return orderOrdersMapper.getStoreInfo(order_seq);
@@ -65,4 +58,22 @@ public class OrderOrdersService {
     public OrdersDTO findOrdersBySeq(int order_seq) throws Exception {
         return orderOrdersMapper.findOrdersBySeq(order_seq);
     }
+
+    public int insertOrder(OrderOrdersDTO orders) {
+        int orderSeq = orderOrdersMapper.getNextSeq();
+        orders.setCp_seq(Optional.ofNullable(orders.getCp_seq()).orElse(0));
+        orders.setUsePoint(Optional.ofNullable(orders.getUsePoint()).orElse(0));
+        orders.setMc_seq(Optional.ofNullable(orders.getMc_seq()).orElse(0));
+        orderOrdersMapper.insertOrder(orders, orderSeq);
+        return orderSeq;
+    }
+
+    public void deleteCouponList(OrderOrdersDTO orderOrdersDTO){
+        orderOrdersMapper.deleteCouponList(orderOrdersDTO);
+    }
+
+    public void updateOwnPoint(OrderOrdersDTO orderOrdersDTO){
+        orderOrdersMapper.updateOwnPoint(orderOrdersDTO);
+    }
+
 }

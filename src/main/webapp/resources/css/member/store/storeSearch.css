@@ -1,30 +1,136 @@
+
 #storeSearch .container {
-    width: 360px;
-    border: 1px solid black;
+    width: 350px;
     text-align: center;
+    padding: 0;
+    margin: 0 auto;
+}
+
+form {
+    margin: 0;
+}
+
+.filter_box{
+    width: 350px;
+    margin: 12px auto;
 }
 
 #storeSearch .filter {
     border-radius: 20px;
-    border: #e84c4f solid 1px;
+    border: rgba(232,76,79,0.5) solid 1px;
+    padding: 5px 14px 5px 14px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    overflow: hidden;
+    height: 30px;
 }
 
 #storeSearch .store_list {
-    border: #e84c4f solid 1px;
+    border-radius: 20px;
+    width: 350px;
+    height: 130px;
+    padding: 6px 13px 6px 13px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0,0,0,0.1);
+}
+
+.store_logo_box{
+    padding: 2.5px;
 }
 
 #storeSearch .store_logo {
-    width: 90px;
-    height: 100px;
+    width: 95px;
+    height: 95px;
+    border-radius: 20px;
     object-fit: cover;
+    margin-right: 10px;
 }
 
 #storeSearch .store_info_box {
     overflow: hidden;
+    text-align: left;
 }
 
 #storeSearch .menu_name {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.title_font{
+    color: #888888;
+}
+
+#storeSearch a {
+    color: #000000;
+    text-decoration: none;
+}
+
+#storeSearch a:link {
+    color: #000000;
+}
+
+#storeSearch a:hover {
+    color: #000000;
+}
+
+#storeSearch a:active {
+    color: #000000;
+}
+
+#storeSearch .p1_font {
+    font-size: 17px;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+
+#storeSearch .p2_font {
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+#storeSearch .span1_font{
+    color: #888888;
+}
+
+#storeSearch .fa-star{
+    color: transparent;
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#storeSearch .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+#storeSearch .searchTerm {
+    width: 100%;
+    border: 1px solid #e84c4f;
+    border-right: none;
+    padding: 5px 10px 5px 20px;
+    height: 36px;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+#storeSearch .searchButton {
+    width: 50px;
+    height: 36px;
+    border: 1px solid #e84c4f;
+    background: #e84c4f;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#storeSearch .fa-search {
+    position: relative;
+    left: 30%;
+    transform: translate(-50%,0);
 }

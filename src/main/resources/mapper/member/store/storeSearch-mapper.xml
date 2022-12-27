@@ -86,9 +86,47 @@
         ON
         A.STORE_SEQ = B.STORE_SEQ
         WHERE
-        <if test='filter != null  and(filter eq "delifree".toString())'>
-            STORE_DELI_TIP = 0 AND
-        </if>
+        <choose>
+            <when test='filter != null  and(filter eq "delifree".toString())'>
+                STORE_DELI_TIP = 0 AND
+            </when>
+            <when test='filter != null and(filter eq "한식".toString())'>
+                STORE_CATEGORY='한식' and
+            </when>
+            <when test='filter != null and(filter eq "양식".toString())'>
+                STORE_CATEGORY='양식' and
+            </when>
+            <when test='filter != null and(filter eq "일식".toString())'>
+                STORE_CATEGORY='일식' and
+            </when>
+            <when test='filter != null and(filter eq "중식".toString())'>
+                STORE_CATEGORY='중식' and
+            </when>
+            <when test='filter != null and(filter eq "분식".toString())'>
+                STORE_CATEGORY='분식' and
+            </when>
+            <when test='filter != null and(filter eq "찜·탕·찌개".toString())'>
+                STORE_CATEGORY='찜·탕·찌개' and
+            </when>
+            <when test='filter != null and(filter eq "치킨".toString())'>
+                STORE_CATEGORY='치킨' and
+            </when>
+            <when test='filter != null and(filter eq "피자".toString())'>
+                STORE_CATEGORY='피자' and
+            </when>
+            <when test='filter != null and(filter eq "버거".toString())'>
+                STORE_CATEGORY='버거' and
+            </when>
+            <when test='filter != null and(filter eq "도시락".toString())'>
+                STORE_CATEGORY='도시락' and
+            </when>
+            <when test='filter != null and(filter eq "카페·디저트".toString())'>
+                STORE_CATEGORY='카페·디저트' and
+            </when>
+            <when test='filter != null and(filter eq "샐러드".toString())'>
+                STORE_CATEGORY='샐러드' and
+            </when>
+        </choose>
         ABS((X*X*10000)+(Y*Y*10000)) <![CDATA[<]]> ( (36000/40075) * (36000/40075) * 2.5 * 2.5)
         AND(
         A.STORE_SEQ IN
