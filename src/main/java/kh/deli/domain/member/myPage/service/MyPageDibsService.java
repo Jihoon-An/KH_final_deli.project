@@ -27,10 +27,7 @@ public class MyPageDibsService {
         myPageDibsMapper.deleteDibs(acc_seq,store_seq);
     }
 
-    public Integer isExistDibs(int accSeq,int storeSeq) throws Exception{
-        Map<String, Integer> param = new HashMap<>();
-        param.put("acc_seq", accSeq);
-        param.put("store_seq", storeSeq);
-        return myPageDibsMapper.isExistDibs(param);
+    public Integer isExistDibs(int acc_seq,int store_seq) throws Exception{
+        return myPageDibsMapper.isExistDibs(acc_seq,store_seq);
     }
 }
