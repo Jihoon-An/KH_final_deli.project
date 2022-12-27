@@ -123,13 +123,12 @@
     font-size: 13px;
     overflow: hidden;
     height: 30px;
+    /*width: 150px;*/
+    width: fit-content;
 }
 
 #storeReview #nickname{float: left; width: 76%;}
 #storeReview #writeDate{display: inline-block;}
-
-/*div{border: 1px solid black;}*/
-
 
 #storeReview .filter_box::-webkit-scrollbar {
     height: 5px;
@@ -139,7 +138,7 @@
     background-color: #ddd;
     border-radius: 10px;
     width: 30% !important;
-   background-color:rgba(232,76,79,0.1);
+   background-color:rgba(232,76,79,0.5);
 }
 
 #storeReview .filter_box::-webkit-scrollbar-track {
@@ -160,13 +159,16 @@
 }
 
 #storeReview .filter_box {
+    width: 95%;
     margin: 0 auto;
-    min-width: 360px;
-    max-width: 420px;
-    height: 50px;
-    background: #ffffff;
+    /*min-width: 360px;*/
+    /*max-width: 420px;*/
+    height: 40px;
+    /*background: #ffffff;*/
     border-radius: 10px 10px 0 0;
     text-align: center;
     overflow-x: scroll;
-    /*display: none;*/
+    margin-top: 10px;
 }
+div{border: 1px solid black;}
+

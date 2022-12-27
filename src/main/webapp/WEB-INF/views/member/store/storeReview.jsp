@@ -127,7 +127,7 @@
                                         <div style="margin: 0 auto" class="d-inline-flex">
                                 <c:forEach var="i" items="${reviews.menu_list}">
                                                 <div class="filter" style="margin-right: 7px">${i}</div>
-                                                <div class="filter" style="margin-right: 7px">sdfsdsdf</div>
+                                                <div class="filter" style="margin-right: 7px">국밥돼지국밥</div>
                                                 <div class="filter" style="margin-right: 7px">sdfffffffffff</div>
                                                 <div class="filter" style="margin-right: 7px">sdffffffff</div>
                                 </c:forEach>
