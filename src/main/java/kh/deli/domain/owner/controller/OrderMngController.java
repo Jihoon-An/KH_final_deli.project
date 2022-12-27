@@ -35,8 +35,9 @@ public class OrderMngController {
 
     @RequestMapping("")
     public String toPage() {
-        Optional<Integer> ownerAccSeqOptional = Optional.ofNullable((Integer) session.getAttribute("acc_seq"));
-        int ownerAccSeq = ownerAccSeqOptional.orElse(0);
+        int ownerAccSeq = Optional.ofNullable(
+                (Integer) session.getAttribute("acc_seq")
+        ).orElse(0);
         int ownerSeq = ownerService.convertAccSeqToOwnerSeq(ownerAccSeq); //(sample data)
 
         List<StoreNameAndSeqRequestDTO> storeList = storeService.getStoreListByOwnerSeq(ownerSeq);

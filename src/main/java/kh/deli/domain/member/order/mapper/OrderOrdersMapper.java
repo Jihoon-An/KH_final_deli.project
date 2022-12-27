@@ -37,7 +37,7 @@ public interface OrderOrdersMapper {
     @Select("select * from orders where order_seq = #{order_seq}")
     OrdersDTO findOrdersBySeq(int order_seq);
 
-    void insertOrder(@Param("orderOrdersDTO") OrderOrdersDTO orderOrdersDTO);
+    void insertOrder(@Param("orderOrdersDTO") OrderOrdersDTO orderOrdersDTO, @Param("orderSeq") int orderSeq);
 
     // UpdateCouponList, UpdateOwnPointMinus, UpdateOwnPointPlus
 
@@ -45,4 +45,6 @@ public interface OrderOrdersMapper {
 
     void updateOwnPoint(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
 
+    @Select("SELECT ORDER_SEQ.NEXTVAL FROM DUAL")
+    int getNextSeq();
 }
