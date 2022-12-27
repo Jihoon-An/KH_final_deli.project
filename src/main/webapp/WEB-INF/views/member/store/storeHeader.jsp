@@ -36,9 +36,9 @@
     <div id="reviewCount">리뷰수(${storeReviewCount})</div>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>
     <div class="deliveryInfo" style="text-align: left; border-color: #e84c4f; padding-left: 5px;" >
-        <div>최소주문금액 : ${storeInfoDTO.store_min_price}원</div>
+        <div>최소주문금액 : <fmt:formatNumber value="${storeInfoDTO.store_min_price}" pattern="#,###"/>원</div>
         <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
-        <div>배달팁 : ${storeInfoDTO.store_deli_tip}원</div>
+        <div>배달팁 : <fmt:formatNumber value="${storeInfoDTO.store_deli_tip}" pattern="#,###"/>원</div>
     </div>
 </div>
 

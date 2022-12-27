@@ -161,8 +161,10 @@
         <div class="store">
             <div class="field">영업정보</div>
             <div class="contents">
-                <div>상호명 : ${storeInfoDTO.store_name}</div>
+                <div>상호명</div><div>${storeInfoDTO.store_name}</div>
                 <div>전화번호 : ${storeInfoDTO.store_phone}</div>
+                <div>영업시간</div>
+                <div>휴무일</div>
             </div>
         </div>
         <hr>
@@ -193,7 +195,7 @@
             <div class="detail_contents">
                 <div>${ownerInfoDTO.owner_name}</div>
                 <div>${storeInfoDTO.store_name}</div>
-                <div>${storeInfoDTO.store_add_detail1}<br>
+                <div>${storeInfoDTO.store_add_detail1}
                     ${storeInfoDTO.store_add_detail2}</div>
                 <div>${ownerInfoDTO.owner_num}</div>
             </div>
