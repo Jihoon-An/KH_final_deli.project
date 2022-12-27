@@ -12,7 +12,4 @@
             where  acc_type = 'client' order by acc_signupdate desc
         </select>
 
-
-
-
 </mapper>

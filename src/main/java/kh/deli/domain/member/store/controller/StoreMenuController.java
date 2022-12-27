@@ -32,7 +32,7 @@ public class StoreMenuController {
     @RequestMapping("/{storeSeq}")
     public String toStoreDetail(@PathVariable("storeSeq") Integer store_seq, Model model) throws Exception {
 
-                StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
+        StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); //가게 정보
 
         List<String> menuGroup = storeMenuService.getMenuInfo(store_seq); //메뉴 카테고리
 
@@ -51,7 +51,7 @@ public class StoreMenuController {
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
 
         int acc_seq = (Integer) session.getAttribute("acc_seq"); //찜
-       int result= myPageDibsService.isExistDibs(acc_seq,store_seq);
+        int result = myPageDibsService.isExistDibs(acc_seq, store_seq);
 
         model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("menuGroup", menuGroup);
