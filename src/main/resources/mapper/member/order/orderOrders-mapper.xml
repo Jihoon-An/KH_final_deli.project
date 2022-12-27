@@ -123,29 +123,30 @@
     </select>
 
     <select id="getPayInfo" resultType="PayInfoDTO">
-<!--        select-->
-<!--            order_price,-->
-<!--            (pay_price*cp_discount/100) as discountByCoupon,-->
-<!--            order_point,-->
-<!--            delivery_tip,-->
-<!--            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,-->
-<!--            pay_method-->
-<!--        from orders-->
-<!--        ,coupon-->
-<!--        where-->
-<!--        orders.cp_seq=coupon.cp_seq and-->
-<!--        order_seq=${order_seq}-->
+<!--&lt;!&ndash;        select&ndash;&gt;-->
+<!--&lt;!&ndash;            order_price,&ndash;&gt;-->
+<!--&lt;!&ndash;            (pay_price*cp_discount/100) as discountByCoupon,&ndash;&gt;-->
+<!--&lt;!&ndash;            order_point,&ndash;&gt;-->
+<!--&lt;!&ndash;            delivery_tip,&ndash;&gt;-->
+<!--&lt;!&ndash;            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,&ndash;&gt;-->
+<!--&lt;!&ndash;            pay_method&ndash;&gt;-->
+<!--&lt;!&ndash;        from orders&ndash;&gt;-->
+<!--&lt;!&ndash;        ,coupon&ndash;&gt;-->
+<!--&lt;!&ndash;        where&ndash;&gt;-->
+<!--&lt;!&ndash;        orders.cp_seq=coupon.cp_seq and&ndash;&gt;-->
+<!--&lt;!&ndash;        order_seq=${order_seq}&ndash;&gt;-->
 
         SELECT
         ORDER_PRICE,
-        (PAY_PRICE*CP_DISCOUNT/100) AS discountByCoupon,
+        (ORDER_PRICE*CP_DISCOUNT/100) AS discountByCoupon,
         ORDER_POINT,
         DELIVERY_TIP,
-        (ORDER_PRICE-(PAY_PRICE*CP_DISCOUNT/100)-ORDER_POINT+DELIVERY_TIP) AS pay_price,
+        (ORDER_PRICE-(ORDER_PRICE*CP_DISCOUNT/100)-ORDER_POINT+DELIVERY_TIP) AS pay_price,
         PAY_METHOD
         FROM ORDERS LEFT JOIN COUPON
         ON ORDERS.CP_SEQ=COUPON.CP_SEQ
         WHERE ORDER_SEQ=#{order_seq}
+
     </select>
 
 

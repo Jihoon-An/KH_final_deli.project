@@ -40,4 +40,7 @@ public interface OwnerStoreMapper {
 
     @Update("UPDATE STORE SET STORE_OPEN = #{newVal} WHERE STORE_SEQ = #{storeSeq}")
     void toggleDisplay(int storeSeq, String newVal);
+
+    @Select("select owner_Seq from owner where acc_seq = #{acc_seq} ")
+    int selectOwnerSeq(int acc_seq);
 }

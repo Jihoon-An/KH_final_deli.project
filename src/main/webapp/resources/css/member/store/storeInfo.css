@@ -1,5 +1,6 @@
 #store_info * {
     box-sizing: border-box;
+
 }
 
 #store_info .container {
@@ -69,7 +70,10 @@
     color: black;
 }
 
-#store_info #map{width: 95%;}
+#store_info .field{font-size:18px; font-weight: bold; line-height: 27px; margin-bottom: 5px;}
+#store_info .contents{font-size:14px; }
+
+#store_info #map{width: 95%; border-radius: 7px;}
 
 #store_info #info {
     font-weight: bold;
@@ -98,4 +102,4 @@
 #store_info .heartIcon:hover{
     cursor: pointer;
 }
-/*div{border: 1px solid black;}*/
+div{border: 1px solid black;}
