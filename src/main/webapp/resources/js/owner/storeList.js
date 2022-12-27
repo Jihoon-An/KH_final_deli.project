@@ -34,7 +34,7 @@ $(".display_toggle").click(function () {
     } else {
         newVal = 'Y';
     }
-    $(this).siblings(".display_val").val(newVal);
+    $(this).siblings(".display_val").text(newVal);
 
     $.ajax({
         url: "/owner/store/list/displayToggle",
