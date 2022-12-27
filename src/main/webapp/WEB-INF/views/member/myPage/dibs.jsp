@@ -34,6 +34,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 
 <main id="dibs">
+    <hr class="mt65">
     <div class="container">
         <div id="pageTitle">찜</div>
         <div id="dibCountSec">내가 찜한 맛집 ${dibCount}개</div>
@@ -73,6 +74,7 @@
                 </c:otherwise>
             </c:choose>
     </div>
+    <hr class="mt90">
 </main>
 <script src="/resources/js/member/myPage/dibs.js"></script>
 </body>

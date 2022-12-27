@@ -1,4 +1,52 @@
-#owner_signup #email_confirm_table{
+body {
+    background-color: #F8F5F2;
+}
+
+#owner_signup #email_confirm_table {
     display: none;
 }
 
+#owner_signup {
+    margin: 70px auto;
+    width: 500px;
+    height: 700px;
+}
+
+#owner_signup a {
+    text-decoration: none;
+}
+
+#owner_signup input[type="number"]::-webkit-outer-spin-button,
+#owner_signup input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#owner_signup .myBtn {
+    transition-duration: 200ms;
+    transition-property: background-color, color;
+}
+
+#owner_signup .myBtn:hover {
+    background-color: #e78c8c;
+    color: #ffffff;
+}
+
+#owner_signup h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 40px;
+}
+
+#owner_signup h5 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 100;
+}
+#owner_signup button,
+#owner_signup input {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.swal2-styled.swal2-confirm{
+    background-color: #e78c8c !important;
+}
