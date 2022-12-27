@@ -81,7 +81,7 @@
                     <form id="payment">
                         <input type="hidden" id="payAmount" name="payAmount" value="">
 
-                        <a href="#">
+                        <a href="/order/orders/">
                             <button type="button" id="pay">
                                 <span id="countPB">${totalCount}</span>
                                 배달 주문하기
