@@ -40,44 +40,46 @@ public class OwnerListController {
     }
 
     @RequestMapping("/deleteOwner")
-    public String deleteOwner(int owner_seq, int acc_seq){
-        Gson gson = new Gson();
-        FileUtil file = new FileUtil();
-        System.out.println(owner_seq+"acc"+acc_seq);
+    public String deleteOwner(int owner_seq, int acc_seq) throws Exception {
+//        Gson gson = new Gson();
+//        FileUtil file = new FileUtil();
+//        System.out.println(owner_seq+"acc"+acc_seq);
+//
+//        List<Integer> storeSeqlist= adminOwnerService.selectStoreSeq(owner_seq);
+//
+//        for(int i = 0; i<storeSeqlist.size(); i++) {
+//
+//            //System.out.println(list.get(i).intValue());
+//
+//            int store_seq = storeSeqlist.get(i).intValue();
+//          //System.out.println(store_seq); //store_Seq 출력 확인
+//
+//            List<Integer> menuSeqList = adminOwnerService.selectMenuSeq(storeSeqlist.get(i).intValue());
+//
+//            List<String> sysNameList = adminOwnerService.selectRevSysName(storeSeqlist.get(i).intValue());
+//
+//            Type stringInListType = new TypeToken<List<String>>() {
+//            }.getType();
+//            gson.fromJson((Reader) sysNameList, stringInListType);
+//            System.out.println(sysNameList);
+//            for (String sysName : sysNameList) {
+//                file.delete(session, "/resources/img/review", sysName);
+//            }
+//          // sysName = gson.fromJson(sysName.get(i).Rev)
+//
+//            for (int j = 0; j < menuSeqList.size(); j++) {
+//                System.out.println(menuSeqList.get(j).intValue());//menu_seq 리스트출력
+//                int menu_seq = menuSeqList.get(j).intValue();
+//            //    System.out.println(menu_seq);
+//               // adminOwnerService.deleteMenuOption(menu_seq); //menu_seq로 menu_option 삭제
+//               // adminOwnerService.deleteMenu(store_seq);  //store_seq로 menu삭제
+//           //   adminOwnerService.deleteReview(store_seq);//store_Seq 로 review삭제
+//
+//            }
+//
+//        }
 
-        List<Integer> storeSeqlist= adminOwnerService.selectStoreSeq(owner_seq);
-
-        for(int i = 0; i<storeSeqlist.size(); i++) {
-
-            //System.out.println(list.get(i).intValue());
-
-            int store_seq = storeSeqlist.get(i).intValue();
-          //System.out.println(store_seq); //store_Seq 출력 확인
-
-            List<Integer> menuSeqList = adminOwnerService.selectMenuSeq(storeSeqlist.get(i).intValue());
-
-            List<String> sysNameList = adminOwnerService.selectRevSysName(storeSeqlist.get(i).intValue());
-
-            Type stringInListType = new TypeToken<List<String>>() {
-            }.getType();
-            gson.fromJson((Reader) sysNameList, stringInListType);
-            System.out.println(sysNameList);
-            for (String sysName : sysNameList) {
-                file.delete(session, "/resources/img/review", sysName);
-            }
-          // sysName = gson.fromJson(sysName.get(i).Rev)
-
-            for (int j = 0; j < menuSeqList.size(); j++) {
-                System.out.println(menuSeqList.get(j).intValue());//menu_seq 리스트출력
-                int menu_seq = menuSeqList.get(j).intValue();
-            //    System.out.println(menu_seq);
-               // adminOwnerService.deleteMenuOption(menu_seq); //menu_seq로 menu_option 삭제
-               // adminOwnerService.deleteMenu(store_seq);  //store_seq로 menu삭제
-           //   adminOwnerService.deleteReview(store_seq);//store_Seq 로 review삭제
-
-            }
-
-        }
+            //mainAccountService.withdrawal(acc_seq); //사업자 삭제 통합 메서드
       //  adminOwnerService.deleteStore(owner_seq); //식당삭제
         //adminOwnerService.deleteOwner(owner_seq); //사업자 회원 삭제
         //adminOwnerService.deleteAccount(acc_seq); //account 테이블 사업자 회원 삭제

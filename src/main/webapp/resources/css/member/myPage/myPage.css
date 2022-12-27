@@ -11,17 +11,18 @@
     text-align: center;
     font-size: 24px;
     line-height: 75px;
+    /*color: #3e4462;*/
 }
 #myPage .profileBox{
     width: 100%;
     height: 60px;
     line-height: 40px;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
+    border-top: 2px solid #3e4462;
     font-size: 20px;
     padding: 10px;
     padding-left: 25px;
     float: left;
+    /*color: #3e4462;*/
 }
 #myPage .profileBox > div{
     width: 50px;
@@ -36,20 +37,24 @@
     width: 100%;
     height: 250px;
     float: left;
+    border: 1px solid #3e4462;
 }
 #myPage .linkBox .link{
     width: 50%;
     height: 50%;
     float: left;
-    /*border: 1px solid gray;*/
     text-align: center;
-    padding-top: 30px;
+    padding-top: 35px;
+    border: 1px solid #3e4462;
+    line-height: 45px;
+    /*color: #3e4462;*/
+    background-color: #ffffff;
 }
 #myPage .linkBox .link > .icon{
-    font-size: 35px;
+    font-size: 28px;
 }
 #myPage .linkBox .link > .text{
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #myPage .buttonBox{

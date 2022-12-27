@@ -19,6 +19,9 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
 
+    <%--sweetalert--%>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!--bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -89,10 +92,11 @@
     <div id="total_price">
         ${menu.menu_price}
     </div>
-    <button type="button" onclick="putBasket()">장바구니 담기</button>
+    <button type="button" onclick="onModal()">장바구니 담기</button>
     <form action="/menu/detail/put" method="post" id="put_basket">
         <input type="hidden" name="basket_menu" id="basket_menu">
     </form>
+
 </main>
 <script>
     var count = 1;

@@ -23,7 +23,7 @@ import java.util.Map;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("owner/menu/add")
+@RequestMapping("/owner/menu/add")
 public class MenuAddController {
 
 
@@ -41,7 +41,7 @@ public class MenuAddController {
 
     @RequestMapping("/menuAdd")
     public String menuAdd(MenuDTO menuDTO, MultipartFile file, int menu_seq) throws IOException {
-
+        System.out.println("메뉴옵션없다");
         System.out.println(menu_seq+"메뉴 seqseq");
         System.out.println(menuDTO.getMenu_name());
         System.out.println(menuDTO.getMenu_price());
@@ -60,7 +60,7 @@ public class MenuAddController {
 //        System.out.println(menuDTO.getMenu_img());
 
 
-        ownerMenuService.insertMenu(menuDTO, file, menu_seq);
+      ownerMenuService.insertMenu(menuDTO, file, menu_seq);
 
 
         return "redirect:/";
@@ -71,12 +71,19 @@ public class MenuAddController {
     @ResponseBody
     public String menuAdd(MenuOptionDTO menuOptionDTO) throws Exception {
 
+        System.out.println("메뉴옵션없이 도달");
         System.out.println(new Gson().toJson(menuOptionDTO));
 
-        System.out.println(menuOptionDTO.getOption_price());
-        System.out.println(menuOptionDTO.getOption_name());
+        System.out.println("이시발");
+//        System.out.println(menuOptionDTO.getOption_price());
+//        System.out.println(menuOptionDTO.getOption_name());
+//
 
-        ownerMenuService.insertMenuOption(menuOptionDTO);
+
+            ownerMenuService.insertMenuOption(menuOptionDTO);
+            System.out.println("메뉴옵션추가");
+
+
 
         return "redirect:/";
     }

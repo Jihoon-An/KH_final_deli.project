@@ -34,6 +34,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -113,6 +114,9 @@
                     </option>
                     <option value="카페·디저트">
                         카페·디저트
+                    </option>
+                    <option value="샐러드">
+                       샐러드
                     </option>
                 </select></div>
             </div>

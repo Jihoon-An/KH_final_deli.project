@@ -46,7 +46,7 @@
 }
 
 #menuAdd .control input {
-    width: 100%;
+    width: 50px;
     height: 100%;
 }
 
@@ -60,4 +60,31 @@
     right: 20px;
     top: 20px;
     width: 50px;
+}
+
+#menuAdd .rowBox{
+    overflow: hidden;
+}
+#menuAdd .titleImg{
+    float: left;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+#menuAdd .contents{
+//background-color: #3e4462;
+    float: left;
+    width: 400px;
+    height: 50px;
+
+}
+
+#menuAdd .foot_btn{
+    text-align: right;
+}
+
+#menuAdd .img_div{
+    float: left;
 }
