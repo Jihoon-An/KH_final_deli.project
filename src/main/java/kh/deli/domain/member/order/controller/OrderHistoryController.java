@@ -42,7 +42,7 @@ import java.util.Map;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/member/order/")
+@RequestMapping("/order/")
 public class OrderHistoryController {
 
     @Autowired
@@ -72,7 +72,11 @@ public class OrderHistoryController {
            basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
 
             System.out.println(basketMenu.get(i).getMenu());
+
+            System.out.println(basketMenu.get(i).getCount());
+
         }
+
 
 
 
