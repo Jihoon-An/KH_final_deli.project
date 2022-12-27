@@ -71,9 +71,9 @@ function onModal() {
         width: 380
     }).then((result) => {
         if (result.isConfirmed) {
-            putBasket();
+            toPayment();
         } else{
-
+            putBasket();
         }
     })
 }
