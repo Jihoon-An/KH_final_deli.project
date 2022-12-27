@@ -38,6 +38,11 @@
                 </c:when>
                 <c:otherwise>
                     <button name="modify_review" revSeq="${reviews.rev_seq}">수정</button>
+
+                    <input type="hidden" value="${reviews.rev_seq}">
+                    <input type="hidden" value="${reviews.store_seq}">
+                    <input type="hidden" value="${reviews.order_seq}">
+
                 </c:otherwise>
                 </c:choose>
                 <button name="delete_review" onclick="onclickDeleteBtn(this)" revSeq="${reviews.rev_seq}">삭제</button>

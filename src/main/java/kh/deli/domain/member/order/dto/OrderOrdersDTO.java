@@ -16,6 +16,10 @@ public class OrderOrdersDTO {
     private int add_seq;
     private int store_seq;
 
+    /*order_seq없어서 만듦*/
+    private int order_seq;
+    
+
     /* 회원정보 관련 변수 ( 세션없어서 임시로 만듬 ㅅㅂ) */
     private String accEmail;
     private String memName;
