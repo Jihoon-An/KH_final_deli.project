@@ -5,11 +5,6 @@ $("#back").on("click", function () {
 
 
 $("#revImgBtn").on("change", function () {
-    // if($("#revImgBtn").val()==""){
-    //     $("#profile").attr("src","/images/profile.png");
-    //     return;a
-    // }
-
 
     let ext = $("#revImgBtn").val().split(".").pop().toLowerCase();// 업로드한 파일명을 점을 기준으로 배열을 만들고 마지막 배열의 값을 꺼내고 소문자로 만들어줌
     let accept = ["png", "jpg", "jpeg", "gif"]; // 업로드 가능한 파일 타입을 배열로 만듦
@@ -22,7 +17,21 @@ $("#revImgBtn").on("change", function () {
 
     fileToBase64(document.getElementById("revImgBtn").files[0]);
 
+    readImage(this);
+
 })
+
+function  readImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            for(i=0;i<input.files.length;i++){
+            $('#img'+i).attr('src', e.target.result);
+            }
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 
 $("#writeBtn").on("click", function () {

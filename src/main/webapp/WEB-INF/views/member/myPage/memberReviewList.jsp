@@ -35,9 +35,15 @@
                 <c:choose>
                 <c:when test="${reviews.flag_udt == 'N'}">
                     <button name="modify_review" disabled>수정</button>
+
                 </c:when>
                 <c:otherwise>
-                    <button name="modify_review" revSeq="${reviews.rev_seq}">수정</button>
+                <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}"><button name="modify_review" revSeq="${reviews.rev_seq}">수정</button></a>
+
+                    <input type="hidden" value="${reviews.rev_seq}">
+                    <input type="hidden" value="${reviews.store_seq}">
+                    <input type="hidden" value="${reviews.order_seq}">
+
                 </c:otherwise>
                 </c:choose>
                 <button name="delete_review" onclick="onclickDeleteBtn(this)" revSeq="${reviews.rev_seq}">삭제</button>
