@@ -8,6 +8,7 @@ import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
 import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,14 +41,6 @@ public class OrderOrdersService {
         return orderOrdersMapper.selectCouponList(param);
     }
 
-    public OrderOrdersDTO insertPayment(OrderOrdersDTO param){
-
-         return orderOrdersMapper.insertPayment(param);
-    }
-    public OrderOrdersDTO insertOrders(OrderOrdersDTO param){
-
-        return orderOrdersMapper.insertOrders(param);
-    }
 
     public StoreInfoDTO getStoreInfo(int order_seq) throws Exception{
         return orderOrdersMapper.getStoreInfo(order_seq);
@@ -65,4 +58,17 @@ public class OrderOrdersService {
     public OrdersDTO findOrdersBySeq(int order_seq) throws Exception {
         return orderOrdersMapper.findOrdersBySeq(order_seq);
     }
+
+    public void insertOrder(OrderOrdersDTO orderOrdersDTO) {
+        orderOrdersMapper.insertOrder(orderOrdersDTO);
+    }
+
+    public void deleteCouponList(OrderOrdersDTO orderOrdersDTO){
+        orderOrdersMapper.deleteCouponList(orderOrdersDTO);
+    }
+
+    public void updateOwnPoint(OrderOrdersDTO orderOrdersDTO){
+        orderOrdersMapper.updateOwnPoint(orderOrdersDTO);
+    }
+
 }

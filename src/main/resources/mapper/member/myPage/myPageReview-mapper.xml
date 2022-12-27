@@ -69,8 +69,14 @@
         REVIEW R
         INNER JOIN ORDERS O ON( R.ORDER_SEQ = O.ORDER_SEQ )
         WHERE
-        R.ACC_SEQ = #{myReviewDTO.acc_seq}
+            R.ACC_SEQ = #{myReviewDTO.acc_seq}
         ORDER BY REV_WRITETIME DESC
+    </select>
+    <select id="getReviewCount" parameterType="kh.deli.domain.member.myPage.dto.MypageReviewDTO" resultType="int" >
+        SELECT
+            COUNT(*) AS REV_CNT
+        FROM REVIEW
+        WHERE ACC_SEQ = #{myReviewDTO.acc_seq}
     </select>
 
 </mapper>
