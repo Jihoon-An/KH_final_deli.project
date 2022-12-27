@@ -27,7 +27,7 @@ $(".del_btn").click(function () {
 
 $(".display_toggle").click(function () {
     let storeSeq =$(this).closest(".store").find(".store_seq").val();
-    let orgVal = $(this).siblings(".display_val").val();
+    let orgVal = $(this).siblings(".display_val").text();
     let newVal;
     if (orgVal == 'Y') {
         newVal = 'N';

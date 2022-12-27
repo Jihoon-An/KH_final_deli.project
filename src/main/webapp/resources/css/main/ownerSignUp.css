@@ -50,3 +50,21 @@ body {
 .swal2-styled.swal2-confirm{
     background-color: #e78c8c !important;
 }
+
+#owner_signup .snowflake{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: -8px;
+    animation: fall 10s linear;
+}
+
+@keyframes fall {
+    from{}
+    to{
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}

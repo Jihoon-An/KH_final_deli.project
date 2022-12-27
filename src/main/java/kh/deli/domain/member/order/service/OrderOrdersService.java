@@ -8,10 +8,10 @@ import kh.deli.domain.member.order.mapper.OrderOrdersMapper;
 import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,8 +23,8 @@ public class OrderOrdersService {
     public OrderOrdersDTO selectSessionInfo(OrderOrdersDTO param) {
         return orderOrdersMapper.selectSessionInfo(param);
     };
-    public OrderOrdersDTO selectInitInfo(OrderOrdersDTO param) {
-        return orderOrdersMapper.selectOrderMemberInfo(param);
+    public OrderOrdersDTO selectInitInfo(int accSeq) {
+        return orderOrdersMapper.selectOrderMemberInfo(accSeq);
     };
 
     public void updateMemberAddr(OrderOrdersDTO param) {
@@ -59,8 +59,13 @@ public class OrderOrdersService {
         return orderOrdersMapper.findOrdersBySeq(order_seq);
     }
 
-    public void insertOrder(OrderOrdersDTO orderOrdersDTO) {
-        orderOrdersMapper.insertOrder(orderOrdersDTO);
+    public int insertOrder(OrderOrdersDTO orders) {
+        int orderSeq = orderOrdersMapper.getNextSeq();
+        orders.setCp_seq(Optional.ofNullable(orders.getCp_seq()).orElse(0));
+        orders.setUsePoint(Optional.ofNullable(orders.getUsePoint()).orElse(0));
+        orders.setMc_seq(Optional.ofNullable(orders.getMc_seq()).orElse(0));
+        orderOrdersMapper.insertOrder(orders, orderSeq);
+        return orderSeq;
     }
 
     public void deleteCouponList(OrderOrdersDTO orderOrdersDTO){

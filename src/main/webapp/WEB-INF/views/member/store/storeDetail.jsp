@@ -116,12 +116,6 @@
 
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-        <div class="fieldBox">
-            <div id="menu"><a href="#">메뉴</a></div>
-            <%--        <div id="info"><a href="/store/info">정보</a></div>--%>
-            <div id="info"><a href="/store/info/${storeInfoDTO.store_seq}" id="to_info">정보</a></div>
-            <div id="review"><a href="/store/review/${storeInfoDTO.store_seq}">리뷰</a></div>
-        </div>
         <div class="contents">
             <div class="category">
                 <c:choose>
