@@ -2,11 +2,12 @@ package kh.deli.domain.member.myPage.service;
 
 import kh.deli.domain.member.myPage.dto.MyPageDibsDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageDibsMapper;
-import kh.deli.global.entity.DibsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MyPageDibsService {
