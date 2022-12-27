@@ -12,6 +12,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -59,8 +60,11 @@ public class OrderOrdersService {
         return orderOrdersMapper.findOrdersBySeq(order_seq);
     }
 
-    public void insertOrder(OrderOrdersDTO orderOrdersDTO) {
-        orderOrdersMapper.insertOrder(orderOrdersDTO);
+    public void insertOrder(OrderOrdersDTO orders) {
+        orders.setCp_seq(Optional.ofNullable(orders.getCp_seq()).orElse(0));
+        orders.setUsePoint(Optional.ofNullable(orders.getUsePoint()).orElse(0));
+        orders.setMc_seq(Optional.ofNullable(orders.getMc_seq()).orElse(0));
+        orderOrdersMapper.insertOrder(orders);
     }
 
     public void deleteCouponList(OrderOrdersDTO orderOrdersDTO){

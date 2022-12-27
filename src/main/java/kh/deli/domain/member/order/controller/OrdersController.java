@@ -103,14 +103,13 @@ public class OrdersController {
         return a;
     }
 
-
     @RequestMapping("insertOrder")
     @ResponseBody
     public ModelAndView saveOrder(OrderOrdersDTO orderOrdersDTO) throws Exception {
 
-        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basketDTO");
+        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
         int storeSeq = basketDTO.getStoreSeq();
-        int accSeq = (int) session.getAttribute("acc_seq");
+        int accSeq = (Integer) session.getAttribute("acc_seq");
         List<StoreBasketMenuRequestDTO> manuList = basketDTO.getMenuList();
         Gson gson = new Gson();
         String manuListStr = gson.toJson(manuList);
@@ -118,7 +117,8 @@ public class OrdersController {
         StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
         int tip = storeDTO.getStore_deli_tip();
         orderOrdersDTO.setDelivery_tip(tip);
-
+        orderOrdersDTO.setAcc_seq(accSeq);
+        orderOrdersDTO.setStore_seq(storeSeq);
 
         // temp code start
 //        StoreDTO storeDTO = storeStoreService.getStoreInfo(21);

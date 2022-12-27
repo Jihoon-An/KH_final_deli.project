@@ -37,11 +37,11 @@ public interface OrderOrdersMapper {
     @Select("select * from orders where order_seq = #{order_seq}")
     OrdersDTO findOrdersBySeq(int order_seq);
 
-    void insertOrder(@Param("orderOrdersDTO")OrderOrdersDTO orderOrdersDTO);
+    void insertOrder(@Param("orderOrdersDTO") OrderOrdersDTO orderOrdersDTO);
 
     // UpdateCouponList, UpdateOwnPointMinus, UpdateOwnPointPlus
 
-    void deleteCouponList(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
+    void deleteCouponList(@Param("orderOrderDTO") OrderOrdersDTO orderOrdersDTO);
 
     void updateOwnPoint(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
 

@@ -591,10 +591,10 @@
             buyer_addr: address
         };
 
-
+        $("#insertForm").submit();
         IMP.request_pay(payInfo, function (rsp) {
             if (rsp.success) {
-                $("#insertForm").submit();
+
                 var msg = '결제가 완료되었습니다.';
 
                 //window.parent.location.href = "/payComplete.paymem?payGoodsSeq=" + goodsSeq + "&payMemberEmail=" + userEmail;
