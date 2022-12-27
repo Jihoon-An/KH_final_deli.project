@@ -12,19 +12,17 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Controller
 @RequestMapping("/order/orders")
 @AllArgsConstructor
-public class OrdersController {
+public class OrderPayController {
 
     private final HttpSession session;
 
@@ -42,7 +40,6 @@ public class OrdersController {
 
         String email = (String)session.getAttribute("loginEmail");
         int accSeq = (int) session.getAttribute("acc_seq");
-//        System.out.println(email);
         OrderOrdersDTO orderOrdersDTO = new OrderOrdersDTO();
 
         BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
@@ -54,16 +51,10 @@ public class OrdersController {
         int tip = storeDTO.getStore_deli_tip();
         orderOrdersDTO.setDelivery_tip(tip);
 
-//        orderOrdersDTO.setOrder_price((Integer) session.getAttribute("basket"));
-
-//        orderOrdersDTO.setOrder_price(10000); // 이거 세션에 있는 값 넣어서 넘기기
-//        OrderOrdersDTO userInfo = orderOrdersService.selectSessionInfo(param);
-//        param.setSeq("39");
-
         ModelAndView mav = new ModelAndView();
         mav.setViewName("/member/order/orders");
         mav.addObject("orderOrdersDTO", orderOrdersDTO);
-//        mav.addObject("userInfo", userInfo);
+
         return mav;
     }
 
@@ -120,37 +111,8 @@ public class OrdersController {
         orderOrdersDTO.setAcc_seq(accSeq);
         orderOrdersDTO.setStore_seq(storeSeq);
 
-        // temp code start
-//        StoreDTO storeDTO = storeStoreService.getStoreInfo(21);
-//        int tip = storeDTO.getStore_deli_tip();
-//        orderOrdersDTO.setDelivery_tip(tip);
-//        List<StoreBasketMenuRequestDTO> list = new ArrayList<>();
-//        StoreBasketMenuRequestDTO temp = new StoreBasketMenuRequestDTO();
-//        temp.setCount(1);
-//        temp.setPrice(1);
-//        temp.setOptionSeqList(new ArrayList<>());
-//        temp.setMenuSeq(1);
-//        temp.setStoreSeq(1);
-//        list.add(temp);
-//
-//        temp = new StoreBasketMenuRequestDTO();
-//        temp.setCount(2);
-//        temp.setPrice(2);
-//        temp.setOptionSeqList(new ArrayList<>());
-//        temp.setMenuSeq(2);
-//        temp.setStoreSeq(2);
-//        list.add(temp);
-//
-//        Gson gson = new Gson();
-//        String menuList = gson.toJson(list);
-//        orderOrdersDTO.setAcc_seq("39");
-//        orderOrdersDTO.setStore_seq(21);
-//        orderOrdersDTO.setMenuList(menuList);
-        // temp code end
-
-        orderOrdersService.insertOrder(orderOrdersDTO);
+        int orderSeq = orderOrdersService.insertOrder(orderOrdersDTO);
         orderOrdersService.deleteCouponList(orderOrdersDTO);
-
 
 
         //보유포인트 차감 & 적립
@@ -165,7 +127,7 @@ public class OrdersController {
 
 
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("/member/order/orderDetail");
+        mav.setViewName("redirect:/order/detail/" + orderSeq);
         mav.addObject("orderOrdersDTO", orderOrdersDTO);
 
         return mav;

@@ -70,7 +70,7 @@
             <p>검색</p>
         </div>
     </a>
-    <a href="/member/order/history">
+    <a href="/order/history">
         <div>
             <i class="fa-solid fa-clipboard"></i>
             <p>주문내역</p>

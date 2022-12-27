@@ -152,7 +152,7 @@
 
     </select>
 
-    <insert id="insertOrder" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+    <insert id="insertOrder" parameterType="java.util.HashMap">
         insert into orders (
         ORDER_SEQ,
         ACC_SEQ,
@@ -174,7 +174,7 @@
         PAY_PRICE
 
         )values(
-        order_seq.nextval,
+        #{orderSeq},
         #{orderOrdersDTO.acc_seq},
         #{orderOrdersDTO.store_seq},
         #{orderOrdersDTO.menuList},
