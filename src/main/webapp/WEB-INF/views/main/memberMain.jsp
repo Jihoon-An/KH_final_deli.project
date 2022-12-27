@@ -105,6 +105,7 @@
                 <c:forEach var="store_list" items="${store_list}" varStatus="status">
                     <hr>
                     <div class="store_list d-inline-flex m-2">
+                        <a href="/store/menu/${store_list.STORE_SEQ}">
                         <div class="m-2 store_logo_box">
                             <c:choose>
                                 <c:when test="${store_list.STORE_LOGO !=null}">
@@ -136,21 +137,12 @@
                                 </c:forEach>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </c:forEach>
             </c:when>
             <c:otherwise>
                 <div>근처에 주문할 수 있는 가게가 없습니다.</div>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>d<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
             </c:otherwise>
         </c:choose>
     </div>
