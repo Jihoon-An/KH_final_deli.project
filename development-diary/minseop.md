@@ -82,4 +82,7 @@
 - 사업자 회원탈퇴 (<span style="color: yellow">50%</span>)
 ---
 ### 22-12-26 (월)
-- .
+- 사업자, 일반 회원탈퇴 (<span style="color: chartreuse">100%</span>)
+  - 데이터 이슈로 테스트 불이행
+- 비로그인 메인페이지 CSS (<span style="color: chartreuse">100%</span>)
+- 마이페이지 CSS (<span style="color: yellow">75%</span>)

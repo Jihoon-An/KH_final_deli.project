@@ -2,11 +2,12 @@ package kh.deli.domain.member.myPage.service;
 
 import kh.deli.domain.member.myPage.dto.MyPageDibsDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageDibsMapper;
-import kh.deli.global.entity.DibsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MyPageDibsService {
@@ -26,7 +27,10 @@ public class MyPageDibsService {
         myPageDibsMapper.deleteDibs(acc_seq,store_seq);
     }
 
-    public Integer isExistDibs(int acc_seq,int store_seq) throws Exception{
-        return myPageDibsMapper.isExistDibs(acc_seq,store_seq);
+    public Integer isExistDibs(int accSeq,int storeSeq) throws Exception{
+        Map<String, Integer> param = new HashMap<>();
+        param.put("acc_seq", accSeq);
+        param.put("store_seq", storeSeq);
+        return myPageDibsMapper.isExistDibs(param);
     }
 }
