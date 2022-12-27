@@ -46,11 +46,13 @@
                                     <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                                     <input type="radio" name="radio_add_division"
                                            <c:if test="${i.add_division=='basics'}">id="basics" checked</c:if>>
-                                    <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
-                                    <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
+                                    <span class="add_division">
+                                        <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
+                                        <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
+                                    </span>
                                     <input type="hidden" name="add_division" class="hidden_add_division"
                                            value="${i.add_division}">
-                                        ${i.add_name} <a class="del">x</a>
+                                        <span class="add_name">${i.add_name}</span> <a class="del"><i class="fa-solid fa-xmark"></i></a><br>
                                         ${i.add_detail1} <br>
                                     상세주소 : ${i.add_detail2}
                                     <hr>
