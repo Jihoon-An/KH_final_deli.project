@@ -35,10 +35,10 @@ public class OrdersDetailController {
 
     private final StoreBasketService storeBasketService;
     private final Gson gson;
-    @RequestMapping("/{orderSeq}")
+    @RequestMapping("{orderSeq}")
     public String getStoreInfo(@PathVariable("orderSeq") Integer order_seq, Model model) throws Exception{
 
-        order_seq=31;
+//        order_seq=31;
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
         OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(order_seq); // 주문자정보
