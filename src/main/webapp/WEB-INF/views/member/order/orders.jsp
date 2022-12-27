@@ -212,17 +212,16 @@
         $("#payCard").hide();
         $("#payment").val('kakaoPay');
         $("#order_price").val(${orderOrdersDTO.order_price})
-        <%--$("#delivery_tip").val(${orderOrdersDTO.delivery_tip})--%>
+        $("#delivery_tip").val(${orderOrdersDTO.delivery_tip})
+        initPage();
+        setCouponList();
         var orderPrice = $("#order_price").val();
         var deliveryPrice = $("#delivery_tip").val() || 0;
 
+        console.log(orderPrice);
+        console.log("ghfhfhgf");
+        console.log(deliveryPrice);
         $("#pay_price").val(orderPrice - deliveryPrice);
-        console.log($("#accEmail").val());
-        console.log($("#memName").val());
-        console.log(${basketDTO.order_price});
-        console.log(${storeDTO.delivery_tip});
-        initPage();
-        setCouponList();
 
     }
 
@@ -231,7 +230,6 @@
             url: "/order/orders/selectInitInfo",
             type: "post",
             dataType: "json",
-            data : {acc_seq : 39},
             success : function (data){
                 $("#add_seq").val(data.add_seq);
                 $("#address1").val(data.address1);
@@ -252,7 +250,7 @@
             url: "/order/orders/selectCouponList",
             type: "post",
             dataType: "json",
-            data : {acc_seq : 39},
+            data : {acc_seq : 31},
             success : function (data){
                 var html = "";
                 if(data.length > 0){
@@ -546,7 +544,7 @@
             pg: 'html5_inicis',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
-            name: '결제테스트',// 상품명,
+            name: '결제',// 상품명,
             amount: payPrice,//상품 가격,
             buyer_email: email,//구매자 이메일,
             buyer_name: name,

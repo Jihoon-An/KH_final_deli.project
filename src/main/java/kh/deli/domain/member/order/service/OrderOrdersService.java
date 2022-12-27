@@ -23,8 +23,8 @@ public class OrderOrdersService {
     public OrderOrdersDTO selectSessionInfo(OrderOrdersDTO param) {
         return orderOrdersMapper.selectSessionInfo(param);
     };
-    public OrderOrdersDTO selectInitInfo(OrderOrdersDTO param) {
-        return orderOrdersMapper.selectOrderMemberInfo(param);
+    public OrderOrdersDTO selectInitInfo(int accSeq) {
+        return orderOrdersMapper.selectOrderMemberInfo(accSeq);
     };
 
     public void updateMemberAddr(OrderOrdersDTO param) {

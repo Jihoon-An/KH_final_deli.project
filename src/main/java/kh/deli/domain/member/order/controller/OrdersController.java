@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,15 +41,24 @@ public class OrdersController {
 
 
         String email = (String)session.getAttribute("loginEmail");
+        int accSeq = (int) session.getAttribute("acc_seq");
 //        System.out.println(email);
         OrderOrdersDTO orderOrdersDTO = new OrderOrdersDTO();
-//        orderOrdersDTO.setOrder_price((Integer) session.getAttribute("order_price"));
+
+        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
+        int orderPrice = basketDTO.getTotalPrice();
+        orderOrdersDTO.setOrder_price(orderPrice);
+
+        int storeSeq = basketDTO.getStoreSeq();
+        StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
+        int tip = storeDTO.getStore_deli_tip();
+        orderOrdersDTO.setDelivery_tip(tip);
+
+//        orderOrdersDTO.setOrder_price((Integer) session.getAttribute("basket"));
+
 //        orderOrdersDTO.setOrder_price(10000); // 이거 세션에 있는 값 넣어서 넘기기
-//        param.setSeq("39");
-
 //        OrderOrdersDTO userInfo = orderOrdersService.selectSessionInfo(param);
-
-
+//        param.setSeq("39");
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("/member/order/orders");
@@ -59,8 +69,9 @@ public class OrdersController {
 
     @RequestMapping("selectInitInfo")
     @ResponseBody
-    public OrderOrdersDTO selectInitInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO) throws Exception {
-        OrderOrdersDTO result = orderOrdersService.selectInitInfo(ordersDTO);
+    public OrderOrdersDTO selectInitInfo() throws Exception {
+        int accSeq = (int) session.getAttribute("acc_seq");
+        OrderOrdersDTO result = orderOrdersService.selectInitInfo(accSeq);
         BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
         int storeSeq = basketDTO.getStoreSeq();
         StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
@@ -69,6 +80,7 @@ public class OrdersController {
 
         return result;
     }
+
     @RequestMapping("updateMemberAddr")
     @ResponseBody
     public void updateMemberAddr(OrderOrdersDTO ordersDTO){

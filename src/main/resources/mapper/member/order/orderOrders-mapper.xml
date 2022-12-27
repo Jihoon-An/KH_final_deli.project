@@ -13,7 +13,7 @@
 <!--        WHERE A.ACC_SEQ = #{orderOrdersDTO.seq}-->
 <!--    </select>-->
 
-    <select id="selectOrderMemberInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+    <select id="selectOrderMemberInfo" parameterType="int" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         select
             acc_seq,
             add_seq,
@@ -32,9 +32,9 @@
                 NVL(M.mem_point, 0) as ownPoint
             from member M
             inner join address A ON (A.acc_seq = M.acc_seq)
-            where add_seq = 6
+            where add_division = 'basics'
         )
-        where acc_seq = #{orderOrdersDTO.acc_seq}
+        where acc_seq = #{accSeq}
 
     </select>
     <update id="updateMemberAddr"  parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
