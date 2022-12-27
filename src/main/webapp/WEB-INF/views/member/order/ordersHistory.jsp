@@ -19,95 +19,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/member/order/orderHistory.css" type="text/css">
+
 </head>
-<style>
-    * {
-        box-sizing: border-box;
-    }
 
-    div {
-        border: 1px solid black;
-    }
-
-    .container {
-        width: 375px;
-        height: 800px;
-        margin-top: 30px;
-        overflow: hidden;
-    }
-    .box1{
-        width: 100%;
-        height: 100px;
-        margin-top: 40px;
-    }
-    .box2{
-        width: 100%;
-        height: 15%;
-        /* font-size: 10px; */
-    }
-    .box3{
-        width: 100%;
-        height: 85%;
-    }
-
-    .headdeli{
-        margin-right: 15px;
-        height: 100%;
-        padding-left: 3px;
-    }
-    .headdate{
-        margin-right: 10px;
-        padding-left: 3px;
-    }
-    .headstatus{
-        float:right;
-        padding-right: 3px;
-    }
-    .image-box {
-        width:100px;
-        height:60px;
-        overflow:hidden;
-        margin:0 auto;
-        float: left;
-    }
-    .image-thumbnail {
-        width:100%;
-        height:100%;
-        object-fit:scale-down;
-    }
-    .info{
-        margin: 9px;
-        width: 65%;
-        height: 60px;
-        float: left;
-
-    }
-
-    .storename{
-        margin-left :2px;
-        /* font-size: 10px; */
-    }
-    .storeloca{
-        /* font-size: 10px; */
-    }
-    p{
-        height: 10px;
-    }
-    .meinfo{
-        /* font-size: 8px; */
-    }
-</style>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+<%--<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>--%>
+<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
 
+<main id = "order_history">
 <div class="container">
     <c:choose>
-    <c:when test="${not empty list}">
-    <c:forEach var="i" items="${list}">
+    <c:when test="${not empty menu_list}">
+    <c:forEach var="i" items="${menu_list}">
     <div class="box1">
         <div class="box2">
-            <span class="headdeli">배달주문</span>
-            <span class="headdate">${i.formDate}</span>
-            <span class="headstatus">${i.order_status}</span>
+            <span class="head_deli">배달주문</span>
+            <span class="head_date">${i.formDate}</span>
+            <span class="head_status">
+                ${i.order_status}
+<%--                <c:if test="${i.order_status=='order'}">미접수</c:if>--%>
+<%--                <c:if test="${i.order_status=='take'}">접수</c:if>--%>
+<%--                <c:if test="${i.order_status=='cooking'}">조리중</c:if>--%>
+<%--                <c:if test="${i.order_status=='delivering'}">배달중</c:if>--%>
+<%--                <c:if test="${i.order_status=='complete'}">배달완료</c:if>--%>
+            </span>
         </div>
         <div class="box3">
             <c:if test="${i.store_logo==null}">
@@ -117,11 +59,19 @@
                 <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${i.store_logo }" id="profile"></div>
             </c:if>
             <div class="info">
-                <span class="storename ">${i.store_name}</span>
-                <span class="storeloca ">-${i.add_detail2}</span>
-                <p><span class="meinfo">${i.menu_list}</span><span class="meinfo">${i.pay_price}</span></p>
+                <span class="storename">${i.store_name}</span>
+                <p class="meinfo">
+                        ${basketMenu[0].menu.menu_name}
+                    <c:if test="${basketMenu[1].menu.menu_name!=null}">
+                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">
+                            <c:if test="${n.index >1}">외 ${n.index-1}건</c:if>
+                        </c:forEach>
+                    </c:if>
+
+                </p>
                 <a href="/"><button>메인으로</button></a>
-                <a href="/myPage/reviewWrite/"><button>리뷰작성</button></a>
+                <a href="/myPage/reviewWrite/${i.order_seq}"><button>리뷰작성</button></a>
+                <a href="/member/order/detail/${i.order_seq}"><button>주문상세</button></a>
                 <button>재주문</button>
             </div>
         </div>
@@ -135,6 +85,6 @@
 
 
 
-
+</main>
 </body>
 </html>

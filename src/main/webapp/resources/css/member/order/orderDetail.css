@@ -2,20 +2,44 @@
     box-sizing: border-box;
 }
 
-.container {
-    width: 375px;
+#orderDetail .container {
+    width: 360px;
     height: auto;
     border: 1px solid black;
     margin: auto;
+    margin-top: 45px;
 }
 
-.btn {
+#orderDetail .container > div {
+    width: 95%;
+    margin: auto;
+}
 
+/*상호명*/
+#orderDetail .store div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+/*주문내역*/
+#orderDetail .order div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+#orderDetail .order .menuBox #menu_name {
+    font-weight: bold;
+}
+
+
+/*hr{width: 95%; border-width:0.25px;}*/
+#orderDetail .btn {
+    padding: 10px 0px;
     width: 100%;
     height: 50px;
 }
 
-#complete {
+#orderDetail #complete {
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -24,3 +48,45 @@
     border-radius: 5px;
     border-style: none;
 }
+
+/*결제정보*/
+#orderDetail .pay div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+#orderDetail .field {
+    float: left;
+    width: 70%;
+}
+
+#orderDetail .price {
+    text-align: right;
+}
+
+#orderDetail .pay_method {
+    text-align: right;
+}
+
+#orderDetail .pay_field, #orderDetail .pay_method {
+    font-weight: bold;
+}
+
+
+/*주문자정보*/
+#orderDetail #destination, #orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {
+    font-size: small;
+}
+
+#orderDetail .orderer div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+#orderDetail #destination, #orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {
+    font-size: 13px;
+    /*color: #888888;*/
+}
+
+div{border: 1px solid black;}
+

@@ -18,7 +18,7 @@
     <!-- 멤버 로그인 -->
     <select id="login" resultType="int">
         SELECT COUNT(*) FROM ACCOUNT
-        WHERE ACC_EMAIL = #{email} AND ACC_PW = #{pw} AND ACC_SNS = 'normal'
+        WHERE ACC_EMAIL = #{email} AND ACC_PW = #{pw}
     </select>
 
     <!-- 멤버 회원가입(sns회원가입x) -->
@@ -45,7 +45,7 @@
         null,
         null,
         'normal',
-        null
+        0
         )
     </insert>
     <insert id="insertAddress" parameterType="kh.deli.global.entity.AddressDTO">

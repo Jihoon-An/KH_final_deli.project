@@ -1,0 +1,30 @@
+#storeSearch .container {
+    width: 360px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#storeSearch .filter {
+    border-radius: 20px;
+    border: #e84c4f solid 1px;
+}
+
+#storeSearch .store_list {
+    border: #e84c4f solid 1px;
+}
+
+#storeSearch .store_logo {
+    width: 90px;
+    height: 100px;
+    object-fit: cover;
+}
+
+#storeSearch .store_info_box {
+    overflow: hidden;
+}
+
+#storeSearch .menu_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

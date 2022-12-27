@@ -32,9 +32,14 @@ public class OwnerMainService {
 
         for(int i=0;i<list.size();i++){
             int store_seq=list.get(i).getStore_seq();
+
             LocalDate now = LocalDate.now();
+
             OwnerDailySalesDTO dto= ownerMainMapper.selectSales(store_seq,now);
-            dslist.add(dto);
+            if(dto!=null){
+                dslist.add(dto);
+            }
+
         }
 
         return dslist ;
@@ -63,11 +68,6 @@ public class OwnerMainService {
     }
 
     public List<OwnerDdSalesDTO> selectSpecific(int store_seq, String startDate, String endDate) throws Exception{
-        System.out.println("서비스::::::::::::"+store_seq+" : "+startDate+" : "+endDate);
-
-
-
-
         List<OwnerDdSalesDTO> list = ownerMainMapper.selectSpecific(store_seq,startDate,endDate);
         return list;
     }

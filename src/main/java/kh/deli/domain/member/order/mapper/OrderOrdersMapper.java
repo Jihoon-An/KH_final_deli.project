@@ -22,11 +22,11 @@ public interface OrderOrdersMapper {
     public int updateMemberPhone(@Param("orderOrdersDTO")OrderOrdersDTO ordersDTO);
 
     
-    StoreInfoDTO storeInfo(int order_seq);
+    StoreInfoDTO getStoreInfo(int order_seq);
 
-    OrdererInfoDTO ordererInfo(int order_seq);
+    OrdererInfoDTO getOrdererInfo(int order_seq);
 
-    PayInfoDTO payInfo(int order_seq);
+    PayInfoDTO getPayInfo(int order_seq);
 
     @Insert("insert into orders values(" +
             "order_seq.nextval, 31, 19, #{menu_list}, 19996216, sysdate, 777, 'tlqkf', " +

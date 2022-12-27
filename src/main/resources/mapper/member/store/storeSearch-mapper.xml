@@ -110,7 +110,8 @@
                 ORDER BY TO_NUMBER(COUNT_REVIEW) DESC
             </when>
             <when test='filter != null and(filter eq "minprice".toString())'>
-                ORDER BY TO_NUMBER(STORE_MIN_PRICE)
+                ORDER BY STORE_MIN_PRICE
+<!--                ORDER BY TO_NUMBER(STORE_MIN_PRICE)-->
             </when>
             <otherwise>
                 ORDER BY 1

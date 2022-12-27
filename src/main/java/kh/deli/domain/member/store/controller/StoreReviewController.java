@@ -3,8 +3,10 @@ package kh.deli.domain.member.store.controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import kh.deli.domain.member.myPage.service.MyPageDibsService;
 import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.store.dto.BasketDTO;
+import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.dto.StoreReviewDTO;
 import kh.deli.domain.member.store.service.StoreReviewService;
 import kh.deli.domain.member.store.service.StoreStoreService;
@@ -12,18 +14,21 @@ import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Type;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-
 @Controller
 @AllArgsConstructor
 @RequestMapping("/store/review")
@@ -31,17 +36,18 @@ public class StoreReviewController {
 
     private final StoreStoreService storeStoreService;
     private final StoreReviewService storeReviewService;
-    
     private final OrderBasketService orderBasketService;
 
-    @RequestMapping()
-    public String toStoreReview(Model model) throws Exception {
-        int store_seq = 19;
+    private final HttpSession session;
+    private final MyPageDibsService myPageDibsService;
 
-        StoreDTO storeInfoDTO = storeStoreService.storeInfo(store_seq); // 식당정보
+    @RequestMapping("/{storeSeq}")
+    public String toStoreReview(Model model,@PathVariable("storeSeq") Integer store_seq) throws Exception {
+//        int store_seq = 19; //식당상세정보에서 seq
+
+        StoreDTO storeInfoDTO = storeStoreService.getStoreInfo(store_seq); // 식당정보
         int storeReviewCount = storeReviewService.getReviewCount(store_seq); // 식당리뷰개수
         double storeReviewAvg = storeReviewService.getReviewAvg(store_seq); // 식당별점평균
-
 
         List<StoreReviewDTO> storeReviewList = new ArrayList<>();
 
@@ -55,36 +61,41 @@ public class StoreReviewController {
             String revSysName = (String) reviewInfoList.get(revInfo).get("REV_SYSNAME");
             String revContent = (String) reviewInfoList.get(revInfo).get("REV_CONTENT");
             String menuList = (String) reviewInfoList.get(revInfo).get("MENU_LIST");
-            System.out.println(menuList);
+
+
 //            ObjectMapper mapper = new ObjectMapper();
 //            List<List<Object>> tmp1 = mapper.readValue(revSysName, ArrayList.class);
 //            List<List<Object>> tmp2 = mapper.readValue(menu_list, ArrayList.class);
 
             Gson gson = new Gson();
+            Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
 
-            BasketDTO basket = gson.fromJson(menuList, BasketDTO.class);
-
+            List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menuList, type2);
             List<String>menu=new ArrayList<>();
-            for (int i = 0; basket.getMenuList().size() > i; i++) {
-                MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.getMenuList().get(i).getMenuSeq());
+            for (int i = 0; i < basket.size(); i++) {
+                MenuDTO menuDTO = orderBasketService.findMenuBySeq(basket.get(i).getMenuSeq());
                 menu.add(menuDTO.getMenu_name());
             }
-//            Type type2 = new TypeToken<List<String>>(){}.getType();
+
+//            //내가 주문한 메뉴명 가져오기
+//            JSONParser jsonParser = new JSONParser();
+//            JSONArray jsonArr =(JSONArray) jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
+//
+//            List<String> menuNameList=new ArrayList<>();
+//
+//            if (jsonArr.size() > 0) {
+//
+//                for (int i = 0; i < jsonArr.size(); i++) {
+//                    JSONObject jsonObj = (JSONObject)jsonArr.get(i);
+//                    String menuSeq= jsonObj.get("menuSeq").toString();
+//                    String menuName=myPageReviewService.selectMenuName(menuSeq);
+//                    menuNameList.add(menuName);
+//                }
+//            }
+
+
             Type type1 = new TypeToken<List<String>>() {}.getType();
             List<String> tmp1 = gson.fromJson(revSysName, type1);
-//            List<String> tmp2 = gson.fromJson(menuList, basket);
-
-//            List<String> storeRevSysname = new ArrayList<>();
-//            for (int k = 0; k < tmp1.size(); k++) {
-//                System.out.println("파싱 : " + tmp1.get(k));
-//                storeRevSysname.add(String.valueOf(tmp1.get(k)));
-//            }
-//
-//            List<String> storeMenuList = new ArrayList<>();
-//            for (int k = 0; k < tmp2.size(); k++) {
-//                System.out.println("파싱 : " + tmp2.get(k));
-//                storeMenuList.add(String.valueOf(tmp2.get(k)));
-//            }
 
             storeReviewList.add(StoreReviewDTO.builder().
                     mem_nick(memNick).
@@ -99,10 +110,15 @@ public class StoreReviewController {
 //            storeReviewList.add(new StoreReviewDTO(mem_nick, rev_writeDate, rev_modified_date, REV_STAR, storeRevSysname, revContent,
 //                    storeMenuList));
     }
+
+        int acc_seq = (Integer) session.getAttribute("acc_seq"); //찜
+        int result= myPageDibsService.isExistDibs(acc_seq,store_seq);
+
         model.addAttribute("storeInfoDTO", storeInfoDTO);
         model.addAttribute("storeReviewCount", storeReviewCount);
         model.addAttribute("storeReviewAvg", storeReviewAvg);
         model.addAttribute("storeReviewList", storeReviewList);
+        model.addAttribute("result", result);
         return "/member/store/storeReview";
     }
 }

@@ -2,7 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>딜리 - 마이페이지</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -10,22 +13,33 @@
     </script>
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+
+
+    <!-- font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+    <!-- bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="/resources/css/member/myPage/myPage.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 </head>
 <body>
+
+    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%--    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>--%>
+    <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 
     <main id="myPage">
 
         <div class="container">
 
-            <div class="topBox">
-                <div class="topLeftBox">
-                    <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-                <div class="topRightBox">
-                    <a href="/"><i class="fa-solid fa-house"></i></a>
-                </div>
-            </div>
 
             <div class="titleBox">
                 마이페이지
@@ -56,7 +70,7 @@
                         <span class="text">주문내역</span>
                     </div>
                 </a>
-                <a href="/">
+                <a href="/myPage/reviewList">
                     <div class="link reviewManagerBox">
                         <span class="icon"><i class="fa-solid fa-comments"></i></span><br>
                         <span class="text">리뷰관리</span>

@@ -1,30 +1,11 @@
 #memberMain .container{
-    width: 375px;
-    border: 1px solid black;
+    width:360px;
+    /*border: 1px solid #000000;*/
     margin: auto;
+    /*background-color: #FFFFFF;*/
+    padding-top: 60px;
+    padding-bottom: 80px;
 }
-
-#memberMain #fucking{
-    width: 250px;
-    height: fit-content;
-    position: absolute;
-    top: 50px;
-    left: 20px;
-    border: 7px solid #e84c4f;
-    box-shadow: 3px 3px 15px 3px #9f1f20;
-    background-color: #f8f5f2;
-    border-radius: 15px;
-    padding: 15px;
-    line-height: 40px;
-    text-align: center;
-}
-#memberMain #fucking a{
-    color: #3e4462;
-    font-weight: bolder;
-    text-decoration: none;
-}
-
-#memberMain #fucking hr{border: 2px dashed #e84c4f;}
 
 #memberMain .categoryIcon{
     width: 50px;
@@ -35,3 +16,4 @@
     width: 50px;
     height: 50px;
 }
+

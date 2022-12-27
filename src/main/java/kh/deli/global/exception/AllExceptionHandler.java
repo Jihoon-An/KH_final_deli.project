@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @Slf4j
 @ControllerAdvice
 public class AllExceptionHandler {
+    @ExceptionHandler(PermissionException.class)
+    public String permissionExceptionHandler(StoreBsTimeOutException e) {
+        log.error("페이지에 권한이 없습니다.");
+        return "errorPage/permissionException";
+    }
 
     @ExceptionHandler(StoreBsTimeOutException.class)
     public String storeBsTimeOutExceptionHandler(StoreBsTimeOutException e) {
         log.error("식당이 현재 운영시간이 아닙니다.");
-        log.info("식당이 현재 운영시간이 아닙니다.");
-        return "error";
+        return "errorPage/storeBsTimeOutException";
     }
 
     @ExceptionHandler(Exception.class)

@@ -50,7 +50,6 @@ public class MyPageReviewService {
         return myPageReviewMapper.selectByReviewSeq(rev_seq);
     }
 
-
     public StoreDTO selectByStoreSeq(int store_seq) throws Exception {
         return myPageReviewMapper.selectByStoreSeq(store_seq);
     }
@@ -65,11 +64,14 @@ public class MyPageReviewService {
 
     }
 
-
     public List<Map<String, Object>> getReviews(MypageReviewDTO param){
         return myPageReviewMapper.getReviews(param);
     }
     public int getReviewCount(MypageReviewDTO param) throws Exception{
         return myPageReviewMapper.getReviewCount(param);
+    }
+
+    public String selectMenuName(String menuSeq) throws Exception{
+        return myPageReviewMapper.selectMenuName(menuSeq);
     }
 }

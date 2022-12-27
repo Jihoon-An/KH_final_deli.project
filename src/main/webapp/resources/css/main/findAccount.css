@@ -1,9 +1,70 @@
-#findAccount * {box-sizing: border-box}
+body{background-color: #F8F5F2}
+#findAccount *{box-sizing: border-box;}
 #findAccount .container{
-    width: 375px;
+    width: 360px;
     height: 800px;
-    border: 1px solid black;
+    border: 1px solid gray;
+    margin: auto;
+}
+
+#findAccount .titleBox{
+    width: 100%;
+    height: 75px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 75px;
+    margin-top: 50px;
+}
+
+#findAccount .choiceBox{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-top: 25px;
+}
+#findAccount .choiceBox > label{
+    width: 40%;
+    height: 50px;
+    background-color: #F8F5F2;
+    border: 5px solid #e84c4f;
+    padding: 15px;
+    border-radius: 7px;
+    color: #3e4462;
+    font-weight: bold;
+}
+
+
+#findAccount #findEmailBox{
+    width: 100%;
+    height: 300px;
     margin: auto;
     text-align: center;
-    padding-top: 50px;
+    border: 1px solid green;
+}
+#findAccount #findEmailBox > #mem_phone{
+    width: 200px;
+    height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+#findAccount #findEmailBox > #phone_certi_btn{
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+}
+
+
+
+
+
+
+#findAccount a{
+    text-decoration: none;
+    color: black;
+}
+#findAccount a:active{
+    color: unset;
+}
+#findAccount a:visited{
+    color: unset;
 }

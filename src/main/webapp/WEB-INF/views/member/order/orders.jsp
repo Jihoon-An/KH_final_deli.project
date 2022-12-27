@@ -238,8 +238,7 @@
                 $("#address2").val(data.address2);
                 $("#phoneNum").val(data.phoneNum);
                 $("#ownPoint").val(data.ownPoint);
-
-                // $("#delivery_tip").val(data.delivery_tip);
+                $("#delivery_tip").val(data.delivery_tip);
                 onchangeOwnPoint();
             },
             error : function (data){

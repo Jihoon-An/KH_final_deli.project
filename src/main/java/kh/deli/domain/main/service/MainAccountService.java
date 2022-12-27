@@ -1,33 +1,44 @@
 package kh.deli.domain.main.service;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.main.mapper.MainAccountMapper;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
+import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.util.Encryptor;
+import kh.deli.global.util.FileUtil;
+import kh.deli.global.util.GenerateRandomCode;
 import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
 public class MainAccountService {
     private final MainAccountMapper mainAccountMapper;
     private final RestTemplate restTemplate;
+    private final GenerateRandomCode generateRandomCode;
+    private final HttpSession session;
+    private final Gson gson;
 
     /**
      * <h2>email 중복체크</h2>
@@ -58,12 +69,100 @@ public class MainAccountService {
 
     /**
      * <h2>회원탈퇴 (Address -> Member -> Account)</h2>
-     * @param acc_seq
      */
-    public void withdrawal(int acc_seq) throws Exception {
-        mainAccountMapper.deleteAddress(acc_seq);
-        mainAccountMapper.deleteMember(acc_seq);
-        mainAccountMapper.deleteAccount(acc_seq);
+    @Transactional
+    public void withdrawal(int accSeq) throws Exception {
+        String accType = this.selectType(accSeq);
+
+        if (accType.equals("business")){ // 사업자 탈퇴
+            // OwnerSeq 값 불러오기
+            Integer ownerSeq = mainAccountMapper.getOwnerSeqByAccSeq(accSeq);
+
+            // 운영중인 StoreSeq 불러오기
+            List<Integer> storeSeqList = mainAccountMapper.getStoreSeqListByOwnerSeq(ownerSeq);
+
+            for (int i = 0; storeSeqList.size() > i; i++) {
+
+                // 식당 리뷰 사진 img 파일 삭제
+                List<String> reviewImgJsonList = mainAccountMapper.getReviewImgListByStoreSeq(storeSeqList.get(i));
+
+                for (int k = 0; reviewImgJsonList.size() > k; k++) {
+                    Type reviewImgListType = new TypeToken<List<String>>(){}.getType();
+                    List<String> reviewImgList = new ArrayList<>();
+                    reviewImgList.add(gson.fromJson(reviewImgJsonList.get(k), reviewImgListType));
+
+                    for (int j = 0; reviewImgList.size() > j; j++) {
+                        FileUtil fileUtil = new FileUtil();
+                        fileUtil.delete(session, "/resources/img/review", reviewImgList.get(j));
+                    }
+                }
+
+                // Review 테이블 데이터 삭제
+                mainAccountMapper.deleteReviewByStoreSeq(storeSeqList.get(i));
+                // Dibs 테이블 데이터 삭제
+                mainAccountMapper.deleteDibsByStoreSeq(storeSeqList.get(i));
+
+                // 식당 메뉴 사진 img 파일 삭제
+                List<MenuDTO> menuList = mainAccountMapper.getMenuImgListByStoreSeq(storeSeqList.get(i));
+
+                for (int l = 0; menuList.size() > l; l++) {
+                    FileUtil fileUtil = new FileUtil();
+                    fileUtil.delete(session, "/resources/img/menu-img", menuList.get(l).getMenu_img());
+
+                    // Menu_option 테이블 삭제
+                    mainAccountMapper.deleteMenuOptionByMenuOption(menuList.get(l).getMenu_seq());
+                }
+
+                // Menu 테이블 삭제
+                mainAccountMapper.deleteMenuByStoreSeq(storeSeqList.get(i));
+
+            }
+
+            // 사업자 등록증 img 파일 삭제
+            FileUtil fileUtil = new FileUtil();
+            String originalFile = mainAccountMapper.findOwnerCardBySeq(accSeq);
+            fileUtil.delete(session, "/resources/img/owner-card", originalFile);
+
+            // Owner 테이블 데이터 삭제
+            mainAccountMapper.deleteOwner(accSeq);
+
+            // Account 테이블 데이터 삭제
+            mainAccountMapper.deleteAccount(accSeq);
+
+        }else { // 일반 클라이언트 탈퇴
+
+            // 리뷰 사진 img 파일 삭제
+            List<String> reviewImgJsonList = mainAccountMapper.getReviewImgListByAccSeq(accSeq);
+
+            for (int i = 0; reviewImgJsonList.size() > i; i++) {
+                Type reviewImgListType = new TypeToken<List<String>>(){}.getType();
+                List<String> reviewImgList = new ArrayList<>();
+                reviewImgList.add(gson.fromJson(reviewImgJsonList.get(i), reviewImgListType));
+
+                for (int k = 0; reviewImgList.size() > k; k++) {
+                    FileUtil fileUtil = new FileUtil();
+                    fileUtil.delete(session, "/resources/img/review", reviewImgList.get(k));
+                }
+            }
+
+            // Review 테이블 데이터 삭제
+            mainAccountMapper.deleteReviewByAccSeq(accSeq);
+
+            // Dibs 테이블 데이터 삭제
+            mainAccountMapper.deleteDibsByAccSeq(accSeq);
+
+            // Member_coupon 테이블 데이터 삭제
+            mainAccountMapper.deleteMemberCouponByAccSeq(accSeq);
+
+            // Address 테이블 데이터 삭제
+            mainAccountMapper.deleteAddress(accSeq);
+
+            // Member 테이블 데이터 삭제
+            mainAccountMapper.deleteMember(accSeq);
+
+            // Account 테이블 데이터 삭제
+            mainAccountMapper.deleteAccount(accSeq);
+        }
     }
 
 
@@ -225,12 +324,19 @@ public class MainAccountService {
     /**
      * kakao 회원가입 메서드
      *
-     * @param dto
+     * @param accountDTO
      * @throws Exception
      */
-    public void kakaoSignUp(AccountDTO dto) throws Exception {
-        dto.setAcc_pw(Encryptor.getSHA512(dto.getAcc_pw()));
-        mainAccountMapper.kakaoSignUp(dto);
+    @Transactional
+    public void kakaoSignUp(AccountDTO accountDTO,MemberDTO memberDTO,AddressDTO addressDTO) throws Exception {
+        int getNextAccSeq = mainAccountMapper.getNextAccSeq();
+        accountDTO.setAcc_pw(Encryptor.getSHA512(accountDTO.getAcc_pw()));
+        accountDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.kakaoSignUp(accountDTO);
+        memberDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertMember(memberDTO);
+        addressDTO.setAcc_seq(getNextAccSeq);
+        mainAccountMapper.insertAddress(addressDTO);
     }
 
     public String getAccEmail(String acc_token) {
@@ -262,5 +368,41 @@ public class MainAccountService {
     public String selectType(int acc_seq){
         return mainAccountMapper.selectType(acc_seq);
     }
+
+
+    /**
+     * 이메일 찾기
+     */
+    public List<String> findEmailByPhoneNumber(String phoneNumber) {
+        return mainAccountMapper.findEmailByPhoneNumber(phoneNumber);
+    }
+
+    /**
+     * 비밀번호 찾기
+     */
+    public Integer findPassWordByPhoneNumber(String email, String phoneNumber) {
+        Map<String, String> param = new HashMap<>();
+        param.put("acc_email", email);
+        param.put("mem_phone", phoneNumber);
+        return mainAccountMapper.findSeqByEmailAndPhone(param);
+    }
+
+    /**
+     * 임시 비밀번호 발급
+     * @return 변경된 임시 비밀번호
+     */
+    public String modifyPassWordWithRandomCodeBySeq(int accSeq) {
+        String randomCode = generateRandomCode.excuteGenerate();
+        Map<String, Object> param = new HashMap<>();
+        param.put("acc_seq", accSeq);
+        param.put("acc_pw", Encryptor.getSHA512(randomCode));
+        mainAccountMapper.modifyPassWordWithRandomCodeBySeq(param);
+        return randomCode;
+    }
+
+
+
+
+
 
 }

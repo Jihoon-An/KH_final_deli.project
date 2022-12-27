@@ -1,5 +1,6 @@
 package kh.deli.domain.owner.service;
 
+import kh.deli.domain.owner.dto.StoreNameAndSeqRequestDTO;
 import kh.deli.domain.owner.mapper.OwnerStoreMapper;
 
 import kh.deli.global.entity.StoreDTO;
@@ -9,10 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -45,4 +43,29 @@ public class OwnerStoreService {
          ownerStoreMapper.modifyStore(storeDTO);
     }
 
+    public List<StoreNameAndSeqRequestDTO> getStoreListByOwnerSeq(int ownerSeq) {
+        Optional<List<StoreNameAndSeqRequestDTO>> storeList
+                = Optional.ofNullable(ownerStoreMapper.getSeqAndNameListByOwnerAccSeq(ownerSeq));
+        return storeList.orElse(new ArrayList<>());
+    }
+
+    public int getOwnerByStore(int storeSeq) {
+        Optional<Integer> ownerSeq
+                = Optional.ofNullable(ownerStoreMapper.getOwnerByStore(storeSeq));
+        return ownerSeq.orElse(19); //sample data
+    }
+
+    public List<StoreDTO> findByAccSeq(int accSeq) {
+        Optional<List<StoreDTO>> storeList
+                = Optional.ofNullable(ownerStoreMapper.findByAccSeq(accSeq));
+        return storeList.orElse(new ArrayList<>());
+    }
+
+    public void toggleDisplay(int storeSeq, String newVal) {
+        ownerStoreMapper.toggleDisplay(storeSeq, newVal);
+    }
+
+    public int selectOwnerSeq(int acc_seq){
+        return ownerStoreMapper.selectOwnerSeq(acc_seq);
+    }
 }

@@ -13,20 +13,17 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="/resources/css/main/memberMain.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/admin/adminMain.css" type="text/css">
 </head>
-<body>
+
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
+
 <main id="adminMain">
-    <div class="container">
-        <nav>
-            <a href="/admin/coupon/add">[운영자]쿠폰 추가 페이지</a><br>
-            <a href="/admin/coupon/list">[운영자]쿠폰 리스트 페이지</a><br>
-            <a href="/admin/review/">[운영자]리뷰 관리 페이지</a><br>
-            <a href="/admin/account/list/">[운영자]일반회원 관리 페이지</a><br>
-        </nav>
-        <hr>
-    </div>
-    <script src="/resources/js/main/home.js"></script>
+
+    통계?
+
+    <script src="/resources/js/admin/adminMain.js"></script>
 </main>
+</div>
 </body>
 </html>

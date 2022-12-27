@@ -42,17 +42,17 @@ public class OrderOrdersService {
     }
 
 
-    public StoreInfoDTO storeInfo(int order_seq) throws Exception{
-        return orderOrdersMapper.storeInfo(order_seq);
+    public StoreInfoDTO getStoreInfo(int order_seq) throws Exception{
+        return orderOrdersMapper.getStoreInfo(order_seq);
     }
 
 
-    public OrdererInfoDTO ordererInfo(int order_seq) throws Exception{
-        return orderOrdersMapper.ordererInfo(order_seq);
+    public OrdererInfoDTO getOrdererInfo(int order_seq) throws Exception{
+        return orderOrdersMapper.getOrdererInfo(order_seq);
     }
 
-    public PayInfoDTO payInfo(int order_seq) throws Exception{
-        return orderOrdersMapper.payInfo(order_seq);
+    public PayInfoDTO getPayInfo(int order_seq) throws Exception{
+        return orderOrdersMapper.getPayInfo(order_seq);
     }
 
     public OrdersDTO findOrdersBySeq(int order_seq) throws Exception {

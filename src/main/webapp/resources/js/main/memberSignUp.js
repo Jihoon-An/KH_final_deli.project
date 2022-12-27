@@ -63,7 +63,7 @@ $("#email_certi_btn").on("click", function () {
         }).done(function (result) {
             if (!result) { // 아이디가 존재하지않으므로 사용할 수 있는 경우
                 // 이메일 보내기
-                confirm_text = randomString();
+                confirmText = randomString();
                 sendAuthNum("#email_count");
                 $.ajax({
                     url: "/mailCerti",
@@ -71,7 +71,7 @@ $("#email_certi_btn").on("click", function () {
                     data: {
                         address: $("#acc_email").val(),
                         title: "Deli email confirm",
-                        message: "<h1>" + confirm_text + "</h1>"
+                        message: "<h1>" + confirmText + "</h1>"
                     }
                 });
                 $("#email_confirm_box").show();
@@ -146,13 +146,15 @@ $("#email_confirm_btn").click(function () {
 
 
 function email_confirm() {
-    if ($("#email_confirm_input").val() == confirm_text && $("#email_count").html() != "시간초과") {
+    if ($("#email_confirm_input").val() == confirmText && $("#email_count").html() != "시간초과") {
         $("#email_confirm_input").val("");
         $("#email_msg").html("");
         $("#email_msg").css("color", "#000000");
         $("#email_msg").hide();
         $("#email_confirm_box").hide();
         $("#acc_email").attr("disabled",true);
+        let acc_email_val = $("#acc_email").val();
+        $("#acc_email_hidden").val(acc_email_val);
         email_ok = true;
     } else if ($("#email_count").html() == "시간초과") {
         alert("인증을 다시 해주세요");
@@ -162,7 +164,6 @@ function email_confirm() {
         email_ok = false;
     }
 }
-
 
 // 휴대폰번호 - 값 입력 유효성 검사 display
 function phone_check() {
@@ -243,6 +244,8 @@ function phone_confirm() {
                 $("#phone_msg").hide();
                 $("#phone_confirm_box").hide();
                 $("#mem_phone").attr("disabled", true);
+                let mem_phone_val = $("#mem_phone").val();
+                $("#mem_phone_hidden").val(mem_phone_val);
                 phone_ok = true;
             } else if ($("#phone_count").html() == "시간초과") {
                 alert("인증을 다시 해주세요");
@@ -322,7 +325,7 @@ $("#submit_btn").click(function () {
         Swal.fire({
             icon: 'error',
             title: '옳바르지 않은 입력입니다.',
-            text: '비밀번호를 다시 확인해주세요.',
+            text: '핸드폰을 다시 확인해주세요.',
         });
         $("#pw").focus();
         return;
@@ -365,8 +368,10 @@ $(document).on("click", ".postsearch", function () {
             var addr = ''; // 주소 변수
             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                 addr = data.roadAddress;
+                document.getElementById("add_detail1").value = data.roadAddress;
             } else { // 사용자가 지번 주소를 선택했을 경우(J)
                 addr = data.jibunAddress;
+                document.getElementById("add_detail1").value = data.jibunAddress;
             }
             var geocoder = new kakao.maps.services.Geocoder();
             var callback = function (result, status) {
@@ -377,10 +382,9 @@ $(document).on("click", ".postsearch", function () {
                     document.getElementById("add_x").value = y;
                 }
             };
+
             geocoder.addressSearch(addr, callback);
             document.getElementById("postcode").value = data.zonecode;
-            document.getElementById("add_detail1").value = data.roadAddress;
-            document.getElementById("add_detail1").value = data.jibunAddress;
             document.getElementById("add_detail2").focus();
         }
     }).open();

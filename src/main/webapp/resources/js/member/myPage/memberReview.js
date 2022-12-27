@@ -1,17 +1,4 @@
 
-$(document).ready(function () {
-
-    let contact = $.extend(true, [], list);
-
-    for (let i = 0; i < contact.length; i++) {
-        console.log(contact[i]);
-        let div = $("<div>")
-        div.text(contact[i]);
-        $(".menuBox").append(div);
-    }
-})
-
-
 $("#back").on("click", function () {
     location.href = "/";
 })
@@ -51,4 +38,14 @@ $("#writeBtn").on("click", function () {
         console.log("넣은 후" + $("#rev_sysmname").val());
     }
     $("#reviewPost").submit();
+})
+
+
+$("#revContent").on("keyup",function (){
+    let content = $(this).val();
+    $("#count").html(content.length+" / 300");
+
+    if(content.length > 300){
+        alert("최대 300글자까지 입력 가능합니다.");
+    }
 })

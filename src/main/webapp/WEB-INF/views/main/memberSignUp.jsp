@@ -28,10 +28,11 @@
 <form id="signup_frm" method="post" action="/account/kakaoSignUp">
     <input type="hidden" name="acc_type" value="client">
     <input type="hidden" name="acc_sns" value="kakao">
-    <input type="hidden" name="acc_token" value="${acc_token}">
+    <input type="text" name="acc_token" value="${acc_token}">
 
     <h1>회원가입 추가 정보 입력</h1>
-    <a href="/account/kakaoUnLink"><button type="button">꺼져</button> </a>
+    스크립트에 카카오 아이디 있으면 회원탈퇴로 안내해주기.
+    <a href="/account/kakaoUnLink"><button type="button">그냥 가입안할래요. 연동 해지해주세요.</button></a><br>
     </c:when>
     <c:otherwise>
 <form id="signup_frm" method="post" action="/account/memberSignUp">
@@ -45,7 +46,8 @@
 </c:choose>
 
     <%--이메일 입력--%>
-    <input type="text" placeholder="이메일 주소 입력" name="acc_email" id="acc_email" maxlength='38'>
+    <input type="text" placeholder="이메일 주소 입력" id="acc_email" maxlength='38'>
+    <input type="hidden" placeholder="이메일 주소 입력" name="acc_email" id="acc_email_hidden" maxlength='38'>
     <button type="button" id="email_certi_btn">인증</button><br>
     <p id="email_msg" style="display: none">이메일 양식에 맞게 썼는지 + 중복 확인 중입니다.</p>
     <%--이메일 인증--%>
@@ -66,7 +68,9 @@
     <hr>
 
     <%--phone 입력--%>
-    <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone" maxlength='11' oninput=validNum()>
+    <input type="text" placeholder="핸드폰 번호 숫자만 입력" id="mem_phone" maxlength='11' oninput=validNum()>
+    <input type="hidden" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden" maxlength='11' oninput=validNum()>
+
     <button type="button" id="phone_certi_btn">인증</button><br>
     <p id="phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>
     <%--phone 인증--%>
@@ -85,7 +89,7 @@
     <br>
     <input type="text" id="add_detail1" name="add_detail1" placeholder="기본주소" readonly>
     <br>
-    <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소">
+    <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소" maxlength='50'>
     <br>
     <input type="hidden" id="add_x" name="add_x">
     <input type="hidden" id="add_y" name="add_y">

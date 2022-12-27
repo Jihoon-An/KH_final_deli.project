@@ -39,11 +39,13 @@ public class OrdersController {
     public ModelAndView toOrders() throws  Exception{
 
 
-//        String email = (String)session.getAttribute("loginEmail");
+        String email = (String)session.getAttribute("loginEmail");
 //        System.out.println(email);
         OrderOrdersDTO orderOrdersDTO = new OrderOrdersDTO();
-        orderOrdersDTO.setOrder_price(10000); // 이거 세션에 있는 값 넣어서 넘겨
+//        orderOrdersDTO.setOrder_price((Integer) session.getAttribute("order_price"));
+//        orderOrdersDTO.setOrder_price(10000); // 이거 세션에 있는 값 넣어서 넘기기
 //        param.setSeq("39");
+
 //        OrderOrdersDTO userInfo = orderOrdersService.selectSessionInfo(param);
 
 
@@ -57,13 +59,13 @@ public class OrdersController {
 
     @RequestMapping("selectInitInfo")
     @ResponseBody
-    public OrderOrdersDTO selectInitInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO){
+    public OrderOrdersDTO selectInitInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO) throws Exception {
         OrderOrdersDTO result = orderOrdersService.selectInitInfo(ordersDTO);
-//        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basketDTO");
-//        int storeSeq = basketDTO.getStoreSeq();
-//        StoreDTO storeDTO = storeStoreService.storeInfo(storeSeq);
-//        int tip = storeDTO.getStore_deli_tip();
-//        result.setDelivery_tip(tip);
+        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
+        int storeSeq = basketDTO.getStoreSeq();
+        StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
+        int tip = storeDTO.getStore_deli_tip();
+        result.setDelivery_tip(tip);
 
         return result;
     }
@@ -94,45 +96,45 @@ public class OrdersController {
     @ResponseBody
     public ModelAndView saveOrder(OrderOrdersDTO orderOrdersDTO) throws Exception {
 
-//        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basketDTO");
-//        int storeSeq = basketDTO.getStoreSeq();
-//        int accSeq = (int) session.getAttribute("acc_seq");
-//        List<StoreBasketMenuRequestDTO> manuList = basketDTO.getMenuList();
-//        Gson gson = new Gson();
-//        String manuListStr = gson.toJson(manuList);
-//        orderOrdersDTO.setMenuList(manuListStr);
-//        StoreDTO storeDTO = storeStoreService.storeInfo(storeSeq);
-//        int tip = storeDTO.getStore_deli_tip();
-//        orderOrdersDTO.setDelivery_tip(tip);
+        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basketDTO");
+        int storeSeq = basketDTO.getStoreSeq();
+        int accSeq = (int) session.getAttribute("acc_seq");
+        List<StoreBasketMenuRequestDTO> manuList = basketDTO.getMenuList();
+        Gson gson = new Gson();
+        String manuListStr = gson.toJson(manuList);
+        orderOrdersDTO.setMenuList(manuListStr);
+        StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
+        int tip = storeDTO.getStore_deli_tip();
+        orderOrdersDTO.setDelivery_tip(tip);
+
 
         // temp code start
-        StoreDTO storeDTO = storeStoreService.storeInfo(21);
-        //int tip = storeDTO.getStore_deli_tip();
-        //orderOrdersDTO.setDelivery_tip(tip);
-        List<StoreBasketMenuRequestDTO> list = new ArrayList<>();
-        StoreBasketMenuRequestDTO temp = new StoreBasketMenuRequestDTO();
-        temp.setCount(1);
-        temp.setPrice(1);
-        temp.setOptionSeqList(new ArrayList<>());
-        temp.setMenuSeq(1);
-        temp.setStoreSeq(1);
-        list.add(temp);
-
-        temp = new StoreBasketMenuRequestDTO();
-        temp.setCount(2);
-        temp.setPrice(2);
-        temp.setOptionSeqList(new ArrayList<>());
-        temp.setMenuSeq(2);
-        temp.setStoreSeq(2);
-        list.add(temp);
-
-        Gson gson = new Gson();
-        String menuList = gson.toJson(list);
-        orderOrdersDTO.setAcc_seq("39");
-        orderOrdersDTO.setStore_seq(21);
-        orderOrdersDTO.setMenuList(menuList);
+//        StoreDTO storeDTO = storeStoreService.getStoreInfo(21);
+//        int tip = storeDTO.getStore_deli_tip();
+//        orderOrdersDTO.setDelivery_tip(tip);
+//        List<StoreBasketMenuRequestDTO> list = new ArrayList<>();
+//        StoreBasketMenuRequestDTO temp = new StoreBasketMenuRequestDTO();
+//        temp.setCount(1);
+//        temp.setPrice(1);
+//        temp.setOptionSeqList(new ArrayList<>());
+//        temp.setMenuSeq(1);
+//        temp.setStoreSeq(1);
+//        list.add(temp);
+//
+//        temp = new StoreBasketMenuRequestDTO();
+//        temp.setCount(2);
+//        temp.setPrice(2);
+//        temp.setOptionSeqList(new ArrayList<>());
+//        temp.setMenuSeq(2);
+//        temp.setStoreSeq(2);
+//        list.add(temp);
+//
+//        Gson gson = new Gson();
+//        String menuList = gson.toJson(list);
+//        orderOrdersDTO.setAcc_seq("39");
+//        orderOrdersDTO.setStore_seq(21);
+//        orderOrdersDTO.setMenuList(menuList);
         // temp code end
-
 
         orderOrdersService.insertOrder(orderOrdersDTO);
         orderOrdersService.deleteCouponList(orderOrdersDTO);
@@ -148,7 +150,6 @@ public class OrdersController {
 
         orderOrdersDTO.setOwnPoint(String.valueOf(ownPoint));
         orderOrdersService.updateOwnPoint(orderOrdersDTO);
-
 
 
         ModelAndView mav = new ModelAndView();

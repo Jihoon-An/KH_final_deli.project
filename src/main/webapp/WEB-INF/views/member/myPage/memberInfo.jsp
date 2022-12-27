@@ -9,7 +9,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>내 정보 수정</title>
+    <title>딜리 - 내 정보 수정</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -95,11 +98,10 @@
 
             <div class="infoBox">
                 <div class="infoTitleBox">
-                    <span>hidden</span><br>
                     <span>휴대폰번호</span>
                 </div>
                 <div class="infoInputBox phoneBox">
-                    <input type="text" id="oldPhoneNumber" value="${memberInfo.mem_phone}">
+                    <input type="hidden" id="oldPhoneNumber" value="${memberInfo.mem_phone}">
                     <input type="text" id="mem_phone" name="mem_phone" value="${memberInfo.mem_phone}" placeholder="핸드폰 번호 숫자만 입력" maxlength='11' oninput=validNum()>
                     <button type="button" id="reCertificationBtn">재인증</button>
                     <button type="button" id="phone_certi_btn">발송</button>

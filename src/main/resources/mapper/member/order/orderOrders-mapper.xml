@@ -69,45 +69,85 @@
         WHERE M.ACC_SEQ = #{orderOrdersDTO.acc_seq}
     </select>
 
-    <select id="storeInfo" resultType="StoreInfoDTO">
-        select
-            store_phone,
-            store_add_detail1,
-            store_add_detail2,
-            store_name,
-            store_deli_time,
-            orders.order_seq,
-            order_date
-        from store,orders
-        where store.store_seq=orders.store_seq
-        and order_seq=${order_seq}
+
+    <insert id="insertPayment" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        INSERT INTO
+        PAYMENT (PAY_SEQ,PAY_DATE,PAY_PRICE,PAY_PERIOD)
+        VALUES(
+        PAY_SEQ.NEXTVAL,
+        #{PAY_DATE},
+        #{PAY_PRICE},
+        #{PAY_PERIOD}
+        )
+
+    </insert>
+
+    <insert id="insertOrders" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
+        INSERT INTO
+        ORDERS (ORDER_SEQ,MENU_LIST,ORDER_DISPOSABLE,ORDER_STORE_REQ,ORDER_RIDER_REQ)
+        VALUES(
+        ORDER_SEQ.NEXTVAL,
+        #{MENU_LIST},
+        #{ORDER_DISPOSABLE},
+        #{ORDER_STORE_REQ},
+        #{ORDER_RIDER_REQ}
+        )
+
+    </insert>
+
+    <select id="getStoreInfo" resultType="StoreInfoDTO">
+        SELECT
+            STORE_PHONE,
+            STORE_ADD_DETAIL1,
+            STORE_ADD_DETAIL2,
+            STORE_NAME,
+            STORE_DELI_TIME,
+            ORDERS.ORDER_SEQ,
+            ORDER_DATE
+        FROM STORE,ORDERS
+        WHERE STORE.STORE_SEQ=ORDERS.STORE_SEQ
+        AND ORDER_SEQ=${order_seq}
     </select>
 
-    <select id="ordererInfo" resultType="OrdererInfoDTO">
-        select
-            mem_phone,
-            order_store_req,
-            order_rider_req,
-            order_disposable,
-            address.add_detail1 as address_add_detail1,
-            orders.add_detail2 as orders_add_detail2
-        from member,orders,address
-        where orders.acc_seq=member.acc_seq
-        and address.add_seq=orders.add_seq
-        and order_seq=${order_seq}
+    <select id="getOrdererInfo" resultType="OrdererInfoDTO">
+        SELECT
+        MEM_PHONE,
+        ORDER_STORE_REQ,
+        ORDER_RIDER_REQ,
+        ORDER_DISPOSABLE,
+        ADDRESS.ADD_DETAIL1 AS ADDRESS_ADD_DETAIL1,
+        ORDERS.ADD_DETAIL2 AS ORDERS_ADD_DETAIL2
+        FROM MEMBER JOIN ORDERS
+        ON ORDERS.ACC_SEQ=MEMBER.ACC_SEQ
+        JOIN ADDRESS
+        ON ADDRESS.ADD_SEQ=ORDERS.ADD_SEQ
+        WHERE ORDER_SEQ=#{order_seq}
     </select>
 
-    <select id="payInfo" resultType="PayInfoDTO">
-        select
-            order_price,
-            (pay_price*cp_discount/100) as discountByCoupon,
-            order_point,
-            delivery_tip,
-            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,
-            pay_method
-        from orders,coupon
-        where orders.cp_seq=coupon.cp_seq
-        and order_seq=${order_seq}
+    <select id="getPayInfo" resultType="PayInfoDTO">
+<!--        select-->
+<!--            order_price,-->
+<!--            (pay_price*cp_discount/100) as discountByCoupon,-->
+<!--            order_point,-->
+<!--            delivery_tip,-->
+<!--            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,-->
+<!--            pay_method-->
+<!--        from orders-->
+<!--        ,coupon-->
+<!--        where-->
+<!--        orders.cp_seq=coupon.cp_seq and-->
+<!--        order_seq=${order_seq}-->
+
+        SELECT
+        ORDER_PRICE,
+        (PAY_PRICE*CP_DISCOUNT/100) AS discountByCoupon,
+        ORDER_POINT,
+        DELIVERY_TIP,
+        (ORDER_PRICE-(PAY_PRICE*CP_DISCOUNT/100)-ORDER_POINT+DELIVERY_TIP) AS pay_price,
+        PAY_METHOD
+        FROM ORDERS LEFT JOIN COUPON
+        ON ORDERS.CP_SEQ=COUPON.CP_SEQ
+        WHERE ORDER_SEQ=#{order_seq}
     </select>
 
     <insert id="insertOrder" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO">

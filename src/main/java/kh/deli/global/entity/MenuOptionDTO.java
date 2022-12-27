@@ -1,12 +1,9 @@
 package kh.deli.global.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuOptionDTO {
@@ -16,4 +13,5 @@ public class MenuOptionDTO {
     private String option_name;
     private int option_price;
     private String option_required;
+    private String option_multiple;
 }

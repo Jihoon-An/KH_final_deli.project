@@ -10,14 +10,16 @@
 <html>
 <head>
     <title>Title</title>
-
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
 
     <!--bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
           crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -25,7 +27,8 @@
             crossorigin="anonymous"></script>
 
     <%--data tables--%>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
@@ -35,6 +38,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="coupon_list">
     <div id="table_area">
         <!-- 테이블 -->
@@ -72,24 +76,36 @@
             </tbody>
         </table>
     </div>
+
+    <a href="/admin/coupon/add">
+        <button id="add_cp_btn">쿠폰 추가</button>
+    </a>
+
     <!-- 모달 -->
     <div id="modal">
         <div id="close_modal">X</div>
         <div id="modal_content">
             modal_cp_seq wheat
-            <input type="hidden" id="modal_cp_seq" placeholder="seq" style="background-color: wheat;" readonly>
+            <input type="hidden" id="modal_cp_seq" placeholder="seq"
+                   style="background-color: wheat;" readonly>
             modal_cp_name Red
-            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;" readonly>
+            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;"
+                   readonly>
             modal_cp_code Dodgerblue
-            <input type="text" id="modal_cp_code" placeholder="code" style="background-color: dodgerblue;" readonly>
+            <input type="text" id="modal_cp_code" placeholder="code"
+                   style="background-color: dodgerblue;" readonly>
             modal_cp_content white
-            <input type="text" id="modal_cp_content" placeholder="content" style="background-color: white;" readonly>
+            <input type="text" id="modal_cp_content" placeholder="content"
+                   style="background-color: white;" readonly>
             modal_cp_type yellow
-            <input type="text" id="modal_cp_type" placeholder="cp_type" style="background-color: yellow;" readonly>
+            <input type="text" id="modal_cp_type" placeholder="cp_type"
+                   style="background-color: yellow;" readonly>
             modal_cp_discount Green
-            <input type="text" id="modal_cp_discount" placeholder="cp_discount" style="background-color: green;" readonly>
+            <input type="text" id="modal_cp_discount" placeholder="cp_discount"
+                   style="background-color: green;" readonly>
             modal_cp_period Salmon
-            <input type="text" id="modal_cp_period" placeholder="cp_period" style="background-color: salmon;" readonly>
+            <input type="text" id="modal_cp_period" placeholder="cp_period"
+                   style="background-color: salmon;" readonly>
         </div>
         <div id="modal_btn_area">
             <button id="publish_btn" type="button">발행</button>

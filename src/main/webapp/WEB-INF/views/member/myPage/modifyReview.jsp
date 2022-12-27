@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/resources/css/member/myPage/modifyReview.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 <main id="modify_review">
     <div>
         <form action="/myPage/review/modify" id="reviewPost" method="post" enctype="multipart/form-data">
@@ -36,21 +39,21 @@
                 <div>
                     <fieldset>
                         <c:if test="${review_dto.rev_star eq 1}">
-                        <input type="radio" name="rev_star" value="1" id="rate1" checked><label
-                            for="rate1" >★</label>
-                        <input type="radio" name="rev_star" value="2" id="rate2"><label
-                            for="rate2">★</label>
-                        <input type="radio" name="rev_star" value="3" id="rate3"><label
-                            for="rate3">★</label>
-                        <input type="radio" name="rev_star" value="4" id="rate4"><label
-                            for="rate4">★</label>
-                        <input type="radio" name="rev_star" value="5" id="rate5"><label
-                            for="rate5">★</label>
+                            <input type="radio" name="rev_star" value="1" id="rate1" checked><label
+                                for="rate1">★</label>
+                            <input type="radio" name="rev_star" value="2" id="rate2"><label
+                                for="rate2">★</label>
+                            <input type="radio" name="rev_star" value="3" id="rate3"><label
+                                for="rate3">★</label>
+                            <input type="radio" name="rev_star" value="4" id="rate4"><label
+                                for="rate4">★</label>
+                            <input type="radio" name="rev_star" value="5" id="rate5"><label
+                                for="rate5">★</label>
                         </c:if>
 
                         <c:if test="${review_dto.rev_star eq 2}">
                             <input type="radio" name="rev_star" value="1" id="rate1"><label
-                                for="rate1" >★</label>
+                                for="rate1">★</label>
                             <input type="radio" name="rev_star" value="2" id="rate2" checked><label
                                 for="rate2">★</label>
                             <input type="radio" name="rev_star" value="3" id="rate3"><label
@@ -63,7 +66,7 @@
 
                         <c:if test="${review_dto.rev_star eq 3}">
                             <input type="radio" name="rev_star" value="1" id="rate1"><label
-                                for="rate1" >★</label>
+                                for="rate1">★</label>
                             <input type="radio" name="rev_star" value="2" id="rate2"><label
                                 for="rate2">★</label>
                             <input type="radio" name="rev_star" value="3" id="rate3" checked><label
@@ -76,7 +79,7 @@
 
                         <c:if test="${review_dto.rev_star eq 4}">
                             <input type="radio" name="rev_star" value="1" id="rate1"><label
-                                for="rate1" >★</label>
+                                for="rate1">★</label>
                             <input type="radio" name="rev_star" value="2" id="rate2"><label
                                 for="rate2">★</label>
                             <input type="radio" name="rev_star" value="3" id="rate3"><label
@@ -89,7 +92,7 @@
 
                         <c:if test="${review_dto.rev_star eq 5}">
                             <input type="radio" name="rev_star" value="1" id="rate1"><label
-                                for="rate1" >★</label>
+                                for="rate1">★</label>
                             <input type="radio" name="rev_star" value="2" id="rate2"><label
                                 for="rate2">★</label>
                             <input type="radio" name="rev_star" value="3" id="rate3"><label
@@ -109,27 +112,26 @@
                         <%
                             ReviewDTO reviewDTO = (ReviewDTO) request.getAttribute("review_dto");
                             String reviewSysName = reviewDTO.getRev_sysname();
-                            //System.out.println("ddddddddddddddddddddddddddddddddd"+reviewSysName);
+//                            System.out.println("ddddddddddddddddddddddddddddddddd" + reviewSysName);
                             Gson gson = new Gson();
-                            Type type = new TypeToken<List<String>>(){}.getType();
+                            Type type = new TypeToken<List<String>>() {
+                            }.getType();
                             request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                         %>
-<%--                        <c:forEach var="sysName" items="${review_img_list}">--%>
-<%--                            <div class="review_img_div">--%>
-<%--                                <img src="/resources/img/review/${sysName}">--%>
-<%--                                <input type="hidden" class="img_name" value="${sysName}">--%>
-<%--                                <button type="button" class="del_img_btn">지우기</button>--%>
-<%--                            </div>--%>
-<%--                        </c:forEach>--%>
-                        <c:forEach var="sysName" items="${frmImg}">
+                        <%--                        <c:forEach var="sysName" items="${review_img_list}">--%>
+                        <%--                            <div class="review_img_div">--%>
+                        <%--                                <img src="/resources/img/review/${sysName}">--%>
+                        <%--                                <input type="hidden" class="img_name" value="${sysName}">--%>
+                        <%--                                <button type="button" class="del_img_btn">지우기</button>--%>
+                        <%--                            </div>--%>
+                        <%--                        </c:forEach>--%>
+                        <c:forEach var="store" items="${review_img_list}">
                             <div class="review_img_div">
-                                <img src="/resources/img/review/${sysName}">
-                                <input type="hidden" class="img_name" value="${sysName}">
+                                <img src="/resources/img/review/${store}">
+                                <input type="hidden" class="img_name" value="${store}">
                                 <button type="button" class="del_img_btn">지우기</button>
                             </div>
                         </c:forEach>
-
-
                     </c:when>
                 </c:choose>
             </div>
@@ -144,14 +146,21 @@
             </div>
             <div>
                 <div> 주문한 메뉴</div>
+                <c:choose>
+                    <c:when test="${not empty menuNameList}">
+                        <c:forEach var="i" items="${menuNameList}">
+                            <div>${i}</div>
+                        </c:forEach>
+                    </c:when>
+                </c:choose>
                 <input type="text" value="${orders_dto.order_seq}" name="order_seq">
                 <input type="text" value="${orders_dto.acc_seq}" name="acc_seq">
                 <input type="text" value="${orders_dto.store_seq}" name="store_seq">
                 <input type="text" value="${orders_dto.order_price}">
                 <c:choose>
                     <c:when test="${not empty orders_dto.menu_list}">
-<%--                        <c:forEach var="sysName" items="${orders_dto.menu_list}">--%>
-<%--                        </c:forEach>--%>
+                        <%--                        <c:forEach var="sysName" items="${orders_dto.menu_list}">--%>
+                        <%--                        </c:forEach>--%>
                     </c:when>
                 </c:choose>
             </div>
