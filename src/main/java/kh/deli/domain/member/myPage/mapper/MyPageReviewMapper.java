@@ -29,10 +29,8 @@ public interface MyPageReviewMapper {
 
     public List<Map<String, Object>> getReviews(@Param("myReviewDTO") MypageReviewDTO param);
 
-    @Select("SELECT COUNT(*) AS CNT FROM REVIEW WHERE ACC_SEQ = #{acc_seq};")
-    static int getReviewCount(@Param("MypageReviewDTO") MypageReviewDTO reviewDTO) {
-        return 0;
-    }
+
+    public int getReviewCount(@Param("myReviewDTO") MypageReviewDTO reviewDTO);
 
 //    static int getReviewCount(@Param("reviewCount") MypageReviewDTO param) {
 //        return 0;

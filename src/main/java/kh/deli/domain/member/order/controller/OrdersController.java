@@ -1,7 +1,12 @@
 package kh.deli.domain.member.order.controller;
 
+import com.google.gson.Gson;
 import kh.deli.domain.member.order.dto.OrderOrdersDTO;
 import kh.deli.domain.member.order.service.OrderOrdersService;
+import kh.deli.domain.member.store.dto.BasketDTO;
+import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
+import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,28 +29,43 @@ public class OrdersController {
 
     @Autowired
     OrderOrdersService orderOrdersService;
+    @Autowired
+    StoreStoreService storeStoreService;
 
     private final OrderOrdersService ordersService;
 
     // 주문 페이지로 이동
     @RequestMapping("")
     public ModelAndView toOrders() throws  Exception{
-        OrderOrdersDTO param = new OrderOrdersDTO();
-        param.setSeq("39");
-        OrderOrdersDTO userInfo = orderOrdersService.selectSessionInfo(param);
+
+
+//        String email = (String)session.getAttribute("loginEmail");
+//        System.out.println(email);
+        OrderOrdersDTO orderOrdersDTO = new OrderOrdersDTO();
+        orderOrdersDTO.setOrder_price(10000); // 이거 세션에 있는 값 넣어서 넘겨
+//        param.setSeq("39");
+//        OrderOrdersDTO userInfo = orderOrdersService.selectSessionInfo(param);
+
+
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("/member/order/orders");
-        mav.addObject("userInfo", userInfo);
+        mav.addObject("orderOrdersDTO", orderOrdersDTO);
+//        mav.addObject("userInfo", userInfo);
         return mav;
     }
 
     @RequestMapping("selectInitInfo")
     @ResponseBody
     public OrderOrdersDTO selectInitInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO){
-        //String acc_email = (String)session.getAttribute("acc_email");
+        OrderOrdersDTO result = orderOrdersService.selectInitInfo(ordersDTO);
+//        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basketDTO");
+//        int storeSeq = basketDTO.getStoreSeq();
+//        StoreDTO storeDTO = storeStoreService.storeInfo(storeSeq);
+//        int tip = storeDTO.getStore_deli_tip();
+//        result.setDelivery_tip(tip);
 
-        return orderOrdersService.selectInitInfo(ordersDTO);
+        return result;
     }
     @RequestMapping("updateMemberAddr")
     @ResponseBody
@@ -68,13 +89,75 @@ public class OrdersController {
         return a;
     }
 
-    @RequestMapping("insertPayment")
+
+    @RequestMapping("insertOrder")
     @ResponseBody
-    public void insertPayment (OrderOrdersDTO ordersDTO){orderOrdersService.insertPayment(ordersDTO);}
+    public ModelAndView saveOrder(OrderOrdersDTO orderOrdersDTO) throws Exception {
+
+//        BasketDTO basketDTO = (BasketDTO) session.getAttribute("basketDTO");
+//        int storeSeq = basketDTO.getStoreSeq();
+//        int accSeq = (int) session.getAttribute("acc_seq");
+//        List<StoreBasketMenuRequestDTO> manuList = basketDTO.getMenuList();
+//        Gson gson = new Gson();
+//        String manuListStr = gson.toJson(manuList);
+//        orderOrdersDTO.setMenuList(manuListStr);
+//        StoreDTO storeDTO = storeStoreService.storeInfo(storeSeq);
+//        int tip = storeDTO.getStore_deli_tip();
+//        orderOrdersDTO.setDelivery_tip(tip);
+
+        // temp code start
+        StoreDTO storeDTO = storeStoreService.storeInfo(21);
+        //int tip = storeDTO.getStore_deli_tip();
+        //orderOrdersDTO.setDelivery_tip(tip);
+        List<StoreBasketMenuRequestDTO> list = new ArrayList<>();
+        StoreBasketMenuRequestDTO temp = new StoreBasketMenuRequestDTO();
+        temp.setCount(1);
+        temp.setPrice(1);
+        temp.setOptionSeqList(new ArrayList<>());
+        temp.setMenuSeq(1);
+        temp.setStoreSeq(1);
+        list.add(temp);
+
+        temp = new StoreBasketMenuRequestDTO();
+        temp.setCount(2);
+        temp.setPrice(2);
+        temp.setOptionSeqList(new ArrayList<>());
+        temp.setMenuSeq(2);
+        temp.setStoreSeq(2);
+        list.add(temp);
+
+        Gson gson = new Gson();
+        String menuList = gson.toJson(list);
+        orderOrdersDTO.setAcc_seq("39");
+        orderOrdersDTO.setStore_seq(21);
+        orderOrdersDTO.setMenuList(menuList);
+        // temp code end
 
 
-    @RequestMapping("insertOrders")
-    @ResponseBody
-    public void insertOrders(OrderOrdersDTO ordersDTO){orderOrdersService.insertOrders(ordersDTO);}
+        orderOrdersService.insertOrder(orderOrdersDTO);
+        orderOrdersService.deleteCouponList(orderOrdersDTO);
+
+
+
+        //보유포인트 차감 & 적립
+        int orgPoint = Integer.parseInt(orderOrdersDTO.getOwnPoint());
+        int ordPrice = orderOrdersDTO.getOrder_price();
+        int usePoint = orderOrdersDTO.getUsePoint();
+        int savePoint = (int) Math.round(ordPrice * 0.01);
+        int ownPoint = orgPoint - usePoint + savePoint;
+
+        orderOrdersDTO.setOwnPoint(String.valueOf(ownPoint));
+        orderOrdersService.updateOwnPoint(orderOrdersDTO);
+
+
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/member/order/orderDetail");
+        mav.addObject("orderOrdersDTO", orderOrdersDTO);
+
+        return mav;
+
+    }
+
 
 }

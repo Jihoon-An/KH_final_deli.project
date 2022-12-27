@@ -20,9 +20,6 @@ public interface OrderOrdersMapper {
     public void updateMemberAddr(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 
     public int updateMemberPhone(@Param("orderOrdersDTO")OrderOrdersDTO ordersDTO);
-    public OrderOrdersDTO insertPayment(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
-
-    public OrderOrdersDTO insertOrders(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 
     
     StoreInfoDTO storeInfo(int order_seq);
@@ -38,5 +35,14 @@ public interface OrderOrdersMapper {
     
     @Select("select * from orders where order_seq = #{order_seq}")
     OrdersDTO findOrdersBySeq(int order_seq);
+
+    void insertOrder(@Param("orderOrdersDTO")OrderOrdersDTO orderOrdersDTO);
+
+    // UpdateCouponList, UpdateOwnPointMinus, UpdateOwnPointPlus
+
+    void deleteCouponList(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
+
+    void updateOwnPoint(@Param("orderOrderDTO")OrderOrdersDTO orderOrdersDTO);
+
 
 }
