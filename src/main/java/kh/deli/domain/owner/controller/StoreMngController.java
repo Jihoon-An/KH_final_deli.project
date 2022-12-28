@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/store/mng")
+@RequestMapping("owner/store/mng")
 
 public class StoreMngController {
 

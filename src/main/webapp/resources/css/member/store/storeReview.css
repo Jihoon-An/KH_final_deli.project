@@ -23,13 +23,13 @@
 
 #storeReview .header #storeName {
     line-height: 70px;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #storeReview .header #star {
     width: 95%;
     font-size: 17px;
-
 }
 
 #storeReview .header #reviewCount {
@@ -45,13 +45,12 @@
 
 #storeReview .deliveryInfo {
     width: 95%;
-    font-size: 17px;
 }
 
 
 #storeReview .deliveryInfo div {
     line-height: 27px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 #storeReview .fieldBox {
