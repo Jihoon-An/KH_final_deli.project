@@ -3,18 +3,25 @@
 }
 
 #order_history div {
-    border: 1px solid black;
+ // border: 1px solid black;
 }
 
 #order_history .container {
     width: 360px;
-    height: 800px;
-    overflow: hidden;
+    /*height: 100px;*/
+    margin-top: 45px;
+    margin-bottom: 75px;
+    /*overflow: hidden;*/
 }
 #order_history .box1{
-    width: 100%;
-    height: 100px;
-    margin-top: 40px;
+    border-radius: 20px;
+    width: 350px;
+    height: 130px;
+    padding: 6px 13px 6px 13px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0,0,0,0.1);
 }
 #order_history .box2{
     width: 100%;
@@ -26,38 +33,43 @@
     height: 85%;
 }
 
-/*#order_history .head_deli{*/
-/*    margin-right: 15px;*/
-/*    height: 100%;*/
-/*    padding-left: 3px;*/
-/*}*/
-/*#order_history .head_date{*/
-/*    margin-right: 10px;*/
-/*    padding-left: 3px;*/
-/*}*/
-/*#order_history .head_status{*/
-/*    float:right;*/
-/*    padding-right: 3px;*/
-/*}*/
-/*#order_history .image-box {*/
-/*    width:100px;*/
-/*    height:60px;*/
-/*    overflow:hidden;*/
-/*    margin:0 auto;*/
-/*    float: left;*/
-/*}*/
-/*#order_history .image-thumbnail {*/
-/*    width:100%;*/
-/*    height:100%;*/
-/*    object-fit:scale-down;*/
-/*}*/
-/*#order_history .info{*/
-/*    margin: 9px;*/
-/*    width: 65%;*/
-/*    height: 60px;*/
-/*    float: left;*/
+#order_history .head_deli{
+    margin-right: 15px;
+    height: 100%;
+    padding-left: 3px;
+}
+#order_history .head_date{
+    margin-right: 10px;
+    padding-left: 3px;
+}
+#order_history .head_status{
+    float:right;
+    padding-right: 3px;
+}
+#order_history .image-box {
+    width:30%;
+    height:100%;
+    overflow:hidden;
+    margin:0 auto;
+    float: left;
+}
+#order_history .image-thumbnail {
+    width:100%;
+    height:100%;
+    object-fit:scale-down;
+}
+#order_history .info{
+    margin: 1px;
+    width: 70%;
+    height: 90px;
+    /*float: left;*/
 
-/*}*/
+    overflow: hidden;
+    text-align: left;
+
+}
+
+
 
 #order_history .storename{
     margin-left :2px;
@@ -70,5 +82,20 @@
     height: 10px;
 }
 #order_history .meinfo{
-    /* font-size: 8px; */
+     font-size: 11px;
+    line-height: 30px;
+}
+
+#order_history .infoFooter{
+    line-height: 30px;
+
+
+
+}
+
+#order_history .infoFooter button{
+    
+        height: 30px;
+
+    line-height: 10px;
 }
