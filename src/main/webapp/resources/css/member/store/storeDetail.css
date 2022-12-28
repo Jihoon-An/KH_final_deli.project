@@ -1,57 +1,56 @@
-#storeDetail * {
+#store_detail * {
     box-sizing: border-box;
 }
 
-#storeDetail .container {
+#store_detail .container {
     width: 360px;
     margin: auto;
-    padding-top:40px ;
+    padding-top: 40px;
 }
 
-#storeDetail .header {
+#store_detail .header {
     overflow: hidden;
 }
 
-#storeDetail .header > div {
+#store_detail .header > div {
     text-align: center;
     width: 95%;
     margin: auto;
 }
 
-#storeDetail .header #storeName {
+#store_detail .header #storeName {
     line-height: 70px;
 }
 
-#storeDetail .header #star {
+#store_detail .header #star {
     width: 95%;
 }
 
-#storeDetail .header #reviewCount {
+#store_detail .header #reviewCount {
     width: 95%;
 }
 
-#storeDetail .header #storeInfo {
+#store_detail .header #storeInfo {
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-#storeDetail .deliveryInfo {
+#store_detail .deliveryInfo {
     width: 95%;
 }
 
-
-#storeDetail .deliveryInfo div {
+#store_detail .deliveryInfo div {
     line-height: 27px;
 }
 
-#storeDetail .fieldBox {
+#store_detail .fieldBox {
     width: 95%;
     margin: auto;
     overflow: hidden;
 }
 
-#storeDetail .fieldBox div {
+#store_detail .fieldBox div {
     float: left;
     width: 33.33%;
     height: 45px;
@@ -60,12 +59,12 @@
     margin-top: 10px;
 }
 
-#storeDetail .fieldBox div a {
+#store_detail .fieldBox div a {
     text-decoration: none;
     color: black;
 }
 
-#storeDetail .category {
+#store_detail .category {
     width: 340.5px;
     position: relative;
     overflow: hidden;
@@ -74,7 +73,7 @@
     word-wrap: normal;
 }
 
-#storeDetail .category div {
+#store_detail .category div {
     float: left;
     position: relative;
     border: 1px solid black;
@@ -83,52 +82,280 @@
     margin-right: 7px;
 }
 
-#storeDetail #menu {
+#store_detail #menu {
     font-weight: bold;
-    font-size: 1.4em;
+    font-size: 1.3em;
     float: left;
 }
 
-#storeDetail .bottom_menu_group {
+#store_detail .bottom_menu_group {
     overflow: hidden;
 }
 
-#storeDetail .bottom_menu_group .menu {
+#store_detail .bottom_menu_group .menu {
     width: 70%;
     float: left;
 }
 
-#storeDetail .bottom_menu_group .menu_img {
+#store_detail .bottom_menu_group .menu_img {
     width: 30%;
     float: left;
 }
 
-#storeDetail .menu_img img {
+#store_detail .menu_img img {
     width: 100%;
-    height: 100px;
+    height: 113px;
+    border-radius: 10px;
 }
 
-#storeDetail #menu_intro{
+#store_detail #menu_intro {
     word-wrap: break-word;
 }
-/*div {*/
-/*    border: 1px solid black;*/
-/*}*/
 
-/**/
-#storeDetail button{border:0;}
-#storeDetail.heart{
+#store_detail button {
+    border: 0;
+}
+
+#store_detail .filter_box {
+    /*width: 350px;*/
+    width: 95%;
+    margin: 12px auto;
+}
+
+#store_detail .filter {
+    border-radius: 20px;
+    border: rgba(232, 76, 79, 0.5) solid 1px;
+    padding: 5px 15px 5px 15px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100px;
+}
+
+#store_detail .filter_box::-webkit-scrollbar {
+    height: 5px;
+}
+
+#store_detail .filter_box::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 10px;
+    width: 30% !important;
+    background-color: rgba(232, 76, 79, 0.5);
+}
+
+#store_detail .filter_box::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 10px;
+    /*width: 0.5px;*/
+    /*border-left: 3px solid transparent;*/
+    /*border-right: 3px solid transparent;*/
+    /*background-clip: content-box;*/
+}
+
+#store_detail .filter_box::-webkit-scrollbar {
+    height: 4.5px;
+}
+
+#store_detail .filter_box::-webkit-scrollbar-corner {
+    /*display: none;*/
+}
+
+#store_detail .filter_box::-webkit-scrollbar-button:start {
+    opacity: 0;
+}
+
+#store_detail .filter_box::-webkit-scrollbar-button:end {
+    opacity: 0;
+}
+
+#store_detail .filter_box {
+    width: 95%;
+    margin: 0 auto;
+    /*min-width: 360px;*/
+    /*max-width: 420px;*/
+    height: 40px;
+    /*background: #ffffff;*/
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    overflow-x: scroll;
+    margin-top: 10px;
+}
+
+#store_detail .menu {padding-right: 10px;}
+#store_detail .menu_intro {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*word-break: break-word;*/
+}
+
+#store_detail .menu_box{
+    width: 100%;
+    line-height: 27px;
+    border-radius: 20px;
+    /*width: 350px;*/
+    height: auto;
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    overflow: hidden;
+}
+
+#store_detail .fa-star{
+    color: transparent;
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#store_detail .menu .yyyy {
+    color:black;
+    font-weight: normal;
+    line-height: 35px;
+}
+#store_detail .menu_name{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*div{border: 1px solid black;}*/
+#store_detail .menu_info{overflow: hidden}
+
+/*찜*/
+store_detail button {
+    border: 0;
+}
+
+#store_detail .heart {
     border: 0;
     background-color: unset;
     position: relative;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-#storeDetail .heartIcon{
+
+#store_detail .heartIcon {
     text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
     color: transparent;
 }
-#storeDetail .heartIcon:hover{
+
+#store_detail .heartIcon:hover {
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+/*#store_detail * {*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*#store_detail .container {*/
+/*    width: 360px;*/
+/*    margin: auto;*/
+/*    padding-top: 40px;*/
+/*}*/
+
+/*#store_detail .header {*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*#store_detail .header > div {*/
+/*    text-align: center;*/
+/*    width: 95%;*/
+/*    margin: auto;*/
+/*}*/
+
+/*#store_detail .header #storeName {*/
+/*    line-height: 70px;*/
+/*}*/
+
+/*#store_detail .header #star {*/
+/*    width: 95%;*/
+/*}*/
+
+/*#store_detail .header #reviewCount {*/
+/*  width: 95%;*/
+/*}*/
+
+/*#store_detail .header #storeInfo {*/
+/*   word-wrap: break-word;*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*#store_detail .deliveryInfo {*/
+/*    width: 95%;*/
+/*}*/
+
+/*#store_detail .deliveryInfo div {*/
+/*    line-height: 27px;*/
+/*}*/
+
+/*#store_detail .fieldBox {*/
+/*    width: 95%;*/
+/*    margin: auto;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*#store_detail .fieldBox div {*/
+/*    float: left;*/
+/*    width: 33.33%;*/
+/*    height: 45px;*/
+/*    text-align: center;*/
+/*    line-height: 45px;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*#store_detail .fieldBox div a {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*}*/
+/*#store_detail #menu{font-size: 1.3em; font-weight: bold;}*/
+/*#store_detail .deliveryInfo {*/
+/*    border-radius: 20px;*/
+/*    width: 350px;*/
+/*    height: 100px;*/
+/*    padding: 10px 20px 20px 20px;*/
+/*    margin-bottom: 10px;*/
+/*    background-color: #FFFFFF;*/
+/*    font-size: 13px;*/
+/*    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);*/
+/*}*/
+/*!*별점*!*/
+/*#store_detail .fa-star{*/
+/*    color: transparent;*/
+/*    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);*/
+/*}*/
+
+/*#store_detail #storeName{*/
+/*    padding-left: 35px;*/
+/*}*/
+/*#store_detail #storeName,#store_detail #star{*/
+/*    text-align: center;*/
+/*}*/
+
+/*!*찜*!*/
+/*#store_detail .heartIcon {*/
+/*    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);*/
+/*    color: transparent;*/
+/*}*/
+
+/*#store_detail .heartIcon:hover {*/
+/*    cursor: pointer;*/
+/*}*/
+/*#store_detail button{border: none;}*/
+
+/*#store_detail div{border: 1px solid black;}*/
+
+/*!*메뉴*!*/
+/*#store_detail .contents{margin-top: 10px;}*/

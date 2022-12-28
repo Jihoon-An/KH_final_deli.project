@@ -7,6 +7,7 @@
     margin: auto;
     padding-top: 40px;
     min-height: 800px;
+    padding-bottom: 20px;
 }
 
 #store_info .header {
@@ -86,16 +87,16 @@
     color: black;
 }
 
-#store_info .field{font-size:18px; font-weight: bold; line-height: 27px; margin-bottom: 5px; }
-#store_info .contents{font-size:14px; }
-#store_info .title{float: left; width:35%;  font-size :14px;}
-#store_info .detail_contents{ font-size:14px; width: 65%; display: inline-block; text-align: left;}
+#store_info .field{font-size:17px; font-weight: bold; line-height: 27px; margin-bottom: 5px; }
+#store_info .contents{font-size:13px; }
+#store_info .title{float: left; width:35%;  font-size :13px;}
+#store_info .detail_contents{ font-size:13px; width: 65%; display: inline-block; text-align: left;}
 
 #store_info #map{width: 95%; border-radius: 7px;}
 
 #store_info #info {
 font-weight: bold;
-    font-size: 1.4em;
+    font-size: 1.3em;
     float: left;
 }
 
@@ -128,8 +129,60 @@ font-weight: bold;
 #store_info .time{
     text-align: left;
 }
-/*div{border: 1px solid black;}*/
+
 
 .box > div {
     float: left;
 }
+
+#store_info .store_box,
+#store_info .delivery_box,
+#store_info .businessman_box,
+#store_info #map
+{
+    width:100%;
+    line-height: 27px;
+    border-radius: 20px;
+    /*width: 350px;*/
+    height: auto;
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.deliveryInfo {
+    border-radius: 20px;
+    width: 350px;
+    height: 100px;
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
+}
+
+.fa-star{
+    color: transparent;
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#storeName{
+    padding-left: 35px;
+}
+#storeName,#star{
+    text-align: center;
+}
+
+.heartIcon {
+    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
+    color: transparent;
+}
+
+.heartIcon:hover {
+    cursor: pointer;
+}
+
+/*div{border: 1px solid black;}*/
