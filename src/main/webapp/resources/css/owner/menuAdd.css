@@ -3,7 +3,7 @@
 }
 
 #menuAdd div {
-    border: 1px solid black;
+   border: 1px solid black;
 }
 
 #menuAdd .container {
@@ -20,19 +20,17 @@
 
 #menuAdd .profile {
     margin: auto;
-    width: 300px;
+    width: 100%;
     height: 100px;
-    overflow: hidden;
+
 }
 
-#menuAdd .profile div {
-    float: left;
-    height: 100%;
-}
+
 
 #menuAdd .thumbnail {
-    width: 30%;
-    padding: 5px;
+
+    width: 50%;
+
 }
 
 #menuAdd .thumbnail img {
@@ -41,13 +39,15 @@
 }
 
 #menuAdd .control {
-    width: 70%;
+    width: 100%;
+    height: 30px;
     line-height: 100px;
 }
 
 #menuAdd .control input {
-    width: 50px;
-    height: 100%;
+    width: 100%;
+    height: 50px;
+    line-height: 20px;
 }
 
 /*  아래로 옵션추가 수정본*/
@@ -62,29 +62,58 @@
     width: 50px;
 }
 
-#menuAdd .rowBox{
-    overflow: hidden;
-}
+
 #menuAdd .titleImg{
-    float: left;
-    width: 150px;
+
+    width: 100%;
     height: 30px;
     line-height: 30px;
     text-align: center;
 }
 
-#menuAdd .contents{
-//background-color: #3e4462;
-    float: left;
-    width: 400px;
-    height: 50px;
+/*#menuAdd .contents{*/
+/*//background-color: #3e4462;*/
+/*    float: left;*/
+/*    width: 400px;*/
+/*    height: 50px;*/
 
-}
+/*}*/
 
 #menuAdd .foot_btn{
     text-align: right;
 }
 
+
+#menuAdd .topContents{
+    height: 250px;
+}
+
+
 #menuAdd .img_div{
+    width: 30%;
     float: left;
+}
+
+#menuAdd .rowBoxRight{
+    width: 70%;
+    float: right;
+}
+
+#menuAdd .rightContents input{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 300px;
+    border-radius: 25px;
+    margin: 5px;
+}
+/*#menuAdd rowBox{*/
+/*    margin: 100px;*/
+/*}*/
+
+#menuAdd .option_div_add input{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 200px;
+    border-radius: 25px;
+    margin: 7px;
 }
