@@ -566,7 +566,8 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '결제',// 상품명,
-            amount: payPrice,//상품 가격,
+            // amount: payPrice,//상품 가격,
+            amount: 100,//상품 가격,
             buyer_email: email,//구매자 이메일,
             buyer_name: name,
             buyer_tel: phoneNum,//구매자 연락처

@@ -60,10 +60,10 @@ public class MenuDetailContoller {
         return "redirect:/store/menu/" + storeSeq; //seq 추가입력 필요
     }
 
-    @RequestMapping("toPay")
+    @RequestMapping("toBasket")
     public String toPayment(@RequestParam("basket_menu") String menuJson) throws ParseException {
         basketService.setBasketInSession(session, menuJson);
 
-        return "redirect:/order/orders"; //seq 추가입력 필요
+        return "redirect:/basket"; //seq 추가입력 필요
     }
 }
