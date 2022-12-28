@@ -16,13 +16,13 @@
 
 <div class="header">
     <div id="storeName">${storeInfoDTO.store_name}
-        <button class="heart">
+        <span class="heart">
             <input class="store_seq" type="hidden" value="${storeInfoDTO.store_seq}">
             <%--찜 store_Seq--%>
             <c:choose>
                 <c:when test="${result==1}">
                     <label class="heartIcon" style="text-shadow: 0 0 0 rgba(232,76,79);">
-                        <i class="fa-solid fa-heart fa-lg"></i>
+                        <i class="fa-solid fa-heart fa-lg" sty></i>
                     </label>
                 </c:when>
                 <c:otherwise>
@@ -31,7 +31,7 @@
                     </label>
                 </c:otherwise>
             </c:choose>
-        </button>
+        </span>
     </div>
     <div id="star"><span class="storeEtc"> <i class="fa-solid fa-star"></i> ${reviews.rev_star}</span>
         (${storeReviewAvg}) | 리뷰(${storeReviewCount})
