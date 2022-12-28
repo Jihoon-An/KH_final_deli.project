@@ -1,3 +1,3 @@
 $("#complete").on("click", function () {
-    location.href = "/member/order/history";
+    location.href = "/order/history";
 })

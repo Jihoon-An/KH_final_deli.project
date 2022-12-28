@@ -43,7 +43,6 @@ public class AlarmEndpoint {
         try {
             clients.add(client);
             this.httpSession = (HttpSession) config.getUserProperties().get("httpSession");//session 꺼내기
-            log.info(String.valueOf(this.httpSession.getAttribute("acc_seq")));
         } catch (Exception e) {
             e.printStackTrace();
         }

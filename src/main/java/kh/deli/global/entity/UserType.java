@@ -3,7 +3,8 @@ package kh.deli.global.entity;
 public enum UserType {
     OWNER("business"),
     MEMBER("client"),
-    ADMIN("admin");
+    ADMIN("admin"),
+    NONE("none");
 
     private String type;
 

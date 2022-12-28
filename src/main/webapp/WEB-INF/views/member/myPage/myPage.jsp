@@ -64,7 +64,7 @@
                         <span class="text">찜</span>
                     </div>
                 </a>
-                <a href="/member/order/history">
+                <a href="/order/history">
                     <div class="link orderHistoryBox">
                         <span class="icon" style="color: #57524b"><i class="fa-solid fa-barcode"></i></span><br>
                         <span class="text">주문내역</span>

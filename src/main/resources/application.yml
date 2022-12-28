@@ -1,10 +1,10 @@
 #java mail sender
 spring:
   mail:
-    host: smtp.gmail.com
+    host: smtp.naver.com
     port: 587
-    username: jihoon.kh.project@gmail.com
-    password: ldczonhijgiksfpu
+    username: abg1418@naver.com
+    password: YKHJ2EJFRXDD
     properties:
       mail:
         smtp:

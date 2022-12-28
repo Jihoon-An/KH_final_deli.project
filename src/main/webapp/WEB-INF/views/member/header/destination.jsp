@@ -28,16 +28,17 @@
 
 <!-- StyleSheet-->
 <link rel="stylesheet" href="/resources/css/member/header/destination.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 
 <div id="destination">
     <%--모달--%>
     <div class="modal">
         <div class="modal_destination_container">
-            <button type="button" class="button-4" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가</button>
+            <button type="button" class="deli_btn" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가</button>
 
             <form id="destination_select_frm" method="post">
                 <div id="destination_select_box">
-                    <button type="button" class="button-4" id="destination_select">주소지 변경</button>
+                    <button type="button" class="deli_btn" id="destination_select">주소지 변경</button>
                     <hr>
                     <c:choose>
                         <c:when test="${not empty address_List}">
@@ -46,11 +47,13 @@
                                     <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                                     <input type="radio" name="radio_add_division"
                                            <c:if test="${i.add_division=='basics'}">id="basics" checked</c:if>>
-                                    <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
-                                    <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
+                                    <span class="add_division">
+                                        <c:if test="${i.add_division=='basics'}"><span class="pick">[기본]</span></c:if>
+                                        <c:if test="${i.add_division!='basics'}"><span class="pick">[선택]</span></c:if>
+                                    </span>
                                     <input type="hidden" name="add_division" class="hidden_add_division"
                                            value="${i.add_division}">
-                                        ${i.add_name} <a class="del">x</a>
+                                        <span class="add_name">${i.add_name}</span> <a class="del"><i class="fa-solid fa-xmark"></i></a><br>
                                         ${i.add_detail1} <br>
                                     상세주소 : ${i.add_detail2}
                                     <hr>

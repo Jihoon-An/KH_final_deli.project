@@ -54,6 +54,12 @@ function startTimer(count, display) {
 
 // 이메일(아이디) - 아이디 중복검사 & 값 입력 유효성 검사 display
 $("#email_certi_btn").on("click", function () {
+    if($("#acc_email").is(":disabled")){
+        $("#acc_email").val("");
+        $("#acc_email_hidden").val("");
+        $("#acc_email").attr("disabled",false);
+    }
+
     if (emailRegex.test($("#acc_email").val())
         && $("#email_msg").html() == "사용 가능한 이메일 입니다. 인증해주세요.") {
         $.ajax({
@@ -137,10 +143,6 @@ $("#email_confirm_input").on("keydown", function (e) {
 });
 
 $("#email_confirm_btn").click(function () {
-    if($("#acc_email").is(":disabled")){
-        $("#acc_email").val("");
-        $("#acc_email").attr("disabled",false);
-    }
     email_confirm();
 });
 
@@ -148,8 +150,8 @@ $("#email_confirm_btn").click(function () {
 function email_confirm() {
     if ($("#email_confirm_input").val() == confirmText && $("#email_count").html() != "시간초과") {
         $("#email_confirm_input").val("");
-        $("#email_msg").html("");
         $("#email_msg").css("color", "#000000");
+        $("#email_msg").html("");
         $("#email_msg").hide();
         $("#email_confirm_box").hide();
         $("#acc_email").attr("disabled",true);
@@ -186,8 +188,10 @@ function phone_check() {
 $("#phone_certi_btn").on("click", function () {
     if($("#mem_phone").is(":disabled")){
         $("#mem_phone").val("");
+        $("#mem_phone_hidden").val("");
         $("#mem_phone").attr("disabled",false);
     }
+
     if (phoneRegex.test($("#mem_phone").val())) {
         $.ajax({
             url: "/account/certify/tel",
