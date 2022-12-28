@@ -28,16 +28,17 @@
 
 <!-- StyleSheet-->
 <link rel="stylesheet" href="/resources/css/member/header/destination.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 
 <div id="destination">
     <%--모달--%>
     <div class="modal">
         <div class="modal_destination_container">
-            <button type="button" class="button-4" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가</button>
+            <button type="button" class="deli_btn" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가</button>
 
             <form id="destination_select_frm" method="post">
                 <div id="destination_select_box">
-                    <button type="button" class="button-4" id="destination_select">주소지 변경</button>
+                    <button type="button" class="deli_btn" id="destination_select">주소지 변경</button>
                     <hr>
                     <c:choose>
                         <c:when test="${not empty address_List}">
