@@ -40,30 +40,39 @@ public class OrderHistoryController {
     public String history(Model model) throws Exception {
 
         int acc_seq = (Integer) session.getAttribute("acc_seq");
+        System.out.println(acc_seq);
         List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
 
-        List<BasketMenu> basketMenu = new ArrayList<>();
+      List<BasketMenu> basketMenu = new ArrayList<>();
 
         for(int i = 0; i<menuList.size(); i++) {
             String menu_list = menuList.get(i).getMenu_list();
-            Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-            List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+
+         System.out.println(menu_list);
+        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+          List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
 
 
-           basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
 
-            System.out.println(basketMenu.get(i).getMenu());
 
-            System.out.println(basketMenu.get(i).getCount());
 
+            for(int j =0; j<basket.size(); j++){
+                basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
+         //  System.out.println(basketMenu.get(j).getMenu().getMenu_name());
+
+           }
+
+         System.out.println(basketMenu.get(0).getMenu().getMenu_name());
+           // System.out.println(basketMenu.get(0).getMenu().getMenu_seq());
+            //get에 1인덱스부터 배열크기가 안맞다고 오류남
         }
 
 
 
 
-        model.addAttribute("basketMenu", basketMenu);
+     model.addAttribute("basketMenu", basketMenu);
 
-        model.addAttribute("menu_list", menuList);
+     model.addAttribute("menu_list", menuList);
         return "/member/order/ordersHistory";
     }
 }

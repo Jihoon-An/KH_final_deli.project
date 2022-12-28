@@ -41,7 +41,7 @@
 <div class="container">
     <c:choose>
     <c:when test="${not empty menu_list}">
-    <c:forEach var="i" items="${menu_list}">
+    <c:forEach var="i" items="${menu_list}" varStatus="basket">
     <div class="box1">
         <div class="box2">
             <span class="head_deli">배달주문</span>
@@ -60,18 +60,21 @@
                 <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/no_storelogo.png" id="profile"></div>
             </c:if>
             <c:if test="${i.store_logo!=null}">
-                <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${i.store_logo }" id="profile"></div>
+                <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${i.store_logo }" id="s"></div>
             </c:if>
             <div class="info">
                 <span class="storename">${i.store_name}</span>
                 <p class="meinfo">
-                        ${basketMenu[0].menu.menu_name} x ${basketMenu[0].count}
 
-                    <c:if test="${basketMenu[1].menu.menu_name!=null}">
-                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">
-                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>
-                        </c:forEach>
-                    </c:if>
+                   ${basketMenu[basket.index].menu.menu_name}x${basketMenu[basket.index].count}
+
+<%--                        ${basketMenu[4].menu.menu_name} x ${basketMenu[0].count}--%>
+
+<%--                    <c:if test="${basketMenu[0].menu.menu_name!=null}">--%>
+<%--                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">--%>
+<%--                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>--%>
+<%--                        </c:forEach>--%>
+<%--                    </c:if>--%>
 
                 </p>
                 <a href="/"><button>메인으로</button></a>
@@ -86,6 +89,11 @@
     </c:when>
         <c:otherwise>결제내역없음</c:otherwise>
     </c:choose>
+
+    <div> <c:forEach var="b" items="${basketMenu}">
+        ${b.menu.menu_name}
+    </c:forEach>  </div>
+
 </div>
 
 
