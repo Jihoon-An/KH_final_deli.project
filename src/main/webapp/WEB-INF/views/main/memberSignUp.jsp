@@ -57,30 +57,29 @@
             <input type="hidden" name="acc_sns" value="kakao">
             <input type="text" name="acc_token" value="${acc_token}">
             <div class="titleBox">
-                회원가입 추가 정보 입력
+                카카오회원가입 추가정보입력
             </div>
-
-            스크립트에 카카오 아이디 있으면 회원탈퇴로 안내해주기.
-            <a href="/account/kakaoUnLink">
-                <button type="button">그냥 가입안할래요. 연동 해지해주세요.</button>
-            </a><br>
+<%--            스크립트에 카카오 아이디 있으면 회원탈퇴로 안내해주기.--%>
+<%--            <a href="/account/kakaoUnLink">--%>
+<%--                <button type="button">그냥 가입안할래요. 연동 해지해주세요.</button>--%>
+<%--            </a><br>--%>
             </c:when>
             <c:otherwise>
             <form id="signup_frm" method="post" action="/account/memberSignUp">
                 <input type="hidden" name="acc_type" value="client">
                 <input type="hidden" name="acc_sns" value="normal">
                 <div class="titleBox">
-                    일반 회원가입
+                    일반회원가입
                 </div>
 
                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code"><img
-                        src="/resources/img/kakao_login_start.png" width="300px"></a><br>
+                        src="/resources/img/kakao_login_start.png" width="100%"></a>
                 </c:otherwise>
                 </c:choose>
 
                 <%--이메일 입력--%>
                 <input type="text" placeholder="이메일 주소 입력" id="acc_email" maxlength='38'>
-                <input type="text" placeholder="이메일 주소 입력" name="acc_email" id="acc_email_hidden" maxlength='38'>
+                <input type="hidden" placeholder="이메일 주소 입력" name="acc_email" id="acc_email_hidden" maxlength='38'>
                 <button type="button" id="email_certi_btn">인증</button>
                 <br>
                 <p id="email_msg" style="display: none">이메일 양식에 맞게 썼는지 + 중복 확인 중입니다.</p>
@@ -103,7 +102,7 @@
 
                 <%--phone 입력--%>
                 <input type="text" placeholder="핸드폰 번호 숫자만 입력" id="mem_phone" maxlength='11' oninput=validNum()>
-                <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden" maxlength='11'
+                <input type="hidden" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden" maxlength='11'
                        oninput=validNum()>
 
                 <button type="button" id="phone_certi_btn">인증</button>
