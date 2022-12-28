@@ -32,7 +32,7 @@
 
 #email_msg,#pw_msg,#phone_msg{
     margin-top: 10px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     font-size: 13px;
     padding-left: 10px;
 }
@@ -44,4 +44,16 @@
     font-size: 15px;
     color: #333333;
     font-weight: bolder;
+}
+
+.count{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    font-size: 13px;
+    color: #666666;
+}
+
+#phone_count,#email_count{
+    color: #FF0000;
 }

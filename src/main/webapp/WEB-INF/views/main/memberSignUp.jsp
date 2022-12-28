@@ -92,11 +92,11 @@
                                class="form-control">
                         <button type="button" id="email_confirm_btn" class="deli_btn">확인</button>
                     </div>
-                    <span id="email_count"></span>
+                    <p class="count">인증번호 유효시간이 <span id="email_count"></span> 남았습니다</p>
                 </div>
 
                 <hr class="line">
-                <input type="text" placeholder="숫자,영문,특수문자 8-16자리 (특수문자 포함)" id="pw" maxlength="16" class="form-control">
+                <input type="text" placeholder="비밀번호 숫자,영문,특수문자 8-16자리" id="pw" maxlength="16" class="form-control">
                 <hr class="mini_line">
                 <input type="password" placeholder="비밀번호 재입력" id="pw_re" name="acc_pw" maxlength="16"
                        class="form-control">
@@ -128,7 +128,7 @@
                                maxlength="6" oninput=validNum() class="form-control">
                         <button type="button" id="phone_confirm_btn" class="deli_btn">확인</button>
                     </div>
-                    <span id="phone_count"></span>
+                    <p class="count">인증번호 유효시간이 <span id="phone_count"></span> 남았습니다</p>
                 </div>
 
                 <hr class="line">
