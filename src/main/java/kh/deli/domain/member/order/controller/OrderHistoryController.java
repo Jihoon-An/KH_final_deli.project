@@ -41,28 +41,28 @@ public class OrderHistoryController {
 
         int acc_seq = (Integer) session.getAttribute("acc_seq");
         System.out.println(acc_seq);
-        List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
+        List<OrderHistoryDTO> orderList= orderHistoryService.selectOrderHistory(acc_seq);
 
-      List<BasketMenu> basketMenu = new ArrayList<>();
+      List<BasketMenu> menuList = new ArrayList<>();
 
-        for(int i = 0; i<menuList.size(); i++) {
-            String menu_list = menuList.get(i).getMenu_list();
+        for(int i = 0; i<orderList.size(); i++) {
+            String getMenuList = orderList.get(i).getMenu_list();
 
-         System.out.println(menu_list);
+         System.out.println(getMenuList);
         Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-          List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+          List<StoreBasketMenuRequestDTO> parseMenuList = gson.fromJson(getMenuList, type2);
 
 
 
 
 
-            for(int j =0; j<basket.size(); j++){
-                basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
+            for(int j =0; j<parseMenuList.size(); j++){
+                menuList =storeBasketService.basketMenuListDtoToObject(parseMenuList);
          //  System.out.println(basketMenu.get(j).getMenu().getMenu_name());
 
-           }
+            }
 
-         System.out.println(basketMenu.get(0).getMenu().getMenu_name());
+         System.out.println(menuList.get(0).getMenu().getMenu_name());
            // System.out.println(basketMenu.get(0).getMenu().getMenu_seq());
             //get에 1인덱스부터 배열크기가 안맞다고 오류남
         }
@@ -70,9 +70,9 @@ public class OrderHistoryController {
 
 
 
-     model.addAttribute("basketMenu", basketMenu);
+     model.addAttribute("menu_list", menuList); // parse한 리스트
 
-     model.addAttribute("menu_list", menuList);
+     model.addAttribute("order_list", orderList);  //join 되어 있는 list
         return "/member/order/ordersHistory";
     }
 }
