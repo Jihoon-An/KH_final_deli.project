@@ -157,5 +157,45 @@
 
 
 <script src="/resources/js/main/ownerSignUp.js"></script>
+
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+</div>
+
 </body>
 </html>
