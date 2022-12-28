@@ -204,6 +204,7 @@
     <input type="hidden" id="accEmail" name="accEmail" value="${userInfo.accEmail}" />
     <input type="hidden" id="memName" name="memName" value="${userInfo.memName}" />
     <input type="hidden" id="add_seq" name="add_seq" />
+
 </div>
 </form>
 <script>

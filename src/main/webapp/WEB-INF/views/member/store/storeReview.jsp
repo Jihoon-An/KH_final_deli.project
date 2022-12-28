@@ -32,59 +32,6 @@
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 <main id="storeReview">
-    <%--영업정보--%>
-    <%--    <div class="container">--%>
-    <%--        <div class="storeIntro">--%>
-    <%--            <div class="store_name">상호명 : ${storeInfoDTO.store_name}</div>--%>
-    <%--            <div><button class="heart">찜<input type="hidden" value="${storeInfoDTO.store_seq}"></button></div>--%>
-    <%--            <div class="store_deli_time">배달시간 : ${storeInfoDTO.store_deli_time}분</div>--%>
-    <%--            <div class="store_deli_tip">배달팁 : ${storeInfoDTO.store_deli_tip}원</div>--%>
-    <%--            <div class="store_deli_tip">식당소개 : ${storeInfoDTO.store_intro}</div>--%>
-    <%--            <div class="store_deli_tip">리뷰개수 : ${storeReviewCount}</div>--%>
-    <%--            <div>리뷰 평균 : ${storeReviewAvg}</div--%>
-    <%--        </div>--%>
-
-    <%--        <div class="fieldBox">--%>
-    <%--            <div id="menu"><a href="/store/menu">메뉴</a></div>--%>
-    <%--            <div id="info"><a href="/store/info">정보</a></div>--%>
-    <%--            <div id="review"><a href="#"><h2>리뷰</h2></a></div>--%>
-    <%--        </div>--%>
-
-    <%--        <div class="reviews">--%>
-    <%--            <c:choose>--%>
-    <%--                <c:when test="${not empty storeReviewList}">--%>
-    <%--                    <c:forEach var="reviews" items="${storeReviewList}">--%>
-    <%--                        <div id="nickname">닉네임 : ${reviews.mem_nick}</div>--%>
-    <%--                        <div id="writeDate">작성일자 : ${reviews.rev_writedate}</div>--%>
-    <%--                        <div id="modifiedDate">수정일자 : ${reviews.rev_modified_date}</div>--%>
-    <%--                        <div id="reviewStar">별점 : ${reviews.rev_star}</div>--%>
-    <%--                        <c:choose>--%>
-    <%--                            <c:when test="${not empty reviews.rev_sysname}">--%>
-    <%--                                <c:forEach var="reviewImg" items="${reviews.rev_sysname}">--%>
-    <%--                                    <div id="reviewImgs">--%>
-    <%--                                        <img src="/resources/img/review/${reviewImg}">--%>
-    <%--                                    </div>--%>
-    <%--                                </c:forEach>--%>
-    <%--                            </c:when>--%>
-    <%--                        </c:choose>--%>
-    <%--                        <c:choose>--%>
-    <%--                            <c:when test="${not empty reviews.rev_content}">--%>
-    <%--                                <div>리뷰 내용 : ${reviews.rev_content}</div>--%>
-    <%--                            </c:when>--%>
-    <%--                        </c:choose>--%>
-    <%--                        <c:choose>--%>
-    <%--                            <c:when test="${not empty reviews.menu_list}">--%>
-    <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
-    <%--                                    <div>메뉴명 : ${i}</div>--%>
-    <%--                                </c:forEach>--%>
-    <%--                            </c:when>--%>
-    <%--                        </c:choose>--%>
-    <%--                        <br>--%>
-    <%--                    </c:forEach>--%>
-    <%--                </c:when>--%>
-    <%--            </c:choose>--%>
-    <%--        </div>--%>
-    <%--    </div>--%>
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
         <hr>
@@ -94,20 +41,27 @@
                     <c:forEach var="reviews" items="${storeReviewList}">
                         <div class="review_box">
                             <div class="review_header">
-                                <div id="nickname">${reviews.mem_nick}</div>
+                                <div id="nickname">${reviews.mem_nick}  <span class="storeEtc"> <i class="fa-solid fa-star"></i> ${reviews.rev_star}</span> </div>
                                     <%--                            <fmt:parseDate value="${reviews.rev_writedate}" var="registered"--%>
                                     <%--                                           pattern="yyyy-MM-dd HH:mm:ss"/>--%>
                                     <%--                            <fmt:formatDate value="${registered}" pattern="yyyy년 MM월 dd일 a h:mm"/>--%>
-                                <div id="writeDate"><%--작성일자 : --%><fmt:parseDate value="${reviews.rev_writedate}"
-                                                                          var="registered"
-                                                                          pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <div id="writeDate"><%--작성일자 : --%>
+                                    <fmt:parseDate value="${reviews.rev_writedate}"
+                                                   var="registered"
+                                                   pattern="yyyy-MM-dd HH:mm:ss"/>
                                     <fmt:formatDate value="${registered}" pattern="yyyy.MM.dd"/></div>
                             </div>
-                            <div id="reviewStar">별점 : ${reviews.rev_star}</div>
+                                <%--<div id="reviewStar">별점 : ${reviews.rev_star}</div>--%>
+                                <%--임시--%>
+                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
+                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
+                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
+                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
+
                             <c:choose>
                                 <c:when test="${not empty reviews.rev_sysname}">
                                     <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
-                                        <div id="reviewImgs">
+                                        <div id="reviewImgs" style="width: 15px;">
                                             <img src="/resources/img/review/${reviewImg}">
                                         </div>
                                     </c:forEach>
@@ -115,30 +69,33 @@
                             </c:choose>
                             <c:choose>
                                 <c:when test="${not empty reviews.rev_content}">
-                                    <div>리뷰 내용 : ${reviews.rev_content}</div>
+                                    <div id="r_content">${reviews.rev_content}</div>
                                 </c:when>
                             </c:choose>
                         </div>
                         <c:choose>
                             <c:when test="${not empty reviews.menu_list}">
-<%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
-<%--                                    <div>메뉴명 : ${i}</div>--%>
-                                    <div class="filter_box">
-                                        <div style="margin: 0 auto" class="d-inline-flex">
-                                <c:forEach var="i" items="${reviews.menu_list}">
-                                                <div class="filter" style="margin-right: 7px">${i}</div>
-                                                <div class="filter" style="margin-right: 7px">국밥돼지국밥</div>
-                                                <div class="filter" style="margin-right: 7px">sdfffffffffff</div>
-                                                <div class="filter" style="margin-right: 7px">sdffffffff</div>
-                                </c:forEach>
-                                        </div>
+                                <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
+                                <%--                                    <div>메뉴명 : ${i}</div>--%>
+                                <div class="filter_box">
+                                    <div style="margin: 0 auto" class="d-inline-flex">
+                                        <c:forEach var="i" items="${reviews.menu_list}">
+                                            <div class="filter" style="margin-right: 7px">${i}</div>
+                                            <div class="filter" style="margin-right: 7px">돼지ddddddddddddddd국밥</div>
+                                            <div class="filter" style="margin-right: 7px">sdfffffffffff</div>
+                                            <div class="filter" style="margin-right: 7px">sdffffffff</div>
+                                        </c:forEach>
                                     </div>
-<%--                                </c:forEach>--%>
+                                </div>
+                                <%--                                </c:forEach>--%>
                             </c:when>
                         </c:choose>
                         <br>
                     </c:forEach>
                 </c:when>
+                <c:otherwise>
+                    <div style="text-align: center; margin-top: 50px; font-size: 20px;">리뷰가 없어요</div>
+                </c:otherwise>
             </c:choose>
         </div>
     </div>

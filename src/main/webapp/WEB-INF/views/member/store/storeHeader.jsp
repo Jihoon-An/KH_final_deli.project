@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<title></title>
 <!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -25,6 +24,35 @@
         font-size: 13px;
         box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
     }
+
+    .fa-star{
+        color: transparent;
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+
+    #storeName{
+        padding-left: 35px;
+    }
+    #storeName,#star{
+        text-align: center;
+    }
+    .heart {
+        /*border: 0;*/
+        /*background-color: unset;*/
+        /*position: relative;*/
+        /*left: 50%;*/
+        /*top: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+    }
+
+    .heartIcon {
+        text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
+        color: transparent;
+    }
+
+    .heartIcon:hover {
+        cursor: pointer;
+    }
 </style>
 
 <div class="header">
@@ -34,18 +62,20 @@
             <%--찜 store_Seq--%>
             <c:choose>
                 <c:when test="${result==1}">
-                    <label class="heartIcon" style=" text-shadow: 0 0 0 rgba(232,76,79);"><i
-                            class="fa-solid fa-heart  fa-lg"></i></label>
+                    <label class="heartIcon" style="text-shadow: 0 0 0 rgba(232,76,79);">
+                        <i class="fa-solid fa-heart fa-lg"></i>
+                    </label>
                 </c:when>
                 <c:otherwise>
-                    <label class="heartIcon" style="text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);"><i class=" fa-solid
-                           fa-heart fa-lg"></i></label>
+                    <label class="heartIcon" style="text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);">
+                        <i class=" fa-solid fa-heart fa-lg"></i>
+                    </label>
                 </c:otherwise>
             </c:choose>
         </button>
     </div>
-    <div id="star"> 별 (${storeReviewAvg})</div>
-    <div id="reviewCount">리뷰(${storeReviewCount})</div>
+    <div id="star"> <span class="storeEtc"> <i class="fa-solid fa-star"></i> ${reviews.rev_star}</span> (${storeReviewAvg}) | 리뷰(${storeReviewCount})</div>
+<%--    <div id="reviewCount"> | 리뷰(${storeReviewCount})</div>--%>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>
     <div class="deliveryInfo" style="text-align: left;" >
         <div>최소주문금액 : <fmt:formatNumber value="${storeInfoDTO.store_min_price}" pattern="#,###"/>원</div>

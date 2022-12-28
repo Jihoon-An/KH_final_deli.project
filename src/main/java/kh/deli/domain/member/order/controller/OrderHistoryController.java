@@ -52,9 +52,9 @@ public class OrderHistoryController {
 
            basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
 
-            System.out.println(basketMenu.get(i).getMenu());
-
-            System.out.println(basketMenu.get(i).getCount());
+//            System.out.println(basketMenu.get(i).getMenu());
+//
+//            System.out.println(basketMenu.get(i).getCount());
 
         }
 
