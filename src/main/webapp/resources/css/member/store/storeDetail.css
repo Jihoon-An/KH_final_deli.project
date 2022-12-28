@@ -224,8 +224,28 @@
 /*div{border: 1px solid black;}*/
 #store_detail .menu_info{overflow: hidden}
 
+/*찜*/
+store_detail button {
+    border: 0;
+}
 
+#store_detail .heart {
+    border: 0;
+    background-color: unset;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
+#store_detail .heartIcon {
+    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
+    color: transparent;
+}
+
+#store_detail .heartIcon:hover {
+    cursor: pointer;
+}
 
 
 
