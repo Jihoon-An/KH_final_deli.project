@@ -46,8 +46,8 @@
 
             <div class="rowBox">
                 <div class="title">메뉴그룹</div>
-                <div class="contents" style="display: inline;"> <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"></div>
-                <div class="msg" style="width: 200px">sds</div>
+                <div class="contents" > <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"></div>
+
             </div>
 
             <div class="topContents">

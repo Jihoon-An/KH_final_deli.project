@@ -48,11 +48,11 @@
             <span class="head_date">${order_list.formDate}</span>
             <span class="head_status">
                 ${order_list.order_status}
-<%--                <c:if test="${i.order_status=='order'}">미접수</c:if>--%>
-<%--                <c:if test="${i.order_status=='take'}">접수</c:if>--%>
-<%--                <c:if test="${i.order_status=='cooking'}">조리중</c:if>--%>
-<%--                <c:if test="${i.order_status=='delivering'}">배달중</c:if>--%>
-<%--                <c:if test="${i.order_status=='complete'}">배달완료</c:if>--%>
+<%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <c:if test="${i.order_status=='cooking'}">조리중</c:if>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <c:if test="${i.order_status=='delivering'}">배달중</c:if>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <c:if test="${i.order_status=='complete'}">배달완료</c:if>&ndash;%&gt;--%>
             </span>
         </div>
         <div class="box3">
@@ -66,7 +66,10 @@
                 <span class="storename">${order_list.store_name}</span>
                 <p class="meinfo">
 
-                   ${menu_list[status.index].menu.menu_name}x${menu_list[status.index].count}
+                            ${menu_list[status.index].menu.menu_name}외 ${menu_count_list[status.index]}건
+
+
+                    <%--                         ${menu_list[status.index].count}<br>--%>
 
 <%--                        ${basketMenu[4].menu.menu_name} x ${basketMenu[0].count}--%>
 
@@ -89,10 +92,6 @@
     </c:when>
         <c:otherwise>결제내역없음</c:otherwise>
     </c:choose>
-
-    <div> <c:forEach var="menu_list" items="${menu_list}">
-        ${menu_list.menu.menu_name}
-    </c:forEach>  </div>
 
 </div>
 
