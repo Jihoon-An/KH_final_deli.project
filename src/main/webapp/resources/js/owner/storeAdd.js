@@ -261,3 +261,11 @@ $(document).on("click", ".postsearch", function () {
         }
     }).open();
 })
+
+
+$(".close_day").on("keyup", function (){
+
+
+    $(".close_day_msg").css("color", "#001a41")
+    $(".close_day_msg").html("ex)연중 무휴, 목, 금은 쉽니다")
+})

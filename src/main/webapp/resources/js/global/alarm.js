@@ -2,17 +2,32 @@ $(document).ready(function () {
     //영역 생성
     $('body')
         .append($('<i id="alarm_icon">')
-            .addClass("fa-sharp fa-solid fa-bell"))
+            .addClass("fa-solid fa-bell"))
         .append($('<div id="alarm_background">'))
-        .append($('<div id="alarm_box">'));
+        .append($('<div id="alarm_area">')
+            .append($('<div id="alarm_box">'))
+            .append($('<button id="alarm_close_btn" style="background-color: #e8f3de">')
+                .html('<i class="fa-sharp fa-solid fa-chevron-up" style="color: #d52d2d; font-size: 30px"></i>')
+            )
+        );
     //display toggle 이벤트 부여
     $("#alarm_icon").click(function () {
         $('#alarm_background').toggle();
-        $('#alarm_box').toggle('fast');
+        // $('#alarm_box').slideToggle(250);
+        // $("#alarm_close_btn").slideToggle(250);
+        $("#alarm_area").slideToggle(250);
     });
     $("#alarm_background").click(function () {
         $('#alarm_background').toggle();
-        $('#alarm_box').toggle('fast');
+        // $('#alarm_box').slideToggle(250);
+        // $("#alarm_close_btn").slideToggle(250);
+        $("#alarm_area").slideToggle(250);
+    });
+    $("#alarm_close_btn").click(function () {
+        $('#alarm_background').toggle();
+        // $('#alarm_box').slideToggle(250);
+        // $("#alarm_close_btn").slideToggle(250);
+        $("#alarm_area").slideToggle(250);
     });
 
     //알림박스 추가 함수
@@ -48,6 +63,17 @@ $(document).ready(function () {
         );
     }
 
+    //sample
+    for (let i = 0; i < 11; ++i) {
+        createAlarmBox({
+            notice_seq: 123,
+            from_name: 'sdlfg',
+            notice_title: "asd",
+            notice_content: "asdqwe",
+            notice_time: "asdad"
+        })
+    }
+
     //알림 기존 알림 추가하기
     function init() {
         $.ajax({
@@ -56,12 +82,13 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (list) {
                 list.forEach((data) => {
-                console.log(data);
+                    console.log(data);
                     createAlarmBox(data);
                 });
             }
         })
     }
+
     init();
 
     // WS 연결 테스트
@@ -118,16 +145,16 @@ $(document).ready(function () {
         }
     }
 
-    const UserType = {
+    const userType = {
         OWNER: "business",
         MEMBER: "client",
         ADMIN: "admin"
     }
 
     // WebSocket 메세지 보내기
-    $("#test_btn").click(() => {
-        sendAlarm(83, null, "짱이지", "와 진짜 짱이다");
-    });
+    // $("#test_btn").click(() => {
+    //     sendAlarm(83, null, "짱이지", "와 진짜 짱이다");
+    // });
 });
 
 // 알림이 왔을 때 아이콘 이벤트 처리 해야함.
