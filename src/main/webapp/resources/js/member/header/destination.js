@@ -2,7 +2,7 @@
 var posY;
 
 // 배송지 모달 열기
-$("#destination_change").click(function (){
+$(document).on("click", "#destination_change", function (){
     $(".modal").fadeIn();
     $(".modal_destination_add").hide();
     $(".modal_destination_container").show();
