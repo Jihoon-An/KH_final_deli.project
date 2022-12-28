@@ -3,7 +3,7 @@
 }
 
 #order_history div {
-  border: 1px solid black;
+ // border: 1px solid black;
 }
 
 #order_history .container {
@@ -53,11 +53,11 @@
     margin:0 auto;
     float: left;
 }
-/*#order_history .image-thumbnail {*/
-/*    width:100%;*/
-/*    height:100%;*/
-/*    object-fit:scale-down;*/
-/*}*/
+#order_history .image-thumbnail {
+    width:100%;
+    height:100%;
+    object-fit:scale-down;
+}
 #order_history .info{
     margin: 1px;
     width: 70%;
