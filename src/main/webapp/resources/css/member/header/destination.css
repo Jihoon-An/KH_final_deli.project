@@ -128,4 +128,39 @@
 
 .add_name{
     font-weight: bold;
+    font-size: 16px;
+}
+
+.fa-square-xmark {
+    color: #e84c4f;
+}
+
+.fa-square-xmark:hover{
+    color: #e84c4f;
+}
+
+.line{
+    height: 15px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mini_line{
+    height: 5px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.add_detail1{
+    font-size: 15px;
+}
+
+.add_detail2{
+    color: #888888;
+}
+
+#destination_select_box{
+    text-align: center;
 }
