@@ -46,8 +46,8 @@
 
             <div class="rowBox">
                 <div class="title">메뉴그룹</div>
-                <div class="contents" > <input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"></div>
-
+                <div class="contents" style="display: inline"><input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"></div>
+                <div style="display: inline; font-size: 12px" class="menu_group_msg"></div>
             </div>
 
             <div class="topContents">
@@ -70,12 +70,12 @@
                 <div class="rowBoxRight">
                     <div class="rowBox">
                         <span>주문여부</span>
-                        <div class="contents">  <input type="radio" name="menu_sold_out" value="Y">주문가능
+                        <div class="contents" style="display: inline">  <input type="radio" name="menu_sold_out" value="Y">주문가능
                             <input type="radio" name="menu_sold_out" value="N">주문불가능</div>
                     </div>
                     <div class="rowBox">
                         <span>공개여부</span>
-                        <div class="contents"><input type="radio" name="menu_display" value="Y">공개
+                        <div class="contents" style="display: inline"><input type="radio" name="menu_display" value="Y">공개
                             <input type="radio" name="menu_display" value="N">비공개</div>
                     </div>
                     <div class="rightContents">
