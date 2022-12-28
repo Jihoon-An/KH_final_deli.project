@@ -19,7 +19,7 @@
     height: 40px;
     text-align: center;
     font-size: 24px;
-    line-height: 30px;
+    line-height: 45px;
     margin-bottom: 10px;
 }
 
@@ -38,6 +38,8 @@
     background-color: #FFFFFF;
     font-size: 13px;
     box-shadow: 0 5px 18px -7px rgba(0,0,0,0.1);
+    position: relative;
+    left: -7.5px;
 }
 
 #dibs .imgBox{
