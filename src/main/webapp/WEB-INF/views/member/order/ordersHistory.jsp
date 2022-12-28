@@ -39,19 +39,20 @@
 <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
 
 <main id = "order_history">
+    <hr class="mt55">
     <div class="container">
         <c:choose>
             <c:when test="${not empty order_list}">
                 <c:forEach var="order_list" items="${order_list}" varStatus="status">
 
 <%--                    <fmt:parseDate value="${order_list.order_date}" var="date" pattern="yyyy-mm-dd"/>--%>
-<%--                       <fmt:parseNumber var="parseDate" value="${date+(1000*60*60*24*30)}" integerOnly="true"/>--%>
+<%--                       <fmt:parseNumber var="parseDate" value="${date.time+(1000*60*60*24*30)}" integerOnly="true"/>--%>
 
 <%--                    <script>--%>
 <%--                        ${parseDate}--%>
 <%--                    </script>--%>
-<%--                        <c:if test="${order_list.order_date>parseDate}">--%>
-<%--                        </c:if>--%>
+<%--&lt;%&ndash;                        <c:if test="${order_list.order_date>parseDate}">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        </c:if>&ndash;%&gt;--%>
                         <div class="box1">
                         <div class="box2">
                             <span class="head_deli">배달주문</span>
@@ -74,7 +75,7 @@
                                 <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${order_list.store_logo }" id="profile"></div>
                             </c:if>
                             <div class="info">
-                                <span class="storename">${order_list.store_name}</span>
+                                <a href="/store/menu/${order_list.store_seq}"><span class="storename">${order_list.store_name}</span></a>
 
                                 <p class="meinfo">
 
@@ -122,7 +123,7 @@
 
     </div>
 
-
+    <hr class="mt90">
 </main>
 </body>
 </html>
