@@ -9,7 +9,7 @@ import javax.mail.MessagingException;
 @AllArgsConstructor
 public class MailService {
 
-    private static final String FROM_ADDRESS = "jihoon.kh.project@gmail.com";
+    private static final String FROM_ADDRESS = "abg1418@naver.com";
 
     private final MailHandler mailHandler;
 
