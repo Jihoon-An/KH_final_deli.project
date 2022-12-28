@@ -30,131 +30,141 @@
     <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 </head>
 <body>
+<%--<main id="store_detail">--%>
+<%--    <div class="container">--%>
+<%--        <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>--%>
+<%--        <div class="contents">--%>
+<%--            <c:choose>--%>
+<%--                <c:when test="${not empty menuGroup}">--%>
+<%--                    &lt;%&ndash;                                <c:forEach var="i" items="${reviews.menu_list}">&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                                    <div>메뉴명 : ${i}</div>&ndash;%&gt;--%>
+<%--                    <div class="filter_box">--%>
+<%--                        <div style="margin: 0 auto" class="d-inline-flex">--%>
+<%--                            <c:forEach var="mGroup" items="${menuGroup}">--%>
+<%--                                <div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div>--%>
+<%--                            </c:forEach>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </c:when>--%>
+<%--            </c:choose>--%>
+<%--            <hr>--%>
+<%--            <div class="menu_list">--%>
+
+<%--                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼--%>
+<%--                    <hr>--%>
+
+<%--                    <div class="menu_box">--%>
+<%--                        <div class="box">--%>
+<%--                            <a href="/menu/detail/32">--%>
+<%--                                <div class="menu_info">--%>
+<%--                                    <div class="menu">--%>
+<%--                                        <div class="yyyy">--%>
+<%--                                            <div class="menu_name">시발로마</div>--%>
+<%--                                            <div class="menu_intro">--%>
+<%--                                                ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네--%>
+<%--                                            </div>--%>
+
+<%--                                            <div>30,000원</div>--%>
+
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="menu_img">--%>
+<%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+<%--                                    </div>--%>
+<%--                                    &lt;%&ndash;                                    <div class="menu_img">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                                        <img src="/resources/img/menu-img/ramyun.png">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--                                </div>--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+<%--                <c:choose>--%>
+<%--                <c:when test="${not empty categoryList}">--%>
+<%--                <c:forEach var="categories" items="${categoryList}">--%>
+<%--                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">${categories.menu_group}--%>
+<%--                    <hr>--%>
+
+<%--                    <c:forEach var="menuList" items="${categories.menuList}">--%>
+<%--                        <div class="menu_box">--%>
+<%--                            <div class="box">--%>
+<%--                                <a href="/menu/detail/${menuList.menu_seq}">--%>
+<%--                                    <div class="menu_info">--%>
+<%--                                        <c:choose>--%>
+<%--                                            <c:when test="${not empty menuList.menu_img}">--%>
+<%--                                                <div class="menu">--%>
+<%--                                                    <div class="yyyy">--%>
+<%--                                                        <div class="menu_name">${menuList.menu_name}</div>--%>
+<%--                                                            <div class="menu_intro">--%>
+<%--                                                                ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddsssssssssssss${menuList.menu_intro}--%>
+<%--                                                            </div>--%>
+
+<%--                                                                <div>${menuList.menu_price}원</div>--%>
+
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                                <div class="menu_img">--%>
+<%--                                                    <img src="/resources/img/menu-img/ramyun.png">--%>
+<%--                                                </div>--%>
+<%--                                            </c:when>--%>
+<%--                                            <c:otherwise>--%>
+<%--                                                <div class="menu">--%>
+<%--                                                    <div class="yyyy">--%>
+<%--                                                        <div class="menu_name">${menuList.menu_name}</div>--%>
+
+<%--                                                        <div id="menu_intro" style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">--%>
+<%--                                                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddsssssssssssss${menuList.menu_intro}--%>
+<%--                                                        </div>--%>
+
+<%--                                                        <div>${menuList.menu_price}원</div>--%>
+
+<%--                                            </c:otherwise>--%>
+<%--                                        </c:choose>--%>
+<%--    &lt;%&ndash;                                    <div class="menu_img">&ndash;%&gt;--%>
+<%--    &lt;%&ndash;                                        <img src="/resources/img/menu-img/ramyun.png">&ndash;%&gt;--%>
+<%--    &lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                </a>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                </div>--%>
+<%--                        &lt;%&ndash;                                                                                <img src="/resources/img/menu-img/ramyun.png">&ndash;%&gt;--%>
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${not empty menuList.menu_img}">--%>
+<%--                            <img class="menu_img" src="/resources/img/menu-img/${menuList.menu_img}">--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise></c:otherwise>--%>
+<%--                    </c:choose>--%>
+<%--                </div>--%>
+<%--                </c:forEach>--%>
+<%--            </div>--%>
+<%--            <hr>--%>
+<%--            </c:forEach>--%>
+<%--            </c:when>--%>
+<%--            </c:choose>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="origin">--%>
+<%--        ${storeDTO.store_origin}--%>
+<%--    </div>--%>
+
+<%--    </div>--%>
+<%--    <script src="/resources/js/member/store/storeDetail.js"></script>--%>
+<%--</main>--%>
 
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
-
 <main id="store_detail">
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
         <div class="contents">
-            <c:choose>
-                <c:when test="${not empty menuGroup}">
-                    <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
-                    <%--                                    <div>메뉴명 : ${i}</div>--%>
-                    <div class="filter_box">
-                        <div style="margin: 0 auto" class="d-inline-flex">
-                            <c:forEach var="mGroup" items="${menuGroup}">
-                                <div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </c:when>
-            </c:choose>
-            <hr>
-            <div class="menu_list">
-
-                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
-                    <hr>
-
-                    <div class="menu_box">
-                        <div class="box">
-                            <a href="/menu/detail/32">
-                                <div class="menu_info">
-                                    <div class="menu">
-                                        <div class="yyyy">
-                                            <div class="menu_name">시발로마</div>
-                                            <div class="menu_intro">
-                                                ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
-                                            </div>
-
-                                            <div>30,000원</div>
-
-                                        </div>
-                                    </div>
-                                    <div class="menu_img">
-                                        <img src="/resources/img/menu-img/ramyun.png">
-                                    </div>
-                                    <%--                                    <div class="menu_img">--%>
-                                    <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
-                                    <%--                                    </div>--%>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <c:choose>
-                <c:when test="${not empty categoryList}">
-                <c:forEach var="categories" items="${categoryList}">
-                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">${categories.menu_group}
-                    <hr>
-
-                    <c:forEach var="menuList" items="${categories.menuList}">
-                        <div class="menu_box">
-                            <div class="box">
-                                <a href="/menu/detail/${menuList.menu_seq}">
-                                    <div class="menu_info">
-                                        <c:choose>
-                                            <c:when test="${not empty menuList.menu_img}">
-                                                <div class="menu">
-                                                    <div class="yyyy">
-                                                        <div class="menu_name">${menuList.menu_name}</div>
-                                                        <div class="menu_intro">
-                                                            ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddsssssssssssss${menuList.menu_intro}
-                                                        </div>
-                                                        <div>${menuList.menu_price}원</div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="menu_img">
-                                                    <img src="/resources/img/menu-img/ramyun.png">
-                                                </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <div class="menu">
-                                                    <div class="yyyy">
-                                                        <div class="menu_name">${menuList.menu_name}</div>
-
-                                                        <div id="menu_intro" style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
-                                                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddsssssssssssss${menuList.menu_intro}
-                                                        </div>
-
-                                                        <div>${menuList.menu_price}원</div>
-                                                    </div>
-                                            </c:otherwise>
-                                        </c:choose>
-    <%--                                    <div class="menu_img">--%>
-    <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
-    <%--                                    </div>--%>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                </div>
-                        <%--                                                                                <img src="/resources/img/menu-img/ramyun.png">--%>
-                    <c:choose>
-                        <c:when test="${not empty menuList.menu_img}">
-                            <img class="menu_img" src="/resources/img/menu-img/${menuList.menu_img}">
-                        </c:when>
-                        <c:otherwise></c:otherwise>
-                    </c:choose>
-                </div>
-                </c:forEach>
-            </div>
-            <hr>
-            </c:forEach>
-            </c:when>
-            </c:choose>
+            sdfffffffffffff
         </div>
     </div>
-    <div class="origin">
-        ${storeDTO.store_origin}
-    </div>
-
-    </div>
-    <script src="/resources/js/member/store/storeDetail.js"></script>
 </main>
+<script src="/resources/js/member/store/storeDetail.js"></script>
 </body>
 </html>

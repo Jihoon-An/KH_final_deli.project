@@ -13,47 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
 </script>
-<style>
-    .deliveryInfo {
-        border-radius: 20px;
-        width: 350px;
-        height: 100px;
-        padding: 10px 20px 20px 20px;
-        margin-bottom: 10px;
-        background-color: #FFFFFF;
-        font-size: 13px;
-        box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
-    }
-
-    .fa-star{
-        color: transparent;
-        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-    }
-
-    #storeName{
-        padding-left: 35px;
-    }
-    #storeName,#star{
-        text-align: center;
-    }
-    .heart {
-        /*border: 0;*/
-        /*background-color: unset;*/
-        /*position: relative;*/
-        /*left: 50%;*/
-        /*top: 50%;*/
-        /*transform: translate(-50%, -50%);*/
-    }
-
-    .heartIcon {
-        text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
-        color: transparent;
-    }
-
-    .heartIcon:hover {
-        cursor: pointer;
-    }
-</style>
 
 <div class="header">
     <div id="storeName">${storeInfoDTO.store_name}
@@ -74,10 +33,12 @@
             </c:choose>
         </button>
     </div>
-    <div id="star"> <span class="storeEtc"> <i class="fa-solid fa-star"></i> ${reviews.rev_star}</span> (${storeReviewAvg}) | 리뷰(${storeReviewCount})</div>
-<%--    <div id="reviewCount"> | 리뷰(${storeReviewCount})</div>--%>
+    <div id="star"><span class="storeEtc"> <i class="fa-solid fa-star"></i> ${reviews.rev_star}</span>
+        (${storeReviewAvg}) | 리뷰(${storeReviewCount})
+    </div>
+    <%--    <div id="reviewCount"> | 리뷰(${storeReviewCount})</div>--%>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>
-    <div class="deliveryInfo" style="text-align: left;" >
+    <div class="deliveryInfo" style="text-align: left;">
         <div>최소주문금액 : <fmt:formatNumber value="${storeInfoDTO.store_min_price}" pattern="#,###"/>원</div>
         <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
         <div>배달팁 : <fmt:formatNumber value="${storeInfoDTO.store_deli_tip}" pattern="#,###"/>원</div>
