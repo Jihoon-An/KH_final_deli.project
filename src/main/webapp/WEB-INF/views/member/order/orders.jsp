@@ -98,7 +98,7 @@
     <h2>배달 정보</h2>
     <hr>
     <div id="mainAddress">address1출력
-        <input type="text" id="address1" name="address1" placeholder="Address1">
+        <input type="text" id="address1" name="address1" placeholder="Address1" readonly>
         <!-- <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%> -->
         <button type="button" id="btn_modal">주소 변경</button>
         <div id="modal" class="modal-overlay">
@@ -190,11 +190,11 @@
             <input type="text" value=0 id="use_point" name="use_point" placeholder="포인트 할인 출력" readonly>
         </div>
         <div>배달팁
-            <input type="text" id="delivery_tip" name="delivery_tip" placeholder="배달팁">
+            <input type="text" id="delivery_tip" name="delivery_tip" placeholder="배달팁"readonly>
         </div>
         <hr>
         <div>총 결제 금액 출력
-            <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액">
+            <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액" readonly>
         </div>
         <hr>
         <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
@@ -216,13 +216,13 @@
         $("#delivery_tip").val(${orderOrdersDTO.delivery_tip})
         initPage();
         setCouponList();
-        var orderPrice = $("#order_price").val();
-        var deliveryPrice = $("#delivery_tip").val() || 0;
+        var orderPrice = parseInt($("#order_price").val());
+        var deliveryPrice = parseInt($("#delivery_tip").val() || 0);
 
         console.log(orderPrice);
         console.log("ghfhfhgf");
         console.log(deliveryPrice);
-        $("#pay_price").val(orderPrice - deliveryPrice);
+        $("#pay_price").val(orderPrice + deliveryPrice);
 
     }
 

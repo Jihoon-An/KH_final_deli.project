@@ -149,7 +149,7 @@
 
             <div class="rowBox">
                 <div class="title">영업시간</div>
-                <div class="contents" > </div>
+                <div class="contents" style="color: #9f1f20">오전 오후를 신경써서 입력해주세요 </div>
             </div>
 
             <div class="rowBox">
@@ -266,7 +266,8 @@
 
             <div class="rowBox">
                 <div class="title">휴무일</div>
-                <div class="contents"> <input type="text" name="store_close_day" placeholder="휴무일" class="input"> </div>
+                <div class="contents" style="display: inline; width: 220px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day"> </div>
+                <div class="close_day_msg" style="font-size: 10px; line-height: 20px"></div>
             </div>
 
 

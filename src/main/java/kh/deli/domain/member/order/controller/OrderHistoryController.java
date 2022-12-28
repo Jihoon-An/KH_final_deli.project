@@ -40,30 +40,56 @@ public class OrderHistoryController {
     public String history(Model model) throws Exception {
 
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-        List<OrderHistoryDTO> menuList= orderHistoryService.selectOrderHistory(acc_seq);
+        System.out.println(acc_seq);
+        List<OrderHistoryDTO> orderList= orderHistoryService.selectOrderHistory(acc_seq);
 
-        List<BasketMenu> basketMenu = new ArrayList<>();
+        List<BasketMenu> menuList = new ArrayList<>();
+        List<Integer> menuCountList = new ArrayList<>();
 
-        for(int i = 0; i<menuList.size(); i++) {
-            String menu_list = menuList.get(i).getMenu_list();
+       // List<BasketMenu> menuList = new ArrayList<>();
+        for(int i = 0; i<orderList.size(); i++) {
+            String getMenuList = orderList.get(i).getMenu_list();
+
+            //System.out.println(getMenuList);
             Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-            List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+            List<StoreBasketMenuRequestDTO> parseMenuList = gson.fromJson(getMenuList, type2);
 
 
-           basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
 
-//            System.out.println(basketMenu.get(i).getMenu());
-//
-//            System.out.println(basketMenu.get(i).getCount());
 
+            // parseMenuList는 seq가 담긴 seq 리스트,  아래 basketMenuListDToObject메서드로  name으로 전환
+            List<BasketMenu> menuListName =storeBasketService.basketMenuListDtoToObject(parseMenuList);
+            //basketMenuListDtoToObject 의 반환타입이 List<BasketMenu>
+//            System.out.println(menuList2);
+
+                BasketMenu MenuName= menuListName.get(0);
+            //System.out.println(menuList2.size());
+                int menuCount = menuListName.size();
+
+
+               // 여기까진 0인덱스메뉴명밖에 출력을 못함
+
+
+                //for문 안에 있어야 하는 이유 orderList길이만큼 for문 돌려서서 add
+
+
+
+               //  System.out.println(basketMenu.get(j).getMenu().getMenu_name());
+
+
+           // System.out.println(menuList.get(0).getMenu().getMenu_name());
+            // System.out.println(basketMenu.get(0).getMenu().getMenu_seq());
+            //get에 1인덱스부터 배열크기가 안맞다고 오류남
+            menuList.add(MenuName);
+            menuCountList.add(menuCount);
         }
 
+        menuCountList.get(0).intValue();
 
+        model.addAttribute("menu_count_list", menuCountList); //메뉴 갯수
+        model.addAttribute("menu_list", menuList); // parse한 리스트
 
-
-        model.addAttribute("basketMenu", basketMenu);
-
-        model.addAttribute("menu_list", menuList);
+        model.addAttribute("order_list", orderList);  //join 되어 있는 list
         return "/member/order/ordersHistory";
     }
 }

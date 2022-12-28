@@ -54,31 +54,32 @@
             <div class="linkBox">
                 <a href="/myPage/couponPoint">
                     <div class="link couponAndPointBox">
-                        <span class="icon"><i class="fa-solid fa-ticket"></i></span><br>
+                        <span class="icon" style="color: #f37d1b"><i class="fa-solid fa-ticket"></i></span><br>
                         <span class="text">쿠폰&포인트</span>
                     </div>
                 </a>
                 <a href="/myPage/dibs/">
                     <div class="link FavoritesBox">
-                        <span class="icon"><i class="fa-solid fa-heart"></i></span><br>
+                        <span class="icon" style="color: #b92526"><i class="fa-solid fa-heart"></i></span><br>
                         <span class="text">찜</span>
                     </div>
                 </a>
                 <a href="/order/history">
                     <div class="link orderHistoryBox">
-                        <span class="icon"><i class="fa-solid fa-barcode"></i></span><br>
+                        <span class="icon" style="color: #57524b"><i class="fa-solid fa-barcode"></i></span><br>
                         <span class="text">주문내역</span>
                     </div>
                 </a>
                 <a href="/myPage/reviewList">
                     <div class="link reviewManagerBox">
-                        <span class="icon"><i class="fa-solid fa-comments"></i></span><br>
+                        <span class="icon" style="color: #e7b513"><i class="fa-solid fa-star"></i></span><br>
                         <span class="text">리뷰관리</span>
                     </div>
                 </a>
             </div>
 
             <div class="buttonBox">
+                접속 이메일 : ${loginEmail}
                 <a href="/account/logout">
                     <button>로그아웃</button>
                 </a>

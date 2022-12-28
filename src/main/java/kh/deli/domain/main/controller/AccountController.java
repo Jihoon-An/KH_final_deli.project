@@ -35,8 +35,9 @@ public class AccountController {
      * @param emailSave
      * @return set loginEmail in Session & set saved_email in Cookie
      */
+    @ResponseBody
     @PostMapping("login")
-    public String login(String email, String pw, String emailSave, String nana, HttpServletResponse response) throws Exception {
+    public Boolean login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
         // 로그인 서비스 요청
         int result = mainAccountService.login(email, pw);
 
@@ -61,8 +62,9 @@ public class AccountController {
                 cookie.setPath("/");
                 response.addCookie(cookie);
             }
+            return true;
         }
-        return "redirect:/";
+        return false;
     }
 
     @RequestMapping("logout")

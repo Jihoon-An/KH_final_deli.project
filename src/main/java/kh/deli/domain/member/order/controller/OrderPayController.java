@@ -3,13 +3,14 @@ package kh.deli.domain.member.order.controller;
 import com.google.gson.Gson;
 import kh.deli.domain.member.order.dto.OrderOrdersDTO;
 import kh.deli.domain.member.order.service.OrderOrdersService;
+import kh.deli.domain.member.order.service.OrderPaymentService;
 import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreStoreService;
+import kh.deli.global.entity.PaymentDTO;
 import kh.deli.global.entity.StoreDTO;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,13 +26,11 @@ import java.util.List;
 public class OrderPayController {
 
     private final HttpSession session;
+    private final OrderOrdersService orderOrdersService;
+    private final StoreStoreService storeStoreService;
+    private final OrderPaymentService paymentService;
 
-    @Autowired
-    OrderOrdersService orderOrdersService;
-    @Autowired
-    StoreStoreService storeStoreService;
-
-    private final OrderOrdersService ordersService;
+    private final Gson gson;
 
     // 주문 페이지로 이동
     @RequestMapping("")
@@ -98,22 +97,27 @@ public class OrderPayController {
     @ResponseBody
     public ModelAndView saveOrder(OrderOrdersDTO orderOrdersDTO) throws Exception {
 
+        //Insert orders table
         BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
+
         int storeSeq = basketDTO.getStoreSeq();
         int accSeq = (Integer) session.getAttribute("acc_seq");
+
         List<StoreBasketMenuRequestDTO> manuList = basketDTO.getMenuList();
-        Gson gson = new Gson();
         String manuListStr = gson.toJson(manuList);
+
         orderOrdersDTO.setMenuList(manuListStr);
+
         StoreDTO storeDTO = storeStoreService.getStoreInfo(storeSeq);
+
         int tip = storeDTO.getStore_deli_tip();
+
         orderOrdersDTO.setDelivery_tip(tip);
         orderOrdersDTO.setAcc_seq(accSeq);
         orderOrdersDTO.setStore_seq(storeSeq);
 
         int orderSeq = orderOrdersService.insertOrder(orderOrdersDTO);
         orderOrdersService.deleteCouponList(orderOrdersDTO);
-
 
         //보유포인트 차감 & 적립
         int orgPoint = Integer.parseInt(orderOrdersDTO.getOwnPoint());
@@ -125,13 +129,22 @@ public class OrderPayController {
         orderOrdersDTO.setOwnPoint(String.valueOf(ownPoint));
         orderOrdersService.updateOwnPoint(orderOrdersDTO);
 
+        //Insert payment table
+        paymentService.put(PaymentDTO.builder()
+                .order_seq(orderSeq)
+                .pay_price(orderOrdersDTO.getPay_price())
+                .pay_method(orderOrdersDTO.getPay_method())
+                .build());
 
+        //Delete session
+        session.removeAttribute("basket");
+
+        //Input data model, set view
         ModelAndView mav = new ModelAndView();
         mav.setViewName("redirect:/order/detail/" + orderSeq);
         mav.addObject("orderOrdersDTO", orderOrdersDTO);
 
         return mav;
-
     }
 
 

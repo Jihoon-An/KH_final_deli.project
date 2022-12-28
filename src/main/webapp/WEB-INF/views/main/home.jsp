@@ -21,11 +21,14 @@
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
 
+    <!-- sweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="/resources/css/main/home.css" type="text/css">
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
+<%--<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>--%>
 
 <main id="home">
 
@@ -45,7 +48,7 @@
                 </div>
 
                 <div class="buttonBox">
-                    <button>로그인</button>
+                    <button type="button" id="loginButton">로그인</button>
                     <div class="saveBox">
                         <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
                         <label for="emailSave">이메일저장</label>
