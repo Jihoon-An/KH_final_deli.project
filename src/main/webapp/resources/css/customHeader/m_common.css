@@ -47,13 +47,9 @@ main {
     box-sizing: border-box;
     color: #24292E;
     cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 500;
     line-height: 20px;
     list-style: none;
-    padding: 6px 16px;
+    padding: 6px 15px;
     position: relative;
     transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     user-select: none;
