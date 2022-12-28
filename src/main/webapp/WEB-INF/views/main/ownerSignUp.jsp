@@ -41,7 +41,7 @@
     <div class="container">
         <form id="signup_frm" action="/ownerSignUp/signUp" enctype="multipart/form-data"
               method="post">
-            <div class="header row"><h1 class="text-center">사업자 회원가입</h1></div>
+            <div class="header row"><h1 class="text-center">딜리 - 사업자회원가입</h1></div>
 
             <%--이메일 입력--%>
             <div class="input_title row mt-5"><h5>이메일</h5></div>
