@@ -2,16 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>딜리 - 이메일 l 비밀번호 찾기</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <link href="/resources/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+
     <link rel="stylesheet" href="/resources/css/main/findAccount.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>
 <body>
 
@@ -21,7 +24,7 @@
 
 
             <div class="titleBox">
-                이메일l비밀번호 찾기
+                이메일 l 비밀번호 찾기
             </div>
 
             <div class="choiceBox">
@@ -33,13 +36,15 @@
 
             <div id="findEmailBox">
                 <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone" maxlength='11' oninput=validNum()>
-                <button type="button" id="phone_certi_btn">인증</button><br>
+                <button type="button" id="phone_certi_btn">인증번호 발송</button><br>
                 <p id="phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>
 
                 <div id="phone_confirm_box" style="display: none">
-                    <input type="text" placeholder="phone 인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input" maxlength='6' oninput=validNum()>
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input" maxlength='6' oninput=validNum()>
                     <button type="button" id="phone_confirm_btn">확인</button>
-                    <span id="phone_count"></span>
+                    <div id="phoneCountBox">
+                        <span id="phone_count"></span>
+                    </div>
                 </div>
 
                 <div id="emailBox">
@@ -56,9 +61,11 @@
                 <p id="pw_phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>
 
                 <div id="pw_phone_confirm_box" style="display: none">
-                    <input type="text" placeholder="phone 인증번호 6자리" name="phone_confirm_input" id="pw_phone_confirm_input" maxlength='6' oninput=validNum()>
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="pw_phone_confirm_input" maxlength='6' oninput=validNum()>
                     <button type="button" id="pw_phone_confirm_btn">확인</button>
-                    <span id="pw_phone_count"></span>
+                    <div id="pw_phoneCountBox">
+                        <span id="pw_phone_count"></span>
+                    </div>
                 </div>
 
                 <div id="passWordBox">
