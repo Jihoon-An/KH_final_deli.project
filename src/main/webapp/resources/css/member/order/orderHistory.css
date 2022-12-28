@@ -9,8 +9,8 @@
 #order_history .container {
     width: 360px;
     /*height: 100px;*/
-    margin-top: 45px;
-    margin-bottom: 75px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     /*overflow: hidden;*/
 }
 #order_history .box1{
@@ -98,4 +98,9 @@
         height: 30px;
 
     line-height: 10px;
+}
+
+#order_history a{
+    text-decoration: none;
+    color: black;
 }
