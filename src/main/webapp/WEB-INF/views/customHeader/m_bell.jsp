@@ -13,4 +13,9 @@
     text-align: center;
   }
 </style>
-<a href="/"><div id="deli_bell"><i class="fa-solid fa-bell"></i></div></a>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+
+<link href="/resources/css/global/alarm.css" rel="stylesheet">
+<script src="/resources/js/global/alarm.js"></script>
+
