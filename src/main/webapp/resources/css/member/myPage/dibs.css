@@ -1,7 +1,5 @@
 #dibs *{box-sizing: border-box;}
 
-/*#dibs div{border: 1px solid black;}*/
-
 #dibs a{
     text-decoration: none;
     color: black;
@@ -28,7 +26,6 @@
     margin-bottom: 20px;
 }
 
-
 #dibs .dibBox{
     border-radius: 20px;
     width: 350px;
@@ -39,7 +36,7 @@
     font-size: 13px;
     box-shadow: 0 5px 18px -7px rgba(0,0,0,0.1);
     position: relative;
-    left: -7.5px;
+    left: -6.4px;
 }
 
 #dibs .imgBox{
@@ -49,27 +46,29 @@
     overflow: hidden;
     position: relative;
     top: 30px;
+    left: -3px;
 }
 
 #dibs .storeLogo{
-    width: 90%;
+    width: 100%;
     height: 70px;
-
 }
 
 #dibs .info{
     width: 65%;
-    float: left
+    float: left;
+    position:relative;
+    top: 15px;
+    left: 10px;
 }
 
 
 #dibs .store_name{
     font-weight: bolder;
-    padding: 5px 0px;
+    font-size: larger;
 }
 #dibs .avg_star,.store_min, .store_deli_tip,.store_deli_time{
     font-size: small;
-    padding: 3px 0px;
     color: gray;
 }
 
@@ -106,5 +105,3 @@ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 #dibs hr{
     border-width: 0.25px;
 }
-
-
