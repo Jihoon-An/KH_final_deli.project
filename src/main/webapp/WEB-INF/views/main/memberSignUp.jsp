@@ -43,11 +43,9 @@
 </head>
 <body>
 <main>
-
     <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-
 
     <div class="container">
         <c:choose>
