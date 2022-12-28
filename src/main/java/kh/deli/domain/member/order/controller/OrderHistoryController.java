@@ -50,7 +50,7 @@ public class OrderHistoryController {
             List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
 
 
-           basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
+           basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
 
             System.out.println(basketMenu.get(i).getMenu());
 
