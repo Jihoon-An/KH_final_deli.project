@@ -22,6 +22,10 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
 
     <link rel="stylesheet" href="/resources/css/owner/storeMng.css" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>
 
 

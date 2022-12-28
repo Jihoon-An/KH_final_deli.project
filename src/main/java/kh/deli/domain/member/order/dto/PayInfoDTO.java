@@ -11,7 +11,7 @@ public class PayInfoDTO {
 
     private int order_price;
     private int discountByCoupon;
-    private int order_point;
+    private int point;
     private int delivery_tip;
     private int pay_price;
     private String pay_method;

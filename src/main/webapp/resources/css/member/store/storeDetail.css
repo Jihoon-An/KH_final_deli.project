@@ -6,6 +6,8 @@
     width: 360px;
     margin: auto;
     padding-top: 40px;
+    min-height: 800px;
+    padding-bottom: 20px;
 }
 
 #store_detail .header {
@@ -20,10 +22,13 @@
 
 #store_detail .header #storeName {
     line-height: 70px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #store_detail .header #star {
     width: 95%;
+    font-size: 17px;
 }
 
 #store_detail .header #reviewCount {
@@ -34,6 +39,7 @@
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 17px;
 }
 
 #store_detail .deliveryInfo {
@@ -42,12 +48,14 @@
 
 #store_detail .deliveryInfo div {
     line-height: 27px;
+    font-size: 16px;
 }
 
 #store_detail .fieldBox {
     width: 95%;
     margin: auto;
     overflow: hidden;
+    font-size: 17px;
 }
 
 #store_detail .fieldBox div {
