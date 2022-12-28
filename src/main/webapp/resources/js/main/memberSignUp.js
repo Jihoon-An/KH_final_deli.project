@@ -159,18 +159,10 @@ function email_confirm() {
         $("#acc_email_hidden").val(acc_email_val);
         email_ok = true;
     } else if ($("#email_count").html() == "시간초과") {
-        Swal.fire({
-            icon: 'error',
-            title: '실패',
-            text: '인증을 다시해주세요',
-        });
+        Swal.fire("인증을 다시해주세요");
         email_ok = false;
     } else {
-        Swal.fire({
-            icon: 'error',
-            title: '실패',
-            text: '인증번호를 확인해주세요',
-        });
+        Swal.fire("인증번호를 확인해주세요");
         email_ok = false;
     }
 }
@@ -211,11 +203,7 @@ $("#phone_certi_btn").on("click", function () {
                 sendAuthNum("#phone_count");
                 $("#phone_confirm_box").show();
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: '실패',
-                    text: '메세지 전송 실패',
-                });
+                Swal.fire("메세지 전송 실패");
             }
         });
     } else {
@@ -270,18 +258,10 @@ function phone_confirm() {
                 $("#mem_phone_hidden").val(mem_phone_val);
                 phone_ok = true;
             } else if ($("#phone_count").html() == "시간초과") {
-                Swal.fire({
-                    icon: 'error',
-                    title: '실패',
-                    text: '인증을 다시해주세요',
-                });
+                Swal.fire("인증을 다시해주세요");
                 phone_ok = false;
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: '실패',
-                    text: '인증번호를 확인해주세요',
-                });
+                Swal.fire("인증번호를 확인해주세요");
                 phone_ok = false;
             }
         })
