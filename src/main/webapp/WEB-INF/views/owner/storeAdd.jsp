@@ -267,7 +267,7 @@
             <div class="rowBox">
                 <div class="title">휴무일</div>
                 <div class="contents" style="display: inline; width: 220px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day"> </div>
-                <div class="close_day_msg"></div>
+                <div class="close_day_msg" style="font-size: 10px; line-height: 20px"></div>
             </div>
 
 
