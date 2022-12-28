@@ -20,14 +20,17 @@ public class AlarmService {
     private final AlarmOwnerMapper ownerMapper;
     private final Gson gson;
 
-    protected List<Integer> getSeqListByType(UserType userType) {
+    public List<Integer> getSeqListByType(UserType userType) {
         Optional<List<Integer>> seqList = Optional.ofNullable(
                 accountMapper.getSeqListByType(userType.getType()));
 
         return seqList.orElse(new ArrayList<>());
     }
 
-    protected UserType getUserType(int accSeq) {
+    /**
+     * @return Not Null
+     */
+    public UserType getUserType(int accSeq) {
         String type = accountMapper.getType(accSeq);
         switch (type) {
             case "client":
@@ -37,11 +40,12 @@ public class AlarmService {
             case "admin":
                 return UserType.ADMIN;
             default:
-                throw new RuntimeException("적절한 UserType이 존재하지 않습니다.");
+                return UserType.NONE;
+//                throw new RuntimeException("로그인이 필요합니다.");
         }
     }
 
-    protected String saveNotice(NoticeDTO notice) {
+    public String saveNotice(NoticeDTO notice) {
         notice.setNotice_seq(noticeMapper.getNextSeq());
         noticeMapper.put(notice);
 
@@ -69,7 +73,7 @@ public class AlarmService {
         return sendText;
     }
 
-    protected String getSendText(NoticeDTO notice, UserType userType) {
+    public String getSendText(NoticeDTO notice, UserType userType) {
         String text = "";
         NoticeResponseDTO responseDto = NoticeResponseDTO.builder()
                 .notice_title(notice.getNotice_title())
@@ -91,7 +95,7 @@ public class AlarmService {
         return text;
     }
 
-    protected void sendTextOnType(NoticeDTO notice, Set<Session> clientsCopy, UserType userType) throws IOException {
+    public void sendTextOnType(NoticeDTO notice, Set<Session> clientsCopy, UserType userType) throws IOException {
         for (Session client : clientsCopy) {
             Map<String, Object> clientProperties = client.getUserProperties();
 
@@ -106,7 +110,7 @@ public class AlarmService {
         }
     }
 
-    protected void insertNoticeOnType(NoticeDTO notice, UserType userType) {
+    public void insertNoticeOnType(NoticeDTO notice, UserType userType) {
         List<Integer> seqList = this.getSeqListByType(userType);
         for (int seq : seqList) {
             notice.setNotice_seq(noticeMapper.getNextSeq());

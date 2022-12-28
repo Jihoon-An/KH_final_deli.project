@@ -1,5 +1,7 @@
 package kh.deli.global.interceptor;
 
+import kh.deli.global.entity.UserType;
+import kh.deli.global.util.alarm.AlarmService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,13 +17,38 @@ public class DomainInterceptor implements HandlerInterceptor {
 
     private final HttpSession session;
 
+    private final AlarmService alarmService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
-//        if (uri.startsWith("/store/")) {
-//            response.sendRedirect("/");
-//            return false;
-//        }
+        Integer accSeq = (Integer) session.getAttribute("acc_seq");
+        UserType userType = alarmService.getUserType(accSeq);
+
+        switch (userType) {
+            case NONE:
+                response.sendRedirect("/");
+                return false;
+            case ADMIN:
+                if (!uri.startsWith("/admin")) {
+                    response.sendRedirect("/");
+                    return false;
+                }
+                break;
+            case MEMBER:
+                if (uri.startsWith("/admin") || uri.startsWith("/owner")) {
+                    response.sendRedirect("/");
+                    return false;
+                }
+                break;
+            case OWNER:
+                if (!uri.startsWith("/owner")) {
+                    response.sendRedirect("/");
+                    return false;
+                }
+                break;
+        }
+
         return true;
     }
 
