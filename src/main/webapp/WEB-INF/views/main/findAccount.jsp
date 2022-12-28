@@ -54,7 +54,7 @@
 
             <div id="findPassWordBox">
 
-                <input type="text" placeholder="이메일 입력" id="pw_emailInput">
+                 <input type="text" placeholder="이메일 입력" id="pw_emailInput">
 
                 <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="pw_mem_phone" maxlength='11' oninput=validNum()>
                 <button type="button" id="pw_phone_certi_btn">인증</button><br>

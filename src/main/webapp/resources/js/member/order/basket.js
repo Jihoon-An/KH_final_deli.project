@@ -20,7 +20,7 @@ class BasketMenuDTO {
 /**
  * 장바구니 업데이트 function
  */
-function updateBasket() {
+async function updateBasket() {
 
     let basketMenuDTOList = [];
 
@@ -43,7 +43,7 @@ function updateBasket() {
         basketMenuDTOList.push(basketMenuDTO);
     }
 
-    $.ajax({
+    await $.ajax({
         url: "/basket/updateMenu",
         type: "post",
         data: {basketMenuList: JSON.stringify(basketMenuDTOList)}
@@ -56,7 +56,7 @@ function updateBasket() {
 /**
  * 수량 - 버튼 기능
  */
-$(".minus").click(function() {
+$(".minus").click(async function() {
     let count = parseInt($(this).closest(".countBox").find(".countSpan").html());
 
     if (count > 1) {
@@ -89,7 +89,7 @@ $(".minus").click(function() {
 
 
         // 장바구니 업데이트
-        updateBasket();
+        await updateBasket();
     }
 });
 
@@ -98,7 +98,7 @@ $(".minus").click(function() {
 /**
  * 수량 + 버튼 기능
  */
-$(".plus").click(function() {
+$(".plus").click(async function() {
     let count = parseInt($(this).closest(".countBox").find(".countSpan").html());
 
     if (count < 99) {
@@ -131,7 +131,7 @@ $(".plus").click(function() {
 
 
         // 장바구니 업데이트
-        updateBasket();
+        await updateBasket();
     }
 });
 
@@ -140,7 +140,7 @@ $(".plus").click(function() {
 /**
  * 삭제 버튼 기능
  */
-$(".deleteBtn").click(function(){
+$(".deleteBtn").click(async function(){
     let count = parseInt($(this).closest(".menuBox").find(".countSpan").html());
 
     // 총 수량 --
@@ -152,19 +152,29 @@ $(".deleteBtn").click(function(){
 
     // 총 주문금액
     let totalPrice = parseInt($("#totalPriceSpan").html());
-    $("#totalPriceSpan").text(totalPrice - price);
+    let minusTotalPrice = totalPrice - price;
 
     // 결제예정금액
     let payAmount = parseInt($("#payAmountSpan").html());
-    $("#payAmountSpan").text(totalPrice - price + deliTip);
+    let minusPayAmount = minusTotalPrice + deliTip;
+
+
+    $("#totalPriceSpan").text(minusTotalPrice);
+    $("#payAmountSpan").text(minusPayAmount);
     $("#totalPB").text($("#payAmountSpan").html());
+
+    console.log("메뉴 금액 : " + price);
+    console.log("토탈 : " + totalPrice);
+    console.log("마이너스 토탈 : " + minusTotalPrice);
+    console.log("페이어마운트" + payAmount);
+    console.log("마이너스 페이" + minusPayAmount);
 
     // 삭제
     $(this).closest(".menuBox").remove();
 
 
     // 장바구니 업데이트
-    updateBasket();
+    await updateBasket();
 
     if ($("#container").children(".menuBox").length < 1) {
         location.reload();
