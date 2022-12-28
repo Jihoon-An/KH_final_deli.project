@@ -409,6 +409,7 @@ $("#submit_btn").click(function () {
 
 function autoHypenTel(str) {
     str = str.replace(/[^0-9]/g, '');
+    str = str.substring(0,11);
     var tmp = '';
 
     if (str.substring(0, 2) == 02) {
