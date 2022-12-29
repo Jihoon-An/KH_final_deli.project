@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/util/")
-public class UtilController {
+public class UtilRestController {
     private final NaverSms smsService;
 
     /**
