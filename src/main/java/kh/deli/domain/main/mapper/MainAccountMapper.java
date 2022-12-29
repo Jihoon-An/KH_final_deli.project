@@ -64,13 +64,13 @@ public interface MainAccountMapper {
     /**
      * <h1>[오너] 회원탈퇴 매퍼</h1>
      */
-    @Select("SELECT OWNER_SEQ FROM OWNER WHERE ACC_SEQ = #{acc_seq")
+    @Select("SELECT OWNER_SEQ FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
     Integer getOwnerSeqByAccSeq(@Param("acc_seq") int accSeq);
-    @Select("SELECT STORE_SEQ FROM STROE WHERE OWNER_SEQ = #{owner_seq}")
+    @Select("SELECT STORE_SEQ FROM STORE WHERE OWNER_SEQ = #{owner_seq}")
     List<Integer> getStoreSeqListByOwnerSeq(@Param("owner_seq") int ownerSeq);
-    @Select("SELECT REV_SYSNAME FROM REVIEW WHERE STORE_SEQ = #{store_seq}")
+    @Select("SELECT REV_SYSNAME FROM REVIEW WHERE STORE_SEQ = #{store_seq} AND REV_SYSNAME IS NOT NULL")
     List<String> getReviewImgListByStoreSeq(@Param("store_seq") int storeSeq);
-    @Select("SELECT MENU_IMG FROM MENU WHERE STORE_SEQ = #{store_seq}")
+    @Select("SELECT MENU_IMG FROM MENU WHERE STORE_SEQ = #{store_seq} AND MENU_IMG IS NOT NULL")
     List<MenuDTO> getMenuImgListByStoreSeq(@Param("store_seq") int storeSeq);
 
     @Delete("DELETE FROM DIBS WHERE STORE_SEQ = #{store_seq}")
@@ -82,14 +82,16 @@ public interface MainAccountMapper {
     @Delete("DELETE FROM MENU WHERE STORE_SEQ = #{store_seq}")
     void deleteMenuByStoreSeq(@Param("store_seq") int storeSeq);
     @Delete("DELETE FROM OWNER WHERE ACC_SEQ = #{acc_seq}")
-    void deleteOwnerByAccSeq(@Param("acc_seq") Integer accSeq);
+    void deleteOwnerByAccSeq(@Param("acc_seq") int accSeq);
     @Delete("DELETE FROM ACCOUNT WHERE ACC_SEQ = #{acc_seq}")
     void deleteAccountByAccSeq(@Param("acc_seq") int accSeq);
+    @Delete("DELETE FROM STORE WHERE OWNER_SEQ = #{owner_seq}")
+    void deleteStoreByOwnerSeq(@Param("owner_seq") int ownerSeq);
 
     /**
      * <h1>[일반] 회원탈퇴 매퍼</h1>
      */
-    @Select("SELECT REV_SYSNAME FROM REVIEW WHERE ACC_SEQ = #{acc_seq}")
+    @Select("SELECT REV_SYSNAME FROM REVIEW WHERE ACC_SEQ = #{acc_seq} AND REV_SYSNAME IS NOT NULL")
     List<String> getReviewImgListByAccSeq(@Param("acc_seq") int accSeq);
     @Delete("DELETE FROM DIBS WHERE ACC_SEQ = #{acc_seq}")
     void deleteDibsByAccSeq(@Param("acc_seq") int accSeq);

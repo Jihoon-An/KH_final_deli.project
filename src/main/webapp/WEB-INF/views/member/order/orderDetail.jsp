@@ -58,7 +58,7 @@
                         <div id="menu_name">${menuList.menu.menu_name} ${menuList.count}개</div>
                             <%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
                         <c:choose>
-                        <c:when test="${fn:length(optionList.option_name) != 0}">
+                        <c:when test="${fn:length(menuList.optionList) != 0}">
                             <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
                                 미디엄${optionList.option_name}
                                 (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),

@@ -24,6 +24,7 @@
     line-height: 70px;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
 }
 
 #store_detail .header #star {
@@ -64,12 +65,23 @@
     height: 45px;
     text-align: center;
     line-height: 45px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 #store_detail .fieldBox div a {
     text-decoration: none;
     color: black;
+}
+
+#store_detail .deliveryInfo {
+    border-radius: 20px;
+    width: 350px;
+    height: 100px;
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
 }
 
 #store_detail .category {
@@ -92,7 +104,7 @@
 
 #store_detail #menu {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.15em;
     float: left;
 }
 
@@ -120,22 +132,20 @@
     word-wrap: break-word;
 }
 
-#store_detail button {
-    border: 0;
-}
 
-#store_detail .filter_box {
-    /*width: 350px;*/
-    width: 95%;
-    margin: 12px auto;
-}
+/*#store_detail .filter_box {*/
+/*    !*width: 350px;*!*/
+/*    width: 95%;*/
+/*    margin: 12px auto;*/
 
-#store_detail .filter {
+/*}*/
+
+#store_detail .filter_box .filter {
     border-radius: 20px;
     border: rgba(232, 76, 79, 0.5) solid 1px;
     padding: 5px 15px 5px 15px;
     background-color: #FFFFFF;
-    font-size: 13px;
+    font-size: 14px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -163,11 +173,11 @@
 }
 
 #store_detail .filter_box::-webkit-scrollbar {
-    height: 4.5px;
+    height: 5px;
 }
 
 #store_detail .filter_box::-webkit-scrollbar-corner {
-    /*display: none;*/
+    display: none;
 }
 
 #store_detail .filter_box::-webkit-scrollbar-button:start {
@@ -241,7 +251,7 @@ store_detail button {
     border: 0;
     background-color: unset;
     position: relative;
-    left: 50%;
+    /*left: 50%;*/
     top: 50%;
     transform: translate(-50%, -50%);
 }
@@ -255,13 +265,7 @@ store_detail button {
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
+/*div{border: 1px solid black;}*/
 
 /*#store_detail * {*/
 /*    box-sizing: border-box;*/

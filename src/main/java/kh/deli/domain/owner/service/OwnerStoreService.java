@@ -26,7 +26,7 @@ public class OwnerStoreService {
     //식당 수정
     public void modifyStore(StoreDTO storeDTO, MultipartFile file) throws Exception {
 
-        String realPath=session.getServletContext().getRealPath("/resources/store");
+        String realPath=session.getServletContext().getRealPath("/resources/img/store");
         File filePath=new File(realPath);
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성
