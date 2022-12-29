@@ -16,6 +16,7 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/owner/storeList.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <div>
 
@@ -45,7 +46,7 @@
                             <td class="add_detail">${store.store_add_detail1}, ${store.store_add_detail2}</td>
                             <td class="display"><span class="display_val">${store.store_open}</span> <button class="display_toggle">전환하기</button></td>
                             <td class="btn">
-                                <a href="/store/mng?store_seq=${store.store_seq}">
+                                <a href="/owner/store/mng?store_seq=${store.store_seq}">
                                     <button type="button">정보수정</button>
                                 </a>
                                 <a href="/owner/menu?store_seq=${store.store_seq}">

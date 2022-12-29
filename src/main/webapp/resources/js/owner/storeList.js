@@ -15,11 +15,6 @@ $(".del_btn").click(function () {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            );
             $(del_form).submit();
         }
     })
@@ -42,3 +37,17 @@ $(".display_toggle").click(function () {
         data: {storeSeq: storeSeq, newVal: newVal}
     })
 });
+
+// $(".del_btn").on("click",function(){
+//     let store_seq=$(this).closest(".btn").find(".store_seq").val();
+//     $.ajax({
+//         url:"/owner/store/list/delete",
+//         data:{
+//             "store_seq":store_seq
+//         },
+//         method:"post"
+//     }).done(function(resp){
+//         location.reload();
+//         console.log("식당삭제완");
+//     })
+// })
