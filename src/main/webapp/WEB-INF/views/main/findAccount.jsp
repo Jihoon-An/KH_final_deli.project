@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 이메일 l 비밀번호 찾기</title>
+    <title>딜리 - 이메일/비밀번호 찾기</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <link href="/resources/favicon.ico" rel="shortcut icon" type="image/x-icon">

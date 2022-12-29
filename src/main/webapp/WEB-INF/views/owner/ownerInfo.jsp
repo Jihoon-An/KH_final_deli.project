@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>딜리 - 회원 정보</title>
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"

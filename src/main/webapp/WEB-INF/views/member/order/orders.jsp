@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>결제하기</title>
+    <title>딜리 - 결제하기</title>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
