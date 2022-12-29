@@ -134,7 +134,7 @@ public class AccountController {
         session.setAttribute("loginType", "normal");
         session.setAttribute("acc_seq", accSeq);
 
-      //  mcpService.giveSignUpCp(accSeq);
+//        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -150,7 +150,7 @@ public class AccountController {
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq",  accSeq);
 
-      //  mcpService.giveSignUpCp(accSeq);
+//        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -189,7 +189,7 @@ public class AccountController {
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
     public String telCertify(String mem_phone) {
         String serverTelCertifyStr = mainAccountService.sendRandomMessage(mem_phone);
-        redisUtil.setData(mem_phone,serverTelCertifyStr); // 문자 인증번호 정보를 Redis에 저장
+        redisUtil.setData(mem_phone,serverTelCertifyStr,180); // 문자 인증번호 정보를 Redis에 저장
         return serverTelCertifyStr;
     }
 

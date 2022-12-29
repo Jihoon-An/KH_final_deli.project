@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <title>memberOrder</title>
+    <title>딜리 - 결제내역</title>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
@@ -26,10 +27,11 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/order/orderDetail.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 <main id="orderDetail">
     <div class="container">
@@ -55,11 +57,22 @@
                     <div class="menuBox">
                         <div id="menu_name">${menuList.menu.menu_name} ${menuList.count}개</div>
                             <%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
-                        <div>${optionList.option_group} 사이드 선택 : 후렌치 후라이 미디엄${optionList.option_name}
-                            (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
-                        </div>
+                        <c:choose>
+                        <c:when test="${fn:length(optionList.option_name) != 0}">
+                            <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
+                                미디엄${optionList.option_name}
+                                (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
+                                미디엄${optionList.option_name}
+                                (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
+                            </div>
+                        </c:otherwise>
+                        </c:choose>
                             <%--                        </c:forEach>--%>
-                        <div>${menuList.price}원</div>
+                        <div class="orderContent">${menuList.price}원</div>
                     </div>
                 </c:forEach>
 
@@ -80,9 +93,14 @@
 
                     <div class="price">
                         <div><fmt:formatNumber value="${payInfoDTO.order_price}" pattern="#,###"/>원</div>
-                        <div id="coupon_discount">-<fmt:formatNumber value="${payInfoDTO.discountByCoupon}" pattern="#,###"/>원</div>
-                        <div id="point_discount">-<fmt:formatNumber value="${payInfoDTO.order_point}" pattern="#,###"/>원</div>
-                        <div id="delivery_tip"><fmt:formatNumber value="${payInfoDTO.delivery_tip}" pattern="#,###"/>원</div>
+                        <div id="coupon_discount">-<fmt:formatNumber value="${payInfoDTO.discountByCoupon}"
+                                                                     pattern="#,###"/>원
+                        </div>
+                        <div id="point_discount">-<fmt:formatNumber value="${payInfoDTO.point}"
+                                                                    pattern="#,###"/>원
+                        </div>
+                        <div id="delivery_tip"><fmt:formatNumber value="${payInfoDTO.delivery_tip}" pattern="#,###"/>원
+                        </div>
                     </div>
                     <hr>
 

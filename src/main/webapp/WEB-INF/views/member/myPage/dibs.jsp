@@ -34,7 +34,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 
 <main id="dibs">
-    <hr class="mt65">
+    <hr class="mt55">
     <div class="container">
         <div id="pageTitle">찜</div>
         <div id="dibCountSec">내가 찜한 맛집 ${dibCount}개</div>

@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>식당상세리뷰</title>
+    <title>딜리 - 식당상세리뷰</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -26,6 +26,10 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/store/storeReview.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>

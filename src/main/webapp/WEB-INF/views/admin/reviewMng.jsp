@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <title>adminReviewMng</title>
+    <title>딜리 - 운영자 리뷰관리</title>
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -20,9 +20,11 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="/resources/css/admin/reviewMng.css">
-
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <main id="review_mng">
     <table id="myTable" class="display">
         <thead>

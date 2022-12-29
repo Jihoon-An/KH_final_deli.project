@@ -21,10 +21,21 @@
     text-align: center;
     box-sizing: border-box;
     padding: 74px 0;
-    /*line-height: 23px;*/
     cursor: pointer;
 }
 
-#adminStore #myTable {
+#adminStore #myTable,#myTable_info,#myTable_paginate,#myTable_length,#myTable_filter {
     cursor: pointer;
+    position: relative;
+    top: 50px;
+    left: -90px;
+    margin: 10px 0px;
+}
+
+#adminStore #myTable{
+    width: 1200px;
+}
+
+#adminStore #myTable_filter,#myTable_paginate{
+    left: 105px;
 }
