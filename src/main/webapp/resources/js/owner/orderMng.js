@@ -103,3 +103,4 @@ $('#all_check').click(function () {
 $('.check_box_input').click(function () {
     $('#all_check').prop('checked', false);
 });
+
