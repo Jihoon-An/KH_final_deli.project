@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>딜리 - 메뉴수정</title>
 </head>
 <body>
     <main class="menuModify">

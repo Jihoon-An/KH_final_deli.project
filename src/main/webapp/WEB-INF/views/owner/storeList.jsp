@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>식당관리</title>
+    <title>딜리 - 내 식당리스트</title>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
