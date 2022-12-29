@@ -42,3 +42,7 @@ $(".display_toggle").click(function () {
         data: {storeSeq: storeSeq, newVal: newVal}
     })
 });
+
+$(".name").click(function () {
+    $("#frm").attr("action", "/owner/store/mng").submit();
+});
