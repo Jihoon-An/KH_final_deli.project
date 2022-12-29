@@ -65,7 +65,7 @@
     <!-- kakao 회원가입 -->
     <insert id="kakaoSignUp" parameterType="kh.deli.global.entity.AccountDTO">
         INSERT INTO account VALUES(
-        acc_seq.nextval,
+        #{acc_seq},
         #{acc_email},
         #{acc_pw},
         'client',

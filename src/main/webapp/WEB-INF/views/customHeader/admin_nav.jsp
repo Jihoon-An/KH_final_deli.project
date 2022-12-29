@@ -62,7 +62,6 @@
             <h2>ADMIN</h2></a>
         <i class="fa-solid fa-ticket"></i>
         <a href="/admin/coupon/list">쿠폰관리</a>
-        <a href="/admin/coupon/add">쿠폰추가</a>
         <i class="fa-regular fa-pen-to-square"></i>
         <a href="/admin/review">리뷰관리</a>
         <i class="fa-solid fa-user"></i>

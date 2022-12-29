@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>딜리 - 주문관리</title>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <!--jQuery-->
@@ -79,7 +79,8 @@ storeSeq가 다른 링크를 달아서 매장마다 관리할 수 있도록 함.
                 <td class="mem_phone">${order.phone}</td>
                 <td class="menu_name">${order.menuStrList}</td>
                 <td class="mem_add">${order.address}</td>
-                <td class="deli_link">${order.link}</td>
+                <td class="deli_link_btn"><button class="send_link_btn">링크 보내기</button></td>
+                <input type="hidden" class="deli_link" value="${order.link}">
             </tr>
         </c:forEach>
         </tbody>

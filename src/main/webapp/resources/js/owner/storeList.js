@@ -38,16 +38,6 @@ $(".display_toggle").click(function () {
     })
 });
 
-// $(".del_btn").on("click",function(){
-//     let store_seq=$(this).closest(".btn").find(".store_seq").val();
-//     $.ajax({
-//         url:"/owner/store/list/delete",
-//         data:{
-//             "store_seq":store_seq
-//         },
-//         method:"post"
-//     }).done(function(resp){
-//         location.reload();
-//         console.log("식당삭제완");
-//     })
-// })
+$(".name").click(function () {
+    $("#frm").attr("action", "/owner/store/mng").submit();
+});

@@ -60,7 +60,6 @@ public class BasketController {
                 int price = (basketDTO.getMenuList().get(i).getPrice())*count; // BasketDTO > MenuList 에서 뽑아낸 Price
 
                 OrderDetailDTO orderDetailDTO = new OrderDetailDTO(menuDTO, menuOptionDTOList, count, price);
-
                 orderDetailDTOList.add(orderDetailDTO);
             }
 

@@ -175,11 +175,12 @@ $("#phone_btn").on("click", function () {
 
     console.log(phoneConfirmText);
 
-    // $.ajax({
-    //     url: "/",
-    //     type: "post",
-    //     data: {email:$("#email").val()}
-    // })
+    $.ajax({
+        url: "/util/sendSms",
+        type: "post",
+        data: {tel:phoneNum, msg:phoneConfirmText}
+    })
+
     $("#phone_confirm_box").css("display", "flex");
     $("#phone_confirm_input").val("");
     phoneCountStarter();
@@ -409,6 +410,7 @@ $("#submit_btn").click(function () {
 
 function autoHypenTel(str) {
     str = str.replace(/[^0-9]/g, '');
+    str = str.substring(0,11);
     var tmp = '';
 
     if (str.substring(0, 2) == 02) {

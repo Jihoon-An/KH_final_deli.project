@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>reviewList</title>
+    <title>딜리 - 내 리뷰</title>
 </head>
 <script>
     window.onload = function () {

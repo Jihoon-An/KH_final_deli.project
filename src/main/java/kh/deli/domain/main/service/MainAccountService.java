@@ -339,6 +339,16 @@ public class MainAccountService {
         mainAccountMapper.insertAddress(addressDTO);
     }
 
+
+
+
+
+
+
+
+
+
+
     public String getAccEmail(String acc_token) {
         return mainAccountMapper.getAccEmail(acc_token);
     }

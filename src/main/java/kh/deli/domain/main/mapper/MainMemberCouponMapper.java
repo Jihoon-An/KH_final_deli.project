@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MainMemberCouponMapper {
     // 회원가입 쿠폰 발행
-    @Select("INSERT INTO MEMBER_COUPON VALUES(MC_SEQ.NEXTVAL, 4, #{accSeq}, SYSDATE, SYSDATE + (30 * 24 * 60 * 60 * 1000))")
+    @Select("INSERT INTO MEMBER_COUPON VALUES(MC_SEQ.NEXTVAL, 4, #{accSeq}, SYSDATE, (SYSDATE + 30))")
     void giveSignUpCp(@Param("accSeq") int accSeq);
 }

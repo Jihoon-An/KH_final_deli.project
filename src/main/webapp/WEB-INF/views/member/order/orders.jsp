@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>결제하기</title>
+    <title>딜리 - 결제하기</title>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
@@ -614,11 +614,12 @@
             buyer_addr: address
         };
 
-        $("#insertForm").submit();
         IMP.request_pay(payInfo, function (rsp) {
             if (rsp.success) {
 
                 var msg = '결제가 완료되었습니다.';
+                $("#insertForm").submit(); // 위치 바꿈
+                // 결제 취소했을 때 창 닫히게 추가 코드 있으면 수정 바람.
 
                 //window.parent.location.href = "/payComplete.paymem?payGoodsSeq=" + goodsSeq + "&payMemberEmail=" + userEmail;
             } else {

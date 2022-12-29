@@ -34,16 +34,20 @@
     <%--모달--%>
     <div class="modal">
         <div class="modal_destination_container">
-            <button type="button" class="deli_btn" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가</button>
+
+            <hr class="line">
 
             <form id="destination_select_frm" method="post">
                 <div id="destination_select_box">
-                    <button type="button" class="deli_btn" id="destination_select">주소지 변경</button>
-                    <hr>
+                    <button type="button" class="deli_btn" id="destination_select">주소지 선택</button>
+
                     <c:choose>
                         <c:when test="${not empty address_List}">
                             <c:forEach var="i" items="${address_List}">
-                                <div class="destination_box form-check">
+                                <hr class="line">
+                                <hr style="width: 60%; margin: 0 auto; border-color: #999999;">
+                                <hr class="line">
+                                <div class="destination_box">
                                     <input type="hidden" name="add_seq" class="add_seq" value="${i.add_seq}">
                                     <input type="radio" name="radio_add_division"
                                            <c:if test="${i.add_division=='basics'}">id="basics" checked</c:if>>
@@ -53,35 +57,56 @@
                                     </span>
                                     <input type="hidden" name="add_division" class="hidden_add_division"
                                            value="${i.add_division}">
-                                        <span class="add_name">${i.add_name}</span> <a class="del"><i class="fa-solid fa-xmark"></i></a><br>
-                                        ${i.add_detail1} <br>
-                                    상세주소 : ${i.add_detail2}
-                                    <hr>
+                                    <span class="add_name">${i.add_name}</span> <a class="del"><i
+                                        class="fa-solid fa-square-xmark"></i></a><br>
+                                    <span class="add_detail1"> ${i.add_detail1}<br>
+                                    <span class="add_detail2"> 상세주소 : </span>${i.add_detail2}</span>
                                 </div>
                             </c:forEach>
                         </c:when>
                     </c:choose>
                 </div>
             </form>
+            <hr style="width: 60%; margin: 0 auto; border-color: #999999;">
+            <hr class="line">
+            <button type="button" class="deli_btn" id="destination_add_box_btn"><i class="fa-solid fa-house"></i> 주소지 추가
+            </button>
+            <hr class="line">
+
         </div>
 
         <div class="modal_destination_add">
-            <div onclick="closeDestinationAdd()">X</div>
-            <form id="destination_add_frm" method="post">
-                <h2>배달지 주소 등록</h2>
-                <input type="text" placeholder="주소지 별명을 입력해주세요" id="add_name" name="add_name" maxlength='10'><br>
-                <input type="text" id="postcode" placeholder="우편검색을 눌러주세요" readonly>
-                <button type="button" class="postsearch">우편검색</button>
-                <br>
-                <input type="text" id="add_detail1" name="add_detail1" placeholder="기본주소" readonly>
-                <br>
-                <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소를 입력해주세요" maxlength='50'>
-                <br>
-                <input type="hidden" id="add_x" name="add_x">
-                <input type="hidden" id="add_y" name="add_y">
-                <input type="hidden" name="acc_seq" value="${acc_seq}">
-                <button type="button" id="destination_add_btn">배달지 추가</button>
-            </form>
+            <div style="width: 320px; margin: 0 auto">
+                <hr class="line">
+                <div onclick="closeDestinationAdd()"><i class="fa-solid fa-square-xmark"></i></div>
+                <hr class="line">
+                <form id="destination_add_frm" method="post">
+<%--                    <h5 style="margin: 10px">배달지 주소 추가 등록</h5>--%>
+                    <input type="text" placeholder="주소지 별명을 입력해주세요" id="add_name" name="add_name" maxlength="10"
+                           class="form-control">
+
+                    <hr class="mini_line">
+
+                    <div class="input-group">
+                        <input type="text" id="postcode" placeholder="우편번호검색을 눌러주세요" class="form-control" readonly>
+                        <button type="button" class="postsearch deli_btn">우편번호검색</button>
+                    </div>
+                    <hr class="mini_line">
+
+                    <input type="text" id="add_detail1" name="add_detail1" placeholder="기본주소가 입력됩니다" class="form-control"
+                           readonly>
+                    <hr class="mini_line">
+
+                    <input type="text" id="add_detail2" name="add_detail2" placeholder="상세주소를 입력해주세요" maxlength="50"
+                           class="form-control">
+                    <hr class="line">
+
+                    <input type="hidden" id="add_x" name="add_x">
+                    <input type="hidden" id="add_y" name="add_y">
+                    <input type="hidden" name="acc_seq" value="${acc_seq}">
+                    <button type="button" id="destination_add_btn" class="deli_btn">배달지 추가 등록</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
