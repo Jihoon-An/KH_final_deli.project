@@ -83,6 +83,10 @@ public class HomeController {
                 model.addAttribute("list", list);
                 return "owner/ownerMain";
             }
+
+            if(acc_type.equals("admin")){
+                return "redirect:/admin";
+            }
         }
 
         model.addAttribute("saved_email", saved_email);
