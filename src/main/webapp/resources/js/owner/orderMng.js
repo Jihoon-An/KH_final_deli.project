@@ -104,3 +104,48 @@ $('.check_box_input').click(function () {
     $('#all_check').prop('checked', false);
 });
 
+/**
+ * 링크 보내기 버튼 이벤트
+ */
+$(".send_link_btn").click(function () {
+    let deliLink = $(this).closest("tr").find(".deli_link").val();
+    let tel;
+    // 전화번호 입력
+    Swal.fire({
+        title: '전화번호를 입력하세요',
+        text: '"-"는 빼고 입력하세요',
+        input: 'tel',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: '링크 보내기',
+        showLoaderOnConfirm: true,
+        preConfirm: (inputTel) => { //유효성 검사
+            console.log(inputTel)
+            if (/^010[0-9]{8}/.test(inputTel)) {
+                tel = inputTel;
+                return true;
+            }
+            else {
+                Swal.showValidationMessage(
+                    `유효하지 않은 전화번호 입니다.`
+                )
+            }
+            return false;
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url:"/util/sendSms",
+                type: "post",
+                data: {tel:tel, msg:'딜리 배달원 링크\n'+deliLink}
+            }).done(
+                Swal.fire({
+                    title: `링크에 성공하였습니다.`
+                })
+            );
+        }
+    })
+});
