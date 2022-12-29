@@ -45,14 +45,14 @@
             <c:when test="${not empty order_list}">
                 <c:forEach var="order_list" items="${order_list}" varStatus="status">
 
-<%--                    <fmt:parseDate value="${order_list.order_date}" var="date" pattern="yyyy-mm-dd"/>--%>
-<%--                       <fmt:parseNumber var="parseDate" value="${date.time+(1000*60*60*24*30)}" integerOnly="true"/>--%>
+                    <jsp:useBean id="now" class="java.util.Date"/>
+                    <fmt:parseNumber value="${now.time}" integerOnly="true"
+                                     var="nowfmtTime" scope="request"/>
+<%--                       <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+(1000*60*60*24*30)}" integerOnly="true"  scope="request"/>--%>
+                    <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*30  )}" integerOnly="true"  scope="request"/>
+                          <%-- 주문날짜 기준 30일지나면 출력이 안된다--%>
+                        <c:if test="${nowfmtTime<parseDate}">
 
-<%--                    <script>--%>
-<%--                        ${parseDate}--%>
-<%--                    </script>--%>
-<%--&lt;%&ndash;                        <c:if test="${order_list.order_date>parseDate}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        </c:if>&ndash;%&gt;--%>
                         <div class="box1">
                         <div class="box2">
                             <span class="head_deli">배달주문</span>
@@ -106,7 +106,7 @@
                                 <a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn">리뷰작성</button></a>
 
                                 <a href="/order/detail/${order_list.order_seq}"><button class="deli_btn">주문상세</button></a>
-                                <button class="deli_btn">재주문</button>
+                                <button class="deli_btn" type="button">재주문</button>
 
                                 </div>
                                 <c:if test="${order_list.order_status='배달완료'}">
@@ -115,11 +115,17 @@
                         </div>
 
                     </div>
+                        </c:if>
 
                 </c:forEach>
             </c:when>
             <c:otherwise>결제내역없음</c:otherwise>
         </c:choose>
+
+
+        <div>
+            ${menu_list.menu_name}
+        </div>
 
     </div>
 

@@ -115,6 +115,3 @@ $(".deleteBtn").click(function(){
 $("#pay").click(function() {
     $("#payAmount").val(parseInt($("#payAmountSpan").html()));
 });
-
-
-
