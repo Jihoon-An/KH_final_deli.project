@@ -44,7 +44,7 @@ function countdown(elementName, minutes, seconds) {
         }
     }
 
-    element = document.getElementById(elementName);                 //count 출력 위치 설정
+    element = document.getElementById(elementName);                 //count 출력 위치 설정 
     endTime = (+new Date) + 1000 * (60 * minutes + seconds) + 500;  //끝는 시간 설정
     updateTimer();  //count loop시작
 }
@@ -409,6 +409,7 @@ $("#submit_btn").click(function () {
 
 function autoHypenTel(str) {
     str = str.replace(/[^0-9]/g, '');
+    str = str.substring(0,11);
     var tmp = '';
 
     if (str.substring(0, 2) == 02) {

@@ -5,6 +5,15 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
+//jar {
+//    manifest {
+//        attributes(
+//                'Main-Class': 'kh.deli.DeliApplication'
+//        )
+//    }
+//}
+
+
 group = 'kh'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'

@@ -19,6 +19,8 @@
     margin: auto;
     padding-top: 20px;
     padding-bottom: 10px;
+    position: relative;
+    left: 1px;
 }
 
 #memberMain .categoryBox {
@@ -77,11 +79,14 @@
 #memberMain .storeName{
     font-weight: bold;
     font-size: large;
+    position: relative;
+    top: 5px;
+    width: fit-content;
+    left:12px;
 }
 
 #memberMain .storeEtc{
     font-size: x-small;
-    /*float: right;*/
     font-weight: lighter;
     line-height: 29px;
 }
@@ -89,8 +94,12 @@
 #memberMain .storePrice{
     font-size: small;
     color: gray;
-    width: 100%;
     margin: 10px 0px;
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    top: -5px;
+    left:12px;
 }
 
 #memberMain .priceFont{

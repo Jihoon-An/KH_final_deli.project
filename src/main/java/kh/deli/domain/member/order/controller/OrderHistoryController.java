@@ -54,9 +54,6 @@ public class OrderHistoryController {
             Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
             List<StoreBasketMenuRequestDTO> parseMenuList = gson.fromJson(getMenuList, type2);
 
-
-
-
             // parseMenuList는 seq가 담긴 seq 리스트,  아래 basketMenuListDToObject메서드로  name으로 전환
             List<BasketMenu> menuListName =storeBasketService.basketMenuListDtoToObject(parseMenuList);
             //basketMenuListDtoToObject 의 반환타입이 List<BasketMenu>
@@ -66,25 +63,18 @@ public class OrderHistoryController {
             //System.out.println(menuList2.size());
                 int menuCount = menuListName.size();
 
-
                // 여기까진 0인덱스메뉴명밖에 출력을 못함
-
 
                 //for문 안에 있어야 하는 이유 orderList길이만큼 for문 돌려서서 add
 
 
 
-               //  System.out.println(basketMenu.get(j).getMenu().getMenu_name());
-
-
-           // System.out.println(menuList.get(0).getMenu().getMenu_name());
-            // System.out.println(basketMenu.get(0).getMenu().getMenu_seq());
             //get에 1인덱스부터 배열크기가 안맞다고 오류남
             menuList.add(MenuName);
             menuCountList.add(menuCount);
         }
 
-        menuCountList.get(0).intValue();
+
 
         model.addAttribute("menu_count_list", menuCountList); //메뉴 갯수
         model.addAttribute("menu_list", menuList); // parse한 리스트

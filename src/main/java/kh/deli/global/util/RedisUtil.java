@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 @Repository
 public class RedisUtil {
 
-    private final int LIMIT_TIME = 3 * 60;
+//    private final int LIMIT_TIME = 3 * 60;
 
     private final RedisTemplate<String, Object> redisTemplate;
 
@@ -17,8 +17,8 @@ public class RedisUtil {
         this.redisTemplate = redisTemplate;
     }
 
-    public void setData(String key, String value){
-        redisTemplate.opsForValue().set(key, value, Duration.ofSeconds(LIMIT_TIME));
+    public void setData(String key, String value, Integer limitTime){
+        redisTemplate.opsForValue().set(key, value, Duration.ofSeconds(limitTime));
     }
 
     public String getData(String key){

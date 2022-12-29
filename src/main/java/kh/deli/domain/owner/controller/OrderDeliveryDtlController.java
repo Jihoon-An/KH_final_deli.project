@@ -1,18 +1,13 @@
-package kh.deli.domain.member.order.controller;
+package kh.deli.domain.owner.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.member.order.dto.*;
-import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.domain.member.order.service.OrderOrdersService;
-import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.dto.BasketMenu;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreBasketService;
-import kh.deli.global.entity.MenuDTO;
-import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.OrdersDTO;
-import kh.deli.global.util.naverSensV2.NaverNShortURL;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,19 +15,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("deliveryDtl")
+@RequestMapping("/deliveryDtl/")
 public class OrderDeliveryDtlController {
 
     private final OrderOrdersService orderOrdersService;
     private final StoreBasketService storeBasketService;
     private final Gson gson;
 
-    @RequestMapping("/{orderSeq}")
+    @RequestMapping("{orderSeq}")
     public String toDeliveryDtl(Model model, @PathVariable("orderSeq") Integer order_seq) throws Exception {
 
         StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(order_seq); // 가게정보
@@ -92,6 +86,6 @@ public class OrderDeliveryDtlController {
 //        nShortURL.toShortURL(url);
 //        System.out.println(url);
 
-        return "member/order/deliveryDtl";
+        return "owner/deliveryDtl";
     }
 }
