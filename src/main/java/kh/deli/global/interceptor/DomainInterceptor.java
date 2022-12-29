@@ -30,23 +30,22 @@ public class DomainInterceptor implements HandlerInterceptor {
                 response.sendRedirect("/");
                 return false;
             case ADMIN:
-                if (!uri.startsWith("/admin")) {
+                if (!uri.startsWith("/admin/")) {
                     response.sendRedirect("/");
                     return false;
                 }
                 break;
             case MEMBER:
-                if (uri.startsWith("/admin") || uri.startsWith("/owner")) {
+                if (uri.startsWith("/admin/") || uri.startsWith("/owner/")) {
                     response.sendRedirect("/");
                     return false;
                 }
                 break;
             case OWNER:
-                if (!uri.startsWith("/owner")) {
+                if (!uri.startsWith("/owner/")) {
                     response.sendRedirect("/");
                     return false;
                 }
-                break;
         }
 
         return true;
