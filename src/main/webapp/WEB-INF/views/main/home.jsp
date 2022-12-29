@@ -54,7 +54,7 @@
                         <label for="emailSave">이메일저장</label>
                     </div>
                     <div class="findBox">
-                        <a href="/account/findAccount">이메일l비밀번호 찾기</a>
+                        <a href="/account/findAccount">이메일 l 비밀번호 찾기</a>
                     </div>
                 </div>
                 <br><br>
@@ -72,7 +72,7 @@
                     <a href="/account/toMemberSignUp">일반회원가입</a>
                 </div>
                 <div class="businessSignUpLinkBox signUpBox">
-                    <span>딜리의 사장님이 아니신가요?</span>
+                    <span>아직 딜리의 사장님이 아니신가요?</span>
                     <a href="/ownerSignUp">사업자회원가입</a>
                 </div>
             </form>

@@ -86,3 +86,8 @@
   - 데이터 이슈로 테스트 불이행
 - 비로그인 메인페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 마이페이지 CSS (<span style="color: yellow">75%</span>)
+---
+### 22-12-27 (화)
+- 마이페이지 CSS (<span style="color: chartreuse">100%</span>)
+- 로그인 Ajax 코드로 리팩토링
+- 로그인 JavaScript 기능 추가

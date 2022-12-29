@@ -45,9 +45,14 @@ public class OrderBasketService {
 
     public void updateBasketInSession(HttpSession session, String BasketJson) {
         BasketDTO basketDTO = (BasketDTO) session.getAttribute("basket");
-        Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {
-        }.getType();
-        basketDTO.setMenuList(gson.fromJson(BasketJson, type));
+        Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {}.getType();
+        List<StoreBasketMenuRequestDTO> menuList = gson.fromJson(BasketJson, type);
+
+        // 메뉴 리스트 수정
+        basketDTO.setMenuList(menuList);
+        // 총 주문 금액 수정
+        basketDTO.setTotalPrice(this.getTotalPriceByMenuList(menuList));
+
         session.setAttribute("basket", basketDTO);
     }
 
