@@ -75,59 +75,73 @@ public class MainAccountService {
         String accType = this.selectType(accSeq);
 
         if (accType.equals("business")){ // 사업자 탈퇴
+
             // OwnerSeq 값 불러오기
             Integer ownerSeq = mainAccountMapper.getOwnerSeqByAccSeq(accSeq);
 
             // 운영중인 StoreSeq 불러오기
             List<Integer> storeSeqList = mainAccountMapper.getStoreSeqListByOwnerSeq(ownerSeq);
 
-            for (int i = 0; storeSeqList.size() > i; i++) {
+            // 삭제할 Img File 리스트
+            List<String> deleteReviewImgList = new ArrayList<>();
+            List<String> deleteMenuImgList = new ArrayList<>();
 
-                // 식당 리뷰 사진 img 파일 삭제
+            // 삭제할 OwnerCard Img File 명 담기
+            String deleteOriginalFile = mainAccountMapper.findOwnerCardBySeq(accSeq);
+
+            for (int i = 0; storeSeqList.size() > i; i++) {
+                // 식당 Review Img Data 불러오기
                 List<String> reviewImgJsonList = mainAccountMapper.getReviewImgListByStoreSeq(storeSeqList.get(i));
 
                 for (int k = 0; reviewImgJsonList.size() > k; k++) {
                     Type reviewImgListType = new TypeToken<List<String>>(){}.getType();
-                    List<String> reviewImgList = new ArrayList<>();
-                    reviewImgList.add(gson.fromJson(reviewImgJsonList.get(k), reviewImgListType));
+                    List<String> reviewImgList = (gson.fromJson(reviewImgJsonList.get(k), reviewImgListType));
 
                     for (int j = 0; reviewImgList.size() > j; j++) {
-                        FileUtil fileUtil = new FileUtil();
-                        fileUtil.delete(session, "/resources/img/review", reviewImgList.get(j));
+                        // 리스트에 Review Img File 명 담기
+                        deleteReviewImgList.add(reviewImgList.get(j));
                     }
+                }
+
+                // 식당 Menu Img Data 불러오기
+                List<MenuDTO> menuList = mainAccountMapper.getMenuImgListByStoreSeq(storeSeqList.get(i));
+
+                for (int l = 0; menuList.size() > l; l++) {
+                    // 리스트에 Menu Img File 명 담기
+                    deleteMenuImgList.add(menuList.get(l).getMenu_img());
+                    // Menu_option 테이블 삭제
+                    mainAccountMapper.deleteMenuOptionByMenuOption(menuList.get(l).getMenu_seq());
                 }
 
                 // Review 테이블 데이터 삭제
                 mainAccountMapper.deleteReviewByStoreSeq(storeSeqList.get(i));
                 // Dibs 테이블 데이터 삭제
                 mainAccountMapper.deleteDibsByStoreSeq(storeSeqList.get(i));
-
-                // 식당 메뉴 사진 img 파일 삭제
-                List<MenuDTO> menuList = mainAccountMapper.getMenuImgListByStoreSeq(storeSeqList.get(i));
-
-                for (int l = 0; menuList.size() > l; l++) {
-                    FileUtil fileUtil = new FileUtil();
-                    fileUtil.delete(session, "/resources/img/menu-img", menuList.get(l).getMenu_img());
-
-                    // Menu_option 테이블 삭제
-                    mainAccountMapper.deleteMenuOptionByMenuOption(menuList.get(l).getMenu_seq());
-                }
-
                 // Menu 테이블 삭제
                 mainAccountMapper.deleteMenuByStoreSeq(storeSeqList.get(i));
-
             }
-
-            // 사업자 등록증 img 파일 삭제
-            FileUtil fileUtil = new FileUtil();
-            String originalFile = mainAccountMapper.findOwnerCardBySeq(accSeq);
-            fileUtil.delete(session, "/resources/img/owner-card", originalFile);
-
+            // Store 테이블 데이터 삭제
+            mainAccountMapper.deleteStoreByOwnerSeq(ownerSeq);
             // Owner 테이블 데이터 삭제
             mainAccountMapper.deleteOwnerByAccSeq(accSeq);
-
             // Account 테이블 데이터 삭제
             mainAccountMapper.deleteAccountByAccSeq(accSeq);
+
+
+            // [ 사진 파일 삭제 ]
+            FileUtil fileUtil = new FileUtil();
+
+            // Review Img File 삭제
+            for (String reviewImg : deleteReviewImgList) {
+                fileUtil.delete(session, "/resources/img/review", reviewImg);
+            }
+            // Menu Img File 삭제
+            for (String menuImg : deleteMenuImgList) {
+                fileUtil.delete(session, "/resources/img/menu-img", menuImg);
+            }
+            // OwnerCard Img File 삭제
+            fileUtil.delete(session, "/resources/img/owner-card", deleteOriginalFile);
+
 
         }else { // 일반 클라이언트 탈퇴
 
@@ -135,31 +149,27 @@ public class MainAccountService {
             List<String> reviewImgJsonList = mainAccountMapper.getReviewImgListByAccSeq(accSeq);
 
             for (int i = 0; reviewImgJsonList.size() > i; i++) {
-                Type reviewImgListType = new TypeToken<List<String>>(){}.getType();
-                List<String> reviewImgList = new ArrayList<>();
-                reviewImgList.add(gson.fromJson(reviewImgJsonList.get(i), reviewImgListType));
 
-                for (int k = 0; reviewImgList.size() > k; k++) {
-                    FileUtil fileUtil = new FileUtil();
-                    fileUtil.delete(session, "/resources/img/review", reviewImgList.get(k));
+                List<String> deleteReviewImgList = new ArrayList<>();
+                Type reviewImgListType = new TypeToken<List<String>>(){}.getType();
+                deleteReviewImgList.add(gson.fromJson(reviewImgJsonList.get(i), reviewImgListType));
+
+                FileUtil fileUtil = new FileUtil();
+                for (String reviewImg : deleteReviewImgList) {
+                    fileUtil.delete(session, "/resources/img/review", reviewImg);
                 }
             }
 
             // Review 테이블 데이터 삭제
             mainAccountMapper.deleteReviewByAccSeq(accSeq);
-
             // Dibs 테이블 데이터 삭제
             mainAccountMapper.deleteDibsByAccSeq(accSeq);
-
             // Member_coupon 테이블 데이터 삭제
             mainAccountMapper.deleteMemberCouponByAccSeq(accSeq);
-
             // Address 테이블 데이터 삭제
             mainAccountMapper.deleteAddressByAccSeq(accSeq);
-
             // Member 테이블 데이터 삭제
             mainAccountMapper.deleteMemberByAccSeq(accSeq);
-
             // Account 테이블 데이터 삭제
             mainAccountMapper.deleteAccountByAccSeq(accSeq);
         }
