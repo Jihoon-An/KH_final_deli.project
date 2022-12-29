@@ -39,7 +39,7 @@ public interface OwnerStoreMapper {
     List<StoreDTO> findByAccSeq(@Param("accSeq") int accSeq);
 
     @Update("UPDATE STORE SET STORE_OPEN = #{newVal} WHERE STORE_SEQ = #{storeSeq}")
-    void toggleDisplay(int storeSeq, String newVal);
+    void toggleDisplay(@Param("storeSeq") int storeSeq, @Param("newVal") String newVal);
 
     @Select("select owner_Seq from owner where acc_seq = #{acc_seq} ")
     int selectOwnerSeq(int acc_seq);

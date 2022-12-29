@@ -4,6 +4,7 @@ import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
 import kh.deli.domain.owner.dto.OwnerDdSalesDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -13,12 +14,16 @@ import java.util.List;
 @Mapper
 public interface OwnerMainMapper {
 
-    public List<OwnerStoreInfoDTO> selectByOwner (int owner_seq);
+    public List<OwnerStoreInfoDTO> selectByOwner (@Param("owner_seq") int owner_seq);
 
-    public OwnerDailySalesDTO selectSales(int store_seq, LocalDate now);
+    public OwnerDailySalesDTO selectSales(@Param("store_seq") int store_seq, @Param("now") LocalDate now);
 
-    public int selectOwnerSeq(int acc_seq);
+    public int selectOwnerSeq(@Param("acc_seq") int acc_seq);
 
-    public List<OwnerDdSalesDTO> selectSpecific(int store_seq, String startDate, String endDate);
+    public List<OwnerDdSalesDTO> selectSpecific(
+            @Param("store_seq") int store_seq,
+            @Param("startDate") String startDate,
+            @Param("endDate") String endDate
+    );
 
 }
