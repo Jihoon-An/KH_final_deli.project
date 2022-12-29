@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface AlarmAccountMapper {
-    @Select("SELECT ACC_TYPE FROM ACCOUNT WHERE ACC_SEQ = #{seq}")
-    String getType(@Param("seq") int seq);
+    @Select("SELECT ACC_TYPE FROM ACCOUNT WHERE ACC_SEQ = #{seq, jdbcType=INTEGER}")
+    String getType(@Param("seq") Integer seq);
 
     @Select("SELECT ACC_SEQ FROM ACCOUNT WHERE ACC_TYPE = #{type}")
     List<Integer> getSeqListByType(@Param("type") String type);

@@ -30,8 +30,9 @@ public class AlarmService {
     /**
      * @return Not Null
      */
-    public UserType getUserType(int accSeq) {
-        String type = accountMapper.getType(accSeq);
+    public UserType getUserType(Integer accSeq) {
+        String type = Optional.ofNullable(accountMapper.getType(accSeq))
+                .orElse("");
         switch (type) {
             case "client":
                 return UserType.MEMBER;

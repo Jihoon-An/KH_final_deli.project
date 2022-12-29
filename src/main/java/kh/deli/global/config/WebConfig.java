@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(domainInterceptor)
-                .addPathPatterns("/store/**")
+                .addPathPatterns("/**")
                 .excludePathPatterns("/resources/**")
                 .excludePathPatterns("/error/**")
                 .excludePathPatterns("/")
