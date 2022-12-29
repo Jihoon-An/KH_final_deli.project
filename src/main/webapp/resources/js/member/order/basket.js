@@ -13,7 +13,7 @@ class BasketMenuDTO {
         this.menuSeq = inputMenuSeq;
         this.optionSeqList = optionSeqList;
         this.count = count;
-        this.price = price;
+        this.price = price/count;
     }
 }
 
@@ -39,9 +39,9 @@ async function updateBasket() {
         let price = $(".menuBox").eq(i).find(".priceSpan").html();
 
         let basketMenuDTO = new BasketMenuDTO(inputMenuSeq, optionSeqList, count, price);
-
         basketMenuDTOList.push(basketMenuDTO);
     }
+
 
     await $.ajax({
         url: "/basket/updateMenu",
@@ -158,16 +158,9 @@ $(".deleteBtn").click(async function(){
     let payAmount = parseInt($("#payAmountSpan").html());
     let minusPayAmount = minusTotalPrice + deliTip;
 
-
     $("#totalPriceSpan").text(minusTotalPrice);
     $("#payAmountSpan").text(minusPayAmount);
     $("#totalPB").text($("#payAmountSpan").html());
-
-    console.log("메뉴 금액 : " + price);
-    console.log("토탈 : " + totalPrice);
-    console.log("마이너스 토탈 : " + minusTotalPrice);
-    console.log("페이어마운트" + payAmount);
-    console.log("마이너스 페이" + minusPayAmount);
 
     // 삭제
     $(this).closest(".menuBox").remove();
