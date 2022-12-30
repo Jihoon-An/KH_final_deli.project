@@ -10,16 +10,8 @@
 <html>
 <head>
     <title>딜리 - 내 정보</title>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-    <!-- font-awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
     <link rel="stylesheet" href="/resources/css/owner/ownerInfo.css" type="text/css">
-    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>
 <body>
 
@@ -134,12 +126,9 @@
     </form>
 
     <div class="logOutBox">
-        <a href="/account/logout">
-            <button>로그아웃</button>
-        </a>
-        <a href="/account/withdrawal">
-            <button>회원탈퇴미구현</button>
-        </a>
+        <form action="/account/withdrawal" id="withdrawalForm" method="post">
+            <button type="button" id="withdrawalButton">회원탈퇴</button>
+        </form>
     </div>
 
 

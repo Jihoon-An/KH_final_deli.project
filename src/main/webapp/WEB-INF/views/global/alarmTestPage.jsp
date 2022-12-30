@@ -10,15 +10,7 @@
 <html>
 <head>
     <title>alarm</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-    <!--icon-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"
-          rel="stylesheet">
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 
     <link href="/resources/css/global/alarm.css" rel="stylesheet">
     <script src="/resources/js/global/alarm.js"></script>

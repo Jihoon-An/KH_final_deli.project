@@ -1,10 +1,25 @@
+#adminStore #container{
+    position: relative;
+    top: 80px;
+}
+
+#adminStore #myTable{
+    cursor: pointer;
+}
+
+#adminStore #myTable_info,#myTable_paginate{
+    position: relative;
+    top: 20px;
+}
+#adminStore #myTable_filter,#myTable_length{
+    position: relative;
+    bottom: 20px;
+}
+
 #adminStore .modal {
-    position: absolute;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    top: 0;
-    left: 0;
     display: none;
 }
 
@@ -24,18 +39,29 @@
     cursor: pointer;
 }
 
-#adminStore #myTable,#myTable_info,#myTable_paginate,#myTable_length,#myTable_filter {
-    cursor: pointer;
+#adminStore .closeBtn{
     position: relative;
-    top: 50px;
-    left: -90px;
-    margin: 10px 0px;
+    bottom: 40px;
+    left: 155px
 }
 
-#adminStore #myTable{
-    width: 1200px;
+#adminStore .modalInfo{
+    position: relative;
+    left: 50px;
+    text-align: left;
+}
+#adminStore .modalInfo>input{
+    border: none;
+    background: none;
 }
 
-#adminStore #myTable_filter,#myTable_paginate{
-    left: 105px;
+#adminStore .modalTitle{
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+}
+
+#adminStore .btnBox>button{
+    position: relative;
+    top: 15px;
 }

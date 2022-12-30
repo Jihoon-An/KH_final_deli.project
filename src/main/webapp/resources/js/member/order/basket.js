@@ -180,7 +180,16 @@ $(".deleteBtn").click(async function(){
  * 결제 버튼 기능
  */
 $("#pay").click(function() {
-    $("#payAmount").val(parseInt($("#payAmountSpan").html()));
+    if (parseInt($("#totalPriceSpan").html()) > $("#minPrice").val()) {
+        $("#payAmount").val(parseInt($("#payAmountSpan").html()));
+    } else{
+        Swal.fire({
+            icon: 'error',
+            title: '주문금액 부족',
+            text: $("#minPrice").val() + '원부터 주문할 수 있어요',
+        });
+        return false;
+    }
 });
 
 
