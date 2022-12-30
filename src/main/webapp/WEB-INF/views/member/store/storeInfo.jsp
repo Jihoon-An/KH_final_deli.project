@@ -53,8 +53,14 @@
 
             <div class="d-flex flex-row">
                 <div class="title">전화번호</div>
-                <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
-                <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)==9}">
+                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,###,####"/>
+                    <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                </c:if>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)>=10}">
+                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
+                    <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                </c:if>
             </div>
 
             <div class="d-flex flex-row">
@@ -199,10 +205,10 @@
                 <div class="detail_contents" id="bs_store_des">${storeInfoDTO.store_add_detail1}
                     ${storeInfoDTO.store_add_detail2}</div>
             </div>
-
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
-                <div class="detail_contents" id="bs_code">${ownerInfoDTO.owner_num}</div>
+                    <fmt:formatNumber var="phoneNo" value="${ownerInfoDTO.owner_num}" pattern="###,##,#####"/>
+                <div class="detail_contents" id="bs_code"><c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
             </div>
         </div>
         <script>
