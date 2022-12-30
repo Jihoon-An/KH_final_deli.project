@@ -82,24 +82,23 @@ function fileToBase64(file) {
     const reader = new FileReader();
     reader.readAsDataURL(file)
     reader.onload = () => {
-        console.dir(reader.result)   // base64
+        // console.dir(reader.result)   // base64
         $("#profile").attr("src", reader.result);
     }
 }
 
 
-$("#store_img").on("change", function () {
+$("#store_img").on("change", function (e) {
+    // 취소 눌렀을 때 이벤트
     if ($("#store_img").val() == "") {
-        $(".profile_img").attr("src", "/resources/img/store/no_storelogo.png");
+        $(".profile_img").attr("src", "/resources/img/store/" + originSysName);
         return;
     }
-    console.log($("#store_img").val());
     let ext = $("#store_img").val().split(".").pop().toLowerCase();
 
     let accept = ["png", "jpg", "jpeg", "gif"];
 
     let result = $.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
-    console.log(result);
 
 
     if (result == -1) {
@@ -109,7 +108,7 @@ $("#store_img").on("change", function () {
 
 
     } else {
-        fileToBase64(document.getElementById("menu_img").files[0]);
+        fileToBase64(document.getElementById("store_img").files[0]);
     }
 });
 
@@ -155,12 +154,42 @@ $(document).on("click", ".postsearch", function () {
     }).open();
 })
 
-$(".close_day").on("keyup", function (){
+$(".close_day").on("keyup", function () {
     $(".close_day_msg").css("color", "#001a41")
     $(".close_day_msg").css("font-size", "15px")
     $(".close_day_msg").html("ex)연중 무휴, 목, 금은 쉽니다")
 })
 
-$("#deleteStoreBtn").on("click",function(){
-    location.href="/owner/store/list";
+$("#deleteStoreBtn").on("click", function () {
+    location.href = "/owner/store/list";
 })
+
+
+function setStar(star) {//number star
+    if ((star / 1) >= 1) {
+        $("#star1").val(true)
+    }else{
+        $("#star1").val(false)
+    }
+    if ((star / 2) >= 1) {
+        $("#star2").val(true)
+    }else{
+        $("#star2").val(false)
+    }
+    if ((star / 3) >= 1) {
+        $("#star3").val(true)
+    }else{
+        $("#star3").val(false)
+    }
+    if ((star / 4) >= 1) {
+        $("#star4").val(true)
+    }else{
+        $("#star4").val(false)
+    }
+    if ((star / 5) >= 1) {
+        $("#star5").val(true)
+    }else{
+        $("#star5").val(false)
+    }
+}
+
