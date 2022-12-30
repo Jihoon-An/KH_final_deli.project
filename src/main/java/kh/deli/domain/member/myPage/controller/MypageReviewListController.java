@@ -39,9 +39,13 @@ public class MypageReviewListController {
 
         public String toMyPageReview(Model model) throws Exception{
 
+        int accSeq = (int) session.getAttribute("acc_seq");
+
+
         ObjectMapper mapper = new ObjectMapper();
         MypageReviewDTO param = new MypageReviewDTO();
-        param.setAcc_seq(79);//사진 : 49, 메뉴리스트 : 31
+
+        param.setAcc_seq(accSeq);
 
         int myPageReivewCount = myPageReviewService.getReviewCount(param);
         System.out.println("리뷰 갯수 >>>> " + myPageReivewCount);
@@ -50,6 +54,7 @@ public class MypageReviewListController {
         List<Map<String, Object>> reviewList = myPageReviewService.getReviews(param);
 //나경
         OrdersDTO orders_dto = myPageReviewService.selectByOrderSeq(18);
+
         JSONParser jsonParser = new JSONParser();
         JSONArray jsonArr = (JSONArray) jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
 
@@ -70,6 +75,9 @@ public class MypageReviewListController {
             String memNick = (String) reviewList.get(i).get("MEM_NICK");
             String revWriteTime = String.valueOf(reviewList.get(i).get("REV_WRITETIME"));
             int rev_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("REV_SEQ")));
+            int order_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("ORDER_SEQ")));
+            int store_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("STORE_SEQ")));
+
             String flag_udt = (String) reviewList.get(i).get("FLAG_UDT");
             String storeName = (String) reviewList.get(i).get("STORE_NAME");
             int revStar = Integer.parseInt(reviewList.get(i).get("REV_STAR").toString());
@@ -106,13 +114,17 @@ public class MypageReviewListController {
                     rev_writetime(revWriteTime).
                     rev_star(revStar).
                     rev_sysname(tmp1).
-                    rev_content(revContent)
-                            .rev_seq(rev_seq)
-                            .flag_udt(flag_udt)
-                    .menu(menu)
-                    .store_name(storeName)
-                    .build()
+                    rev_content(revContent).
+                    rev_seq(rev_seq).
+                    store_seq(store_seq).
+                    order_seq(order_seq).
+                    flag_udt(flag_udt).
+                    menu(menu).
+                    store_name(storeName).
+                    build()
+
             );
+
         }
 
         model.addAttribute("reviewList", reviewList);
@@ -121,8 +133,11 @@ public class MypageReviewListController {
         return "/member/myPage/memberReviewList";
     }
 
-    //@RequestMapping("deleteReview")
-
+    @RequestMapping("deleteReview")
+    public String deleteReview(int rev_seq) throws Exception{
+        myPageReviewService.deleteReview(rev_seq);
+        return "redirect:/";
+    }
 
 
 
