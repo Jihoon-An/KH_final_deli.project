@@ -25,8 +25,6 @@ public class AllExceptionHandler {
         return "errorPage/deliveryDtlException";
     }
 
-
-
     @ExceptionHandler(Exception.class)
     public String allExceptionHandler(Exception e) {
         e.printStackTrace();
