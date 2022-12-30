@@ -50,8 +50,8 @@
             </div>
             <hr>
             <div>
-<%--                주문번호: <input type="text" value="${dto.order_seq}" name="order_seq">--%>
-<%--                가게번호: <input type="text" value="${dto.store_seq}" name="store_seq">--%>
+                 <input type="hidden" value="${dto.order_seq}" name="order_seq">
+                 <input type="hidden" value="${dto.store_seq}" name="store_seq">
 <%--                주문금액: <input type="text" value="${dto.order_price}">--%>
 <%--                <input type="hidden" value="${dto.menu_list}" id="menu">--%>
                 <div class="menuBox">주문 메뉴</div>

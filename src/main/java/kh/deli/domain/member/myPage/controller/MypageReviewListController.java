@@ -37,7 +37,9 @@ public class MypageReviewListController {
 
     @RequestMapping("")
 
-        public String toMyPageReview(Model model) throws Exception{
+    public String toMyPageReview(Model model) throws Exception {
+
+
 
         ObjectMapper mapper = new ObjectMapper();
         MypageReviewDTO param = new MypageReviewDTO();
@@ -70,6 +72,11 @@ public class MypageReviewListController {
             String memNick = (String) reviewList.get(i).get("MEM_NICK");
             String revWriteTime = String.valueOf(reviewList.get(i).get("REV_WRITETIME"));
             int rev_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("REV_SEQ")));
+            int order_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("ORDER_SEQ")));
+            int store_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("STORE_SEQ")));
+            System.out.println("rev : "+rev_seq);
+            System.out.println("order_seq : "+order_seq);
+            System.out.println("store_seq : "+store_seq);
             String flag_udt = (String) reviewList.get(i).get("FLAG_UDT");
             String storeName = (String) reviewList.get(i).get("STORE_NAME");
             int revStar = Integer.parseInt(reviewList.get(i).get("REV_STAR").toString());
@@ -77,8 +84,9 @@ public class MypageReviewListController {
             String revContent = (String) reviewList.get(i).get("REV_CONTENT");
             String strMenuList = (String) reviewList.get(i).get("MENU_LIST");
 
-            ArrayList<HashMap<String, Object>> menuList = new ArrayList<HashMap<String,Object>>();
-            menuList = mapper.readValue(strMenuList, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
+            ArrayList<HashMap<String, Object>> menuList = new ArrayList<HashMap<String, Object>>();
+            menuList = mapper.readValue(strMenuList, new TypeReference<ArrayList<HashMap<String, Object>>>() {
+            });
 
             List<OrderDetailDTO> menu = new ArrayList<>();
             for (int j = 0; menuList.size() > j; j++) {
@@ -98,7 +106,8 @@ public class MypageReviewListController {
             }
 
             Gson gson = new Gson();
-            Type type = new TypeToken<List<String>>() {}.getType();
+            Type type = new TypeToken<List<String>>() {
+            }.getType();
             List<String> tmp1 = gson.fromJson(revSysName, type);
 
             myPageReviewList.add(MypageReviewDTO.builder().
@@ -106,12 +115,14 @@ public class MypageReviewListController {
                     rev_writetime(revWriteTime).
                     rev_star(revStar).
                     rev_sysname(tmp1).
-                    rev_content(revContent)
-                            .rev_seq(rev_seq)
-                            .flag_udt(flag_udt)
-                    .menu(menu)
-                    .store_name(storeName)
-                    .build()
+                    rev_content(revContent).
+                    rev_seq(rev_seq).
+                    store_seq(store_seq).
+                    order_seq(order_seq).
+                    flag_udt(flag_udt).
+                    menu(menu).
+                    store_name(storeName).
+                    build()
             );
         }
 
@@ -122,8 +133,6 @@ public class MypageReviewListController {
     }
 
     //@RequestMapping("deleteReview")
-
-
 
 
 }
