@@ -11,7 +11,7 @@
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <main id="storeReview">
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>

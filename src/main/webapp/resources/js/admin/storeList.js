@@ -1,5 +1,5 @@
 
-var lang_kor = {
+let lang_kor = {
     "decimal" : "",
     "emptyTable" : "데이터가 없습니다.",
     "info" : "_START_ - _END_ (총 _TOTAL_ 개)",
@@ -26,10 +26,13 @@ var lang_kor = {
 
 $(document).ready(function() {
     $('#myTable').DataTable( {
-        language : lang_kor
+        language : lang_kor,
+        order: [[0, 'desc']],lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ]
     } );
 } );
-
 
 
 
@@ -71,6 +74,11 @@ $(".store").on("click",function (){
 $(".closeBtn").on("click",function () {
     $(".modal").fadeOut();
 });
+
+
+
+
+
 
 //삭제
 $("#deleteBtn").on("click",function (){

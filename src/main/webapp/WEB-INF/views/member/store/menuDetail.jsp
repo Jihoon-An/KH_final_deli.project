@@ -18,7 +18,7 @@
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <main id="menu_detail">
     <img src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
     <div id="menu_name">${menu.menu_name}</div>
