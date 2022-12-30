@@ -128,9 +128,9 @@
                     <button type="button">로그아웃</button>
                 </a>
                 <br><br>
-                <a href="/account/withdrawal">
-                    <button type="button">회원탈퇴</button>
-                </a>
+                <form action="/account/withdrawal" id="withdrawalForm" method="post">
+                    <button type="button" id="withdrawalButton">회원탈퇴</button>
+                </form>
             </div>
 
         </form>

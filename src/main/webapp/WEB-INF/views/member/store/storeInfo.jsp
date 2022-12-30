@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>딜리 - 식당정보</title>
@@ -17,7 +18,7 @@
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <main id="store_info">
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
@@ -34,7 +35,14 @@
 
             <div class="d-flex flex-row">
                 <div class="title">전화번호</div>
-                <div class="detail_contents" id="store_phone">${storeInfoDTO.store_phone}</div>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)==9}">
+                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,###,####"/>
+                    <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                </c:if>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)>=10}">
+                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
+                    <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                </c:if>
             </div>
 
             <div class="d-flex flex-row">
@@ -179,10 +187,10 @@
                 <div class="detail_contents" id="bs_store_des">${storeInfoDTO.store_add_detail1}
                     ${storeInfoDTO.store_add_detail2}</div>
             </div>
-
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
-                <div class="detail_contents" id="bs_code">${ownerInfoDTO.owner_num}</div>
+                    <fmt:formatNumber var="phoneNo" value="${ownerInfoDTO.owner_num}" pattern="###,##,#####"/>
+                <div class="detail_contents" id="bs_code"><c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
             </div>
         </div>
         <script>

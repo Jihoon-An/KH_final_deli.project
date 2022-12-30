@@ -126,12 +126,9 @@
     </form>
 
     <div class="logOutBox">
-        <a href="/account/logout">
-            <button>로그아웃</button>
-        </a>
-        <a href="/account/withdrawal">
-            <button>회원탈퇴미구현</button>
-        </a>
+        <form action="/account/withdrawal" id="withdrawalForm" method="post">
+            <button type="button" id="withdrawalButton">회원탈퇴</button>
+        </form>
     </div>
 
 

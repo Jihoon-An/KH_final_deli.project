@@ -17,7 +17,7 @@
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <main id="store_detail">
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
@@ -30,7 +30,13 @@
                     <div class="filter_box">
                         <div style="margin: 0 auto;" class="d-inline-flex">
                             <c:forEach var="mGroup" items="${menuGroup}" varStatus="num">
-                                <a href="#bottom_menu_group${num.count}" style="text-decoration: none; color: black;"><div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div></a>
+                                <a onclick="scrollMove()" style="text-decoration: none; color: black;"><div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div></a>
+                            <script>
+                                function scrollMove() {
+                                    let location = document.querySelector("#bottom_menu_group${num.count}").offsetTop;
+                                    window.scrollTo({ top: location-50, behavior: "smooth" });
+                                };
+                            </script>
                             </c:forEach>
                             <%--임시--%>
                             <div class="filter menuCategory" style="margin-right: 7px">aaaaaaaaaa</div>
@@ -39,6 +45,190 @@
                     </div>
                 </c:when>
             </c:choose>
+
+
+            <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+                <hr>
+
+                <div class="menu_box">
+                    <div class="box">
+                        <a href="/menu/detail/32">
+                            <div class="menu_info">
+                                <div class="menu">
+                                    <div class="yyyy">
+                                        <div class="menu_name">시발로마</div>
+                                        <div class="menu_intro">
+                                            ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                        </div>
+
+                                        <div>30,000원</div>
+
+                                    </div>
+                                </div>
+                                <div class="menu_img">
+                                    <img class="menu_img"
+                                         src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                                </div>
+                                <%--                                    <div class="menu_img">--%>
+                                <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                                <%--                                    </div>--%>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+                <hr>
+
+                <div class="menu_box">
+                    <div class="box">
+                        <a href="/menu/detail/32">
+                            <div class="menu_info">
+                                <div class="menu">
+                                    <div class="yyyy">
+                                        <div class="menu_name">시발로마</div>
+                                        <div class="menu_intro">
+                                            ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                        </div>
+
+                                        <div>30,000원</div>
+
+                                    </div>
+                                </div>
+                                <div class="menu_img">
+                                    <img class="menu_img"
+                                         src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                                </div>
+                                <%--                                    <div class="menu_img">--%>
+                                <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                                <%--                                    </div>--%>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div><div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+            <hr>
+
+            <div class="menu_box">
+                <div class="box">
+                    <a href="/menu/detail/32">
+                        <div class="menu_info">
+                            <div class="menu">
+                                <div class="yyyy">
+                                    <div class="menu_name">시발로마</div>
+                                    <div class="menu_intro">
+                                        ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                    </div>
+
+                                    <div>30,000원</div>
+
+                                </div>
+                            </div>
+                            <div class="menu_img">
+                                <img class="menu_img"
+                                     src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                            </div>
+                            <%--                                    <div class="menu_img">--%>
+                            <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                            <%--                                    </div>--%>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div><div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+            <hr>
+
+            <div class="menu_box">
+                <div class="box">
+                    <a href="/menu/detail/32">
+                        <div class="menu_info">
+                            <div class="menu">
+                                <div class="yyyy">
+                                    <div class="menu_name">시발로마</div>
+                                    <div class="menu_intro">
+                                        ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                    </div>
+
+                                    <div>30,000원</div>
+
+                                </div>
+                            </div>
+                            <div class="menu_img">
+                                <img class="menu_img"
+                                     src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                            </div>
+                            <%--                                    <div class="menu_img">--%>
+                            <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                            <%--                                    </div>--%>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div><div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+            <hr>
+
+            <div class="menu_box">
+                <div class="box">
+                    <a href="/menu/detail/32">
+                        <div class="menu_info">
+                            <div class="menu">
+                                <div class="yyyy">
+                                    <div class="menu_name">시발로마</div>
+                                    <div class="menu_intro">
+                                        ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                    </div>
+
+                                    <div>30,000원</div>
+
+                                </div>
+                            </div>
+                            <div class="menu_img">
+                                <img class="menu_img"
+                                     src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                            </div>
+                            <%--                                    <div class="menu_img">--%>
+                            <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                            <%--                                    </div>--%>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div><div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+            <hr>
+
+            <div class="menu_box">
+                <div class="box">
+                    <a href="/menu/detail/32">
+                        <div class="menu_info">
+                            <div class="menu">
+                                <div class="yyyy">
+                                    <div class="menu_name">시발로마</div>
+                                    <div class="menu_intro">
+                                        ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                    </div>
+
+                                    <div>30,000원</div>
+
+                                </div>
+                            </div>
+                            <div class="menu_img">
+                                <img class="menu_img"
+                                     src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                            </div>
+                            <%--                                    <div class="menu_img">--%>
+                            <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                            <%--                                    </div>--%>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
             <div style="height: 10px;"></div>
             <div class="menu_list">
 <%--                                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼--%>
@@ -129,6 +319,98 @@
                         </c:forEach>
                     </c:when>
                 </c:choose>
+
+    <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+                                            <hr>
+
+                                            <div class="menu_box">
+                                                <div class="box">
+                                                    <a href="/menu/detail/32">
+                                                        <div class="menu_info">
+                                                            <div class="menu">
+                                                                <div class="yyyy">
+                                                                    <div class="menu_name">시발로마</div>
+                                                                    <div class="menu_intro">
+                                                                        ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                                                    </div>
+
+                                                                    <div>30,000원</div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="menu_img">
+                                                                <img class="menu_img"
+                                                                     src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                                                            </div>
+                                                            <%--                                    <div class="menu_img">--%>
+                                                            <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                                                            <%--                                    </div>--%>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+    <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+        <hr>
+
+        <div class="menu_box">
+            <div class="box">
+                <a href="/menu/detail/32">
+                    <div class="menu_info">
+                        <div class="menu">
+                            <div class="yyyy">
+                                <div class="menu_name">시발로마</div>
+                                <div class="menu_intro">
+                                    ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                </div>
+
+                                <div>30,000원</div>
+
+                            </div>
+                        </div>
+                        <div class="menu_img">
+                            <img class="menu_img"
+                                 src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                        </div>
+                        <%--                                    <div class="menu_img">--%>
+                        <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                        <%--                                    </div>--%>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼
+        <hr>
+
+        <div class="menu_box">
+            <div class="box">
+                <a href="/menu/detail/32">
+                    <div class="menu_info">
+                        <div class="menu">
+                            <div class="yyyy">
+                                <div class="menu_name">시발로마</div>
+                                <div class="menu_intro">
+                                    ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네
+                                </div>
+
+                                <div>30,000원</div>
+
+                            </div>
+                        </div>
+                        <div class="menu_img">
+                            <img class="menu_img"
+                                 src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">
+                        </div>
+                        <%--                                    <div class="menu_img">--%>
+                        <%--                                        <img src="/resources/img/menu-img/ramyun.png">--%>
+                        <%--                                    </div>--%>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
             </div>
         </div>
         <%--원산지--%>
