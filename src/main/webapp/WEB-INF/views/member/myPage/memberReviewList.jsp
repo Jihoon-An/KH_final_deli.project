@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>딜리 - 내 리뷰</title>
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
+
 </head>
 <script>
     window.onload = function () {

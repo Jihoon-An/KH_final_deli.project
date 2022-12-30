@@ -178,7 +178,7 @@ $("#phone_btn").on("click", function () {
     $.ajax({
         url: "/util/sendSms",
         type: "post",
-        data: {tel:phoneNum, msg:phoneConfirmText}
+        data: {tel:phoneNum, msg:'딜리 인증번호['+phoneConfirmText +']'}
     })
 
     $("#phone_confirm_box").css("display", "flex");

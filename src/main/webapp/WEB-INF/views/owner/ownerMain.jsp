@@ -4,9 +4,7 @@
 <head>
     <title>딜리 - 사업자</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 
     <link rel="stylesheet" href="/resources/css/owner/ownerMain.css" type="text/css">
 

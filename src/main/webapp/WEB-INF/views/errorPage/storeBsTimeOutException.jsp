@@ -2,11 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Error</title>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
-    />
+    <title>딜리 - Error</title>
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
     <style>
         .page_404 {
             padding: 40px 0;

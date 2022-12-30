@@ -10,8 +10,13 @@
 <html>
 <head>
     <title>딜리 - 메뉴수정</title>
+
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 </head>
 <body>
+
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+
     <main class="menuModify">
         <form action="" id="frm" method="post" enctype="multipart/form-data">
             <button type="button">메뉴 그룹 수정</button>

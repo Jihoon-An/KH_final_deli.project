@@ -28,8 +28,6 @@
 </head>
 <body>
 
-<%--<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>--%>
-
 <main id="home">
 
     <div class="container">

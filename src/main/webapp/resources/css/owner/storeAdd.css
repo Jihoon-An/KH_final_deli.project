@@ -132,3 +132,14 @@
 #storeAdd .foot_btn{
     text-align: right;
 }
+
+
+
+#storeAdd .bs_open_time, #storeAdd .bs_close_time{
+    font-size: 14px;
+    width: 103px;
+}
+#storeAdd .bs_open{
+    height:25px;
+
+}

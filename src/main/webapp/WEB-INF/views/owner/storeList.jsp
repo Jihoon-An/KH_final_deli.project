@@ -2,13 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 내 식당리스트</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-
+    <title>딜리 - 식당관리</title>
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
     <%--data tables--%>
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
@@ -16,9 +11,8 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/owner/storeList.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<div>
+<body>
 
     <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 

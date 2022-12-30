@@ -46,7 +46,6 @@ function putBasket() {
     $("#put_basket").submit();
 }
 
-//장바구니 담고 결제하러 가기
 function toBasket() {
     var basket = new BasketMenuDTO(select_option, count, one_price);
     $("#basket_menu").val(JSON.stringify(basket));
