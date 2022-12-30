@@ -27,6 +27,7 @@
             crossorigin="anonymous"></script>
     <%--css--%>
     <link href="/resources/css/admin/addCoupon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
     <%--sweetalert--%>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

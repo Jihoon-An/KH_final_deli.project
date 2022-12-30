@@ -37,9 +37,13 @@
     <%--sweetalert--%>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
     <link href="/resources/css/owner/orderMng.css" rel="stylesheet">
 </head>
 <body>
+
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+
 <main id="order_mng" class="container">
     <div class="dropdown-center">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"

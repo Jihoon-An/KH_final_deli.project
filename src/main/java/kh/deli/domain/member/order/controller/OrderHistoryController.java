@@ -99,21 +99,20 @@ public class OrderHistoryController {
 
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
        String menu_list = ordersDTO.getMenu_list();
-            ordersDTO.getStore_seq();
+
            //ordersDTO.
 
 
         //리스트를 풀어서
 
-//        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-//        List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+        List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
 
-//        List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
-//        System.out.println(basketMenu.get(0).getMenu());
-//        System.out.println(basketMenu.get(0).getOptionList().get(0).getOption_name());
+        List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
+//        basketMenu.get(0).getMenu().
 
-//         Integer storeSeq=  storeBasketService.setBasketInSession(session,  ordersDTO.getStore_seq());
-//        System.out.println(storeSeq);
+        //storeBasketService.setBasketInSession(session,menu_list);
+       // System.out.println(storeSeq);
 
         return "redirect:/basket";
     }
