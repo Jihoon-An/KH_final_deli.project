@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>딜리 - 사업자</title>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">

@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>딜리 - 회원 정보</title>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
