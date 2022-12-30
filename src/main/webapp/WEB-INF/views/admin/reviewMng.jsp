@@ -24,7 +24,7 @@
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="review_mng">
     <table id="myTable" class="display">
         <thead>

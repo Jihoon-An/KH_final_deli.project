@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="/resources/css/admin/ownerList.css" type="text/css">
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon"> (편집됨)
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
