@@ -9,7 +9,7 @@ $(".paginate_button").click(function () {
 
 
 function trClickEvent() {
-    $("owner_tr").click(function () {
+    $(".owner_tr").click(function () {
 
         $("#frm").find(".ownernum").val(
             $(this).find(".owner_num").html());

@@ -9,7 +9,7 @@ $(".paginate_button").click(function () {
 
 
 function trClickEvent() {
-    $("account_tr").click(function () {
+    $(".account_tr").click(function () {
 
         $("#frm").find(".email").val(
             $(this).find(".acc_email").html());
