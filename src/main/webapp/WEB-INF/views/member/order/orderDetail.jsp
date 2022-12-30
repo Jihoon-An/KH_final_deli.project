@@ -11,7 +11,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>딜리 - 결제내역</title>
+    <title>딜리 - 주문내역</title>
     <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
     <link rel="stylesheet" href="/resources/css/member/order/orderDetail.css">
@@ -43,20 +43,23 @@
                     <div class="menuBox">
                         <div id="menu_name">${menuList.menu.menu_name} ${menuList.count}개</div>
                             <%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
-                        <c:choose>
-                        <c:when test="${fn:length(menuList.optionList) != 0}">
-                            <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
-                                미디엄${optionList.option_name}
-                                (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
-                                미디엄${optionList.option_name}
-                                (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
-                            </div>
-                        </c:otherwise>
-                        </c:choose>
+                            <c:choose>
+                                <c:when test="${not empty menuList.optionList}">
+                                    <c:choose>
+                                        <c:when test="${fn:length(menuList.optionList) != 0}">
+                                            <div class="orderContent">${optionList.option_group} : ${optionList.option_name}
+                                                (<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="orderContent">${optionList.option_group} : ${optionList.option_name}
+                                                (<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:when>
+                                <c:otherwise></c:otherwise>
+                            </c:choose>
                             <%--                        </c:forEach>--%>
                         <div class="orderContent">${menuList.price}원</div>
                     </div>
@@ -109,7 +112,7 @@
             <c:when test="${not empty ordererInfoDTO}">
             <h3 class="info">주문자 정보</h3>
             <div id="del_destination" class="orderTitle">배달주소</div>
-            <div id="destination" style="font-size: small;" class="orderContent">
+            <div id="destination" class="orderContent">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
 
             <div class="orderTitle">전화번호</div>

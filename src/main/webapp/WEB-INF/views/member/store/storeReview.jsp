@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>딜리 - 식당상세리뷰</title>
+    <title>딜리 - 식당리뷰</title>
     <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
     <link rel="stylesheet" href="/resources/css/member/store/storeReview.css">

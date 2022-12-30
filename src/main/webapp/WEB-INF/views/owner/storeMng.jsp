@@ -543,7 +543,6 @@
                     <div class="thumbnail">
                         <c:choose>
                             <c:when test="${store.store_logo!=null}">
-                                <input class="img" type="hidden" value="/resources/img/store/${store.store_logo}">
                                 <img src="/resources/img/store/${store.store_logo}" class="profile_img">
                             </c:when>
                             <c:otherwise>

@@ -45,7 +45,7 @@
     color: white;
     border-radius: 5px;
     border-style: none;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 /*결제정보*/
@@ -78,10 +78,6 @@
     line-height: 27px;
 }
 
-/*#orderDetail #destination, #orderDetail #phone, #orderDetail #store_req, #orderDetail #del_req {*/
-/*    font-size: 14px;*/
-/*}*/
-
 #orderDetail .info{font-size: 18px !important; font-weight: bold;}
 #orderDetail .orderTitle{
     font-weight: bold;
@@ -91,6 +87,9 @@
     word-break: break-word;
 }
 
+#orderDetail #destination{
+    font-size: 14px;
+}
 /*div{border: 1px solid black;}*/
 
 

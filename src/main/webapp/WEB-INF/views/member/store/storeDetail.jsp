@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>딜리 - 식당상세메뉴</title>
+    <title>딜리 - 식당메뉴</title>
     <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
     <link rel="stylesheet" href="/resources/css/member/store/storeDetail.css">
 </head>
@@ -132,10 +132,16 @@
             </div>
         </div>
         <%--원산지--%>
-        <div class="origin" style="margin-top: -10px;">
-            원산지 중국산 중국산 중국산 중국산 중국산 중국산 중국산 중국산 중국산
-            ${storeDTO.store_origin}
-        </div>
+        <c:choose>
+            <c:when test="${not empty storeInfoDTO.store_origin}">
+                <div class="origin" style="margin-top: -10px;">
+                        원산지 : ${storeInfoDTO.store_origin}
+                </div>
+            </c:when>
+            <c:otherwise>
+                원산지 없음
+            </c:otherwise>
+        </c:choose>
     </div>
     <script src="/resources/js/member/store/storeDetail.js"></script>
 </main>
