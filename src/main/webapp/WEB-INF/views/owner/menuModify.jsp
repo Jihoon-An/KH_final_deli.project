@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>딜리 - 메뉴수정</title>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
     <main class="menuModify">

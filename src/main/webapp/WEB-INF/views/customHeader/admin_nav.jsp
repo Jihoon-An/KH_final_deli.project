@@ -60,6 +60,7 @@
         <a class="a_tag" href="/admin">
             <h2>Deli</h2>
             <h2>ADMIN</h2></a>
+        <a href="/account/logout">로그아웃</a>
         <i class="fa-solid fa-ticket"></i>
         <a href="/admin/coupon/list">쿠폰관리</a>
         <i class="fa-regular fa-pen-to-square"></i>

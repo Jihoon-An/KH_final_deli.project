@@ -10,8 +10,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>딜리 - 메인</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -28,15 +31,10 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/resources/css/main/memberMain.css" type="text/css">
-
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
     <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/temporaryNavi.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <jsp:include page="/member/header/destination/click"/>

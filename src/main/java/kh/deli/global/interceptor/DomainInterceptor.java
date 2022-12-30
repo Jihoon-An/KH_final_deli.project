@@ -32,7 +32,13 @@ public class DomainInterceptor implements HandlerInterceptor {
                         || uri.startsWith("/member/")
                         || uri.startsWith("/order/")
                         || uri.startsWith("/myPage/")
-                        || uri.startsWith("/store/")) {
+                        || uri.startsWith("/store/")
+                        || uri.equals("/admin")
+                        || uri.equals("/owner")
+                        || uri.equals("/order")
+                        || uri.equals("/myPage")
+                        || uri.equals("/store")
+                ) {
                     response.sendRedirect("/");
                     return false;
                 }
@@ -42,14 +48,22 @@ public class DomainInterceptor implements HandlerInterceptor {
                         || uri.startsWith("/member/")
                         || uri.startsWith("/order/")
                         || uri.startsWith("/myPage/")
-                        || uri.startsWith("/store/")) {
+                        || uri.startsWith("/store/")
+                        || uri.equals("/owner")
+                        || uri.equals("/order")
+                        || uri.equals("/myPage")
+                        || uri.equals("/store")
+                ) {
                     response.sendRedirect("/");
                     return false;
                 }
                 break;
             case MEMBER:
                 if (uri.startsWith("/admin/")
-                        || uri.startsWith("/owner/")) {
+                        || uri.startsWith("/owner/")
+                        || uri.equals("/owner")
+                        || uri.equals("/admin")
+                ) {
                     response.sendRedirect("/");
                     return false;
                 }
@@ -59,7 +73,12 @@ public class DomainInterceptor implements HandlerInterceptor {
                         || uri.startsWith("/member/")
                         || uri.startsWith("/order/")
                         || uri.startsWith("/myPage/")
-                        || uri.startsWith("/store/")) {
+                        || uri.startsWith("/store/")
+                        || uri.equals("/admin")
+                        || uri.equals("/order")
+                        || uri.equals("/myPage")
+                        || uri.equals("/store")
+                ) {
                     response.sendRedirect("/");
                     return false;
                 }

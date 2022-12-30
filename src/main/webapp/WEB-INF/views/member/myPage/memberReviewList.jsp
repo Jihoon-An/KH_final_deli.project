@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>딜리 - 내 리뷰</title>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
 </head>
 <script>
     window.onload = function () {

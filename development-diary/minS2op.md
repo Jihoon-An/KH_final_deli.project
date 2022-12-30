@@ -21,7 +21,7 @@
 - 메인페이지 home.jsp 임시 리모트 생성
 - 장바구니 페이지 (<span style="color: yellow">30%</span>)
 ---
-### 22-12-16
+### 22-12-16 (금)
 - 장바구니 수량 + - 기능 구현
 - 장바구니 페이지 (<span style="color: yellow">70%</span>)
 ---
@@ -91,3 +91,12 @@
 - 마이페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 로그인 Ajax 코드로 리팩토링
 - 로그인 JavaScript 기능 추가
+---
+### 22-12-28 (수)
+- 아이디, 비밀번호 찾기 페이지 CSS (<span style="color: yellow">35%</span>)
+- 장바구니 오산 버그 수정 (<span style="color: yellow">25%</span>)
+---
+### 22-12-29 (목)
+- 장바구니 오산 버그 수정 (<span style="color: chartreuse">100%</span>)
+- 회원탈퇴 기능 에러 잡기
+- 일반유저 마이페이지 CSS 수정

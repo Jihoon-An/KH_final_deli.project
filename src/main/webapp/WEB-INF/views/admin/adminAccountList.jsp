@@ -12,7 +12,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>딜리 - 운영자 리뷰관리</title>
+    <title>딜리 - 일반 회원관리</title>
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -21,7 +21,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon"> (편집됨)
 
     <link rel="stylesheet" href="/resources/css/admin/accountList.css" type="text/css">
 </head>
@@ -43,7 +44,7 @@
     <tbody>
     <c:if test="${not empty account_list}">
         <c:forEach var="ac" items="${account_list}">
-            <tr>
+            <tr class="account_tr">
                 <td class="acc_seq"> ${ac.acc_seq}</td>
                 <input type="hidden"  class="acc_seq" value="${ac_acc_Seq}">
 

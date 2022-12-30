@@ -8,6 +8,8 @@ import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.domain.owner.dto.OwnerOrderMngRequestDTO;
 import kh.deli.domain.owner.dto.OwnerOrderMngResponseDTO;
 import kh.deli.global.entity.MenuOptionDTO;
+import kh.deli.global.util.GenerateRandomCode;
+import kh.deli.global.util.RedisUtil;
 import kh.deli.global.util.naverSensV2.NaverNShortURL;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,24 @@ import java.util.List;
 public class OwnerOrderMngService {
     private final OwnerOrdersService ordersService;
     private final StoreBasketService basketService;
+    private final GenerateRandomCode randomCode;
+    private final RedisUtil redis;
 
     private final Gson gson;
 
     public List<OwnerOrderMngResponseDTO> getOrderMngResponseDTO(int storeSeq) {
+        class RandomKey {
+            public String getNewKey() {
+                String randomKey = randomCode.excuteGenerate();
+
+                if (redis.getData(randomKey) == null) {
+                    return randomKey;
+                } else {
+                    return this.getNewKey();
+                }
+            }
+        }
+
         List<OwnerOrderMngRequestDTO> orderMngReqList = ordersService.getOrderMngList(storeSeq);
 
         List<OwnerOrderMngResponseDTO> orderMngList = new ArrayList<>();
@@ -32,11 +48,20 @@ public class OwnerOrderMngService {
 
         for (OwnerOrderMngRequestDTO orderMngReq : orderMngReqList) {
             String address = orderMngReq.getAdd_detail1() + " " + orderMngReq.getAdd_detail2();
+            // redis에 넣을 새로운 key 가져오기
+            String key = new RandomKey().getNewKey();
 
-            String link = "http://localhost/deliveryDtl/" + orderMngReq.getOrder_seq();
+            //redis에 저장 3시간동안 저장
+            redis.setData(key, String.valueOf(orderMngReq.getOrder_seq()), 60*60*3);
+
+            // 링크 생성
+            String link = "http://localhost/deliveryDtl/" + key;
+
+            // url 축소화
             nShortURL.toShortURL(link);
 
-            Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+            Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {
+            }.getType();
             List<StoreBasketMenuRequestDTO> basketMenuDtoList = gson.fromJson(orderMngReq.getMenu_list(), type);
 
 //            Basket basket = basketService.basketDtoToObject();
@@ -53,12 +78,13 @@ public class OwnerOrderMngService {
                 menuStr.append(": " + basketMenu.getCount() + "개 - ");
 
                 for (MenuOptionDTO option : basketMenu.getOptionList()) {
-                    menuStr.append(option.getOption_name()+" ");
+                    menuStr.append(option.getOption_name() + " ");
                 }
 
                 menuStrList.add(menuStr.toString());
             }
 
+            // 담기
             orderMngList.add(
                     OwnerOrderMngResponseDTO.builder()
                             .orderSeq(orderMngReq.getOrder_seq())
@@ -74,4 +100,5 @@ public class OwnerOrderMngService {
 
         return orderMngList;
     }
+
 }

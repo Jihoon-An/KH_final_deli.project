@@ -33,7 +33,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 
 <main id="reviewWrite">
-    <hr class="mt65">
+    <hr class="mt55">
     <div class="container">
         <form action="/myPage/reviewWrite/reviewInsert" id="reviewPost" method="post" enctype="multipart/form-data">
 

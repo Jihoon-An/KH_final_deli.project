@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>딜리 - 회원 정보</title>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -133,7 +134,9 @@
         <a href="/account/logout">
             <button>로그아웃</button>
         </a>
-        <button>회원탈퇴미구현</button>
+        <a href="/account/withdrawal">
+            <button>회원탈퇴미구현</button>
+        </a>
     </div>
 
 
