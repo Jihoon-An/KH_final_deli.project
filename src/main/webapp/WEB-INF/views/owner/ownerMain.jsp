@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="/resources/css/owner/ownerMain.css" type="text/css">
 
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
