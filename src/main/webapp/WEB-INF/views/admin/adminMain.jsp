@@ -9,11 +9,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 운영자 메인</title>
+    <title>딜리 - 운영자</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="/resources/css/admin/adminMain.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>
 
 <%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>

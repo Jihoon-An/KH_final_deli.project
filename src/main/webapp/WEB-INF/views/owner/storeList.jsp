@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 내 식당리스트</title>
+    <title>딜리 - 식당관리</title>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -16,6 +16,7 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/owner/storeList.css">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <div>

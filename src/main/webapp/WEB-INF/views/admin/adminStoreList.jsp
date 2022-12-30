@@ -33,6 +33,7 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/admin/storeList.css">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 
 </head>
 
