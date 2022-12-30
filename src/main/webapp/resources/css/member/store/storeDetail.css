@@ -9,7 +9,6 @@
     min-height: 800px;
     padding-bottom: 20px;
 }
-
 #store_detail .header {
     overflow: hidden;
 }
@@ -22,7 +21,7 @@
 
 #store_detail .header #storeName {
     line-height: 70px;
-    font-size: 18px;
+    font-size: 19.55px;
     font-weight: bold;
     text-align: center;
 }
@@ -100,12 +99,6 @@
     border-radius: 10px;
     padding: 2px 5px;
     margin-right: 7px;
-}
-
-#store_detail #menu {
-    font-weight: bold;
-    font-size: 1.15em;
-    float: left;
 }
 
 #store_detail .bottom_menu_group {

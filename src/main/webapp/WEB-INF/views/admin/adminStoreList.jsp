@@ -30,14 +30,14 @@
         <table id="myTable">
             <thead>
             <tr>
-                <th class="seq">식당번호</th>
+                <th class="seq">번호</th>
                 <th class="sName">상호명</th>
                 <th class="category">업종</th>
                 <th class="phone">연락처</th>
                 <th class="add_detail1">주소</th>
-                <th class="oNum">사업자 등록번호</th>
+                <th class="oNum">사업번호</th>
                 <th class="oName">대표자명</th>
-                <th class="display">공개여부</th>
+                <th class="display">공개</th>
             </tr>
             </thead>
             <tbody>
@@ -65,42 +65,43 @@
     <!-- 모달 -->
     <div class="modal">
         <div class="modal_content">
-            <div class="closeBtn">X</div>
-            <div>
-                식당번호
+            <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>
+            <div class="modalInfo">
+                <span class="modalTitle">식당번호</span>
                 <input type="text" placeholder="식당번호" disabled id="store_seq">
             </div>
-            <div>
-                상호명
+            <div class="modalInfo">
+                <span class="modalTitle">상호명</span>
                 <input type="text" placeholder="상호명" disabled id="store_name">
             </div>
-            <div>업종
+            <div class="modalInfo">
+                <span class="modalTitle">업종</span>
                 <input type="text" placeholder="업종" disabled id="store_category">
             </div>
-            <div>
-                연락처
+            <div class="modalInfo">
+                <span class="modalTitle">연락처</span>
                 <input type="text" placeholder="연락처" disabled id="store_phone">
             </div>
-            <div>
-                주소
+            <div class="modalInfo">
+                <span class="modalTitle">주소</span>
                 <input type="text" placeholder="주소" disabled id="store_add_detail1">
             </div>
-            <div>
-                사업자 등록번호
+            <div class="modalInfo">
+                <span class="modalTitle">사업자 등록번호</span>
                 <input type="text" placeholder="사업자 등록번호" disabled id="owner_num">
             </div>
-            <div>
-                대표자명
+            <div class="modalInfo">
+                <span class="modalTitle">대표자명</span>
                 <input type="text" placeholder="대표자명" disabled id="owner_name">
             </div>
-            <div>
-                공개여부
+            <div class="modalInfo">
+                <span class="modalTitle">공개여부</span>
                 <input type="text" placeholder="공개여부" disabled id="store_display">
             </div>
 
             <div class="btnBox">
-                <button type="button" id="deleteBtn">삭제</button>
-                <button type="button" id="statusBtn">비공개</button>
+                <button type="button" id="deleteBtn" class="deli_btn">삭제</button>
+                <button type="button" id="statusBtn" class="deli_btn">비공개</button>
             </div>
         </div>
     </div>

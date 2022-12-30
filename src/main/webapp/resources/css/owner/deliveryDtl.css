@@ -1,0 +1,95 @@
+#deliveryDtl * {
+    box-sizing: border-box;
+}
+
+#deliveryDtl{padding-top: 30px}
+#deliveryDtl .container {
+    width: 360px;
+    height: auto;
+    margin: auto;
+}
+
+#deliveryDtl .container > div {
+    width: 95%;
+    margin: auto;
+}
+
+/*상호명*/
+#deliveryDtl .store div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+/*주문내역*/
+#deliveryDtl .order div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+#deliveryDtl .order .menuBox #menu_name {
+    font-weight: bold;
+}
+
+#deliveryDtl .btn {
+    margin-top: 25px;
+    padding: 5px 0px;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 25px;
+}
+
+#deliveryDtl .complete {
+    cursor: pointer;
+    width: 100%;
+    height: 38px;
+    background-color: #e84c4f;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+/*결제정보*/
+#deliveryDtl .pay div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+#deliveryDtl .field {
+    float: left;
+    width: 50%;
+}
+
+#deliveryDtl .price {
+    text-align: right;
+}
+
+#deliveryDtl .pay_method {
+    text-align: right;
+}
+
+#deliveryDtl .pay_field, #deliveryDtl .pay_method {
+    font-weight: bold;
+}
+
+
+/*주문자정보*/
+#deliveryDtl .orderer div {
+    font-size: 14px;
+    line-height: 27px;
+}
+
+#deliveryDtl .info{font-size: 18px !important; font-weight: bold;}
+
+#deliveryDtl .title{font-size: 22px !important; font-weight: bold; margin-bottom: 30px; text-align: center;}
+
+#deliveryDtl .orderTitle{
+    font-weight: bold;
+}
+#deliveryDtl .orderContent{
+    margin-left: 6px;
+    word-break: break-word;
+}
+
+

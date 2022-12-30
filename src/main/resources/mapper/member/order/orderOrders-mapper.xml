@@ -67,7 +67,7 @@
         C.CP_TYPE As cpType
         FROM MEMBER_COUPON M
         INNER JOIN COUPON C ON ( M.CP_SEQ = C.CP_SEQ )
-        WHERE M.ACC_SEQ = #{orderOrdersDTO.acc_seq}
+        WHERE M.ACC_SEQ = #{accSeq, jdbcType=INTEGER}
     </select>
 
 

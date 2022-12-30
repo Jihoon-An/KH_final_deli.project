@@ -44,7 +44,7 @@
                 <span class="info_title">할인종류</span>
             </div>
             <div class="col-9">
-                <select name="cp_type">
+                <select name="cp_type" id="cp_type">
                     <option value="amount">정액할인</option>
                     <option value="percent">퍼센트할인</option>
                 </select>
@@ -53,7 +53,7 @@
         <%--할인율--%>
         <div class="row" id="discount_area">
             <div class="col-3">
-                <span class="info_title">할인율</span>
+                <span class="info_title" id="info_title">할인금액</span>
             </div>
             <div class="col-9">
                 <input type="number" name="cp_discount">

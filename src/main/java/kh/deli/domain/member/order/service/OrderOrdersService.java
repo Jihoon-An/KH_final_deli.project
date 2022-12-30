@@ -36,9 +36,9 @@ public class OrderOrdersService {
         return result;
     };
 
-    public List<OrderOrdersDTO> selectCouponList(OrderOrdersDTO param){
+    public List<OrderOrdersDTO> selectCouponList(Integer accSeq){
 
-        return orderOrdersMapper.selectCouponList(param);
+        return orderOrdersMapper.selectCouponList(accSeq);
     }
 
 
