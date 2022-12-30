@@ -7,7 +7,6 @@ $(".bs").on("change", function () {
     }
 })
 
-
 $("#modifyStoreBtn").on("click", function () {
     let bsns_div = $(".bsns_div");
     var bs_day = {
@@ -72,7 +71,7 @@ $("#modifyStoreBtn").on("click", function () {
     // console.log(bs.value)
 
 
-    $("#frm").attr("action", "/store/mng/modify")
+    $("#frm").attr("action", "/owner/store/mng/modify")
     $("#frm").submit()
 
 
@@ -88,13 +87,14 @@ function fileToBase64(file) {
     }
 }
 
-$("#menu_img").on("change", function () {
-    if ($("#menu_img").val() == "") {
-        $("#profile").attr("src", "/resources/img/store/no_storelogo.png");
+
+$("#store_img").on("change", function () {
+    if ($("#store_img").val() == "") {
+        $(".profile_img").attr("src", "/resources/img/store/no_storelogo.png");
         return;
     }
-    console.log($("#menu_img").val());
-    let ext = $("#menu_img").val().split(".").pop().toLowerCase();
+    console.log($("#store_img").val());
+    let ext = $("#store_img").val().split(".").pop().toLowerCase();
 
     let accept = ["png", "jpg", "jpeg", "gif"];
 
@@ -104,8 +104,8 @@ $("#menu_img").on("change", function () {
 
     if (result == -1) {
         alert("이미지만 사용 가능합니다")
-        $("#menu_img").val("");//비워주기
-        $("#profile").attr("src", "/images/no_profile.png")//다른 사진들어올떄 #profile 도 비워주기
+        $("#store_img").val("");//비워주기
+        $(".profile_img").attr("src", "/images/no_profile.png")//다른 사진들어올떄 #profile 도 비워주기
 
 
     } else {
@@ -153,4 +153,14 @@ $(document).on("click", ".postsearch", function () {
             document.getElementById("add2").focus();
         }
     }).open();
+})
+
+$(".close_day").on("keyup", function (){
+    $(".close_day_msg").css("color", "#001a41")
+    $(".close_day_msg").css("font-size", "15px")
+    $(".close_day_msg").html("ex)연중 무휴, 목, 금은 쉽니다")
+})
+
+$("#deleteStoreBtn").on("click",function(){
+    location.href="/owner/store/list";
 })

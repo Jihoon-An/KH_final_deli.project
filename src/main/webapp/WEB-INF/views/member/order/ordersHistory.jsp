@@ -12,21 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>딜리 - 주문내역</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-            crossorigin="anonymous"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
     <link rel="stylesheet" href="/resources/css/member/order/orderHistory.css" type="text/css">
 
 </head>
@@ -37,6 +24,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 
 <main id = "order_history">
     <hr class="mt55">
@@ -45,14 +33,14 @@
             <c:when test="${not empty order_list}">
                 <c:forEach var="order_list" items="${order_list}" varStatus="status">
 
-<%--                    <fmt:parseDate value="${order_list.order_date}" var="date" pattern="yyyy-mm-dd"/>--%>
-<%--                       <fmt:parseNumber var="parseDate" value="${date.time+(1000*60*60*24*30)}" integerOnly="true"/>--%>
+                    <jsp:useBean id="now" class="java.util.Date"/>
+                    <fmt:parseNumber value="${now.time}" integerOnly="true"
+                                     var="nowfmtTime" scope="request"/>
+<%--                       <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+(1000*60*60*24*30)}" integerOnly="true"  scope="request"/>--%>
+                    <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*30  )}" integerOnly="true"  scope="request"/>
+                          <%-- 주문날짜 기준 30일지나면 출력이 안된다--%>
+                        <c:if test="${nowfmtTime<parseDate}">
 
-<%--                    <script>--%>
-<%--                        ${parseDate}--%>
-<%--                    </script>--%>
-<%--&lt;%&ndash;                        <c:if test="${order_list.order_date>parseDate}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        </c:if>&ndash;%&gt;--%>
                         <div class="box1">
                         <div class="box2">
                             <span class="head_deli">배달주문</span>
@@ -79,7 +67,18 @@
 
                                 <p class="meinfo">
 
+<%--                                    <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="mName">--%>
+<%--                                    <input type="hidden" value="${menu_list[status.index].count}" class="mCount">--%>
+<%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="mPrice">--%>
+<%--                                    <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="mstore_seq">--%>
+<%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="mmenu_seq">--%>
+
+
+                                        ${menu_list[status.index].menu.store_seq}
+                                        ${menu_list[status.index].menu.menu_price}
+
                                         ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
+
 
 
                                     <c:if test = "${menu_list[status.index].count>0}">
@@ -106,7 +105,14 @@
                                 <a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn">리뷰작성</button></a>
 
                                 <a href="/order/detail/${order_list.order_seq}"><button class="deli_btn">주문상세</button></a>
-                                <button class="deli_btn">재주문</button>
+
+                                 <a href="/order/history/${order_list.order_seq}"><button class="deli_btn" type="button">재주문</button></a>
+
+
+<%--                                       <button class="deli_btn" type="button" onclick="toBaskett()">재주문</button>--%>
+<%--                                    <form action="/menu/detail/toBasket" method="post" id="put_basket">--%>
+<%--                                        <input type="hidden" name="basket_menu" id="basket_menu">--%>
+<%--                                    </form>--%>
 
                                 </div>
                                 <c:if test="${order_list.order_status='배달완료'}">
@@ -115,15 +121,74 @@
                         </div>
 
                     </div>
+                        </c:if>
 
                 </c:forEach>
             </c:when>
             <c:otherwise>결제내역없음</c:otherwise>
         </c:choose>
 
+
+        <div>
+
+        </div>
+
     </div>
 
     <hr class="mt90">
 </main>
+
+<%--<script>--%>
+<%--    var countt= ${menu_list[1].count};--%>
+<%--    var selec_option = new Array();--%>
+<%--    var one_pprice = ${menu_list[1].menu.menu_price}--%>
+
+
+<%--        console.log(${menu_list[1].menu.store_seq})--%>
+<%--        class BasketMenuDTOo{--%>
+<%--            constructor(options, count, price) {--%>
+<%--                this.storeSeq = ${menu_list[1].menu.store_seq}--%>
+<%--                    this.menuSeq = ${menu_list[1].menu.menu_seq};--%>
+<%--                this.optionSeqList = options;--%>
+<%--                this.count = count;--%>
+<%--                this.price = price;--%>
+<%--            }--%>
+<%--        }--%>
+<%--</script>--%>
+
+<%--<script>--%>
+<%--    var countt= $(".mCount").val();--%>
+<%--    var selec_option = new Array();--%>
+<%--    var one_pprice = $(".mPrice").val()--%>
+
+<%--        console.log($(".mstore_seq").val())--%>
+<%--        class BasketMenuDTOo{--%>
+<%--            constructor(options, count, price) {--%>
+<%--                this.storeSeq = $(".mstore_seq").val()--%>
+<%--                    this.menuSeq = $(".mmenu_seq").val();--%>
+<%--                this.optionSeqList = options;--%>
+<%--                this.count = countt;--%>
+<%--                this.price = one_pprice;--%>
+<%--            }--%>
+<%--        }--%>
+<%--</script>--%>
+
+
+
+<script>
+    // function putBaskett() {
+    //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice);
+    //     $("#basket_menu").val(JSON.stringify(basket));
+    //
+    //     $("#put_basket").submit();
+    // }
+
+    // function toBaskett() {
+    //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice); //객체가
+    //     $("#basket_menu").val(JSON.stringify(basket));
+    //
+    //     $("#put_basket").attr("action", "/menu/detail/toBasket").submit();
+    // }
+</script>
 </body>
 </html>

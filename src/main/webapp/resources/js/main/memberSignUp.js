@@ -177,11 +177,11 @@ function phone_check() {
     } else if (phoneRegex.length != 11) {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#FF0000");
-        $("#phone_msg").html("핸드폰 번호 형식을 확인해주세요");
+        $("#phone_msg").html("휴대폰 번호 형식을 확인해주세요");
     } else {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#008000");
-        $("#phone_msg").html("핸드폰을 인증해주세요");
+        $("#phone_msg").html("휴대폰 번호를 인증해주세요");
     }
 }
 
@@ -241,7 +241,7 @@ $("#phone_confirm_btn").click(function () {
 function phone_confirm() {
     let phoneRegex = $("#mem_phone").val().replace(/-/gi, "");
     if (phoneRegex.length == 11
-        && $("#phone_msg").html() == "핸드폰을 인증해주세요") {
+        && $("#phone_msg").html() == "휴대폰 번호를 인증해주세요") {
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
@@ -431,7 +431,7 @@ function autoHypenTel(str) {
             return tmp;
         }
     } else {
-        // 핸드폰 및 다른 지역 전화번호 일 경우
+        // 휴대폰 및 다른 지역 전화번호 일 경우
         if (str.length < 4) {
             return str;
         } else if (str.length < 7) {

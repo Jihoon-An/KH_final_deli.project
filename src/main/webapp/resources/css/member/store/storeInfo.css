@@ -22,8 +22,9 @@
 
 #store_info .header #storeName {
     line-height: 70px;
-    font-size: 18px;
+    font-size: 19.55px;
     font-weight: bold;
+    text-align: center;
 }
 
 #store_info .header #star {
@@ -42,9 +43,17 @@
     font-size: 17px;
 }
 
-#store_info .delivery{overflow: hidden;}
-#store_info .businessman{overflow: hidden;}
-#store_info .store{overflow: hidden;}
+#store_info .delivery {
+    overflow: hidden;
+}
+
+#store_info .businessman {
+    overflow: hidden;
+}
+
+#store_info .store {
+    overflow: hidden;
+}
 
 #store_info #store_name,
 #store_info #store_phone,
@@ -57,8 +66,7 @@
 #store_info #bs_name,
 #store_info #bs_store_name,
 #store_info #bs_store_des,
-#store_info #bs_code
-{
+#store_info #bs_code {
     word-wrap: break-word;
 }
 
@@ -83,56 +91,79 @@
     float: left;
     width: 33.33%;
     height: 45px;
-    text-align: center;
     line-height: 45px;
-    margin-top: 10px;
+    margin-top: 5px;
+    text-align: center;
 }
 
 #store_info .fieldBox div a {
     text-decoration: none;
+    background-color: #3e4462;
     color: black;
 }
 
-#store_info .field{font-size:17px; font-weight: bold; line-height: 27px; margin-bottom: 5px; }
-#store_info .contents{font-size:13px; }
-#store_info .title{float: left; width:35%;  font-size :14px;}
-#store_info .detail_contents{ font-size:14px; width: 65%; display: inline-block; text-align: left;}
-
-#store_info #map{width: 95%; border-radius: 7px;}
-
-#store_info #info {
-font-weight: bold;
-    font-size: 1.3em;
-    float: left;
+#store_info .field {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 27px;
+    margin-bottom: 5px;
 }
 
+#store_info .contents {
+    font-size: 13px;
+}
+
+#store_info .title {
+    float: left;
+    width: 35%;
+    font-size: 14px;
+}
+
+#store_info .detail_contents {
+    font-size: 14px;
+    width: 65%;
+    display: inline-block;
+    text-align: left;
+}
+
+#store_info #map {
+    width: 95%;
+    border-radius: 7px;
+}
 #store_info .store,
 #store_info .delivery,
-#store_info .businessman{
+#store_info .businessman {
     line-height: 25px;
 }
-#store_info .businessman{
+
+#store_info .businessman {
     padding-bottom: 15px;
 }
 
 /*찜*/
-#store_info button{border:0;}
-#store_info.heart{
+#store_info button {
+    border: 0;
+}
+
+#store_info.heart {
     border: 0;
     background-color: unset;
     position: relative;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-#store_info .heartIcon{
+
+#store_info .heartIcon {
     text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
     color: transparent;
 }
-#store_info .heartIcon:hover{
+
+#store_info .heartIcon:hover {
     cursor: pointer;
 }
-#store_info .time{
+
+#store_info .time {
     text-align: left;
 }
 
@@ -144,9 +175,8 @@ font-weight: bold;
 #store_info .store_box,
 #store_info .delivery_box,
 #store_info .businessman_box,
-#store_info #map
-{
-    width:100%;
+#store_info #map {
+    width: 100%;
     line-height: 27px;
     border-radius: 20px;
     /*width: 350px;*/
@@ -159,7 +189,7 @@ font-weight: bold;
     margin: auto;
 }
 
-.deliveryInfo {
+#store_info .deliveryInfo {
     border-radius: 20px;
     width: 350px;
     height: 100px;
@@ -170,25 +200,14 @@ font-weight: bold;
     box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
 }
 
-.fa-star{
+#store_info .fa-star {
     color: transparent;
     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 
-#storeName{
-    padding-left: 35px;
-}
-#storeName,#star{
+#store_info #storeName, #store_info #star {
     text-align: center;
 }
 
-.heartIcon {
-    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);
-    color: transparent;
-}
-
-.heartIcon:hover {
-    cursor: pointer;
-}
 
 /*div{border: 1px solid black;}*/

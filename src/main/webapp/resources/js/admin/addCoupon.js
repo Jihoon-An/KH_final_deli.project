@@ -49,3 +49,10 @@ $("#cp_add_btn").click(function () {
     }
 });
 
+$("#cp_type").change(function () {
+    if ($(this).val() == 'amount') {
+        $("#info_title").text("할인금액");
+    } else {
+        $("#info_title").text("할인율");
+    }
+});

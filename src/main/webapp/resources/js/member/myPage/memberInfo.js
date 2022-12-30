@@ -287,6 +287,26 @@ $("#saveButton").on("click" ,()=>{
 
 });
 
+/**
+ * 회원탈퇴 버튼 기능
+ */
+$("#withdrawalButton").click(() => {
+    Swal.fire({
+        title: '정말 탈퇴하실건가요?',
+        text: "다시 되돌릴 수 없습니다. 신중하세요.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '확인',
+        cancelButtonText: '취소',
+        reverseButtons: true, // 버튼 순서 거꾸로
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $("#withdrawalForm").submit();
+        }
+    })
+});
 
 
 

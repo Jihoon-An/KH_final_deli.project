@@ -3,32 +3,16 @@
 <html>
 <head>
     <title>딜리 - 장바구니</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-    <!-- font-awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href=" /resources/css/member/order/basket.css" type="text/css">
 
 </head>
 <body>
+    <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
 <main id="basket">
-
     <div class="container">
-
-        <div class="topBox">
-            <div class="topLeftBox">
-                <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
-            </div>
-            <div class="topRightBox">
-                <a href="/"><i class="fa-solid fa-house"></i></a>
-            </div>
-        </div>
 
         <div class="titleBox">
             장바구니
@@ -36,6 +20,7 @@
         <c:choose>
             <c:when test="${not empty basket}">
                 <input type="hidden" id="storeSeq" value="${store.store_seq}">
+                <input type="hidden" id="minPrice" value="${store.store_min_price}">
                 상호명 : ${store.store_name}<br>
                 <img src="/resources/img/store/${store.store_logo}">
                 <hr>

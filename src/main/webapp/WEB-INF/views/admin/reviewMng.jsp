@@ -10,31 +10,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>딜리 - 운영자 리뷰관리</title>
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
+
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
+
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="/resources/css/admin/reviewMng.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
-<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="review_mng">
+
+    <div id="container">
     <table id="myTable" class="display">
         <thead>
-            <tr>
-                <th>작성자</th>
-                <th>리뷰내용</th>
-                <th>상호명</th>
-                <th>작성일자</th>
-                <th>수정일자</th>
-            </tr>
+        <tr>
+            <th>작성자</th>
+            <th>리뷰내용</th>
+            <th>상호명</th>
+            <th>작성일자</th>
+            <th>수정일자</th>
+        </tr>
         </thead>
         <tbody>
         <c:if test="${not empty nev_list}">
@@ -74,43 +73,94 @@
         </c:if>
         </tbody>
     </table>
+    </div>
 
 
     <%--모달--%>
     <form action="/admin/review/deleteReview" id="frm">
+<%--        <div class="modal">--%>
+<%--            <div class="modal_content">--%>
+<%--                <div class="closeModal"><i class="fa-solid fa-xmark fa-2xl"></i></div>--%>
+<%--                <div class="modalInfo">--%>
+<%--                    <span class="modalTitle">작성자</span>--%>
+<%--                    <input--%>
+<%--                            type="text" placeholder="작성자" id="writer" class="writer" disabled>--%>
+<%--                </div>--%>
+<%--                <div class="modalInfo">--%>
+<%--                    <span class="modalTitle">별점</span><input--%>
+<%--                        type="text" placeholder="별점" disabled id="star" class="star" disabled>--%>
+<%--                </div>--%>
+<%--                <div id="reviewField">리뷰 내용</div>--%>
+<%--                <div id="review_content" class="review_content" disabled></div>--%>
+<%--                <div>--%>
+<%--                    작성일자<input--%>
+<%--                        type="text" placeholder="작성일자" disabled id="write_date" class="write_date">--%>
+<%--                </div>--%>
+<%--                <div>--%>
+<%--                    수정일자<input--%>
+<%--                        type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">--%>
+<%--                </div>--%>
+<%--                <div>--%>
+<%--                    리뷰번호<input--%>
+<%--                        type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">--%>
+<%--                </div>--%>
+
+<%--                <div class="btns">--%>
+<%--                    <button type="button" id="deleteReview">삭제</button>--%>
+<%--                    <button type="button" id="privateReview">비공개</button>--%>
+<%--                    <button type="button" id="openReview">공개</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+
         <div class="modal">
             <div class="modal_content">
-                <div class="closeModal">X</div>
-                <div>
-                    작성자 <input
-                        type="text" placeholder="작성자" id="writer" class="writer" disabled>
+                <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>
+                <div class="modalInfo">
+                    <span class="modalTitle">작성자</span>
+                    <input type="text" placeholder="작성자" disabled id="writer" class="writer">
                 </div>
-                <div>
-                    별점 <input
-                        type="text" placeholder="별점" disabled id="star" class="star" disabled>
+                <div class="modalInfo">
+                    <span class="modalTitle">상호명</span>
+                    <input type="text" placeholder="상호명" disabled id="store_name" class="store_name">
                 </div>
-                <div id="reviewField">리뷰 내용</div>
-                <div id="review_content" class="review_content" disabled></div>
-                <div>
-                    작성일자<input
-                        type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
+                <div class="modalInfo">
+                    <span class="modalTitle">별점</span>
+                    <input type="text" placeholder="별점" disabled id="star" class="star">
                 </div>
-                <div>
-                    수정일자<input
-                        type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">
+                <div class="modalInfo">
+                    <span class="modalTitle" id="reviewField">리뷰 내용</span>
+                    <input type="text" placeholder="업종" disabled id="review_content" class="review_content">
                 </div>
-                <div>
-                    리뷰번호<input
+                <div class="modalInfo">
+                    <span class="modalTitle">작성일자</span>
+                    <input type="text" placeholder="연락처" disabled id="review_content" class="review_content">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">수정일자</span>
+                    <input type="text" placeholder="주소" disabled id="modified_date" class="modified_date">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle"> 리뷰번호</span><input
                         type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
                 </div>
-
                 <div class="btns">
                     <button type="button" id="deleteReview">삭제</button>
                     <button type="button" id="privateReview">비공개</button>
                     <button type="button" id="openReview">공개</button>
                 </div>
+                </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
     </form>
 
 </main>

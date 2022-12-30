@@ -17,7 +17,7 @@ public interface MyPageReviewMapper {
     public void reviewInsert(ReviewDTO dto);
 
     @Select("select * from orders where order_seq=#{order_seq}")
-    public OrdersDTO selectByOrderSeq(int order_seq);
+    public OrdersDTO selectByOrderSeq(@Param("order_seq") int order_seq);
 
     @Select("SELECT * FROM REVIEW WHERE REV_SEQ=${rev_seq}")
     public ReviewDTO selectByReviewSeq(@Param("rev_seq") int rev_seq);
@@ -37,9 +37,9 @@ public interface MyPageReviewMapper {
     @Update("update review set rev_star=#{rev_star},rev_content=#{rev_content},rev_modified_date=sysdate,rev_sysname=#{rev_sysname, jdbcType=VARCHAR} where rev_seq=#{rev_seq}")
     public void modifyReview(Map<String,Object>param);
 
-    @Select("select menu_name from menu where menu_seq=#{menu_seq} ")
-    public String selectMenuName(String menuSeq);
-
     @Delete("delete from review where rev_seq = #{rev_seq}")
     int deleteReview(@Param("rev_seq") int rev_seq);
+    @Select("select menu_name from menu where menu_seq=#{menuSeq} ")
+    public String selectMenuName(@Param("menuSeq") String menuSeq);
+
 }

@@ -37,7 +37,9 @@ public class MypageReviewListController {
 
     @RequestMapping("")
 
-        public String toMyPageReview(Model model) throws Exception{
+    public String toMyPageReview(Model model) throws Exception {
+
+
 
         int accSeq = (int) session.getAttribute("acc_seq");
 
@@ -77,7 +79,6 @@ public class MypageReviewListController {
             int rev_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("REV_SEQ")));
             int order_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("ORDER_SEQ")));
             int store_seq = Integer.parseInt(String.valueOf(reviewList.get(i).get("STORE_SEQ")));
-
             String flag_udt = (String) reviewList.get(i).get("FLAG_UDT");
             String storeName = (String) reviewList.get(i).get("STORE_NAME");
             int revStar = Integer.parseInt(reviewList.get(i).get("REV_STAR").toString());
@@ -85,8 +86,9 @@ public class MypageReviewListController {
             String revContent = (String) reviewList.get(i).get("REV_CONTENT");
             String strMenuList = (String) reviewList.get(i).get("MENU_LIST");
 
-            ArrayList<HashMap<String, Object>> menuList = new ArrayList<HashMap<String,Object>>();
-            menuList = mapper.readValue(strMenuList, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
+            ArrayList<HashMap<String, Object>> menuList = new ArrayList<HashMap<String, Object>>();
+            menuList = mapper.readValue(strMenuList, new TypeReference<ArrayList<HashMap<String, Object>>>() {
+            });
 
             List<OrderDetailDTO> menu = new ArrayList<>();
             for (int j = 0; menuList.size() > j; j++) {
@@ -106,7 +108,8 @@ public class MypageReviewListController {
             }
 
             Gson gson = new Gson();
-            Type type = new TypeToken<List<String>>() {}.getType();
+            Type type = new TypeToken<List<String>>() {
+            }.getType();
             List<String> tmp1 = gson.fromJson(revSysName, type);
 
             myPageReviewList.add(MypageReviewDTO.builder().
@@ -138,7 +141,5 @@ public class MypageReviewListController {
         myPageReviewService.deleteReview(rev_seq);
         return "redirect:/";
     }
-
-
 
 }

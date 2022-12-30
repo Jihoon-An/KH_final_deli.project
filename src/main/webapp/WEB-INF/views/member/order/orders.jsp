@@ -4,25 +4,9 @@
 <html>
 <head>
     <title>딜리 - 결제하기</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-
-    <!--bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-            crossorigin="anonymous"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 
 </head>
 <style>
@@ -223,6 +207,13 @@
     <hr class="mt90">
 </main>
 <script>
+    var addSeq;
+    var address1;
+    var address2;
+    var phoneNum;
+    var ownPoint;
+    var deliTip;
+
 
     window.onload = function () {
         $("#payCard").hide();
@@ -235,22 +226,29 @@
         var orderPrice = parseInt($("#order_price").val());
         var deliveryPrice = parseInt($("#delivery_tip").val());
 
-        $("#pay_price").val(orderPrice + deliveryPrice);
-
     }
 
+    // 글로벌 변수 및 페이지 초기화
     function initPage() {
         $.ajax({
             url: "/order/orders/selectInitInfo",
             type: "post",
             dataType: "json",
             success: function (data) {
-                $("#add_seq").val(data.add_seq);
-                $("#address1").val(data.address1);
-                $("#address2").val(data.address2);
-                $("#phoneNum").val(data.phoneNum);
-                $("#ownPoint").val(data.ownPoint);
-                $("#delivery_tip").val(data.delivery_tip);
+                addSeq = data.add_seq;
+                address1 = data.address1;
+                address2 = data.address2;
+                phoneNum = data.phoneNum;
+                ownPoint = data.ownPoint;
+                //deliTip = data.delivery_tip;
+
+                $("#add_seq").val(addSeq);
+                $("#address1").val(address1);
+                $("#address2").val(address2);
+                $("#phoneNum").val(phoneNum);
+                $("#ownPoint").val(ownPoint);
+                //$("#delivery_tip").val(deliTip);
+
                 onchangeOwnPoint();
             },
             error: function (data) {
@@ -453,7 +451,6 @@
     }
 
     function onchangeOwnPoint() {
-        var ownPoint = $("#ownPoint").val();
         if (ownPoint == "0") {
             $("#usePoint").attr('readonly', true);
             $("#usePoint").attr('placeholder', '사용 가능 포인트가 없습니다');

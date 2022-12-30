@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.lang.reflect.Type;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("owner/store/mng")
+@RequestMapping("/owner/store/mng")
 
 public class StoreMngController {
 
@@ -45,16 +46,9 @@ public class StoreMngController {
         return "/owner/storeMng";
     }
 
-    @PostMapping("/delete")
-    public String deleteStore(int store_seq) throws Exception { //식당삭제
-        int delete = storeStoreService.deleteStore(store_seq);
-        //내 식당 리스트로
-        return "redirect:/";
-    }
-
     @PostMapping("/modify")
     public String modifyStore(StoreDTO storeDTO, MultipartFile file) throws Exception {
         ownerStoreService.modifyStore(storeDTO, file);
-        return "redirect:/";
+        return "redirect:/owner/store/list";
     }
 }

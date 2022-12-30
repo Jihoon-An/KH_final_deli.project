@@ -1,48 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 이나경
-  Date: 2022-12-16
-  Time: 오전 11:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
-<head>
-    <title>딜리 - 식당상세정보</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<div id="store_info">
+    <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
+
+    <div class="fieldBox" style="margin-bottom: -10px;">
+        <div id="menu" style="border: 1px solid red;"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
+        <div id="info" style="border: 1px solid green;"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;" id="to_info">정보</a></div>
+        <div id="review"style="border: 1px solid blue;"><a onclick="loadCode3();" style="cursor: pointer;">리뷰</a></div>
+    </div>
+
+    <script>
+        function loadCode1() {
+            $('.container').load('/store/menu/menu/${storeInfoDTO.store_seq}');
+        }
+
+        function loadCode2() {
+            $('.container').load('/store/info/${storeInfoDTO.store_seq}');
+        }
+
+        function loadCode3() {
+            $('.container').load('/store/review/${storeInfoDTO.store_seq}');
+        }
     </script>
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2831f365f4c14d690cf0e21146e8dd99&libraries=services"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-    <!-- bootstrap CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-          crossorigin="anonymous">
-    <!-- bootstrap JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/resources/css/member/store/storeInfo.css">
-</head>
-<body>
-<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
-<main id="store_info">
-    <div class="container">
-        <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-        <hr>
+
+    <hr style="margin-top: 10px; margin-bottom: 5px;">
+    <div class="contents">
         <div id="map" style="width:100%; height:200px;"></div>
-<%--        <hr>--%>
-            <div style="height: 25px;"></div>
+        <%--        <hr>--%>
+        <div style="height: 25px;"></div>
         <div class="store store_box">
             <div class="field">영업정보</div>
             <div class="d-flex flex-row">
@@ -52,7 +40,16 @@
 
             <div class="d-flex flex-row">
                 <div class="title">전화번호</div>
-                <div class="detail_contents" id="store_phone">${storeInfoDTO.store_phone}</div>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)==9}">
+                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,###,####"/>
+                    <div class="detail_contents" id="store_phone">0<c:out
+                            value="${fn:replace(phoneNo, ',', '-')}"/></div>
+                </c:if>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)>=10}">
+                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
+                             <div class="detail_contents" id="store_phone">0<c:out
+                            value="${fn:replace(phoneNo, ',', '-')}"/></div>
+                </c:if>
             </div>
 
             <div class="d-flex flex-row">
@@ -158,8 +155,9 @@
             <div class="field">배달정보</div>
             <div class="d-flex flex-row">
                 <div class="title">최소주문금액</div>
-                <div class="detail_contents" id="min_price"><fmt:formatNumber value="${storeInfoDTO.store_min_price}"
-                                                                              pattern="#,###"/>원
+                <div class="detail_contents" id="min_price"><fmt:formatNumber
+                        value="${storeInfoDTO.store_min_price}"
+                        pattern="#,###"/>원
                 </div>
             </div>
 
@@ -200,7 +198,7 @@
 
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
-                <div class="detail_contents" id="bs_code">${ownerInfoDTO.owner_num}</div>
+                <div><c:out value="${fn:substring(ownerInfoDTO.owner_num,0,3)}" />-<c:out value="${fn:substring(ownerInfoDTO.owner_num,4,6)}" />-<c:out value="${fn:substring(ownerInfoDTO.owner_num,6,11)}" />-</div>
             </div>
         </div>
         <script>
@@ -208,6 +206,5 @@
             var longitude =${storeInfoDTO.store_add_y};
         </script>
         <script src="/resources/js/member/store/storeInfo.js"></script>
-</main>
-</body>
-</html>
+    </div>
+</div>

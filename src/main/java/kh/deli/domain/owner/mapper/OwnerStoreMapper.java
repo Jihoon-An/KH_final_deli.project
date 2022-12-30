@@ -28,18 +28,12 @@ public interface OwnerStoreMapper {
     @Select("SELECT OWNER_SEQ FROM STORE WHERE STORE_SEQ = #{storeSeq}")
     Integer getOwnerByStore(@Param("storeSeq") int storeSeq);
 
-    @Select("SELECT OWNER_SEQ FROM OWNER o WHERE ACC_SEQ =${acc_seq}")
-    Integer selectOwnerByAcc(int acc_seq);
-
-    @Select("SELECT  * FROM store WHERE OWNER_SEQ =#{owner_seq}")
-    List<StoreDTO> selectAllByOwner(int owner_seq);
-
     @Select("SELECT * FROM STORE WHERE OWNER_SEQ = " +
             "(SELECT OWNER_SEQ FROM OWNER WHERE ACC_SEQ = #{accSeq})")
     List<StoreDTO> findByAccSeq(@Param("accSeq") int accSeq);
 
     @Update("UPDATE STORE SET STORE_OPEN = #{newVal} WHERE STORE_SEQ = #{storeSeq}")
-    void toggleDisplay(int storeSeq, String newVal);
+    void toggleDisplay(@Param("storeSeq") int storeSeq, @Param("newVal") String newVal);
 
     @Select("select owner_Seq from owner where acc_seq = #{acc_seq} ")
     int selectOwnerSeq(int acc_seq);
