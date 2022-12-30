@@ -83,9 +83,10 @@ function fileToBase64(file) {
     reader.readAsDataURL(file)
     reader.onload = () => {
         console.dir(reader.result)   // base64
-        $(".profile_img").attr("src", reader.result);
+        $("#profile").attr("src", reader.result);
     }
 }
+
 
 $("#store_img").on("change", function () {
     if ($("#store_img").val() == "") {

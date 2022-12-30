@@ -115,8 +115,9 @@
             <div id="destination" class="orderContent">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
 
-            <div class="orderTitle">전화번호</div>
-            <div id="phone" class="orderContent">${ordererInfoDTO.mem_phone}</div>
+            <div class="orderTitle">연락처</div>
+                    <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.mem_phone}" pattern="##,####,####"/>
+                <div id="phone" class="orderContent">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
             <div class="orderTitle">가게요청사항</div>
             <div id="store_req" class="orderContent">${ordererInfoDTO.order_store_req}</div>
             <div class="orderTitle">배달요청사항</div>
