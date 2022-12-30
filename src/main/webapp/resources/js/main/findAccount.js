@@ -124,7 +124,10 @@ $("#phone_certi_btn").on("click", function () {
                 sendAuthNum("#phone_count");
                 $("#phone_confirm_box").show();
             } else {
-                alert("메시지 전송 실패");
+                Swal.fire({
+                    icon: 'error',
+                    title: '메세지 전송 실패',
+                });
             }
         });
     } else {
@@ -168,7 +171,10 @@ function phone_confirm() {
                 $("#phone_msg").hide();
                 $("#phone_confirm_box").hide();
                 // $("#mem_phone").attr("disabled", true);
-                alert("인증에 성공하였습니다")
+                Swal.fire({
+                    icon: 'success',
+                    title: '인증 성공',
+                });
                 phoneOk = true;
 
                 $.ajax({
@@ -190,17 +196,25 @@ function phone_confirm() {
                             "<span class='signUpIcon'>" +
                             "<i class=\"fa-solid fa-link\"></i>" +
                             "</span>" +
-                            "<span class='signUpDateSpan'>"+result[i].acc_signupdate+"</span>" +
+                            "<span class='signUpDateSpan'>"+result[i].acc_signupdate.substr(0,10)+"</span>" +
                             "</div>" +
                             "</div>"
                         )
                     }
                 })
             } else if ($("#phone_count").html() == "시간초과") {
-                alert("인증을 다시 해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '입력 가능 시간 초과',
+                    text: '다시 인증해주세요.',
+                });
                 phoneOk = false;
             } else {
-                alert("인증 번호를 확인해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증번호 불일치',
+                    text: '인증번호를 다시 확인해주세요.',
+                });
                 phoneOk = false;
             }
         })
@@ -231,6 +245,14 @@ function pw_phone_check() {
 
 
 $("#pw_phone_certi_btn").on("click", function () {
+    if(!$("#pw_emailInput").val()){
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '이메일을 입력해 주세요.',
+        });
+        return false;
+    }
     if($("#pw_mem_phone").is(":disabled")){
         $("#pw_mem_phone").val("");
         $("#pw_mem_phone").attr("disabled",false);
@@ -246,7 +268,10 @@ $("#pw_phone_certi_btn").on("click", function () {
                 sendAuthNum("#pw_phone_count");
                 $("#pw_phone_confirm_box").show();
             } else {
-                alert("메시지 전송 실패");
+                Swal.fire({
+                    icon: 'error',
+                    title: '메세지 전송 실패',
+                });
             }
         });
     } else {
@@ -290,7 +315,10 @@ function pw_phone_confirm() {
                 $("#pw_phone_msg").hide();
                 $("#pw_phone_confirm_box").hide();
                 // $("#mem_phone").attr("disabled", true);
-                alert("인증에 성공하였습니다")
+                Swal.fire({
+                    icon: 'success',
+                    title: '인증 성공',
+                });
                 phoneOk = true;
 
                 $.ajax({
@@ -304,19 +332,27 @@ function pw_phone_confirm() {
                     $("#passWordBox").append(
                         "<div class='passWordResultBox'>" +
                         "<div class='passWordDiv'>" +
-                        "<span class='passWordResult'>변경된 임시 비밀번호</span>" +
+                        "<span class='passWordResult'>임시 비밀번호로 변경되었습니다</span>" +
                         "</div>" +
-                        "<div class='signUpDateDiv'>" +
-                        "<span class='signUpDateSpan'>"+result+"</span>" +
+                        "<div class='temporaryDiv'>" +
+                        "<span class='temporarySpan'>"+result+"</span>" +
                         "</div>" +
                         "</div>"
                     )
                 })
             } else if ($("#pw_phone_count").html() == "시간초과") {
-                alert("인증을 다시 해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '입력 가능 시간 초과',
+                    text: '다시 인증해주세요.',
+                });
                 phoneOk = false;
             } else {
-                alert("인증 번호를 확인해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증번호 불일치',
+                    text: '인증번호를 다시 확인해주세요.',
+                });
                 phoneOk = false;
             }
         })

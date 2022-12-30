@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+* {font-family:'Pretendard-Regular'}
 body{background-color: #F8F5F2}
 #findAccount *{box-sizing: border-box;}
 #findAccount .container{
     width: 360px;
-    height: 800px;
-    border: 1px solid gray;
+    text-align: center;
     margin: auto;
+    padding-top: 50px;
 }
 
 #findAccount .titleBox{
@@ -13,7 +20,6 @@ body{background-color: #F8F5F2}
     text-align: center;
     font-size: 24px;
     line-height: 75px;
-    margin-top: 50px;
 }
 
 #findAccount .choiceBox{
@@ -52,15 +58,8 @@ body{background-color: #F8F5F2}
     border-width: 1px;
     outline: none;
 }
-/*#findAccount #findEmailBox > #phone_certi_btn{*/
-/*    width: 100px;*/
-/*    height: 35px;*/
-/*    font-size: 15px;*/
-/*    border-radius: 7px;*/
-/*    border-width: 1px;*/
-/*}*/
+
 #findAccount #findEmailBox > p{
-    /*margin-left: 30px;*/
     text-align: left;
     padding-left: 10px;
     font-size: 14px;
@@ -124,9 +123,44 @@ body{background-color: #F8F5F2}
     margin-top: 50px;
     text-align: center;
 }
+#findAccount #findPassWordBox > p{
+    text-align: left;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 30px;
+}
+#findAccount .pw_count{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 13px;
+    color: #666666;
+}
+#findAccount #pw_phone_count{color: #FF0000;}
 
-
-
+#findAccount .passWordResultBox{
+    width: 100%;
+    text-align: left;
+    border: 3px solid #e84c4f;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px 1px #9f1f20;
+    padding: 7px;
+    border-radius: 7px;
+    margin-top: 25px;
+}
+#findAccount .passWordDiv, #findAccount .temporaryDiv{
+    width: 100%;
+    text-align: center;
+}
+#findAccount .passWordResult{
+    font-size: 14px;
+    font-weight: bold;
+}
+#findAccount .temporarySpan{
+    font-weight: bold;
+    color: #3e4462;
+}
 
 
 

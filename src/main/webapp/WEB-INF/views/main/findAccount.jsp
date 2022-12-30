@@ -18,6 +18,8 @@
     <!-- bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="/resources/css/main/findAccount.css" type="text/css">
 </head>
@@ -26,6 +28,12 @@
 <main id="findAccount">
 
     <div class="container">
+
+        <div class="logoBox">
+            <a href="/">
+                <img src="/resources/img/deli_logo.png" style="width: 250px;">
+            </a>
+        </div>
 
 
         <div class="titleBox">
@@ -76,9 +84,11 @@
             <p id="pw_phone_msg" style="display: none">휴대폰 번호를 확인 중입니다.</p>
 
             <div id="pw_phone_confirm_box" style="display: none">
-                <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="pw_phone_confirm_input"
-                       maxlength='6' oninput=validNum()>
-                <button type="button" id="pw_phone_confirm_btn">확인</button>
+                <div class="input-group">
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="pw_phone_confirm_input"
+                           maxlength='6' oninput=validNum() class="form-control">
+                    <button type="button" id="pw_phone_confirm_btn" class="deli_btn">확인</button>
+                </div>
                 <div id="pw_phoneCountBox">
                     <p class="pw_count">인증번호 유효시간이 <span id="pw_phone_count"></span> 남았습니다</p>
                 </div>
