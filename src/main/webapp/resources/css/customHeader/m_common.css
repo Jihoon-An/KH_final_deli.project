@@ -10,7 +10,7 @@
 
 body {
     background: #333333 !important;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 main {

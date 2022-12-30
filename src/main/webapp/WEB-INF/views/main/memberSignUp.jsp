@@ -111,14 +111,14 @@
 
                 <%--phone 입력--%>
                 <div class="input-group">
-                    <input type="text" placeholder="휴대폰번호 숫자만 입력" id="mem_phone" maxlength="13" oninput=validNum()
+                    <input type="text" placeholder="휴대폰 번호 숫자만 입력" id="mem_phone" maxlength="13" oninput=validNum()
                            class="form-control">
-                    <input type="hidden" placeholder="휴대폰번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden"
+                    <input type="hidden" placeholder="휴대폰 번호 숫자만 입력" name="mem_phone" id="mem_phone_hidden"
                            maxlength="13"
                            oninput=validNum()>
                     <button type="button" id="phone_certi_btn" class="deli_btn">인증</button>
                 </div>
-                <p id="phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>
+                <p id="phone_msg" style="display: none">휴대폰 번호 양식에 맞게 썼는지 확인 중입니다</p>
 
                 <%--phone 인증--%>
                 <div id="phone_confirm_box" style="display: none">
