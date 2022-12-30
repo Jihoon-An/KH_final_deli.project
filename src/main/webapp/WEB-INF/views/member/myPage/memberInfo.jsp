@@ -18,6 +18,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
+    <!-- sweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
 
@@ -137,9 +139,9 @@
                     <button type="button">로그아웃</button>
                 </a>
                 <br><br>
-                <a href="/account/withdrawal">
-                    <button type="button">회원탈퇴</button>
-                </a>
+                <form action="/account/withdrawal" id="withdrawalForm" method="post">
+                    <button type="button" id="withdrawalButton">회원탈퇴</button>
+                </form>
             </div>
 
         </form>
