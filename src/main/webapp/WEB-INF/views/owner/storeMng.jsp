@@ -560,7 +560,7 @@
                     <div class="thumbnail">
                         <c:choose>
                             <c:when test="${store.store_logo!=null}">
-                                <img src="/resources/img/store/${store.store_logo}" class="profile_img">
+                                <img src="/resources/img/store/${store.store_logo}" class="profile_img" id="profile">
                             </c:when>
                             <c:otherwise>
                                 <img src="/resources/img/store/no_storelogo.png" class="profile_img">

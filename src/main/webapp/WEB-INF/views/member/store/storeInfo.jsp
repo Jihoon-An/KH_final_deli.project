@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>딜리 - 식당정보</title>
@@ -52,7 +53,8 @@
 
             <div class="d-flex flex-row">
                 <div class="title">전화번호</div>
-                <div class="detail_contents" id="store_phone">${storeInfoDTO.store_phone}</div>
+                <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
+                <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
             </div>
 
             <div class="d-flex flex-row">
