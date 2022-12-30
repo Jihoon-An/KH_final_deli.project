@@ -15,11 +15,6 @@ $(".del_btn").click(function () {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            );
             $(del_form).submit();
         }
     })
@@ -41,4 +36,8 @@ $(".display_toggle").click(function () {
         method: "post",
         data: {storeSeq: storeSeq, newVal: newVal}
     })
+});
+
+$(".name").click(function () {
+    $("#frm").attr("action", "/owner/store/mng").submit();
 });

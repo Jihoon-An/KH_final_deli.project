@@ -40,7 +40,7 @@ public class OwnerStoreListController {
     public String delStore(@RequestParam("store_seq") int storeSeq) throws Exception {
         storeStoreService.deleteStore(storeSeq);
 
-        return "/owner/storeList";
+        return "redirect:/owner/store/list";
     }
 
     @PostMapping("displayToggle")

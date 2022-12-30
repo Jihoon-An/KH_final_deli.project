@@ -1,3 +1,6 @@
-#ownerStore #myTable {
+#ownerStore #myTable .store:hover{
+    background-color: rgba(87, 82, 75, 0.71);
+}
+#ownerStore #myTable .store .name{
     cursor: pointer;
 }

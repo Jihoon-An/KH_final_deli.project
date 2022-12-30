@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>딜리 - 회원 정보</title>
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -133,7 +133,9 @@
         <a href="/account/logout">
             <button>로그아웃</button>
         </a>
-        <button>회원탈퇴미구현</button>
+        <a href="/account/withdrawal">
+            <button>회원탈퇴미구현</button>
+        </a>
     </div>
 
 

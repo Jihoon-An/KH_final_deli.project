@@ -175,11 +175,12 @@ $("#phone_btn").on("click", function () {
 
     console.log(phoneConfirmText);
 
-    // $.ajax({
-    //     url: "/",
-    //     type: "post",
-    //     data: {email:$("#email").val()}
-    // })
+    $.ajax({
+        url: "/util/sendSms",
+        type: "post",
+        data: {tel:phoneNum, msg:'딜리 인증번호['+phoneConfirmText +']'}
+    })
+
     $("#phone_confirm_box").css("display", "flex");
     $("#phone_confirm_input").val("");
     phoneCountStarter();

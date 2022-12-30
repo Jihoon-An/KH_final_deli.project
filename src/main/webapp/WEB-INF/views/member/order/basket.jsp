@@ -37,7 +37,6 @@
             <c:when test="${not empty basket}">
                 <input type="hidden" id="storeSeq" value="${store.store_seq}">
                 상호명 : ${store.store_name}<br>
-                로고 : ${store.store_logo}<br>
                 <img src="/resources/img/store/${store.store_logo}">
                 <hr>
                 <hr>

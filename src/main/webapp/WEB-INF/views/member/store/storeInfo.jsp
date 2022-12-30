@@ -39,7 +39,7 @@
 <main id="store_info">
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-        <hr>
+        <hr style="margin-top: 10px;">
         <div id="map" style="width:100%; height:200px;"></div>
 <%--        <hr>--%>
             <div style="height: 25px;"></div>

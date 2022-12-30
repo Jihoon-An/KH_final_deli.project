@@ -38,7 +38,7 @@
 <main id="storeReview">
     <div class="container">
         <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-        <hr>
+        <hr style="margin-top: 10px;">
         <div class="reviews">
             <c:choose>
                 <c:when test="${not empty storeReviewList}">
@@ -57,16 +57,14 @@
                             </div>
                                 <%--<div id="reviewStar">별점 : ${reviews.rev_star}</div>--%>
                                 <%--임시--%>
-                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
-                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
-                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
-                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png">
+<%--                            <img src="/resources/img/review/84eae9ab-6e0d-4172-936c-e8d23c3b84ac_다운로드.jpg" style="width: 250px; height: 150px; margin-left: 20px;">--%>
+<%--                            <img src="/resources/img/review/1bbefed6-5039-4683-9af7-6bfe7950ead5_ifsp.png" style="width: 250px; height: 150px;">--%>
 
                             <c:choose>
                                 <c:when test="${not empty reviews.rev_sysname}">
                                     <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
                                         <div id="reviewImgs" style="width: 15px;">
-                                            <img src="/resources/img/review/${reviewImg}">
+                                            <img src="/resources/img/review/${reviewImg}" style="width: 250px; height: 150px; margin-left: 20px;">
                                         </div>
                                     </c:forEach>
                                 </c:when>

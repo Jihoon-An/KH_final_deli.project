@@ -9,8 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <title>딜리 - 주문관리</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -41,10 +41,26 @@
 </head>
 <body>
 <main id="order_mng" class="container">
-<%--한줄의 요약해서 보이고 줄을 넘어가는 거는 ... 처리하고 마우스를 올리면 다 보이는 형태,
-storeSeq가 다른 링크를 달아서 매장마다 관리할 수 있도록 함.--%>
+    <div class="dropdown-center">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            <c:forEach var="store" items="${storeList}">
+                <c:if test="${store.store_seq eq storeSeq}">
+                    ${store.store_name}
+                </c:if>
+            </c:forEach>
+        </button>
+        <ul class="dropdown-menu">
+            <c:forEach var="store" items="${storeList}">
+                <li><a class="dropdown-item" href="http://localhost/owner/order/${store.store_seq}">${store.store_name}</a></li>
+            </c:forEach>
+        </ul>
+    </div>
 
-    <div><button type="button">새 주문 보기</button></div>
+
+    <div>
+        <button type="button">새 주문 보기</button>
+    </div>
 
     <div>
         <button type="button" id="status_btn">선택항목 상태 바꾸기</button>
@@ -79,7 +95,10 @@ storeSeq가 다른 링크를 달아서 매장마다 관리할 수 있도록 함.
                 <td class="mem_phone">${order.phone}</td>
                 <td class="menu_name">${order.menuStrList}</td>
                 <td class="mem_add">${order.address}</td>
-                <td class="deli_link">${order.link}</td>
+                <td class="deli_link_btn">
+                    <button class="send_link_btn">링크 보내기</button>
+                </td>
+                <input type="hidden" class="deli_link" value="${order.link}">
             </tr>
         </c:forEach>
         </tbody>
