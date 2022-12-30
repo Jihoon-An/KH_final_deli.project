@@ -189,8 +189,8 @@
             </div>
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
-                    <fmt:formatNumber var="phoneNo" value="${ownerInfoDTO.owner_num}" pattern="###,##,#####"/>
-                <div class="detail_contents" id="bs_code"><c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                    <fmt:formatNumber var="registrationNo" value="1231231231" pattern="###,##,#####"/>
+                <div class="detail_contents" id="bs_code"><c:out value="${fn:replace(registrationNo, ',', '-')}" /></div>
             </div>
         </div>
         <script>

@@ -25,13 +25,13 @@
 <main id="review_mng">
     <table id="myTable" class="display">
         <thead>
-            <tr>
-                <th>작성자</th>
-                <th>리뷰내용</th>
-                <th>상호명</th>
-                <th>작성일자</th>
-                <th>수정일자</th>
-            </tr>
+        <tr>
+            <th>작성자</th>
+            <th>리뷰내용</th>
+            <th>상호명</th>
+            <th>작성일자</th>
+            <th>수정일자</th>
+        </tr>
         </thead>
         <tbody>
         <c:if test="${not empty nev_list}">
@@ -77,13 +77,14 @@
     <form action="/admin/review/deleteReview" id="frm">
         <div class="modal">
             <div class="modal_content">
-                <div class="closeModal">X</div>
-                <div>
-                    작성자 <input
-                        type="text" placeholder="작성자" id="writer" class="writer" disabled>
+                <div class="closeModal"><i class="fa-solid fa-xmark fa-2xl"></i></div>
+                <div class="modalInfo">
+                    <span class="modalTitle">작성자</span>
+                    <input
+                            type="text" placeholder="작성자" id="writer" class="writer" disabled>
                 </div>
-                <div>
-                    별점 <input
+                <div class="modalInfo">
+                    <span class="modalTitle">별점</span><input
                         type="text" placeholder="별점" disabled id="star" class="star" disabled>
                 </div>
                 <div id="reviewField">리뷰 내용</div>
@@ -108,6 +109,49 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal">
+            <div class="modal_content">
+                <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>
+                <div class="modalInfo">
+                    <span class="modalTitle">작성자</span>
+                    <input type="text" placeholder="작성자" disabled id="store_seq">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">상호명</span>
+                    <input type="text" placeholder="상호명" disabled id="store_name">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">별점</span>
+                    <input type="text" placeholder="별점" disabled id="store_star">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">리뷰 내용</span>
+                    <input type="text" placeholder="업종" disabled id="store_category">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">작성일자</span>
+                    <input type="text" placeholder="연락처" disabled id="store_phone">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">수정일자</span>
+                    <input type="text" placeholder="주소" disabled id="store_add_detail1">
+                </div>
+                <div class="modalInfo">
+                    <span class="modalTitle">리뷰번호 등록번호</span>
+                    <input type="text" placeholder="사업자 등록번호" disabled id="owner_num">
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
     </form>
 
 </main>
