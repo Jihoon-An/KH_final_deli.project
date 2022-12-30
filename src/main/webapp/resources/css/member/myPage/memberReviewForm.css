@@ -5,7 +5,7 @@
 #reviewWrite .container{
  width: 360px;
  margin: auto;
- min-height: 800px;
+ min-height: 900px;
 
 }
 
@@ -18,7 +18,6 @@
  height: 40px;
  text-align: center;
  font-size: 24px;
- line-height: 30px;
 }
 
 #reviewWrite #storeName{
