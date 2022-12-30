@@ -9,21 +9,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 내 리뷰</title>
+    <title>딜리 - 내 리뷰 보기</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
+
 </head>
-<script>
-    window.onload = function () {
-        debugger;
-    }
-    function onclickDeleteBtn(param){
-        debugger;
-        var revSeq = param.getAttribute('revSeq');
-    }
-
-</script>
 <body>
-<main id="myPageReviewList">
 
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+
+<main id="myPageReviewList">
+    <hr class="mt65">
     <div class="container">
         <h2>내가 쓴 리뷰 리스트</h2>
         <div class="member_review">내가 쓴 리뷰 총 ${myPageReviewCount}개</div>
@@ -46,7 +49,8 @@
 
                 </c:otherwise>
                 </c:choose>
-                <button name="delete_review" onclick="onclickDeleteBtn(this)" revSeq="${reviews.rev_seq}">삭제</button>
+                <button id="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
+                <input type="hidden" class="rev_seq" value="${rev_seq}">
             <c:choose>
             <c:when test="${not empty reviews.menu}">
             <div>메뉴명 :
@@ -98,6 +102,28 @@
     <div class="member_menu_img">사진</div>
     <div class="member_content">리뷰 내용</div>
     </div>
+
+    <script>
+        function onclickDeleteBtn(param){
+            debugger;
+            var revSeq = param.getAttribute('revSeq');
+        }
+
+        $("#delete_review").on("click",function (){
+            var ans = confirm("리뷰를 삭제하시겠습니까?");
+
+            if(ans == true){
+                $.ajax({
+                    url:"/myPage/reviewList/deleteReview",
+                    data:{rev_seq:rev_seq},
+                    type:"post"
+                }).done(function (resp){
+                    location.reload();
+                })
+            }
+        })
+
+    </script>
 </main>
 </body>
 </html>
