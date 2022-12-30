@@ -550,7 +550,6 @@
         </div>
         <div class="rowBox" style="height: 150px">
             <div class="title">대표사진</div>
-            <input type="text" value="${store.store_logo}">
             <div class="contents">
                 <div class="profile">
                     <div class="thumbnail">
