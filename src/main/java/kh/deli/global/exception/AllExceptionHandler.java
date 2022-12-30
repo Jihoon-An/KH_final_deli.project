@@ -19,10 +19,17 @@ public class AllExceptionHandler {
         return "errorPage/storeBsTimeOutException";
     }
 
+    @ExceptionHandler(DeliveryDtlException.class)
+    public String deliveryDtlExceptionHandler(DeliveryDtlException e) {
+        log.error("딜리 배달 영수증에 접근 권한이 없습니다.");
+        return "errorPage/deliveryDtlException";
+    }
+
+
+
     @ExceptionHandler(Exception.class)
     public String allExceptionHandler(Exception e) {
         e.printStackTrace();
-//        return "errorPage/error";
         return "error";
     }
 }
