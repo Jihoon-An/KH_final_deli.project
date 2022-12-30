@@ -95,12 +95,12 @@ public class OrderHistoryController {
 
     @RequestMapping("{orderSeq}")
     public String reOrder(@PathVariable("orderSeq")Integer order_seq) throws Exception {
-        System.out.println("오더seq"+order_seq);`
+        System.out.println("오더seq"+order_seq);
 
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
        String menu_list = ordersDTO.getMenu_list();
             ordersDTO.getStore_seq();
-            ordersDTO.
+           //ordersDTO.
 
 
         //리스트를 풀어서
@@ -112,8 +112,8 @@ public class OrderHistoryController {
 //        System.out.println(basketMenu.get(0).getMenu());
 //        System.out.println(basketMenu.get(0).getOptionList().get(0).getOption_name());
 
-         Integer storeSeq=  storeBasketService.setBasketInSession(session,  ordersDTO.getStore_seq(););
-        System.out.println(storeSeq);
+//         Integer storeSeq=  storeBasketService.setBasketInSession(session,  ordersDTO.getStore_seq());
+//        System.out.println(storeSeq);
 
         return "redirect:/basket";
     }
