@@ -323,8 +323,8 @@
                                               placeholder="배달 가능 지역" class="input"></div>
             </div>
 
-            <div class="foot_btn"><button id=add type="button">식당추가</button>
-                <a href="/owner/store/list"><button type="button">취소</button></a></div>
+            <div class="foot_btn deli_btn"><button id=add type="button" >식당추가</button>
+                <a href="/owner/store/list"><button type="button" class="deli_btn">취소</button></a></div>
 
         </div>
 

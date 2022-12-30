@@ -1,5 +1,10 @@
 $(document).ready(function () {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable()(
+        { order: [[0, 'desc']],lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, 'All'],
+            ],}
+    );
 });
 trClickEvent();
 //페이지 버튼을 눌렀을때 다시 script 돌아가게
@@ -9,7 +14,7 @@ $(".paginate_button").click(function () {
 
 
 function trClickEvent() {
-    $("account_tr").click(function () {
+    $(".account_tr").click(function () {
 
         $("#frm").find(".email").val(
             $(this).find(".acc_email").html());
