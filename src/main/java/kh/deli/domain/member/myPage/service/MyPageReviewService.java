@@ -74,4 +74,8 @@ public class MyPageReviewService {
     public String selectMenuName(String menuSeq) throws Exception{
         return myPageReviewMapper.selectMenuName(menuSeq);
     }
+
+    public int deleteReview(int rev_seq){
+        return myPageReviewMapper.deleteReview(rev_seq);
+    }
 }
