@@ -11,10 +11,7 @@
 <head>
     <title>딜리 - 메뉴수정</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 </head>
 <body>
 
