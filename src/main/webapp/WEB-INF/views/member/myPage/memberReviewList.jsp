@@ -35,7 +35,7 @@
             <c:when test="${not empty myPageReviewList}">
             <c:forEach var="reviews" items="${myPageReviewList}">
                 <c:choose>
-                <c:when test="${reviews.flag_udt == 'Y'}">
+                <c:when test="${reviews.flag_udt == 'N'}">
 
                     <button name="modify_review" disabled>수정</button>
 
