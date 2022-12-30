@@ -27,7 +27,10 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/admin/ownerList.css" type="text/css">
-    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
 </head>
 
 <body>

@@ -25,6 +25,9 @@
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="/resources/css/admin/accountList.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>

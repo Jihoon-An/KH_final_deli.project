@@ -31,7 +31,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 
 <main id="dibs">
     <hr class="mt55">
@@ -56,8 +56,8 @@
                             <div class="info">
                                 <div class="store_name"><a href="/store/menu/${i.STORE_SEQ}">${i.STORE_NAME}</a></div>
                                 <div class="avg_star"><i class="fa-solid fa-star"></i> <span class="fontColor">${i.avg_star}</span></div>
-                                <div class="store_min">최소주문금액 <span class="fontColor">${i.STORE_MIN_PRICE}원</span></div>
-                                <div class="store_min">배달요금 <span class="fontColor">${i.STORE_DELI_TIP}원</span></div>
+                                <div class="store_min">최소주문금액 <span class="fontColor"><fmt:formatNumber value="${i.STORE_MIN_PRICE}" pattern="#,###"/>원</span></div>
+                                <div class="store_min">배달요금 <span class="fontColor"><fmt:formatNumber value="${i.STORE_DELI_TIP}" pattern="#,###"/>원</span></div>
                                 <div class="store_deli_time">배달시간 <span class="fontColor">${i.STORE_DELI_TIME}분</span></div>
                             </div>
                             <div id="btnBox">

@@ -109,7 +109,7 @@ public class OrderHistoryController {
         List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
 
         List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
-        basketMenu.get(0).getMenu().
+//        basketMenu.get(0).getMenu().
 
         //storeBasketService.setBasketInSession(session,menu_list);
        // System.out.println(storeSeq);
