@@ -10,21 +10,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>딜리 - 식당수정</title>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b70a07e8ebffe5918d15f49ba310485f&libraries=services"></script>
-
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/owner/storeMng.css" type="text/css">
 </head>
 
@@ -555,7 +543,6 @@
                     <div class="thumbnail">
                         <c:choose>
                             <c:when test="${store.store_logo!=null}">
-                                <input class="img" type="hidden" value="/resources/img/store/${store.store_logo}">
                                 <img src="/resources/img/store/${store.store_logo}" class="profile_img">
                             </c:when>
                             <c:otherwise>

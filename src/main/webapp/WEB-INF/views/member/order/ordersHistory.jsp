@@ -12,21 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>딜리 - 주문내역</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-            crossorigin="anonymous"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
     <link rel="stylesheet" href="/resources/css/member/order/orderHistory.css" type="text/css">
 
 </head>
@@ -39,7 +26,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 
-<main id = "order_history">
+<main id="order_history">
     <hr class="mt55">
     <div class="container">
         <c:choose>
@@ -49,16 +36,20 @@
                     <jsp:useBean id="now" class="java.util.Date"/>
                     <fmt:parseNumber value="${now.time}" integerOnly="true"
                                      var="nowfmtTime" scope="request"/>
-<%--                       <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+(1000*60*60*24*30)}" integerOnly="true"  scope="request"/>--%>
-                    <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*30  )}" integerOnly="true"  scope="request"/>
-                          <%-- 주문날짜 기준 30일지나면 출력이 안된다--%>
-                        <c:if test="${nowfmtTime<parseDate}">
+                    <%--                       <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+(1000*60*60*24*30)}" integerOnly="true"  scope="request"/>--%>
+                    <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*30  )}"
+                                     integerOnly="true" scope="request"/>
+                    <fmt:parseNumber var="parseDate3day"
+                                     value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*3  )}" integerOnly="true"
+                                     scope="request"/>
+                    <%-- 주문날짜 기준 30일지나면 출력이 안된다--%>
+                    <c:if test="${nowfmtTime<parseDate}">
 
                         <div class="box1">
-                        <div class="box2">
-                            <span class="head_deli">배달주문</span>
-                            <span class="head_date">${order_list.formDate}</span>
-                            <span class="head_status">
+                            <div class="box2">
+                                <span class="head_deli">배달주문</span>
+                                <span class="head_date">${order_list.formDate}</span>
+                                <span class="head_status">
                             ${order_list.order_status}
 <%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
 <%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
@@ -66,75 +57,87 @@
 <%--&lt;%&ndash;                <c:if test="${i.order_status=='delivering'}">배달중</c:if>&ndash;%&gt;--%>
 <%--&lt;%&ndash;                <c:if test="${i.order_status=='complete'}">배달완료</c:if>&ndash;%&gt;--%>
             </span>
-                        </div>
-                        <div class="box3">
-
-                            <c:if test="${order_list.store_logo==null}">
-                                <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/no_storelogo.png" id="profile"></div>
-                            </c:if>
-                            <c:if test="${order_list.store_logo!=null}">
-                                <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${order_list.store_logo }" id="profile"></div>
-                            </c:if>
-                            <div class="info">
-                                <a href="/store/menu/${order_list.store_seq}"><span class="storename">${order_list.store_name}</span></a>
-
-                                <p class="meinfo">
-
-<%--                                    <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="mName">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].count}" class="mCount">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="mPrice">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="mstore_seq">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="mmenu_seq">--%>
-
-
-                                        ${menu_list[status.index].menu.store_seq}
-                                        ${menu_list[status.index].menu.menu_price}
-
-                                        ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
-
-
-
-                                    <c:if test = "${menu_list[status.index].count>0}">
-                                        x  ${menu_list[status.index].count}
-                                    </c:if> <%-- 메뉴 0개 이상일때 --%>
-
-                                    <c:if test = "${menu_count_list[status.index]>1}">
-                                        외 ${menu_count_list[status.index]-1}건
-                                    </c:if>  <%-- 또다른 메뉴가 추가로 있을떄 --%>
-
-
-
-                                        <%--                        ${basketMenu[4].menu.menu_name} x ${basketMenu[0].count}--%>
-
-                                        <%--                    <c:if test="${basketMenu[0].menu.menu_name!=null}">--%>
-                                        <%--                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">--%>
-                                        <%--                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>--%>
-                                        <%--                        </c:forEach>--%>
-                                        <%--                    </c:if>--%>
-
-                                </p>
-
-                                <div class="infoFooter">
-                                <a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn">리뷰작성</button></a>
-
-                                <a href="/order/detail/${order_list.order_seq}"><button class="deli_btn">주문상세</button></a>
-
-                                 <a href="/order/history/${order_list.order_seq}"><button class="deli_btn" type="button">재주문</button></a>
-
-
-<%--                                       <button class="deli_btn" type="button" onclick="toBaskett()">재주문</button>--%>
-<%--                                    <form action="/menu/detail/toBasket" method="post" id="put_basket">--%>
-<%--                                        <input type="hidden" name="basket_menu" id="basket_menu">--%>
-<%--                                    </form>--%>
-
-                                </div>
-                                <c:if test="${order_list.order_status='배달완료'}">
-                                </c:if>
                             </div>
-                        </div>
+                            <div class="box3">
 
-                    </div>
-                        </c:if>
+                                <c:if test="${order_list.store_logo==null}">
+                                    <div class="image-box"><img class="image-thumbnail"
+                                                                src="/resources/img/store/no_storelogo.png"
+                                                                id="profile"></div>
+                                </c:if>
+                                <c:if test="${order_list.store_logo!=null}">
+                                    <div class="image-box"><img class="image-thumbnail"
+                                                                src="/resources/img/store/${order_list.store_logo }"
+                                                                id="profile"></div>
+                                </c:if>
+                                <div class="info">
+                                    <a href="/store/menu/${order_list.store_seq}"><span
+                                            class="storename">${order_list.store_name}</span></a>
+                                    <input type="hidden" value="${order_list.order_seq}" class="orderSeqChk">
+
+
+                                    <p class="meinfo">
+
+                                            <%--                                    <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="mName">--%>
+                                            <%--                                    <input type="hidden" value="${menu_list[status.index].count}" class="mCount">--%>
+                                            <%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="mPrice">--%>
+                                            <%--                                    <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="mstore_seq">--%>
+                                            <%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="mmenu_seq">--%>
+
+
+                                            ${menu_list[status.index].menu.store_seq}
+                                            ${menu_list[status.index].menu.menu_price}
+
+                                            ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
+
+
+                                        <c:if test="${menu_list[status.index].count>0}">
+                                            x  ${menu_list[status.index].count}
+                                        </c:if> <%-- 메뉴 0개 이상일때 --%>
+
+                                        <c:if test="${menu_count_list[status.index]>1}">
+                                            외 ${menu_count_list[status.index]-1}건
+                                        </c:if> <%-- 또다른 메뉴가 추가로 있을떄 --%>
+
+
+                                            <%--                        ${basketMenu[4].menu.menu_name} x ${basketMenu[0].count}--%>
+
+                                            <%--                    <c:if test="${basketMenu[0].menu.menu_name!=null}">--%>
+                                            <%--                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">--%>
+                                            <%--                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>--%>
+                                            <%--                        </c:forEach>--%>
+                                            <%--                    </c:if>--%>
+
+                                    </p>
+
+                                    <div class="infoFooter">
+                                        <c:if test="${nowfmtTime<parseDate3day}">
+                                            <%--<a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn" id="reviewChk">리뷰작성</button></a>--%>
+                                            <button class="deli_btn reviewChk">리뷰작성</button>
+
+                                        </c:if>
+                                        <a href="/order/detail/${order_list.order_seq}">
+                                            <button class="deli_btn">주문상세</button>
+                                        </a>
+
+                                        <a href="/order/history/${order_list.order_seq}">
+                                            <button class="deli_btn" type="button">재주문</button>
+                                        </a>
+
+
+                                            <%--                                       <button class="deli_btn" type="button" onclick="toBaskett()">재주문</button>--%>
+                                            <%--                                    <form action="/menu/detail/toBasket" method="post" id="put_basket">--%>
+                                            <%--                                        <input type="hidden" name="basket_menu" id="basket_menu">--%>
+                                            <%--                                    </form>--%>
+
+                                    </div>
+                                    <c:if test="${order_list.order_status='배달완료'}">
+                                    </c:if>
+                                </div>
+                            </div>
+
+                        </div>
+                    </c:if>
 
                 </c:forEach>
             </c:when>
@@ -187,7 +190,6 @@
 <%--</script>--%>
 
 
-
 <script>
     // function putBaskett() {
     //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice);
@@ -203,5 +205,6 @@
     //     $("#put_basket").attr("action", "/menu/detail/toBasket").submit();
     // }
 </script>
+<script src="/resources/js/member/order/orderHistoryYoo.js"></script>
 </body>
 </html>
