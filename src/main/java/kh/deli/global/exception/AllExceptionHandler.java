@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AllExceptionHandler {
     @ExceptionHandler(PermissionException.class)
-    public String permissionExceptionHandler(StoreBsTimeOutException e) {
+    public String permissionExceptionHandler(PermissionException e) {
         log.error("페이지에 권한이 없습니다.");
         return "errorPage/permissionException";
     }
@@ -22,6 +22,7 @@ public class AllExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String allExceptionHandler(Exception e) {
         e.printStackTrace();
+//        return "errorPage/error";
         return "error";
     }
 }
