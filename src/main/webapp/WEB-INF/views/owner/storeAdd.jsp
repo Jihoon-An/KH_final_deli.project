@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>딜리 - 식당추가</title>
+
+
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -29,15 +28,18 @@
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/resources/css/owner/storeAdd.css" type="text/css">
 
 
     <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
+
+
 
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/owner/storeAdd.css" type="text/css">
 </head>
 
 
