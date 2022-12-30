@@ -4,10 +4,7 @@ import kh.deli.domain.member.myPage.dto.MypageReviewDTO;
 import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.entity.ReviewDTO;
 import kh.deli.global.entity.StoreDTO;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -40,6 +37,9 @@ public interface MyPageReviewMapper {
     @Update("update review set rev_star=#{rev_star},rev_content=#{rev_content},rev_modified_date=sysdate,rev_sysname=#{rev_sysname, jdbcType=VARCHAR} where rev_seq=#{rev_seq}")
     public void modifyReview(Map<String,Object>param);
 
+    @Delete("delete from review where rev_seq = #{rev_seq}")
+    int deleteReview(@Param("rev_seq") int rev_seq);
     @Select("select menu_name from menu where menu_seq=#{menuSeq} ")
     public String selectMenuName(@Param("menuSeq") String menuSeq);
+
 }

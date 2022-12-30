@@ -16,7 +16,7 @@ import java.util.List;
 public interface OrderOrdersMapper {
     public OrderOrdersDTO selectSessionInfo(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
     public OrderOrdersDTO selectOrderMemberInfo(@Param("accSeq") int accSeq);
-    List<OrderOrdersDTO> selectCouponList(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
+    List<OrderOrdersDTO> selectCouponList(@Param("accSeq") Integer accSeq);
 
     public void updateMemberAddr(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO);
 

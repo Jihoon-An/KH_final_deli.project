@@ -8,6 +8,7 @@ import kh.deli.domain.member.store.dto.BasketMenu;
 import kh.deli.domain.member.store.dto.StoreBasketMenuRequestDTO;
 import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.global.entity.OrdersDTO;
+import kh.deli.global.exception.DeliveryDtlException;
 import kh.deli.global.util.RedisUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -30,25 +31,26 @@ public class OrderDeliveryDtlController {
 
     @RequestMapping("{redisKey}")
     public String toDeliveryDtl(Model model, @PathVariable("redisKey") String redisKey) throws Exception {
+        try {
+            int orderSeq = Integer.parseInt(redis.getData(redisKey));
 
-        int orderSeq = Integer.parseInt(redis.getData(redisKey));
+            StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(orderSeq); // 가게정보
+            OrdererInfoDTO ordererInfoDTO = orderOrdersService.getOrdererInfo(orderSeq); // 주문자정보
+            PayInfoDTO payInfoDTO = orderOrdersService.getPayInfo(orderSeq); // 결제정보
+            OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(orderSeq); //주문정보
 
-        StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(orderSeq); // 가게정보
-        OrdererInfoDTO ordererInfoDTO =orderOrdersService.getOrdererInfo(orderSeq); // 주문자정보
-        PayInfoDTO payInfoDTO=orderOrdersService.getPayInfo(orderSeq); // 결제정보
-        OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(orderSeq); //주문정보
+            String menu_list = ordersDTO.getMenu_list();
 
-        String menu_list = ordersDTO.getMenu_list();
+            Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>() {
+            }.getType();
+            List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
 
-        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-        List<StoreBasketMenuRequestDTO> basket= gson.fromJson(menu_list, type2);
+            List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
 
-        List<BasketMenu> basketMenu =storeBasketService.basketMenuListDtoToObject(basket);
-
-        model.addAttribute("basketMenu", basketMenu);
-        model.addAttribute("storeInfoDTO",storeInfoDTO);
-        model.addAttribute("ordererInfoDTO",ordererInfoDTO);
-        model.addAttribute("payInfoDTO",payInfoDTO);
+            model.addAttribute("basketMenu", basketMenu);
+            model.addAttribute("storeInfoDTO", storeInfoDTO);
+            model.addAttribute("ordererInfoDTO", ordererInfoDTO);
+            model.addAttribute("payInfoDTO", payInfoDTO);
 
 
 //        StoreInfoDTO storeInfoDTO = orderOrdersService.getStoreInfo(orderSeq); // 가게정보
@@ -89,7 +91,9 @@ public class OrderDeliveryDtlController {
 //        NaverNShortURL nShortURL = new NaverNShortURL();
 //        nShortURL.toShortURL(url);
 //        System.out.println(url);
-
+        } catch (Exception e) {
+            throw new DeliveryDtlException();
+        }
         return "owner/deliveryDtl";
     }
 }

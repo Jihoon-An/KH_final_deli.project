@@ -22,7 +22,7 @@ public class MypageReviewDTO {
     private int rev_star;       //리뷰별점
     private String rev_content; //리뷰내용
     private String menu_list;   //메뉴리스트
-    private int order_seq;   //주문번
+    private int order_seq;   //주문번호
     private int store_seq;   //식당번호
     private String store_name;  //식당이름
     private String rev_writetime;  //리뷰 작성 시간
