@@ -1,5 +1,4 @@
 #basket *{box-sizing: border-box;}
-body, main{background-color: #2d2d33; color: white;}
 #basket .container{
     width: 375px;
     /*height: 800px;*/
