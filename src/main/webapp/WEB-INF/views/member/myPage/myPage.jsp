@@ -11,14 +11,14 @@
 <body>
 
     <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-<%--    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>--%>
+    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+
 
     <main id="myPage">
 
         <div class="container">
-
 
             <div class="titleBox">
                 마이페이지
@@ -68,7 +68,6 @@
                     <button>로그아웃</button>
                 </a>
             </div>
-
 
         </div>
 

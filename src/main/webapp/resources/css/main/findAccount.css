@@ -20,11 +20,11 @@ body{background-color: #F8F5F2}
     width: 100%;
     height: 20px;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 #findAccount .choiceBox > label{
     width: 40%;
-    height: 20px;
+    height: 40px;
     background-color: #ffffff;
     border: 4px solid #e84c4f;
     padding: 5px;
@@ -52,18 +52,18 @@ body{background-color: #F8F5F2}
     border-width: 1px;
     outline: none;
 }
-#findAccount #findEmailBox > #phone_certi_btn{
-    width: 100px;
-    height: 35px;
-    font-size: 15px;
-    border-radius: 7px;
-    border-width: 1px;
-}
+/*#findAccount #findEmailBox > #phone_certi_btn{*/
+/*    width: 100px;*/
+/*    height: 35px;*/
+/*    font-size: 15px;*/
+/*    border-radius: 7px;*/
+/*    border-width: 1px;*/
+/*}*/
 #findAccount #findEmailBox > p{
     margin-left: 30px;
     text-align: left;
     font-size: 14px;
-    line-height: 0px;
+    line-height: 30px;
 }
 #findAccount #phone_confirm_box > #phone_confirm_input{
     width: 200px;
