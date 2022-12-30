@@ -17,10 +17,4 @@
     }
 </style>
 
-<div id="deli_back"><i class="fa-solid fa-arrow-left"></i></div>
-
-<script>
-    $("#deli_back").on("click",function (){
-        history.back();
-    })
-</script>
+<div id="deli_back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></div>

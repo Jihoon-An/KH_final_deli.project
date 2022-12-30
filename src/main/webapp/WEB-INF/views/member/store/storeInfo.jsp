@@ -1,31 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 이나경
-  Date: 2022-12-16
-  Time: 오전 11:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<html>
-<head>
-    <title>딜리 - 식당정보</title>
-    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
-    <link rel="stylesheet" href="/resources/css/member/store/storeInfo.css">
-</head>
-<body>
-<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
-<main id="store_info">
-    <div class="container">
-        <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-        <hr style="margin-top: 10px;">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<div id="store_info">
+    <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
+
+    <div class="fieldBox" style="margin-bottom: -10px;">
+        <div id="menu" style="border: 1px solid red;"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
+        <div id="info" style="border: 1px solid green;"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;" id="to_info">정보</a></div>
+        <div id="review"style="border: 1px solid blue;"><a onclick="loadCode3();" style="cursor: pointer;">리뷰</a></div>
+    </div>
+
+    <script>
+        function loadCode1() {
+            $('.container').load('/store/menu/menu/${storeInfoDTO.store_seq}');
+        }
+
+        function loadCode2() {
+            $('.container').load('/store/info/${storeInfoDTO.store_seq}');
+        }
+
+        function loadCode3() {
+            $('.container').load('/store/review/${storeInfoDTO.store_seq}');
+        }
+    </script>
+
+    <hr style="margin-top: 10px; margin-bottom: 5px;">
+    <div class="contents">
         <div id="map" style="width:100%; height:200px;"></div>
-<%--        <hr>--%>
-            <div style="height: 25px;"></div>
+        <%--        <hr>--%>
+        <div style="height: 25px;"></div>
         <div class="store store_box">
             <div class="field">영업정보</div>
             <div class="d-flex flex-row">
@@ -37,11 +42,13 @@
                 <div class="title">전화번호</div>
                 <c:if test="${fn:length(storeInfoDTO.store_phone)==9}">
                     <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,###,####"/>
-                    <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                    <div class="detail_contents" id="store_phone">0<c:out
+                            value="${fn:replace(phoneNo, ',', '-')}"/></div>
                 </c:if>
                 <c:if test="${fn:length(storeInfoDTO.store_phone)>=10}">
                     <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
-                    <div class="detail_contents" id="store_phone">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                             <div class="detail_contents" id="store_phone">0<c:out
+                            value="${fn:replace(phoneNo, ',', '-')}"/></div>
                 </c:if>
             </div>
 
@@ -148,8 +155,9 @@
             <div class="field">배달정보</div>
             <div class="d-flex flex-row">
                 <div class="title">최소주문금액</div>
-                <div class="detail_contents" id="min_price"><fmt:formatNumber value="${storeInfoDTO.store_min_price}"
-                                                                              pattern="#,###"/>원
+                <div class="detail_contents" id="min_price"><fmt:formatNumber
+                        value="${storeInfoDTO.store_min_price}"
+                        pattern="#,###"/>원
                 </div>
             </div>
 
@@ -187,10 +195,10 @@
                 <div class="detail_contents" id="bs_store_des">${storeInfoDTO.store_add_detail1}
                     ${storeInfoDTO.store_add_detail2}</div>
             </div>
+
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
-                    <fmt:formatNumber var="registrationNo" value="1231231231" pattern="###,##,#####"/>
-                <div class="detail_contents" id="bs_code"><c:out value="${fn:replace(registrationNo, ',', '-')}" /></div>
+                <div><c:out value="${fn:substring(ownerInfoDTO.owner_num,0,3)}" />-<c:out value="${fn:substring(ownerInfoDTO.owner_num,4,6)}" />-<c:out value="${fn:substring(ownerInfoDTO.owner_num,6,11)}" />-</div>
             </div>
         </div>
         <script>
@@ -198,6 +206,5 @@
             var longitude =${storeInfoDTO.store_add_y};
         </script>
         <script src="/resources/js/member/store/storeInfo.js"></script>
-</main>
-</body>
-</html>
+    </div>
+</div>

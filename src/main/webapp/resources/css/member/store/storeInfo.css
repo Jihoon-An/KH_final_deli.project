@@ -91,14 +91,14 @@
     float: left;
     width: 33.33%;
     height: 45px;
-    text-align: center;
     line-height: 45px;
     margin-top: 5px;
-
+    text-align: center;
 }
 
 #store_info .fieldBox div a {
     text-decoration: none;
+    background-color: #3e4462;
     color: black;
 }
 
@@ -130,13 +130,6 @@
     width: 95%;
     border-radius: 7px;
 }
-
-#store_info #info {
-    font-weight: bold;
-    font-size: 1.15em;
-    float: left;
-}
-
 #store_info .store,
 #store_info .delivery,
 #store_info .businessman {
