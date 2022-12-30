@@ -2,10 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!--jQuery-->
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
 <!-- daumPostcode -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- kakaoMap -->
@@ -20,15 +16,9 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 
-<!-- sweetalert -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- font-awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
 
 <!-- StyleSheet-->
 <link rel="stylesheet" href="/resources/css/member/header/destination.css" type="text/css">
-<link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 
 <div id="destination">
     <%--모달--%>

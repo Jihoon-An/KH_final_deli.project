@@ -11,24 +11,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <title>딜리 - 결제내역</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
+    <title>딜리 - 주문내역</title>
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-    <!-- bootstrap CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <!-- bootstrap JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/member/order/orderDetail.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
@@ -57,20 +43,23 @@
                     <div class="menuBox">
                         <div id="menu_name">${menuList.menu.menu_name} ${menuList.count}개</div>
                             <%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
-                        <c:choose>
-                        <c:when test="${fn:length(menuList.optionList) != 0}">
-                            <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
-                                미디엄${optionList.option_name}
-                                (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="orderContent">${optionList.option_group} 사이드 선택 : 후렌치 후라이
-                                미디엄${optionList.option_name}
-                                (2000<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
-                            </div>
-                        </c:otherwise>
-                        </c:choose>
+                            <c:choose>
+                                <c:when test="${not empty menuList.optionList}">
+                                    <c:choose>
+                                        <c:when test="${fn:length(menuList.optionList) != 0}">
+                                            <div class="orderContent">${optionList.option_group} : ${optionList.option_name}
+                                                (<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="orderContent">${optionList.option_group} : ${optionList.option_name}
+                                                (<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:when>
+                                <c:otherwise></c:otherwise>
+                            </c:choose>
                             <%--                        </c:forEach>--%>
                         <div class="orderContent">${menuList.price}원</div>
                     </div>
@@ -123,7 +112,7 @@
             <c:when test="${not empty ordererInfoDTO}">
             <h3 class="info">주문자 정보</h3>
             <div id="del_destination" class="orderTitle">배달주소</div>
-            <div id="destination" style="font-size: small;" class="orderContent">
+            <div id="destination" class="orderContent">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
 
             <div class="orderTitle">전화번호</div>

@@ -2,36 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>딜리 - 찜 목록</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-
     <link rel="stylesheet" href="/resources/css/member/myPage/dibs.css" type="text/css">
-
-    <!-- font-awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
-    <!-- bootstrap CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <!-- bootstrap JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 </head>
 <body>
 
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 
 <main id="dibs">
     <hr class="mt55">
@@ -56,8 +37,8 @@
                             <div class="info">
                                 <div class="store_name"><a href="/store/menu/${i.STORE_SEQ}">${i.STORE_NAME}</a></div>
                                 <div class="avg_star"><i class="fa-solid fa-star"></i> <span class="fontColor">${i.avg_star}</span></div>
-                                <div class="store_min">최소주문금액 <span class="fontColor">${i.STORE_MIN_PRICE}원</span></div>
-                                <div class="store_min">배달요금 <span class="fontColor">${i.STORE_DELI_TIP}원</span></div>
+                                <div class="store_min">최소주문금액 <span class="fontColor"><fmt:formatNumber value="${i.STORE_MIN_PRICE}" pattern="#,###"/>원</span></div>
+                                <div class="store_min">배달요금 <span class="fontColor"><fmt:formatNumber value="${i.STORE_DELI_TIP}" pattern="#,###"/>원</span></div>
                                 <div class="store_deli_time">배달시간 <span class="fontColor">${i.STORE_DELI_TIME}분</span></div>
                             </div>
                             <div id="btnBox">
