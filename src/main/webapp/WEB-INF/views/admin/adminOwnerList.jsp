@@ -36,8 +36,8 @@
     <table id="myTable" class="display">
         <thead>
         <tr>
-            <th>사업자 번호</th>
             <th>사업자 회원번호</th>
+            <th>사업자 번호</th>
             <th>회원번호</th>
             <th>사업자 이름</th>
             <th>연락처</th>
@@ -50,8 +50,8 @@
         <c:if test="${not empty owner_list}">
             <c:forEach var="ow" items="${owner_list}">
                 <tr class="owner_tr">
-                    <td class="owner_num"> ${ow.owner_num}</td>
                     <td class="owner_seq">${ow.owner_seq}</td>
+                    <td class="owner_num"> ${ow.owner_num}</td>
                     <td class="acc_seq">${ow.acc_seq}</td>
                     <td class="owner_name">${ow.owner_name}</td>
                     <td class="owner_phone">${ow.owner_phone} </td>
@@ -70,15 +70,15 @@
         <div class="modal">
             <div class="modal_content">
                 <div class="closeModal">X</div>
-
-                <div>
-                    사업자 번호 <input
-                        type="text" placeholder="사업자 번호" id="ownernum" class="ownernum" disabled>
-                </div>
                 <div>
                     사업자 회원번호<input
                         type="text" placeholder="사업자 회원번호" disabled id="owner_seq" class="owner_seq">
                 </div>
+                <div>
+                    사업자 번호 <input
+                        type="text" placeholder="사업자 번호" id="ownernum" class="ownernum" disabled>
+                </div>
+
                 <div>
                     회원번호<input
                         type="text" placeholder="회원번호" disabled id="acc_seq" class="acc_seq">
