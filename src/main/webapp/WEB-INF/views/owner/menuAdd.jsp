@@ -36,6 +36,7 @@
 <head>
 
 <body>
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <main id="menuAdd">
     <form action="" id="frm" method="post" enctype="multipart/form-data">
 

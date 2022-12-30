@@ -12,9 +12,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>딜리 - 운영자 리뷰관리</title>
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
+    <title>딜리 - 사업자 회원관리</title>
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
@@ -26,7 +24,10 @@
 
 
     <link rel="stylesheet" href="/resources/css/admin/ownerList.css" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon"> (편집됨)
 </head>
+
 <body>
 <%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="owner_list">
@@ -46,7 +47,7 @@
         <tbody>
         <c:if test="${not empty owner_list}">
             <c:forEach var="ow" items="${owner_list}">
-                <tr>
+                <tr class="owner_tr">
                     <td class="owner_num"> ${ow.owner_num}</td>
                     <td class="owner_seq">${ow.owner_seq}</td>
                     <td class="acc_seq">${ow.acc_seq}</td>
