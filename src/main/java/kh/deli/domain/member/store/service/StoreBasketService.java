@@ -46,10 +46,40 @@ public class StoreBasketService {
 
             session.setAttribute("basket", newBasket);
         } else {
-            basket.getMenuList()
-                    .add(gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class));
+//            basket.getMenuList().add(
+//                    gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class)
+//            );
+            StoreBasketMenuRequestDTO newMenu = gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class);
+            // storeSeq 일치 검사.
+            if(basket.getStoreSeq() != newMenu.getStoreSeq()){
+                throw new RuntimeException("여러 가게의 메뉴를 장바구니에 담을 수 없습니다.");
+            }
+
+            // 기존 메뉴에 있는지 검사
+            List<StoreBasketMenuRequestDTO> oldMenuList = basket.getMenuList();
+
+            Integer newMenuSeq = newMenu.getMenuSeq();
+            List<Integer> newOptionSeqList = newMenu.getOptionSeqList();
+
+            for (StoreBasketMenuRequestDTO oldMenu : oldMenuList) {
+                if (oldMenu.getMenuSeq() != newMenuSeq) {
+                    continue;
+                }
+                if (oldMenu.getOptionSeqList().equals(newOptionSeqList)) {
+                    // 기존에 장바구니에 있는 메뉴이면..
+                    oldMenu.setCount(oldMenu.getCount() + newMenu.getCount());
+                    // 저장
+                    basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
+                    session.setAttribute("basket", basket);
+                    break;
+                }
+            }
+
+
+            // 저장
             basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
             session.setAttribute("basket", basket);
+
         }
 
         return basketMenu.getStoreSeq();
