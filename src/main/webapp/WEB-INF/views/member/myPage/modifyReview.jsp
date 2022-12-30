@@ -27,7 +27,8 @@
 <main id="modify_review">
     <hr class="mt65">
     <div class="container">
-        <form action="/myPage/review/modify" id="reviewPost" method="post" enctype="multipart/form-data">
+        <form action="/myPage/review/modify" id="reviewPost" method="post"
+              enctype="multipart/form-data">
             <%--            <div>--%>
             <%--                <div id="back">--%>
             <%--                    <button id="backBtn" type="button">Back</button>--%>
@@ -104,35 +105,35 @@
             <%--                </div>--%>
             <%--            </div>--%>
             <%--            리뷰사진--%>
-            <%--            <div class="imgs">--%>
-            <%--                <c:choose>--%>
-            <%--                    <c:when test="${not empty review_dto}">--%>
-            <%--                        <%--%>
-            <%--                            ReviewDTO reviewDTO = (ReviewDTO) request.getAttribute("review_dto");--%>
-            <%--                            String reviewSysName = reviewDTO.getRev_sysname();--%>
-            <%--//                            System.out.println("ddddddddddddddddddddddddddddddddd" + reviewSysName);--%>
-            <%--                            Gson gson = new Gson();--%>
-            <%--                            Type type = new TypeToken<List<String>>() {--%>
-            <%--                            }.getType();--%>
-            <%--                            request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));--%>
-            <%--                        %>--%>
-            <%--                        &lt;%&ndash;                        <c:forEach var="sysName" items="${review_img_list}">&ndash;%&gt;--%>
-            <%--                        &lt;%&ndash;                            <div class="review_img_div">&ndash;%&gt;--%>
-            <%--                        &lt;%&ndash;                                <img src="/resources/img/review/${sysName}">&ndash;%&gt;--%>
-            <%--                        &lt;%&ndash;                                <input type="hidden" class="img_name" value="${sysName}">&ndash;%&gt;--%>
-            <%--                        &lt;%&ndash;                                <button type="button" class="del_img_btn">지우기</button>&ndash;%&gt;--%>
-            <%--                        &lt;%&ndash;                            </div>&ndash;%&gt;--%>
-            <%--                        &lt;%&ndash;                        </c:forEach>&ndash;%&gt;--%>
-            <%--                        <c:forEach var="store" items="${review_img_list}">--%>
-            <%--                            <div class="review_img_div">--%>
-            <%--                                <img src="/resources/img/review/${store}">--%>
-            <%--                                <input type="hidden" class="img_name" value="${store}">--%>
-            <%--                                <button type="button" class="del_img_btn">지우기</button>--%>
-            <%--                            </div>--%>
-            <%--                        </c:forEach>--%>
-            <%--                    </c:when>--%>
-            <%--                </c:choose>--%>
-            <%--            </div>--%>
+<%--            <div class="imgs">--%>
+<%--                <c:choose>--%>
+<%--                    <c:when test="${not empty review_dto}">--%>
+<%--                        <%--%>
+<%--                            ReviewDTO reviewDTO = (ReviewDTO) request.getAttribute("review_dto");--%>
+<%--                            String reviewSysName = reviewDTO.getRev_sysname();--%>
+<%--                            //                            System.out.println("ddddddddddddddddddddddddddddddddd" + reviewSysName);--%>
+<%--                            Gson gson = new Gson();--%>
+<%--                            Type type = new TypeToken<List<String>>() {--%>
+<%--                            }.getType();--%>
+<%--                            request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));--%>
+<%--                        %>--%>
+<%--                        &lt;%&ndash;                        <c:forEach var="sysName" items="${review_img_list}">&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;                            <div class="review_img_div">&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;                                <img src="/resources/img/review/${sysName}">&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;                                <input type="hidden" class="img_name" value="${sysName}">&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;                                <button type="button" class="del_img_btn">지우기</button>&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;                            </div>&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;                        </c:forEach>&ndash;%&gt;--%>
+<%--                        <c:forEach var="store" items="${review_img_list}">--%>
+<%--                            <div class="review_img_div">--%>
+<%--                                <img src="/resources/img/review/${store}">--%>
+<%--                                <input type="hidden" class="img_name" value="${store}">--%>
+<%--                                <button type="button" class="del_img_btn">지우기</button>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
+<%--                    </c:when>--%>
+<%--                </c:choose>--%>
+<%--            </div>--%>
 
             <%--            <div><textarea name="rev_content" placeholder="솔직한 평가를 남겨주세요">${review_dto.rev_content}</textarea></div>--%>
             <%--            <div>글자수</div>--%>
@@ -181,21 +182,47 @@
             </div>
 
             <div>
-                <textarea id="revContent" name="rev_content" placeholder="솔직한 평가를 남겨주세요"> </textarea>
+                <textarea id="revContent" name="rev_content"
+                          placeholder="솔직한 평가를 남겨주세요"> </textarea>
             </div>
             <div id="count">0 / 300</div>
             <div>
                 <div class="imgBox fileBtnBox">
                     <input type="hidden" name="rev_sysname" id="rev_sysmname">
                     <label id="btnCustom"> <i class="fa-solid fa-camera"></i> 사진 추가
-                        <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
+                        <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif"
+                               multiple>
                     </label>
                 </div>
                 <div>
-                    <div class="imgName imgName1"><img id="img1" src=""></div>
-                    <div class="imgName imgName2"><img id="img2" src=""></div>
-                    <div class="imgName imgName3"><img id="img3" src=""></div>
-                    <div class="imgName imgName4"><img id="img4" src=""></div>
+                    <c:choose>
+                        <c:when test="${not empty review_dto}">
+                            <%
+                                ReviewDTO reviewDTO = (ReviewDTO) request.getAttribute("review_dto");
+                                String reviewSysName = reviewDTO.getRev_sysname();
+                                System.out.println("ddddddddddddddddddddddddddddddddd" + reviewSysName);
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<List<String>>() {
+                                }.getType();
+                                request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
+                            %>
+                            <%--                        <c:forEach var="sysName" items="${review_img_list}">--%>
+                            <%--                            <div class="review_img_div">--%>
+                            <%--                                <img src="/resources/img/review/${sysName}">--%>
+                            <%--                                <input type="hidden" class="img_name" value="${sys
+                            <%--                                <button type="button" class="del_img_btn">지우기</but
+                            <%--                            </div>--%>
+                            <%--                        </c:forEach>--%>
+                            <c:forEach var="store" items="${review_img_list}">
+                                <div class="review_img_div">
+                                    <img src="/resources/img/review/${store}">
+                                    <input type="hidden" class="img_name" value="${store}">
+                                    <button type="button" class="del_img_btn">지우기</button>
+                                    <div class="imgName imgName1"><img id="img1" src=""></div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                    </c:choose>
                 </div>
             </div>
             <hr>

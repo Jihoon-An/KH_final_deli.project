@@ -28,36 +28,46 @@
             <div class="rowBox">
                 <div class="title">상호명</div>
                 <div class="contents">
-                    <input type="text" name="store_name" placeholder="상호명입력" id="store_name" class="input"
+                    <input type="text" name="store_name" placeholder="상호명입력" id="store_name"
+                           class="input"
                            value="${store.store_name}">
                 </div>
             </div>
             <div class="rowBox">
                 <div class="title">핸드폰 번호</div>
-                <div class="contents"><input type="text" name="store_phone" placeholder="폰번호입력" id="store_phone"
-                                             oninput=validNum() class="input" value="${store.store_phone}"></div>
+                <div class="contents"><input type="text" name="store_phone" placeholder="폰번호입력"
+                                             id="store_phone"
+                                             oninput=validNum() class="input"
+                                             value="${store.store_phone}"></div>
             </div>
             <div class="rowBox">
                 <div class="title">우편번호</div>
-                <div class="contents"><input type="text" id="postcode" placeholder="우편번호" class="input">
+                <div class="contents"><input type="text" id="postcode" placeholder="우편번호"
+                                             class="input">
                     <button type="button" class="postsearch">우편검색</button>
                 </div>
             </div>
             <div class="rowBox">
                 <div class="title">기본주소</div>
-                <div class="contents"><input type="text" id="add1" name="store_add_detail1" placeholder="기본주소"
-                                             id="store_add_detail1" class="input" value="${store.store_add_detail1}">
+                <div class="contents"><input type="text" id="add1" name="store_add_detail1"
+                                             placeholder="기본주소"
+                                             id="store_add_detail1" class="input"
+                                             value="${store.store_add_detail1}">
                 </div>
             </div>
             <div class="rowBox">
                 <div class="title">상세주소</div>
-                <div class="contents"><input type="text" id="add2" name="store_add_detail2" placeholder="상세주소"
-                                             id="store_add_detail2" class="input" value="${store.store_add_detail2}">
+                <div class="contents"><input type="text" id="add2" name="store_add_detail2"
+                                             placeholder="상세주소"
+                                             id="store_add_detail2" class="input"
+                                             value="${store.store_add_detail2}">
                 </div>
             </div>
 
-            <input type="hidden" id="store_add_x" name="store_add_x" class="input" value="${store.store_add_x}">
-            <input type="hidden" id="store_add_y" name="store_add_y" class="input" value="${store.store_add_y}">
+            <input type="hidden" id="store_add_x" name="store_add_x" class="input"
+                   value="${store.store_add_x}">
+            <input type="hidden" id="store_add_y" name="store_add_y" class="input"
+                   value="${store.store_add_y}">
 
             <div class="rowBox">
                 <div class="title">음식카테고리</div>
@@ -543,15 +553,18 @@
                     <div class="thumbnail">
                         <c:choose>
                             <c:when test="${store.store_logo!=null}">
-                                <img src="/resources/img/store/${store.store_logo}" class="profile_img" id="profile">
+                                <img src="/resources/img/store/${store.store_logo}"
+                                     class="profile_img" id="profile">
                             </c:when>
                             <c:otherwise>
-                                <img src="/resources/img/store/no_storelogo.png" class="profile_img">
+                                <img src="/resources/img/store/no_storelogo.png" class="profile_img"
+                                     id="profile">
                             </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="control">
                         <input type=file name="file" id="store_img" accept=".png, .jpg, .jpg,.gif">
+                        <input type=hidden value="${store.store_logo}" name="store_logo">
                     </div>
                 </div>
             </div>
@@ -559,15 +572,19 @@
 
         <div class="rowBox" style="height:100px;">
             <div class="title">식당소개</div>
-            <div class="contents" style="height:100px;"><input type="text" name="store_intro" placeholder="식당소개란"
+            <div class="contents" style="height:100px;"><input type="text" name="store_intro"
+                                                               placeholder="식당소개란"
                                                                id="store_intro"
-                                                               class="input_intro" value="${store.store_intro}"></div>
+                                                               class="input_intro"
+                                                               value="${store.store_intro}"></div>
         </div>
         <div class="rowBox" style="height:100px;">
             <div class="title">주요 원산지</div>
-            <div class="contents" style="height:100px;"><input type="text" name="store_origin" placeholder="주요 원산지"
+            <div class="contents" style="height:100px;"><input type="text" name="store_origin"
+                                                               placeholder="주요 원산지"
                                                                id="store_origin"
-                                                               class="input_origin" value="${store.store_origin}"></div>
+                                                               class="input_origin"
+                                                               value="${store.store_origin}"></div>
         </div>
 
 
@@ -583,14 +600,19 @@
 
                     <input type="hidden" class="bsns" value="월요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('mon').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('mon').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('mon').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('mon').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
     <input type="time" class="bsns bs_open_time" value="${parsingStr.get("mon").get("open_time")}">
-    <input type="time" class="bsns bs_close_time" value="${parsingStr.get("mon").get("close_time")}">
+    <input type="time" class="bsns bs_close_time"
+           value="${parsingStr.get("mon").get("close_time")}">
     </span>
                 </div>
             </div>
@@ -603,9 +625,13 @@
 
                     <input type="hidden" class="bsns" value="화요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('tue').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('tue').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('tue').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('tue').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
@@ -622,9 +648,13 @@
                 <div class="bsns_div">
                     <input type="hidden" class="bsns" value="수요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('wed').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('wed').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('wed').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('wed').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
@@ -642,9 +672,13 @@
 
                     <input type="hidden" class="bsns" value="목요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('thu').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('thu').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('thu').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('thu').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
@@ -664,9 +698,13 @@
 
                     <input type="hidden" class="bsns" value="금요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('fri').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('fri').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('fri').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('fri').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
@@ -682,9 +720,13 @@
                 <div class="bsns_div">
                     <input type="hidden" class="bsns" value="토요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('sat').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('sat').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('sat').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('sat').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
@@ -702,9 +744,13 @@
 
                     <input type="hidden" class="bsns" value="일요일">
                     <select name="select_bs" class="bsns bs bs_open">
-                        <option <c:if test="${parsingStr.get('sun').get('open') eq '영업일'}">selected</c:if>>영업일
+                        <option
+                                <c:if test="${parsingStr.get('sun').get('open') eq '영업일'}">selected</c:if>>
+                            영업일
                         </option>
-                        <option <c:if test="${parsingStr.get('sun').get('open') eq '휴무일'}">selected</c:if>>휴무일
+                        <option
+                                <c:if test="${parsingStr.get('sun').get('open') eq '휴무일'}">selected</c:if>>
+                            휴무일
                         </option>
                     </select>
                     <span class="bs_time">
@@ -719,10 +765,12 @@
 
         <div class="rowBox">
             <div class="title">휴무일</div>
-            <div class="contents" style="display: inline; width: 220px"><input type="text" name="store_close_day"
+            <div class="contents" style="display: inline; width: 220px"><input type="text"
+                                                                               name="store_close_day"
                                                                                placeholder="휴무일"
                                                                                class="input close_day"
-                                                                               value="${store.store_close_day}"></div>
+                                                                               value="${store.store_close_day}">
+            </div>
             <div class="close_day_msg" style="font-size: 10px; line-height: 20px"></div>
         </div>
 
@@ -731,14 +779,16 @@
             <div class="title">주문 최소 금액</div>
             <div class="contents"><input type="text" name="store_min_price" placeholder="주문 최소 금액"
                                          id="store_min_price"
-                                         class="input" oninput=validNum() value="${store.store_min_price}">원
+                                         class="input" oninput=validNum()
+                                         value="${store.store_min_price}">원
             </div>
         </div>
 
 
         <div class="rowBox">
             <div class="title">배달팁</div>
-            <div class="contents"><input type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip"
+            <div class="contents"><input type="text" name="store_deli_tip" placeholder="배달팁"
+                                         id="store_deli_tip"
                                          class="input"
                                          oninput=validNum() value="${store.store_deli_tip}">원
             </div>
@@ -829,7 +879,8 @@
         <div class="rowBox">
             <div class="title">배달가능지역</div>
             <div class="contents"><input type="text" name="store_destination" id="store_destination"
-                                         placeholder="배달 가능 지역" class="input" value="${store.store_destination}"></div>
+                                         placeholder="배달 가능 지역" class="input"
+                                         value="${store.store_destination}"></div>
         </div>
 
         <div class="foot_btn">
@@ -844,6 +895,14 @@
         </c:choose>
     </form>
 </main>
+<script>
+    if ("${store.store_logo}" != "") {
+        var originSysName = "${store.store_logo}";
+    } else {
+        var originSysName = "no_storelogo.png";
+    }
+
+</script>
 <script src="/resources/js/owner/storeMng.js"></script>
 </body>
 
