@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 회원 정보</title>
+    <title>딜리 - 내 정보</title>
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
     <!--jQuery-->
@@ -19,8 +19,11 @@
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/owner/ownerInfo.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>
 <body>
+
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 
 <main id="ownerInfo">
 

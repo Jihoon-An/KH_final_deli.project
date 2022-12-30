@@ -10,10 +10,16 @@
 <html>
 <head>
     <title>딜리 - 메뉴수정</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 </head>
 <body>
+
+<%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+
     <main class="menuModify">
         <form action="" id="frm" method="post" enctype="multipart/form-data">
             <button type="button">메뉴 그룹 수정</button>
