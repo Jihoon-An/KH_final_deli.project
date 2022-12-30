@@ -33,6 +33,7 @@
             src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/resources/css/admin/couponList.css">
+    <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 
     <%--sweetalert--%>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

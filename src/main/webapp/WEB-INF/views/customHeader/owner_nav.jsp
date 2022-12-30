@@ -64,7 +64,7 @@
     <i class="fa-solid fa-user"></i>
     <a href="/owner/info">내 정보</a>
     <i class="fa-solid fa-basket-shopping"></i>
-    <a href="/owner/store/list">내 식당 리스트</a>
+    <a href="/owner/store/list">식당관리</a>
     <i class="fa-solid fa-shop"></i>
-    <a href="/owner/order">주문 관리</a>
+    <a href="/owner/order">주문관리</a>
   </nav>
