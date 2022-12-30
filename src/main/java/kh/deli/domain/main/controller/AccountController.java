@@ -80,7 +80,7 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping("withdrawal")
+    @PostMapping("withdrawal")
     public String withdrawal() throws Exception {
         int accSeq = (Integer) session.getAttribute("acc_seq");
         String loginType = (String)session.getAttribute("loginType");

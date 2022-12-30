@@ -1,75 +1,77 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
     <title>딜리 - 고객배달영수증</title>
     <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
-    <link rel="stylesheet" href="/resources/css/main/memberSignUp.css">
+    <link rel="stylesheet" href="/resources/css/owner/deliveryDtl.css">
 </head>
 <body>
-
 <main id="deliveryDtl">
     <div class="container">
-        <h1>고객배달영수증</h1>
-        <h4>주문번호</h4>
-        <div>${storeInfoDTO.order_seq}</div>
-        <h4>주문시간</h4>
-        <div>${storeInfoDTO.order_date}</div>
-        <h4>배달 예상 시간</h4>
-        <div>${storeInfoDTO.store_deli_time}분</div>
-        <h4>주문내역</h4>
-        <div>
+        <div class="store">
+            <h2 class="title">${storeInfoDTO.store_name} 배달 영수증</h2>
+            <h2 class="info">주문자정보</h2>
+            <div>주문시간 :
+                <fmt:parseDate value="${storeInfoDTO.order_date}" var="registered"
+                               pattern="yyyy-MM-dd HH:mm:ss"/>
+                <fmt:formatDate value="${registered}" pattern="yyyy년 MM월 dd일 a h:mm"/>
+            </div>
+            <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
+            <div>연락처 :
+                <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.mem_phone}" pattern="##,####,####"/>
+                0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+            <div>주소 : ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
+            <div>라이더님에게 전달하는 말 : ${ordererInfoDTO.order_rider_req}</div>
+            <hr>
+            <h2 class="info">주문내역</h2>
+            <div>주문번호 : ${storeInfoDTO.order_seq}</div>
             <c:forEach var="menuList" items="${basketMenu}">
                 <div class="menuBox">
-                    메뉴 : ${menuList.menu.menu_name} <br>
+                    <div>메뉴 : ${menuList.menu.menu_name} x ${menuList.count}개</div>
                     <c:forEach var="optionList" items="${menuList.optionList}">
-                        그룹 : ${optionList.option_group}<br>
-                        옵션 : ${optionList.option_name} <br>
-                        옵션 수량 : ${optionList.option_multiple} <br>
-                        가격 : ${optionList.option_price} <br><br>
+                        <div> 옵션 : ${optionList.option_name} x ${optionList.option_multiple}개</div>
                     </c:forEach>
-                        ${menuList.count}개<br>
-                        ${menuList.price}원
                 </div>
-                <hr>
             </c:forEach>
-<%--            <c:forEach var="menuList" items="${orderDetailDTOList}">--%>
-<%--                <div class="menuBox">--%>
-<%--                    메뉴 : ${menuList.menuDTO.menu_name} <br>--%>
-<%--                    <c:forEach var="optionList" items="${menuList.menuOptionDTO}">--%>
-<%--                        그룹 : ${optionList.option_group}<br>--%>
-<%--                        옵션 : ${optionList.option_name} <br><br>--%>
-<%--                    </c:forEach>--%>
-<%--                        ${menuList.count}개<br>--%>
-<%--                        ${menuList.price}원--%>
-<%--                </div>--%>
-<%--                <hr>--%>
-<%--            </c:forEach>--%>
+            <hr>
+
+            <c:if test="${payInfoDTO.pay_method!='현금결제'}">
+                <div class="field pay_field">
+                    <div>결제방법</div>
+                </div>
+                <div class="pay_method">
+                    <div>결제 완료 건입니다</div>
+                </div>
+            </c:if>
+
+            <c:if test="${payInfoDTO.pay_method=='현금결제'}">
+                <div class="field pay_field">
+                    <div>총 결제금액</div>
+                    <div>결제방법</div>
+                </div>
+                <div class="pay_method">
+                    <div><fmt:formatNumber value="${payInfoDTO.pay_price}" pattern="#,###"/>원</div>
+                    <div>현금결제</div>
+                </div>
+            </c:if>
+
+            <hr>
+            <h2 class="info">식당정보</h2>
+            <div>식당명 : ${storeInfoDTO.store_name}</div>
+            <div>연락처 : <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
+                0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+            <div>주소 : ${storeInfoDTO.store_add_detail1} ${storeInfoDTO.store_add_detail2}</div>
+
+            <div style="text-align: center">
+                <button id="status_btn" class="complete">배달완료</button>
+            </div>
         </div>
-        <hr>
-        <h1>주문자정보</h1>
-        <h4>연락처</h4>
-        <div>${ordererInfoDTO.mem_phone}</div>
-        <h4>주소</h4>
-        <div>${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
-        <h4>라이더님에게 전달하는 말</h4>
-        <div>${ordererInfoDTO.order_rider_req}</div>
-        <hr>
-        <h1>식당정보</h1>
-        <h4>식당명</h4>
-        <div>${storeInfoDTO.store_name}</div>
-        <h4>연락처</h4>
-        <div>${storeInfoDTO.store_phone}</div>
-        <h4>주소</h4>
-        <div>${storeInfoDTO.store_add_detail1} ${storeInfoDTO.store_add_detail2}</div>
-        <hr>
-        <button id="status_btn">배달완료</button>
-        <hr>
     </div>
-
-
 </main>
 
 <script>
