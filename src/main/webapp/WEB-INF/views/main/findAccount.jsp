@@ -70,7 +70,7 @@
             <div class="input-group">
                 <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="pw_mem_phone" maxlength='13'
                        oninput=validNum() class="form-control">
-                <button type="button" id="pw_phone_certi_btn" class="deli_btn">인증</button>
+                <button type="button" id="pw_phone_certi_btn" class="deli_btn">인증번호 발송</button>
             </div>
             <br>
             <p id="pw_phone_msg" style="display: none">휴대폰 번호를 확인 중입니다.</p>

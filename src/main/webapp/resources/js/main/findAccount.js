@@ -213,7 +213,7 @@ function phone_confirm() {
 
 // 휴대폰번호 - 값 입력 유효성 검사 display
 function pw_phone_check() {
-    let pw_phoneRegex = $("#mem_phone").val().replace(/-/gi, "");
+    let pw_phoneRegex = $("#pw_mem_phone").val().replace(/-/gi, "");
     if ($("#pw_mem_phone").val() == "") {
         $("#pw_phone_msg").show();
         $("#pw_phone_msg").css("color", "#000000");
@@ -275,8 +275,9 @@ $("#pw_phone_confirm_btn").click(function () {
 });
 
 function pw_phone_confirm() {
-    if (phoneRegex.test($("#pw_mem_phone").val())
-        && $("#pw_phone_msg").html() == "휴대폰 번호를 인증해주세요.") {
+    let pw_phoneRegex = $("#pw_mem_phone").val().replace(/-/gi, "");
+    if (pw_phoneRegex.length == 11
+        && $("#pw_phone_msg").html() == "휴대폰 번호를 인증해주세요") {
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
