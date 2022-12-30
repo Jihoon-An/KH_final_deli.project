@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -80,17 +81,16 @@ public class OrderPayController {
     @RequestMapping("updateMemberPhone")
     @ResponseBody
     public int updateMemberPhone(OrderOrdersDTO ordersDTO){
+        String accSeq = (String)session.getAttribute("acc_seq");
         int result = orderOrdersService.updateMemberPhone(ordersDTO);
+        ordersDTO.setAcc_seq(Integer.valueOf(accSeq));
         return result;
     }
     @RequestMapping("selectCouponList")
     @ResponseBody
-    public List<OrderOrdersDTO> selectCouponList(@Param("orderOrdersDTO") OrderOrdersDTO ordersDTO){
-        //String accSeq = (String)session.getAttribute("acc_seq");
-
-        List<OrderOrdersDTO> a = orderOrdersService.selectCouponList(ordersDTO);
-
-        return a;
+    public List<OrderOrdersDTO> selectCouponList(){
+        Integer accSeq = (Integer) session.getAttribute("acc_seq");
+        return  orderOrdersService.selectCouponList(accSeq);
     }
 
     @RequestMapping("insertOrder")
