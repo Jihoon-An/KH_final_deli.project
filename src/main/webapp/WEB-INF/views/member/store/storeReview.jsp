@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>딜리 - 식당상세리뷰</title>
+    <title>딜리 - 식당리뷰</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"

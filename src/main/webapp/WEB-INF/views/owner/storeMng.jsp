@@ -549,12 +549,12 @@
         </div>
         <div class="rowBox" style="height: 150px">
             <div class="title">대표사진</div>
+            <input type="text" value="${store.store_logo}">
             <div class="contents">
                 <div class="profile">
                     <div class="thumbnail">
                         <c:choose>
                             <c:when test="${store.store_logo!=null}">
-                                <input class="img" type="hidden" value="/resources/img/store/${store.store_logo}">
                                 <img src="/resources/img/store/${store.store_logo}" class="profile_img">
                             </c:when>
                             <c:otherwise>

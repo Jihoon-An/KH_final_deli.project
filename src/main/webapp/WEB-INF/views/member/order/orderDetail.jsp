@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <title>딜리 - 결제내역</title>
+    <title>딜리 - 주문내역</title>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
@@ -123,7 +123,7 @@
             <c:when test="${not empty ordererInfoDTO}">
             <h3 class="info">주문자 정보</h3>
             <div id="del_destination" class="orderTitle">배달주소</div>
-            <div id="destination" style="font-size: small;" class="orderContent">
+            <div id="destination" class="orderContent">
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
 
             <div class="orderTitle">전화번호</div>
