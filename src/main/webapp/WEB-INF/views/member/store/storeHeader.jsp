@@ -45,25 +45,6 @@
 <%--        <div id="review"><a href="/store/review/${storeInfoDTO.store_seq}">리뷰</a></div>--%>
 <%--    </div>--%>
 
-    <div class="fieldBox" style="margin-bottom: -10px;">
-        <div id="menu"><a onclick="loadCode1();">메뉴</a></div>
-        <div id="info"><a onclick="loadCode2();" id="to_info">정보</a></div>
-        <div id="review"><a onclick="loadCode3();">리뷰</a></div>
-    </div>
-
-    <script>
-        function loadCode1() {
-            $('.contents').load('/WEB-INF/views/store/menu/${storeInfoDTO.store_seq}');
-        }
-
-        function loadCode2() {
-            $('.contents').load('/WEB-INF/views/store/info/${storeInfoDTO.store_seq}');
-        }
-
-        function loadCode3() {
-            $('.contents').load('/WEB-INF/views/store/review/${storeInfoDTO.store_seq}');
-        }
-    </script>
 
 </div>
 

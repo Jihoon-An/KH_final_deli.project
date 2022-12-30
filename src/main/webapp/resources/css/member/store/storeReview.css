@@ -8,7 +8,6 @@
     padding-top: 40px;
     min-height: 800px;
     padding-bottom: 20px;
-
 }
 
 #storeReview .header {
@@ -77,12 +76,6 @@
 
 #storeReview #map {
     width: 95%;
-}
-
-#storeReview #review {
-    font-weight: bold;
-    font-size: 1.15em;
-    float: left;
 }
 
 #storeReview .store {
