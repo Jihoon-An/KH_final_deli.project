@@ -155,8 +155,7 @@
             <select id="payment" name="pay_method" onchange="onchangePayment()">
                 <option name="payMethod" value="">선택</option>
                 <option name="payMethod" value="kakaoPay">카카오페이</option>
-                <option name="payMethod" value="creditCard">신용/체크카드</option>
-                <option name="payMethod" value="cash">현금</option>
+                <option name="payMethod" value="creditCard">카드 결제</option>
             </select>
         </div>
         <hr>
@@ -197,7 +196,7 @@
             </div>
             <hr>
             <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
-            <button type="button" id="payCard" class="btn_payment">다른 결제 수단으로 결제</button>
+            <button type="button" id="payCard" class="btn_payment">카드 결제</button>
         </div>
 
         <input type="hidden" id="accEmail" name="accEmail" value="${userInfo.accEmail}"/>
@@ -219,20 +218,13 @@
     window.onload = function () {
         $("#payCard").hide();
         $("#payment").val('kakaoPay');
+        $("#acc_seq").val();
         $("#order_price").val(${orderOrdersDTO.order_price})
         $("#delivery_tip").val(${orderOrdersDTO.delivery_tip})
         initPage();
         setCouponList();
         var orderPrice = parseInt($("#order_price").val());
         var deliveryPrice = parseInt($("#delivery_tip").val());
-
-        console.log("window.onload");
-        console.log(orderPrice);
-        console.log(deliveryPrice);
-        console.log("-------------------")
-
-        //총 결제 금액 출력 초기화
-        $("#pay_price").val(orderPrice + deliveryPrice);
 
     }
 
@@ -248,14 +240,14 @@
                 address2 = data.address2;
                 phoneNum = data.phoneNum;
                 ownPoint = data.ownPoint;
-                deliTip = data.delivery_tip;
+                //deliTip = data.delivery_tip;
 
                 $("#add_seq").val(addSeq);
                 $("#address1").val(address1);
                 $("#address2").val(address2);
                 $("#phoneNum").val(phoneNum);
                 $("#ownPoint").val(ownPoint);
-                $("#delivery_tip").val(deliTip);
+                //$("#delivery_tip").val(deliTip);
 
                 onchangeOwnPoint();
             },
@@ -271,16 +263,17 @@
             url: "/order/orders/selectCouponList",
             type: "post",
             dataType: "json",
-            data: {acc_seq: 31},
             success: function (data) {
                 var html = "";
                 if (data.length > 0) {
                     html += '<p>사용가능 쿠폰 목록</p>';
                     html += '<div> 쿠폰 이름 || 쿠폰 설명 || 할인율</div><br>';
+
                     for (var i = 0; i < data.length; i++) {
                         var type = '';
                         if (data[i].cpType == 'percent') type = '%';
-                        else type = data[i].cpType;
+                        else if(data[i].cpType == 'amount') type = '원';
+                        // else (type = data[i].cpType);
                         html += '<a class="couponInfo" id="coupon' + i + '" href="javascript:choiceCoupon(' + i + ');">' + data[i].cpName + " || " + data[i].cpContent + " || " + data[i].discount_coupon + type + '</a><br>';
                         html += '<input type="hidden" value="' + data[i].cp_seq + '" id="cpSeq' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].cpName + '" id="cpName' + i + '"> ';
@@ -288,6 +281,18 @@
                         html += '<input type="hidden" value="' + data[i].cpType + '" id="cpType' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].mc_seq + '" id="mcSeq' + i + '"> ';
                     }
+                    // for(var k = 0; k < data.length; k++){
+                    //     var type ='';
+                    //     if(data[k].cpType == 'amount') type = '원';
+                    //     else type = data[k].cpType;
+                    //     html += '<a class="couponInfo" id="coupon' + k + '" href="javascript:choiceCoupon(' + k + ');">' + data[k].cpName + " || " + data[k].cpContent + " || " + data[k].discount_coupon + type + '</a><br>';
+                    //     html += '<input type="hidden" value="' + data[k].cp_seq + '" id="cpSeq' + k + '"> ';
+                    //     html += '<input type="hidden" value="' + data[k].cpName + '" id="cpName' + k + '"> ';
+                    //     html += '<input type="hidden" value="' + data[k].cpDiscount + '" id="cpDiscount' + k + '"> ';
+                    //     html += '<input type="hidden" value="' + data[k].cpType + '" id="cpType' + k + '"> ';
+                    //     html += '<input type="hidden" value="' + data[k].mc_seq + '" id="mcSeq' + k + '"> ';
+                    // }
+
                 } else {
                     html += '<p>사용 가능한 쿠폰이 없습니다.</p>';
                 }
@@ -332,10 +337,6 @@
         // $("#discount_coupon").val(discountPrice);
         // $("#discount_coupon").text(discountPrice);
 
-        console.log($("#delivery_tip").val());
-        console.log($("#order_price").val());
-        console.log(discountPrice);
-        console.log(payPrice);
         /*
         * 쿠폰 정보 빼오는 방법
         *
@@ -372,7 +373,7 @@
                 type: "post",
                 dataType: "json",
                 data: {
-                    acc_seq: 39,
+                    acc_seq: accSeq,
                     address1: address1,
                     address2: address2
                 },
@@ -414,7 +415,6 @@
                 type: "post",
                 dataType: "json",
                 data: {
-                    acc_seq: 39,
                     phoneNum: phoneNumber
                 },
                 success: function (e) {
@@ -447,9 +447,6 @@
             case "creditCard" :
                 $("#payCard").show();
                 break;
-            case "cash" :
-                //협의필요
-                break;
         }
     }
 
@@ -465,11 +462,11 @@
     }
 
     function onchangeUsePoint() {
-        var usePoint = $("#usePoint").val();
+        var orderPrice = Number($("#order_price").val());
+        var usePoint = Number($("#usePoint").val());
         $("#use_point").val(usePoint);
-
-        var orderPrice = $("#order_price").val();
-        var payPrice = orderPrice - usePoint;
+        var deliveryTip = Number($("#delivery_tip").val());
+        var payPrice = (orderPrice + deliveryTip) - usePoint;
         $("#pay_price").val(payPrice);
     }
 
@@ -554,7 +551,6 @@
 
     // kg 이니시스 결제
     $(".btn_payment").click(function () {
-        //class가 btn_payment인 태그를 선택했을 때 작동한다.
         IMP.init("imp52685667");
         //결제시 전달되는 정보
         var email = $("#accEmail").val();
@@ -568,13 +564,11 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '결제',// 상품명,
-            // amount: payPrice,//상품 가격,
             amount: 100,//상품 가격,
             buyer_email: email,//구매자 이메일,
             buyer_name: name,
             buyer_tel: phoneNum,//구매자 연락처
             buyer_addr: address,//구매자 주소
-            buyer_postcode: '123-456'//구매자 우편번호
 
         }, function (rsp) {
             var result = '';
@@ -596,7 +590,6 @@
     IMP.init("imp52685667");
 
     function requestPay() {
-        // 아이디는 백단에서
         var email = $("#accEmail").val();
         var name = $("#memName").val();
         var phoneNum = $("#phoneNum").val();
@@ -609,7 +602,7 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '결제',
-            amount: payPrice,//'가격 입력',
+            amount: 100,//'가격 입력',
             buyer_email: email,//'구매자 이메일',
             buyer_name: name,//'구매자 이름'
             buyer_tel: phoneNum,
@@ -620,10 +613,8 @@
             if (rsp.success) {
 
                 var msg = '결제가 완료되었습니다.';
-                $("#insertForm").submit(); // 위치 바꿈
-                // 결제 취소했을 때 창 닫히게 추가 코드 있으면 수정 바람.
+                $("#insertForm").submit();
 
-                //window.parent.location.href = "/payComplete.paymem?payGoodsSeq=" + goodsSeq + "&payMemberEmail=" + userEmail;
             } else {
                 var msg = '결제에 실패하였습니다.';
             }

@@ -127,7 +127,7 @@ function trClickEvent() {
 };
 
 //모달닫기
-$(".closeModal").click(function () {
+$(".closeBtn").click(function () {
     $(".modal").fadeOut();
 });
 
