@@ -6,7 +6,7 @@
     <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
     <style>
         .page_404 {
-            padding: 40px 0;
+            padding: 50px 0;
             background: #fff;
         }
 
