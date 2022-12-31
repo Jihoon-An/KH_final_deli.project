@@ -39,5 +39,5 @@ $(".display_toggle").click(function () {
 });
 
 $(".name").click(function () {
-    $("#frm").attr("action", "/owner/store/mng").submit();
+    $(this).closest(".store").find(".frm").attr("action", "/owner/store/mng").submit();
 });
