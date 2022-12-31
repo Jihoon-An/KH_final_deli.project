@@ -51,7 +51,7 @@
 
                 </c:otherwise>
                 </c:choose>
-                <button id="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
+<%--                <button id="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>--%>
                 <input type="hidden" class="rev_seq" value="${rev_seq}">
             <c:choose>
             <c:when test="${not empty reviews.menu}">

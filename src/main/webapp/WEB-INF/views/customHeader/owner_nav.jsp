@@ -56,7 +56,7 @@
   }
 
   #deli_nav .nav_list:hover{
-    background-color: rgb(26,109,255,0.9);
+    background-color: rgb(232,76,79,0.9);
   }
 
   #deli_nav .logout{
