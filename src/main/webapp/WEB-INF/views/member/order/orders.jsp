@@ -114,7 +114,7 @@
         <input type="text" id="phoneNum" name="phoneNum" placeholder="phoneNum">
         <hr>
         <div>요청사항</div>
-        <div style="border: 1px solid black">
+        <div style="border: 1px solid black; display: none;">
             <input type="checkbox" name="order_disposable" value="N">일회용 수저,포크 안주셔도 돼요!<br>
         </div>
         <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말">
@@ -194,6 +194,7 @@
         setCouponList();
         var orderPrice = parseInt($("#order_price").val());
         var deliveryPrice = parseInt($("#delivery_tip").val());
+        $("#pay_price").val(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip});
 
     }
 
