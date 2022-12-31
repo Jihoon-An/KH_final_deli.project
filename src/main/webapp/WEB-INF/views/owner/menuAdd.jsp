@@ -25,14 +25,11 @@
 <main id="menuAdd">
     <form action="" id="frm" method="post" enctype="multipart/form-data">
 
-
         <div class="container">
-
-
-
             <div class="rowBox">
                 <div class="title">메뉴그룹</div>
-                <div class="contents" style="display: inline"><input tpye="text" id="menu_group" name="menu_group" placeholder="메뉴그룹명을 입력하세요"></div>
+                <div class="contents" style="display: inline"><input tpye="text" id="menu_group" name="menu_group"
+                                                                     placeholder="메뉴그룹명을 입력하세요"></div>
                 <div style="display: inline; font-size: 12px" class="menu_group_msg"></div>
             </div>
 
@@ -56,19 +53,23 @@
                 <div class="rowBoxRight">
                     <div class="rowBox">
                         <span>주문여부</span>
-                        <div class="contents" style="display: inline">  <input type="radio" name="menu_sold_out" value="Y">주문가능
-                            <input type="radio" name="menu_sold_out" value="N">주문불가능</div>
+                        <div class="contents" style="display: inline"><input type="radio" name="menu_sold_out"
+                                                                             value="Y">주문가능
+                            <input type="radio" name="menu_sold_out" value="N">주문불가능
+                        </div>
                     </div>
                     <div class="rowBox">
                         <span>공개여부</span>
                         <div class="contents" style="display: inline"><input type="radio" name="menu_display" value="Y">공개
-                            <input type="radio" name="menu_display" value="N">비공개</div>
+                            <input type="radio" name="menu_display" value="N">비공개
+                        </div>
                     </div>
                     <div class="rightContents">
                         <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"><br>
-                        <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요" oninput=validNum()><br>
+                        <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"
+                               oninput=validNum()><br>
                         <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
-                        <input type="hidden" name="store_seq" value="68">
+                        <input type="text" name="store_seq" value="${store_seq}">
 
                     </div>
 
@@ -77,11 +78,6 @@
 
 
             </div>
-
-
-
-
-
 
 
             <%--                <div class="option_div">--%>
@@ -129,7 +125,6 @@
                 </div>
                 <button type="button" class="btn_option_add" style="float: right">옵션그룹추가</button>
             </div>
-
 
 
             <hr>

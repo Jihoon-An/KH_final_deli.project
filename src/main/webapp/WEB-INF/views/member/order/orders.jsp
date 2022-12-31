@@ -97,23 +97,7 @@
         <hr>
         <div id="mainAddress">address1출력
             <input type="text" id="address1" name="address1" placeholder="Address1" readonly>
-            <!-- <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%> -->
             <button type="button" id="destination_change">주소 변경</button>
-            <%--        <div id="modal" class="modal-overlay">--%>
-            <%--            <div class="modal-window">--%>
-            <%--                <div class="title">--%>
-            <%--                    <h2>주소 변경</h2>--%>
-            <%--                </div>--%>
-            <%--                <div class="close-area">X</div>--%>
-            <%--                <div class="content">--%>
-            <%--                    <input type="text" id="postcode" placeholder="우편번호">--%>
-            <%--                    <input type="button" onclick="postcode()" value="찾기" id="btnSearch"><br>--%>
-            <%--                    <input type="text" id="add1" placeholder="도로명 / 지번주소">--%>
-            <%--                    <input type="text" id="add2" placeholder="상세주소"><br>--%>
-            <%--                    <button onclick="onclickBtnChgAddr()" id="btnChgAddr">완료</button>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
-            <%--        </div>--%>
             <div id="modal2" class="modal-overlay">
                 <div class="modal-window">
                     <div class="title">
@@ -128,21 +112,6 @@
         </div>
         <input type="text" id="address2" name="address2" placeholder="Address2">
         <input type="text" id="phoneNum" name="phoneNum" placeholder="phoneNum">
-        <%--핸드폰 번호 변경 모달--%>
-        <%--    <button type="button" id="btn_modal3">핸드폰 번호 변경</button>--%>
-        <%--    <div id="modal3" class="modal-overlay">--%>
-        <%--        <div class="modal-window">--%>
-        <%--            <div class="title">--%>
-        <%--                <h2>핸드폰 번호 변경</h2>--%>
-        <%--            </div>--%>
-        <%--            <div class="close-area">X</div>--%>
-        <%--            <div class="content">--%>
-        <%--                <input type="text" value="" id="phoneNumber" name="phoneNumber">--%>
-        <%--                <button onclick="onclickBtnChgPhone()" id="btnChgPhone">완료</button>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <button type="button">변경</button>--%>
-        <%--    </div>--%>
         <hr>
         <div>요청사항</div>
         <div style="border: 1px solid black">
@@ -395,44 +364,43 @@
         }
     }
 
-    function onclickBtnChgPhone() {
-        var phoneNumber = $("#phoneNumber").val();
-        var msg = "";
-        var inptFlag = 0;
-
-        if (phoneNumber == "") {
-            msg = "핸드폰 번호";
-            inptFlag = 1;
-        }
-        if (inptFlag == 1) {
-            msg += "을/를 입력해주세요.";
-            alert(msg);
-            return;
-        } else {
-            $.ajax({
-
-                url: "orders/updateMemberPhone",
-                type: "post",
-                dataType: "json",
-                data: {
-                    phoneNum: phoneNumber
-                },
-                success: function (e) {
-                    if (e == 1) {
-                        alert("핸드폰 번호가 변경되었습니다.")
-                        var modal3 = document.getElementById('modal3');
-                        modal3.style.display = "none";
-                        $("#phoneNumber").val(phoneNumber);
-                    }
-                },
-                error: function (e) {
-                }
-            }).done(function () {
-                //alert("핸드폰 변경이 완료되었습니다.");
-                //location.href="/";
-            })
-        }
-    }
+    // function onclickBtnChgPhone() {
+    //     var phoneNumber = $("#phoneNumber").val();
+    //     var msg = "";
+    //     var inptFlag = 0;
+    //
+    //     if (phoneNumber == "") {
+    //         msg = "핸드폰 번호";
+    //         inptFlag = 1;
+    //     }
+    //     if (inptFlag == 1) {
+    //         msg += "을/를 입력해주세요.";
+    //         alert(msg);
+    //         return;
+    //     } else {
+    //         $.ajax({
+    //             url: "orders/updateMemberPhone",
+    //             type: "post",
+    //             dataType: "json",
+    //             data: {
+    //                 phoneNum: phoneNumber
+    //             },
+    //             success: function (e) {
+    //                 if (e == 1) {
+    //                     alert("핸드폰 번호가 변경되었습니다.")
+    //                     var modal3 = document.getElementById('modal3');
+    //                     modal3.style.display = "none";
+    //                     $("#phoneNumber").val(phoneNumber);
+    //                 }
+    //             },
+    //             error: function (e) {
+    //             }
+    //         }).done(function () {
+    //             //alert("핸드폰 변경이 완료되었습니다.");
+    //             //location.href="/";
+    //         })
+    //     }
+    // }
 
     function onchangePayment() {
         $("#payKakao").hide();
@@ -470,12 +438,6 @@
         $("#pay_price").val(payPrice);
     }
 
-    // 버튼 클릭 시 주소 변경 모달창 오픈
-    // const modal = document.getElementById("modal")
-    // const btnModal = document.getElementById("btn_modal")
-    // btnModal.addEventListener("click", e => {
-    //     modal.style.display = "flex"
-    // })
     // 버튼 클릭 시 쿠폰리스트 모달창 오픈
     const modal2 = document.getElementById("modal2");
     const btnModal2 = document.getElementById("btn_modal2");
