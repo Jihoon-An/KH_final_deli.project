@@ -169,6 +169,8 @@ public class OrderHistoryController {
 
     @RequestMapping("/{orderSeq}")
     public String reOrder(@PathVariable("orderSeq")Integer order_seq) throws Exception {
+        session.removeAttribute("basket");
+
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
 
         int storeSeq = ordersDTO.getStore_seq();
