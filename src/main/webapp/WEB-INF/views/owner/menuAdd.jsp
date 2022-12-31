@@ -69,7 +69,10 @@
                         <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"
                                oninput=validNum()><br>
                         <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
+
+
                         <input type="hidden" name="store_seq" value="${store_seq}">
+
 
                     </div>
                 </div>
