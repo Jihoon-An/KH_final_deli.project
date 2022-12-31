@@ -83,7 +83,7 @@
                                         <input type="hidden" value="${menu_list[status.index].count}" class="m_count">
                                         <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="m_price">
                                         <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="m_store_seq">
-<%--                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">--%>
+                                            <%--                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">--%>
                                         <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="m_menu_seq">
 
 
@@ -123,9 +123,9 @@
                                             <button class="deli_btn">주문상세</button>
                                         </a>
 
-<%--                                        <a href="/order/history/${order_list.order_seq}">--%>
-<%--                                            <button class="deli_btn" type="button">재주문</button>--%>
-<%--                                        </a>--%>
+                                            <%--                  <a href="/order/history/${order_list.order_seq}">--%>
+                                            <%--             <button class="deli_btn" type="button">재주문</button>--%>
+                                            <%--                  </a>--%>
 
 
                                         <button class="deli_btn reOrder" type="button" >재주문</button>
