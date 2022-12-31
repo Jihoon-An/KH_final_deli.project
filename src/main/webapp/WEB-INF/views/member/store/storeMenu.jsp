@@ -49,40 +49,8 @@
             </c:when>
         </c:choose>
 
-
         <div style="height: 10px;"></div>
         <div class="menu_list">
-            <%--                                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼--%>
-            <%--                                    <hr>--%>
-
-            <%--                                    <div class="menu_box">--%>
-            <%--                                        <div class="box">--%>
-            <%--                                            <a href="/menu/detail/32">--%>
-            <%--                                                <div class="menu_info">--%>
-            <%--                                                    <div class="menu">--%>
-            <%--                                                        <div class="yyyy">--%>
-            <%--                                                            <div class="menu_name">시발로마</div>--%>
-            <%--                                                            <div class="menu_intro">--%>
-            <%--                                                                ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네--%>
-            <%--                                                            </div>--%>
-
-            <%--                                                            <div>30,000원</div>--%>
-
-            <%--                                                        </div>--%>
-            <%--                                                    </div>--%>
-            <%--                                                    <div class="menu_img">--%>
-            <%--                                                        <img class="menu_img"--%>
-            <%--                                                             src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">--%>
-            <%--                                                    </div>--%>
-            <%--                                                    &lt;%&ndash;                                    <div class="menu_img">&ndash;%&gt;--%>
-            <%--                                                    &lt;%&ndash;                                        <img src="/resources/img/menu-img/ramyun.png">&ndash;%&gt;--%>
-            <%--                                                    &lt;%&ndash;                                    </div>&ndash;%&gt;--%>
-            <%--                                                </div>--%>
-            <%--                                            </a>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                </div>--%>
-
             <c:choose>
                 <c:when test="${not empty categoryList}">
                     <c:forEach var="categories" items="${categoryList}" varStatus="num">
@@ -107,9 +75,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="menu_img">
-                                                            <img class="menu_img"
-                                                                 src="/resources/img/menu-img/${menuList.menu_img}"
-                                                                 style="width: 90px; height: 115px;">
+                                                            <img class="img"
+                                                                 src="/resources/img/menu-img/${menuList.menu_img}">
                                                         </div>
                                                     </c:when>
                                                     <c:otherwise>
@@ -132,13 +99,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <%--                            <c:choose>--%>
-                                <%--                                <c:when test="${not empty menuList.menu_img}">--%>
-                                <%--                                    <img class="menu_img" src="/resources/img/menu-img/${menuList.menu_img}">--%>
-                                <%--                                </c:when>--%>
-                                <%--                                <c:otherwise></c:otherwise>--%>
-                                <%--                            </c:choose>--%>
-                                <%--            </div>--%>
+                              </div>
                             </c:forEach>
                         </div>
                     </c:forEach>

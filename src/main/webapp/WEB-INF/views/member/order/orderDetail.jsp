@@ -47,21 +47,26 @@
                                 <c:when test="${not empty menuList.optionList}">
                                     <c:choose>
                                         <c:when test="${fn:length(menuList.optionList) != 0}">
-                                            <div class="orderContent">${optionList.option_group} : ${optionList.option_name}
-                                                (<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원),
+                                            <c:forEach var="i" items="${menuList.optionList}" varStatus="status2">
+                                            <div class="orderContent">${i.option_group} : ${i.option_name}
+                                                (<fmt:formatNumber value="${i.option_price}" pattern="#,###"/>원)
+                                                <c:if test="${!status2.last}">, </c:if>
                                             </div>
+                                            </c:forEach>
                                         </c:when>
                                         <c:otherwise>
-                                            <div class="orderContent">${optionList.option_group} : ${optionList.option_name}
-                                                (<fmt:formatNumber value="${optionList.option_price}" pattern="#,###"/>원)
+                                            <c:forEach var="i" items="${menuList.optionList}">
+                                            <div class="orderContent">${i.option_group} : ${i.option_name}
+                                                (<fmt:formatNumber value="${i.option_price}" pattern="#,###"/>원)
                                             </div>
+                                            </c:forEach>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:when>
                                 <c:otherwise></c:otherwise>
                             </c:choose>
                             <%--                        </c:forEach>--%>
-                        <div class="orderContent">${menuList.price}원</div>
+                        <div><fmt:formatNumber value="${menuList.price}" pattern="#,###"/>원</div>
                     </div>
                 </c:forEach>
 
@@ -73,7 +78,7 @@
                 <c:when test="${not empty payInfoDTO}">
                     <h3 class="info">결제 정보</h3>
                     <div class="field">
-                        <div id="total_money">총주문금액</div>
+                        <div id="total_money">총 주문금액</div>
                         <div>쿠폰할인</div>
                         <div>포인트할인</div>
                         <div>배달팁</div>
