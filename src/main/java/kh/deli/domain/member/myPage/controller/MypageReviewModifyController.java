@@ -49,9 +49,6 @@ public class MypageReviewModifyController {
 //       order_seq = 18; //리뷰관리페이지에서
 //       rev_seq = 242; //리뷰관리페이지에서
 //       store_seq = 19;
-        System.out.println(order_seq);
-        System.out.println(rev_seq);
-        System.out.println(store_seq);
         OrdersDTO orders_dto = reviewService.selectByOrderSeq(order_seq);
         ReviewDTO review_dto = reviewService.selectByReviewSeq(rev_seq);
         StoreDTO store_dto = reviewService.selectByStoreSeq(store_seq);
@@ -80,7 +77,7 @@ public class MypageReviewModifyController {
         return "/member/myPage/modifyReview";
     }
 
-    @RequestMapping("modify")
+    @RequestMapping("/modify")
     public String modifyReview(ReviewDTO dto, String del_files_json, MultipartFile[] files) throws Exception {
         FileUtil fileUtil = new FileUtil();
         Type stringInListType = new TypeToken<List<String>>() {
@@ -112,9 +109,8 @@ public class MypageReviewModifyController {
 //            dto.setRev_sysname(gson.toJson(newFileList));
 //        }
         dto.setRev_sysname(gson.toJson(newFileList));
-        dto.setRev_seq(242); //임시리뷰번호
         reviewService.modifyReview(dto);
-        return "redirect:/myPage/review";
+        return "redirect:/myPage/reviewList";
     }
 
 }
