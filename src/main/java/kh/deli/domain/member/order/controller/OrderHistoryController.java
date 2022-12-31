@@ -170,42 +170,26 @@ public class OrderHistoryController {
 //        return "redirect:/basket";
 //    }
 
-//
-//
-//    @RequestMapping("/{orderSeq}")
-//    public String reOrder(@PathVariable("orderSeq")Integer order_seq) throws Exception {
-//        System.out.println("오더seq"+order_seq);
-//
-//        OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
-//
-//        int storeSeq = ordersDTO.getStore_seq();
-//        int orderPrice = ordersDTO.getOrder_price();
-//
-//        String menuListStr = ordersDTO.getMenu_list();
-//
-//        menuListStr.replaceAll("\\[(.*)\\]", "$1");
-//
-//        Gson gson = new Gson();
-//        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-//
-//        List<StoreBasketMenuRequestDTO> basketList = gson.fromJson(menuListStr, type2);
-//
-//        List<String>menu=new ArrayList<>();
-//        for (int i = 0; i < basketList.size(); i++) {
-//            MenuDTO menuDTO = orderBasketService.findMenuBySeq(basketList.get(i).getMenuSeq());
-//            menu.add(menuDTO.getMenu_name());
-//        }
-//
-//        BasketDTO basket = new BasketDTO(storeSeq,menuList,orderPrice);
-//
-//        session.setAttribute("basket", basket);
-//
-//
-//
-//
-//
-//        return "redirect:/basket";
-//    }
+
+
+    @RequestMapping("/{orderSeq}")
+    public String reOrder(@PathVariable("orderSeq")Integer order_seq) throws Exception {
+        System.out.println("오더seq"+order_seq);
+        OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
+
+        int storeSeq = ordersDTO.getStore_seq();
+        int orderPrice = ordersDTO.getOrder_price();
+        String menuListStr = ordersDTO.getMenu_list();
+
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+        List<StoreBasketMenuRequestDTO> basketList = gson.fromJson(menuListStr, type);
+        BasketDTO basket = new BasketDTO(storeSeq,basketList,orderPrice);
+
+        session.setAttribute("basket", basket);
+
+        return "redirect:/basket";
+    }
 
 
 

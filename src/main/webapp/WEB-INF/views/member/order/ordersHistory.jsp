@@ -122,16 +122,16 @@
                                             <button class="deli_btn">주문상세</button>
                                         </a>
 
-<%--                                                              <a href="/order/history/${order_list.order_seq}">--%>
-<%--                                                         <button class="deli_btn" type="button">재주문</button>--%>
-<%--                                                              </a>--%>
+                                                              <a href="/order/history/${order_list.order_seq}">
+                                                         <button class="deli_btn" type="button">재주문</button>
+                                                              </a>
 
 
-                                        <button class="deli_btn reOrder" type="button" >재주문</button>
-                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>
-                                        <form action="/basket" method="post" id="to_basket">
-                                            <input type="hidden" name="basket_menu" id="basket_menu">
-                                        </form>
+<%--                                        <button class="deli_btn reOrder" type="button" >재주문</button>--%>
+<%--                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>--%>
+<%--                                        <form action="/basket" method="post" id="to_basket">--%>
+<%--                                            <input type="hidden" name="basket_menu" id="basket_menu">--%>
+<%--                                        </form>--%>
 
                                     </div>
                                     <c:if test="${order_list.order_status='배달완료'}">
