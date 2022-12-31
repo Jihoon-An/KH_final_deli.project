@@ -49,10 +49,10 @@
                                     <a href="/owner/menu/add?store_seq=${store.store_seq}">
                                         <button type="button">메뉴추가</button>
                                     </a>
-                                    <a href="/owner/menu?store_seq=${store.store_seq}">
-                                        <button type="button">메뉴수정</button>
-                                    </a>
-                                    <form action="/owner/store/list/delete" method="post" id="frm"
+<%--                                    <a href="/owner/menu?store_seq=${store.store_seq}">--%>
+                                        <button type="button" onclick="notFound()">메뉴수정</button>
+<%--                                    </a>--%>
+                                    <form action="/owner/store/list/delete" method="post" class="frm"
                                           style="display: inline">
                                         <input type="hidden" class="store_seq" name="store_seq"
                                                value="${store.store_seq}">

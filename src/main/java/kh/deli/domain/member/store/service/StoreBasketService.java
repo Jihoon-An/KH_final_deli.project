@@ -63,14 +63,15 @@ public class StoreBasketService {
 
             for (StoreBasketMenuRequestDTO oldMenu : oldMenuList) {
                 if (oldMenu.getMenuSeq() != newMenuSeq) {
-                    continue;
+                    basket.getMenuList().add(newMenu);
+                    break;
                 }
                 if (oldMenu.getOptionSeqList().equals(newOptionSeqList)) {
                     // 기존에 장바구니에 있는 메뉴이면..
                     oldMenu.setCount(oldMenu.getCount() + newMenu.getCount());
-                    // 저장
-                    basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
-                    session.setAttribute("basket", basket);
+//                    // 저장
+//                    basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
+//                    session.setAttribute("basket", basket);
                     break;
                 }
             }
