@@ -73,16 +73,19 @@
                                 <div class="info">
                                     <a href="/store/menu/${order_list.store_seq}"><span
                                             class="storename">${order_list.store_name}</span></a>
-                                    <input type="hidden" value="${order_list.order_seq}" class="orderSeqChk">
+                                    <input type="hidden" value="${order_list.order_seq}" class="order_Seq_Chk">
+
 
 
                                     <p class="meinfo">
 
-                                            <%--                                    <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="mName">--%>
-                                            <%--                                    <input type="hidden" value="${menu_list[status.index].count}" class="mCount">--%>
-                                            <%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="mPrice">--%>
-                                            <%--                                    <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="mstore_seq">--%>
-                                            <%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="mmenu_seq">--%>
+                                        <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="m_name">
+                                        <input type="hidden" value="${menu_list[status.index].count}" class="m_count">
+                                        <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="m_price">
+                                        <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="m_store_seq">
+<%--                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">--%>
+                                        <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="m_menu_seq">
+
 
 
                                             ${menu_list[status.index].menu.store_seq}
@@ -120,15 +123,15 @@
                                             <button class="deli_btn">주문상세</button>
                                         </a>
 
-                                        <a href="/order/history/${order_list.order_seq}">
-                                            <button class="deli_btn" type="button">재주문</button>
-                                        </a>
+<%--                                        <a href="/order/history/${order_list.order_seq}">--%>
+<%--                                            <button class="deli_btn" type="button">재주문</button>--%>
+<%--                                        </a>--%>
 
 
-                                            <%--                                       <button class="deli_btn" type="button" onclick="toBaskett()">재주문</button>--%>
-                                            <%--                                    <form action="/menu/detail/toBasket" method="post" id="put_basket">--%>
-                                            <%--                                        <input type="hidden" name="basket_menu" id="basket_menu">--%>
-                                            <%--                                    </form>--%>
+                                        <button class="deli_btn reOrder" type="button" >재주문</button>
+                                        <form action="/menu/detail/toBasket" method="post" id="put_basket">
+                                            <input type="hidden" name="basket_menu" id="basket_menu">
+                                        </form>
 
                                     </div>
                                     <c:if test="${order_list.order_status='배달완료'}">
@@ -153,58 +156,27 @@
 
     <hr class="mt90">
 </main>
-
 <%--<script>--%>
-<%--    var countt= ${menu_list[1].count};--%>
+<%--    var countt= $(".reOrder").closest(".box3").find(".m_count").val()--%>
 <%--    var selec_option = new Array();--%>
-<%--    var one_pprice = ${menu_list[1].menu.menu_price}--%>
+<%--    var one_pprice = $(".reOrder").closest(".box3").find(".m_price").val()--%>
 
-
-<%--        console.log(${menu_list[1].menu.store_seq})--%>
-<%--        class BasketMenuDTOo{--%>
-<%--            constructor(options, count, price) {--%>
-<%--                this.storeSeq = ${menu_list[1].menu.store_seq}--%>
-<%--                    this.menuSeq = ${menu_list[1].menu.menu_seq};--%>
-<%--                this.optionSeqList = options;--%>
-<%--                this.count = count;--%>
-<%--                this.price = price;--%>
-<%--            }--%>
+<%--    console.log(one_pprice);--%>
+<%--    console.log(countt);--%>
+<%--    console.log(selec_option);--%>
+<%--    class BasketMenuDTOo{--%>
+<%--        constructor(options, count, price) {--%>
+<%--            this.storeSeq = $(".reOrder").closest(".box3").find(".m_store_seq").val()--%>
+<%--            this.menuSeq = $(".reOrder").closest(".box3").find(".m_menu_seq").val()--%>
+<%--            this.optionSeqList = options;--%>
+<%--            this.count = countt;--%>
+<%--            this.price = one_pprice;--%>
 <%--        }--%>
+<%--    }--%>
+
+
 <%--</script>--%>
 
-<%--<script>--%>
-<%--    var countt= $(".mCount").val();--%>
-<%--    var selec_option = new Array();--%>
-<%--    var one_pprice = $(".mPrice").val()--%>
-
-<%--        console.log($(".mstore_seq").val())--%>
-<%--        class BasketMenuDTOo{--%>
-<%--            constructor(options, count, price) {--%>
-<%--                this.storeSeq = $(".mstore_seq").val()--%>
-<%--                    this.menuSeq = $(".mmenu_seq").val();--%>
-<%--                this.optionSeqList = options;--%>
-<%--                this.count = countt;--%>
-<%--                this.price = one_pprice;--%>
-<%--            }--%>
-<%--        }--%>
-<%--</script>--%>
-
-
-<script>
-    // function putBaskett() {
-    //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice);
-    //     $("#basket_menu").val(JSON.stringify(basket));
-    //
-    //     $("#put_basket").submit();
-    // }
-
-    // function toBaskett() {
-    //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice); //객체가
-    //     $("#basket_menu").val(JSON.stringify(basket));
-    //
-    //     $("#put_basket").attr("action", "/menu/detail/toBasket").submit();
-    // }
-</script>
 <script src="/resources/js/member/order/orderHistoryYoo.js"></script>
 </body>
 </html>

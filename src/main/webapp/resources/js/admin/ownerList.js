@@ -25,18 +25,13 @@ let lang_kor = {
 
 $(document).ready(function() {
     $('#myTable').DataTable( {
-        language : lang_kor
+        language : lang_kor,
+        order: [[0, 'desc']],lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ]
     } );
 } );
-
-$(document).ready(function () {
-    $('#myTable').DataTable()(
-        { order: [[0, 'desc']],lengthMenu: [
-                [10, 25, 50, -1],
-                [10, 25, 50, 'All'],
-            ],}
-    );
-})
 trClickEvent();
 //페이지 버튼을 눌렀을때 다시 script 돌아가게
 $(".paginate_button").click(function () {
