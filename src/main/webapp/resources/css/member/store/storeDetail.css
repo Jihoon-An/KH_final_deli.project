@@ -54,7 +54,7 @@
 
 #store_detail .fieldBox {
     width: 95%;
-    margin: auto;
+    /*margin: auto;*/
     overflow: hidden;
     font-size: 17px;
 }
