@@ -18,3 +18,23 @@ $(".heart").on("click",function (){
         }
     })
 });
+
+
+
+var x,left,down;
+
+$(".filter_box").mousedown(function(e){
+    e.preventDefault();
+    down = true;
+    x = e.pageX;
+    left = $(this).scrollLeft();
+});
+
+$("body").mousemove(function(e){
+    if(down){
+        var newX = e.pageX;
+        $(".filter_box").scrollLeft(left - newX + x);
+    }
+});
+
+$("body").mouseup(function(e){down = false;});

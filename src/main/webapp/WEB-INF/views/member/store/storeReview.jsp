@@ -1,16 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div class="storeReview">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
 
     <div class="fieldBox" style="margin-bottom: -10px;">
-        <div class="fieldBox" style="margin-bottom: -10px;">
-            <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
-            <div id="info"><a onclick="loadCode2();" style="cursor: pointer;" id="to_info">정보</a></div>
-            <div id="review"><a onclick="loadCode3();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;">리뷰</a></div>
-        </div>
+        <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
+        <div id="info"><a onclick="loadCode2();" style="cursor: pointer;" id="to_info">정보</a></div>
+        <div id="review"><a onclick="loadCode3();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;">리뷰</a></div>
     </div>
 
     <script>
