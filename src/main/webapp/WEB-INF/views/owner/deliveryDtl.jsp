@@ -34,7 +34,7 @@
                 <div class="menuBox">
                     <div>메뉴 : ${menuList.menu.menu_name} x ${menuList.count}개</div>
                     <c:forEach var="optionList" items="${menuList.optionList}">
-                        <div> 옵션 : ${optionList.option_name} x ${optionList.option_multiple}개</div>
+                        <div> 옵션 : ${optionList.option_name}</div>
                     </c:forEach>
                 </div>
             </c:forEach>

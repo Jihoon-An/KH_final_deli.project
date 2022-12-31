@@ -74,7 +74,7 @@
     </div>
     <button type="button" onclick="onModal()">장바구니 담기</button>
     <form action="/menu/detail/put" method="post" id="put_basket">
-        <input type="text" name="basket_menu" id="basket_menu">
+        <input type="hidden" name="basket_menu" id="basket_menu">
     </form>
 
 </main>
