@@ -8,7 +8,9 @@ import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,16 +28,14 @@ import java.util.Map;
 @RequestMapping("/owner/menu/add")
 public class MenuAddController {
 
-
-
     private final HttpSession session;
-
     private  final OwnerMenuService ownerMenuService;
 
     @RequestMapping("")
-    public String toMenuAdd(){
 
+    public String toMenuAdd(Model model, Integer store_seq){
 
+        model.addAttribute("store_seq", store_seq);
         return "/owner/menuAdd";
     }
 
@@ -97,5 +97,7 @@ public class MenuAddController {
         System.out.println(seq);
         return seq;
     }
+
+
 
 }

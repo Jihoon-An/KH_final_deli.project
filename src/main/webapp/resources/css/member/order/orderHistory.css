@@ -54,9 +54,15 @@
     float: left;
 }
 #order_history .image-thumbnail {
-    width:100%;
-    height:100%;
-    object-fit:scale-down;
+    /*width:100%;*/
+    /*height:100%;*/
+    /*object-fit:scale-down;*/
+
+    width: 95px;
+    height: 95px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 10px;
 }
 #order_history .info{
     margin: 1px;

@@ -32,13 +32,13 @@
                 <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
                 <%--                                    <div>메뉴명 : ${i}</div>--%>
                 <div class="filter_box">
-                    <div style="margin: 0 auto;" class="d-inline-flex">
+                    <div style="margin: 0 auto;" class="d-flex flex-row">
                         <c:forEach var="mGroup" items="${menuGroup}" varStatus="num">
-                            <a onclick="scrollMove()" style="text-decoration: none; color: black;">
+                            <a onclick="scrollMove${num.count}()" style="text-decoration: none; color: black;">
                                 <div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div>
                             </a>
                             <script>
-                                function scrollMove() {
+                                function scrollMove${num.count}() {
                                     let location = document.querySelector("#bottom_menu_group${num.count}").offsetTop;
                                     window.scrollTo({top: location - 50, behavior: "smooth"});
                                 };
@@ -49,40 +49,8 @@
             </c:when>
         </c:choose>
 
-
         <div style="height: 10px;"></div>
         <div class="menu_list">
-            <%--                                <div class="bottom_menu_group" style="font-weight: bold; font-size: 17px;">십새끼--%>
-            <%--                                    <hr>--%>
-
-            <%--                                    <div class="menu_box">--%>
-            <%--                                        <div class="box">--%>
-            <%--                                            <a href="/menu/detail/32">--%>
-            <%--                                                <div class="menu_info">--%>
-            <%--                                                    <div class="menu">--%>
-            <%--                                                        <div class="yyyy">--%>
-            <%--                                                            <div class="menu_name">시발로마</div>--%>
-            <%--                                                            <div class="menu_intro">--%>
-            <%--                                                                ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddssssssssssss아 개ㅃ까치네--%>
-            <%--                                                            </div>--%>
-
-            <%--                                                            <div>30,000원</div>--%>
-
-            <%--                                                        </div>--%>
-            <%--                                                    </div>--%>
-            <%--                                                    <div class="menu_img">--%>
-            <%--                                                        <img class="menu_img"--%>
-            <%--                                                             src="/resources/img/menu-img/af866bd1-eb48-474e-92a2-b01a646031d1_다운로드.jpg" style="width: 90px; height: 115px;">--%>
-            <%--                                                    </div>--%>
-            <%--                                                    &lt;%&ndash;                                    <div class="menu_img">&ndash;%&gt;--%>
-            <%--                                                    &lt;%&ndash;                                        <img src="/resources/img/menu-img/ramyun.png">&ndash;%&gt;--%>
-            <%--                                                    &lt;%&ndash;                                    </div>&ndash;%&gt;--%>
-            <%--                                                </div>--%>
-            <%--                                            </a>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                </div>--%>
-
             <c:choose>
                 <c:when test="${not empty categoryList}">
                     <c:forEach var="categories" items="${categoryList}" varStatus="num">
@@ -101,13 +69,14 @@
                                                                 <div class="menu_name">${menuList.menu_name}</div>
                                                                 <div class="menu_intro">${menuList.menu_intro}
                                                                 </div>
-                                                                <div class="menu_price">${menuList.menu_price}원</div>
+                                                                <div class="menu_price">
+                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="menu_img">
-                                                            <img class="menu_img"
-                                                                 src="/resources/img/menu-img/${menuList.menu_img}"
-                                                                 style="width: 90px; height: 115px;">
+                                                            <img class="img"
+                                                                 src="/resources/img/menu-img/${menuList.menu_img}">
                                                         </div>
                                                     </c:when>
                                                     <c:otherwise>
@@ -118,7 +87,9 @@
                                                                      style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
                                                                         ${menuList.menu_intro}
                                                                 </div>
-                                                                <div>${menuList.menu_price}원</div>
+                                                                <div class="menu_price">
+                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </c:otherwise>
@@ -128,13 +99,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <%--                            <c:choose>--%>
-                                <%--                                <c:when test="${not empty menuList.menu_img}">--%>
-                                <%--                                    <img class="menu_img" src="/resources/img/menu-img/${menuList.menu_img}">--%>
-                                <%--                                </c:when>--%>
-                                <%--                                <c:otherwise></c:otherwise>--%>
-                                <%--                            </c:choose>--%>
-                                <%--            </div>--%>
+                              </div>
                             </c:forEach>
                         </div>
                     </c:forEach>

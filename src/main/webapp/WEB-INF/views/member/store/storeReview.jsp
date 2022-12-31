@@ -8,7 +8,8 @@
     <div class="fieldBox" style="margin-bottom: -10px;">
         <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
         <div id="info"><a onclick="loadCode2();" style="cursor: pointer;" id="to_info">정보</a></div>
-        <div id="review"><a onclick="loadCode3();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;">리뷰</a></div>
+        <div id="review"><a onclick="loadCode3();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;">리뷰</a>
+        </div>
     </div>
 
     <script>
@@ -29,7 +30,7 @@
     <div class="reviews">
         <c:choose>
             <c:when test="${not empty storeReviewList}">
-                <c:forEach var="reviews" items="${storeReviewList}">
+                <c:forEach var="reviews" items="${storeReviewList}" varStatus="status">
                     <div class="review_box">
                         <div class="review_header">
                             <div id="nickname">${reviews.mem_nick} <span class="storeEtc"> <i
@@ -63,25 +64,24 @@
                                 <div id="r_content">${reviews.rev_content}</div>
                             </c:when>
                         </c:choose>
-                    </div>
                     <c:choose>
                         <c:when test="${not empty reviews.menu_list}">
                             <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
                             <%--                                    <div>메뉴명 : ${i}</div>--%>
-                            <div class="filter_box">
-                                <div style="margin: 0 auto" class="d-inline-flex">
+                            <div class="filter_box${status.index}">
+                                <div style="margin: 0 auto;" class="d-inline-flex">
                                     <c:forEach var="i" items="${reviews.menu_list}">
-                                        <div class="filter" style="margin-right: 7px">${i}</div>
-                                        <div class="filter" style="margin-right: 7px">돼지ddddddddddddddd국밥</div>
-                                        <div class="filter" style="margin-right: 7px">sdfffffffffff</div>
-                                        <div class="filter" style="margin-right: 7px">sdffffffff</div>
+                                        <div class="filter" style="margin-right: 4px">${i}</div>
+                                        <div class="filter" style="margin-right: 4px">돼지ddddddddddddddd국밥</div>
+                                        <div class="filter" style="margin-right: 4px">sdfffffffffff</div>
+                                        <div class="filter" style="margin-right: 4px">sdffffffff</div>
                                     </c:forEach>
                                 </div>
                             </div>
                             <%--                                </c:forEach>--%>
                         </c:when>
                     </c:choose>
-                    <br>
+                    </div>
                 </c:forEach>
             </c:when>
             <c:otherwise>
@@ -91,3 +91,41 @@
         <script src="/resources/js/member/store/storeReview.js"></script>
     </div>
 </div>
+
+<style>
+    <c:forEach var="num" items="${storeReviewList}" varStatus="status">
+    .filter_box${status.index} {
+        width: 98%;
+        height: 40px;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+        overflow: hidden;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    </c:forEach>
+</style>
+
+<script>
+    <c:forEach var="num" items="${storeReviewList}" varStatus="status">
+    var x, left, down;
+
+    $(".filter_box${status.index}").mousedown(function (e) {
+        e.preventDefault();
+        down = true;
+        x = e.pageX;
+        left = $(this).scrollLeft();
+    });
+
+    $(".filter_box${status.index}").mousemove(function (e) {
+        if (down) {
+            var newX = e.pageX;
+            $(".filter_box${status.index}").scrollLeft(left - newX + x);
+        }
+    });
+
+    $("body").mouseup(function (e) {
+        down = false;
+    });
+    </c:forEach>
+</script>
