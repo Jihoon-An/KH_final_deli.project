@@ -49,8 +49,6 @@ public class OrderHistoryController {
     @RequestMapping("")
     public String history(Model model) throws Exception {
 
-
-
         int acc_seq = (Integer) session.getAttribute("acc_seq");
         System.out.println(acc_seq);
         List<OrderHistoryDTO> orderList= orderHistoryService.selectOrderHistory(acc_seq);
@@ -59,7 +57,6 @@ public class OrderHistoryController {
         List<Integer> menuCountList = new ArrayList<>();
 //        List<MenuOptionDTO> menuOptionList = new ArrayList<>();
 
-        List<String> getMenuListStr = new ArrayList<>();
 
        // List<BasketMenu> menuList = new ArrayList<>();
         for(int i = 0; i<orderList.size(); i++) {
@@ -91,14 +88,12 @@ public class OrderHistoryController {
             //menuOptionList.add(MenuOption);
             menuList.add(MenuName);
             menuCountList.add(menuCount);
-            getMenuListStr.add(getMenuList);
         }
 
        // model.addAttribute("menu_option", menuOptionList);
         model.addAttribute("menu_count_list", menuCountList); //메뉴 갯수
         model.addAttribute("menu_list", menuList); // parse한 리스트
         model.addAttribute("order_list", orderList);  //join 되어 있는 list
-        model.addAttribute("menu_list_str",getMenuListStr);
         return "/member/order/ordersHistory";
     }
 
@@ -174,7 +169,6 @@ public class OrderHistoryController {
 
     @RequestMapping("/{orderSeq}")
     public String reOrder(@PathVariable("orderSeq")Integer order_seq) throws Exception {
-        System.out.println("오더seq"+order_seq);
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
 
         int storeSeq = ordersDTO.getStore_seq();
