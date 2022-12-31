@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kh.deli.domain.admin.mapper.AdminMainMapper">
+
+    <select id="selectAllList" resultType="kh.deli.domain.admin.dto.AdminMainDTO">
+        SELECT DAILY_DATE
+        , SUM(DAILY_SALES) AS SUM_DAILY_SALES
+        FROM DD_SALES
+        GROUP BY DAILY_DATE
+    </select>
+
+</mapper>
+
+
