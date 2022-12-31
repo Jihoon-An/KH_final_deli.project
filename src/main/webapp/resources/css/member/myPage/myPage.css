@@ -57,6 +57,20 @@
     font-size: 18px;
 }
 
+#myPage .emailViewBox{
+    margin-top: 3px;
+    float: left;
+}
+#myPage .emailViewBox > .emailIconBox{
+    float: left;
+    margin-top: 3px;
+}
+#myPage .emailViewBox > .emailSpanBox{
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 50px;
+}
+
 #myPage .buttonBox{
     width: 340px;
     height: 50px;
