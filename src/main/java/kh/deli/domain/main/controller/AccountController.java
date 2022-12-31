@@ -214,11 +214,10 @@ public class AccountController {
 
     @ResponseBody
     @PostMapping("/findAccount/email")
-    public List<String> findEmail(String phoneNumber) throws Exception {
+    public List<AccountDTO> findEmail(String phoneNumber) throws Exception {
         System.out.println(phoneNumber);
-        List<String> email = mainAccountService.findEmailByPhoneNumber(phoneNumber);
-        System.out.println(email);
-        return email;
+        List<AccountDTO> accountDTOList = mainAccountService.findAccountByPhoneNumber(phoneNumber);
+        return accountDTOList;
     }
 
     @ResponseBody

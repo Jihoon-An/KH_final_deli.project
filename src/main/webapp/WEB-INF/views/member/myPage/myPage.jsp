@@ -57,13 +57,16 @@
                 </a>
             </div>
 
-            <div class="buttonBox">
-                <div style="float: left; margin-top: 3px;">
+            <div class="emailViewBox">
+                <div class="emailIconBox">
                     <span style="font-size: 14px; color: #645DAF;"><i class="fa-solid fa-at"></i></span>
                 </div>
-                <div style="float: left; margin-left: 5px; margin-bottom: 5px;">
+                <div class="emailSpanBox">
                     <span style="font-size: 12px;">${loginEmail}</span>
                 </div>
+            </div>
+
+            <div class="buttonBox">
                 <a href="/account/logout">
                     <button>로그아웃</button>
                 </a>

@@ -50,7 +50,7 @@ function validNum() {
 }
 
 // 전화번호 정규식
-let phoneRegex = /^0[\d]{9,10}$/;
+// let phoneRegex = /^0[\d]{9,10}$/;
 
 var timer;
 var isRunning = false;
@@ -91,18 +91,19 @@ function startTimer(count, display) {
 
 // 휴대폰번호 - 값 입력 유효성 검사 display
 function phone_check() {
+    let phoneRegex = $("#mem_phone").val().replace(/-/gi, "");
     if ($("#mem_phone").val() == "") {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#000000");
         $("#phone_msg").html("숫자만 입력 가능합니다");
-    } else if (!phoneRegex.test($("#mem_phone").val())) {
+    } else if (phoneRegex.length != 11) {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#FF0000");
-        $("#phone_msg").html("핸드폰 번호 형식을 확인해주세요");
+        $("#phone_msg").html("휴대폰 번호 형식을 확인해주세요");
     } else {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#008000");
-        $("#phone_msg").html("핸드폰을 인증해주세요.");
+        $("#phone_msg").html("휴대폰 번호를 인증해주세요");
     }
 }
 
@@ -112,17 +113,21 @@ $("#phone_certi_btn").on("click", function () {
         $("#mem_phone").val("");
         $("#mem_phone").attr("disabled",false);
     }
-    if (phoneRegex.test($("#mem_phone").val())) {
+    let phoneRegex = $("#mem_phone").val().replace(/-/gi, "");
+    if (phoneRegex.length == 11) {
         $.ajax({
             url: "/account/certify/tel",
             type: "post",
-            data: {mem_phone: $("#mem_phone").val()}
+            data: {mem_phone: $("#mem_phone").val().replace(/-/gi, "")}
         }).done(function (result) {
             if (result != null) {
                 sendAuthNum("#phone_count");
                 $("#phone_confirm_box").show();
             } else {
-                alert("메시지 전송 실패");
+                Swal.fire({
+                    icon: 'error',
+                    title: '메세지 전송 실패',
+                });
             }
         });
     } else {
@@ -134,8 +139,11 @@ $("#phone_certi_btn").on("click", function () {
 $("#mem_phone").on("focus", function () {
     phone_check();
 })
-$("#mem_phone").on("keyup", function () {
+$("#mem_phone").on("keyup", function (event) {
     phone_check();
+    event = event || window.event;
+    var _val = this.value.trim();
+    this.value = autoHypenTel(_val);
 })
 //phone confirm
 $("#phone_confirm_input").on("keydown", function (e) {
@@ -148,12 +156,13 @@ $("#phone_confirm_btn").click(function () {
 });
 
 function phone_confirm() {
-    if (phoneRegex.test($("#mem_phone").val())
-        && $("#phone_msg").html() == "핸드폰을 인증해주세요.") {
+    let phoneRegex = $("#mem_phone").val().replace(/-/gi, "");
+    if (phoneRegex.length == 11
+        && $("#phone_msg").html() == "휴대폰 번호를 인증해주세요") {
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
-            data: {mem_phone: $("#mem_phone").val(), phone_confirm_input: $("#phone_confirm_input").val()}
+            data: {mem_phone: $("#mem_phone").val().replace(/-/gi, ""), phone_confirm_input: $("#phone_confirm_input").val()}
         }).done(function (result) {
             if (result == true && $("#phone_count").html() != "시간초과") {
                 $("#phone_confirm_input").val("");
@@ -162,33 +171,50 @@ function phone_confirm() {
                 $("#phone_msg").hide();
                 $("#phone_confirm_box").hide();
                 // $("#mem_phone").attr("disabled", true);
-                alert("인증에 성공하였습니다")
+                Swal.fire({
+                    icon: 'success',
+                    title: '인증 성공',
+                });
                 phoneOk = true;
 
                 $.ajax({
                     url: "/account/findAccount/email",
                     type: "post",
-                    data: {phoneNumber: $("#mem_phone").val()},
+                    data: {phoneNumber: $("#mem_phone").val().replace(/-/gi, "")},
                     dataType: "json"
                 }).done(function (result) {
                     for (let i=0;result.length>i;i++) {
                         $("#emailBox").append(
                             "<div class='emailResultBox'>" +
                             "<div class='emailDiv'>" +
-                            "<span class='emailResult'>이메일 : "+result[i]+"</span>" +
+                            "<span class='emailIcon'>" +
+                            "<i class=\"fa-solid fa-at\"></i>" +
+                            "</span>" +
+                            "<span class='emailResult'>"+result[i].acc_email+"</span>" +
                             "</div>" +
                             "<div class='signUpDateDiv'>" +
-                            "<span class='signUpDateSpan'>가입날짜 : "+"1999.08.26"+"</span>" +
+                            "<span class='signUpIcon'>" +
+                            "<i class=\"fa-solid fa-link\"></i>" +
+                            "</span>" +
+                            "<span class='signUpDateSpan'>"+result[i].acc_signupdate.substr(0,10)+"</span>" +
                             "</div>" +
                             "</div>"
                         )
                     }
                 })
             } else if ($("#phone_count").html() == "시간초과") {
-                alert("인증을 다시 해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '입력 가능 시간 초과',
+                    text: '다시 인증해주세요.',
+                });
                 phoneOk = false;
             } else {
-                alert("인증 번호를 확인해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증번호 불일치',
+                    text: '인증번호를 다시 확인해주세요.',
+                });
                 phoneOk = false;
             }
         })
@@ -201,38 +227,51 @@ function phone_confirm() {
 
 // 휴대폰번호 - 값 입력 유효성 검사 display
 function pw_phone_check() {
+    let pw_phoneRegex = $("#pw_mem_phone").val().replace(/-/gi, "");
     if ($("#pw_mem_phone").val() == "") {
         $("#pw_phone_msg").show();
         $("#pw_phone_msg").css("color", "#000000");
         $("#pw_phone_msg").html("숫자만 입력 가능합니다");
-    } else if (!phoneRegex.test($("#pw_mem_phone").val())) {
+    } else if (pw_phoneRegex.length != 11) {
         $("#pw_phone_msg").show();
         $("#pw_phone_msg").css("color", "#FF0000");
-        $("#pw_phone_msg").html("핸드폰 번호 형식을 확인해주세요");
+        $("#pw_phone_msg").html("휴대폰 번호 형식을 확인해주세요");
     } else {
         $("#pw_phone_msg").show();
         $("#pw_phone_msg").css("color", "#008000");
-        $("#pw_phone_msg").html("핸드폰을 인증해주세요.");
+        $("#pw_phone_msg").html("휴대폰 번호를 인증해주세요");
     }
 }
 
 
 $("#pw_phone_certi_btn").on("click", function () {
+    if(!$("#pw_emailInput").val()){
+        Swal.fire({
+            icon: 'error',
+            title: '옳바르지 않은 입력입니다.',
+            text: '이메일을 입력해 주세요.',
+        });
+        return false;
+    }
     if($("#pw_mem_phone").is(":disabled")){
         $("#pw_mem_phone").val("");
         $("#pw_mem_phone").attr("disabled",false);
     }
-    if (phoneRegex.test($("#pw_mem_phone").val())) {
+    let pw_phoneRegex = $("#pw_mem_phone").val().replace(/-/gi, "");
+    if (pw_phoneRegex.length == 11) {
         $.ajax({
             url: "/account/certify/tel",
             type: "post",
-            data: {mem_phone: $("#pw_mem_phone").val()}
+            data: {mem_phone: $("#pw_mem_phone").val().replace(/-/gi, "")}
         }).done(function (result) {
             if (result != null) {
-                sendAuthNum("#phone_count");
+                sendAuthNum("#pw_phone_count");
                 $("#pw_phone_confirm_box").show();
             } else {
-                alert("메시지 전송 실패");
+                Swal.fire({
+                    icon: 'error',
+                    title: '메세지 전송 실패',
+                });
             }
         });
     } else {
@@ -246,6 +285,9 @@ $("#pw_mem_phone").on("focus", function () {
 })
 $("#pw_mem_phone").on("keyup", function () {
     pw_phone_check();
+    event = event || window.event;
+    var _val = this.value.trim();
+    this.value = autoHypenTel(_val);
 })
 //phone confirm
 $("#pw_phone_confirm_input").on("keydown", function (e) {
@@ -258,8 +300,9 @@ $("#pw_phone_confirm_btn").click(function () {
 });
 
 function pw_phone_confirm() {
-    if (phoneRegex.test($("#pw_mem_phone").val())
-        && $("#pw_phone_msg").html() == "핸드폰을 인증해주세요.") {
+    let pw_phoneRegex = $("#pw_mem_phone").val().replace(/-/gi, "");
+    if (pw_phoneRegex.length == 11
+        && $("#pw_phone_msg").html() == "휴대폰 번호를 인증해주세요") {
         $.ajax({
             url: "/account/certify/telConfirm",
             type: "post",
@@ -272,31 +315,44 @@ function pw_phone_confirm() {
                 $("#pw_phone_msg").hide();
                 $("#pw_phone_confirm_box").hide();
                 // $("#mem_phone").attr("disabled", true);
-                alert("인증에 성공하였습니다")
+                Swal.fire({
+                    icon: 'success',
+                    title: '인증 성공',
+                });
                 phoneOk = true;
 
                 $.ajax({
                     url: "/account/findAccount/passWord",
                     type: "post",
-                    data: {email: $("#pw_emailInput").val() , phoneNumber: $("#pw_mem_phone").val()}
+                    data: {
+                        email: $("#pw_emailInput").val(),
+                        phoneNumber: $("#pw_mem_phone").val().replace(/-/gi, "")
+                    }
                 }).done(function (result) {
-                    console.log(result);
                     $("#passWordBox").append(
                         "<div class='passWordResultBox'>" +
                         "<div class='passWordDiv'>" +
-                        "<span class='passWordResult'>변경된 임시 비밀번호</span>" +
+                        "<span class='passWordResult'>임시 비밀번호로 변경되었습니다</span>" +
                         "</div>" +
-                        "<div class='signUpDateDiv'>" +
-                        "<span class='signUpDateSpan'>"+result+"</span>" +
+                        "<div class='temporaryDiv'>" +
+                        "<span class='temporarySpan'>"+result+"</span>" +
                         "</div>" +
                         "</div>"
                     )
                 })
             } else if ($("#pw_phone_count").html() == "시간초과") {
-                alert("인증을 다시 해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '입력 가능 시간 초과',
+                    text: '다시 인증해주세요.',
+                });
                 phoneOk = false;
             } else {
-                alert("인증 번호를 확인해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증번호 불일치',
+                    text: '인증번호를 다시 확인해주세요.',
+                });
                 phoneOk = false;
             }
         })
@@ -304,5 +360,63 @@ function pw_phone_confirm() {
 }
 
 
+function autoHypenTel(str) {
+    str = str.replace(/[^0-9]/g, '');
+    str = str.substring(0,11);
+
+    var tmp = '';
+
+    if (str.substring(0, 2) == '02') {
+        // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
+        if (str.length < 3) {
+            return str;
+        } else if (str.length < 6) {
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2);
+            return tmp;
+        } else if (str.length < 10) {
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 3);
+            tmp += '-';
+            tmp += str.substr(5);
+            return tmp;
+        } else {
+            tmp += str.substr(0, 2);
+            tmp += '-';
+            tmp += str.substr(2, 4);
+            tmp += '-';
+            tmp += str.substr(6, 4);
+            return tmp;
+        }
+    } else {
+        // 휴대폰 및 다른 지역 전화번호 일 경우
+        if (str.length < 4) {
+            return str;
+        } else if (str.length < 7) {
+            tmp += str.substr(0, 3);
+            tmp += '-';
+            tmp += str.substr(3);
+            return tmp;
+        } else if (str.length < 11) {
+            tmp += str.substr(0, 3);
+            tmp += '-';
+            tmp += str.substr(3, 3);
+            tmp += '-';
+            tmp += str.substr(6);
+            return tmp;
+        } else {
+            tmp += str.substr(0, 3);
+            tmp += '-';
+            tmp += str.substr(3, 4);
+            tmp += '-';
+            tmp += str.substr(7);
+            return tmp;
+        }
+    }
+
+    return str;
+}
 
 

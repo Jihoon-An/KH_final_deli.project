@@ -393,8 +393,8 @@ public class MainAccountService {
     /**
      * 이메일 찾기
      */
-    public List<String> findEmailByPhoneNumber(String phoneNumber) {
-        return mainAccountMapper.findEmailByPhoneNumber(phoneNumber);
+    public List<AccountDTO> findAccountByPhoneNumber(String phoneNumber) {
+        return mainAccountMapper.findAccountByPhoneNumber(phoneNumber);
     }
 
     /**

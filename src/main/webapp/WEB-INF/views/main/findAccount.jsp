@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>딜리 - 이메일/비밀번호 찾기</title>
+    <title>딜리 - 이메일 l 비밀번호 찾기</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <link href="/resources/favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -15,15 +15,25 @@
     <!-- bootstrap CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="/resources/css/main/findAccount.css" type="text/css">
-    <link rel="stylesheet" href="/resources/css/customHeader/m_common.css" type="text/css">
 </head>
 <body>
 
 <main id="findAccount">
 
     <div class="container">
+
+        <div class="logoBox">
+            <a href="/">
+                <img src="/resources/img/deli_logo.png" style="width: 250px;">
+            </a>
+        </div>
 
 
         <div class="titleBox">
@@ -39,18 +49,20 @@
 
         <div id="findEmailBox">
             <div class="input-group">
-                <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone" maxlength='11'
+                <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="mem_phone" maxlength='13'
                        oninput=validNum() class="form-control">
                 <button type="button" id="phone_certi_btn" class="deli_btn">인증번호 발송</button>
             </div>
-            <p id="phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>
+            <p id="phone_msg" style="display: none">휴대폰 번호를 확인 중입니다.</p>
 
             <div id="phone_confirm_box" style="display: none">
-                <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input"
-                       maxlength='6' oninput=validNum()>
-                <button type="button" id="phone_confirm_btn">확인</button>
+                <div class="input-group">
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input"
+                           maxlength='6' oninput=validNum() class="form-control">
+                    <button type="button" id="phone_confirm_btn" class="deli_btn">확인</button>
+                </div>
                 <div id="phoneCountBox">
-                    <span id="phone_count"></span>
+                    <p class="count">인증번호 유효시간이 <span id="phone_count"></span> 남았습니다</p>
                 </div>
             </div>
 
@@ -60,21 +72,25 @@
         </div>
 
         <div id="findPassWordBox">
-
-            <input type="text" placeholder="이메일 입력" id="pw_emailInput">
-
-            <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="pw_mem_phone" maxlength='11'
-                   oninput=validNum()>
-            <button type="button" id="pw_phone_certi_btn">인증</button>
+            <div class="input-group">
+                <input type="text" placeholder="이메일 입력" id="pw_emailInput" class="form-control">
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="pw_mem_phone" maxlength='13'
+                       oninput=validNum() class="form-control">
+                <button type="button" id="pw_phone_certi_btn" class="deli_btn">인증번호 발송</button>
+            </div>
             <br>
-            <p id="pw_phone_msg" style="display: none">phone 양식에 맞게 썼는지 확인 중입니다.</p>
+            <p id="pw_phone_msg" style="display: none">휴대폰 번호를 확인 중입니다.</p>
 
             <div id="pw_phone_confirm_box" style="display: none">
-                <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="pw_phone_confirm_input"
-                       maxlength='6' oninput=validNum()>
-                <button type="button" id="pw_phone_confirm_btn">확인</button>
+                <div class="input-group">
+                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="pw_phone_confirm_input"
+                           maxlength='6' oninput=validNum() class="form-control">
+                    <button type="button" id="pw_phone_confirm_btn" class="deli_btn">확인</button>
+                </div>
                 <div id="pw_phoneCountBox">
-                    <span id="pw_phone_count"></span>
+                    <p class="pw_count">인증번호 유효시간이 <span id="pw_phone_count"></span> 남았습니다</p>
                 </div>
             </div>
 
