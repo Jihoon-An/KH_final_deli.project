@@ -90,8 +90,8 @@
                     <span class="modalTitle">별점</span><input
                         type="text" placeholder="별점" disabled id="star" class="star" disabled>
                 </div>
-                <div id="reviewField">리뷰 내용</div>
-                <div id="review_content" class="review_content" disabled></div>
+                <div id="reviewField" >리뷰 내용</div>
+                <div id="review_content" class="review_content" style="width: 260px; height: 200px;" disabled></div>
                 <div>
                     작성일자<input
                         type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
@@ -152,13 +152,6 @@
 <%--                </div>--%>
 <%--            </div>--%>
 <%--        </div>--%>
-
-
-
-
-
-
-
 
 
     </form>

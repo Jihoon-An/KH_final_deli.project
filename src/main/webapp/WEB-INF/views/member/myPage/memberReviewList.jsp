@@ -45,9 +45,9 @@
                 <c:otherwise>
                 <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}"><button name="modify_review" revSeq="${reviews.rev_seq}">수정</button></a>
 
-                    <input type="text" value="${reviews.rev_seq}">
-                    <input type="text" value="${reviews.store_seq}">
-                    <input type="text" value="${reviews.order_seq}">
+                    <input type="hidden" value="${reviews.rev_seq}">
+                    <input type="hidden" value="${reviews.store_seq}">
+                    <input type="hidden" value="${reviews.order_seq}">
 
                 </c:otherwise>
                 </c:choose>
