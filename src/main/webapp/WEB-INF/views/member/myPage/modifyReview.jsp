@@ -116,11 +116,16 @@
                         </c:forEach>
                     </c:when>
                 </c:choose>
+
+
             </div>
+
+
             <div id="btnBox">
                 <button type="button" id="backBtn">취소</button>
                 <button id="modifyBtn">수정완료</button>
             </div>
+
             <input type="hidden" id="rev_seq" name="rev_seq" value="${review_dto.rev_seq}">
             <input type="hidden" name="del_files_json" id="del_files_json">
 
