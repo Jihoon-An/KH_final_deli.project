@@ -170,12 +170,13 @@ public class OrderHistoryController {
     @RequestMapping("/{orderSeq}")
     public String reOrder(@PathVariable("orderSeq")Integer order_seq) throws Exception {
         session.removeAttribute("basket");
-
+        //가게 시퀸스 다르게 담아오면 오류라서 세션 삭제 후 진행
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
 
         int storeSeq = ordersDTO.getStore_seq();
         int orderPrice = ordersDTO.getOrder_price();
         String menuListStr = ordersDTO.getMenu_list();
+        //BasketDTO 매개변수 타입에 맞게끔
 
         Gson gson = new Gson();
         Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
