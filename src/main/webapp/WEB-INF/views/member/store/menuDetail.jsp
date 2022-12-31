@@ -20,7 +20,7 @@
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <main id="menu_detail">
-    <img src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
+    <img style="width: 100%;" src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
     <div id="menu_name">${menu.menu_name}</div>
     <div id="menu_intro">${menu.menu_intro}</div>
     <hr>
@@ -31,7 +31,7 @@
         <div class="option_select">
             <c:forEach var="option" items="${optionMap.value}">
                 <c:choose>
-                    <c:when test="${option.option_multiple eq 'Y'}">
+                    <c:when test="${option.option_multiple eq 'N'}">
                         <div class="option">
                             <input class="option_check" name="${optionMap.key}" type="radio">
 
@@ -73,7 +73,7 @@
     </div>
     <button type="button" onclick="onModal()">장바구니 담기</button>
     <form action="/menu/detail/put" method="post" id="put_basket">
-        <input type="hidden" name="basket_menu" id="basket_menu">
+        <input type="text" name="basket_menu" id="basket_menu">
     </form>
 
 </main>

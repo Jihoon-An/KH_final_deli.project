@@ -29,6 +29,7 @@
 <main id="order_history">
     <hr class="mt55">
     <div class="container">
+
         <c:choose>
             <c:when test="${not empty order_list}">
                 <c:forEach var="order_list" items="${order_list}" varStatus="status">
@@ -86,8 +87,6 @@
                                             <%--                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">--%>
                                         <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="m_menu_seq">
 
-
-
                                             ${menu_list[status.index].menu.store_seq}
                                             ${menu_list[status.index].menu.menu_price}
 
@@ -123,13 +122,14 @@
                                             <button class="deli_btn">주문상세</button>
                                         </a>
 
-                                            <%--                  <a href="/order/history/${order_list.order_seq}">--%>
-                                            <%--             <button class="deli_btn" type="button">재주문</button>--%>
-                                            <%--                  </a>--%>
+<%--                                                              <a href="/order/history/${order_list.order_seq}">--%>
+<%--                                                         <button class="deli_btn" type="button">재주문</button>--%>
+<%--                                                              </a>--%>
 
 
                                         <button class="deli_btn reOrder" type="button" >재주문</button>
-                                        <form action="/menu/detail/toBasket" method="post" id="put_basket">
+                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>
+                                        <form action="/basket" method="post" id="to_basket">
                                             <input type="hidden" name="basket_menu" id="basket_menu">
                                         </form>
 

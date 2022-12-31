@@ -22,7 +22,7 @@
                 <input type="hidden" id="storeSeq" value="${store.store_seq}">
                 <input type="hidden" id="minPrice" value="${store.store_min_price}">
                 상호명 : ${store.store_name}<br>
-                <img src="/resources/img/store/${store.store_logo}">
+                <img style="width: 100%;" src="/resources/img/store/${store.store_logo}">
                 <hr>
                 <hr>
                 <c:forEach var="menuList" items="${basket}">
