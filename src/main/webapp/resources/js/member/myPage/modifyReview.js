@@ -58,3 +58,25 @@ function handleImgFileSelect(e) {
         reader.readAsDataURL(f);
     });
 }
+
+//글자 수
+$("#revContent").on("keyup",function (){
+    let content = $(this).val();
+    $("#count").html(content.length+" / 300");
+
+    if(content.length > 300){
+        alert("리뷰는 최대 300글자까지 입력 가능합니다.");
+    }
+})
+
+
+$("#modifyBtn").on("click",function(){
+    let content = $("#revContent").val();
+
+    if(content.length>300){
+        alert("리뷰는 최대 300글자까지 입력 가능합니다.")
+        return false;
+    }
+
+    $("#reviewPost").submit();
+})
