@@ -6,9 +6,11 @@
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
 
     <div class="fieldBox" style="margin-bottom: -10px;">
-        <div id="menu"><a onclick="loadCode1();" style="float: left; cursor: pointer;">메뉴</a></div>
-        <div id="info"><a onclick="loadCode2();" style="float: left; cursor: pointer;" id="to_info">정보</a></div>
-        <div id="review"><a onclick="loadCode3();" style="font-weight: bold; font-size: 1.15em; float: left; cursor: pointer;">리뷰</a></div>
+        <div class="fieldBox" style="margin-bottom: -10px;">
+            <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
+            <div id="info"><a onclick="loadCode2();" style="cursor: pointer;" id="to_info">정보</a></div>
+            <div id="review"><a onclick="loadCode3();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;">리뷰</a></div>
+        </div>
     </div>
 
     <script>

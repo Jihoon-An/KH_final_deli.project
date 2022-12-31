@@ -482,35 +482,13 @@
     btnModal2.addEventListener("click", e => {
         modal2.style.display = "flex"
     })
-    // 버튼 클릭 시 핸드폰변경 모달창 오픈
-    // const modal3 = document.getElementById("modal3");
-    // const btnModal3 = document.getElementById("btn_modal3");
-    // btnModal3.addEventListener("click", e => {
-    //     modal3.style.display = "flex"
-    // })
-    // 주소변경 모달창 클로즈(X) 버튼 누를시 모달 종료
-    // const closeBtn = modal.querySelector(".close-area")
-    // closeBtn.addEventListener("click", e => {
-    //     modal.style.display = "none"
-    // })
+
     // 쿠폰리스트 모달창 클로즈(X) 버튼 누를시 모달 종료
     const closeBtn2 = modal2.querySelector(".close-area")
     closeBtn2.addEventListener("click", e => {
         modal2.style.display = "none"
     })
-    // 핸드폰변경 모달창 클로즈(X) 버튼 누를시 모달 종료
-    // const closeBtn3 = modal3.querySelector(".close-area")
-    // closeBtn3.addEventListener("click", e => {
-    //     modal3.style.display = "none"
-    // })
 
-    // 주소변경 모달창 바깥 영역 클릭 시 모달 종료
-    // modal.addEventListener("click", e => {
-    //     const evTarget = e.target
-    //     if (evTarget.classList.contains("modal-overlay")) {
-    //         modal.style.display = "none"
-    //     }
-    // })
     // 쿠폰리스트 모달창 바깥 영역 클릭 시 모달 종료
     modal2.addEventListener("click", e => {
         const evTarget = e.target
@@ -518,36 +496,13 @@
             modal2.style.display = "none"
         }
     })
-    // 핸드폰변경 모달창 바깥 영역 클릭 시 모달 종료
-    // modal3.addEventListener("click", e => {
-    //     const evTarget = e.target
-    //     if (evTarget.classList.contains("modal-overlay")) {
-    //         modal3.style.display = "none"
-    //     }
-    // })
 
     //  모달창 켜진 상태에서 ESC 버튼 클릭시 모달 종료
     window.addEventListener("keyup", e => {
-        // if (modal.style.display === "flex" && e.key === "Escape") {
-        //     modal.style.display = "none"
-        // }
         if (modal2.style.display === "flex" && e.key === "Escape") {
             modal2.style.display = "none"
         }
-        // if (modal3.style.display === "flex" && e.key === "Escape") {
-        //     modal3.style.display = "none"
-        // }
     })
-
-    //우편 api
-    // document.getElementById("btnSearch").onclick = function () {
-    //     new daum.Postcode({
-    //         oncomplete: function (data) {
-    //             document.getElementById('postcode').value = data.zonecode;
-    //             document.getElementById("address1").value = data.jibunAddress; // data.roadAddress
-    //         }
-    //     }).open();
-    // }
 
     // kg 이니시스 결제
     $(".btn_payment").click(function () {

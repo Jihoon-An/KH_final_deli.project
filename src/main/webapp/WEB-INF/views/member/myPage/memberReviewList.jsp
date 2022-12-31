@@ -10,13 +10,7 @@
 <html>
 <head>
     <title>딜리 - 내 리뷰 보기</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico" />
-    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-
+    <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
 
 </head>
 <body>
@@ -28,7 +22,7 @@
 <main id="myPageReviewList">
     <hr class="mt65">
     <div class="container">
-        <h2>내가 쓴 리뷰 리스트</h2>
+        <h2>내 리뷰 보기</h2>
         <div class="member_review">내가 쓴 리뷰 총 ${myPageReviewCount}개</div>
 
         <div class="reviews">
@@ -39,6 +33,13 @@
                 <c:when test="${reviews.flag_udt == 'N'}">
 
                     <button name="modify_review" disabled>수정</button>
+                    rev_seq
+                    <input type="text" value="${reviews.rev_seq}">
+                    store_seq
+                    <input type="text" value="${reviews.store_seq}">
+                    order_seq
+                    <input type="text" value="${reviews.order_seq}">
+
 
                 </c:when>
                 <c:otherwise>
@@ -96,12 +97,6 @@
             <h2>작성한 리뷰가 없습니다.</h2>
         </c:otherwise>
         </c:choose>
-    </div>
-    <div class="store_name">상호명</div>
-    <div class="member_nick_name">작성자</div>
-    <div class="member_review_star">별점</div>
-    <div class="member_menu_img">사진</div>
-    <div class="member_content">리뷰 내용</div>
     </div>
 
     <script>
