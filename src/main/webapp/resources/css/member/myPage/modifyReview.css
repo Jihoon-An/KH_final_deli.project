@@ -127,12 +127,12 @@
     height: 35px;
     float: left;
     position: relative;
-    left: 50%;
+    left: 55%;
     transform: translateX(-50%);
     top: 180px;
 }
-#modify_review  #writeBtn{
-    width: 100%;
+#modify_review  #modifyBtn, #modify_review #backBtn{
+    width: 40%;
     height: 100%;
     border-radius: 7px;
     border: none;
@@ -140,6 +140,48 @@
     color: white;
     font-size: 1.1em;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 
+.star-rating {
+    width: 300px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 50px;
+    line-height: 50px;
+    justify-content: space-around;
+    padding: 0 0.2em;
+    text-align: center;
+    text-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(209, 213, 219);
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    -webkit-text-fill-color: #ddd;
+    text-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(209, 213, 219);
+    /* Will override color (regardless of order) */
+    cursor: pointer;
+}
+
+.star-rating :checked~label {
+    -webkit-text-fill-color: yellow;
+    text-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(236, 0, 0);
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label {
+    -webkit-text-fill-color: yellow;
+    text-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(236, 0, 0);
+}

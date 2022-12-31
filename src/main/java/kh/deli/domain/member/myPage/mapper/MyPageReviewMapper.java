@@ -17,7 +17,7 @@ public interface MyPageReviewMapper {
     public void reviewInsert(ReviewDTO dto);
 
     @Select("select * from orders where order_seq=#{order_seq}")
-    public OrdersDTO selectByOrderSeq(@Param("order_seq") int order_seq);
+    public OrdersDTO    selectByOrderSeq(@Param("order_seq") int order_seq);
 
     @Select("SELECT * FROM REVIEW WHERE REV_SEQ=${rev_seq}")
     public ReviewDTO selectByReviewSeq(@Param("rev_seq") int rev_seq);
