@@ -32,13 +32,13 @@
                 <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
                 <%--                                    <div>메뉴명 : ${i}</div>--%>
                 <div class="filter_box">
-                    <div style="margin: 0 auto;" class="d-inline-flex">
+                    <div style="margin: 0 auto;" class="d-flex flex-row">
                         <c:forEach var="mGroup" items="${menuGroup}" varStatus="num">
-                            <a onclick="scrollMove()" style="text-decoration: none; color: black;">
+                            <a onclick="scrollMove${num.count}()" style="text-decoration: none; color: black;">
                                 <div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div>
                             </a>
                             <script>
-                                function scrollMove() {
+                                function scrollMove${num.count}() {
                                     let location = document.querySelector("#bottom_menu_group${num.count}").offsetTop;
                                     window.scrollTo({top: location - 50, behavior: "smooth"});
                                 };
