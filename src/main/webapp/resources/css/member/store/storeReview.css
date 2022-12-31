@@ -199,6 +199,7 @@ img {
 
 #r_content {
     width: 95%;
+    word-break: break-word;
 }
 
 #storeReview .fa-star {
