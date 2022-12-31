@@ -70,15 +70,12 @@
                                oninput=validNum()><br>
                         <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
 
+
                         <input type="hidden" name="store_seq" value="${store_seq}">
 
 
                     </div>
-
-
                 </div>
-
-
             </div>
 
 
