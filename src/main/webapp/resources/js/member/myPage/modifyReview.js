@@ -26,6 +26,28 @@ $('#revImgBtn').on('change', function () {
     filesTest($(this)[0]);
 })
 
+$("#revContent").on("keyup",function (){
+    let content = $(this).val();
+    $("#count").html(content.length+" / 300");
+
+    if(content.length > 300){
+        alert("리뷰는 최대 300글자까지 입력 가능합니다.");
+        $(this).val(content.substring(0, 300));
+        $('#revContent #count').html(300);
+    }
+})
+
+// $('.text_box textarea').keyup(function(){
+//     var content = $(this).val();
+//     $('.text_box .count span').html(content.length);
+//     if (content.length > 200){
+//         alert("최대 200자까지 입력 가능합니다.");
+//         $(this).val(content.substring(0, 200));
+//         $('.text_box .count span').html(200);
+//     }
+// });
+
+
 function filesTest(element) {  // 값이 변경되면
     const files = element.files;
 
@@ -77,3 +99,31 @@ function filesTest(element) {  // 값이 변경되면
 //     // }
 //     fileToBase64(document.getElementById("revImgBtn").files[0]);
 // })
+
+
+
+$('.gym_imgFile').on('change', handleImgFileSelect);
+//이미지 미리보기
+function handleImgFileSelect(e) {
+    var img = $(this).siblings(".gym_img").find("img");
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+    var reg = /(.*?)\/(jpg|jpeg|png|bmp|pdf|gif)$/;
+    filesArr.forEach(function (f) {
+        if (!f.type.match(reg)) {
+            Swal.fire({
+                icon: 'error',
+                title: '이미지 업로드 불가',
+                text: '이미지 파일만 업로드 가능합니다.',
+                confirmButtonText: '확인'
+            })
+            return;
+        }
+        sel_file = f;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            img.attr("src", e.target.result);
+        }
+        reader.readAsDataURL(f);
+    });
+}
