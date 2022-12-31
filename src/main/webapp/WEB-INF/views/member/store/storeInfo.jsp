@@ -7,9 +7,9 @@
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
 
     <div class="fieldBox" style="margin-bottom: -10px;">
-        <div id="menu" style="border: 1px solid red;"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
-        <div id="info" style="border: 1px solid green;"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;" id="to_info">정보</a></div>
-        <div id="review"style="border: 1px solid blue;"><a onclick="loadCode3();" style="cursor: pointer;">리뷰</a></div>
+        <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
+        <div id="info"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;" id="to_info">정보</a></div>
+        <div id="review"><a onclick="loadCode3();" style="cursor: pointer;">리뷰</a></div>
     </div>
 
     <script>

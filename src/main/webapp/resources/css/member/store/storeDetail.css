@@ -51,6 +51,7 @@
     font-size: 16px;
 }
 
+
 #store_detail .fieldBox {
     width: 95%;
     margin: auto;
@@ -62,14 +63,21 @@
     float: left;
     width: 33.33%;
     height: 45px;
-    text-align: center;
     line-height: 45px;
     margin-top: 5px;
+    text-align: center;
 }
 
 #store_detail .fieldBox div a {
     text-decoration: none;
     color: black;
+}
+
+#store_detail .field {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 27px;
+    margin-bottom: 5px;
 }
 
 #store_detail .deliveryInfo {
@@ -142,7 +150,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 100px;
+    cursor: pointer;
 }
 
 #store_detail .filter_box::-webkit-scrollbar {
@@ -190,7 +198,8 @@
     /*background: #ffffff;*/
     border-radius: 10px 10px 0 0;
     text-align: center;
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
+    overflow: hidden;
     margin-top: 10px;
 }
 

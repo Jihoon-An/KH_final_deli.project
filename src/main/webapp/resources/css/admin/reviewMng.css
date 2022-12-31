@@ -1,10 +1,8 @@
+
 #review_mng .modal {
-    position: absolute;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    top: 0;
-    left: 0;
     display: none;
 }
 
@@ -21,9 +19,58 @@
     text-align: center;
     box-sizing: border-box;
     padding: 74px 0;
-    /*line-height: 23px;*/
     cursor: pointer;
 }
+
+#review_mng .closeBtn{
+    position: relative;
+    bottom: 40px;
+    left: 155px
+}
+
+#review_mng .modalInfo{
+    position: relative;
+    left: 50px;
+    text-align: left;
+}
+#review_mng .modalInfo>input{
+    border: none;
+    background: none;
+}
+
+#review_mng .modalTitle{
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+}
+
+
+/*#review_mng .modal {*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgba(0, 0, 0, 0.8);*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    display: none;*/
+/*}*/
+
+/*#review_mng .modal_content {*/
+/*    width: 400px;*/
+/*    height: auto;*/
+/*    background: #fff;*/
+/*    border-radius: 10px;*/
+/*    position: relative;*/
+/*    top: 40%;*/
+/*    left: 50%;*/
+/*    margin-top: -150px;*/
+/*    margin-left: -200px;*/
+/*    text-align: center;*/
+/*    box-sizing: border-box;*/
+/*    padding: 74px 0;*/
+/*    !*line-height: 23px;*!*/
+/*    cursor: pointer;*/
+/*}*/
 
 #review_mng #reviewField {
     position: relative;

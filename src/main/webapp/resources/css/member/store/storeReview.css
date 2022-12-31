@@ -64,14 +64,21 @@
     float: left;
     width: 33.33%;
     height: 45px;
-    text-align: center;
     line-height: 45px;
     margin-top: 5px;
+    text-align: center;
 }
 
 #storeReview .fieldBox div a {
     text-decoration: none;
     color: black;
+}
+
+#storeReview .field {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 27px;
+    margin-bottom: 5px;
 }
 
 #storeReview #map {

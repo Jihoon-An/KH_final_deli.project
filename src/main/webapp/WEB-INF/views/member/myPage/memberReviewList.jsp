@@ -22,7 +22,7 @@
 <main id="myPageReviewList">
     <hr class="mt65">
     <div class="container">
-        <h2>내가 쓴 리뷰 리스트</h2>
+        <h2>내 리뷰 보기</h2>
         <div class="member_review">내가 쓴 리뷰 총 ${myPageReviewCount}개</div>
 
         <div class="reviews">
