@@ -68,13 +68,14 @@
                                multiple>
                     </label>
                 </div>
-                <div>
+
+                <div id="rev_imgs_area">
                     <c:choose>
                         <c:when test="${not empty review_dto}">
                             <%
                                 ReviewDTO reviewDTO = (ReviewDTO) request.getAttribute("review_dto");
                                 String reviewSysName = reviewDTO.getRev_sysname();
-                                System.out.println("ddddddddddddddddddddddddddddddddd" + reviewSysName);
+
                                 Gson gson = new Gson();
                                 Type type = new TypeToken<List<String>>() {
                                 }.getType();
@@ -87,10 +88,10 @@
                             <%--                                <button type="button" class="del_img_btn">지우기</but
                             <%--                            </div>--%>
                             <%--                        </c:forEach>--%>
-                            <c:forEach var="store" items="${review_img_list}">
+                            <c:forEach var="revImg" items="${review_img_list}">
                                 <div class="review_img_div" id="preview">
-                                    <img src="/resources/img/review/${store}" style="width: 200px; height: 200px;" >
-                                    <input type="hidden" class="img_name" value="${store}">
+                                    <img src="/resources/img/review/${revImg}" style="width: 200px; height: 200px;" >
+                                    <input type="hidden" class="img_name" value="${revImg}">
                                     <button type="button" class="del_img_btn">지우기</button>
                                 </div>
                             </c:forEach>
