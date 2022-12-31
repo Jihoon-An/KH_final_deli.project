@@ -19,7 +19,7 @@
     z-index: 3;
     background: #888888;
     min-height: 900px;
-    min-width: 220px;
+    min-width: 250px;
     padding-top: 15px;
     padding-left: 50px;
   }
