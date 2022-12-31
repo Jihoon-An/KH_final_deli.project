@@ -81,6 +81,31 @@
     margin-bottom: 5px;
 }
 
+
+#storeReview .contents {
+    font-size: 13px;
+}
+
+#storeReview .title {
+    float: left;
+    width: 35%;
+    font-size: 14px;
+}
+
+#storeReview .detail_contents {
+    font-size: 14px;
+    width: 65%;
+    display: inline-block;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
 #storeReview #map {
     width: 95%;
 }
