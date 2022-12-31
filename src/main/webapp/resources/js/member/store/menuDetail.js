@@ -43,7 +43,7 @@ function putBasket() {
     var basket = new BasketMenuDTO(select_option, count, one_price);
     $("#basket_menu").val(JSON.stringify(basket));
 
-    $("#put_basket").submit();
+    $("#put_basket").attr("action", "/menu/detail/put").submit();
 }
 
 function toBasket() {
