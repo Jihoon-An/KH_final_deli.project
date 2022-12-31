@@ -110,13 +110,16 @@ function trClickEvent() {
         );
 
 
-        if ($(this).find(".rev_modified_date").val() != "") {
-            $("#modified_date").val(
-                $(".formed_rev_modified_date").val()
-            );
-        } else {
-            $("#modified_date").val("");
-        }
+        $("#modified_date").val(
+            $(this).find("#formed_rev_modified_date").val()
+        );
+        // if ($(this).find(".rev_modified_date").val() != "") {
+        //     $("#modified_date").val(
+        //         $(".rev_modified_date").val()
+        //     );
+        // } else {
+        //     $("#modified_date").val("");
+        // }
 
         // rev_seq
         $("#rseq").val($(this).find(".rev_seq").val());
@@ -127,7 +130,7 @@ function trClickEvent() {
 };
 
 //모달닫기
-$(".closeModal").click(function () {
+$(".closeBtn").click(function () {
     $(".modal").fadeOut();
 });
 

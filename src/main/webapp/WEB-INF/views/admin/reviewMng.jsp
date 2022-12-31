@@ -25,140 +25,136 @@
 <main id="review_mng">
 
     <div id="container">
-    <table id="myTable" class="display">
-        <thead>
-        <tr>
-            <th>작성자</th>
-            <th>리뷰내용</th>
-            <th>상호명</th>
-            <th>작성일자</th>
-            <th>수정일자</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:if test="${not empty nev_list}">
-            <c:forEach var="store" items="${nev_list}">
-                <tr>
-                    <td class="mem_name">${store.mem_nick}</td>
-                    <td class="rev_content">${store.rev_content}</td>
-                    <td class="store_name">${store.store_name}</td>
-                    <td class="rev_writedate">
-                        <fmt:parseDate value="${store.rev_writedate}" var="registered" pattern="yyyy-MM-dd HH:mm:ss"/>
-                        <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
-                        <input id="formed_rev_writedate" class="formed_rev_writedate"
-                               type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
-                    </td>
+        <table id="myTable" class="display">
+            <thead>
+            <tr>
+                <th>작성자</th>
+                <th>리뷰내용</th>
+                <th>상호명</th>
+                <th>작성일자</th>
+                <th>수정일자</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:if test="${not empty nev_list}">
+                <c:forEach var="store" items="${nev_list}">
+                    <tr>
+                        <td class="mem_name">${store.mem_nick}</td>
+                        <td class="rev_content">${store.rev_content}</td>
+                        <td class="store_name">${store.store_name}</td>
+                        <td class="rev_writedate">
+                            <fmt:parseDate value="${store.rev_writedate}" var="registered"
+                                           pattern="yyyy-MM-dd HH:mm:ss"/>
+                            <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
+                            <input id="formed_rev_writedate" class="formed_rev_writedate"
+                                   type="hidden" value= <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
+                        </td>
 
-                    <input type="hidden" value="${store.rev_display}" class="rev_display">
-                    <input type="hidden" value="${store.rev_seq}" class="rev_seq">
-                    <input type="hidden" value="${store.rev_star}" class="rev_star">
+                        <input type="hidden" value="${store.rev_display}" class="rev_display">
+                        <input type="hidden" value="${store.rev_seq}" class="rev_seq">
+                        <input type="hidden" value="${store.rev_star}" class="rev_star">
 
-                    <c:choose>
-                        <c:when test="${store.rev_modified_date!=null}">
-                            <td class="rev_modified_date">
-                                <fmt:parseDate value="${store.rev_modified_date}" var="registered"
-                                               pattern="yyyy-MM-dd HH:mm:ss"/>
-                                <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
+                        <c:choose>
+                            <c:when test="${store.rev_modified_date!=null}">
+                                <td class="rev_modified_date">
+                                    <fmt:parseDate value="${store.rev_modified_date}" var="registered"
+                                                   pattern="yyyy-MM-dd HH:mm:ss"/>
+                                    <fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>
 
-                                <input id="formed_rev_modified_date" class="formed_rev_modified_date"
-                                       type="hidden" value=<fmt:formatDate value="${registered}" pattern="yyyy-MM-dd"/>>
-                            </td>
-                        </c:when>
-                        <c:otherwise>
-                            <td></td>
-                        </c:otherwise>
-                    </c:choose>
-                </tr>
-            </c:forEach>
-        </c:if>
-        </tbody>
-    </table>
+                                    <input id="formed_rev_modified_date" class="formed_rev_modified_date"
+                                           type="hidden" value=<fmt:formatDate value="${registered}"
+                                                                               pattern="yyyy-MM-dd"/>>
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td></td>
+                            </c:otherwise>
+                        </c:choose>
+                    </tr>
+                </c:forEach>
+            </c:if>
+            </tbody>
+        </table>
     </div>
 
 
     <%--모달--%>
     <form action="/admin/review/deleteReview" id="frm">
-<%--        <div class="modal">--%>
-<%--            <div class="modal_content">--%>
-<%--                <div class="closeModal"><i class="fa-solid fa-xmark fa-2xl"></i></div>--%>
-<%--                <div class="modalInfo">--%>
-<%--                    <span class="modalTitle">작성자</span>--%>
-<%--                    <input--%>
-<%--                            type="text" placeholder="작성자" id="writer" class="writer" disabled>--%>
-<%--                </div>--%>
-<%--                <div class="modalInfo">--%>
-<%--                    <span class="modalTitle">별점</span><input--%>
-<%--                        type="text" placeholder="별점" disabled id="star" class="star" disabled>--%>
-<%--                </div>--%>
-<%--                <div id="reviewField">리뷰 내용</div>--%>
-<%--                <div id="review_content" class="review_content" disabled></div>--%>
-<%--                <div>--%>
-<%--                    작성일자<input--%>
-<%--                        type="text" placeholder="작성일자" disabled id="write_date" class="write_date">--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    수정일자<input--%>
-<%--                        type="text" placeholder="수정일자" disabled id="modified_date" class="modified_date">--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    리뷰번호<input--%>
-<%--                        type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">--%>
-<%--                </div>--%>
-
-<%--                <div class="btns">--%>
-<%--                    <button type="button" id="deleteReview">삭제</button>--%>
-<%--                    <button type="button" id="privateReview">비공개</button>--%>
-<%--                    <button type="button" id="openReview">공개</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
         <div class="modal">
             <div class="modal_content">
                 <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>
                 <div class="modalInfo">
                     <span class="modalTitle">작성자</span>
-                    <input type="text" placeholder="작성자" disabled id="writer" class="writer">
-                </div>
-                <div class="modalInfo">
-                    <span class="modalTitle">상호명</span>
-                    <input type="text" placeholder="상호명" disabled id="store_name" class="store_name">
+                    <input type="text" placeholder="작성자" id="writer" class="writer" disabled>
                 </div>
                 <div class="modalInfo">
                     <span class="modalTitle">별점</span>
-                    <input type="text" placeholder="별점" disabled id="star" class="star">
+                    <input type="text" placeholder="별점" disabled id="star" class="star" disabled>
                 </div>
                 <div class="modalInfo">
-                    <span class="modalTitle" id="reviewField">리뷰 내용</span>
-                    <input type="text" placeholder="업종" disabled id="review_content" class="review_content">
+                    <span class="modalTitle">리뷰내용</span>
+                    <div id="review_content" class="review_content" disabled></div>
                 </div>
                 <div class="modalInfo">
                     <span class="modalTitle">작성일자</span>
-                    <input type="text" placeholder="연락처" disabled id="review_content" class="review_content">
+                    <input type="text" placeholder="작성일자" disabled id="write_date" class="write_date">
                 </div>
                 <div class="modalInfo">
                     <span class="modalTitle">수정일자</span>
-                    <input type="text" placeholder="주소" disabled id="modified_date" class="modified_date">
+                    <input type="text" placeholder="수정일자없음" disabled id="modified_date" class="modified_date">
                 </div>
                 <div class="modalInfo">
-                    <span class="modalTitle"> 리뷰번호</span><input
-                        type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
+                    <span class="modalTitle">리뷰번호</span>
+                    <input type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">
                 </div>
+
                 <div class="btns">
-                    <button type="button" id="deleteReview">삭제</button>
-                    <button type="button" id="privateReview">비공개</button>
-                    <button type="button" id="openReview">공개</button>
-                </div>
+                    <button type="button" id="deleteReview" class="deli_btn">삭제</button>
+                    <button type="button" id="privateReview" class="deli_btn">비공개</button>
+                    <button type="button" id="openReview" class="deli_btn">공개</button>
                 </div>
             </div>
         </div>
 
-
-
-
-
-
-
+        <%--        <div class="modal">--%>
+        <%--            <div class="modal_content">--%>
+        <%--                <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle">작성자</span>--%>
+        <%--                    <input type="text" placeholder="작성자" disabled id="writer" class="writer">--%>
+        <%--                </div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle">상호명</span>--%>
+        <%--                    <input type="text" placeholder="상호명" disabled id="store_name" class="store_name">--%>
+        <%--                </div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle">별점</span>--%>
+        <%--                    <input type="text" placeholder="별점" disabled id="star" class="star">--%>
+        <%--                </div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle" id="reviewField">리뷰 내용</span>--%>
+        <%--                    <input type="text" placeholder="업종" disabled id="review_content" class="review_content">--%>
+        <%--                </div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle">작성일자</span>--%>
+        <%--                    <input type="text" placeholder="연락처" disabled id="review_content" class="review_content">--%>
+        <%--                </div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle">수정일자</span>--%>
+        <%--                    <input type="text" placeholder="주소" disabled id="modified_date" class="modified_date">--%>
+        <%--                </div>--%>
+        <%--                <div class="modalInfo">--%>
+        <%--                    <span class="modalTitle"> 리뷰번호</span><input--%>
+        <%--                        type="text" placeholder="리뷰번호" id="rseq" class="rseq" name="rev_seq">--%>
+        <%--                </div>--%>
+        <%--                <div class="btns">--%>
+        <%--                    <button type="button" id="deleteReview">삭제</button>--%>
+        <%--                    <button type="button" id="privateReview">비공개</button>--%>
+        <%--                    <button type="button" id="openReview">공개</button>--%>
+        <%--                </div>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
 
     </form>

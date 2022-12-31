@@ -28,16 +28,12 @@ import java.util.Map;
 @RequestMapping("/owner/menu/add")
 public class MenuAddController {
 
-
-
     private final HttpSession session;
-
     private  final OwnerMenuService ownerMenuService;
 
     @RequestMapping("")
-    public String toMenuAdd(int store_seq, Model model){
 
-
+    public String toMenuAdd(Model model, Integer store_seq){
 
         model.addAttribute("store_seq", store_seq);
         return "/owner/menuAdd";

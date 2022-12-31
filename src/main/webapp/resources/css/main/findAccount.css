@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+* {font-family:'Pretendard-Regular'}
 body{background-color: #F8F5F2}
 #findAccount *{box-sizing: border-box;}
 #findAccount .container{
     width: 360px;
-    height: 800px;
-    border: 1px solid gray;
+    text-align: center;
     margin: auto;
+    padding-top: 50px;
 }
 
 #findAccount .titleBox{
@@ -13,7 +20,6 @@ body{background-color: #F8F5F2}
     text-align: center;
     font-size: 24px;
     line-height: 75px;
-    margin-top: 50px;
 }
 
 #findAccount .choiceBox{
@@ -52,16 +58,10 @@ body{background-color: #F8F5F2}
     border-width: 1px;
     outline: none;
 }
-/*#findAccount #findEmailBox > #phone_certi_btn{*/
-/*    width: 100px;*/
-/*    height: 35px;*/
-/*    font-size: 15px;*/
-/*    border-radius: 7px;*/
-/*    border-width: 1px;*/
-/*}*/
+
 #findAccount #findEmailBox > p{
-    margin-left: 30px;
     text-align: left;
+    padding-left: 10px;
     font-size: 14px;
     line-height: 30px;
 }
@@ -81,15 +81,88 @@ body{background-color: #F8F5F2}
     border-radius: 7px;
     border-width: 1px;
 }
-#findAccount #phone_confirm_box > #phoneCountBox{
-    width: 50px;
-    height: 10px;
-    position: relative;
-    left: 170px;
-    top: -25px;
-    font-size: 14px;
-    color: #e84c4f;
+
+
+#findAccount .count{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 13px;
+    color: #666666;
 }
+#findAccount #phone_count{color: #FF0000;}
+
+#findAccount .emailResultBox{
+    width: 100%;
+    text-align: left;
+    border: 3px solid #e84c4f;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px 1px #9f1f20;
+    padding: 7px;
+    border-radius: 7px;
+    margin-top: 25px;
+}
+#findAccount .emailIcon{
+    font-size: 14px;
+    color: #645DAF;
+}
+#findAccount .signUpIcon{
+    font-size: 12px;
+    color: #3a93bb;
+}
+#findAccount .emailResult, #findAccount .signUpDateSpan{
+    margin-left: 5px;
+}
+
+
+#findAccount #findPassWordBox{
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+#findAccount #findPassWordBox > p{
+    text-align: left;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 30px;
+}
+#findAccount .pw_count{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 13px;
+    color: #666666;
+}
+#findAccount #pw_phone_count{color: #FF0000;}
+
+#findAccount .passWordResultBox{
+    width: 100%;
+    text-align: left;
+    border: 3px solid #e84c4f;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px 1px #9f1f20;
+    padding: 7px;
+    border-radius: 7px;
+    margin-top: 25px;
+}
+#findAccount .passWordDiv, #findAccount .temporaryDiv{
+    width: 100%;
+    text-align: center;
+}
+#findAccount .passWordResult{
+    font-size: 14px;
+    font-weight: bold;
+}
+#findAccount .temporarySpan{
+    font-weight: bold;
+    color: #3e4462;
+}
+
+
 
 
 
@@ -103,4 +176,58 @@ body{background-color: #F8F5F2}
 }
 #findAccount a:visited{
     color: unset;
+}
+
+/* BUTTON CSS */
+.deli_btn {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 15px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+.deli_btn:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.deli_btn:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+.deli_btn:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.deli_btn:focus {
+    outline: 1px transparent;
+}
+
+.deli_btn:before {
+    display: none;
+}
+
+.deli_btn::-webkit-details-marker {
+    display: none;
 }

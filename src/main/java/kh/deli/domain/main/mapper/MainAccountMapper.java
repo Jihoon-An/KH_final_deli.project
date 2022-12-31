@@ -46,8 +46,8 @@ public interface MainAccountMapper {
     @Select("select acc_type from account where acc_seq=#{acc_seq}")
     String selectType (int acc_seq);
 
-    @Select("SELECT ACC_EMAIL FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ WHERE M.MEM_PHONE = #{mem_phone}")
-    List<String> findEmailByPhoneNumber(@Param("mem_phone") String phoneNumber);
+    @Select("SELECT * FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ WHERE M.MEM_PHONE = #{mem_phone}")
+    List<AccountDTO> findAccountByPhoneNumber(@Param("mem_phone") String phoneNumber);
 
     @Select("SELECT A.ACC_SEQ " +
             "FROM MEMBER M JOIN ACCOUNT A ON M.ACC_SEQ = A.ACC_SEQ " +

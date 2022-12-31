@@ -1,3 +1,54 @@
+
+#review_mng .modal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+#review_mng .modal_content {
+    width: 400px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 74px 0 44px 0;
+    cursor: pointer;
+}
+
+#review_mng .closeBtn{
+    position: relative;
+    bottom: 40px;
+    left: 155px
+}
+
+#review_mng .modalInfo{
+    margin: 5px 50px 5px 50px;
+    text-align: left;
+}
+#review_mng .modalInfo>input{
+    width: 185px;
+    border: none;
+    background: none;
+}
+
+#review_mng .modalTitle{
+    display: inline-block;
+    padding-left: 15px;
+    width: 110px;
+    font-weight: bold;
+}
+
+#review_mng .btns{
+    margin-top: 20px;
+}
+
 /*#review_mng .modal {*/
 /*    position: absolute;*/
 /*    width: 100%;*/
@@ -25,85 +76,88 @@
 /*    cursor: pointer;*/
 /*}*/
 
-/*#review_mng #reviewField {*/
+#review_mng #reviewField {
+    position: relative;
+    left: -93px;
+}
+
+#review_mng #review_content {
+    border: 1px solid black;
+    width: 270px;
+    height: 200px;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-y: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+#review_mng #myTable * {
+    cursor: pointer;
+}
+
+
+/*#review_mng #container{*/
 /*    position: relative;*/
-/*    left: -93px;*/
+/*    top: 80px;*/
 /*}*/
 
-/*#review_mng #review_content {*/
-/*    border: 1px solid black;*/
-/*    margin: auto;*/
-/*    width: 250px;*/
-/*}*/
-
-/*#review_mng #myTable * {*/
+/*#adminStore #myTable{*/
 /*    cursor: pointer;*/
 /*}*/
 
-#review_mng #container{
-    position: relative;
-    top: 80px;
-}
+/*#adminStore #myTable_info,#myTable_paginate{*/
+/*    position: relative;*/
+/*    top: 20px;*/
+/*}*/
+/*#adminStore #myTable_filter,#myTable_length{*/
+/*    position: relative;*/
+/*    bottom: 20px;*/
+/*}*/
 
-#adminStore #myTable{
-    cursor: pointer;
-}
+/*#adminStore .modal {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgba(0, 0, 0, 0.8);*/
+/*    display: none;*/
+/*}*/
 
-#adminStore #myTable_info,#myTable_paginate{
-    position: relative;
-    top: 20px;
-}
-#adminStore #myTable_filter,#myTable_length{
-    position: relative;
-    bottom: 20px;
-}
+/*#adminStore .modal_content {*/
+/*    width: 400px;*/
+/*    height: auto;*/
+/*    background: #fff;*/
+/*    border-radius: 10px;*/
+/*    position: relative;*/
+/*    top: 40%;*/
+/*    left: 50%;*/
+/*    margin-top: -150px;*/
+/*    margin-left: -200px;*/
+/*    text-align: center;*/
+/*    box-sizing: border-box;*/
+/*    padding: 74px 0;*/
+/*    cursor: pointer;*/
+/*}*/
 
-#adminStore .modal {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-}
+/*#adminStore .closeBtn{*/
+/*    position: relative;*/
+/*    bottom: 40px;*/
+/*    left: 155px*/
+/*}*/
 
-#adminStore .modal_content {
-    width: 400px;
-    height: auto;
-    background: #fff;
-    border-radius: 10px;
-    position: relative;
-    top: 40%;
-    left: 50%;
-    margin-top: -150px;
-    margin-left: -200px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 74px 0;
-    cursor: pointer;
-}
+/*#adminStore .modalInfo{*/
+/*    position: relative;*/
+/*    left: 50px;*/
+/*    text-align: left;*/
+/*}*/
+/*#adminStore .modalInfo>input{*/
+/*    border: none;*/
+/*    background: none;*/
+/*}*/
 
-#adminStore .closeBtn{
-    position: relative;
-    bottom: 40px;
-    left: 155px
-}
+/*#adminStore .modalTitle{*/
+/*    display: inline-block;*/
+/*    width: 110px;*/
+/*    font-weight: bold;*/
+/*}*/
 
-#adminStore .modalInfo{
-    position: relative;
-    left: 50px;
-    text-align: left;
-}
-#adminStore .modalInfo>input{
-    border: none;
-    background: none;
-}
-
-#adminStore .modalTitle{
-    display: inline-block;
-    width: 110px;
-    font-weight: bold;
-}
-
-#adminStore .btnBox>button{
-    position: relative;
-    top: 15px;
-}

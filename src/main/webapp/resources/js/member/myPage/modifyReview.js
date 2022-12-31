@@ -11,49 +11,51 @@ $("#backBtn").on("click", function () {
 })
 
 //지우기
-$(".del_img_btn").on("click", function () {
+$(".del_img_btn").on("click", del_img_btn_event)
+function del_img_btn_event() {
     let rev_img_div = $(this).closest(".review_img_div");
 
-
     del_list.push(rev_img_div.find(".img_name").val());
-    $("#del_files_json").val(JSON.stringify(del_list));
     console.log(del_list);
-    rev_img_div.remove();
-})
+
+    $("#del_files_json").val(JSON.stringify(del_list));
+
+    $(rev_img_div).remove();
+}
 
 // 파일 업로드시 파일명 삽입 기능
-$('#revImgBtn').on('change', function () {
-    filesTest($(this)[0]);
-})
-
-function filesTest(element) {  // 값이 변경되면
-    const files = element.files;
-
-
-    for (const file of files) {
-        var filename = file.name.split('/').pop().split('\\').pop();
-        console.log(filename);
-        var ext = filename.split('.').pop().toLowerCase(); //확장자분리
-        //아래 확장자가 있는지 체크
-
-        if ($.inArray(ext, ['jpg', 'jpeg', 'gif', 'png', 'pdf']) == -1) {
-            Swal.fire({
-                icon: 'error',
-                title: '파일 형식 오류',
-                text: 'jpg, jpeg, gif, png, pdf 파일만 업로드할 수 있습니다.',
-            })
-            element.value = "";
-
-            return;
-        } else {
-            new_name_list.push(filename);
-        }
-    }
-
-    new_name_list.forEach((new_name) => {
-        $('#new_file_name_list').append(new_name);
-    });
-};
+// $('#revImgBtn').on('change', function () {
+//     filesTest($(this)[0]);
+// })
+//
+// function filesTest(element) {  // 값이 변경되면
+//     const files = element.files;
+//
+//
+//     for (const file of files) {
+//         var filename = file.name.split('/').pop().split('\\').pop();
+//         console.log(filename);
+//         var ext = filename.split('.').pop().toLowerCase(); //확장자분리
+//         //아래 확장자가 있는지 체크
+//
+//         if ($.inArray(ext, ['jpg', 'jpeg', 'gif', 'png', 'pdf']) == -1) {
+//             Swal.fire({
+//                 icon: 'error',
+//                 title: '파일 형식 오류',
+//                 text: 'jpg, jpeg, gif, png, pdf 파일만 업로드할 수 있습니다.',
+//             })
+//             element.value = "";
+//
+//             return;
+//         } else {
+//             new_name_list.push(filename);
+//         }
+//     }
+//
+//     new_name_list.forEach((new_name) => {
+//         $('#new_file_name_list').append(new_name);
+//     });
+// };
 
 // $(function () {
 //     let ext = $("#revImgBtn").val().split(".").pop().toLowerCase();
@@ -77,3 +79,45 @@ function filesTest(element) {  // 값이 변경되면
 //     // }
 //     fileToBase64(document.getElementById("revImgBtn").files[0]);
 // })
+
+
+
+$('#revImgBtn').on('change', handleImgFileSelect);
+
+//이미지 미리보기
+function handleImgFileSelect(e) {
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+    var reg = /(.*?)\/(jpg|jpeg|png|bmp|pdf|gif)$/;
+    filesArr.forEach(function (f) {
+        if (!f.type.match(reg)) {
+            Swal.fire({
+                icon: 'error',
+                title: '이미지 업로드 불가',
+                text: '이미지 파일만 업로드 가능합니다.',
+                confirmButtonText: '확인'
+            })
+            return;
+        }
+        sel_file = f;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#rev_imgs_area").append(
+                $("<div class='review_img_div'>").append(
+                    $("<img style='width: 200px; height: 200px;'>")
+                        .attr("src", e.target.result)
+                ).append(
+                    $("<input type='hidden' class='img_name'>")
+                        .val(f.name)
+                ).append(
+                    $("<button type='button' class='del_img_btn'>")
+                        .click(function () {
+                            $(this).closest(".review_img_div").remove();
+                        })
+                        .text("지우기")
+                )
+            );
+        }
+        reader.readAsDataURL(f);
+    });
+}

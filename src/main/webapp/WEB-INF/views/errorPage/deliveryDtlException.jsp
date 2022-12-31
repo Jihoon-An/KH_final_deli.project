@@ -33,7 +33,7 @@
       color: #fff !important;
       padding: 10px 20px;
       background: #E84C4F;
-      margin: 20px 0;
+      margin: 15px 0;
       display: inline-block;
     }
     .contant_box_404 {
@@ -45,13 +45,13 @@
 <section class="page_404">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <div class="col-sm-10 col-sm-offset-1 text-center">
-          <div class="four_zero_four_bg">
+      <div class="col-sm-12 text-center">
+        <div class="col-sm-10 col-sm-offset-1 text-center" style="margin: 0 auto">
+          <div class="four_zero_four_bg" style="margin: 0 auto">
             <!-- <h1 class="text-center">404</h1> -->
           </div>
 
-          <div class="contant_box_404">
+          <div class="contant_box_404" style="margin: 0 auto">
             <h3 class="h2">딜리 배달 영수증에 접근 권한이 없습니다</h3>
             <a href="/" class="link_404">
               딜리 메인으로 가기

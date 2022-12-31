@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="store_detail">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-
     <div class="fieldBox" style="margin-bottom: -10px;">
-        <div id="menu"><a onclick="loadCode1();" style="font-weight: bold; font-size: 1.15em; float: left; cursor: pointer;">메뉴</a></div>
-        <div id="info"><a onclick="loadCode2();" style="float: left; cursor: pointer;" id="to_info">정보</a></div>
-        <div id="review"><a onclick="loadCode3();" style="float: left; cursor: pointer;">리뷰</a></div>
+        <div id="menu"><a onclick="loadCode1();"
+                          style="font-weight: bold; font-size: 1.15em; cursor: pointer;">메뉴</a></div>
+        <div id="info"><a onclick="loadCode2();" style="cursor: pointer;" id="to_info">정보</a></div>
+        <div id="review"><a onclick="loadCode3();" style="cursor: pointer;">리뷰</a></div>
     </div>
 
     <script>
@@ -32,21 +32,18 @@
                 <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
                 <%--                                    <div>메뉴명 : ${i}</div>--%>
                 <div class="filter_box">
-                    <div style="margin: 0 auto;" class="d-inline-flex">
+                    <div style="margin: 0 auto;" class="d-flex flex-row">
                         <c:forEach var="mGroup" items="${menuGroup}" varStatus="num">
-                            <a onclick="scrollMove()" style="text-decoration: none; color: black;">
+                            <a onclick="scrollMove${num.count}()" style="text-decoration: none; color: black;">
                                 <div class="filter menuCategory" style="margin-right: 7px">${mGroup}</div>
                             </a>
                             <script>
-                                function scrollMove() {
+                                function scrollMove${num.count}() {
                                     let location = document.querySelector("#bottom_menu_group${num.count}").offsetTop;
                                     window.scrollTo({top: location - 50, behavior: "smooth"});
                                 };
                             </script>
                         </c:forEach>
-                            <%--임시--%>
-                        <div class="filter menuCategory" style="margin-right: 7px">aaaaaaaaaa</div>
-                        <div class="filter menuCategory" style="margin-right: 7px">ssssssssssss</div>
                     </div>
                 </div>
             </c:when>
@@ -102,10 +99,11 @@
                                                         <div class="menu">
                                                             <div class="yyyy">
                                                                 <div class="menu_name">${menuList.menu_name}</div>
-                                                                <div class="menu_intro">
-                                                                    ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddsssssssssssss${menuList.menu_intro}
+                                                                <div class="menu_intro">${menuList.menu_intro}
                                                                 </div>
-                                                                <div class="menu_price">${menuList.menu_price}원</div>
+                                                                <div class="menu_price">
+                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="menu_img">
@@ -120,9 +118,11 @@
                                                                 <div class="menu_name">${menuList.menu_name}</div>
                                                                 <div id="menu_intro"
                                                                      style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
-                                                                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaddddddsssssssssssss${menuList.menu_intro}
+                                                                        ${menuList.menu_intro}
                                                                 </div>
-                                                                <div>${menuList.menu_price}원</div>
+                                                                <div class="menu_price">
+                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </c:otherwise>
