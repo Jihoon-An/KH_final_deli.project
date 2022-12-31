@@ -41,3 +41,7 @@ $(".display_toggle").click(function () {
 $(".name").click(function () {
     $(this).closest(".store").find(".frm").attr("action", "/owner/store/mng").submit();
 });
+
+function notFound(){
+    Swal.fire("기능이 완성되지 않았습니다..ㅠㅠ");
+}
