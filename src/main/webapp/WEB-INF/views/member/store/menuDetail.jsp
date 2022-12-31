@@ -30,8 +30,9 @@
         <div class="option_group">${optionMap.key}</div>
         <div class="option_select">
             <c:forEach var="option" items="${optionMap.value}">
+                <input type="hidden" class="required" value="${option.option_required}">
                 <c:choose>
-                    <c:when test="${option.option_multiple eq 'Y'}">
+                    <c:when test="${option.option_multiple eq 'N'}">
                         <div class="option">
                             <input class="option_check" name="${optionMap.key}" type="radio">
 
