@@ -58,9 +58,6 @@
                                     };
                                 </script>
                             </c:forEach>
-                                <%--임시--%>
-                            <div class="filter menuCategory" style="margin-right: 7px">aaaaaaaaaa</div>
-                            <div class="filter menuCategory" style="margin-right: 7px">ssssssssssss</div>
                         </div>
                     </div>
                 </c:when>
@@ -116,8 +113,7 @@
                                                             <div class="menu">
                                                                 <div class="yyyy">
                                                                     <div class="menu_name">${menuList.menu_name}</div>
-                                                                    <div class="menu_intro">
-                                                                        ssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddsssssssssssss${menuList.menu_intro}
+                                                                    <div class="menu_intro">${menuList.menu_intro}
                                                                     </div>
                                                                     <div class="menu_price">${menuList.menu_price}원</div>
                                                                 </div>
@@ -134,7 +130,7 @@
                                                                     <div class="menu_name">${menuList.menu_name}</div>
                                                                     <div id="menu_intro"
                                                                          style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
-                                                                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaddddddsssssssssssss${menuList.menu_intro}
+                                                                        ${menuList.menu_intro}
                                                                     </div>
                                                                     <div>${menuList.menu_price}원</div>
                                                                 </div>
