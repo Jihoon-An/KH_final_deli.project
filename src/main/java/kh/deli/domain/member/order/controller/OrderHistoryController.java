@@ -1,6 +1,7 @@
 package kh.deli.domain.member.order.controller;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.member.order.dto.OrderHistoryDTO;
@@ -14,15 +15,19 @@ import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -100,20 +105,73 @@ public class OrderHistoryController {
         OrdersDTO ordersDTO = orderOrdersService.findOrdersBySeq(order_seq);
        String menu_list = ordersDTO.getMenu_list();
 
-           //ordersDTO.
 
 
-        //리스트를 풀어서
+//               for(int i = 0; i<ordersDTO.getMenu_list().length(); i++){
+//                   ordersDTO.getMenu_list(i);
+//               }
 
-        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
-        List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+       JSONParser jsonParser = new JSONParser();
+        JSONArray jsonArr = (JSONArray) jsonParser.parse(ordersDTO.getMenu_list());
 
-        List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
+            List<String> menuNameList  = new ArrayList<>();
+
+        if (jsonArr.size() > 0) {
+
+            for (Integer i = 0; i < jsonArr.size(); i++) {
+                JSONObject jsonObj = (JSONObject) jsonArr.get(i);
+              String storeSeq = jsonObj.get("storeSeq").toString();
+                String menuSeq = jsonObj.get("menuSeq").toString();
+                String optionSeqList = jsonObj.get("optionSeqList").toString();
+                String count = jsonObj.get("count").toString();
+                String price = jsonObj.get("price").toString();
+
+                menuNameList.add(storeSeq);
+                menuNameList.add(menuSeq);
+                menuNameList.add(optionSeqList);
+                menuNameList.add(count);
+                menuNameList.add(price);
+          }
+        }
+
+//        StoreBasketMenuRequestDTO s= new StoreBasketMenuRequestDTO(menuNameList.get(0),menuNameList.get(1),menuNameList.get(2), menuNameList.get(3), menuNameList.get(4));
+//
+        for(int i = 0; i<menuNameList.size(); i++){
+
+            storeBasketService.setBasketInSession(session, menuNameList.get(0) );
+       }
+
+        storeBasketService.setBasketInSession(session, jsonArr.toJSONString() );
+        //ystem.out.println(menuString);
+//        Menu[] menu;
+//
+//        List<Menu> menuList = Arrays.asList(ObjectMapper.readValue(menu_list, menu.class));
+//        //리스트를 풀어서
+
+//        Type type2 = new TypeToken<List<StoreBasketMenuRequestDTO>>(){}.getType();
+//        List<StoreBasketMenuRequestDTO> basket = gson.fromJson(menu_list, type2);
+
+
+        //List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
+
+    //    List<BasketMenu> basketMenu = storeBasketService.basketMenuListDtoToObject(basket);
 //        basketMenu.get(0).getMenu().
 
-        //storeBasketService.setBasketInSession(session,menu_list);
-       // System.out.println(storeSeq);
+       // basketMenu.get().
+
+    //
+        // System.out.println(storeSeq);
 
         return "redirect:/basket";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("reviewChk")
+    public boolean isExistReview(int order_seq){
+       boolean result=  orderHistoryService.isExistReivew(order_seq);
+
+        System.out.println(result+"리뷰체킹");
+        return result;
     }
 }
