@@ -80,15 +80,8 @@
 
                                     <p class="meinfo">
 
-<%--                                        <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="m_name">--%>
-<%--                                        <input type="hidden" value="${menu_list[status.index].count}" class="m_count">--%>
-<%--                                        <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="m_price">--%>
-<%--                                        <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="m_store_seq">--%>
-<%--                                            &lt;%&ndash;                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">&ndash;%&gt;--%>
-<%--                                        <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="m_menu_seq">--%>
 
-                                            ${menu_list[status.index].menu.store_seq}
-                                            ${menu_list[status.index].menu.menu_price}
+
 
                                             ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
 
@@ -156,26 +149,6 @@
 
     <hr class="mt90">
 </main>
-<%--<script>--%>
-<%--    var countt= $(".reOrder").closest(".box3").find(".m_count").val()--%>
-<%--    var selec_option = new Array();--%>
-<%--    var one_pprice = $(".reOrder").closest(".box3").find(".m_price").val()--%>
-
-<%--    console.log(one_pprice);--%>
-<%--    console.log(countt);--%>
-<%--    console.log(selec_option);--%>
-<%--    class BasketMenuDTOo{--%>
-<%--        constructor(options, count, price) {--%>
-<%--            this.storeSeq = $(".reOrder").closest(".box3").find(".m_store_seq").val()--%>
-<%--            this.menuSeq = $(".reOrder").closest(".box3").find(".m_menu_seq").val()--%>
-<%--            this.optionSeqList = options;--%>
-<%--            this.count = countt;--%>
-<%--            this.price = one_pprice;--%>
-<%--        }--%>
-<%--    }--%>
-
-
-<%--</script>--%>
 
 <script src="/resources/js/member/order/orderHistoryYoo.js"></script>
 </body>
