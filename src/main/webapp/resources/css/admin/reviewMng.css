@@ -18,7 +18,7 @@
     margin-left: -200px;
     text-align: center;
     box-sizing: border-box;
-    padding: 74px 0;
+    padding: 74px 0 44px 0;
     cursor: pointer;
 }
 
@@ -29,21 +29,25 @@
 }
 
 #review_mng .modalInfo{
-    position: relative;
-    left: 50px;
+    margin: 5px 50px 5px 50px;
     text-align: left;
 }
 #review_mng .modalInfo>input{
+    width: 185px;
     border: none;
     background: none;
 }
 
 #review_mng .modalTitle{
     display: inline-block;
+    padding-left: 15px;
     width: 110px;
     font-weight: bold;
 }
 
+#review_mng .btns{
+    margin-top: 20px;
+}
 
 /*#review_mng .modal {*/
 /*    position: absolute;*/
@@ -79,8 +83,14 @@
 
 #review_mng #review_content {
     border: 1px solid black;
-    margin: auto;
-    width: 250px;
+    width: 270px;
+    height: 200px;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-y: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 #review_mng #myTable * {
