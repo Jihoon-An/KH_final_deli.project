@@ -1,6 +1,7 @@
 package kh.deli.global.util.mailSender;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -9,7 +10,8 @@ import javax.mail.MessagingException;
 @AllArgsConstructor
 public class MailService {
 
-    private static final String FROM_ADDRESS = "abg1418@naver.com";
+    @Value("${spring.mail.username}")
+    private final String FROM_ADDRESS;
 
     private final MailHandler mailHandler;
 
