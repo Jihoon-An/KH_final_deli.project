@@ -101,7 +101,9 @@
                                                                 <div class="menu_name">${menuList.menu_name}</div>
                                                                 <div class="menu_intro">${menuList.menu_intro}
                                                                 </div>
-                                                                <div class="menu_price">${menuList.menu_price}원</div>
+                                                                <div class="menu_price">
+                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="menu_img">
@@ -118,7 +120,9 @@
                                                                      style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
                                                                         ${menuList.menu_intro}
                                                                 </div>
-                                                                <div>${menuList.menu_price}원</div>
+                                                                <div class="menu_price">
+                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </c:otherwise>

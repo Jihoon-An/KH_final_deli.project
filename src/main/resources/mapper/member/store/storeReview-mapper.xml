@@ -45,6 +45,7 @@
                 on r.ACC_SEQ=o.ACC_SEQ
                 WHERE o.ORDER_SEQ=r.ORDER_SEQ
                 AND r.STORE_SEQ=#{store_seq} AND REV_DISPLAY='Y'
+            order by 2 desc
         </select>
 
 </mapper>
