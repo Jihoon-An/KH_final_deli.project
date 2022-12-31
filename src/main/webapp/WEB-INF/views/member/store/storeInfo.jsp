@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div id="store_info">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
@@ -47,7 +47,7 @@
                 </c:if>
                 <c:if test="${fn:length(storeInfoDTO.store_phone)>=10}">
                     <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
-                             <div class="detail_contents" id="store_phone">0<c:out
+                    <div class="detail_contents" id="store_phone">0<c:out
                             value="${fn:replace(phoneNo, ',', '-')}"/></div>
                 </c:if>
             </div>
@@ -198,7 +198,10 @@
 
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
-                <div><c:out value="${fn:substring(ownerInfoDTO.owner_num,0,3)}" />-<c:out value="${fn:substring(ownerInfoDTO.owner_num,4,6)}" />-<c:out value="${fn:substring(ownerInfoDTO.owner_num,6,11)}" />-</div>
+                <div><c:out value="${fn:substring(ownerInfoDTO.owner_num,0,3)}"/>-<c:out
+                        value="${fn:substring(ownerInfoDTO.owner_num,4,6)}"/>-<c:out
+                        value="${fn:substring(ownerInfoDTO.owner_num,6,11)}"/>-
+                </div>
             </div>
         </div>
         <script>
