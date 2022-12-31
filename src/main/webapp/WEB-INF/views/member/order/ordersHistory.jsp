@@ -80,12 +80,12 @@
 
                                     <p class="meinfo">
 
-                                        <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="m_name">
-                                        <input type="hidden" value="${menu_list[status.index].count}" class="m_count">
-                                        <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="m_price">
-                                        <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="m_store_seq">
-                                            <%--                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">--%>
-                                        <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="m_menu_seq">
+<%--                                        <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="m_name">--%>
+<%--                                        <input type="hidden" value="${menu_list[status.index].count}" class="m_count">--%>
+<%--                                        <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="m_price">--%>
+<%--                                        <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="m_store_seq">--%>
+<%--                                            &lt;%&ndash;                                        <input type="hidden" value="${order_list.store_seq}" class="m_store_seq">&ndash;%&gt;--%>
+<%--                                        <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="m_menu_seq">--%>
 
                                             ${menu_list[status.index].menu.store_seq}
                                             ${menu_list[status.index].menu.menu_price}
