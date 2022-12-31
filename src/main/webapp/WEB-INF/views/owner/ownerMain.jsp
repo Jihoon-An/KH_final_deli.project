@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="/resources/css/owner/ownerMain.css" type="text/css">
 
+    <%--  chart.js cdn  --%>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 
@@ -33,7 +36,7 @@
         </div>
         <hr>
         <div class="infoBox">
-            <div>하루 총 매출액 : ${total}</div>
+            <div>하루 총 매출액 : <fmt:formatNumber value="${total}" pattern="#,###"/></div>
             <c:choose>
                 <c:when test="${not empty dslist}">
                     <c:forEach var="j" items="${dslist}">
@@ -42,7 +45,7 @@
                                 <hr>
                                 <div>식당번호 : ${j.store_seq}</div>
                                 <div>식당이름 : ${j.store_name}</div>
-                                <div>매출액 : ${j.daily_sales}</div>
+                                <div>매출액 : <fmt:formatNumber value="${j.daily_sales}" pattern="#,###"/></div>
                             </c:when>
                         </c:choose>
                     </c:forEach>
@@ -81,6 +84,9 @@
             <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
         </div>
     </div>
+
+    <hr>
+    <div style="width: 800px;"><canvas id="myChart"></canvas></div>
 
     <script src="/resources/js/owner/ownerMain.js"></script>
 </main>
