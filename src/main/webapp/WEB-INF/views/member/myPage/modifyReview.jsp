@@ -81,13 +81,6 @@
                                 }.getType();
                                 request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                             %>
-                            <%--                        <c:forEach var="sysName" items="${review_img_list}">--%>
-                            <%--                            <div class="review_img_div">--%>
-                            <%--                                <img src="/resources/img/review/${sysName}">--%>
-                            <%--                                <input type="hidden" class="img_name" value="${sys
-                            <%--                                <button type="button" class="del_img_btn">지우기</but
-                            <%--                            </div>--%>
-                            <%--                        </c:forEach>--%>
                             <c:forEach var="revImg" items="${review_img_list}">
                                 <div class="review_img_div" id="preview">
                                     <img src="/resources/img/review/${revImg}" style="width: 300px; height: 200px; margin-left: 10px;">
