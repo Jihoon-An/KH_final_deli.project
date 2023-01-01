@@ -88,7 +88,7 @@ function imgPreview(){
                     $("<input type='hidden' class='img_name'>")
                         .val(f.name)
                 ).append(
-                    $("<button type='button' onclick='del_img_btn(this)'>").text("지우기")
+                    $("<button type='button' onclick='del_img_btn(this)' class='deli_btn'>").text("지우기")
                 )
             )
             console.log(fileArr.findIndex(i=>i.name==f.name));
