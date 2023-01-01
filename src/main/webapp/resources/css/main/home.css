@@ -86,3 +86,8 @@ body{
 #home .clientSignUpLinkBox{
     margin-top: 35px;
 }
+#home .link{
+    color: #3e4462;
+    font-weight: bold;
+    text-decoration: none;
+}

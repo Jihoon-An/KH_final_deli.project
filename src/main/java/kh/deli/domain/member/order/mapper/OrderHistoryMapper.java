@@ -3,6 +3,7 @@ package kh.deli.domain.member.order.mapper;
 import kh.deli.domain.member.order.dto.OrderHistoryDTO;
 import kh.deli.global.entity.OrdersDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,9 @@ public interface OrderHistoryMapper {
 
     @Select("select * from orders where acc_seq = #{acc_seq}")
     List<OrdersDTO> findOrdersByAccSeq(int acc_seq);
+
+
+    @Select("select count(*) from review where order_seq = #{order_seq}")
+     int isExistReivew(@Param("order_seq") int order_seq);
+
 }

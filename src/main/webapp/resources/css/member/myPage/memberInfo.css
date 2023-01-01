@@ -1,27 +1,12 @@
 #memberInfo *{box-sizing: border-box;}
 #memberInfo .container{
-    width: 375px;
-    height: 800px;
-    border: 1px solid gray;
+    width: 360px;
     margin: auto;
+    padding-top: 40px;
+    padding-bottom: 150px;
+    overflow: hidden;
 }
-#memberInfo .topBox{
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 25px;
-}
-#memberInfo .topBox > .topLeftBox{
-    width: 50px;
-    height: 50px;
-    float: left;
-}
-#memberInfo .topBox > .topRightBox{
-    width: 50px;
-    height: 50px;
-    float: right;
-}
+
 #memberInfo .titleBox{
     width: 100%;
     height: 75px;
@@ -39,6 +24,8 @@
     width: 250px;
     height: 40px;
     font-size: 1.1em;
+    border-radius: 5px;
+    border: 1px solid #cacaca;
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -47,23 +34,42 @@
     right: 30px;
     cursor: pointer;
 }
+#memberInfo .nameBox > #nameRemoveLabel:hover{
+    scale: 1.2;
+}
 
 #memberInfo .infoBox{
-    margin-top: 40px;
+    margin-top: 25px;
+    float: left;
 }
 #memberInfo .infoTitleBox{
-    margin-left: 20px;
-    width: 100px;
-    height: 50px;
+    margin-left: 15px;
+    width: 80px;
+    height: 30px;
     float: left;
 }
 #memberInfo .infoInputBox{
-    width: 250px;
-    height: 50px;
+    width: 220px;
+    height: 30px;
+    margin-left: 10px;
     float: left;
 }
 
+#memberInfo .infoInputBox > .emailIconBox{
+    float: left;
+    margin-top: 7px;
+}
+#memberInfo .infoInputBox > .emailSpanBox{
+    float: left;
+    margin-top: 4px;
+    margin-left: 5px;
+    margin-bottom: 50px;
+}
+
 #memberInfo .pwSpan{
+    font-size: 12px;
+}
+#memberInfo #pwCheckSpan{
     font-size: 12px;
 }
 
@@ -73,11 +79,10 @@
     width: 350px;
     height: 35px;
     float: left;
-    margin-left: 10px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 #memberInfo .buttonBox button{
-    width: 100%;
+    width: 335px;
     height: 100%;
     border-radius: 7px;
     border: none;
@@ -97,4 +102,32 @@
 }
 #memberInfo a:visited{
     color: unset;
+}
+#memberInfo #mem_phone{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 14px;
+    padding-left: 20px;
+}
+#memberInfo #phone_confirm_input{
+    padding-left: 20px;
+}
+#memberInfo #phone_msg{
+    font-size: 12px;
+}
+#memberInfo #count{
+    font-size: 12px;
+}
+#memberInfo #phone_count{
+    font-size: 12px;
+    color: #e84c4f;
+}
+#memberInfo .form-control{
+    height: 30px;
+}
+#memberInfo .deli_btn{
+    height: 30px;
+    font-size: 12px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

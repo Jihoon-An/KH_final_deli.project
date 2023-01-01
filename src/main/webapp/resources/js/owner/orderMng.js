@@ -1,7 +1,8 @@
 $(document).ready(function () {
     $('#order_table').DataTable(
         {
-            language: lang_kor //or lang_eng
+            language: lang_kor, //or lang_eng
+            ordering: false
         }
     );
 });

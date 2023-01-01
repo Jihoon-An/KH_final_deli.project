@@ -13,6 +13,14 @@
     margin-bottom: 30px;
     /*overflow: hidden;*/
 }
+
+#order_history #pageTitle{
+    height: 40px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 10px;
+    margin-bottom: 15px;
+}
 #order_history .box1{
     border-radius: 20px;
     width: 350px;
@@ -36,11 +44,12 @@
 #order_history .head_deli{
     margin-right: 15px;
     height: 100%;
-    padding-left: 3px;
+    padding-left: 20px;
+
 }
 #order_history .head_date{
-    margin-right: 10px;
-    padding-left: 3px;
+    margin-right: 30px;
+    padding-left: 22px;
 }
 #order_history .head_status{
     float:right;
@@ -54,16 +63,22 @@
     float: left;
 }
 #order_history .image-thumbnail {
-    width:100%;
-    height:100%;
-    object-fit:scale-down;
+    /*width:100%;*/
+    /*height:100%;*/
+    /*object-fit:scale-down;*/
+    margin-top: 8px;
+    width: 85px;
+    height: 85px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 10px;
 }
 #order_history .info{
     margin: 1px;
     width: 70%;
     height: 90px;
     /*float: left;*/
-
+    padding-left: 6px;
     overflow: hidden;
     text-align: left;
 
@@ -71,23 +86,26 @@
 
 
 
-#order_history .storename{
+#order_history .infohead{
     margin-left :2px;
-    /* font-size: 10px; */
+    height: 25px;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
 }
 .storeloca{
     /* font-size: 10px; */
 }
-#order_history p{
-    height: 10px;
-}
+
 #order_history .meinfo{
-     font-size: 11px;
-    line-height: 30px;
+     font-size: 13px;
+    padding-left: 3px;
+
+    line-height: 20px;
 }
 
 #order_history .infoFooter{
-    line-height: 30px;
+    line-height: 60px;
 
 
 

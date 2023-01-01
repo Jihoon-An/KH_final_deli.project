@@ -3,9 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<div id="store_info">
+<div id="store_info" style="margin-bottom: 80px;">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-
+    <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
     <div class="fieldBox" style="margin-bottom: -10px;">
         <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
         <div id="info"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;" id="to_info">정보</a></div>
@@ -68,13 +72,13 @@
                             </c:if>
                         </div>
 
-                        <div>화(${bsnsHours.get("thu").get("open")})
-                            <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('thu').get('open_time')}" var="registered"
+                        <div>화(${bsnsHours.get("tue").get("open")})
+                            <c:if test="${bsnsHours.get('tue').get('open') eq '영업일'}">
+                                <fmt:parseDate value="${bsnsHours.get('tue').get('open_time')}" var="registered"
                                                pattern="HH:mm"/>
                                 <fmt:formatDate value="${registered}" pattern="a h:mm"/>
                                 ~
-                                <fmt:parseDate value="${bsnsHours.get('thu').get('close_time')}" var="registered"
+                                <fmt:parseDate value="${bsnsHours.get('tue').get('close_time')}" var="registered"
                                                pattern="HH:mm"/>
                                 <fmt:formatDate value="${registered}" pattern="a h:mm"/>
                             </c:if>

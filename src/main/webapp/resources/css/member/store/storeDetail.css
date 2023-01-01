@@ -9,6 +9,7 @@
     min-height: 800px;
     padding-bottom: 20px;
 }
+
 #store_detail .header {
     overflow: hidden;
 }
@@ -54,7 +55,7 @@
 
 #store_detail .fieldBox {
     width: 95%;
-    /*margin: auto;*/
+    margin: auto;
     overflow: hidden;
     font-size: 17px;
 }
@@ -78,6 +79,31 @@
     font-weight: bold;
     line-height: 27px;
     margin-bottom: 5px;
+}
+
+#store_detail .contents {
+    font-size: 13px;
+}
+
+#store_detail .title {
+    float: left;
+    width: 35%;
+    font-size: 14px;
+}
+
+#store_detail .detail_contents {
+    font-size: 14px;
+    width: 65%;
+    display: inline-block;
+    text-align: left;
+}
+
+#store_detail .img {
+    width: 95px;
+    height: 95px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
 #store_detail .deliveryInfo {
@@ -203,7 +229,10 @@
     margin-top: 10px;
 }
 
-#store_detail .menu {padding-right: 10px;}
+#store_detail .menu {
+    padding-right: 10px;
+}
+
 #store_detail .menu_intro {
     white-space: nowrap;
     overflow: hidden;
@@ -211,14 +240,14 @@
     /*word-break: break-word;*/
 }
 
-#store_detail .menu_box{
+#store_detail .menu_box {
     width: 100%;
     line-height: 27px;
     border-radius: 20px;
     /*width: 350px;*/
     height: auto;
-    padding: 10px 20px 20px 20px;
-    margin-bottom: 10px;
+    padding: 10px 20px 10px 20px;
+    /*margin-bottom: 10px;*/
     background-color: #FFFFFF;
     font-size: 13px;
     box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
@@ -226,23 +255,27 @@
     overflow: hidden;
 }
 
-#store_detail .fa-star{
+#store_detail .fa-star {
     color: transparent;
     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 
 #store_detail .menu .yyyy {
-    color:black;
+    color: black;
     font-weight: normal;
     line-height: 35px;
 }
-#store_detail .menu_name{
+
+#store_detail .menu_name {
     font-size: 15px;
     font-weight: bold;
 }
 
 /*div{border: 1px solid black;}*/
-#store_detail .menu_info{overflow: hidden}
+#store_detail .menu_info {
+    margin-top: 5px;
+    overflow: hidden
+}
 
 /*찜*/
 store_detail button {
@@ -267,109 +300,6 @@ store_detail button {
     cursor: pointer;
 }
 
-/*div{border: 1px solid black;}*/
-
-/*#store_detail * {*/
-/*    box-sizing: border-box;*/
+/*div {*/
+/*    border: 1px solid black;*/
 /*}*/
-
-/*#store_detail .container {*/
-/*    width: 360px;*/
-/*    margin: auto;*/
-/*    padding-top: 40px;*/
-/*}*/
-
-/*#store_detail .header {*/
-/*    overflow: hidden;*/
-/*}*/
-
-/*#store_detail .header > div {*/
-/*    text-align: center;*/
-/*    width: 95%;*/
-/*    margin: auto;*/
-/*}*/
-
-/*#store_detail .header #storeName {*/
-/*    line-height: 70px;*/
-/*}*/
-
-/*#store_detail .header #star {*/
-/*    width: 95%;*/
-/*}*/
-
-/*#store_detail .header #reviewCount {*/
-/*  width: 95%;*/
-/*}*/
-
-/*#store_detail .header #storeInfo {*/
-/*   word-wrap: break-word;*/
-/*    margin-top: 10px;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*#store_detail .deliveryInfo {*/
-/*    width: 95%;*/
-/*}*/
-
-/*#store_detail .deliveryInfo div {*/
-/*    line-height: 27px;*/
-/*}*/
-
-/*#store_detail .fieldBox {*/
-/*    width: 95%;*/
-/*    margin: auto;*/
-/*    overflow: hidden;*/
-/*}*/
-
-/*#store_detail .fieldBox div {*/
-/*    float: left;*/
-/*    width: 33.33%;*/
-/*    height: 45px;*/
-/*    text-align: center;*/
-/*    line-height: 45px;*/
-/*    margin-top: 10px;*/
-/*}*/
-
-/*#store_detail .fieldBox div a {*/
-/*    text-decoration: none;*/
-/*    color: black;*/
-/*}*/
-/*#store_detail #menu{font-size: 1.3em; font-weight: bold;}*/
-/*#store_detail .deliveryInfo {*/
-/*    border-radius: 20px;*/
-/*    width: 350px;*/
-/*    height: 100px;*/
-/*    padding: 10px 20px 20px 20px;*/
-/*    margin-bottom: 10px;*/
-/*    background-color: #FFFFFF;*/
-/*    font-size: 13px;*/
-/*    box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);*/
-/*}*/
-/*!*별점*!*/
-/*#store_detail .fa-star{*/
-/*    color: transparent;*/
-/*    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);*/
-/*}*/
-
-/*#store_detail #storeName{*/
-/*    padding-left: 35px;*/
-/*}*/
-/*#store_detail #storeName,#store_detail #star{*/
-/*    text-align: center;*/
-/*}*/
-
-/*!*찜*!*/
-/*#store_detail .heartIcon {*/
-/*    text-shadow: 0 0 0 rgba(217, 216, 214, 0.99);*/
-/*    color: transparent;*/
-/*}*/
-
-/*#store_detail .heartIcon:hover {*/
-/*    cursor: pointer;*/
-/*}*/
-/*#store_detail button{border: none;}*/
-
-/*#store_detail div{border: 1px solid black;}*/
-
-/*!*메뉴*!*/
-/*#store_detail .contents{margin-top: 10px;}*/

@@ -1,38 +1,9 @@
 #ownerMain *{box-sizing: border-box;}
-/*#ownerMain div{border:1px solid black;}*/
-/*#ownerMain .leftbox{*/
-/*    float: left;*/
-/*    width: 20%;*/
-/*    border: 1px solid #3e4462;*/
-/*    height: 1000px;*/
-/*}*/
-
-/*#ownerMain .rightBox{*/
-/*    display: inline;*/
-/*    width: 80%;*/
-/*}*/
 
 #ownerMain .infoBox{
     background-color: cadetblue;
 }
 
-#ownerMain #fucking{
-    width: 275px;
-    height: fit-content;
-    position: absolute;
-    left: 1200px;
-    border: 7px solid #e84c4f;
-    box-shadow: 3px 3px 15px 3px #9f1f20;
-    background-color: #f8f5f2;
-    border-radius: 15px;
-    padding: 15px;
-    line-height: 40px;
-    text-align: center;
-}
-#ownerMain #fucking a{
-    color: #3e4462;
-    font-weight: bolder;
-    text-decoration: none;
-}
+#infoMsg{
 
-#ownerMain #fucking hr{border: 2px dashed #e84c4f;}
+}

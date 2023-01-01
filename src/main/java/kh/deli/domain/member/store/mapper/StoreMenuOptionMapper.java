@@ -12,9 +12,9 @@ import java.util.List;
 @Mapper
 public interface StoreMenuOptionMapper {
 
-    @Select("SELECT * FROM MENU_OPTION WHERE MENU_SEQ = #{menuSeq}")
+    @Select("SELECT * FROM MENU_OPTION WHERE MENU_SEQ = #{menuSeq} order by 1")
     List<MenuOptionDTO> findByMenuSeq(@Param("menuSeq") int menuSeq);
 
-    @Select("SELECT * FROM MENU_OPTION WHERE OPTION_SEQ IN ${optionSeqList}")
+    @Select("SELECT * FROM MENU_OPTION WHERE OPTION_SEQ IN ${optionSeqList} order by 1")
     List<MenuOptionDTO> getList(@Param("optionSeqList") String optionSeqList);
 }

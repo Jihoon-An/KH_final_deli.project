@@ -18,7 +18,7 @@
 
     <main id="ownerStore">
 
-        <div id="container">
+        <div id="container" class="container">
 
             <table id="myTable">
                 <thead>
@@ -27,7 +27,7 @@
                     <th class="phone">연락처</th>
                     <th class="add_detail">주소</th>
                     <th class="display">공개여부</th>
-                    <th class="btn"></th>
+                    <th class="btn">option</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,23 +40,23 @@
                                 <td class="add_detail">${store.store_add_detail1}, ${store.store_add_detail2}</td>
                                 <td class="display"><span
                                         class="display_val">${store.store_open}</span>
-                                    <button class="display_toggle">전환하기</button>
+                                    <button class="display_toggle btn btn-light mx-1">전환하기</button>
                                 </td>
                                 <td class="btn">
                                         <%--                                    <a href="/owner/store/mng?store_seq=${store.store_seq}">--%>
                                         <%--                                        <button type="button">정보수정</button>--%>
                                         <%--                                    </a>--%>
                                     <a href="/owner/menu/add?store_seq=${store.store_seq}">
-                                        <button type="button">메뉴추가</button>
+                                        <button href="/owner/menu/add?store_seq=${store.store_seq}" type="button" class="btn btn-light">메뉴추가</button>
                                     </a>
-                                    <a href="/owner/menu?store_seq=${store.store_seq}">
-                                        <button type="button">메뉴수정</button>
-                                    </a>
-                                    <form action="/owner/store/list/delete" method="post" id="frm"
+<%--                                    <a href="/owner/menu?store_seq=${store.store_seq}">--%>
+<%--                                        <button type="button" onclick="notFound()">메뉴수정</button>--%>
+<%--                                    </a>--%>
+                                    <form action="/owner/store/list/delete" method="post" class="frm"
                                           style="display: inline">
                                         <input type="hidden" class="store_seq" name="store_seq"
                                                value="${store.store_seq}">
-                                        <button type="button" class="del_btn">삭제</button>
+                                        <button type="button" class="del_btn btn btn-secondary">삭제</button>
                                     </form>
                                 </td>
                             </tr>
@@ -68,7 +68,7 @@
         </div>
 
         <a href="/owner/store/add">
-            <button>식당추가</button>
+            <button class="btn btn-light">식당추가</button>
         </a>
 
     </main>

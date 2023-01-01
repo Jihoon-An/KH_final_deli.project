@@ -63,7 +63,7 @@ public class MyPageReviewViewController {
 
         myPageReviewService.reviewInsert(session, dto, files);
 
-        return "redirect:/";
+        return "redirect:/myPage/reviewList";
     }
 
 }

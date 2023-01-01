@@ -24,11 +24,11 @@
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 
-<main id = "order_history">
+<main id="order_history">
     <hr class="mt55">
     <div class="container">
+        <div id="pageTitle">내 주문 내역</div>
         <c:choose>
             <c:when test="${not empty order_list}">
                 <c:forEach var="order_list" items="${order_list}" varStatus="status">
@@ -36,92 +36,99 @@
                     <jsp:useBean id="now" class="java.util.Date"/>
                     <fmt:parseNumber value="${now.time}" integerOnly="true"
                                      var="nowfmtTime" scope="request"/>
-<%--                       <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+(1000*60*60*24*30)}" integerOnly="true"  scope="request"/>--%>
-                    <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*30  )}" integerOnly="true"  scope="request"/>
-                          <%-- 주문날짜 기준 30일지나면 출력이 안된다--%>
-                        <c:if test="${nowfmtTime<parseDate}">
+                    <%--                       <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+(1000*60*60*24*30)}" integerOnly="true"  scope="request"/>--%>
+                    <fmt:parseNumber var="parseDate" value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*30  )}"
+                                     integerOnly="true" scope="request"/>
+                    <fmt:parseNumber var="parseDate3day"
+                                     value="${order_list.order_date.time+( 1000 * 60 * 60 * 24*3  )}" integerOnly="true"
+                                     scope="request"/>
+                    <%-- 주문날짜 기준 30일지나면 출력이 안된다--%>
+                    <c:if test="${nowfmtTime<parseDate}">
 
                         <div class="box1">
-                        <div class="box2">
-                            <span class="head_deli">배달주문</span>
-                            <span class="head_date">${order_list.formDate}</span>
-                            <span class="head_status">
+                            <div class="box2">
+                                <span class="head_deli">배달주문</span>
+
+                                <span class="head_date">  <fmt:formatDate value="${order_list.order_date}" pattern="yyyy.MM.dd HH:ss"/></span>
+                                <span class="head_status">
                             ${order_list.order_status}
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='cooking'}">조리중</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='delivering'}">배달중</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='complete'}">배달완료</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='cooking'}">조리중</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='delivering'}">배달중</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='complete'}">배달완료</c:if>&ndash;%&gt;--%>
             </span>
-                        </div>
-                        <div class="box3">
+                            </div>
+                            <div class="box3">
 
-                            <c:if test="${order_list.store_logo==null}">
-                                <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/no_storelogo.png" id="profile"></div>
-                            </c:if>
-                            <c:if test="${order_list.store_logo!=null}">
-                                <div class="image-box"><img class="image-thumbnail" src="/resources/img/store/${order_list.store_logo }" id="profile"></div>
-                            </c:if>
-                            <div class="info">
-                                <a href="/store/menu/${order_list.store_seq}"><span class="storename">${order_list.store_name}</span></a>
+                                <c:if test="${order_list.store_logo==null}">
+                                    <div class="image-box"><img class="image-thumbnail"
+                                                                src="/resources/img/store/no_storelogo.png"
+                                                                id="profile"></div>
+                                </c:if>
+                                <c:if test="${order_list.store_logo!=null}">
+                                    <div class="image-box"><img class="image-thumbnail"
+                                                                src="/resources/img/store/${order_list.store_logo }"
+                                                                id="profile"></div>
+                                </c:if>
+                                <div class="info">
 
-                                <p class="meinfo">
-
-<%--                                    <input type="hidden" value=" ${menu_list[status.index].menu.menu_name}" class="mName">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].count}" class="mCount">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_price}" class="mPrice">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].menu.store_seq}" class="mstore_seq">--%>
-<%--                                    <input type="hidden" value="${menu_list[status.index].menu.menu_seq}" class="mmenu_seq">--%>
-
-
-                                        ${menu_list[status.index].menu.store_seq}
-                                        ${menu_list[status.index].menu.menu_price}
-
-                                        ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
+                                    <div class="infohead">  <a href="/store/menu/${order_list.store_seq}"><span
+                                            class="storename">${order_list.store_name}</span></a>
+                                        <input type="hidden" value="${order_list.order_seq}" class="order_Seq_Chk"></div>
 
 
 
-                                    <c:if test = "${menu_list[status.index].count>0}">
-                                        x  ${menu_list[status.index].count}
-                                    </c:if> <%-- 메뉴 0개 이상일때 --%>
 
-                                    <c:if test = "${menu_count_list[status.index]>1}">
-                                        외 ${menu_count_list[status.index]-1}건
-                                    </c:if>  <%-- 또다른 메뉴가 추가로 있을떄 --%>
+                                    <div class="meinfo">
 
+                                            ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
 
+                                        <c:if test="${menu_list[status.index].count>0}">
+                                            x  ${menu_list[status.index].count}
+                                        </c:if> <%-- 메뉴 0개 이상일때 --%>
 
-                                        <%--                        ${basketMenu[4].menu.menu_name} x ${basketMenu[0].count}--%>
-
-                                        <%--                    <c:if test="${basketMenu[0].menu.menu_name!=null}">--%>
-                                        <%--                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">--%>
-                                        <%--                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>--%>
-                                        <%--                        </c:forEach>--%>
-                                        <%--                    </c:if>--%>
-
-                                </p>
-
-                                <div class="infoFooter">
-                                <a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn">리뷰작성</button></a>
-
-                                <a href="/order/detail/${order_list.order_seq}"><button class="deli_btn">주문상세</button></a>
-
-                                 <a href="/order/history/${order_list.order_seq}"><button class="deli_btn" type="button">재주문</button></a>
+                                        <c:if test="${menu_count_list[status.index]>1}">
+                                            외 ${menu_count_list[status.index]-1}건
+                                        </c:if> <%-- 또다른 메뉴가 추가로 있을떄 --%>
 
 
-<%--                                       <button class="deli_btn" type="button" onclick="toBaskett()">재주문</button>--%>
-<%--                                    <form action="/menu/detail/toBasket" method="post" id="put_basket">--%>
-<%--                                        <input type="hidden" name="basket_menu" id="basket_menu">--%>
-<%--                                    </form>--%>
+                                            <%--                        ${basketMenu[4].menu.menu_name} x ${basketMenu[0].count}--%>
+
+                                            <%--                    <c:if test="${basketMenu[0].menu.menu_name!=null}">--%>
+                                            <%--                        <c:forEach var="menu" items="${basketMenu}" varStatus="n">--%>
+                                            <%--                            <c:if test="${n.index >0}">외 ${n.index}건</c:if>--%>
+                                            <%--                        </c:forEach>--%>
+                                            <%--                    </c:if>--%>
+
+                                    </div>
+
+                                    <div class="infoFooter">
+                                        <c:if test="${nowfmtTime<parseDate3day}">
+                                                <%--<a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn" id="reviewChk">리뷰작성</button></a>--%>
+                                                <button class="deli_btn reviewChk" style="padding-left: 12px; padding-right: 12px;" <c:if test="${order_list.order_status!='배달완료'}">disabled</c:if>>리뷰작성</button>
+                                        </c:if>
+                                        <a href="/order/detail/${order_list.order_seq}">
+                                            <button class="deli_btn" style="padding-left: 12px; padding-right: 12px;">주문상세</button>
+                                        </a>
+
+                                        <a href="/order/history/${order_list.order_seq}">
+                                            <button class="deli_btn" style="padding-left: 12px; padding-right: 12px;" type="button">재주문</button>
+                                        </a>
+
+                                            <%--                                        <button class="deli_btn reOrder" type="button" >재주문</button>--%>
+                                            <%--                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>--%>
+                                            <%--                                        <form action="/basket" method="post" id="to_basket">--%>
+                                            <%--                                            <input type="hidden" name="basket_menu" id="basket_menu">--%>
+                                            <%--                                        </form>--%>
+
+                                    </div>
 
                                 </div>
-                                <c:if test="${order_list.order_status='배달완료'}">
-                                </c:if>
                             </div>
-                        </div>
 
-                    </div>
-                        </c:if>
+                        </div>
+                    </c:if>
 
                 </c:forEach>
             </c:when>
@@ -138,57 +145,6 @@
     <hr class="mt90">
 </main>
 
-<%--<script>--%>
-<%--    var countt= ${menu_list[1].count};--%>
-<%--    var selec_option = new Array();--%>
-<%--    var one_pprice = ${menu_list[1].menu.menu_price}--%>
-
-
-<%--        console.log(${menu_list[1].menu.store_seq})--%>
-<%--        class BasketMenuDTOo{--%>
-<%--            constructor(options, count, price) {--%>
-<%--                this.storeSeq = ${menu_list[1].menu.store_seq}--%>
-<%--                    this.menuSeq = ${menu_list[1].menu.menu_seq};--%>
-<%--                this.optionSeqList = options;--%>
-<%--                this.count = count;--%>
-<%--                this.price = price;--%>
-<%--            }--%>
-<%--        }--%>
-<%--</script>--%>
-
-<%--<script>--%>
-<%--    var countt= $(".mCount").val();--%>
-<%--    var selec_option = new Array();--%>
-<%--    var one_pprice = $(".mPrice").val()--%>
-
-<%--        console.log($(".mstore_seq").val())--%>
-<%--        class BasketMenuDTOo{--%>
-<%--            constructor(options, count, price) {--%>
-<%--                this.storeSeq = $(".mstore_seq").val()--%>
-<%--                    this.menuSeq = $(".mmenu_seq").val();--%>
-<%--                this.optionSeqList = options;--%>
-<%--                this.count = countt;--%>
-<%--                this.price = one_pprice;--%>
-<%--            }--%>
-<%--        }--%>
-<%--</script>--%>
-
-
-
-<script>
-    // function putBaskett() {
-    //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice);
-    //     $("#basket_menu").val(JSON.stringify(basket));
-    //
-    //     $("#put_basket").submit();
-    // }
-
-    // function toBaskett() {
-    //     var basket = new BasketMenuDTOo(selec_option, countt, one_pprice); //객체가
-    //     $("#basket_menu").val(JSON.stringify(basket));
-    //
-    //     $("#put_basket").attr("action", "/menu/detail/toBasket").submit();
-    // }
-</script>
+<script src="/resources/js/member/order/orderHistoryYoo.js"></script>
 </body>
 </html>

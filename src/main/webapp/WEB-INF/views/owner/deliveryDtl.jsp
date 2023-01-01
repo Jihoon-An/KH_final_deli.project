@@ -23,7 +23,7 @@
             </div>
             <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
             <div>연락처 :
-                <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.mem_phone}" pattern="##,####,####"/>
+                <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.order_phone}" pattern="##,####,####"/>
                 0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
             <div>주소 : ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
             <div>라이더님에게 전달하는 말 : ${ordererInfoDTO.order_rider_req}</div>
@@ -34,7 +34,7 @@
                 <div class="menuBox">
                     <div>메뉴 : ${menuList.menu.menu_name} x ${menuList.count}개</div>
                     <c:forEach var="optionList" items="${menuList.optionList}">
-                        <div> 옵션 : ${optionList.option_name} x ${optionList.option_multiple}개</div>
+                        <div> 옵션 : ${optionList.option_name}</div>
                     </c:forEach>
                 </div>
             </c:forEach>
@@ -55,7 +55,17 @@
                     <div>결제방법</div>
                 </div>
                 <div class="pay_method">
-                    <div><fmt:formatNumber value="${payInfoDTO.pay_price}" pattern="#,###"/>원</div>
+                    <c:choose>
+                        <c:when test="${payInfoDTO.cp_type eq 'percent'}">
+                            <div><fmt:formatNumber value="${payInfoDTO.pay_price1}" pattern="#,###"/>원</div>
+                        </c:when>
+                        <c:when test="${payInfoDTO.cp_type eq 'amount'}">
+                            <div><fmt:formatNumber value="${payInfoDTO.pay_price2}" pattern="#,###"/>원</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div><fmt:formatNumber value="${payInfoDTO.pay_price3}" pattern="#,###"/>원</div>
+                        </c:otherwise>
+                    </c:choose>
                     <div>현금결제</div>
                 </div>
             </c:if>

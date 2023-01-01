@@ -83,3 +83,8 @@
     cursor: pointer;
     border: none;
 }
+
+.notice_del_btn{
+    background: none;
+    border: none;
+}

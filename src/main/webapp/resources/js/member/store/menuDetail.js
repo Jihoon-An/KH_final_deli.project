@@ -34,23 +34,44 @@ function get_total_price() {
     });
 
     totalPrice *= parseInt($("#menu_count").val());
-    console.log(select_option);
     $("#total_price").text(totalPrice);
 }
 
 //장바구니 담기
 function putBasket() {
     var basket = new BasketMenuDTO(select_option, count, one_price);
+
+    if (checkStoreSeq(basket.storeSeq)) {
+        return;
+    }
+
     $("#basket_menu").val(JSON.stringify(basket));
 
-    $("#put_basket").submit();
+    $("#put_basket").attr("action", "/menu/detail/put").submit();
 }
 
 function toBasket() {
     var basket = new BasketMenuDTO(select_option, count, one_price);
+
+    if (checkStoreSeq(basket.storeSeq)) {
+        return;
+    }
     $("#basket_menu").val(JSON.stringify(basket));
 
     $("#put_basket").attr("action", "/menu/detail/toBasket").submit();
+}
+
+function checkStoreSeq(thisStoreSeq) {
+
+    if (basketStoreSeq != "" && thisStoreSeq != Number(basketStoreSeq)) {
+        Swal.fire({
+            text: '다른 식당의 메뉴를 장바구니에 저장할 수 없습니다.',
+            width: 300
+        });
+
+        return true;
+    }
+    return false;
 }
 
 const swalWithBootstrapButtons = Swal.mixin({
@@ -60,7 +81,28 @@ const swalWithBootstrapButtons = Swal.mixin({
     },
     buttonsStyling: false
 })
+
 function onModal() {
+    let requiredCheck = true;
+    $(".option_select").each(function () {
+        let required = $(this).find(".required").val();
+        console.log(required);
+        if (required == 'N') {
+            return false;
+        }
+        let test = $(this).find('.option_check').is(":checked");
+        if (test == false) {
+            requiredCheck = test;
+        }
+    });
+
+    if (requiredCheck == false) {
+        Swal.fire({
+            title: "필수 항목을\n체크해주세요!",
+            width: 350
+        });
+        return false;
+    }
 
     swalWithBootstrapButtons.fire({
         showCancelButton: true,
@@ -71,13 +113,20 @@ function onModal() {
     }).then((result) => {
         if (result.isConfirmed) {
             toBasket();
-        } else{
+        } else {
             putBasket();
         }
     })
 }
 
-
+$(function () {
+    $(".option_select").each(function () {
+        let required = $(this).find(".required").val();
+        if (required=="Y") {
+            $(this).prev(".option_group").append(" (필수)")
+        }
+    });
+});
 
 
 
