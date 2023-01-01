@@ -78,9 +78,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="menu_img">
+                                        <div class="menu_img" style="width: 95px; height: 95px; margin-top: 5px;">
                                             <img class="img"
-                                                 src="/resources/img/menu-img/${menuList.menu_img}">
+                                                 src="/resources/img/menu-img/${menuList.menu_img}" style="width: 95px;
+    height: 95px;">
                                         </div>
                                     </c:when>
                                     <c:otherwise>
