@@ -41,13 +41,13 @@ function handleImgFileSelect(e) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $("#rev_imgs_area").append(
-                $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
+                // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
                     $("<i class=\"fa-solid fa-x del_img_btn\"></i>")
                         .click(function () {
                             $(this).closest(".review_img_div").remove();
                         })
                         // .text("X")
-                ).append(
+                .append(
                     $("<img style='width: 100%; height: 200px;'>")
                         .attr("src", e.target.result)
                 ).append(
