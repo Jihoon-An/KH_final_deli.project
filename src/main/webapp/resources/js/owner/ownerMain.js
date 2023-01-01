@@ -1,3 +1,40 @@
+
+let lang_kor = {
+    "decimal" : "",
+    "emptyTable" : "데이터가 없습니다.",
+    "info" : "_START_ - _END_ (총 _TOTAL_ 개)",
+    "infoEmpty" : "0 개",
+    "infoFiltered" : "(전체 _MAX_ 개 중 검색결과)",
+    "infoPostFix" : "",
+    "thousands" : ",",
+    "lengthMenu" : "_MENU_ 개씩 보기",
+    "loadingRecords" : "로딩중...",
+    "processing" : "처리중...",
+    "search" : "검색 : ",
+    "zeroRecords" : "검색된 데이터가 없습니다.",
+    "paginate" : {
+        "first" : "첫 페이지",
+        "last" : "마지막 페이지",
+        "next" : "다음",
+        "previous" : "이전"
+    },
+    "aria" : {
+        "sortAscending" : " :  오름차순 정렬",
+        "sortDescending" : " :  내림차순 정렬"
+    }
+};
+
+$(document).ready(function() {
+    $('#myTable').DataTable( {
+        language : lang_kor,
+        order: [[0, 'desc']],lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ]
+    } );
+} );
+
+
 $("#optionBtn").on("click", function () {
     let store_seq = $(this).siblings($(".storeOption")).val();
     let startDate = $("#startDate").val();
@@ -20,7 +57,10 @@ $("#optionBtn").on("click", function () {
             $(".storeSales").empty();
             let r='';
             for (i = 0; i < data.length; i++) {
-                r+="<div><span>날짜 : "+data[i].daily_date+"</span> - <span>매출 : "+data[i].daily_sales+"</span></div>";
+                r+="<tr>";
+                r+="<td>"+ data[i].daily_date+"</td>";
+                r+="<td>"+data[i].daily_sales.toLocaleString('ko-KR')+"</td>";
+                r+="</tr>";
             }
             $(".storeSales").append(r);
     })
@@ -65,27 +105,4 @@ $(document).ready(function () {
 })
 
 
-
-
-////////////
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
 
