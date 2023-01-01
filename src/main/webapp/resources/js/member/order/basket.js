@@ -194,7 +194,7 @@ $(".deleteBtn").click(async function(){
  * 결제 버튼 기능
  */
 $("#pay").click(function() {
-    if (parseInt($("#totalPriceSpan").html().replace(/,/g,"")) > $("#minPrice").val()) {
+    if (parseInt($("#totalPriceSpan").html().replace(/,/g,"")) >= $("#minPrice").val()) {
         $("#payAmount").val(parseInt($("#payAmountSpan").html().replace(/,/g,"")));
     } else{
         Swal.fire({

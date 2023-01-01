@@ -108,7 +108,7 @@
 - 일반유저 마이페이지 CSS 수정
 ---
 ### 22-12-31 (토)
-- .
+- 휴가
 ---
 ### 23-01-01 (일)
 <span style="font-size:25px;">🎉</span>
@@ -127,4 +127,11 @@
 <span style="color: dodgerblue; font-size:25px; font-weight: bold;">~</span>
 <span style="color: dodgerblue; font-size:25px; font-weight: bold;">~</span>
 <span style="font-size:25px;">🎆</span>
-- .
+- 장바구니 콤마(,) 작업 (<span style="color: chartreuse">100%</span>)
+- 장바구니 버그 수정
+- 장바구니 페이지 CSS (<span style="color: chartreuse">100%</span>)
+- 일반유저 프로필 출력 및 수정 페이지 CSS (<span style="color: chartreuse">100%</span>)
+- 일반유저 비밀번호 변경 CSS (<span style="color: chartreuse">100%</span>)
+- 일반유저 포인트, 쿠폰 출력 페이지 CSS (<span style="color: chartreuse">100%</span>)
+- 사업자 프로필 출력 및 수정 페이지 CSS (<span style="color: chartreuse">100%</span>)
+- 사업자 비밀번호 변경 모달 CSS (<span style="color: chartreuse">100%</span>)

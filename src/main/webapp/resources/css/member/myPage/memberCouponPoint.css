@@ -1,7 +1,99 @@
 #memberCouponPoint *{box-sizing: border-box;}
 #memberCouponPoint .container{
-    width: 375px;
-    height: 800px;
-    border: 1px solid gray;
+    width: 360px;
     margin: auto;
+    padding-top: 40px;
+    padding-bottom: 150px;
+    overflow: hidden;
+}
+
+#memberCouponPoint .titleBox{
+    width: 100%;
+    height: 75px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 75px;
+}
+#memberCouponPoint .pointBox{
+    height: 20px;
+    margin-bottom: 25px;
+}
+#memberCouponPoint .pointLeftSpan{
+    width: fit-content;
+    float: left;
+    line-height: 35px;
+}
+#memberCouponPoint .pointRightSpan{
+    width: fit-content;
+    float: right;
+    color: #e84c4f;
+    font-weight: bold;
+    font-size: 20px;
+}
+#memberCouponPoint #couponCountSpan{
+    color: #e84c4f;
+    font-weight: bold;
+}
+#memberCouponPoint .couponTopBox{
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+#memberCouponPoint .coupon{
+    width: 340px;
+    height: 135px;
+    background-image: url("/resources/img/coupon_background.png");
+    background-size: 340px 135px;
+    margin-bottom: 50px;
+    padding: 15px;
+}
+#memberCouponPoint .coupon:hover{
+    cursor: pointer;
+    scale: 1.02;
+}
+#memberCouponPoint .coupon > .couponHead{
+    width: 250px;
+    height: 30px;
+}
+#memberCouponPoint .couponLabelBox{
+    width: fit-content;
+    float: left;
+}
+#memberCouponPoint .couponLabelBox > .deliveryLabel{
+    width: fit-content;
+    background-color: #ffdada;
+    color: #e84c4f;
+    border-radius: 15px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+#memberCouponPoint .couponLabelBox > .pickUpLabel{
+    width: fit-content;
+    background-color: #d4dbff;
+    color: #3e4462;
+    border-radius: 15px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+#memberCouponPoint .periodBox{
+    width: fit-content;
+    float: right;
+    font-size: 14px;
+    color: #7e7e7e;
+    margin-right: 10px;
+}
+#memberCouponPoint .couponInfo{
+    width: 250px;
+    text-align: center;
+    margin-top: 10px;
+}
+#memberCouponPoint .couponNameSpan{
+    font-size: 16px;
+}
+#memberCouponPoint .couponContentSpan{
+    font-size: 22px;
+    font-weight: bold;
 }

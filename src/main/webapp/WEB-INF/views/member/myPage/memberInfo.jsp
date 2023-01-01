@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>딜리 - 내 정보 수정</title>
@@ -33,7 +34,7 @@
 
                 <div class="nameBox">
                     <input type="text" id="nickName" name="mem_nick" value="${memberInfo.mem_nick}"
-                           placeholder="닉네임" class="form-control">
+                           placeholder="닉네임">
                     <label id="nameRemoveLabel">X</label>
                 </div>
 
@@ -59,6 +60,7 @@
                     </div>
                     <div class="infoInputBox passWordBox">
                         <button type="button" id="passWordModifyBtn" class="deli_btn">변경</button>
+                        <button type="button" id="passWordCloseBtn" class="deli_btn" style="display: none">변경</button>
                     </div>
                 </div>
 
@@ -68,7 +70,7 @@
                         <span class="pwSpan">현재 비밀번호</span>
                     </div>
                     <div class="infoInputBox passWordBox">
-                        <input type="text" id="oldPassWord" name="oldPassWord" class="form-control">
+                        <input type="password" id="oldPassWord" name="oldPassWord" class="form-control">
                     </div>
                 </div>
                 <div class="infoBox modifyPwBox" style="margin-top: 10px;">
@@ -76,16 +78,16 @@
                         <span class="pwSpan">새 비밀번호</span>
                     </div>
                     <div class="infoInputBox passWordBox">
-                        <input type="text" id="newPassWord" name="newPassWord" class="form-control">
+                        <input type="password" id="newPassWord" name="newPassWord" class="form-control">
                     </div>
                 </div>
-                <div class="infoBox modifyPwBox" style="margin-top: 10px;">
+                <div class="infoBox modifyPwBox" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="infoTitleBox">
                         <span class="pwSpan">새 비밀번호 확인</span>
                     </div>
                     <div class="infoInputBox passWordBox input-group">
-                        <input type="text" id="confirmPassWord" class="form-control">
-                        <button type="button" id="modifyPasswordConfirmBtn" class="deli_btn">확인</button><br>
+                        <input type="password" id="confirmPassWord" class="form-control">
+                        <button type="button" id="modifyPasswordConfirmBtn" class="deli_btn">확인</button>
                         <span id="pwCheckSpan"></span>
                     </div>
                 </div>
@@ -98,23 +100,26 @@
                     <div class="infoInputBox phoneBox input-group">
                         <input type="hidden" id="oldPhoneNumber" value="${memberInfo.mem_phone}">
                         <input type="text" id="mem_phone" name="mem_phone" class="form-control" value="${memberInfo.mem_phone}"
-                               placeholder="핸드폰 번호 숫자만 입력" maxlength='11' oninput=validNum()>
+                               placeholder="핸드폰 번호 숫자만 입력" maxlength='11' oninput=validNum() readonly>
                         <button type="button" id="reCertificationBtn" class="deli_btn">재인증</button>
-                        <button type="button" id="phone_certi_btn">발송</button>
-                        <br><br>
-                        <p id="phone_msg" style="display: none">양식에 맞는지 확인 중입니다.</p>
+                        <button type="button" id="phone_certi_btn" class="deli_btn">발송</button>
+                        <div style="width: 100%;">
+                            <span id="phone_msg" style="display: none">양식에 맞는지 확인 중입니다.</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="infoBox" id="certificationBox" style="height: 200px;">
+                <div class="infoBox" id="certificationBox">
                     <div class="infoTitleBox">
                         <span id="certificationNumberSpan">인증번호</span>
                     </div>
-                    <div class="infoInputBox">
+                    <div class="infoInputBox input-group">
                         <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input"
-                               maxlength='6' oninput=validNum()>
-                        <button type="button" id="phone_confirm_btn">확인</button>
-                        <span id="phone_count"></span>
+                               maxlength='6' oninput=validNum() class="form-control">
+                        <button type="button" id="phone_confirm_btn" class="deli_btn">확인</button>
+                        <div style="width: 100%;">
+                            <p id="count" style="display: none;">인증번호 유효시간이 <span id="phone_count"></span> 남았습니다</p>
+                        </div>
                     </div>
                 </div>
 
@@ -123,7 +128,9 @@
                         <span>회원가입일</span>
                     </div>
                     <div class="infoInputBox signUpDateBox">
-                        <span>${accountInfo.acc_signupdate}</span>
+                        <span style="font-size: 14px; line-height: 25px;">
+                            <fmt:formatDate value="${accountInfo.acc_signupdate}" pattern="yyyy-MM-dd"/>
+                        </span>
                     </div>
                 </div>
 
