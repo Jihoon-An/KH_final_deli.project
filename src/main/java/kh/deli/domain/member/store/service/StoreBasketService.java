@@ -70,11 +70,8 @@ public class StoreBasketService {
                 }
             }
 
-
             // 저장
             basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
-            session.setAttribute("basket", basket);
-
         }
 
         return basketMenu.getStoreSeq();

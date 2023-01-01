@@ -81,7 +81,7 @@
 <script>
     var count = 1;
     var select_option = new Array();
-    const one_price = ${menu.menu_price};
+    var one_price = ${menu.menu_price};
 
     class BasketMenuDTO {
         constructor(options, count, price) {
