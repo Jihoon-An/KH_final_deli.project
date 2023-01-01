@@ -59,11 +59,11 @@
                 <textarea id="revContent" name="rev_content"
                           placeholder="솔직한 평가를 남겨주세요">${review_dto.rev_content}</textarea>
             </div>
-            <div id="count">0 / 300</div>
+            <div id="count"><span id="text_count"></span>/300</div>
             <div>
                 <div class="imgBox fileBtnBox">
                     <input type="hidden" name="rev_sysname" id="rev_sysmname">
-                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i> 사진 수정
+                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i> 사진 추가
                         <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif"
                                multiple>
                     </label>
@@ -90,9 +90,9 @@
                             <%--                        </c:forEach>--%>
                             <c:forEach var="revImg" items="${review_img_list}">
                                 <div class="review_img_div" id="preview">
-                                    <img src="/resources/img/review/${revImg}" style="width: 300px; height: 200px;" >
+                                    <img src="/resources/img/review/${revImg}" style="width: 300px; height: 200px; margin-left: 10px;">
                                     <input type="hidden" class="img_name" value="${revImg}">
-                                    <button type="button" class="del_img_btn">지우기</button>
+                                    <button type="button" class="del_img_btn" style="margin-left: 10px;">지우기</button>
                                 </div>
                             </c:forEach>
                         </c:when>
@@ -116,10 +116,7 @@
                         </c:forEach>
                     </c:when>
                 </c:choose>
-
-
             </div>
-
 
             <div id="btnBox">
                 <button type="button" id="backBtn">취소</button>

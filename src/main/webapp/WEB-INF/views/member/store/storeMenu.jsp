@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-                <div style="height:10px;"></div>
+            <div style="height:10px;"></div>
             </c:forEach>
             <hr>
         </div>

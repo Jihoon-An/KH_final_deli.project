@@ -66,7 +66,10 @@ $("#revContent").on("keyup",function (){
 
     if(content.length > 300){
         alert("리뷰는 최대 300글자까지 입력 가능합니다.");
+        $(this).val($(this).val().substring(0,300))
     }
+    let text_length=$("#revContent").val().length;
+    $("#text_count").html(text_length);
 })
 
 
@@ -80,3 +83,6 @@ $("#modifyBtn").on("click",function(){
 
     $("#reviewPost").submit();
 })
+
+let text_length=$("#revContent").val().length;
+$("#text_count").html(text_length);
