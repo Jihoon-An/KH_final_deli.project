@@ -101,10 +101,9 @@ function onModal() {
             title: "필수 항목을\n체크해주세요!",
             width: 350
         });
+        return false;
     }
 
-
-    return false;
     swalWithBootstrapButtons.fire({
         showCancelButton: true,
         confirmButtonText: '장바구니 가기',
