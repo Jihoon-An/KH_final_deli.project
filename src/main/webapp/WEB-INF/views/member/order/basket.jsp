@@ -79,7 +79,7 @@
                                     <span class="countSpan form-control" style="height: 30px; line-height: 18px; font-size: 14px;">
                                             ${menuList.count}
                                     </span>
-                                <button class="plus deli_btn"  style="height: 30px; line-height: 10px;">+</button>
+                                <button class="plus deli_btn" style="height: 30px; line-height: 10px;">+</button>
                             </div>
                         </div>
 
