@@ -298,9 +298,9 @@
         // var discountPrice = $("#discount_coupon").val();
         // var discountPrice = orderPrice * (1 - cpName.replace(/\D/g,'')/100);
         if(cpType == 'percent') {
-            var discountPrice = orderPrice * Number(cpDiscount) / 100;
+            var discountPrice = Math.floor(orderPrice * Number(cpDiscount) / 100);
         }else {
-            var discountPrice = Number(cpDiscount);
+            var discountPrice = Math.floor(Number(cpDiscount));
         }
         var usePoint = Number($("#use_point").val());
         var deliveryTip = Number($("#delivery_tip").val());
