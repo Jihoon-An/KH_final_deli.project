@@ -245,7 +245,10 @@ $("#phone_certi_btn").on("click", function () {
                 $("#phone_confirm_box").show();
                 $("#count").show();
             } else {
-                alert("메시지 전송 실패");
+                Swal.fire({
+                    icon: 'error',
+                    title: '메세지 전송 실패'
+                });
             }
         });
     } else {
@@ -290,15 +293,24 @@ function phone_confirm() {
                 $("#certificationBox").hide();
                 $("#mem_phone").attr("disabled", true);
                 phone_ok = true;
-                console.log(phone_ok);
+                Swal.fire({
+                    icon: 'success',
+                    title: '번호 인증이 완료되었습니다.',
+                });
+                $("#phone_certi_btn").hide();
+                $("#reCertificationBtn").show();
             } else if ($("#phone_count").html() == "시간초과") {
-                alert("인증을 다시 해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '시간 초과'
+                });
                 phone_ok = false;
-                console.log(phone_ok);
             } else {
-                alert("인증 번호를 확인해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증 번호를 확인해주세요'
+                });
                 phone_ok = false;
-                console.log(phone_ok);
             }
         })
     }
@@ -324,7 +336,10 @@ $("#saveButton").on("click" ,()=>{
                 "mem_phone" : newPhone
             }
         }).done(function(){
-            alert("수정 성공");
+            Swal.fire({
+                icon: 'success',
+                title: '회원정보가 변경되었습니다.',
+            });
         });
     }else {
         $.ajax({
@@ -335,7 +350,10 @@ $("#saveButton").on("click" ,()=>{
                 "mem_phone" : oldPhone
             }
         }).done(function(){
-            alert("수정 성공");
+            Swal.fire({
+                icon: 'success',
+                title: '회원정보가 변경되었습니다.',
+            });
         });
     }
 
