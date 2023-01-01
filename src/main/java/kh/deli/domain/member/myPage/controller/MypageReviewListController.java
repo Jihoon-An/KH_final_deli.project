@@ -55,22 +55,22 @@ public class MypageReviewListController {
 
         List<Map<String, Object>> reviewList = myPageReviewService.getReviews(param);
 //나경
-        OrdersDTO orders_dto = myPageReviewService.selectByOrderSeq(18);
+        //OrdersDTO orders_dto = myPageReviewService.selectByOrderSeq(18);
 
-        JSONParser jsonParser = new JSONParser();
-        JSONArray jsonArr = (JSONArray) jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
+        //JSONParser jsonParser = new JSONParser();
+        //JSONArray jsonArr = (JSONArray) jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
 
-        List<String> menuNameList = new ArrayList<>();
-
-        if (jsonArr.size() > 0) {
-
-            for (Integer i = 0; i < jsonArr.size(); i++) {
-                JSONObject jsonObj = (JSONObject) jsonArr.get(i);
-                String menuSeq = jsonObj.get("menuSeq").toString();
-                String menuName = myPageReviewService.selectMenuName(menuSeq);
-                menuNameList.add(menuName);
-            }
-        }
+//        List<String> menuNameList = new ArrayList<>();
+//
+//        if (jsonArr.size() > 0) {
+//
+//            for (Integer i = 0; i < jsonArr.size(); i++) {
+//                JSONObject jsonObj = (JSONObject) jsonArr.get(i);
+//                String menuSeq = jsonObj.get("menuSeq").toString();
+//                String menuName = myPageReviewService.selectMenuName(menuSeq);
+//                menuNameList.add(menuName);
+//            }
+//        }
 
 
         for (int i = 0; i < reviewList.size(); i++) {
