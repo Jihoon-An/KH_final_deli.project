@@ -1,5 +1,4 @@
-<%@ page import="kh.deli.global.entity.MenuDTO" %>
-<%@ page import="com.google.gson.Gson" %><%--
+<%@ page import="kh.deli.domain.member.store.dto.BasketDTO" %><%--
   Created by IntelliJ IDEA.
   User: abg14
   Date: 2022-12-19
@@ -74,7 +73,7 @@
     </div>
     <button type="button" onclick="onModal()">장바구니 담기</button>
     <form action="/menu/detail/put" method="post" id="put_basket">
-        <input type="text" name="basket_menu" id="basket_menu">
+        <input type="hidden" name="basket_menu" id="basket_menu">
     </form>
 
 </main>
@@ -92,6 +91,8 @@
             this.price = price;
         }
     }
+    var basketStoreSeq = '${basketStoreSeq}';
+    console.log(basketStoreSeq);
 </script>
 <script src="/resources/js/member/store/menuDetail.js"></script>
 </body>

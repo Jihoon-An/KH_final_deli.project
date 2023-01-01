@@ -59,11 +59,11 @@
                 <textarea id="revContent" name="rev_content"
                           placeholder="솔직한 평가를 남겨주세요">${review_dto.rev_content}</textarea>
             </div>
-            <div id="count">0 / 300</div>
+            <div id="count"><span id="text_count"></span>/300</div>
             <div>
                 <div class="imgBox fileBtnBox">
                     <input type="hidden" name="rev_sysname" id="rev_sysmname">
-                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i> 사진 수정
+                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i> 사진 추가
                         <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif"
                                multiple>
                     </label>
@@ -81,18 +81,12 @@
                                 }.getType();
                                 request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                             %>
-                            <%--                        <c:forEach var="sysName" items="${review_img_list}">--%>
-                            <%--                            <div class="review_img_div">--%>
-                            <%--                                <img src="/resources/img/review/${sysName}">--%>
-                            <%--                                <input type="hidden" class="img_name" value="${sys
-                            <%--                                <button type="button" class="del_img_btn">지우기</but
-                            <%--                            </div>--%>
-                            <%--                        </c:forEach>--%>
                             <c:forEach var="revImg" items="${review_img_list}">
-                                <div class="review_img_div" id="preview">
-                                    <img src="/resources/img/review/${revImg}" style="width: 300px; height: 200px;" >
+                                <div class="review_img_div" class="preview">
+                                        <%--                                    <button type="button" class="del_img_btn"><i class="fa-solid fa-x del_img_btn"></i></button>--%>
+                                    <i class="fa-solid fa-x del_img_btn"></i>
+                                    <img src="/resources/img/review/${revImg}" style="width: 100%; height: 200px;">
                                     <input type="hidden" class="img_name" value="${revImg}">
-                                    <button type="button" class="del_img_btn">지우기</button>
                                 </div>
                             </c:forEach>
                         </c:when>
@@ -116,10 +110,7 @@
                         </c:forEach>
                     </c:when>
                 </c:choose>
-
-
             </div>
-
 
             <div id="btnBox">
                 <button type="button" id="backBtn">취소</button>

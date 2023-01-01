@@ -46,9 +46,6 @@ public class StoreBasketService {
 
             session.setAttribute("basket", newBasket);
         } else {
-//            basket.getMenuList().add(
-//                    gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class)
-//            );
             StoreBasketMenuRequestDTO newMenu = gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class);
             // storeSeq 일치 검사.
             if(basket.getStoreSeq() != newMenu.getStoreSeq()){
@@ -62,25 +59,19 @@ public class StoreBasketService {
             List<Integer> newOptionSeqList = newMenu.getOptionSeqList();
 
             for (StoreBasketMenuRequestDTO oldMenu : oldMenuList) {
-                if (oldMenu.getMenuSeq() != newMenuSeq) {
+                if (!oldMenu.getMenuSeq().equals(newMenuSeq)) {
                     basket.getMenuList().add(newMenu);
                     break;
                 }
                 if (oldMenu.getOptionSeqList().equals(newOptionSeqList)) {
                     // 기존에 장바구니에 있는 메뉴이면..
                     oldMenu.setCount(oldMenu.getCount() + newMenu.getCount());
-//                    // 저장
-//                    basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
-//                    session.setAttribute("basket", basket);
                     break;
                 }
             }
 
-
             // 저장
             basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
-            session.setAttribute("basket", basket);
-
         }
 
         return basketMenu.getStoreSeq();

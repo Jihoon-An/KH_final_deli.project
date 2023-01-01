@@ -52,77 +52,78 @@
         <div style="height: 10px;"></div>
         <div class="menu_list">
             <c:choose>
-                <c:when test="${not empty categoryList}">
-                    <c:forEach var="categories" items="${categoryList}" varStatus="num">
-                        <div class="bottom_menu_group" id="bottom_menu_group${num.count}"
-                             style="font-weight: bold; font-size: 17px; margin-bottom: 5px;">${categories.menu_group}
-                            <div style="height: 10px;"></div>
-                            <c:forEach var="menuList" items="${categories.menuList}">
-                                <div class="menu_box">
-                                    <div class="box">
-                                        <a href="/menu/detail/${menuList.menu_seq}">
-                                            <div class="menu_info">
-                                                <c:choose>
-                                                    <c:when test="${not empty menuList.menu_img}">
-                                                        <div class="menu">
-                                                            <div class="yyyy">
-                                                                <div class="menu_name">${menuList.menu_name}</div>
-                                                                <div class="menu_intro">${menuList.menu_intro}
-                                                                </div>
-                                                                <div class="menu_price">
-                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="menu_img">
-                                                            <img class="img"
-                                                                 src="/resources/img/menu-img/${menuList.menu_img}">
-                                                        </div>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <div class="menu">
-                                                            <div class="yyyy">
-                                                                <div class="menu_name">${menuList.menu_name}</div>
-                                                                <div id="menu_intro"
-                                                                     style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
-                                                                        ${menuList.menu_intro}
-                                                                </div>
-                                                                <div class="menu_price">
-                                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </c:otherwise>
-                                                </c:choose>
+            <c:when test="${not empty categoryList}">
+            <c:forEach var="categories" items="${categoryList}" varStatus="num">
+            <div class="bottom_menu_group" id="bottom_menu_group${num.count}"
+                 style="font-weight: bold; font-size: 17px; margin-bottom: 5px;">${categories.menu_group}
+                <div style="height: 10px;"></div>
+                <c:forEach var="menuList" items="${categories.menuList}">
+                <div class="menu_box">
+                    <div class="box">
+                        <a href="/menu/detail/${menuList.menu_seq}">
+                            <div class="menu_info">
+                                <c:choose>
+                                    <c:when test="${not empty menuList.menu_img}">
+                                        <div class="menu">
+                                            <div class="yyyy">
+                                                <div class="menu_name">${menuList.menu_name}</div>
+                                                <div class="menu_intro">${menuList.menu_intro}
+                                                </div>
+                                                <div class="menu_price">
+                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                </div>
                                             </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-                              </div>
-                            </c:forEach>
-                        </div>
-                    </c:forEach>
-
-                    <%--원산지--%>
-                    <c:choose>
-                        <c:when test="${not empty storeInfoDTO.store_origin}">
-                            <div class="origin" style="margin-top: -10px;">
-                                원산지 : ${storeInfoDTO.store_origin}
+                                        </div>
+                                        <div class="menu_img">
+                                            <img class="img"
+                                                 src="/resources/img/menu-img/${menuList.menu_img}">
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="menu">
+                                            <div class="yyyy">
+                                                <div class="menu_name">${menuList.menu_name}</div>
+                                                <div id="menu_intro"
+                                                     style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
+                                                        ${menuList.menu_intro}
+                                                </div>
+                                                <div class="menu_price">
+                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
-                        </c:when>
-                        <c:otherwise>
-                            원산지 없음
-                        </c:otherwise>
-                    </c:choose>
-                </c:when>
-                <c:otherwise>
-                    메뉴가 없어요
-                </c:otherwise>
-            </c:choose>
-
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="height:10px;"></div>
+            </c:forEach>
+            <hr>
         </div>
+        </c:forEach>
 
-        <script src="/resources/js/member/store/storeDetail.js"></script>
+            <%--원산지--%>
+        <c:choose>
+            <c:when test="${not empty storeInfoDTO.store_origin}">
+                <div class="origin" style="margin-top: -10px;">
+                    원산지 : ${storeInfoDTO.store_origin}
+                </div>
+            </c:when>
+            <c:otherwise>
+                원산지 없음
+            </c:otherwise>
+        </c:choose>
+        </c:when>
+        <c:otherwise>
+            메뉴가 없어요
+        </c:otherwise>
+        </c:choose>
+
     </div>
+
+    <script src="/resources/js/member/store/storeDetail.js"></script>
+</div>
 </div>

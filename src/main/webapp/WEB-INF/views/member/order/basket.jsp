@@ -9,8 +9,10 @@
 
 </head>
 <body>
+    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <main id="basket">
     <div class="container">
 
@@ -21,45 +23,91 @@
             <c:when test="${not empty basket}">
                 <input type="hidden" id="storeSeq" value="${store.store_seq}">
                 <input type="hidden" id="minPrice" value="${store.store_min_price}">
-                상호명 : ${store.store_name}<br>
-                <img style="width: 100%;" src="/resources/img/store/${store.store_logo}">
-                <hr>
+                <div class="storeImgBox">
+                    <img style="width: 30px; height: 30px;" src="/resources/img/store/${store.store_logo}">
+                </div>
+                <div class="storeNameBox">
+                    <span id="storeNameSpan" style="font-size: 20px;">${store.store_name}</span>
+                </div>
+                <br>
                 <hr>
                 <c:forEach var="menuList" items="${basket}">
                     <div class="menuBox">
-                        <button class="deleteBtn">X</button><br>
-                        메뉴 SEQ : ${menuList.menuDTO.menu_seq}<br>
-                        <input type="hidden" class="inputMenuSeq" value="${menuList.menuDTO.menu_seq}">
-                        메뉴명 : ${menuList.menuDTO.menu_name}<br>
-                        메뉴 가격 : <span class="menuPrice">${menuList.menuDTO.menu_price}</span><br>
-                        메뉴 이미지 : ${menuList.menuDTO.menu_img}<br>
-                        <br>
-                        <c:forEach var="optionMap" items="${menuList.menuOptionDTO}" varStatus="i">
-                            - 옵션 메뉴 SEQ : ${optionMap.menu_seq}<br>
-                            - 옵션 SEQ : ${optionMap.option_seq}<br>
-                            <input type="hidden" class="inputOptionSeq" value="${optionMap.option_seq}">
-                            - 옵션 그룹 : ${optionMap.option_group}<br>
-                            - 옵션명 : ${optionMap.option_name}<br>
-                            - 옵션 가격 : <span class="optionPrice op${i.count}">${optionMap.option_price}</span><br>
-                            <br>
-                        </c:forEach>
-                        <br>
-                        <div class="priceBox">
-                            <span class="priceSpan">${menuList.price}</span>원
+
+                        <div class="menuTopDiv">
+                            <span class="menuNameSpan">
+                                ${menuList.menuDTO.menu_name}
+                            </span>
+                            <button class="deleteBtn">X</button>
                         </div>
-                        <div class="countBox">
-                            <button class="minus">-</button>
-                            수량 : <span class="countSpan">${menuList.count}</span>개
-                            <button class="plus">+</button>
+
+                        <div class="menuImgDiv">
+                            <img src="/resources/img/menu-img/${menuList.menuDTO.menu_img}">
                         </div>
-                        <hr>
+
+                        <div class="menuInfoDiv">
+                            <ul class="menuInfo">
+                                <li>
+                                    가격 :
+                                    <span class="menuPrice">
+                                        <fmt:formatNumber value="${menuList.menuDTO.menu_price}" type="number"/>
+                                    </span>원
+                                </li>
+                            <c:forEach var="optionMap" items="${menuList.menuOptionDTO}" varStatus="i">
+<%--                                - 옵션 메뉴 SEQ : ${optionMap.menu_seq}<br>--%>
+<%--                                - 옵션 SEQ : ${optionMap.option_seq}<br>--%>
+                                <input type="hidden" class="inputOptionSeq" value="${optionMap.option_seq}">
+                                <li class="optionInfo">
+                                    ${optionMap.option_group} : ${optionMap.option_name}
+                                    (<span class="optionPrice op${i.count}"><fmt:formatNumber value="${optionMap.option_price}" type="number"/></span>원)
+                                </li>
+                            </c:forEach>
+                            </ul>
+
+                            <div class="priceBox">
+<%--                                메뉴 SEQ : ${menuList.menuDTO.menu_seq}<br>--%>
+                                <input type="hidden" class="inputMenuSeq" value="${menuList.menuDTO.menu_seq}">
+                                <span class="priceSpan">
+                                    <fmt:formatNumber value="${menuList.price}" type="number"/>
+                                </span>원
+                            </div>
+                        </div>
+
+                        <div class="menuBottomDiv">
+                            <div class="countBox input-group">
+                                <button class="minus deli_btn" style="line-height: 10px;">-</button>
+                                    <span class="countSpan form-control" style="height: 30px; line-height: 18px; font-size: 14px;">
+                                            ${menuList.count}
+                                    </span>
+                                <button class="plus deli_btn"  style="height: 30px; line-height: 10px;">+</button>
+                            </div>
+                        </div>
+
                     </div>
                 </c:forEach>
                 <hr>
-                총 주문금액 : <span id="totalPriceSpan">${totalPrice}</span>원<br>
-                배달팁 : <span id="deliTipSpan">${store.store_deli_tip}</span>원
-                <hr>
-                결제예정금액 : <span id="payAmountSpan">${payAmount}</span>원
+                <div class="deliveryInfoDiv">
+                    <div class="deliInfoLeftBox">
+                        총 주문금액 :<br>
+                        배달팁 :
+                        <hr>
+                        <strong>결제예정금액 :</strong>
+                    </div>
+                    <div class="deliInfoRightBox">
+                        <span id="totalPriceSpan">
+                            <fmt:formatNumber value="${totalPrice}" type="number"/>
+                        </span>원<br>
+                        <span id="deliTipSpan">
+                            <fmt:formatNumber value="${store.store_deli_tip}" type="number"/>
+                        </span>원
+                        <hr>
+                        <strong>
+                            <span id="payAmountSpan">
+                                <fmt:formatNumber value="${payAmount}" type="number"/>
+                            </span>원
+                        </strong>
+                    </div>
+                </div>
 
                 <div class="buttonBox">
                     <form id="payment">
@@ -68,26 +116,21 @@
                         <a href="/order/orders/">
                             <button type="button" id="pay">
                                 <span id="countPB">${totalCount}</span>
-                                배달 주문하기
-                                <span id="totalPB">${payAmount}</span>원
+                                <span id="orderPB">배달 주문하기</span>
+                                <div id="totalPBBox">
+                                    <span id="totalPB">${payAmount}</span>원
+                                </div>
                             </button>
                         </a>
                     </form>
                 </div>
             </c:when>
             <c:otherwise>
-                너가 담은게 없어요
+                <img src="/resources/img/cart_no_product.png" style="width: 345px; margin-top: 50px;">
             </c:otherwise>
         </c:choose>
 
     </div>
-
-
-
-
-
-
-
 
 
     <script src="/resources/js/member/order/basket.js"></script>
