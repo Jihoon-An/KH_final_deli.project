@@ -29,7 +29,7 @@
             <c:choose>
             <c:when test="${not empty myPageReviewList}">
             <c:forEach var="reviews" items="${myPageReviewList}">
-                <c:choose>
+            <c:choose>
                 <c:when test="${reviews.flag_udt == 'N'}">
 
                     <button name="modify_review" disabled>수정</button>
@@ -43,16 +43,16 @@
 
                 </c:when>
                 <c:otherwise>
-                <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}"><button name="modify_review" revSeq="${reviews.rev_seq}">수정</button></a>
+                    <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}"><button name="modify_review" revSeq="${reviews.rev_seq}">수정</button></a>
 
                     <input type="hidden" value="${reviews.rev_seq}">
                     <input type="hidden" value="${reviews.store_seq}">
                     <input type="hidden" value="${reviews.order_seq}">
 
                 </c:otherwise>
-                </c:choose>
-<%--                <button id="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>--%>
-                <input type="hidden" class="rev_seq" value="${rev_seq}">
+            </c:choose>
+                <%--                <button id="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>--%>
+            <input type="hidden" class="rev_seq" value="${rev_seq}">
             <c:choose>
             <c:when test="${not empty reviews.menu}">
             <div>메뉴명 :
@@ -104,10 +104,8 @@
             debugger;
             var revSeq = param.getAttribute('revSeq');
         }
-
         $("#delete_review").on("click",function (){
             var ans = confirm("리뷰를 삭제하시겠습니까?");
-
             if(ans == true){
                 $.ajax({
                     url:"/myPage/reviewList/deleteReview",
@@ -118,7 +116,6 @@
                 })
             }
         })
-
     </script>
 </main>
 </body>
