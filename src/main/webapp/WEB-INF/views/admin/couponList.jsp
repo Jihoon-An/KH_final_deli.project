@@ -60,38 +60,38 @@
     </div>
 
     <a href="/admin/coupon/add">
-        <button id="add_cp_btn">쿠폰 추가</button>
+        <button id="add_cp_btn" class="btn btn-light">쿠폰 추가</button>
     </a>
 
     <!-- 모달 -->
     <div id="modal">
         <div id="close_modal">X</div>
         <div id="modal_content">
-            modal_cp_seq wheat
+
             <input type="hidden" id="modal_cp_seq" placeholder="seq"
                    style="background-color: wheat;" readonly>
-            modal_cp_name Red
-            <input type="text" id="modal_cp_name" placeholder="name" style="background-color: red;"
+
+            <input type="text" id="modal_cp_name" placeholder="name"
                    readonly>
-            modal_cp_code Dodgerblue
+
             <input type="text" id="modal_cp_code" placeholder="code"
                    style="background-color: dodgerblue;" readonly>
-            modal_cp_content white
+
             <input type="text" id="modal_cp_content" placeholder="content"
                    style="background-color: white;" readonly>
-            modal_cp_type yellow
+
             <input type="text" id="modal_cp_type" placeholder="cp_type"
                    style="background-color: yellow;" readonly>
-            modal_cp_discount Green
+
             <input type="text" id="modal_cp_discount" placeholder="cp_discount"
                    style="background-color: green;" readonly>
-            modal_cp_period Salmon
+
             <input type="text" id="modal_cp_period" placeholder="cp_period"
                    style="background-color: salmon;" readonly>
         </div>
         <div id="modal_btn_area">
-            <button id="publish_btn" type="button">발행</button>
-            <button id="delete_btn" type="button">삭제</button>
+            <button id="publish_btn" type="button" class="btn btn-light">발행</button>
+            <button id="delete_btn" type="button" class="btn btn-light">삭제</button>
         </div>
     </div>
 

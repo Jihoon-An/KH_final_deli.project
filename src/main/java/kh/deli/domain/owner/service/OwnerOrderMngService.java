@@ -58,7 +58,7 @@ public class OwnerOrderMngService {
             String link = "http://localhost/deliveryDtl/" + key;
 
             // url 축소화
-            nShortURL.toShortURL(link);
+//            nShortURL.toShortURL(link);
 
             Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {
             }.getType();
