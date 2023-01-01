@@ -41,18 +41,18 @@ function handleImgFileSelect(e) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $("#rev_imgs_area").append(
-                $("<div class='review_img_div'>").append(
-                    $("<img style='width: 200px; height: 200px;'>")
+                $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
+                    $("<i class=\"fa-solid fa-x del_img_btn\"></i>")
+                        .click(function () {
+                            $(this).closest(".review_img_div").remove();
+                        })
+                        // .text("X")
+                ).append(
+                    $("<img style='width: 100%; height: 200px;'>")
                         .attr("src", e.target.result)
                 ).append(
                     $("<input type='hidden' class='img_name'>")
                         .val(f.name)
-                ).append(
-                    $("<button type='button' class='del_img_btn'>")
-                        .click(function () {
-                            $(this).closest(".review_img_div").remove();
-                        })
-                        .text("지우기")
                 )
             );
         }

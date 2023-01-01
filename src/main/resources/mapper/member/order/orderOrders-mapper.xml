@@ -3,15 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper">
-    <!--    <select id="selectSessionInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">-->
-    <!--        SELECT-->
-    <!--            A.ACC_EMAIL AS accEmail,-->
-    <!--            M.MEM_NAME AS memName-->
-    <!--        FROM ACCOUNT A-->
-    <!--        INNER JOIN MEMBER M ON ( A.ACC_SEQ = M.ACC_SEQ )-->
-    <!--        WHERE A.ACC_SEQ = #{orderOrdersDTO.seq}-->
-    <!--    </select>-->
+<mapper namespace="kh.deli.domain.member.order.mapper.OrderOrdersMapper" >
+<!--        <select id="selectSessionInfo" parameterType="kh.deli.domain.member.order.dto.OrderOrdersDTO" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">-->
+<!--            SELECT-->
+<!--                A.ACC_EMAIL AS accEmail,-->
+<!--                M.MEM_NAME AS memName-->
+<!--            FROM ACCOUNT A-->
+<!--            INNER JOIN MEMBER M ON ( A.ACC_SEQ = M.ACC_SEQ )-->
+<!--            WHERE A.ACC_SEQ = #{orderOrdersDTO.seq}-->
+<!--        </select>-->
 
     <select id="selectOrderMemberInfo" parameterType="int" resultType="kh.deli.domain.member.order.dto.OrderOrdersDTO">
         select
@@ -112,7 +112,8 @@
 
     <select id="getOrdererInfo" resultType="OrdererInfoDTO">
         SELECT
-        MEM_PHONE,
+        mem_phone,
+        ORDER_PHONE,
         ORDER_STORE_REQ,
         ORDER_RIDER_REQ,
         ORDER_DISPOSABLE,
@@ -126,25 +127,17 @@
     </select>
 
     <select id="getPayInfo" resultType="PayInfoDTO">
-        <!--&lt;!&ndash;        select&ndash;&gt;-->
-        <!--&lt;!&ndash;            order_price,&ndash;&gt;-->
-        <!--&lt;!&ndash;            (pay_price*cp_discount/100) as discountByCoupon,&ndash;&gt;-->
-        <!--&lt;!&ndash;            order_point,&ndash;&gt;-->
-        <!--&lt;!&ndash;            delivery_tip,&ndash;&gt;-->
-        <!--&lt;!&ndash;            (order_price-(pay_price*cp_discount/100)-order_point+delivery_tip) as pay_price,&ndash;&gt;-->
-        <!--&lt;!&ndash;            pay_method&ndash;&gt;-->
-        <!--&lt;!&ndash;        from orders&ndash;&gt;-->
-        <!--&lt;!&ndash;        ,coupon&ndash;&gt;-->
-        <!--&lt;!&ndash;        where&ndash;&gt;-->
-        <!--&lt;!&ndash;        orders.cp_seq=coupon.cp_seq and&ndash;&gt;-->
-        <!--&lt;!&ndash;        order_seq=${order_seq}&ndash;&gt;-->
 
         SELECT
+        CP_TYPE,
         ORDER_PRICE,
         (ORDER_PRICE*nvl(CP_DISCOUNT,0)/100) AS discountByCoupon,
+        CP_DISCOUNT AS discountByMoney,
         nvl(ORDER_POINT,0) AS point,
         DELIVERY_TIP,
-        (ORDER_PRICE-(ORDER_PRICE*nvl(CP_DISCOUNT,0)/100)-nvl(ORDER_POINT,0)+DELIVERY_TIP) AS pay_price,
+        (ORDER_PRICE-(ORDER_PRICE*nvl(CP_DISCOUNT,0)/100)-nvl(ORDER_POINT,0)+DELIVERY_TIP) AS pay_price1,
+        (ORDER_PRICE-cp_discount-nvl(ORDER_POINT,0)+DELIVERY_TIP) AS pay_price2,
+        (ORDER_PRICE-nvl(ORDER_POINT,0)+DELIVERY_TIP) AS pay_price3,
         PAY_METHOD
         FROM ORDERS LEFT JOIN COUPON
         ON ORDERS.CP_SEQ=COUPON.CP_SEQ

@@ -82,10 +82,11 @@
                                 request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                             %>
                             <c:forEach var="revImg" items="${review_img_list}">
-                                <div class="review_img_div" id="preview">
-                                    <img src="/resources/img/review/${revImg}" style="width: 300px; height: 200px; margin-left: 10px;">
+                                <div class="review_img_div" class="preview">
+                                        <%--                                    <button type="button" class="del_img_btn"><i class="fa-solid fa-x del_img_btn"></i></button>--%>
+                                    <i class="fa-solid fa-x del_img_btn"></i>
+                                    <img src="/resources/img/review/${revImg}" style="width: 100%; height: 200px;">
                                     <input type="hidden" class="img_name" value="${revImg}">
-                                    <button type="button" class="del_img_btn" style="margin-left: 10px;">지우기</button>
                                 </div>
                             </c:forEach>
                         </c:when>
