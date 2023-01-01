@@ -167,13 +167,11 @@
             <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
             <button type="button" id="payCard" class="btn_payment">카드 결제</button>
         </div>
-
         <input type="hidden" id="accEmail" name="accEmail" value="${userInfo.accEmail}"/>
         <input type="hidden" id="memName" name="memName" value="${userInfo.memName}"/>
         <input type="hidden" id="add_seq" name="add_seq"/>
     </div>
 </form>
-    <hr class="mt90">
 </main>
 <script>
     var addSeq;
