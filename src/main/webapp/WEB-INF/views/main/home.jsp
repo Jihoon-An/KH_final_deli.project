@@ -52,13 +52,13 @@
                         <label for="emailSave">이메일저장</label>
                     </div>
                     <div class="findBox">
-                        <a href="/account/findAccount">이메일 l 비밀번호 찾기</a>
+                        <a class="link" href="/account/findAccount">이메일 l 비밀번호 찾기</a>
                     </div>
                 </div>
                 <br><br>
                 <br><br>
                 <div id="kakaoBox">
-                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
+                    <a class="link" href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
                         <img src="/resources/img/kakao_login.png" id="kakao_login_img">
                     </a>
                 </div>
@@ -67,11 +67,11 @@
 <%--                </a>--%>
                 <div class="clientSignUpLinkBox signUpBox">
                     <span>아직 딜리의 회원이 아니신가요?</span>
-                    <a href="/account/toMemberSignUp">일반회원가입</a>
+                    <a class="link" href="/account/toMemberSignUp">일반회원가입</a>
                 </div>
                 <div class="businessSignUpLinkBox signUpBox">
                     <span>아직 딜리의 사장님이 아니신가요?</span>
-                    <a href="/ownerSignUp">사업자회원가입</a>
+                    <a class="link" href="/ownerSignUp">사업자회원가입</a>
                 </div>
             </form>
         </div>
