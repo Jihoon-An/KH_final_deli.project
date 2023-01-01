@@ -10,6 +10,8 @@ import java.util.List;
 @Mapper
 public interface AdminMainMapper {
 
-    List<AdminMainDTO> selectAllList();
+    List<AdminMainDTO> selectAllSalesList();
+
+    AdminMainDTO selectTodaySales();
 
 }
