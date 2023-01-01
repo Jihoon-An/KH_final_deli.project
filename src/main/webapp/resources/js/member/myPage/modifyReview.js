@@ -1,4 +1,5 @@
 var new_name_list = new Array();
+const imgMaxCnt=4;
 var del_list = new Array();
 
 //내 리뷰 관리로 이동
@@ -60,17 +61,7 @@ function handleImgFileSelect(e) {
     });
 }
 
-//글자 수
-$("#revContent").on("keyup", function () {
-    let content = $(this).val();
-    $("#count").html(content.length + " / 300");
 
-    if (content.length > 300) {
-        alert("리뷰는 최대 300글자까지 입력 가능합니다.");
-        $(this).val($(this).val().substring(0, 300))
-        $("#count").html("300 / 300");
-    }
-})
 
 let text_length = $("#revContent").val().length;
 $("#text_count").html(text_length);
@@ -96,7 +87,77 @@ function response(text) {
     return true;
 }
 
+//글자 수
+$("#revContent").on("keyup", function () {
+    let content = $(this).val();
+    $("#count").html(content.length + " / 300");
+
+    if(content.length > 300){
+        $(this).val(content.substring(0,300));
+        Swal.fire({
+            icon: 'error',
+            title: '리뷰 업로드 불가',
+            text: '리뷰는 최대 300글자까지 입력 가능합니다.',
+            confirmButtonText: '확인'
+        });
+        $("#count").html("300 / 300");
+    }
+})
+
+
+//수정
 $("#modifyBtn").on("click", function () {
-    let text = $("#revContent").val();
-    return response(text);
+
+    let size=0;
+    const maxSize=1024 * 1024 * 10;
+
+    for(i=0;i<fileArr.length;i++){
+        size+=fileArr[i].size;
+    }
+
+    console.log("이미지 사이즈  : "+size);
+    //이미지 크기
+    if(size>maxSize){
+        Swal.fire({
+            icon: 'error',
+            title: '이미지 업로드 불가',
+            text: '이미지의 용량이 큼 삭제 요망.',
+            confirmButtonText: '확인'
+        });
+        return false;
+    }
+
+
+    //사진여부확인
+    if ($("#revImgBtn").val() == "") {
+        $("#rev_sysmname").attr("value","0");
+    }else{
+        $("#rev_sysmname").attr("value","1");
+    }
+
+    //별점 0점 제한
+    if($("input[name=rev_star]:radio:checked").length<1){
+        Swal.fire({
+            icon: 'error',
+            title: '별점 미입력',
+            text: '별점 필수.',
+            confirmButtonText: '확인'
+        });
+        return false;
+    }
+
+    //글자수 제한
+    let content = $("#revContent").val();
+
+    if(content.length>300){
+        Swal.fire({
+            icon: 'error',
+            title: '리뷰 업로드 불가',
+            text: '리뷰는 최대 300글자까지 입력 가능합니다.',
+            confirmButtonText: '확인'
+        });
+        return false;
+    }
+
+    $("#reviewPost").submit();
 })
