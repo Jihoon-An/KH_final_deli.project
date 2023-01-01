@@ -127,7 +127,7 @@
 <span style="color: dodgerblue; font-size:25px; font-weight: bold;">~</span>
 <span style="color: dodgerblue; font-size:25px; font-weight: bold;">~</span>
 <span style="font-size:25px;">🎆</span>
-- 장바구니 콤마(,) 작업 (<span style="color: chartreuse">100%</span>)
+- 장바구니 금액 콤마(,) Script 작업 (<span style="color: chartreuse">100%</span>)
 - 장바구니 버그 수정
 - 장바구니 페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 일반유저 프로필 출력 및 수정 페이지 CSS (<span style="color: chartreuse">100%</span>)
