@@ -59,7 +59,7 @@ public class StoreBasketService {
             List<Integer> newOptionSeqList = newMenu.getOptionSeqList();
 
             for (StoreBasketMenuRequestDTO oldMenu : oldMenuList) {
-                if (oldMenu.getMenuSeq() != newMenuSeq) {
+                if (!oldMenu.getMenuSeq().equals(newMenuSeq)) {
                     basket.getMenuList().add(newMenu);
                     break;
                 }
@@ -70,11 +70,8 @@ public class StoreBasketService {
                 }
             }
 
-
             // 저장
             basket.setTotalPrice(basketService.getTotalPriceByMenuList(basket.getMenuList()));
-            session.setAttribute("basket", basket);
-
         }
 
         return basketMenu.getStoreSeq();

@@ -141,7 +141,7 @@
             <div>
                 <input type="text" name="ownPoint" id="ownPoint" placeholder="보유포인트 0" readonly="true"
                        onchange="onchangeOwnPoint()">
-                <input type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" placeholder="사용할 포인트">
+                <input type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" placeholder="사용할 포인트" min="0">
             </div>
             <hr>
             <div>주문 금액 출력
@@ -247,7 +247,7 @@
                         html += '<a class="couponInfo" id="coupon' + i + '" href="javascript:choiceCoupon(' + i + ');">' + data[i].cpName + " || " + data[i].cpContent + " || " + data[i].discount_coupon + type + '</a><br>';
                         html += '<input type="hidden" value="' + data[i].cp_seq + '" id="cpSeq' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].cpName + '" id="cpName' + i + '"> ';
-                        html += '<input type="hidden" value="' + data[i].cpDiscount + '" id="cpDiscount' + i + '"> ';
+                        html += '<input type="hidden" value="' + data[i].discount_coupon + '" id="cpDiscount' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].cpType + '" id="cpType' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].mc_seq + '" id="mcSeq' + i + '"> ';
                     }
@@ -289,18 +289,29 @@
 
         $("#choiceCoupon").html(html);
         var modal2 = document.getElementById('modal2');
-        modal2.style.display = "none"
+        modal2.style.display = "none";
         $("#cp_seq").val(cpSeq);
         $("#mc_seq").val(mcSeq);
         // 결제금액 출력
         var orderPrice = Number($("#order_price").val());
+        console.log(orderPrice);
         // var discountPrice = $("#discount_coupon").val();
         // var discountPrice = orderPrice * (1 - cpName.replace(/\D/g,'')/100);
-
-        var discountPrice = orderPrice * Number(cpName.replace(/\D/g, '') / 100);
+        if(cpType == 'percent') {
+            var discountPrice = Math.floor(orderPrice * Number(cpDiscount) / 100);
+        }else {
+            var discountPrice = Math.floor(Number(cpDiscount));
+        }
         var usePoint = Number($("#use_point").val());
         var deliveryTip = Number($("#delivery_tip").val());
         var payPrice = orderPrice - (discountPrice + usePoint) + deliveryTip;
+        console.log(cpDiscount);
+        console.log(cpType);
+        console.log(usePoint);
+        console.log(payPrice);
+        if(payPrice < 0){
+            payPrice = 0;
+        }
         $("#discountPrice").val(discountPrice);
         $("#pay_price").val(payPrice);
         // $("#discountPrice").val(discountPrice);
@@ -433,9 +444,18 @@
     function onchangeUsePoint() {
         var orderPrice = Number($("#order_price").val());
         var usePoint = Number($("#usePoint").val());
+        if(usePoint > ownPoint){
+            usePoint = ownPoint;
+            $("#usePoint").val(ownPoint);
+        }else if (usePoint < 0) {
+            usePoint = 0;
+            $("#usePoint").val(0);
+        }
+
+        let cpDiscount = Number($("#discountPrice").val());
         $("#use_point").val(usePoint);
         var deliveryTip = Number($("#delivery_tip").val());
-        var payPrice = (orderPrice + deliveryTip) - usePoint;
+        var payPrice = (orderPrice + deliveryTip) - usePoint - cpDiscount;
         $("#pay_price").val(payPrice);
     }
 
