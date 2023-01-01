@@ -24,7 +24,6 @@
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
-<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 
 <main id="order_history">
     <hr class="mt55">
