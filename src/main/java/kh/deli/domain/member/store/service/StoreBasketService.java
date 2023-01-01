@@ -59,7 +59,7 @@ public class StoreBasketService {
             List<Integer> newOptionSeqList = newMenu.getOptionSeqList();
 
             for (StoreBasketMenuRequestDTO oldMenu : oldMenuList) {
-                if (oldMenu.getMenuSeq() != newMenuSeq) {
+                if (!oldMenu.getMenuSeq().equals(newMenuSeq)) {
                     basket.getMenuList().add(newMenu);
                     break;
                 }

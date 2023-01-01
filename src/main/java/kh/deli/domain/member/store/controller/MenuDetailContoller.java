@@ -1,6 +1,5 @@
 package kh.deli.domain.member.store.controller;
 
-import com.google.gson.Gson;
 import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.domain.member.store.service.StoreMenuOptionService;
 import kh.deli.domain.member.store.service.StoreMenuService;
@@ -28,11 +27,8 @@ public class MenuDetailContoller {
     private final StoreMenuService menuService;
     private final StoreMenuOptionService optionService;
     private final StoreBasketService basketService;
-    private final CheckerService checkerService;
 
     private final HttpSession session;
-
-    private final Gson gson;
 
     /**
      * <h2>Request에 menuSeq 또는 menu_seq를 담아서 보내면 해당 메뉴의 상세페이지 출력</h2>
