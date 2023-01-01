@@ -48,6 +48,11 @@ public class OrderBasketService {
         Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {}.getType();
         List<StoreBasketMenuRequestDTO> menuList = gson.fromJson(BasketJson, type);
 
+        if(menuList.size() == 0 || menuList == null){
+            session.removeAttribute("basket");
+            return;
+        }
+
         // 메뉴 리스트 수정
         basketDTO.setMenuList(menuList);
         // 총 주문 금액 수정

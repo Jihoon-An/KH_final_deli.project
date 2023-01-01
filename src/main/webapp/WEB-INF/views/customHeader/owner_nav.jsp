@@ -81,7 +81,7 @@
 
 <div id="wrap_host" class="d-flex justify-content-start">
   <nav id="deli_nav" class="d-flex flex-column">
-    <a class="a_tag" href="/admin">
+    <a class="a_tag" href="/">
       <h2>Deli <br> Owner</h2></a>
 
     <a href="/owner/info"><div class="nav_list d-flex flex-row">
