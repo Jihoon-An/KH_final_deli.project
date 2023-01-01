@@ -86,6 +86,7 @@
         ON
         A.STORE_SEQ = B.STORE_SEQ
         WHERE
+        STORE_DISPLAY = 'Y' AND
         <choose>
             <when test='filter != null  and(filter eq "delifree".toString())'>
                 STORE_DELI_TIP = 0 AND
