@@ -74,6 +74,7 @@
     position: relative;
     left: 50%;
     transform: translate(-50%);
+    border-radius: 20px;
 }
 
 #memberMain .storeName{
