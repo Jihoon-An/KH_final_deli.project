@@ -43,28 +43,28 @@
                     <div class="menuBox">
                         <div id="menu_name">${menuList.menu.menu_name} ${menuList.count}개</div>
                             <%--                        <c:forEach var="optionList" items="${menuList.optionList}">--%>
-                            <c:choose>
-                                <c:when test="${not empty menuList.optionList}">
-                                    <c:choose>
-                                        <c:when test="${fn:length(menuList.optionList) != 0}">
-                                            <c:forEach var="i" items="${menuList.optionList}" varStatus="status2">
+                        <c:choose>
+                            <c:when test="${not empty menuList.optionList}">
+                                <c:choose>
+                                    <c:when test="${fn:length(menuList.optionList) != 0}">
+                                        <c:forEach var="i" items="${menuList.optionList}" varStatus="status2">
                                             <div class="orderContent">${i.option_group} : ${i.option_name}
                                                 (<fmt:formatNumber value="${i.option_price}" pattern="#,###"/>원)
                                                 <c:if test="${!status2.last}">, </c:if>
                                             </div>
-                                            </c:forEach>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:forEach var="i" items="${menuList.optionList}">
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="i" items="${menuList.optionList}">
                                             <div class="orderContent">${i.option_group} : ${i.option_name}
                                                 (<fmt:formatNumber value="${i.option_price}" pattern="#,###"/>원)
                                             </div>
-                                            </c:forEach>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:when>
-                                <c:otherwise></c:otherwise>
-                            </c:choose>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:when>
+                            <c:otherwise></c:otherwise>
+                        </c:choose>
                             <%--                        </c:forEach>--%>
                         <div><fmt:formatNumber value="${menuList.price}" pattern="#,###"/>원</div>
                     </div>
@@ -87,9 +87,19 @@
 
                     <div class="price">
                         <div><fmt:formatNumber value="${payInfoDTO.order_price}" pattern="#,###"/>원</div>
-                        <div id="coupon_discount">-<fmt:formatNumber value="${payInfoDTO.discountByCoupon}"
-                                                                     pattern="#,###"/>원
-                        </div>
+                        <c:choose>
+                            <c:when test="${payInfoDTO.cp_type eq 'percent'}">
+                                <div id="coupon_discount">-<fmt:formatNumber value="${payInfoDTO.discountByCoupon}"
+                                                                             pattern="#,###"/>원
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div id="coupon_discount">-<fmt:formatNumber value="${payInfoDTO.discountByMoney}"
+                                                                             pattern="#,###"/>원
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
                         <div id="point_discount">-<fmt:formatNumber value="${payInfoDTO.point}"
                                                                     pattern="#,###"/>원
                         </div>
@@ -104,7 +114,17 @@
                     </div>
 
                     <div class="pay_method">
-                        <div><fmt:formatNumber value="${payInfoDTO.pay_price}" pattern="#,###"/>원</div>
+                        <c:choose>
+                            <c:when test="${payInfoDTO.cp_type eq 'percent'}">
+                                <div><fmt:formatNumber value="${payInfoDTO.pay_price1}" pattern="#,###"/>원</div>
+                            </c:when>
+                            <c:when test="${payInfoDTO.cp_type eq 'amount'}">
+                                <div><fmt:formatNumber value="${payInfoDTO.pay_price2}" pattern="#,###"/>원</div>
+                            </c:when>
+                            <c:otherwise>
+                                <div><fmt:formatNumber value="${payInfoDTO.pay_price3}" pattern="#,###"/>원</div>
+                            </c:otherwise>
+                        </c:choose>
                         <div>${payInfoDTO.pay_method}</div>
                     </div>
                     <hr>
@@ -121,8 +141,8 @@
                     ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
 
             <div class="orderTitle">연락처</div>
-                    <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.mem_phone}" pattern="##,####,####"/>
-                <div id="phone" class="orderContent">0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.order_phone}" pattern="##,####,####"/>
+            <div id="phone" class="orderContent">0<c:out value="${fn:replace(phoneNo, ',', '-')}"/></div>
             <div class="orderTitle">가게요청사항</div>
             <div id="store_req" class="orderContent">${ordererInfoDTO.order_store_req}</div>
             <div class="orderTitle">배달요청사항</div>

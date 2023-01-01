@@ -8,6 +8,14 @@
 
     <link rel="stylesheet" href="/resources/css/owner/ownerMain.css" type="text/css">
 
+    <%--  chart.js cdn  --%>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <%--data tables--%>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
 </head>
 <body>
 
@@ -15,39 +23,41 @@
 
 <main id="ownerMain">
     <div class="container">
-        <div>
-            메인페이지
-            <table border="1px solid black">
-                <c:choose>
-                    <c:when test="${not empty list}">
-                        <c:forEach var="i" items="${list}">
-                            <tr>
-                                <td>사업자회원번호 : ${i.owner_seq}</td>
-                                <td>식당번호 : ${i.store_seq}</td>
-                                <td>식당명 : ${i.store_name}</td>
-                            </tr>
-                        </c:forEach>
-                    </c:when>
-                </c:choose>
-            </table>
-        </div>
-        <hr>
         <div class="infoBox">
-            <div>하루 총 매출액 : ${total}</div>
-            <c:choose>
-                <c:when test="${not empty dslist}">
-                    <c:forEach var="j" items="${dslist}">
-                        <c:choose>
-                            <c:when test="${not empty j}">
-                                <hr>
-                                <div>식당번호 : ${j.store_seq}</div>
-                                <div>식당이름 : ${j.store_name}</div>
-                                <div>매출액 : ${j.daily_sales}</div>
-                            </c:when>
-                        </c:choose>
-                    </c:forEach>
-                </c:when>
-            </c:choose>
+            <div id="infoMsg">회원님의 오늘 하루 총 매출은 <fmt:formatNumber value="${total}" pattern="#,###"/>원 입니다.</div>
+            <div style="width: 300px;">
+                <canvas id="ddSales"></canvas>
+                <script>
+                    const ddSales = document.getElementById('ddSales');
+
+                    new Chart(ddSales, {
+                        type: 'pie',
+                        data: {
+                            labels: [
+                                <c:forEach var="ds" items="${dslist}" varStatus="status">
+                                    '${ds.store_name}'<c:if test="${!status.last}">,</c:if>
+                                </c:forEach>
+                            ],
+                            datasets: [{
+                                label: '오늘 하루 매출',
+                                data: [
+                                    <c:forEach var="ds" items="${dslist}"  varStatus="status">
+                                    '${ds.daily_sales}'<c:if test="${!status.last}">,</c:if>
+                                    </c:forEach>
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
         </div>
         <hr>
         <div>
@@ -57,7 +67,7 @@
                         <c:when test="${not empty list}">
                             <c:forEach var="i" items="${list}">
                                 <option class="storeOption"
-                                        value="${i.store_seq}">${i.store_seq}+${i.store_name}</option>
+                                        value="${i.store_seq}">${i.store_name}</option>
                             </c:forEach>
                         </c:when>
                         <c:otherwise>
@@ -69,21 +79,29 @@
                         기간선택
                         <input type="date" id="startDate"> - <input type="date" id="endDate">
                     </span>
-                <button id="optionBtn" type="button">검색</button>
+                <button id="optionBtn" type="button" class="deli_btn">검색</button>
             </div>
-            <div class="storeSales">
-
+            <div>
+                <table id="myTable">
+                    <thead>
+                    <tr>
+                        <th class="date">매출일</th>
+                        <th class="sales">매출</th>
+                    </tr>
+                    </thead>
+                    <tbody class="storeSales">
+                    <tr>
+                        <td> 출력할 내용이 없습니다.</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-        <hr>
-        <div>
-            <a href="/account/logout">[유저+오너]로그아웃</a><br>
-            <a href="/account/withdrawal">[유저+오너]회원탈퇴</a><br>
         </div>
     </div>
-
     <script src="/resources/js/owner/ownerMain.js"></script>
 </main>
-</body>
+
+
 </body>
 </html>

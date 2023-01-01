@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class OrdererInfoDTO {
 
     private String mem_phone;
+    private String order_phone;
     private String order_store_req;
     private String order_rider_req;
     private String order_disposable;
