@@ -106,3 +106,25 @@
 - 이메일 찾기, 비밀번호 찾기 Hypen 스크립트 이식
 - 이메일찾기, 비밀번호 찾기 페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 일반유저 마이페이지 CSS 수정
+---
+### 22-12-31 (토)
+- .
+---
+### 23-01-01 (일)
+<span style="font-size:25px;">🎉</span>
+<span style="color: orange; font-size:25px; font-weight: bold;">H</span>
+<span style="color: orange; font-size:25px; font-weight: bold;">a</span>
+<span style="color: orange; font-size:25px; font-weight: bold;">p</span>
+<span style="color: orange; font-size:25px; font-weight: bold;">p</span>
+<span style="color: orange; font-size:25px; font-weight: bold;">y</span>
+<span style="color: yellow; font-size:25px; font-weight: bold;">N</span>
+<span style="color: yellow; font-size:25px; font-weight: bold;">e</span>
+<span style="color: yellow; font-size:25px; font-weight: bold;">w</span>
+<span style="color: lightgreen; font-size:25px; font-weight: bold;">Y</span>
+<span style="color: lightgreen; font-size:25px; font-weight: bold;">e</span>
+<span style="color: lightgreen; font-size:25px; font-weight: bold;">a</span>
+<span style="color: lightgreen; font-size:25px; font-weight: bold;">r</span>
+<span style="color: dodgerblue; font-size:25px; font-weight: bold;">~</span>
+<span style="color: dodgerblue; font-size:25px; font-weight: bold;">~</span>
+<span style="font-size:25px;">🎆</span>
+- .

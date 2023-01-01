@@ -1,11 +1,11 @@
 package kh.deli.domain.member.store.controller;
 
+import kh.deli.domain.member.store.dto.BasketDTO;
 import kh.deli.domain.member.store.service.StoreBasketService;
 import kh.deli.domain.member.store.service.StoreMenuOptionService;
 import kh.deli.domain.member.store.service.StoreMenuService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
-import kh.deli.global.util.checker.CheckerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +36,11 @@ public class MenuDetailContoller {
     @RequestMapping("/{menuSeq}")
     public String toMenuDetail(@PathVariable("menuSeq") Integer menuSeq, Integer menu_seq, Model model) {
 
+        BasketDTO basket = Optional.ofNullable(
+                (BasketDTO) session.getAttribute("basket")
+        ).orElse(new BasketDTO());
+        Integer basketStoreSeq = basket.getStoreSeq();
+
         Optional<Integer> optional = Optional.ofNullable(menuSeq);
         menuSeq = optional.orElse(Optional.ofNullable(menu_seq).orElse(0));
 
@@ -43,6 +48,7 @@ public class MenuDetailContoller {
         List<MenuOptionDTO> menuOptionList = optionService.findByMenuSeq(menuSeq);
         Map<String, List<MenuOptionDTO>> menuOptions = optionService.toMap(menuOptionList);
 
+        model.addAttribute("basketStoreSeq", basketStoreSeq);
         model.addAttribute("menu", menu);
         model.addAttribute("menuOptions", menuOptions);
 

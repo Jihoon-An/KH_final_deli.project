@@ -82,7 +82,6 @@ public class BasketController {
     @ResponseBody
     @RequestMapping("/updateMenu")
     public String updateBasketMenu(@RequestParam("basketMenuList") String basketJson) throws Exception {
-        System.out.println(basketJson);
         basketService.updateBasketInSession(session, basketJson);
         return "";
     }

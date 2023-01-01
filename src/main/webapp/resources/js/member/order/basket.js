@@ -2,7 +2,7 @@
  * 가게 정보
  */
 const storeSeq = $("#storeSeq").val();
-const deliTip = parseInt($("#deliTipSpan").html());
+const deliTip = parseInt($("#deliTipSpan").html().replace(/,/g,""));
 
 /**
  * Script BasketMenuDTO
@@ -30,13 +30,14 @@ async function updateBasket() {
     for (let i = 0; menuBoxCount > i; i++) {
         let inputMenuSeq = $(".menuBox").eq(i).find(".inputMenuSeq").val();
 
-        let inputOptionSeqCount = $(".menuBox").eq(i).children(".inputOptionSeq").length;
+        let inputOptionSeqCount =
+            $(".menuBox").eq(i).find(".menuInfo").children(".inputOptionSeq").length;
         let optionSeqList = [];
         for (let k = 0; inputOptionSeqCount > k; k++) {
             optionSeqList.push($(".menuBox").eq(i).find(".inputOptionSeq").eq(k).val());
         }
         let count = $(".menuBox").eq(i).find(".countSpan").html();
-        let price = $(".menuBox").eq(i).find(".priceSpan").html();
+        let price = $(".menuBox").eq(i).find(".priceSpan").html().replace(/,/g,"");
 
         let basketMenuDTO = new BasketMenuDTO(inputMenuSeq, optionSeqList, count, price);
         basketMenuDTOList.push(basketMenuDTO);
@@ -50,7 +51,6 @@ async function updateBasket() {
     }).done(function (result) {});
 
 }
-
 
 
 /**
@@ -67,24 +67,30 @@ $(".minus").click(async function() {
         let countPB = parseInt($("#countPB").html());
         $("#countPB").text(--countPB);
         // 메뉴 가격
-        let menuPrice = parseInt($(this).closest(".menuBox").find(".menuPrice").html());
+        let menuPrice = parseInt(
+            $(this).closest(".menuBox").find(".menuPrice").html().replace(/,/g,"")
+        );
         // 첫 번째 옵션 가격의 형제들
-        let optionCount = $(this).closest(".menuBox").children(".optionPrice");
+        let optionCount = $(this).closest(".menuBox").find(".menuInfo").children(".optionInfo");
         // 메뉴 + 옵션 가격들
         for (let i = 1; optionCount.length >= i; i++){
-            menuPrice += parseInt($(this).closest(".menuBox").find(".op"+i).html())
+            menuPrice += parseInt(
+                $(this).closest(".menuBox").find(".op"+i).html().replace(/,/g,"")
+            )
         }
 
         // 메뉴 금액
-        $(this).closest(".menuBox").find(".priceSpan").text(menuPrice * count);
+        $(this).closest(".menuBox").find(".priceSpan").text(
+            (menuPrice * count).toLocaleString()
+        );
 
         // 총 주문금액
-        let totalPrice = parseInt($("#totalPriceSpan").html());
-        $("#totalPriceSpan").text(totalPrice - menuPrice);
+        let totalPrice = parseInt($("#totalPriceSpan").html().replace(/,/g,""));
+        $("#totalPriceSpan").text((totalPrice - menuPrice).toLocaleString());
 
         // 결제예정금액
-        let payAmount = parseInt($("#payAmountSpan").html());
-        $("#payAmountSpan").text(totalPrice - menuPrice + deliTip);
+        let payAmount = parseInt($("#payAmountSpan").html().replace(/,/g,""));
+        $("#payAmountSpan").text((totalPrice - menuPrice + deliTip).toLocaleString());
         $("#totalPB").text($("#payAmountSpan").html());
 
 
@@ -109,24 +115,30 @@ $(".plus").click(async function() {
         let countPB = parseInt($("#countPB").html());
         $("#countPB").text(++countPB);
         // 메뉴 가격
-        let menuPrice = parseInt($(this).closest(".menuBox").find(".menuPrice").html());
+        let menuPrice = parseInt(
+            $(this).closest(".menuBox").find(".menuPrice").html().replace(/,/g,"")
+        );
         // 첫 번째 옵션 가격의 형제들
-        let optionCount = $(this).closest(".menuBox").children(".optionPrice");
+        let optionCount = $(this).closest(".menuBox").find(".menuInfo").children(".optionInfo");
         // 메뉴 + 옵션 가격들
         for (let i = 1; optionCount.length >= i; i++) {
-            menuPrice += parseInt($(this).closest(".menuBox").find(".op" + i).html())
+            menuPrice += parseInt(
+                $(this).closest(".menuBox").find(".op" + i).html().replace(/,/g,"")
+            )
         }
 
         // 메뉴 금액
-        $(this).closest(".menuBox").find(".priceSpan").text(menuPrice * count);
+        $(this).closest(".menuBox").find(".priceSpan").text(
+            (menuPrice * count).toLocaleString()
+        );
 
         // 총 주문금액
-        let totalPrice = parseInt($("#totalPriceSpan").html());
-        $("#totalPriceSpan").text((totalPrice + menuPrice));
+        let totalPrice = parseInt($("#totalPriceSpan").html().replace(/,/g,""));
+        $("#totalPriceSpan").text((totalPrice + menuPrice).toLocaleString());
 
         // 결제예정금액
-        let payAmount = parseInt($("#payAmountSpan").html());
-        $("#payAmountSpan").text(totalPrice + menuPrice + deliTip);
+        let payAmount = parseInt($("#payAmountSpan").html().replace(/,/g,""));
+        $("#payAmountSpan").text((totalPrice + menuPrice + deliTip).toLocaleString());
         $("#totalPB").text($("#payAmountSpan").html());
 
 
@@ -148,18 +160,20 @@ $(".deleteBtn").click(async function(){
     $("#countPB").text((countPB - count));
 
     // 메뉴 금액
-    let price = parseInt($(this).closest(".menuBox").find(".priceSpan").html());
+    let price = parseInt(
+        $(this).closest(".menuBox").find(".menuPrice").html().replace(/,/g,"")
+    );
 
     // 총 주문금액
-    let totalPrice = parseInt($("#totalPriceSpan").html());
+    let totalPrice = parseInt($("#totalPriceSpan").html().replace(/,/g,""));
     let minusTotalPrice = totalPrice - price;
 
     // 결제예정금액
-    let payAmount = parseInt($("#payAmountSpan").html());
+    let payAmount = parseInt($("#payAmountSpan").html().replace(/,/g,""));
     let minusPayAmount = minusTotalPrice + deliTip;
 
-    $("#totalPriceSpan").text(minusTotalPrice);
-    $("#payAmountSpan").text(minusPayAmount);
+    $("#totalPriceSpan").text(minusTotalPrice.toLocaleString());
+    $("#payAmountSpan").text(minusPayAmount.toLocaleString());
     $("#totalPB").text($("#payAmountSpan").html());
 
     // 삭제
