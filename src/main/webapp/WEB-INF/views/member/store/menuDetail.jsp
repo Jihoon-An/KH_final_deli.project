@@ -90,10 +90,10 @@
         </div>
         <div class="row text-center mt-4 pb-5">
             <button class="btn btn-danger" id="basket_btn" type="button" onclick="onModal()">
-            <span id="total_price">
+            <span class="mx-0" id="total_price">
                 ${menu.menu_price}
             </span>
-                <span>원 담기</span>
+                <span class="mx-0">원 담기</span>
             </button>
         </div>
         <form action="/menu/detail/put" method="post" id="put_basket">
