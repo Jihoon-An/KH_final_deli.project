@@ -98,7 +98,7 @@
     text-align: left;
 }
 
-#store_detail #img {
+#store_detail .img {
     width: 95px;
     height: 95px;
     border-radius: 20px;
