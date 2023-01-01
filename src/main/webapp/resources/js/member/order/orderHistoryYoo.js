@@ -17,7 +17,6 @@ $(".reviewChk").on("click", function (){
         }else{
             console.log("리뷰작성불가능")
             Swal.fire({title: "지정 필수", icon: "error", text: "이미 리뷰를 등록하였습니다"});
-
         }
 
     })
