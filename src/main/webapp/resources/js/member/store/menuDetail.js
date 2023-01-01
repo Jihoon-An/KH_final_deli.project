@@ -63,7 +63,7 @@ function toBasket() {
 
 function checkStoreSeq(thisStoreSeq) {
 
-    if(basketStoreSeq != null && thisStoreSeq != Number(basketStoreSeq)){
+    if(basketStoreSeq != "" && thisStoreSeq != Number(basketStoreSeq)){
         Swal.fire({
             text:'다른 식당의 메뉴를 장바구니에 저장할 수 없습니다.',
             width: 300
