@@ -29,7 +29,7 @@
 <main id="order_history">
     <hr class="mt55">
     <div class="container">
-
+        <div id="pageTitle">내 주문 내역</div>
         <c:choose>
             <c:when test="${not empty order_list}">
                 <c:forEach var="order_list" items="${order_list}" varStatus="status">
@@ -49,14 +49,15 @@
                         <div class="box1">
                             <div class="box2">
                                 <span class="head_deli">배달주문</span>
-                                <span class="head_date">${order_list.formDate}</span>
+
+                                <span class="head_date">  <fmt:formatDate value="${order_list.order_date}" pattern="yyyy.MM.dd HH:ss"/></span>
                                 <span class="head_status">
                             ${order_list.order_status}
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='cooking'}">조리중</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='delivering'}">배달중</c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <c:if test="${i.order_status=='complete'}">배달완료</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='cooking'}">조리중</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='delivering'}">배달중</c:if>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;                <c:if test="${i.order_status=='complete'}">배달완료</c:if>&ndash;%&gt;--%>
             </span>
                             </div>
                             <div class="box3">
@@ -72,19 +73,17 @@
                                                                 id="profile"></div>
                                 </c:if>
                                 <div class="info">
-                                    <a href="/store/menu/${order_list.store_seq}"><span
+
+                                    <div class="infohead">  <a href="/store/menu/${order_list.store_seq}"><span
                                             class="storename">${order_list.store_name}</span></a>
-                                    <input type="hidden" value="${order_list.order_seq}" class="order_Seq_Chk">
+                                        <input type="hidden" value="${order_list.order_seq}" class="order_Seq_Chk"></div>
 
 
 
-                                    <p class="meinfo">
 
-
-
+                                    <div class="meinfo">
 
                                             ${menu_list[status.index].menu.menu_name} <%-- 메뉴명--%>
-
 
                                         <c:if test="${menu_list[status.index].count>0}">
                                             x  ${menu_list[status.index].count}
@@ -103,32 +102,33 @@
                                             <%--                        </c:forEach>--%>
                                             <%--                    </c:if>--%>
 
-                                    </p>
+                                    </div>
 
                                     <div class="infoFooter">
                                         <c:if test="${nowfmtTime<parseDate3day}">
-                                            <%--<a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn" id="reviewChk">리뷰작성</button></a>--%>
-                                            <button class="deli_btn reviewChk">리뷰작성</button>
-
+                                            <c:if test="${order_list.order_status='배달완료'}">
+                                                <%--<a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn" id="reviewChk">리뷰작성</button></a>--%>
+                                                <button class="deli_btn reviewChk" disabled>리뷰작성</button>
+                                            </c:if>
                                         </c:if>
                                         <a href="/order/detail/${order_list.order_seq}">
                                             <button class="deli_btn">주문상세</button>
                                         </a>
 
-                                                              <a href="/order/history/${order_list.order_seq}">
-                                                         <button class="deli_btn" type="button">재주문</button>
-                                                              </a>
+                                        <a href="/order/history/${order_list.order_seq}">
+                                            <button class="deli_btn" type="button">재주문</button>
+                                        </a>
+                                        <c:if test="${order_list.order_status='배달완료'}">
+                                        </c:if>
 
-
-<%--                                        <button class="deli_btn reOrder" type="button" >재주문</button>--%>
-<%--                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>--%>
-<%--                                        <form action="/basket" method="post" id="to_basket">--%>
-<%--                                            <input type="hidden" name="basket_menu" id="basket_menu">--%>
-<%--                                        </form>--%>
+                                            <%--                                        <button class="deli_btn reOrder" type="button" >재주문</button>--%>
+                                            <%--                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>--%>
+                                            <%--                                        <form action="/basket" method="post" id="to_basket">--%>
+                                            <%--                                            <input type="hidden" name="basket_menu" id="basket_menu">--%>
+                                            <%--                                        </form>--%>
 
                                     </div>
-                                    <c:if test="${order_list.order_status='배달완료'}">
-                                    </c:if>
+
                                 </div>
                             </div>
 
