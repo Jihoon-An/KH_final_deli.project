@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PayInfoDTO {
     private String cp_type;
-
     private int order_price;
     private int discountByCoupon;
     private int discountByMoney;
