@@ -60,7 +60,7 @@
 
 #myPage .emailViewBox{
     margin-top: 3px;
-    float: left;
+    float: right;
 }
 #myPage .emailViewBox > .emailIconBox{
     float: left;
