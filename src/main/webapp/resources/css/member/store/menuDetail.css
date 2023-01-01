@@ -1,8 +1,40 @@
 #menu_detail {
-    margin: auto;
-    border: 1px solid black;
+    margin: 0 auto;
     width: 600px;
 }
 #menu_detail .option_name {
 
+}
+#menu_name{
+    font-size: 23px;
+    font-weight: bold;
+}
+#menu_intro{
+    font-size: 13px;
+}
+.soft-bold{
+    font-weight: 400;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"]:focus{
+    outline: none;
+}
+
+#basket_btn{
+    background-color: #E84C4F;
+    font-size: 20px;
+    font-weight: 500;
+}
+.btn-secondary{
+    background-color: #CACACA;
+    border: none;
+}
+
+.swal2-styled.swal2-confirm{
+    background-color: #e78c8c !important;
 }
