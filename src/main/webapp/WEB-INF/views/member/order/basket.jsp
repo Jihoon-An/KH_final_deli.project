@@ -46,15 +46,20 @@
                         </div>
 
                         <div class="menuInfoDiv">
-                            <ul>
-                                <li>가격 : <span class="menuPrice">${menuList.menuDTO.menu_price}</span>원</li>
+                            <ul class="menuInfo">
+                                <li>
+                                    가격 :
+                                    <span class="menuPrice">
+                                        <fmt:formatNumber value="${menuList.menuDTO.menu_price}" type="number"/>
+                                    </span>원
+                                </li>
                             <c:forEach var="optionMap" items="${menuList.menuOptionDTO}" varStatus="i">
 <%--                                - 옵션 메뉴 SEQ : ${optionMap.menu_seq}<br>--%>
 <%--                                - 옵션 SEQ : ${optionMap.option_seq}<br>--%>
                                 <input type="hidden" class="inputOptionSeq" value="${optionMap.option_seq}">
-                                <li>
+                                <li class="optionInfo">
                                     ${optionMap.option_group} : ${optionMap.option_name}
-                                    (<span class="optionPrice op${i.count}">${optionMap.option_price}</span>원)
+                                    (<span class="optionPrice op${i.count}"><fmt:formatNumber value="${optionMap.option_price}" type="number"/></span>원)
                                 </li>
                             </c:forEach>
                             </ul>
@@ -62,15 +67,19 @@
                             <div class="priceBox">
 <%--                                메뉴 SEQ : ${menuList.menuDTO.menu_seq}<br>--%>
                                 <input type="hidden" class="inputMenuSeq" value="${menuList.menuDTO.menu_seq}">
-                                <span class="priceSpan">${menuList.price}</span>원
+                                <span class="priceSpan">
+                                    <fmt:formatNumber value="${menuList.price}" type="number"/>
+                                </span>원
                             </div>
                         </div>
 
                         <div class="menuBottomDiv">
                             <div class="countBox input-group">
-                                <button class="minus deli_btn">-</button>
-                                    <span class="countSpan form-control">${menuList.count}</span>
-                                <button class="plus deli_btn">+</button>
+                                <button class="minus deli_btn" style="line-height: 10px;">-</button>
+                                    <span class="countSpan form-control" style="height: 30px; line-height: 18px; font-size: 14px;">
+                                            ${menuList.count}
+                                    </span>
+                                <button class="plus deli_btn"  style="height: 30px; line-height: 10px;">+</button>
                             </div>
                         </div>
 
@@ -85,11 +94,17 @@
                         <strong>결제예정금액 :</strong>
                     </div>
                     <div class="deliInfoRightBox">
-                        <span id="totalPriceSpan">${totalPrice}</span>원<br>
-                        <span id="deliTipSpan">${store.store_deli_tip}</span>원
+                        <span id="totalPriceSpan">
+                            <fmt:formatNumber value="${totalPrice}" type="number"/>
+                        </span>원<br>
+                        <span id="deliTipSpan">
+                            <fmt:formatNumber value="${store.store_deli_tip}" type="number"/>
+                        </span>원
                         <hr>
                         <strong>
-                            <span id="payAmountSpan">${payAmount}</span>원
+                            <span id="payAmountSpan">
+                                <fmt:formatNumber value="${payAmount}" type="number"/>
+                            </span>원
                         </strong>
                     </div>
                 </div>
@@ -111,7 +126,7 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <img src="/resources/img/cart_no_product.png" style="width: 345px;">
+                <img src="/resources/img/cart_no_product.png" style="width: 345px; margin-top: 50px;">
             </c:otherwise>
         </c:choose>
 
