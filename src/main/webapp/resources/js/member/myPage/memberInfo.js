@@ -19,69 +19,125 @@ $("#nameRemoveLabel").click(function (){
 })
 
 
-
 /**
  * 패스워드 변경 버튼 기능
  */
 $("#passWordModifyBtn").click(function (){
+    $(this).hide();
+    $("#passWordCloseBtn").show();
     $(".modifyPwBox").show();
-
-    // 비밀번호 변경 확인 버튼 기능
-    $("#modifyPasswordConfirmBtn").click(function (){
-
-        let oldPW = $("#oldPassWord");
-        let newPW = $("#newPassWord");
-        let conPW = $("#confirmPassWord");
-        let pwCheckSpan = $("#pwCheckSpan");
-
-        pwCheckSpan.text('');
-
-        if (!oldPW.val().trim()) {
-            oldPW.focus();
-            oldPW.val("");
-            pwCheckSpan.text("현재 비밀번호를 입력해주세요.");
-            return false;
-        }
-        if (!newPW.val().trim()) {
-            newPW.focus();
-            newPW.val("");
-            pwCheckSpan.text("새 비밀번호를 입력해주세요.");
-            return false;
-        }
-        if (!conPW.val().trim()) {
-            conPW.focus();
-            conPW.val("");
-            pwCheckSpan.text("새 비밀번호 확인을 입력해주세요.");
-            return false;
-        }
-        if (newPW.val() !== conPW.val()) {
-            $("#pwCheckSpan").text("새 비밀번호와 일치하지 않습니다.")
-            return false;
-        }
-
-        if(oldPW.val().trim() !== '' && newPW.val().trim() !== '' && conPW.val().trim() !== ''){
-            $.ajax({
-                url: "/myPage/memberInfo/modify/passWord",
-                type: "post",
-                data: $("#modifyMemberInfo").serialize(),
-                success:function (resp){
-                    oldPW.val("");
-                    newPW.val("");
-                    conPW.val("");
-                    pwCheckSpan.text("");
-                    if (resp == 'true'){
-                        alert("비밀번호 변경 성공");
-                        $(".modifyPwBox").hide();
-                    }else {
-                        alert("비밀번호 변경 실패");
-                    }
-                }
-            });
-
-        }
-
-    });
 });
+$("#passWordCloseBtn").click(function (){
+    $(this).hide();
+    $("#passWordModifyBtn").show();
+    $(".modifyPwBox").hide();
+});
+
+$("#newPassWord,#confirmPassWord").on("focus", function () {
+    pw_check();
+})
+$("#newPassWord,#confirmPassWord").on("keyup", function () {
+    pw_check();
+})
+
+// 비밀번호 - 값 입력 유효성 검사 display
+function pw_check() {
+    let pwRegex = /^(?=.*[A-Za-z\d])(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,16}$/;
+    if ($("#newPassWord").val() == "") {
+        $("#pwCheckSpan").show();
+        $("#pwCheckSpan").css("color", "#000000");
+        $("#pwCheckSpan").html("특수문자를 1개 이상 포함해 주세요");
+        pw_ok = false;
+    } else if (!pwRegex.test($("#newPassWord").val())) {
+        $("#pwCheckSpan").show();
+        $("#pwCheckSpan").css("color", "#FF0000");
+        $("#pwCheckSpan").html("8-16자리, 특수문자 1개 이상 포함해 주세요");
+        pw_ok = false;
+    } else if ($("#confirmPassWord").val() != $("#newPassWord").val()) {
+        $("#pwCheckSpan").show();
+        $("#pwCheckSpan").css("color", "#FF0000");
+        $("#pwCheckSpan").html("동일한 비밀번호를 입력해 주세요");
+        pw_ok = false;
+    } else {
+        $("#pwCheckSpan").html("");
+        $("#pwCheckSpan").css("color", "#000000");
+        $("#pwCheckSpan").hide();
+        pw_ok = true;
+    }
+}
+
+
+
+
+
+// 비밀번호 변경 확인 버튼 기능
+$("#modifyPasswordConfirmBtn").click(function (){
+    let pwRegex = /^(?=.*[A-Za-z\d])(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,16}$/;
+    let oldPW = $("#oldPassWord");
+    let newPW = $("#newPassWord");
+    let conPW = $("#confirmPassWord");
+    let pwCheckSpan = $("#pwCheckSpan");
+
+    pwCheckSpan.text('');
+
+    if (!oldPW.val().trim()) {
+        oldPW.focus();
+        oldPW.val("");
+        pwCheckSpan.text("현재 비밀번호를 입력해 주세요.");
+        return false;
+    }
+    if (!newPW.val().trim()) {
+        newPW.focus();
+        newPW.val("");
+        pwCheckSpan.text("새 비밀번호를 입력해 주세요.");
+        return false;
+    }
+    if (!conPW.val().trim()) {
+        conPW.focus();
+        conPW.val("");
+        pwCheckSpan.text("새 비밀번호 확인을 입력해 주세요.");
+        return false;
+    }
+    if (!pwRegex.test(newPW.val())) {
+        pwCheckSpan.text("비밀번호 형식에 맞게 입력해 주세요.");
+        return false;
+    }
+    if (newPW.val() !== conPW.val()) {
+        $("#pwCheckSpan").text("새 비밀번호와 일치하지 않습니다.")
+        return false;
+    }
+
+    if(oldPW.val().trim() !== '' && newPW.val().trim() !== '' && conPW.val().trim() !== ''){
+        $.ajax({
+            url: "/myPage/memberInfo/modify/passWord",
+            type: "post",
+            data: $("#modifyMemberInfo").serialize(),
+            success:function (resp){
+                oldPW.val("");
+                newPW.val("");
+                conPW.val("");
+                pwCheckSpan.text("");
+                if (resp == 'true'){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '비밀번호가 변경되었습니다',
+                    });
+                    $("#passWordCloseBtn").hide();
+                    $("#passWordModifyBtn").show();
+                    $(".modifyPwBox").hide();
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '비밀번호 변경에 실패했습니다'
+                    });
+                }
+            }
+        });
+
+    }
+
+});
+
 
 
 
@@ -97,7 +153,7 @@ function validNum() {
 function phone_check() {
     if ($("#mem_phone").val() == "") {
         $("#phone_msg").show();
-        $("#pw_msg").css("color", "#000000");
+        $("#phone_msg").css("color", "#000000");
         $("#phone_msg").html("숫자만 입력 가능합니다");
     } else if (!phoneRegex.test($("#mem_phone").val())) {
         $("#phone_msg").show();
@@ -107,14 +163,11 @@ function phone_check() {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#008000");
         $("#phone_msg").html("인증번호를 입력해주세요");
-        // $("#phone_msg").html("");
-        // $("#phone_msg").css("color", "#000000");
-        // $("#phone_msg").hide();
     }
 }
 
 $("#reCertificationBtn").click(function (){
-    let phoneNumber = $("#phoneNumber");
+    let phoneNumber = $("#mem_phone");
     phoneNumber.attr('readonly', false).val("").focus();
     $(this).hide();
     $("#phone_certi_btn").show();
@@ -190,6 +243,7 @@ $("#phone_certi_btn").on("click", function () {
             if (result != null) {
                 sendAuthNum("#phone_count");
                 $("#phone_confirm_box").show();
+                $("#count").show();
             } else {
                 alert("메시지 전송 실패");
             }
