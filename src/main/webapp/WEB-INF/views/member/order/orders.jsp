@@ -5,82 +5,11 @@
 <head>
     <title>딜리 - 결제하기</title>
     <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
+    <link rel="stylesheet" href="/resources/css/member/order/orderPay.css">
 
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 </head>
-<style>
-    /*main CSS*/
-    .container {
-        border: 1px solid black;
-        width: 375px;
-        height: 100%;
-    }
-
-    /*modal CSS*/
-    .modal-overlay {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(1.5px);
-        -webkit-backdrop-filter: blur(1.5px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .modal-window {
-        background: rgba(69, 139, 197, 0.70);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(13.5px);
-        -webkit-backdrop-filter: blur(13.5px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        width: 400px;
-        height: 500px;
-        position: relative;
-        top: -100px;
-        padding: 10px;
-    }
-
-    .title {
-        padding-left: 10px;
-        display: inline;
-        text-shadow: 1px 1px 2px gray;
-        color: white;
-    }
-
-    .title h2 {
-        display: inline;
-    }
-
-    .close-area {
-        display: inline;
-        float: right;
-        padding-right: 10px;
-        cursor: pointer;
-        text-shadow: 1px 1px 2px gray;
-        color: white;
-    }
-
-    .content {
-        margin-top: 20px;
-        padding: 0px 10px;
-        text-shadow: 1px 1px 2px gray;
-        color: white;
-    }
-
-    .couponInfo {
-        color: black;
-    }
-</style>
 <body>
 
 <c:import url="/member/header/destination" />
@@ -95,7 +24,7 @@
     <div class="container">
         <h2>배달 정보</h2>
         <hr>
-        <div id="mainAddress">address1출력
+        <div id="mainAddress">
             <input type="text" id="address1" name="address1" placeholder="Address1" readonly>
             <!-- <%--모달로 주소 변경 구현 ( 아래 내용이 들어감 )--%> -->
             <button type="button" id="destination_change">주소 변경</button>
@@ -175,6 +104,7 @@
                 <input type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" placeholder="사용할 포인트">
             </div>
             <hr>
+            <div>결제 금액</div>
             <div>주문 금액 출력
                 <input type="text" id="order_price" name="order_price" readonly>
             </div>
@@ -195,8 +125,10 @@
                 <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액" readonly>
             </div>
             <hr>
+            <div id="pay_method">
             <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
             <button type="button" id="payCard" class="btn_payment">카드 결제</button>
+            </div>
         </div>
 
         <input type="hidden" id="accEmail" name="accEmail" value="${userInfo.accEmail}"/>
@@ -281,17 +213,6 @@
                         html += '<input type="hidden" value="' + data[i].cpType + '" id="cpType' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].mc_seq + '" id="mcSeq' + i + '"> ';
                     }
-                    // for(var k = 0; k < data.length; k++){
-                    //     var type ='';
-                    //     if(data[k].cpType == 'amount') type = '원';
-                    //     else type = data[k].cpType;
-                    //     html += '<a class="couponInfo" id="coupon' + k + '" href="javascript:choiceCoupon(' + k + ');">' + data[k].cpName + " || " + data[k].cpContent + " || " + data[k].discount_coupon + type + '</a><br>';
-                    //     html += '<input type="hidden" value="' + data[k].cp_seq + '" id="cpSeq' + k + '"> ';
-                    //     html += '<input type="hidden" value="' + data[k].cpName + '" id="cpName' + k + '"> ';
-                    //     html += '<input type="hidden" value="' + data[k].cpDiscount + '" id="cpDiscount' + k + '"> ';
-                    //     html += '<input type="hidden" value="' + data[k].cpType + '" id="cpType' + k + '"> ';
-                    //     html += '<input type="hidden" value="' + data[k].mc_seq + '" id="mcSeq' + k + '"> ';
-                    // }
 
                 } else {
                     html += '<p>사용 가능한 쿠폰이 없습니다.</p>';
