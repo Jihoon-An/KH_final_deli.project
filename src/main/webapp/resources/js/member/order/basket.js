@@ -194,13 +194,13 @@ $(".deleteBtn").click(async function(){
  * 결제 버튼 기능
  */
 $("#pay").click(function() {
-    if (parseInt($("#totalPriceSpan").html()) > $("#minPrice").val()) {
-        $("#payAmount").val(parseInt($("#payAmountSpan").html()));
+    if (parseInt($("#totalPriceSpan").html().replace(/,/g,"")) > $("#minPrice").val()) {
+        $("#payAmount").val(parseInt($("#payAmountSpan").html().replace(/,/g,"")));
     } else{
         Swal.fire({
             icon: 'error',
             title: '주문금액 부족',
-            text: $("#minPrice").val() + '원부터 주문할 수 있어요',
+            text: ($("#minPriceText").val())+ '원 이상부터 주문할 수 있어요',
         });
         return false;
     }
