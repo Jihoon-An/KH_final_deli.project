@@ -105,7 +105,7 @@
 
                                     <div class="infoFooter">
                                         <c:if test="${nowfmtTime<parseDate3day}">
-                                            <c:if test="${order_list.order_status='배달완료'}">
+                                            <c:if test="${order_list.order_status=='배달완료'}">
                                                 <%--<a href="/myPage/reviewWrite/${order_list.order_seq}"><button class="deli_btn" id="reviewChk">리뷰작성</button></a>--%>
                                                 <button class="deli_btn reviewChk" disabled>리뷰작성</button>
                                             </c:if>
