@@ -23,6 +23,7 @@
             <c:when test="${not empty basket}">
                 <input type="hidden" id="storeSeq" value="${store.store_seq}">
                 <input type="hidden" id="minPrice" value="${store.store_min_price}">
+                <input type="hidden" id="minPriceText" value="<fmt:formatNumber value="${store.store_min_price}" type="number"/>">
                 <div class="storeImgBox">
                     <img style="width: 30px; height: 30px;" src="/resources/img/store/${store.store_logo}">
                 </div>
@@ -118,7 +119,9 @@
                                 <span id="countPB">${totalCount}</span>
                                 <span id="orderPB">배달 주문하기</span>
                                 <div id="totalPBBox">
-                                    <span id="totalPB">${payAmount}</span>원
+                                    <span id="totalPB">
+                                        <fmt:formatNumber value="${payAmount}" type="number"/>
+                                    </span>원
                                 </div>
                             </button>
                         </a>
