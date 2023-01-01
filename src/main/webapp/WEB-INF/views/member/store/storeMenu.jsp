@@ -2,8 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div id="store_detail">
+<div id="store_detail" style="margin-bottom: 80px;">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
     <div class="fieldBox" style="margin-bottom: -10px;">
         <div id="menu"><a onclick="loadCode1();"
                           style="font-weight: bold; font-size: 1.15em; cursor: pointer;">메뉴</a></div>
@@ -59,7 +64,7 @@
                 <div style="height: 10px;"></div>
                 <c:forEach var="menuList" items="${categories.menuList}">
                 <div class="menu_box">
-                    <div class="box">
+                    <div class="box" style="margin: auto;">
                         <a href="/menu/detail/${menuList.menu_seq}">
                             <div class="menu_info">
                                 <c:choose>

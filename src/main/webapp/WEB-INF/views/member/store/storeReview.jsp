@@ -2,9 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div class="storeReview">
+<div class="storeReview" style="margin-bottom: 80px;">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-
+    <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
+    <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
     <div class="fieldBox" style="margin-bottom: -10px;">
         <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
         <div id="info"><a onclick="loadCode2();" style="cursor: pointer;" id="to_info">정보</a></div>
