@@ -143,19 +143,17 @@
                     저장
                 </button>
 
-
-
-                <div class="buttonBox">
-                    <a href="/account/logout">
-                        <button type="button">로그아웃</button>
-                    </a>
-                    <br><br>
-                    <form action="/account/withdrawal" id="withdrawalForm" method="post">
-                        <button type="button" id="withdrawalButton">회원탈퇴</button>
-                    </form>
-                </div>
-
             </form>
+
+            <div class="buttonBox">
+                <a href="/account/logout">
+                    <button type="button">로그아웃</button>
+                </a>
+                <br><br>
+                <form action="/account/withdrawal" id="withdrawalForm" method="post">
+                    <button type="button" id="withdrawalButton">회원탈퇴</button>
+                </form>
+            </div>
 
         </div>
 

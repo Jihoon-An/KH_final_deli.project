@@ -81,8 +81,11 @@ public class AccountController {
 
     @PostMapping("withdrawal")
     public String withdrawal() throws Exception {
+        System.out.println("aaaaaaaa");
         int accSeq = (Integer) session.getAttribute("acc_seq");
         String loginType = (String)session.getAttribute("loginType");
+        System.out.println(accSeq);
+        System.out.println(loginType);
         switch (loginType) {
             case "normal" :
                 mainAccountService.withdrawal(accSeq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
