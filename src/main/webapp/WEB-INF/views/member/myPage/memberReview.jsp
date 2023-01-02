@@ -42,7 +42,7 @@
             <div>
                 <div class="imgBox fileBtnBox">
                     <input type="hidden" name="rev_sysname" id="rev_sysmname">
-                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가
+                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가 (최대 4개)
                     <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
                     </label>
                 </div>
