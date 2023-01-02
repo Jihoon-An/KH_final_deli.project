@@ -81,8 +81,8 @@ function imgPreview(){
 
             //미리보기
             $("#imgSec").append(
-                $("<div class='review_img_div'>").append(
-                    $("<img style='width: 100px; height: 100px;'>")
+                $("<span class='review_img_div'>").append(
+                    $("<img style='width: 100px; height: 100px;' class='preimg_img'>")
                         .attr("src", e.target.result)
                 ).append(
                     $("<input type='hidden' class='img_name'>")
