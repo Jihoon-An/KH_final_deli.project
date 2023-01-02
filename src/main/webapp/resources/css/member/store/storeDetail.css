@@ -99,8 +99,8 @@
 }
 
 #store_detail .img {
-    width: 95px;
-    height: 95px;
+    /*width: 95px;*/
+    /*height: 95px;*/
     border-radius: 20px;
     object-fit: cover;
     margin-right: 10px;
@@ -139,20 +139,21 @@
     overflow: hidden;
 }
 
-#store_detail .bottom_menu_group .menu {
-    width: 70%;
+#store_detail .menu {
+    width: 65%;
     float: left;
 }
 
-#store_detail .bottom_menu_group .menu_img {
-    width: 30%;
+#store_detail .menu_img {
+    border-radius: 7px;
+    width: 35%;
     float: left;
 }
 
 #store_detail .menu_img img {
-    width: 100%;
-    height: 113px;
-    border-radius: 10px;
+    /*width: 100%;*/
+    /*height: 113px;*/
+    /*border-radius: 10px;*/
 }
 
 #store_detail #menu_intro {
@@ -299,7 +300,3 @@ store_detail button {
 #store_detail .heartIcon:hover {
     cursor: pointer;
 }
-
-/*div {*/
-/*    border: 1px solid black;*/
-/*}*/

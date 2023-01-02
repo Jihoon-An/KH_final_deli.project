@@ -102,13 +102,13 @@
                                                 주문상세
                                             </button>
                                         </a>
-
+                                        <c:if test="${order_list.order_status=='배달완료'}">
                                         <a href="/order/history/${order_list.order_seq}">
                                             <button class="deli_btn" style="padding-left: 12px; padding-right: 12px;"
                                                     type="button">재주문
                                             </button>
                                         </a>
-
+                                            </c:if>
                                             <%--                                        <button class="deli_btn reOrder" type="button" >재주문</button>--%>
                                             <%--                                            <div class="basket_menu_str" style="height:0px; overflow: hidden;">${menu_list_str[status.index]}</div>--%>
                                             <%--                                        <form action="/basket" method="post" id="to_basket">--%>
