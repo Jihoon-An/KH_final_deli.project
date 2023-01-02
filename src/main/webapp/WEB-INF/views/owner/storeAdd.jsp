@@ -123,7 +123,7 @@
                 <div class="contents" style="height:100px;">
 <%--                    <input type="text" name="store_intro" placeholder="식당소개란" id="store_intro"--%>
 <%--                                                                    class="input_intro">--%>
-                    <textarea id="store_intro" name="store_intro" placeholder="식당 소개란"  class="input_intro"> </textarea>
+                    <textarea id="store_intro" name="store_intro" placeholder="식당 소개란"  class="input_intro"></textarea>
                 </div>
             </div>
             <div class="rowBox" style="height:100px; margin-top: 25px;" >
@@ -131,7 +131,7 @@
                 <div class="contents" style="height:100px;" >
 <%--                    <input type="text" name="store_origin" placeholder="주요 원산지" id="store_origin"--%>
 <%--                                                                      class="input_origin">--%>
-                    <textarea id="store_origin" name="store_origin" placeholder="주요 원산지"  class="input_origin"> </textarea></div>
+                    <textarea id="store_origin" name="store_origin" placeholder="주요 원산지"  class="input_origin"></textarea></div>
             </div>
 
 

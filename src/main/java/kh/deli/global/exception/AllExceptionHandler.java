@@ -11,6 +11,7 @@ public class AllExceptionHandler {
     public String permissionExceptionHandler(PermissionException e) {
         log.error("페이지에 권한이 없습니다.");
         return "errorPage/permissionException";
+//        return "redirect:/";
     }
 
     @ExceptionHandler(StoreBsTimeOutException.class)
