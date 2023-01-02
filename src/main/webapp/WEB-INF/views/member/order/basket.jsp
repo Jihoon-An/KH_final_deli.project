@@ -30,6 +30,9 @@
                 <div class="storeNameBox">
                     <span id="storeNameSpan" style="font-size: 20px;">${store.store_name}</span>
                 </div>
+                <button id="emptyBasketButton">
+                    <i class="fa-regular fa-trash-can"></i>
+                </button>
                 <br>
                 <hr>
                 <c:forEach var="menuList" items="${basket}">
@@ -129,6 +132,7 @@
                         </a>
                     </form>
                 </div>
+
             </c:when>
             <c:otherwise>
                 <img src="/resources/img/cart_no_product.png" style="width: 345px; margin-top: 50px;">
