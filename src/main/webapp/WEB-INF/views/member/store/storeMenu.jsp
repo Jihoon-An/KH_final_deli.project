@@ -54,60 +54,59 @@
         </c:choose>
 
         <div style="height: 10px;"></div>
-        <div class="menu_list">
-            <c:choose>
-            <c:when test="${not empty categoryList}">
-            <c:forEach var="categories" items="${categoryList}" varStatus="num">
-            <div class="bottom_menu_group" id="bottom_menu_group${num.count}"
-                 style="font-weight: bold; font-size: 17px; margin-bottom: 5px;">${categories.menu_group}
-                <div style="height: 10px;"></div>
-                <c:forEach var="menuList" items="${categories.menuList}">
-                <div class="menu_box">
-                    <div class="box" style="margin: auto;">
-                        <a href="/menu/detail/${menuList.menu_seq}">
-                            <div class="menu_info">
-                                <c:choose>
-                                    <c:when test="${not empty menuList.menu_img}">
-                                        <div class="menu">
-                                            <div class="yyyy">
-                                                <div class="menu_name">${menuList.menu_name}</div>
-                                                <div class="menu_intro">${menuList.menu_intro}
+            <div class="menu_list">
+                <c:choose>
+                    <c:when test="${not empty categoryList}">
+                    <c:forEach var="categories" items="${categoryList}" varStatus="num">
+                    <div class="bottom_menu_group" id="bottom_menu_group${num.count}"
+                         style="font-weight: bold; font-size: 17px; margin-bottom: 5px;">${categories.menu_group}
+                        <div style="height: 10px;"></div>
+                        <c:forEach var="menuList" items="${categories.menuList}">
+                        <div class="menu_box">
+                            <div class="box" style="margin: auto;">
+                                <a href="/menu/detail/${menuList.menu_seq}">
+                                    <div class="menu_info">
+                                        <c:choose>
+                                            <c:when test="${not empty menuList.menu_img}">
+                                                <div class="menu">
+                                                    <div class="yyyy">
+                                                        <div class="menu_name">${menuList.menu_name}</div>
+                                                        <div class="menu_intro">${menuList.menu_intro}
+                                                        </div>
+                                                        <div class="menu_price">
+                                                            <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="menu_price">
-                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                <div class="menu_img" style="width: 95px; height: 95px; margin-top: 5px;">
+                                                    <img class="img"
+                                                         src="/resources/img/menu-img/${menuList.menu_img}" style="width: 95px;
+            height: 95px;">
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="menu_img" style="width: 95px; height: 95px; margin-top: 5px;">
-                                            <img class="img"
-                                                 src="/resources/img/menu-img/${menuList.menu_img}" style="width: 95px;
-    height: 95px;">
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <div class="menu">
-                                            <div class="yyyy">
-                                                <div class="menu_name">${menuList.menu_name}</div>
-                                                <div id="menu_intro"
-                                                     style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
-                                                        ${menuList.menu_intro}
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="menu">
+                                                    <div class="yyyy">
+                                                        <div class="menu_name">${menuList.menu_name}</div>
+                                                        <div id="menu_intro"
+                                                             style="width: 275px; text-overflow: unset; white-space: unset; overflow: unset; word-break:break-word">
+                                                                ${menuList.menu_intro}
+                                                        </div>
+                                                        <div class="menu_price">
+                                                            <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="menu_price">
-                                                    <fmt:formatNumber value="${menuList.menu_price}" pattern="#,###"/>원
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </a>
+                                            </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <div style="height:10px;"></div>
+                </c:forEach>
+                <hr>
             </div>
-            <div style="height:10px;"></div>
-            </c:forEach>
-            <hr>
-        </div>
         </c:forEach>
 
             <%--원산지--%>
@@ -121,14 +120,16 @@
                 원산지 없음
             </c:otherwise>
         </c:choose>
+
         </c:when>
         <c:otherwise>
             메뉴가 없어요
         </c:otherwise>
         </c:choose>
-
     </div>
+</div>
+</div>
 
-    <script src="/resources/js/member/store/storeDetail.js"></script>
+<script src="/resources/js/member/store/storeDetail.js"></script>
 </div>
 </div>
