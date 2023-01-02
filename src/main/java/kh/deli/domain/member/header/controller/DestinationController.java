@@ -51,6 +51,8 @@ public class DestinationController {
         for(int i = 0; i < addSeqList.size(); i++) {
             destinationService.modify(Integer.valueOf(addSeqList.get(i)), addDivisionList.get(i));
         }
+        //Delete session
+        session.removeAttribute("basket");
         return "success";
     }
 
