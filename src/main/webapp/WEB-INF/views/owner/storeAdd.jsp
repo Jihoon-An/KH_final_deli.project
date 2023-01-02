@@ -13,11 +13,18 @@
     <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 
     <link rel="stylesheet" href="/resources/css/owner/storeAdd.css" type="text/css">
+
+
 </head>
 
 
 <body>
 <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+<style>
+    #deli_nav {
+        min-height: 1700px;
+    }
+</style>
 <main id="storeAdd">
 
     <form action="" id="frm" method="post" enctype="multipart/form-data">
@@ -37,7 +44,7 @@
             <div class="rowBox">
                 <div class="title">우편번호</div>
                 <div class="contents"><input type="text" id="postcode" placeholder="우편번호" class="input">
-                    <button type="button" class="postsearch">우편검색</button>
+                    <button type="button" class="postsearch deli_btn">우편검색</button>
                 </div>
             </div>
             <div class="rowBox">
@@ -91,30 +98,32 @@
                         카페·디저트
                     </option>
                     <option value="샐러드">
-                       샐러드
+                        샐러드
                     </option>
                 </select></div>
             </div>
             <div class="rowBox" style="height: 150px">
                 <div class="title">대표사진</div>
-                <div class="contents">
-                    <div class="profile">
-                        <div class="thumbnail">
-                            <img src="/resources/img/store/no_storelogo.png" id="profile">
-                        </div>
-                        <div class="control">
+
+                <div class="profile">
+                    <div class="thumbnail">
+                        <img src="/resources/img/store/no_storelogo.png" id="profile">
+                    </div>
+                    <div class="control">
+                        <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가 (필수)
                             <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
-                        </div>
+                        </label>
                     </div>
                 </div>
+
             </div>
 
-            <div class="rowBox" style="height:100px;">
+            <div class="rowBox" style="height:100px; margin-top: 25px;">
                 <div class="title">식당소개</div>
                 <div class="contents" style="height:100px;"> <input type="text" name="store_intro" placeholder="식당소개란" id="store_intro"
                                                                     class="input_intro"></div>
             </div>
-            <div class="rowBox" style="height:100px;" >
+            <div class="rowBox" style="height:100px; margin-top: 25px;" >
                 <div class="title" >주요 원산지</div>
                 <div class="contents" style="height:100px;" >  <input type="text" name="store_origin" placeholder="주요 원산지" id="store_origin"
                                                                       class="input_origin"></div>
@@ -248,15 +257,15 @@
 
             <div class="rowBox">
                 <div class="title">주문 최소 금액</div>
-                <div class="contents"> <input type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
-                                              class="input" oninput=validNum()>원</div>
+                <div class="contents" > <input D" type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
+                    class="input" oninput=validNum()>원</div>
             </div>
 
 
 
             <div class="rowBox">
                 <div class="title">배달팁</div>
-                <div class="contents"><input type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input"
+                <div class="contents"><input style="width: " type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input"
                                              oninput=validNum()>원</div>
             </div>
 
@@ -296,8 +305,9 @@
                                               placeholder="배달 가능 지역" class="input"></div>
             </div>
 
-            <div class="foot_btn deli_btn"><button id=add type="button" >식당추가</button>
-                <a href="/owner/store/list"><button type="button" class="deli_btn">취소</button></a></div>
+            <div class="foot_btn"><button class="deli_btn" id=add type="button" >식당추가</button>
+                <a href="/owner/store/list"><button type="button" class="deli_btn">취소</button></a>
+            </div>
 
         </div>
 

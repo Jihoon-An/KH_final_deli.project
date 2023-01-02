@@ -6,6 +6,11 @@
  // border: 1px solid black;
 }
 
+#order_history body {
+    background: #333333 !important;
+    overflow-y: scroll !important;
+}
+
 #order_history .container {
     width: 360px;
     /*height: 100px;*/
