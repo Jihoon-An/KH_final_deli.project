@@ -60,7 +60,7 @@ function countStarter() {
 
 $("#email_btn").on("click", function () {
     // 이메일 유효성 검사
-    let emailRegex = new RegExp('^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$');
+    let emailRegex = new RegExp('^[a-zA-Z0-9+-\\_.]{1,15}@[a-zA-Z0-9-]{1,15}\\.[a-zA-Z-.]{2,8}$');
     if (emailRegex.test($("#email").val()) == false) {
         Swal.fire('옳지 않은 이메일 형식입니다.')
         $("#email").focus();
