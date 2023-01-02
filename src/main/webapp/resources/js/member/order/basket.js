@@ -189,6 +189,16 @@ $(".deleteBtn").click(async function(){
 });
 
 
+/**
+ * 장바구니 비우기 버튼 기능
+ */
+$("#emptyBasketButton").click(async ()=>{
+    $(".container").children(".menuBox").remove();
+    await updateBasket();
+    location.reload();
+})
+
+
 
 /**
  * 결제 버튼 기능

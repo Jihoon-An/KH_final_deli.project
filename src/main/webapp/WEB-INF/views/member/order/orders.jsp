@@ -25,13 +25,12 @@
         <h2>배달 정보</h2>
         <hr>
         <div id="mainAddress">
-            <input type="text" id="address1" name="address1" placeholder="Address1" readonly>
+            <div id="address1"></div>
+<%--            <input type="text" id="address1" name="address1" placeholder="Address1" readonly style="border: none;border-radius: 7px">--%>
             <button type="button" id="destination_change">주소 변경</button>
             <div id="modal2" class="modal-overlay">
                 <div class="modal-window">
-                    <div class="title">
-                        <h2>쿠폰리스트</h2>
-                    </div>
+                    <div class="title"></div>
                     <div class="close-area">X</div>
                     <div class="content" id="couponList">
                     </div>
@@ -39,18 +38,18 @@
             </div>
 
         </div>
-        <input type="text" id="address2" name="address2" placeholder="Address2">
-        <input type="text" id="phoneNum" name="phoneNum" placeholder="phoneNum">
+        <input type="text" id="address2" name="address2" placeholder="Address2" style="border: none;border-radius: 7px;margin-bottom: 10px;">
+        <input type="text" id="phoneNum" name="phoneNum" placeholder="phoneNum" style="border: none;border-radius: 7px">
         <hr>
-        <div>요청사항</div>
-        <div style="border: 1px solid black; display: none;">
+        <div style="margin-bottom: 10px">요청사항</div>
+        <div style="border: 1px solid black;margin-bottom: 10px;padding-left: 5px;border-radius: 7px;width: 58%">
             <input type="checkbox" name="order_disposable" value="N">일회용 수저,포크 안주셔도 돼요!<br>
         </div>
-        <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말">
-        <input type="text" name="order_rider_req" value="" placeholder="라이더님한테 전달할 말">
+        <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말" style="margin-bottom: 10px;border: 1px solid black;border-radius: 7px;width:100%">
+        <input type="text" name="order_rider_req" value="" placeholder="라이더님한테 전달할 말" style="border-radius: 7px;border: 1px solid black;width:100%">
         <hr>
         <div>결제수단
-            <select id="payment" name="pay_method" onchange="onchangePayment()">
+            <select id="payment" name="pay_method" onchange="onchangePayment()" style="border-radius: 7px">
                 <option name="payMethod" value="">선택</option>
                 <option name="payMethod" value="kakaoPay">카카오페이</option>
                 <option name="payMethod" value="creditCard">카드 결제</option>
@@ -61,38 +60,39 @@
         <%--할인쿠폰 리스트 모달--%>
         <div>
             <button type="button" id="btn_modal2">할인쿠폰</button>
-            <span>선택할인쿠폰</span>
             <ul id="choiceCoupon">
 
             </ul>
         </div>
-        <div>포인트
-            <div>
-                <input type="text" name="ownPoint" id="ownPoint" placeholder="보유포인트 0" readonly="true"
-                       onchange="onchangeOwnPoint()">
-                <input type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" placeholder="사용할 포인트" min="0">
-            </div>
+        <div>포인트 할인</div>
+            <div id="ownPointOut">보유 포인트</div>
+            <div id="ownPoint"></div>
+<%--                <input type="text" name="ownPoint" id="ownPoint" placeholder="보유포인트 0" readonly="true"--%>
+<%--                       onchange="onchangeOwnPoint()" style="border-radius: 7px;width: 50px">--%>
+                <input type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" min="0" style="width: 220px;border-radius: 7px">
+
             <hr>
-            <div>결제 금액</div>
-            <div>주문 금액 출력
-                <input type="text" id="order_price" name="order_price" readonly>
-            </div>
-            <div id="selectCoupon">쿠폰할인
+            <div id="total_price">결제 금액</div>
+            <div id="order_price_out">주문 금액</div><div id="order_price"></div>
+<%--                <input type="text" id="order_price" name="order_price" readonly>--%>
+        <div id="selectCoupon">쿠폰할인</div><div id="discountPrice"></div>
                 <input type="hidden" id="cp_seq" name="cp_seq">
                 <input type="hidden" id="mc_seq" name="mc_seq">
-                <input type="text" value=0 id="discountPrice" name="discountPrice" disabled="disabled"
-                       placeholder="쿠폰 할인 금액 출력">
-            </div>
+
+<%--                <input type="text" value=0 id="discountPrice" name="discountPrice" disabled="disabled"--%>
+<%--                       placeholder="쿠폰 할인 금액 출력">--%>
+
             <div>포인트 할인
-                <input type="text" value=0 id="use_point" name="use_point" placeholder="포인트 할인 출력" readonly>
+                <div id="use_point"></div>
+<%--                <input type="text" value=0 id="use_point" name="use_point" placeholder="포인트 할인 출력" readonly>--%>
             </div>
-            <div>배달팁
-                <input type="text" id="delivery_tip" name="delivery_tip" placeholder="배달팁" readonly>
+            <div id="delivery_tip_out">배달팁</div><div id="delivery_tip">
+<%--                <input type="text" id="delivery_tip" name="delivery_tip" placeholder="배달팁" readonly>--%>
             </div>
             <hr>
-            <div>총 결제 금액 출력
-                <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액" readonly>
-            </div>
+            <div id="pay_price_out">총 결제 금액</div><div id="pay_price"></div>
+<%--                <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액" readonly>--%>
+
             <hr>
             <div id="pay_method">
             <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
@@ -118,13 +118,16 @@
         $("#payCard").hide();
         $("#payment").val('kakaoPay');
         $("#acc_seq").val();
-        $("#order_price").val(${orderOrdersDTO.order_price})
-        $("#delivery_tip").val(${orderOrdersDTO.delivery_tip})
+        $("#order_price").html(${orderOrdersDTO.order_price} + "원");
+        <%--$("#order_price").val(${orderOrdersDTO.order_price})--%>
+        $("#delivery_tip").html(${orderOrdersDTO.delivery_tip} + "원");
+        <%--$("#delivery_tip").val(${orderOrdersDTO.delivery_tip})--%>
         initPage();
         setCouponList();
-        var orderPrice = parseInt($("#order_price").val());
-        var deliveryPrice = parseInt($("#delivery_tip").val());
-        $("#pay_price").val(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip});
+        var orderPrice = parseInt($("#order_price").html());
+        var deliveryPrice = parseInt($("#delivery_tip").html());
+        $("#pay_price").html(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip} + "원");
+        <%--$("#pay_price").val(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip});--%>
 
     }
 
@@ -143,10 +146,11 @@
                 //deliTip = data.delivery_tip;
 
                 $("#add_seq").val(addSeq);
-                $("#address1").val(address1);
+                $("#address1").html(address1);
                 $("#address2").val(address2);
                 $("#phoneNum").val(phoneNum);
-                $("#ownPoint").val(ownPoint);
+                $("#ownPoint").html(ownPoint);
+                // $("#ownPoint").val(ownPoint);
                 //$("#delivery_tip").val(deliTip);
 
                 onchangeOwnPoint();
@@ -166,15 +170,15 @@
             success: function (data) {
                 var html = "";
                 if (data.length > 0) {
-                    html += '<p>사용가능 쿠폰 목록</p>';
-                    html += '<div> 쿠폰 이름 || 쿠폰 설명 || 할인율</div><br>';
+                    html += '<p style="color: #e84c4f;margin-top: -50px;font-size: 20px;text-align: center">< 사용가능한 쿠폰 목록 ></p>';
+                    html += '<div style="color:black;float: left"> 쿠폰 이름 || 할인율 </div><br>';
 
                     for (var i = 0; i < data.length; i++) {
                         var type = '';
                         if (data[i].cpType == 'percent') type = '%';
                         else if(data[i].cpType == 'amount') type = '원';
                         // else (type = data[i].cpType);
-                        html += '<a class="couponInfo" id="coupon' + i + '" href="javascript:choiceCoupon(' + i + ');">' + data[i].cpName + " || " + data[i].cpContent + " || " + data[i].discount_coupon + type + '</a><br>';
+                        html += '<a class="couponInfo" id="coupon' + i + '" href="javascript:choiceCoupon(' + i + ');">' + data[i].cpName + " || " + data[i].discount_coupon + type + '</a><br>';
                         html += '<input type="hidden" value="' + data[i].cp_seq + '" id="cpSeq' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].cpName + '" id="cpName' + i + '"> ';
                         html += '<input type="hidden" value="' + data[i].discount_coupon + '" id="cpDiscount' + i + '"> ';
@@ -204,15 +208,16 @@
         var mcSeq = $("#mcSeq" + param).val();
 
         var html = "";
-        html += "<li id='chCp' cpSeq = '" + cpSeq + "' cpName = '" + cpName + "' cpDiscount = '" + cpDiscount + "' cpType = '" + cpType + "'>" + cpName + "</li>";
+        html += "<li id='chCp' cpSeq = '" + cpSeq + "' cpName = '" + cpName + "' cpDiscount = '" + cpDiscount + "' cpType = '" + cpType + "' style='margin-top: 5px;margin-bottom: -15px;'>" + cpName + " </li>";
 
         $("#choiceCoupon").html(html);
         var modal2 = document.getElementById('modal2');
         modal2.style.display = "none";
         $("#cp_seq").val(cpSeq);
         $("#mc_seq").val(mcSeq);
+
         // 결제금액 출력
-        var orderPrice = Number($("#order_price").val());
+        var orderPrice = ($("#order_price").html());
         console.log(orderPrice);
         // var discountPrice = $("#discount_coupon").val();
         // var discountPrice = orderPrice * (1 - cpName.replace(/\D/g,'')/100);
@@ -222,17 +227,18 @@
             var discountPrice = Math.floor(Number(cpDiscount));
         }
         var usePoint = Number($("#use_point").val());
-        var deliveryTip = Number($("#delivery_tip").val());
+        var deliveryTip = $("#delivery_tip").html();
         var payPrice = orderPrice - (discountPrice + usePoint) + deliveryTip;
         console.log(cpDiscount);
+        console.log(deliveryTip);
         console.log(cpType);
         console.log(usePoint);
         console.log(payPrice);
         if(payPrice < 0){
             payPrice = 0;
         }
-        $("#discountPrice").val(discountPrice);
-        $("#pay_price").val(payPrice);
+        $("#discountPrice").html(discountPrice);
+        $("#pay_price").html(payPrice);
         // $("#discountPrice").val(discountPrice);
         // $("#discount_coupon").val(discountPrice);
         // $("#discount_coupon").text(discountPrice);
@@ -295,44 +301,6 @@
         }
     }
 
-    // function onclickBtnChgPhone() {
-    //     var phoneNumber = $("#phoneNumber").val();
-    //     var msg = "";
-    //     var inptFlag = 0;
-    //
-    //     if (phoneNumber == "") {
-    //         msg = "핸드폰 번호";
-    //         inptFlag = 1;
-    //     }
-    //     if (inptFlag == 1) {
-    //         msg += "을/를 입력해주세요.";
-    //         alert(msg);
-    //         return;
-    //     } else {
-    //         $.ajax({
-    //             url: "orders/updateMemberPhone",
-    //             type: "post",
-    //             dataType: "json",
-    //             data: {
-    //                 phoneNum: phoneNumber
-    //             },
-    //             success: function (e) {
-    //                 if (e == 1) {
-    //                     alert("핸드폰 번호가 변경되었습니다.")
-    //                     var modal3 = document.getElementById('modal3');
-    //                     modal3.style.display = "none";
-    //                     $("#phoneNumber").val(phoneNumber);
-    //                 }
-    //             },
-    //             error: function (e) {
-    //             }
-    //         }).done(function () {
-    //             //alert("핸드폰 변경이 완료되었습니다.");
-    //             //location.href="/";
-    //         })
-    //     }
-    // }
-
     function onchangePayment() {
         $("#payKakao").hide();
         $("#payCard").hide();
@@ -353,29 +321,30 @@
         if (ownPoint == "0") {
             $("#usePoint").attr('readonly', true);
             $("#usePoint").attr('placeholder', '사용 가능 포인트가 없습니다');
-            $("#usePoint").val(0);
+            $("#usePoint").html(0);
         } else {
             $("#usePoint").removeAttr('readonly');
-            $("#usePoint").attr('placeholder', '사용하실 포인트를 입력해주세요.');
+            $("#usePoint").attr('placeholder', '사용 할 포인트를 입력해주세요.');
         }
     }
 
     function onchangeUsePoint() {
-        var orderPrice = Number($("#order_price").val());
-        var usePoint = Number($("#usePoint").val());
+        var orderPrice = Number($("#order_price").html());
+        var usePoint = Math.floor($("#usePoint").html());
         if(usePoint > ownPoint){
             usePoint = ownPoint;
-            $("#usePoint").val(ownPoint);
+            Math.floor($("#usePoint").html(ownPoint));
         }else if (usePoint < 0) {
             usePoint = 0;
-            $("#usePoint").val(0);
+            $("#usePoint").html(0);
         }
 
-        let cpDiscount = Number($("#discountPrice").val());
-        $("#use_point").val(usePoint);
-        var deliveryTip = Number($("#delivery_tip").val());
+
+        let cpDiscount = Number($("#discountPrice").html());
+        $("#use_point").html(usePoint);
+        var deliveryTip = Number($("#delivery_tip").html());
         var payPrice = (orderPrice + deliveryTip) - usePoint - cpDiscount;
-        $("#pay_price").val(payPrice);
+        $("#pay_price").html(payPrice);
     }
 
     // 버튼 클릭 시 쿠폰리스트 모달창 오픈

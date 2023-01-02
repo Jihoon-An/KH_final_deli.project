@@ -123,7 +123,6 @@ $(".send_link_btn").click(function () {
         confirmButtonText: '링크 보내기',
         showLoaderOnConfirm: true,
         preConfirm: (inputTel) => { //유효성 검사
-            console.log(inputTel)
             if (/^010[0-9]{8}/.test(inputTel)) {
                 tel = inputTel;
                 return true;
