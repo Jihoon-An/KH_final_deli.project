@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -96,4 +97,19 @@ public class OrderDeliveryDtlController {
         }
         return "owner/deliveryDtl";
     }
+    @ResponseBody
+    @RequestMapping("confirm")
+    public String confirmDeliveryDtl(@PathVariable("redisKey") String redisKey) {
+        System.out.println("redisKey : " + redisKey);
+        redis.deleteData(redisKey);
+        System.out.println("redis delete done");
+        return "/deliveryDtl/toConfirm";
+    }
+
+    @RequestMapping("toConfirm")
+    public String toConfirmDeliveryDtl() {
+        System.out.println("toConfirm");
+        return "redirect:/errorPage/deliveryDtlException";
+    }
+
 }

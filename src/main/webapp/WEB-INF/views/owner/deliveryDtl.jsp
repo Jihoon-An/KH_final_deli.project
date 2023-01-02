@@ -85,6 +85,12 @@
 </main>
 
 <script>
+    let urlKey = "";
+    window.onload = function (){
+        let url = window.location.pathname;
+        urlKey = url.split('/')[2];
+        console.log(urlKey)
+    }
     /**
      *상태 바꾸기 버튼 이벤트
      */
@@ -104,7 +110,6 @@
                 let newStatus = '배달완료';
                 let checkedSeqList = new Array();
                 checkedSeqList.push(parseInt(${storeInfoDTO.order_seq}));
-
                 //DB변경 요청
                 $.ajax({
                     url: "/owner/order/updateStatus",
@@ -114,8 +119,24 @@
                         checkedSeqListJson: JSON.stringify(checkedSeqList),
                         newStatus: newStatus
                     })
-                });
-                location.href()
+                }).done(
+                    // Swal.fire({
+                    //     title: `배달완료 처리가 되었습니다.`
+                    // })
+                    Swal.fire('배달완료 처리가 되었습니다.', '', 'success').then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: "/deliveryDtl/confirm",
+                                type: "post",
+                                data: {'redisKey':urlKey}
+                            }).done(function(resp){
+                                console.log(resp);
+                                location.href = resp;
+                            });
+                        }
+                    })
+                );
+
             }
         })
     });
