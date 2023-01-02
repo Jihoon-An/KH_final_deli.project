@@ -47,6 +47,11 @@ public class OwnerOrdersService {
     public void updateStatus(Map<String, String> changeInfo) {
         String checkedSeqListJson = changeInfo.get("checkedSeqListJson");
 
+        List<Integer> accSeqList = gson.fromJson(
+                checkedSeqListJson,
+                new TypeToken<List<Integer>>() {
+                }.getType());
+
         checkedSeqListJson = checkedSeqListJson.replace("[", "(");
         checkedSeqListJson = checkedSeqListJson.replace("]", ")");
 
@@ -59,11 +64,7 @@ public class OwnerOrdersService {
 
             // 상태 업데이트에 대한 유저에게 알림
 
-            List<Integer> accSeqList = gson.fromJson(
-                    checkedSeqListJson,
-                    new TypeToken<List<Integer>>() {
-                    }.getType());
-            for(Integer accSeq : accSeqList) {
+            for (Integer accSeq : accSeqList) {
                 NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
                         .to_acc_seq(accSeq)
                         .title("주문하신 상품상태 변경: " + newStatus)
