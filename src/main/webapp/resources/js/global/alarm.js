@@ -1,7 +1,18 @@
+var interval;
+
 $(document).ready(function () {
+
 
     //영역 생성
     $('body')
+        //     < span
+        //     className = "position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle" >
+        //         < span
+        //     className = "visually-hidden" > New
+        //     alerts < /span>
+        // </span>
+        .append($('<span id="new_alarm_icon" style="font-size: 10px;">')
+            .addClass("position-fixed top-5 start-30 translate-middle p-2 bg-danger border border-light rounded-circle"))
         .append($('<i id="alarm_icon">')
             .addClass("fa-solid fa-bell"))
         .append($('<div id="alarm_background">'))
@@ -15,14 +26,20 @@ $(document).ready(function () {
     $("#alarm_icon").click(function () {
         $('#alarm_background').toggle();
         $("#alarm_area").slideToggle(250);
+        clearInterval(interval);
+        $("#new_alarm_icon").css("display", "none");
     });
     $("#alarm_background").click(function () {
         $('#alarm_background').toggle();
         $("#alarm_area").slideToggle(250);
+        clearInterval(interval);
+        $("#new_alarm_icon").css("display", "none");
     });
     $("#alarm_close_btn").click(function () {
         $('#alarm_background').toggle();
         $("#alarm_area").slideToggle(250);
+        clearInterval(interval);
+        $("#new_alarm_icon").css("display", "none");
     });
 
 
@@ -38,7 +55,7 @@ $(document).ready(function () {
     }
 
 
-    init();
+    alarmInit();
 
 
     // WS 연결 테스트
@@ -51,6 +68,9 @@ $(document).ready(function () {
     alarmWS.onmessage = (ev) => {
         let data = JSON.parse(ev.data);
         console.log(data);
+        interval = setInterval(function () {
+            $("#new_alarm_icon").toggle();
+        }, 500);
         createAlarmBox(data);
     };
 
@@ -151,7 +171,7 @@ const userType = {
 
 
 //알림 기존 알림 추가하기
-function init() {
+function alarmInit() {
     $.ajax({
         url: '/alarm/getList',
         method: "post",
@@ -163,4 +183,7 @@ function init() {
             });
         }
     })
+    $("#new_alarm_icon").css("display", "none");
 }
+
+
