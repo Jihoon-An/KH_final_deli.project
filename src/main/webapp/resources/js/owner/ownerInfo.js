@@ -4,6 +4,42 @@
 /**
  * 비밀번호 변경 버튼 기능
  */
+var pw_ok = false;
+
+$("#newPassWord,#confirmPassWord").on("focus", function () {
+    pw_check();
+})
+$("#newPassWord,#confirmPassWord").on("keyup", function () {
+    pw_check();
+})
+
+
+// 비밀번호 - 값 입력 유효성 검사 display
+function pw_check() {
+    let pwRegex = /^(?=.*[A-Za-z\d])(?=.*[~!@#$%^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,16}$/;
+    if ($("#newPassWord").val() == "") {
+        $("#pwCheckSpan").show();
+        $("#pwCheckSpan").css("color", "#000000");
+        $("#pwCheckSpan").html("특수문자를 1개 이상 포함해 주세요");
+        pw_ok = false;
+    } else if (!pwRegex.test($("#newPassWord").val())) {
+        $("#pwCheckSpan").show();
+        $("#pwCheckSpan").css("color", "#FF0000");
+        $("#pwCheckSpan").html("8-16자리, 특수문자 1개 이상 포함해 주세요");
+        pw_ok = false;
+    } else if ($("#confirmPassWord").val() != $("#newPassWord").val()) {
+        $("#pwCheckSpan").show();
+        $("#pwCheckSpan").css("color", "#FF0000");
+        $("#pwCheckSpan").html("동일한 비밀번호를 입력해 주세요");
+        pw_ok = false;
+    } else {
+        $("#pwCheckSpan").html("");
+        $("#pwCheckSpan").css("color", "#000000");
+        $("#pwCheckSpan").hide();
+        pw_ok = true;
+    }
+}
+
 $("#modifyPassWordModalButton").click(()=>{
     $(".modal").fadeIn();
 
@@ -40,7 +76,11 @@ $("#modifyPassWordModalButton").click(()=>{
             return false;
         }
 
-        if(oldPW.val().trim() !== '' && newPW.val().trim() !== '' && conPW.val().trim() !== ''){
+        if(oldPW.val().trim() !== ''
+            && newPW.val().trim() !== ''
+            && conPW.val().trim() !== ''
+            && pw_ok === true
+        ){
             $.ajax({
                 url: "/owner/info/modifyPassWord",
                 type: "post",
@@ -51,14 +91,25 @@ $("#modifyPassWordModalButton").click(()=>{
                     conPW.val("");
                     pwCheckSpan.text("");
                     if (resp == 'true'){
-                        alert("비밀번호 변경 성공");
+                        Swal.fire({
+                            icon: 'success',
+                            title: '비밀번호가 변경되었습니다',
+                        });
                         $(".modal").fadeOut();
                     }else {
-                        alert("비밀번호 변경 실패");
+                        Swal.fire({
+                            icon: 'error',
+                            title: '비밀번호 변경에 실패했습니다'
+                        });
                     }
                 }
             });
 
+        }else if(pw_ok === false){
+            Swal.fire({
+                icon: 'error',
+                title: '형식에 맞게 작성해 주세요'
+            });
         }
 
     });
@@ -96,9 +147,6 @@ function phone_check() {
         $("#phone_msg").show();
         $("#phone_msg").css("color", "#008000");
         $("#phone_msg").html("인증번호를 입력해주세요");
-        // $("#phone_msg").html("");
-        // $("#phone_msg").css("color", "#000000");
-        // $("#phone_msg").hide();
     }
 }
 
@@ -166,7 +214,10 @@ $("#phone_certi_btn").on("click", function () {
                 sendAuthNum("#phone_count");
                 $("#phone_confirm_box").show();
             } else {
-                alert("메시지 전송 실패");
+                Swal.fire({
+                    icon: 'error',
+                    title: '메세지 전송 실패'
+                });
             }
         });
     } else {
@@ -211,20 +262,52 @@ function phone_confirm() {
                 $("#certificationBox").hide();
                 $("#phoneInput").attr("readonly", true);
                 phone_ok = true;
-                console.log(phone_ok);
+                Swal.fire({
+                    icon: 'success',
+                    title: '번호 인증이 완료되었습니다.',
+                });
+                $("#phone_certi_btn").hide();
+                $("#modifyPhoneButton").show();
             } else if ($("#phone_count").html() == "시간초과") {
-                alert("인증을 다시 해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '시간 초과'
+                });
                 phone_ok = false;
-                console.log(phone_ok);
             } else {
-                alert("인증 번호를 확인해주세요");
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증 번호를 확인해주세요'
+                });
                 phone_ok = false;
-                console.log(phone_ok);
             }
         })
     }
 }
 
+$('#ownerCardInput').on('change', function () {
+    filesTest($(this)[0]);
+})
+
+function filesTest(element) {  // 값이 변경되면
+    const files = element.files;
+
+    for (const file of files) {
+        var filename = file.name.split('/').pop().split('\\').pop();
+        var ext = filename.split('.').pop().toLowerCase(); //확장자분리
+        //아래 확장자가 있는지 체크
+
+        if ($.inArray(ext, ['jpg', 'jpeg', 'gif', 'png', 'pdf']) == -1) {
+            Swal.fire({
+                icon: 'error',
+                title: '파일 형식 오류',
+                text: 'jpg, jpeg, gif, png, pdf 파일만 업로드할 수 있습니다.',
+            })
+            element.value = "";
+            return;
+        }
+    }
+}
 
 
 

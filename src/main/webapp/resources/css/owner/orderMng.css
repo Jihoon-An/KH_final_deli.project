@@ -1,3 +1,35 @@
 #order_mng{
 
 }
+
+.sortingP{
+    display: none !important;
+}
+#order_table .check_box{
+    width: 3%;
+}
+#order_table .status{
+    width: 7%;
+}
+#order_table .mem_name {
+    width: 10%;
+}
+#order_table .mem_phone{
+    width: 10%;
+}
+#order_table .menu_name{
+    width: 45%;
+}
+#order_table .mem_add{
+    width: 13%;
+}
+#order_table .deli_link{
+    width: 12%;
+}
+
+#deli_nav{
+    position: fixed;
+}
+main{
+    transform: translateX(100px);
+}

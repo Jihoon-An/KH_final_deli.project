@@ -12,31 +12,64 @@
     <title>딜리 - 내 포인트/쿠폰</title>
     <%@ include file="/WEB-INF/views/global/m-commonLib.jsp" %>
     <link rel="stylesheet" href="/resources/css/member/myPage/memberCouponPoint.css" type="text/css">
+
 </head>
 <body>
-
+<%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_home.jsp" %>
+<%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
 <main id="memberCouponPoint">
 
     <div class="container">
 
+        <div class="titleBox">
+            쿠폰&포인트
+        </div>
+
         <div class="pointBox">
-            보유 포인트 : ${point}P
+            <div class="pointLeftSpan">
+                보유 포인트
+            </div>
+            <div class="pointRightSpan">
+                ${point}P
+            </div>
         </div>
 
         <hr>
 
         <div class="couponBox">
+            <div class="couponTopBox">
+                보유 쿠폰
+                <span id="couponCountSpan">${coupons.size()}</span>장
+            </div>
 
             <c:forEach var="coupons" items="${coupons}">
                 <div class="coupon">
-                    쿠폰 SEQ : ${coupons.cp_seq}<br>
-                    쿠폰 코드 : ${coupons.cp_code}<br>
-                    쿠폰 이름 : ${coupons.cp_name}<br>
-                    쿠폰 컨텐츠 : ${coupons.cp_content}<br>
-                    쿠폰 할인 : ${coupons.cp_discount}<br>
-                    쿠폰 타입 : ${coupons.cp_type}<br>
-                    쿠폰 기간 : ${coupons.cp_period}
-                    <hr>
+                    <div class="couponHead">
+                        <div class="couponLabelBox">
+                            <label class="deliveryLabel">배달</label>
+                            <label class="pickUpLabel">포장</label>
+                        </div>
+                        <div class="periodBox">
+                            기한 ${coupons.cp_period}일
+                        </div>
+                    </div>
+                    <div class="couponInfo">
+                        <span class="couponNameSpan">
+                            ${coupons.cp_name}
+                        </span>
+                        <p>
+                            <span class="couponContentSpan">
+                                ${coupons.cp_content}
+                            </span>
+                        </p>
+                    </div>
+
+<%--                    쿠폰 SEQ : ${coupons.cp_seq}--%>
+<%--                    쿠폰 코드 : ${coupons.cp_code}--%>
+<%--                    쿠폰 할인 : ${coupons.cp_discount}--%>
+<%--                    쿠폰 타입 : ${coupons.cp_type}--%>
                 </div>
             </c:forEach>
 

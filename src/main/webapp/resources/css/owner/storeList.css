@@ -4,3 +4,10 @@
 #ownerStore #myTable .store .name{
     cursor: pointer;
 }
+a {
+    text-decoration: none;
+}
+
+#container{
+    margin-top: 80px;
+}
