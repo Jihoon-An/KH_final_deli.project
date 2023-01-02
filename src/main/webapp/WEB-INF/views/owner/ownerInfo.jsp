@@ -21,7 +21,7 @@
 
     <div class="container">
         <form action="/owner/info/modifyOwner" id="ownerForm" method="post" enctype="multipart/form-data">
-<%--            <img src="/resources/img/owner-card/${ownerInfo.owner_card_img}">--%>
+
             <div class="titleBox">
                 사업자 회원 정보 수정
             </div>
@@ -55,7 +55,7 @@
                 <p id="phone_msg" style="display: none">양식에 맞는지 확인 중입니다.</p>
             </div>
 
-            <div id="certificationBox" style="height: 200px; display: none;">
+            <div id="certificationBox" style="height: 75px; display: none;">
                 <span id="certificationNumberSpan">인증번호</span>
                 <div class="infoInputBox input-group">
                     <input type="text" id="phone_confirm_input" class="form-control" name="phone_confirm_input"
@@ -76,6 +76,10 @@
             <div class="ownerCardBox">
                 <span>사업자등록증</span><br>
                 <input type="file" id="ownerCardInput" class="form-control" name="file" placeholder="사업자등록증">
+            </div>
+
+            <div class="ownerCardImgBox">
+                <img src="/resources/img/owner-card/${ownerInfo.owner_card_img}">
             </div>
 
 
