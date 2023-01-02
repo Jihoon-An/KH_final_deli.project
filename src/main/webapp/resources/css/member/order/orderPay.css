@@ -24,7 +24,8 @@
 }
 
 .modal-window {
-    background: rgba(69, 139, 197, 0.70);
+    /*background: rgba(69, 139, 197, 0.70);*/
+    background: rgba(255, 255, 255, 0.70);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
@@ -70,4 +71,91 @@
 
 #pay_method{
     text-align: center;
+}
+#pay_method #payKakao{
+    border-radius: 7px;
+    border: none;
+    text-align: center;
+    color: white;
+    background-color: #e84c4f;
+    font-size: 1em;
+}
+
+#pay_method #payCard{
+    border-radius: 7px;
+    border: none;
+    text-align: center;
+    color: white;
+    background-color: #e84c4f;
+    font-size: 1em;
+}
+
+#btn_modal2{
+    border-radius: 7px;
+    border: none;
+    text-align: center;
+    color: white;
+    background-color: #e84c4f;
+    font-size: 1em;
+}
+#address1{
+    float: left;
+}
+#destination_change{
+    border-radius: 7px;
+    border: none;
+    text-align: center;
+    color: white;
+    background-color: #e84c4f;
+    font-size: 1em;
+    margin-left: 100px;
+}
+
+#point #own_point{
+    border-radius: 7px;
+}
+
+#order_price_out{
+    width: 80%;
+    float: left;
+}
+#order_price{
+    width: 100%;
+}
+
+#delivery_tip_out{
+    width: 80%;
+    float: left;
+}
+#delivery_tip{
+    width: 100%;
+}
+
+#pay_price_out{
+    width: 80%;
+    float: left;
+    padding-bottom: 5px;
+}
+
+#pay_price{
+    width: 100%;
+}
+
+#ownPointOut{
+    width: 25%;
+    float: left;
+
+}
+#ownPoint{
+    width: 100%;
+}
+#total_price{
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+#pay_price_out{
+    font-weight: bold;
+    font-size: 20px;
 }
