@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -134,7 +135,7 @@ public class AccountController {
         session.setAttribute("loginType", "normal");
         session.setAttribute("acc_seq", accSeq);
 
-//        mcpService.giveSignUpCp(accSeq);
+        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -150,7 +151,7 @@ public class AccountController {
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq",  accSeq);
 
-//        mcpService.giveSignUpCp(accSeq);
+        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -168,7 +169,7 @@ public class AccountController {
         // kakaoId 으로 카카오 회원 정보 DB 저장
         if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
             // 회원가입으로 페이지 이동
-            return "redirect:/account/toMemberSignUp?kakaoId=" + kakaoId;
+            return "redirect:/account/signup?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
             String email = mainAccountService.getAccEmail(kakaoId);
@@ -187,7 +188,7 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
-    public String telCertify(String mem_phone) {
+    public String telCertify(String mem_phone) throws UnsupportedEncodingException {
         String serverTelCertifyStr = mainAccountService.sendRandomMessage(mem_phone);
         redisUtil.setData(mem_phone,serverTelCertifyStr,180); // 문자 인증번호 정보를 Redis에 저장
         return serverTelCertifyStr;
