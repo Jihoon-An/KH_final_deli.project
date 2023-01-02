@@ -12,6 +12,6 @@ public class MailRestController {
     MailService mailService;
     @PostMapping("/mailCerti")
     public void mailCerti(MailDTO mail) throws MessagingException {
-//        mailService.mailSend(mail);
+        mailService.mailSend(mail);
     }
 }
