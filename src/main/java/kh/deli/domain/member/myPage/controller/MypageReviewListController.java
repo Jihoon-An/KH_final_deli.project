@@ -18,6 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Type;
@@ -137,8 +138,10 @@ public class MypageReviewListController {
     }
 
     @RequestMapping("deleteReview")
+
     public String deleteReview(int rev_seq) throws Exception{
         myPageReviewService.deleteReview(rev_seq);
+
         return "redirect:/";
     }
 

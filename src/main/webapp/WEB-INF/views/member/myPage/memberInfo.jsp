@@ -34,7 +34,7 @@
 
                 <div class="nameBox">
                     <input type="text" id="nickName" name="mem_nick" value="${memberInfo.mem_nick}"
-                           placeholder="닉네임">
+                           placeholder="닉네임" maxlength="12">
                     <label id="nameRemoveLabel">X</label>
                 </div>
 
@@ -134,7 +134,14 @@
                     </div>
                 </div>
 
-<%--                <button type="button" id="saveButton">저장</button>--%>
+                <button type="button" id="saveButton" class="deli_btn"
+                        style="
+                        width: 100%;
+                        height: 35px;
+                        font-size: 15px;
+                        margin-top: 35px;">
+                    저장
+                </button>
 
 
 

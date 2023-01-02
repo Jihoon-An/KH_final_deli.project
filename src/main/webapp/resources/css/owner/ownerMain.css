@@ -1,9 +1,25 @@
 #ownerMain *{box-sizing: border-box;}
 
 #ownerMain .infoBox{
-    background-color: cadetblue;
+    /*background-color: cadetblue;*/
 }
 
-#infoMsg{
+#graph{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+}
 
+.deli_btn{
+    height:28px;
+    position: relative;
+    top:-1px;
+}
+#optionCOn{
+    margin-bottom: 15px;
+}
+
+#myTable_length,myTable_filter{
+    margin-bottom: 10px;
 }

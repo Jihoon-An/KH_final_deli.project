@@ -7,19 +7,17 @@ import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.RedisUtil;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+@Slf4j
 @Controller
 @AllArgsConstructor
 @RequestMapping("/account/")
@@ -121,7 +119,9 @@ public class AccountController {
     }
 
     @RequestMapping("signup")
-    public String toMemberSignUp(String kakaoId, Model model) throws Exception {
+    public String toMemberSignUp(@RequestParam(value = "kakaoId", required = false)String kakaoId, Model model) throws Exception {
+        System.out.println("회원가입시작..");
+        log.info("kakaoId : " + kakaoId);
         model.addAttribute("acc_token", kakaoId);
         return "main/memberSignUp";
     }
@@ -135,7 +135,7 @@ public class AccountController {
         session.setAttribute("loginType", "normal");
         session.setAttribute("acc_seq", accSeq);
 
-//        mcpService.giveSignUpCp(accSeq);
+        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -151,7 +151,7 @@ public class AccountController {
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq",  accSeq);
 
-//        mcpService.giveSignUpCp(accSeq);
+        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -159,13 +159,16 @@ public class AccountController {
     }
 
     @RequestMapping("oauth/kakao")
-    public String  kakaoLogin(String code) throws Exception {
+    public String  kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+        log.info("code = " + code);
         // 코드를 이용하여 accessToken 추출
         String accessToken = mainAccountService.getKakaoAccessToken(code);
+        log.info("accessToken = " + accessToken);
         // 세션 토큰 담기
         session.setAttribute("kakaoAccessToken", accessToken);
         // accessToken을 이용하여 사용자 정보 추출
         String kakaoId = mainAccountService.getKakaoId(accessToken);
+        log.info("kakaoId = " + kakaoId);
         // kakaoId 으로 카카오 회원 정보 DB 저장
         if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
             // 회원가입으로 페이지 이동
@@ -173,6 +176,7 @@ public class AccountController {
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
             String email = mainAccountService.getAccEmail(kakaoId);
+            log.info("email = " + email);
             session.setAttribute("loginEmail", email);
             session.setAttribute("loginType", "kakao");
             session.setAttribute("acc_seq", mainAccountService.getAccSeq(email));
@@ -188,7 +192,7 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
-    public String telCertify(String mem_phone) throws UnsupportedEncodingException {
+    public String telCertify(String mem_phone) {
         String serverTelCertifyStr = mainAccountService.sendRandomMessage(mem_phone);
         redisUtil.setData(mem_phone,serverTelCertifyStr,180); // 문자 인증번호 정보를 Redis에 저장
         return serverTelCertifyStr;

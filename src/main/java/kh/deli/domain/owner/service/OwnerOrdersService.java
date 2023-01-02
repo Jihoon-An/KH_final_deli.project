@@ -1,7 +1,6 @@
 package kh.deli.domain.owner.service;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import kh.deli.domain.owner.dto.OwnerOrderMngRequestDTO;
 import kh.deli.domain.owner.mapper.OwnerOrdersMapper;
 import kh.deli.global.entity.OrdersDTO;
@@ -45,12 +44,7 @@ public class OwnerOrdersService {
 
     @Transactional
     public void updateStatus(Map<String, String> changeInfo) {
-        String checkedSeqListJson = changeInfo.get("checkedSeqListJson");
-
-        List<Integer> accSeqList = gson.fromJson(
-                checkedSeqListJson,
-                new TypeToken<List<Integer>>() {
-                }.getType());
+        String checkedSeqListJson = changeInfo.get("checkedSeqListJson"); // orderSeqList
 
         checkedSeqListJson = checkedSeqListJson.replace("[", "(");
         checkedSeqListJson = checkedSeqListJson.replace("]", ")");
@@ -58,9 +52,11 @@ public class OwnerOrdersService {
         String newStatus = changeInfo.get("newStatus");
 
 
-        if (checkedSeqListJson != "[]") {
+        if (checkedSeqListJson != "()") {
             // 상태 업데이트
             ordersMapper.updateStatus(checkedSeqListJson, newStatus);
+
+            List<Integer> accSeqList = ordersMapper.getAccSeqList(checkedSeqListJson);
 
             // 상태 업데이트에 대한 유저에게 알림
 
