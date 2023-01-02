@@ -1,5 +1,6 @@
 package kh.deli.global.util;
 
+import kh.deli.global.util.naverSensV2.NaverNShortURL;
 import kh.deli.global.util.naverSensV2.NaverSms;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,13 @@ public class UtilRestController {
     @PostMapping("sendSms")
     public String sendSms(String tel, String msg) {
         smsService.send_msg(tel, msg);
+        return "";
+    }
+    @PostMapping("sendRiderLink")
+    public String sendRiderLink(String tel, String msg) {
+        NaverNShortURL shortURL = new NaverNShortURL();
+        shortURL.toShortURL(msg);
+        smsService.send_msg(tel,"딜리 라이더 링크\n" + msg);
         return "";
     }
 }

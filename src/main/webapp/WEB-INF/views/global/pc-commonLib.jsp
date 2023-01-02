@@ -26,7 +26,7 @@
 <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-<%--모바일 공통 CSS--%>
+<%--pc 공통 CSS--%>
 <link rel="stylesheet" href="/resources/css/customHeader/common.css" type="text/css">
 
 <!-- daumPostcode -->

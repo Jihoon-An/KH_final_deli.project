@@ -9,6 +9,8 @@
 #storeAdd .container {
     width: 100%;
     overflow: hidden;
+    margin-top: 40px;
+    padding-bottom : 50px;
 
 }
 #storeAdd .box1{
@@ -25,17 +27,18 @@
 
     width: 400px;
     height: 150px;
-    overflow: hidden;
+    margin-bottom: 100px;
+    float: left;
 }
 
-#storeAdd .profile div {
-    float: left;
-    height: 100%;
-}
+/*#storeAdd .profile div {*/
+/*    float: left;*/
+/*    height: 100%;*/
+/*}*/
 
 #storeAdd .thumbnail {
-    width: 30%;
-    height: 50px;
+    width: 50%;
+    height: 120px;
     padding: 5px;
 }
 
@@ -45,11 +48,34 @@
 }
 
 #storeAdd .control {
-    width: 70%;
+    width: 50%;
 
-    line-height: 50px;
+}
+#storeAdd #btnCustom {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 7px;
+    border: 1px solid black;
+    /* background-color: #e84c4f; */
+    color: black;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+
 }
 
+#storeAdd #menu_img{
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
 #storeAdd .control input {
     width: 100%;
     height: 70%;
@@ -72,6 +98,7 @@
     padding-right: 5px;
     width: 200px;
     border-radius: 25px;
+    border: 2px solid black;
 }
 
 #storeAdd .input_intro{
@@ -130,7 +157,8 @@
 }
 
 #storeAdd .foot_btn{
-    text-align: right;
+    text-align: center;
+    margin: 50px;
 }
 
 
@@ -143,3 +171,8 @@
     height:25px;
 
 }
+
+
+/*#storeAdd input{*/
+/*    border: 1px solid black;*/
+/*}*/
