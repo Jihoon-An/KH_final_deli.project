@@ -171,8 +171,11 @@
     height:25px;
 
 }
+#storeAdd #add{
+    margin-right: 10px;
+}
 
 
-/*#storeAdd input{*/
+/*#storeAdd div{*/
 /*    border: 1px solid black;*/
 /*}*/
