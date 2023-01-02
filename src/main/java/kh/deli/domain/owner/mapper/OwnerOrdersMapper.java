@@ -32,4 +32,6 @@ public interface OwnerOrdersMapper {
             ,@Param("newStatus") String newStatus
     );
 
+    @Select("SELECT ACC_SEQ FROM ORDERS WHERE ORDER_SEQ IN ${orderSeqListJson}")
+    List<Integer> getAccSeqList(@Param("orderSeqListJson") String orderSeqListJson);
 }

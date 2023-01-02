@@ -32,6 +32,7 @@ public class AlarmEndpoint {
 
     private static Set<Session> clients = new HashSet<>();
 
+    @Autowired
     private HttpSession httpSession;
     @Autowired
     private Gson gson;

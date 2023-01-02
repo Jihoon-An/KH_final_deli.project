@@ -134,7 +134,7 @@ public class AccountController {
         session.setAttribute("loginType", "normal");
         session.setAttribute("acc_seq", accSeq);
 
-//        mcpService.giveSignUpCp(accSeq);
+        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
@@ -150,7 +150,7 @@ public class AccountController {
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq",  accSeq);
 
-//        mcpService.giveSignUpCp(accSeq);
+        mcpService.giveSignUpCp(accSeq);
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
