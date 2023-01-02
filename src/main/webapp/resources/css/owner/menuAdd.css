@@ -93,8 +93,8 @@
 }
 
 /*  아래로 옵션추가 수정본*/
-#menuAdd #btn_option_add {
-    float: right;
+#menuAdd .btn_option_add {
+    float: left;
 }
 
 #menuAdd .del {
@@ -122,7 +122,8 @@
 /*}*/
 
 #menuAdd .foot_btn{
-    text-align: left;
+    text-align: center;
+    padding-top: 70px;
     padding-bottom :50px
 }
 
