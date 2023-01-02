@@ -44,15 +44,15 @@ $(document).ready(function () {
 
 
     //sample
-    for (let i = 0; i < 11; ++i) {
-        createAlarmBox({
-            notice_seq: 123,
-            from_name: 'sdlfg',
-            notice_title: "asd",
-            notice_content: "asdqwe",
-            notice_time: "asdad"
-        })
-    }
+    // for (let i = 0; i < 11; ++i) {
+    //     createAlarmBox({
+    //         notice_seq: 123,
+    //         from_name: 'sdlfg',
+    //         notice_title: "asd",
+    //         notice_content: "asdqwe",
+    //         notice_time: "asdad"
+    //     })
+    // }
 
 
     alarmInit();
@@ -60,6 +60,7 @@ $(document).ready(function () {
 
     // WS 연결 테스트
     var alarmWS = new WebSocket("ws://localhost/alarmWS");
+    // var alarmWS = new WebSocket("ws://mydeli.me/alarmWS");
     alarmWS.onopen = (ev) => {
         console.info("Server와 연결되었습니다.");
     };

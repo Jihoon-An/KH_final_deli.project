@@ -29,6 +29,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.*;
 
 @Service
@@ -372,7 +373,7 @@ public class MainAccountService {
      * @param tel
      * @return
      */
-    public String sendRandomMessage(String tel) {
+    public String sendRandomMessage(String tel) throws UnsupportedEncodingException {
         NaverSms message = new NaverSms();
         Random rand = new Random();
         String numStr = "";
@@ -380,7 +381,8 @@ public class MainAccountService {
             String ran = Integer.toString(rand.nextInt(10));
             numStr += ran;
         }
-        message.send_msg(tel, "딜리본인인증번호 ["+numStr+"]");
+        String msg = URLDecoder.decode("딜리본인인증번호 ["+numStr+"]", "UTF-8");
+        message.send_msg(tel, msg);
         return numStr;
     }
 
