@@ -98,6 +98,7 @@
     padding-right: 5px;
     width: 200px;
     border-radius: 25px;
+    border: 2px solid black;
 }
 
 #storeAdd .input_intro{
@@ -170,3 +171,8 @@
     height:25px;
 
 }
+
+
+/*#storeAdd input{*/
+/*    border: 1px solid black;*/
+/*}*/

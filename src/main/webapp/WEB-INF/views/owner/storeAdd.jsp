@@ -120,13 +120,18 @@
 
             <div class="rowBox" style="height:100px; margin-top: 25px;">
                 <div class="title">식당소개</div>
-                <div class="contents" style="height:100px;"> <input type="text" name="store_intro" placeholder="식당소개란" id="store_intro"
-                                                                    class="input_intro"></div>
+                <div class="contents" style="height:100px;">
+<%--                    <input type="text" name="store_intro" placeholder="식당소개란" id="store_intro"--%>
+<%--                                                                    class="input_intro">--%>
+                    <textarea id="store_intro" name="store_intro" placeholder="식당 소개란"  class="input_intro"> </textarea>
+                </div>
             </div>
             <div class="rowBox" style="height:100px; margin-top: 25px;" >
                 <div class="title" >주요 원산지</div>
-                <div class="contents" style="height:100px;" >  <input type="text" name="store_origin" placeholder="주요 원산지" id="store_origin"
-                                                                      class="input_origin"></div>
+                <div class="contents" style="height:100px;" >
+<%--                    <input type="text" name="store_origin" placeholder="주요 원산지" id="store_origin"--%>
+<%--                                                                      class="input_origin">--%>
+                    <textarea id="store_origin" name="store_origin" placeholder="주요 원산지"  class="input_origin"> </textarea></div>
             </div>
 
 
@@ -257,7 +262,7 @@
 
             <div class="rowBox">
                 <div class="title">주문 최소 금액</div>
-                <div class="contents" > <input D" type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
+                <div class="contents" > <input style="width:130px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
                     class="input" oninput=validNum()>원</div>
             </div>
 
@@ -265,7 +270,7 @@
 
             <div class="rowBox">
                 <div class="title">배달팁</div>
-                <div class="contents"><input style="width: " type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input"
+                <div class="contents"><input style="width:130px " type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input"
                                              oninput=validNum()>원</div>
             </div>
 
