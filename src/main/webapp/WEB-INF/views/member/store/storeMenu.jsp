@@ -59,11 +59,11 @@
                     <c:when test="${not empty categoryList}">
                     <c:forEach var="categories" items="${categoryList}" varStatus="num">
                     <div class="bottom_menu_group" id="bottom_menu_group${num.count}"
-                         style="font-weight: bold; font-size: 17px; margin-bottom: 5px;">${categories.menu_group}
+                         style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">${categories.menu_group}
                         <div style="height: 10px;"></div>
                         <c:forEach var="menuList" items="${categories.menuList}">
                         <div class="menu_box">
-                            <div class="box" style="margin: auto;">
+                            <div class="box" style="margin-top:-5px; width: 300px;">
                                 <a href="/menu/detail/${menuList.menu_seq}">
                                     <div class="menu_info">
                                         <c:choose>
@@ -78,7 +78,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="menu_img" style="width: 95px; height: 95px; margin-top: 5px;">
+                                                <div class="menu_img" style="width: 95px; height: 95px; margin-top: 5px; margin-left: 8px;">
                                                     <img class="img"
                                                          src="/resources/img/menu-img/${menuList.menu_img}" style="width: 95px;
             height: 95px;">

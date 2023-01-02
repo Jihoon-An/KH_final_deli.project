@@ -14,7 +14,6 @@ $("#revImgBtn").on("change", function (e) {
         $("#revImgBtn").val("");// accept에 없는 파일을 올릴 경우 경고창을 띄우면서 업로드한 파일을 지움
         //미리보기 삭제
     } else {
-
         handleImgFileSelect(e);
         imgCount();
         // fileToBase64(document.getElementById("revImgBtn").files[0]);
@@ -163,11 +162,13 @@ function handleImgFileSelect(e) {
                         )
                         // .text("X")
                         .append(
-                            $("<img style='width: 100%; height: 200px;'>")
+                            $("<img style='width: 135px; height: 135px;' class='preimg_img'>")
                                 .attr("src", e.target.result)
                         ).append(
                             $("<input type='hidden' class='img_name'>")
                                 .val(f.name)
+                        ).append(
+                            $("<button type='button' onclick='del_img_btn(this)' class='delBtn'><i class=\"fa-regular fa-circle-xmark\"></i></button>")
                         )
                     );
             }
@@ -315,4 +316,7 @@ function removeFileFromFileList(index) {
 
     input.files = dt.files // Assign the updates list
 }
+
+
+
 
