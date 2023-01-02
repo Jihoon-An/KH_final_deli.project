@@ -2,8 +2,6 @@
     box-sizing: border-box;
 }
 
-/*#reviewWrite div{border: 1px solid black;}*/
-
 #modify_review .container {
     width: 360px;
     margin: auto;
@@ -221,4 +219,11 @@
     margin-top: 10px;
 }
 
+i:hover{
+cursor:pointer;
+}
 /*div{border: 1px solid black;}*/
+
+.swal-wide{
+    width: 250px;
+}

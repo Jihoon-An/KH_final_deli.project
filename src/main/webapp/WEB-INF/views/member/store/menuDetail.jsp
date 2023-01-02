@@ -20,62 +20,86 @@
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
 <main id="menu_detail">
     <img style="width: 100%;" src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
-    <div id="menu_name">${menu.menu_name}</div>
-    <div id="menu_intro">${menu.menu_intro}</div>
-    <hr>
-    <div id="menu_price">${menu.menu_price}</div>
-
-    <c:forEach var="optionMap" items="${menuOptions}">
-        <div class="option_group">${optionMap.key}</div>
-        <div class="option_select">
-            <c:forEach var="option" items="${optionMap.value}">
-                <input type="hidden" class="required" value="${option.option_required}">
-                <c:choose>
-                    <c:when test="${option.option_multiple eq 'N'}">
-                        <div class="option">
-                            <input class="option_check" name="${optionMap.key}" type="radio">
-
-                            <span>${option.option_name}</span>
-                            <span>+${option.option_price}</span>
-
-                            <input class="option_seq" type="hidden" value='${option.option_seq}'>
-                            <input class="option_price" type="hidden"
-                                   value="${option.option_price}">
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="option">
-                            <input class="option_check" type="checkbox">
-
-                            <span>${option.option_name}</span>
-                            <span>+${option.option_price}</span>
-
-                            <input class="option_seq" type="hidden" value='${option.option_seq}'>
-                            <input class="option_price" type="hidden"
-                                   value="${option.option_price}">
-                        </div>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
+    <div class="container px-4">
+        <div id="menu_name" class="text-center py-2">${menu.menu_name}</div>
+        <div id="menu_intro" class="text-center">${menu.menu_intro}</div>
+        <hr>
+        <div class="row">
+            <div class="col-6 fs-3 soft-bold">가격</div>
+            <div id="menu_price" class="col-6 fs-3 text-end soft-bold">${menu.menu_price}원</div>
         </div>
-    </c:forEach>
-
-    <hr>
-    수량선택
-    <div>
-        <button type="button" id="minus_btn">-</button>
-        <input type="number" id="menu_count" min="1" value="1"/>
-        <button type="button" id="plus_btn">+</button>
+        <hr>
+        <c:forEach var="optionMap" items="${menuOptions}">
+            <div class="option_map">
+                <div class="option_group fs-4">${optionMap.key}</div>
+                <div class="option_select">
+                    <c:forEach var="option" items="${optionMap.value}">
+                        <input type="hidden" class="required" value="${option.option_required}">
+                        <c:choose>
+                            <c:when test="${option.option_multiple eq 'N'}">
+                                <div class="option pt-3 row">
+                                    <div class="col-9">
+                                        <input class="option_check form-check-input"
+                                               name="${optionMap.key}" type="radio">
+                                        <span>${option.option_name}</span>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <span>+${option.option_price}원</span>
+                                    </div>
+                                    <input class="option_seq" type="hidden"
+                                           value='${option.option_seq}'>
+                                    <input class="option_price" type="hidden"
+                                           value="${option.option_price}">
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="option pt-3 row">
+                                    <div class="col-9">
+                                        <input class="option_check form-check-input"
+                                               type="checkbox">
+                                        <span>${option.option_name}</span>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <span>+${option.option_price}원</span>
+                                    </div>
+                                    <input class="option_seq" type="hidden"
+                                           value='${option.option_seq}'>
+                                    <input class="option_price" type="hidden"
+                                           value="${option.option_price}">
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </div>
+            </div>
+            <hr>
+        </c:forEach>
+        <div class="row">
+            <div class="col-6 fs-4 soft-bold">
+                수량선택
+            </div>
+            <div class="col-6">
+                <div class="text-end input-group">
+                    <button class="col-3 btn btn-secondary" type="button" id="minus_btn">-</button>
+                    <input class="col-3 text-center form-control" type="number" id="menu_count"
+                           min="1" value="1"
+                           readonly/>
+                    <button class="col-3 btn btn-secondary" type="button" id="plus_btn">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center mt-4 pb-5">
+            <button class="btn btn-danger" id="basket_btn" type="button" onclick="onModal()">
+            <span class="mx-0" id="total_price">
+                ${menu.menu_price}
+            </span>
+                <span class="mx-0">원 담기</span>
+            </button>
+        </div>
+        <form action="/menu/detail/put" method="post" id="put_basket">
+            <input type="hidden" name="basket_menu" id="basket_menu">
+        </form>
     </div>
-    총주문금액
-    <div id="total_price">
-        ${menu.menu_price}
-    </div>
-    <button type="button" onclick="onModal()">장바구니 담기</button>
-    <form action="/menu/detail/put" method="post" id="put_basket">
-        <input type="hidden" name="basket_menu" id="basket_menu">
-    </form>
-
 </main>
 <script>
     var count = 1;
@@ -91,6 +115,7 @@
             this.price = price;
         }
     }
+
     var basketStoreSeq = '${basketStoreSeq}';
     console.log(basketStoreSeq);
 </script>

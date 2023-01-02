@@ -60,9 +60,9 @@
         R.REV_SYSNAME,
         R.ORDER_SEQ,
         O.MENU_LIST,
-        TO_CHAR(R.rev_writedate,'YYYY/MM/DD HH24:MI:SS')  AS REV_WRITETIME,
+        TO_CHAR(R.rev_writedate,'YYYY/MM/DD')  AS REV_WRITETIME,
         CASE
-        WHEN TO_CHAR(R.rev_writedate + NUMTODSINTERVAL(3,'day'), 'YYYY/MM/DD HH24:MI:SS.FF' ) > TO_CHAR(SYSTIMESTAMP,'YYYY/MM/DD HH24:MI:SS.FF') THEN 'Y'
+        WHEN TO_CHAR(R.rev_writedate + NUMTODSINTERVAL(3,'day'), 'YYYY/MM/DD' ) > TO_CHAR(SYSTIMESTAMP,'YYYY/MM/DD') THEN 'Y'
         ELSE 'N'
         END FLAG_UDT
         FROM

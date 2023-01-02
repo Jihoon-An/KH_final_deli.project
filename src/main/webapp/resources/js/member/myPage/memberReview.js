@@ -37,6 +37,12 @@ function imgCount(){
             });
             $("#revImgBtn")[0].files = dataTran.files;
         }
+        Swal.fire({
+            icon: 'error',
+            title: '이미지 업로드 불가',
+            text: '이미지는 최대 4개까지 업로드 가능합니다.',
+            confirmButtonText: '확인'
+        });
     }else if(fileArr.length+fileInInputArr.length>imgMaxcnt){   // 기존 파일과 새로 추가할 파일의 합이 4가 넘으면
         $("#revImgBtn").val(""); //서버로 넘길 인풋 밸류 초기화
         if(fileArr.length!=0){
@@ -45,6 +51,12 @@ function imgCount(){
             });
             $("#revImgBtn")[0].files = dataTran.files;
         }
+        Swal.fire({
+            icon: 'error',
+            title: '이미지 업로드 불가',
+            text: '이미지는 최대 4개까지 업로드 가능합니다.',
+            confirmButtonText: '확인'
+        });
     }else{
 
         fileInInputArr.forEach(x => {
@@ -69,17 +81,16 @@ function imgPreview(){
 
             //미리보기
             $("#imgSec").append(
-                $("<div class='review_img_div'>").append(
-                    $("<img style='width: 100px; height: 100px;'>")
+                $("<span class='review_img_div'>").append(
+                    $("<img style='width: 135px; height: 135px;' class='preimg_img'>")
                         .attr("src", e.target.result)
                 ).append(
                     $("<input type='hidden' class='img_name'>")
                         .val(f.name)
                 ).append(
-                    $("<button type='button' onclick='del_img_btn(this)'>").text("지우기")
+                    $("<button type='button' onclick='del_img_btn(this)' class='delBtn'><i class=\"fa-regular fa-circle-xmark\"></i></button>")
                 )
             )
-
             console.log(fileArr.findIndex(i=>i.name==f.name));
         }
         reader.readAsDataURL(f);
@@ -109,7 +120,6 @@ function del_img_btn(e){
     $(e).parent().remove();
 
 
-
 }
 
 //글자 수
@@ -119,7 +129,12 @@ $("#revContent").on("keyup",function (){
 
     if(content.length > 300){
         $(this).val(content.substring(0,300));
-        alert("리뷰는 최대 300글자까지 입력 가능합니다.");
+        Swal.fire({
+            icon: 'error',
+            title: '리뷰 업로드 불가',
+            text: '리뷰는 최대 300글자까지 입력 가능합니다.',
+            confirmButtonText: '확인'
+        });
     }
 })
 
@@ -127,6 +142,26 @@ $("#revContent").on("keyup",function (){
 //작성
 $("#writeBtn").on("click", function () {
 
+     let size=0;
+     const maxSize=1024 * 1024 * 10;
+
+     for(i=0;i<fileArr.length;i++){
+         size+=fileArr[i].size;
+     }
+
+     console.log("이미지 사이즈  : "+size);
+    //이미지 크기
+    if(size>maxSize){
+        Swal.fire({
+            icon: 'error',
+            title: '이미지 업로드 불가',
+            text: '이미지의 용량이 큼 삭제 요망.',
+            confirmButtonText: '확인'
+        });
+        return false;
+    }
+    
+    
     //사진여부확인
     if ($("#revImgBtn").val() == "") {
         $("#rev_sysmname").attr("value","0");
@@ -136,7 +171,12 @@ $("#writeBtn").on("click", function () {
 
     //별점 0점 제한
     if($("input[name=rev_star]:radio:checked").length<1){
-        alert("별점");
+        Swal.fire({
+            icon: 'error',
+            title: '별점 미입력',
+            text: '별점 필수.',
+            confirmButtonText: '확인'
+        });
         return false;
     }
 
@@ -144,7 +184,12 @@ $("#writeBtn").on("click", function () {
     let content = $("#revContent").val();
 
     if(content.length>300){
-        alert("리뷰는 최대 300글자까지 입력 가능합니다.")
+        Swal.fire({
+            icon: 'error',
+            title: '리뷰 업로드 불가',
+            text: '리뷰는 최대 300글자까지 입력 가능합니다.',
+            confirmButtonText: '확인'
+        });
         return false;
     }
 

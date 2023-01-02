@@ -2,35 +2,26 @@
     box-sizing: border-box;
 }
 
-#order_history div {
- // border: 1px solid black;
-}
-
-#order_history body {
-    background: #333333 !important;
-    overflow-y: scroll !important;
-}
-
 #order_history .container {
     width: 360px;
-    /*height: 100px;*/
-    margin-top: 20px;
-    margin-bottom: 30px;
-    /*overflow: hidden;*/
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 135px;
+    overflow: hidden;
 }
 
 #order_history #pageTitle{
-    height: 40px;
+    width: 100%;
+    height: 75px;
     text-align: center;
     font-size: 24px;
-    line-height: 10px;
-    margin-bottom: 15px;
+    line-height: 75px;
 }
 #order_history .box1{
     border-radius: 20px;
-    width: 350px;
+    width: 334px;
     height: 130px;
-    padding: 6px 13px 6px 13px;
+    padding: 6px 9px 6px 9px;
     margin-bottom: 10px;
     background-color: #FFFFFF;
     font-size: 13px;
@@ -49,12 +40,12 @@
 #order_history .head_deli{
     margin-right: 15px;
     height: 100%;
-    padding-left: 20px;
-
+    padding-left: 24px;
+    color: #888888;
 }
 #order_history .head_date{
     margin-right: 30px;
-    padding-left: 22px;
+    padding-left: 15px;
 }
 #order_history .head_status{
     float:right;
@@ -76,7 +67,7 @@
     height: 85px;
     border-radius: 20px;
     object-fit: cover;
-    margin-right: 10px;
+    margin-left: 4px;
 }
 #order_history .info{
     margin: 1px;
@@ -86,10 +77,7 @@
     padding-left: 6px;
     overflow: hidden;
     text-align: left;
-
 }
-
-
 
 #order_history .infohead{
     margin-left :2px;
@@ -98,28 +86,20 @@
     font-size: 15px;
     font-weight: bolder;
 }
-.storeloca{
-    /* font-size: 10px; */
-}
 
 #order_history .meinfo{
-     font-size: 13px;
+    font-size: 13px;
+    padding-top: 4px;
     padding-left: 3px;
-
     line-height: 20px;
 }
 
 #order_history .infoFooter{
-    line-height: 60px;
-
-
-
+    line-height: 50px;
 }
 
 #order_history .infoFooter button{
-    
         height: 30px;
-
     line-height: 10px;
 }
 
