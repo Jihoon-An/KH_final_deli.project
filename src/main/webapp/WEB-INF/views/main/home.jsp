@@ -22,7 +22,9 @@
             crossorigin="anonymous"></script>
 
     <!-- sweetAlert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.sdelivr.net/npm/sweetalert2@11"></script>
+    <!-- animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <link rel="stylesheet" href="/resources/css/main/home.css" type="text/css">
 </head>
@@ -32,12 +34,11 @@
 
     <div class="container">
 
-        <div class="logoBox">
+        <div class="logoBox animate__animated animate__lightSpeedInRight">
             <img src="/resources/img/deli_logo.png">
         </div>
 
         <div class="loginBox">
-
             <form id="loginForm" action="/account/login" method="post">
 
                 <div class="inputBox">
