@@ -42,9 +42,11 @@
                             <button class="deleteBtn">X</button>
                         </div>
 
-                        <div class="menuImgDiv">
-                            <img src="/resources/img/menu-img/${menuList.menuDTO.menu_img}">
-                        </div>
+                        <c:if test="${not empty menuList.menuDTO.menu_img}">
+                            <div class="menuImgDiv">
+                                <img src="/resources/img/menu-img/${menuList.menuDTO.menu_img}">
+                            </div>
+                        </c:if>
 
                         <div class="menuInfoDiv">
                             <ul class="menuInfo">
