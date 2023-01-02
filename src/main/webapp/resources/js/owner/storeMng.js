@@ -70,10 +70,27 @@ $("#modifyStoreBtn").on("click", function () {
     //
     // console.log(bs.value)
 
+    // let size=0;
+    // const maxSize=1024 * 1024 * 10;
+    //
+    // for(i=0;i<fileArr.length;i++){
+    //     size+=fileArr[i].size;
+    // }
+    //
+    // console.log("이미지 사이즈  : "+size);
+    // //이미지 크기
+    // if(size>maxSize){
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: '이미지 업로드 불가',
+    //         text: '이미지의 용량이 큼 삭제 요망.',
+    //         confirmButtonText: '확인'
+    //     });
+    //     return false;
+    // }
 
     $("#frm").attr("action", "/owner/store/mng/modify")
     $("#frm").submit()
-
 
 })
 
