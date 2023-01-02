@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -187,7 +188,7 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value="certify/tel", method=RequestMethod.POST)
-    public String telCertify(String mem_phone) {
+    public String telCertify(String mem_phone) throws UnsupportedEncodingException {
         String serverTelCertifyStr = mainAccountService.sendRandomMessage(mem_phone);
         redisUtil.setData(mem_phone,serverTelCertifyStr,180); // 문자 인증번호 정보를 Redis에 저장
         return serverTelCertifyStr;

@@ -32,9 +32,9 @@
                 카카오회원가입 추가정보입력
             </div>
                 <%--스크립트에 카카오 아이디 있으면 회원탈퇴로 안내해주기.--%>
-            <div><a href="/account/kakaoUnLink">
-                <button type="button">그냥 가입안할래요. 연동 해지해주세요.</button>
-            </a></div>
+<%--            <div><a href="/account/kakaoUnLink">--%>
+<%--                <button type="button">그냥 가입안할래요. 연동 해지해주세요.</button>--%>
+<%--            </a></div>--%>
             <br>
             </c:when>
             <c:otherwise>
