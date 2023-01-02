@@ -18,7 +18,7 @@
         pay_price
         FROM (select to_char(PAY_DATE,'yyyy-mm-dd') AS pay_date,
         sum(PAY_PRICE) AS pay_price
-        from payment group by pay_date order by 1 desc)
+        from payment group by to_char(PAY_DATE,'yyyy-mm-dd') order by 1 desc)
         WHERE ROWNUM = 1
     </select>
 

@@ -168,7 +168,7 @@ public class AccountController {
         // kakaoId 으로 카카오 회원 정보 DB 저장
         if(!mainAccountService.dupleCheckKakaoId(kakaoId)){
             // 회원가입으로 페이지 이동
-            return "redirect:/account/toMemberSignUp?kakaoId=" + kakaoId;
+            return "redirect:/account/signup?kakaoId=" + kakaoId;
         } else {
             // 저장된 회원 정보가 있으면 회원가입 된게 맞아서 그냥 페이지 메인으로
             String email = mainAccountService.getAccEmail(kakaoId);
