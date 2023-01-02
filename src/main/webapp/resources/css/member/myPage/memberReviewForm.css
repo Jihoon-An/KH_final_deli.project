@@ -1,12 +1,16 @@
 #reviewWrite * {box-sizing: border-box;}
 
-/*#reviewWrite div{border: 1px solid black;}*/
+@font-face{
+ font-family: 'Pretendard-Regular';
+ src: url('/resources/font/Pretendard-Regular.woff') format('woff'); /* 모든 브라우저*/
+ font-weight: 400;
+ font-style: normal;
+}
 
 #reviewWrite .container{
  width: 360px;
  margin: auto;
  min-height: 900px;
-
 }
 
 #reviewWrite .container>form>div{
@@ -18,7 +22,7 @@
  height: 40px;
  text-align: center;
  font-size: 24px;
-margin-top: 40px;
+ line-height: 45px;
 }
 
 #reviewWrite #storeName{
@@ -68,6 +72,8 @@ margin-top: 40px;
 
 #reviewWrite #count{
  text-align: right;
+ margin-bottom: 10px;
+ font-size: small;
 }
 
 #reviewWrite .imgBox {
@@ -84,12 +90,17 @@ margin-top: 40px;
  transform: translateX(-50%);
  border-radius: 7px;
  border: 1px solid #e84c4f;
- /*background-color:  #e84c4f;*/
  color: #e84c4f;
  font-size: 1.1em;
  cursor: pointer;
  text-align: center;
- line-height: 30px;
+ line-height: 27px;
+ background: #ffffff;
+ font-family:'Pretendard-Regular'
+}
+
+#reviewWrite .fa-camera{
+ line-height: 25px;
 }
 
 #reviewWrite #revImgBtn{
@@ -103,14 +114,41 @@ margin-top: 40px;
 
 #reviewWrite #imgSec{
  margin-top: 15px;
- /*!*width: 74px;*!*/
- /*height: 74px;*/
- /*border: 1px black solid;*/
- /*display: inline-block;*/
- /*margin-right: 1px;*/
- /*position: relative;*/
- /*left: 4px;*/
- /*margin: auto;*/
+}
+
+
+#reviewWrite .delBtn{
+ padding: 0px;
+ width: 15px;
+ height: 15px;
+ position: relative;
+ bottom: 59px;
+ right:21px;
+ line-height: 10px;
+ border-radius: 50%;
+ border: none;
+ background: unset;
+}
+
+#reviewWrite .review_img_div{
+ position: relative;
+ left: 15px;
+ width:fit-content;
+}
+
+#reviewWrite .preimg_img{
+ margin-bottom: 10px;
+ border-radius: 5px;
+}
+
+#reviewWrite .imgMsg{
+ font-size: small;
+ color: #888888;
+}
+
+#reviewWrite .fa-circle-xmark{
+ color: rgba(200, 200, 200, 0.8);
+ text-shadow: rgba(255, 255, 255, 0.25);
 }
 
 #reviewWrite .menuBox{
@@ -136,7 +174,7 @@ margin-top: 40px;
  position: relative;
  left: 50%;
  transform: translateX(-50%);
- top: 180px;
+ /*top: 100%;*/
 }
 #reviewWrite #writeBtn{
  width: 100%;
@@ -147,28 +185,4 @@ margin-top: 40px;
  color: white;
  font-size: 1.1em;
  cursor: pointer;
-}
-
-
-#reviewWrite .delBtn{
- padding: 0px;
- width: 20px;
- height: 20px;
- position: relative;
- bottom: 44px;
- right:20px;
- line-height: 10px;
- appearance: none;
- background-color: #FAFBFC;
- border: 1px solid rgba(27, 31, 35, 0.15);
- box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-}
-
-#reviewWrite .review_img_div{
- position: relative;
- left: 50px;
-}
-
-#reviewWrite .preimg_img{
- margin-bottom: 10px;
 }
