@@ -41,15 +41,17 @@
             <form id="loginForm" action="/account/login" method="post">
 
                 <div class="inputBox">
-                    <input type="text" id="emailInput" placeholder="이메일" name="email" <c:if test="${not empty saved_email}"> value="${saved_email}"</c:if>>
-                    <input type="password" id="passWordInput" placeholder="비밀번호" name="pw">
+                    <input type="text" id="emailInput" class="form-control"
+                           placeholder="이메일" name="email" <c:if test="${not empty saved_email}"> value="${saved_email}"</c:if>>
+                    <input type="password" id="passWordInput" class="form-control" placeholder="비밀번호" name="pw">
                 </div>
 
                 <div class="buttonBox">
                     <button type="button" id="loginButton">로그인</button>
                     <div class="saveBox">
-                        <input type="checkbox" id="emailSave" name="emailSave" <c:if test="${not empty saved_email}">checked</c:if>>
-                        <label for="emailSave">이메일저장</label>
+                        <input type="checkbox" id="emailSave" name="emailSave" class="" <c:if test="${not empty saved_email}">checked</c:if>>
+                        <label class="cbx" for="emailSave"></label>
+                        <label class="lbl" for="emailSave">이메일저장</label>
                     </div>
                     <div class="findBox">
                         <a class="link" href="/account/findAccount">이메일 l 비밀번호 찾기</a>
