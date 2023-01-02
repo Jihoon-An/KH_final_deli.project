@@ -193,3 +193,6 @@ function setStar(star) {//number star
     }
 }
 
+$(function(){
+
+})

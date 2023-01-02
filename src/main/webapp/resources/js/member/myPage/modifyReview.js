@@ -1,7 +1,8 @@
-let fileArr = [];
+var fileArr = [];
 var new_name_list = new Array();
 var del_list = new Array();
 const imgMaxcnt = 4; // 사진 개수 제한
+const orgImgCnt = document.getElementsByClassName("review_img_div").length;
 
 $("#revImgBtn").on("change", function (e) {
 
@@ -14,11 +15,9 @@ $("#revImgBtn").on("change", function (e) {
         //미리보기 삭제
     } else {
 
+        handleImgFileSelect(e);
         imgCount();
-
-        imgPreview();
-
-        fileToBase64(document.getElementById("revImgBtn").files[0]);
+        // fileToBase64(document.getElementById("revImgBtn").files[0]);
     }
 })
 
@@ -27,10 +26,9 @@ function imgCount() {
 
     let dataTran = new DataTransfer();
     let fileInInput = $("#revImgBtn")[0].files;
-
     let fileInInputArr = Array.from(fileInInput);
 
-    if (fileInInputArr.length > imgMaxcnt) {  // 새로 추가할 파일이 4가 넘으면
+    if (fileInInputArr.length + orgImgCnt > imgMaxcnt) {  // 새로 추가할 파일이 4가 넘으면
         $("#revImgBtn").val(""); //서버로 넘길 인풋 밸류 초기화
         if (fileArr.length != 0) {
             fileArr.forEach(x => {
@@ -44,7 +42,7 @@ function imgCount() {
             text: '이미지는 최대 4개까지 업로드 가능합니다.',
             confirmButtonText: '확인'
         });
-    } else if (fileArr.length + fileInInputArr.length > imgMaxcnt) {   // 기존 파일과 새로 추가할 파일의 합이 4가 넘으면
+    } else if (fileArr.length + fileInInputArr.length + orgImgCnt > imgMaxcnt) {   // 기존 파일과 새로 추가할 파일의 합이 4가 넘으면
         $("#revImgBtn").val(""); //서버로 넘길 인풋 밸류 초기화
         if (fileArr.length != 0) {
             fileArr.forEach(x => {
@@ -59,7 +57,6 @@ function imgCount() {
             confirmButtonText: '확인'
         });
     } else {
-
         fileInInputArr.forEach(x => {
             fileArr.push(x);     // 기존 파일과 새 파일 합체
         });
@@ -72,30 +69,37 @@ function imgCount() {
     }
 }
 
-function imgPreview() {
-    $("#imgSec").empty();
-    fileArr.forEach(function (f) {
-        let reader = new FileReader();
-        reader.onload = function (e) {
-            $("#rev_imgs_area").append(
-                // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
-                // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
-                $("<i class=\"fa-solid fa-x del_img_btn\"></i>")
-                    .click(function () {
-                        $(this).closest(".review_img_div").remove();
-                    }))
-                // .text("X")
-                .append(
-                    $("<img style='width: 100%; height: 200px;'>")
-                        .attr("src", e.target.result)
-                ).append(
-                $("<input type='hidden' class='img_name'>")
-                    .val(f.name)
-            );
-        }
-        reader.readAsDataURL(f);
-    })
-}
+// function imgPreview() {
+//     $("#imgSec").empty();
+//     fileArr.forEach(function (f) {
+//         let reader = new FileReader();
+//         reader.onload = function (e) {
+//             $("#rev_imgs_area")
+//                 .append($("<div class='review_img_div'>")
+//                     .append(
+//                         // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
+//                         // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
+//                         $("<i class='fa-solid fa-x del_img_btn'></i>")
+//                             .click(function () {
+//                                 $(this).closest(".review_img_div").remove();
+//                                 console.log(document.getElementById("revImgBtn").files[0]);
+//                                 removeFileFromFileList(0);
+//                                 console.log(document.getElementById("revImgBtn").files[0]);
+//                             })
+//                     )
+//                     // .text("X")
+//                     .append(
+//                         $("<img style='width: 100%; height: 200px;'>")
+//                             .attr("src", e.target.result)
+//                     ).append(
+//                         $("<input type='hidden' class='img_name'>")
+//                             .val(f.name)
+//                     )
+//                 );
+//         }
+//         reader.readAsDataURL(f);
+//     })
+// }
 
 
 //내 리뷰 관리로 이동
@@ -104,57 +108,72 @@ $("#backBtn").on("click", function () {
 })
 
 //지우기
-$(".del_img_btn").on("click", del_img_btn_event)
+$(".del_img_btn").on("click", del_img_btn_event);
 
 function del_img_btn_event() {
     let rev_img_div = $(this).closest(".review_img_div");
 
     del_list.push(rev_img_div.find(".img_name").val());
-    console.log(del_list);
 
     $("#del_files_json").val(JSON.stringify(del_list));
 
     $(rev_img_div).remove();
 }
 
-$('#revImgBtn').on('change', handleImgFileSelect);
+// $('#revImgBtn').on('change', handleImgFileSelect);
 
 //이미지 미리보기
 function handleImgFileSelect(e) {
     var files = e.target.files;
-    var filesArr = Array.prototype.slice.call(files);
+    var newFilesArr = Array.prototype.slice.call(files);
     var reg = /(.*?)\/(jpg|jpeg|png|bmp|pdf|gif)$/;
-    filesArr.forEach(function (f) {
-        if (!f.type.match(reg)) {
-            Swal.fire({
-                icon: 'error',
-                title: '이미지 업로드 불가',
-                text: '이미지 파일만 업로드 가능합니다.',
-                confirmButtonText: '확인'
-            })
-            return;
-        }
-        sel_file = f;
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#rev_imgs_area").append(
-                // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
-                // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
-                $("<i class=\"fa-solid fa-x del_img_btn\"></i>")
-                    .click(function () {
-                        $(this).closest(".review_img_div").remove();
-                    }))
-                // .text("X")
-                .append(
-                    $("<img style='width: 100%; height: 200px;'>")
-                        .attr("src", e.target.result)
-                ).append(
-                $("<input type='hidden' class='img_name'>")
-                    .val(f.name)
-            );
-        }
-        reader.readAsDataURL(f);
-    });
+
+    if (newFilesArr.length + fileArr.length + orgImgCnt <= imgMaxcnt) {
+        newFilesArr.forEach(function (f, index) {
+            if (!f.type.match(reg)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '이미지 업로드 불가',
+                    text: '이미지 파일만 업로드 가능합니다.',
+                    confirmButtonText: '확인'
+                })
+                return;
+            }
+            sel_file = f;
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#rev_imgs_area")
+                    .append($("<div class='review_img_div'>")
+                        .append(
+                            // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
+                            // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
+                            $("<i class='fa-solid fa-x del_img_btn new_del'></i>")
+                                .click(function () {
+                                    $(this).closest(".review_img_div").remove();
+
+                                    removeFileFromFileList($(this).attr("index"));
+
+                                    let newIndex = 0;
+                                    $(".new_del").each(function () {
+                                        $(this).attr("index", newIndex);
+                                        newIndex += 1;
+                                    });
+                                })
+                                .attr("index", index)
+                        )
+                        // .text("X")
+                        .append(
+                            $("<img style='width: 100%; height: 200px;'>")
+                                .attr("src", e.target.result)
+                        ).append(
+                            $("<input type='hidden' class='img_name'>")
+                                .val(f.name)
+                        )
+                    );
+            }
+            reader.readAsDataURL(f);
+        });
+    };
 }
 
 
@@ -182,7 +201,6 @@ let text_length = $("#revContent").val().length;
 $("#text_count").html(text_length);
 
 let text = $("#revContent").val();
-
 //글자 수
 $("#revContent").on("keyup", function () {
     let content = $(this).val();
@@ -194,21 +212,40 @@ $("#revContent").on("keyup", function () {
             icon: 'error',
             title: '리뷰 업로드 불가',
             text: '리뷰는 최대 300글자까지 입력 가능합니다.',
-            confirmButtonText: '확인'
+            confirmButtonText: '확인',
+            customClass: 'swal-wide'
         });
         $("#count").html("300 / 300");
     }
 })
 
-console.log(fileArr.length);
-console.log(new_name_list.length);
+// $(function(){
+//     $("button[type = 'submit']").click(function(){
+//         var $fileUpload = $("button[type='submit']");
+//         if (parseInt($fileUpload.get(0).files.length) > 3){
+//             alert("You are only allowed to upload a maximum of 3 files");
+//             return false;
+//         }
+//     });
+// });
+//
+// var uploadField = document.getElementById("files");
+// uploadField.onchange = function() {
+//     if(this.files[0].size > 2097152){
+//         alert("File is too big!");
+//         this.value = "";
+//     };
+// };
 
 //수정
 $("#modifyBtn").on("click", function () {
+
     let text_length = $("#revContent").val().length;
     $("#text_count").html(text_length);
 
     let text = $("#revContent").val();
+
+    return response(text);
 
     let size = 0;
     const maxSize = 1024 * 1024 * 10;
@@ -217,9 +254,6 @@ $("#modifyBtn").on("click", function () {
         size += fileArr[i].size;
     }
 
-    console.log("파일사이즈;; " + fileArr.length);
-
-    console.log("이미지 사이즈  : " + size);
     //이미지 크기
     if (size > maxSize) {
         Swal.fire({
@@ -263,11 +297,22 @@ $("#modifyBtn").on("click", function () {
         return false;
     }
 
-    return response(text);
-
-// if(fileArr.length >4){
-//     return false;
-// }
-    
     $("#reviewPost").submit();
 })
+
+function removeFileFromFileList(index) {
+    const dt = new DataTransfer()
+    const input = document.getElementById('revImgBtn')
+    const {files} = input
+
+    fileArr.splice(index, 1);
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i]
+        if (index != i)
+            dt.items.add(file) // here you exclude the file. thus removing it.
+    }
+
+    input.files = dt.files // Assign the updates list
+}
+

@@ -29,7 +29,7 @@
                 <div class="title">상호명</div>
                 <div class="contents">
                     <input type="text" name="store_name" placeholder="상호명입력" id="store_name"
-                           class="input"
+                           class="input form-control"
                            value="${store.store_name}">
                 </div>
             </div>
@@ -609,11 +609,14 @@
                             휴무일
                         </option>
                     </select>
+                    <c:if test="${parsingStr.get('mon').get('open') eq '영업일'}">
+
                     <span class="bs_time">
-    <input type="time" class="bsns bs_open_time" value="${parsingStr.get("mon").get("open_time")}">
-    <input type="time" class="bsns bs_close_time"
-           value="${parsingStr.get("mon").get("close_time")}">
-    </span>
+                        <input type="time" class="bsns bs_open_time" value="${parsingStr.get("mon").get("open_time")}">
+                        <input type="time" class="bsns bs_close_time"
+                                 value="${parsingStr.get("mon").get("close_time")}">
+                 </span>
+                    </c:if>
                 </div>
             </div>
         </div>
