@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class NaverNShortURL {
     @SuppressWarnings("unchecked")
-    public void toShortURL(String url) {
+    public String toShortURL(String url) {
 
         String clientId = "0MoAZ2I2BvVYFyr67W_D"; //애플리케이션 클라이언트 아이디값"
         String clientSecret = "glZTcLXOJP"; //애플리케이션 클라이언트 시크릿값"
@@ -44,10 +44,14 @@ public class NaverNShortURL {
 
             // url 부분만 뽑아내서 출력
             String shortenURL = getUrl(json.toString());
-            System.out.println(shortenURL);
+
+            return shortenURL;
+
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        return "";
     }
 
     // 변환시킬 주소를 UTF-8 형식으로 변환한다.

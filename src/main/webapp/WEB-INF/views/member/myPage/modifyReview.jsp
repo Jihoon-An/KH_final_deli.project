@@ -82,7 +82,7 @@
                                 request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                             %>
                             <c:forEach var="revImg" items="${review_img_list}">
-                                <div class="review_img_div" class="preview">
+                                <div class="review_img_div preview">
                                         <%--                                    <button type="button" class="del_img_btn"><i class="fa-solid fa-x del_img_btn"></i></button>--%>
                                     <i class="fa-solid fa-x del_img_btn"></i>
                                     <img src="/resources/img/review/${revImg}" style="width: 100%; height: 200px;">
@@ -114,7 +114,7 @@
 
             <div id="btnBox">
                 <button type="button" id="backBtn">취소</button>
-                <button id="modifyBtn">수정완료</button>
+                <button type="submit" id="modifyBtn">수정완료</button>
             </div>
 
             <input type="hidden" id="rev_seq" name="rev_seq" value="${review_dto.rev_seq}">

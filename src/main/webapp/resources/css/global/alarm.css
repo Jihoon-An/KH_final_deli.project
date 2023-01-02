@@ -88,3 +88,16 @@
     background: none;
     border: none;
 }
+
+#new_alarm_icon{
+    position: fixed;
+    z-index: 50;
+    margin: 0 auto;
+    width: 17px;
+    height: 10px;
+    left: -300px;
+    right: 0;
+    top: 23px;
+    scale: 0.5;
+    padding-top: 16px;
+}

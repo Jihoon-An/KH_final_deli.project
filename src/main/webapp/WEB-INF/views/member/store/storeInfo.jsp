@@ -5,7 +5,6 @@
 
 <div id="store_info" style="margin-bottom: 80px;">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-    <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>

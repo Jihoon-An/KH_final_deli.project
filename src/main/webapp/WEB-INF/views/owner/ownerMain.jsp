@@ -24,8 +24,15 @@
 <main id="ownerMain">
     <div class="container">
         <div class="infoBox">
-            <div id="infoMsg">회원님의 오늘 하루 총 매출은 <fmt:formatNumber value="${total}" pattern="#,###"/>원 입니다.</div>
-            <div style="width: 300px;">
+                <h3 style="margin-top:60px; margin-bottom: 50px; text-align: center;">
+                <c:if test="${total != 0}">
+                    회원님의 오늘 하루 총 매출은 <fmt:formatNumber value="${total}" pattern="#,###"/> 원 입니다😋
+                </c:if>
+                <c:if test="${total == 0}">
+                    회원님의 오늘 하루 총 매출은 0 원 입니다😑
+                </c:if>
+                </h3>
+            <div id="graph" style="width: 300px;">
                 <canvas id="ddSales"></canvas>
                 <script>
                     const ddSales = document.getElementById('ddSales');
@@ -47,13 +54,6 @@
                                 ],
                                 borderWidth: 1
                             }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
                         }
                     });
                 </script>
@@ -61,7 +61,8 @@
         </div>
         <hr>
         <div>
-            <div>
+            <h4 style="margin: 15px 0px;">매출보기</h4>
+            <div id="optionCOn">
                 <select>
                     <c:choose>
                         <c:when test="${not empty list}">
@@ -76,9 +77,9 @@
                     </c:choose>
                 </select>
                 <span>
-                        기간선택
+                        기간선택</span>
                         <input type="date" id="startDate"> - <input type="date" id="endDate">
-                    </span>
+
                 <button id="optionBtn" type="button" class="deli_btn">검색</button>
             </div>
             <div>

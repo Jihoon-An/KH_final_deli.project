@@ -10,7 +10,6 @@ import kh.deli.domain.owner.dto.OwnerOrderMngResponseDTO;
 import kh.deli.global.entity.MenuOptionDTO;
 import kh.deli.global.util.GenerateRandomCode;
 import kh.deli.global.util.RedisUtil;
-import kh.deli.global.util.naverSensV2.NaverNShortURL;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -44,21 +43,21 @@ public class OwnerOrderMngService {
         List<OwnerOrderMngRequestDTO> orderMngReqList = ordersService.getOrderMngList(storeSeq);
 
         List<OwnerOrderMngResponseDTO> orderMngList = new ArrayList<>();
-        NaverNShortURL nShortURL = new NaverNShortURL();
+//        NaverNShortURL nShortURL = new NaverNShortURL();
 
         for (OwnerOrderMngRequestDTO orderMngReq : orderMngReqList) {
             String address = orderMngReq.getAdd_detail1() + " " + orderMngReq.getAdd_detail2();
             // redis에 넣을 새로운 key 가져오기
             String key = new RandomKey().getNewKey();
 
-            //redis에 저장 3시간동안 저장
-            redis.setData(key, String.valueOf(orderMngReq.getOrder_seq()), 60*60*3);
+            //redis에 저장 3시간동안 저장 (임시 3분)
+            redis.setData(key, String.valueOf(orderMngReq.getOrder_seq()), 60*3);
 
             // 링크 생성
-            String link = "http://localhost/deliveryDtl/" + key;
+            String link = "http://mydeli.me/deliveryDtl/" + key;
 
             // url 축소화
-//            nShortURL.toShortURL(link);
+//            link = nShortURL.toShortURL(link);
 
             Type type = new TypeToken<List<StoreBasketMenuRequestDTO>>() {
             }.getType();

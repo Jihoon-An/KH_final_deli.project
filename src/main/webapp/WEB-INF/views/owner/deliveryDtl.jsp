@@ -115,6 +115,7 @@
                         newStatus: newStatus
                     })
                 });
+                location.href()
             }
         })
     });

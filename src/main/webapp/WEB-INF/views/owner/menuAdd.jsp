@@ -42,33 +42,39 @@
                         <div class="thumbnail">
                             <img src="/resources/img/menu-img/no_foodlogo.png" class="image-thumbnail" id="profile">
                         </div>
+
                         <div class="control">
-                            <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
+                            <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가 (필수)
+                                <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
+                            </label>
                         </div>
+
                     </div>
 
                 </div>
 
 
                 <div class="rowBoxRight">
-                    <div class="rowBox">
-                        <span>주문여부</span>
+                    <div class="rowBox ">
+                        <span>주문여부 : </span>
                         <div class="contents" style="display: inline"><input type="radio" name="menu_sold_out"
                                                                              value="Y">주문가능
                             <input type="radio" name="menu_sold_out" value="N">주문불가능
                         </div>
                     </div>
                     <div class="rowBox">
-                        <span>공개여부</span>
+                        <span>공개여부 : </span>
                         <div class="contents" style="display: inline"><input type="radio" name="menu_display" value="Y">공개
                             <input type="radio" name="menu_display" value="N">비공개
                         </div>
                     </div>
                     <div class="rightContents">
                         <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"><br>
-                        <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격을 입력하세요"
-                               oninput=validNum()><br>
-                        <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">
+                        <input style="width: 170px"type="text" id="menu_price" name="menu_price" placeholder="메뉴가격"
+                               oninput=validNum()>원<br>
+
+                        <textarea id="menu_intro" name="menu_intro" placeholder="주요 원산지"  class="input_menu_intro"></textarea>
+                        <%--                        <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">--%>
 
 
                         <input type="hidden" name="store_seq" value="${store_seq}">
@@ -122,17 +128,17 @@
                     <%--                            <br>--%>
                     <%--                        </div>--%>
                 </div>
-                <button type="button" class="btn_option_add" style="float: right">옵션그룹추가</button>
+                <button type="button" class="btn_option_add deli_btn" style="float: right">옵션그룹추가</button>
             </div>
 
 
-            <hr>
 
-            <button type="button">취소하기</button>
-            <button class="btn btn-outline-secondary btn_add" type="button"
+            <div class="foot_btn">
+            <a href="/owner/store/list"><button type="button" class="deli_btn">취소하기</button></a>
+            <button class="btn btn-outline-secondary btn_add deli_btn" type="button"
                     style="--bs-btn-border-color: rgb(206,212,218);">등록하기
             </button>
-
+            </div>
         </div>
     </form>
 

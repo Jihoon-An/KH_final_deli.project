@@ -286,7 +286,7 @@ function pw_check() {
     } else if (!pwRegex.test($("#pw").val())) {
         $("#pw_msg").show();
         $("#pw_msg").css("color", "#FF0000");
-        $("#pw_msg").html("8-16자리, 특수문자 1개 이상 포함으로 입력해주세요");
+        $("#pw_msg").html("특수문자는 ~!@#$%^&*()+|= 사용 가능합니다");
         pw_ok = false;
     } else if ($("#pw_re").val() != $("#pw").val()) {
         $("#pw_msg").show();

@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="store_detail" style="margin-bottom: 80px;">
     <%@ include file="/WEB-INF/views/member/store/storeHeader.jsp" %>
-    <%@ include file="/WEB-INF/views/customHeader/m_bell.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_nav.jsp" %>
     <%@ include file="/WEB-INF/views/customHeader/m_top.jsp" %>
@@ -79,9 +78,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="menu_img">
+                                        <div class="menu_img" style="width: 95px; height: 95px; margin-top: 5px;">
                                             <img class="img"
-                                                 src="/resources/img/menu-img/${menuList.menu_img}">
+                                                 src="/resources/img/menu-img/${menuList.menu_img}" style="width: 95px;
+    height: 95px;">
                                         </div>
                                     </c:when>
                                     <c:otherwise>

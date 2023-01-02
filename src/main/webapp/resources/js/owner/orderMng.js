@@ -123,7 +123,6 @@ $(".send_link_btn").click(function () {
         confirmButtonText: '링크 보내기',
         showLoaderOnConfirm: true,
         preConfirm: (inputTel) => { //유효성 검사
-            console.log(inputTel)
             if (/^010[0-9]{8}/.test(inputTel)) {
                 tel = inputTel;
                 return true;
@@ -139,12 +138,12 @@ $(".send_link_btn").click(function () {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url:"/util/sendSms",
+                url:"/util/sendRiderLink",
                 type: "post",
-                data: {tel:tel, msg:'딜리 배달원 링크\n'+deliLink}
+                data: {tel:tel, msg:deliLink}
             }).done(
                 Swal.fire({
-                    title: `링크에 성공하였습니다.`
+                    title: `링크 보내기 성공!`
                 })
             );
         }

@@ -52,7 +52,7 @@
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
-                    <div class="dibBox">찜한 가게가 없습니다.</div>
+                    <div class="dibBox divBox2 m-3">찜한 가게가 없습니다.</div>
                 </c:otherwise>
             </c:choose>
     </div>
