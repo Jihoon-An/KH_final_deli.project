@@ -36,6 +36,9 @@ function storeSubmitCheck() {
 
         $("#store_intro").focus();
     }
+    else if ($("#menu_img").val() == "") {
+        Swal.fire({title: "사진 필수", icon: "error", text: "사진 등록은 필수입니다"});
+    }
     else if ($("#store_origin").val() == "") {
 
         $("#store_origin").focus();

@@ -3,13 +3,13 @@
 }
 
 #menuAdd div {
-   border: 1px solid black;
+  // border: 1px solid black;
 }
 
 #menuAdd .container {
     width: 100%;
     height: 80%;
-    /*overflow: hidden;*/
+
 }
 
 #menuAdd .del {
@@ -22,7 +22,7 @@
 #menuAdd .profile {
     margin: auto;
     width: 100%;
-    height: 100px;
+    height: 120px;
 
 }
 
@@ -30,14 +30,53 @@
 
 #menuAdd .thumbnail {
 
-    width: 50%;
+
+    width:100%;
+    height:100%;
+
+    margin: auto;
+    text-align: center;
 
 }
 
-#menuAdd .thumbnail img {
-    width: 100%;
+#menuAdd .image-thumbnail {
+
+
+    width: 150px;
     height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 10px;
 }
+#menuAdd #btnCustom {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 7px;
+    border: 1px solid black;
+    /* background-color: #e84c4f; */
+    color: black;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+}
+#menuAdd #menu_img{
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+
+/*#menuAdd .thumbnail img {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
 #menuAdd .control {
     width: 100%;
@@ -87,12 +126,14 @@
 
 #menuAdd .topContents{
     height: 250px;
+    overflow: hidden;
 }
 
 
 #menuAdd .img_div{
-    width: 30%;
+    width: 20%;
     float: left;
+    margin-right: 30px;
 }
 
 #menuAdd .rowBoxRight{
@@ -107,8 +148,8 @@
     border-radius: 25px;
     margin: 5px;
 }
-/*#menuAdd rowBox{*/
-/*    margin: 100px;*/
+/*#menuAdd .rowBox{*/
+/*    margin-top: 30px;*/
 /*}*/
 
 #menuAdd .option_div_add input{
@@ -117,4 +158,8 @@
     width: 200px;
     border-radius: 25px;
     margin: 7px;
+}
+
+#menuAdd .option_div_add{
+    margin-bottom: 25px;
 }
