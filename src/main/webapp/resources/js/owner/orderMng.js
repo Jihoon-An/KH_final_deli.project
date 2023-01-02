@@ -141,10 +141,10 @@ $(".send_link_btn").click(function () {
             $.ajax({
                 url:"/util/sendSms",
                 type: "post",
-                data: {tel:tel, msg:'딜리 배달원 링크\n'+deliLink}
+                data: {tel:tel, msg:'딜리 라이더 링크\n'+deliLink}
             }).done(
                 Swal.fire({
-                    title: `링크에 성공하였습니다.`
+                    title: `링크 보내기 성공!`
                 })
             );
         }
