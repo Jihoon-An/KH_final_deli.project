@@ -119,7 +119,7 @@ public class AccountController {
         return "";
     }
 
-    @RequestMapping("toMemberSignUp")
+    @RequestMapping("signup")
     public String toMemberSignUp(String kakaoId, Model model) throws Exception {
         model.addAttribute("acc_token", kakaoId);
         return "main/memberSignUp";
