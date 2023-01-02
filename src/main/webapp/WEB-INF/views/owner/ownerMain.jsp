@@ -24,7 +24,14 @@
 <main id="ownerMain">
     <div class="container">
         <div class="infoBox">
-            <div id="infoMsg">회원님의 오늘 하루 총 매출은 <fmt:formatNumber value="${total}" pattern="#,###"/>원 입니다.</div>
+            <div id="infoMsg">
+                <c:if test="${total != 0}">
+                    회원님의 오늘 하루 총 매출은 <fmt:formatNumber value="${total}" pattern="#,###"/> 원 입니다😋
+                </c:if>
+                <c:if test="${total == 0}">
+                    회원님의 오늘 하루 총 매출은 0 원 입니다😑
+                </c:if>
+            </div>
             <div style="width: 300px;">
                 <canvas id="ddSales"></canvas>
                 <script>
@@ -47,13 +54,6 @@
                                 ],
                                 borderWidth: 1
                             }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
                         }
                     });
                 </script>
