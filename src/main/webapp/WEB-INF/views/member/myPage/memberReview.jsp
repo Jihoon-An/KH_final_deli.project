@@ -42,21 +42,17 @@
             <div>
                 <div class="imgBox fileBtnBox">
                     <input type="hidden" name="rev_sysname" id="rev_sysmname">
-                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가 (최대 4개)
+                    <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진추가 <span class="imgMsg">(최대 4개)</span>
                     <input type="file" id="revImgBtn" name="files" accept=".png,.jpg,.jpeg,.gif" multiple>
                     </label>
                 </div>
                 <div id="imgSec">
-
-
                 </div>
             </div>
             <hr>
             <div>
                  <input type="hidden" value="${dto.order_seq}" name="order_seq">
                  <input type="hidden" value="${dto.store_seq}" name="store_seq">
-<%--                주문금액: <input type="text" value="${dto.order_price}">--%>
-<%--                <input type="hidden" value="${dto.menu_list}" id="menu">--%>
                 <div class="menuBox">주문 메뉴</div>
                 <c:choose>
                     <c:when test="${not empty menuNameList}">
