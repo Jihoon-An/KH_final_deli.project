@@ -67,7 +67,7 @@
 <%--                </a>--%>
                 <div class="clientSignUpLinkBox signUpBox">
                     <span>아직 딜리의 회원이 아니신가요?</span>
-                    <a class="link" href="/account/toMemberSignUp">일반회원가입</a>
+                    <a class="link" href="/account/signup">일반회원가입</a>
                 </div>
                 <div class="businessSignUpLinkBox signUpBox">
                     <span>아직 딜리의 사장님이 아니신가요?</span>

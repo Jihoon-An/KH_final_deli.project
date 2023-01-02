@@ -30,10 +30,15 @@
 
 }
 
-#coupon_list #modal_content{
-
-}
 
 #coupon_list #modal_content > input{
     display: block;
+}
+
+#table_area{
+    padding-top: 80px;
+}
+
+#add_cp_btn{
+    border: 1px solid rgba(67, 72, 103, 0.55);
 }

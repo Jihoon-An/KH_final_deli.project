@@ -21,62 +21,69 @@
 
     <div class="container">
         <form action="/owner/info/modifyOwner" id="ownerForm" method="post" enctype="multipart/form-data">
-            <img src="/resources/img/owner-card/${ownerInfo.owner_card_img}">
+<%--            <img src="/resources/img/owner-card/${ownerInfo.owner_card_img}">--%>
             <div class="titleBox">
                 사업자 회원 정보 수정
             </div>
 
             <div class="emailBox">
                 <span>이메일</span><br>
-                <input type="text" id="emailInput" name="acc_email" placeholder="이메일" value="${acc_email}" readonly>
+                <input type="text" id="emailInput" class="form-control" name="acc_email"
+                       placeholder="이메일" value="${acc_email}" readonly>
             </div>
 
             <div class="passWordBox">
                 <span>비밀번호</span><br>
-                <button type="button" id="modifyPassWordModalButton">비밀번호 변경</button>
+                <button type="button" id="modifyPassWordModalButton" class="deli_btn">비밀번호 변경</button>
             </div>
 
             <div class="nameBox">
                 <span>이름</span><br>
-                <input type="text" id="nameInput" name="owner_name" placeholder="이름" value="${ownerInfo.owner_name}">
+                <input type="text" id="nameInput" class="form-control" name="owner_name"
+                       placeholder="이름" value="${ownerInfo.owner_name}">
             </div>
 
             <div class="phoneBox">
-                <span>핸드폰번호</span><br>
+                <span>핸드폰번호</span>
                 <input type="hidden" id="oldPhoneNumber" value="${ownerInfo.owner_phone}">
-                <input type="text" id="phoneInput" name="owner_phone" placeholder="핸드폰번호" value="${ownerInfo.owner_phone}" maxlength='11' oninput=validNum() readonly>
-                <button type="button" id="modifyPhoneButton">변경</button>
-                <button type="button" id="phone_certi_btn" style="display: none">발송</button>
-                <br><br>
+                <div class="input-group">
+                    <input type="text" id="phoneInput" name="owner_phone" class="form-control"
+                           placeholder="핸드폰번호" value="${ownerInfo.owner_phone}" maxlength='11' oninput=validNum() readonly>
+                    <button type="button" id="modifyPhoneButton" class="deli_btn">변경</button>
+                    <button type="button" id="phone_certi_btn" class="deli_btn" style="display: none">발송</button>
+                </div>
                 <p id="phone_msg" style="display: none">양식에 맞는지 확인 중입니다.</p>
             </div>
 
             <div id="certificationBox" style="height: 200px; display: none;">
                 <span id="certificationNumberSpan">인증번호</span>
-                <div class="infoInputBox">
-                    <input type="text" placeholder="인증번호 6자리" name="phone_confirm_input" id="phone_confirm_input" maxlength='6' oninput=validNum()>
-                    <button type="button" id="phone_confirm_btn">확인</button>
-                    <span id="phone_count"></span>
+                <div class="infoInputBox input-group">
+                    <input type="text" id="phone_confirm_input" class="form-control" name="phone_confirm_input"
+                           placeholder="인증번호 6자리" maxlength='6' oninput=validNum()>
+                    <button type="button" id="phone_confirm_btn" class="deli_btn" style="height: 35px;">
+                        확인
+                    </button>
                 </div>
+                <span id="phone_count"></span>
             </div>
 
             <div class="ownerNumBox">
                 <span>사업자번호</span><br>
-                <input type="text" id="ownerNumInput" name="owner_num" placeholder="사업자번호" value="${ownerInfo.owner_num}">
+                <input type="text" id="ownerNumInput" class="form-control" name="owner_num"
+                       placeholder="사업자번호" value="${ownerInfo.owner_num}">
             </div>
 
             <div class="ownerCardBox">
                 <span>사업자등록증</span><br>
-                <input type="file" id="ownerCardInput" name="file" placeholder="사업자등록증">
-                <button id="ownerCardUpLoadButton">업로드</button>
+                <input type="file" id="ownerCardInput" class="form-control" name="file" placeholder="사업자등록증">
             </div>
 
 
             <div class="buttonBox">
                 <a href="">
-                    <button type="button" id="cancleButton">취소</button>
+                    <button type="button" id="cancleButton" class="deli_btn">취소</button>
                 </a>
-                <button type="button" id="modifyButton">수정</button>
+                <button type="button" id="modifyButton" class="deli_btn">수정</button>
             </div>
 
 
@@ -96,38 +103,38 @@
                     <div class="infoTitleBox">
                         <span class="pwSpan">현재 비밀번호</span>
                     </div>
-                    <div class="infoInputBox passWordBox">
-                        <input type="text" id="oldPassWord" name="oldPassWord">
+                    <div class="infoInputBox passWordBox" style="width: 230px;">
+                        <input type="password" id="oldPassWord" class="form-control" name="oldPassWord">
                     </div>
                 </div>
                 <div class="infoBox modifyPwBox">
                     <div class="infoTitleBox">
                         <span class="pwSpan">새 비밀번호</span>
                     </div>
-                    <div class="infoInputBox passWordBox">
-                        <input type="text" id="newPassWord" name="newPassWord">
+                    <div class="infoInputBox passWordBox" style="width: 230px;">
+                        <input type="password" id="newPassWord" class="form-control" name="newPassWord">
                     </div>
                 </div>
                 <div class="infoBox modifyPwBox">
                     <div class="infoTitleBox">
                         <span class="pwSpan">새 비밀번호 확인</span>
                     </div>
-                    <div class="infoInputBox passWordBox">
-                        <input type="text" id="confirmPassWord">
-                        <span id="pwCheckSpan"></span>
+                    <div class="infoInputBox passWordBox" style="width: 230px;">
+                        <input type="password" id="confirmPassWord" class="form-control">
+                        <span id="pwCheckSpan" style="font-size: 12px;"></span>
                     </div>
                 </div>
                 <div class="modalButtonBox">
-                    <button type="button" id="closeModalButton">닫기</button>
-                    <button type="button" id="modifyPasswordConfirmBtn">변경</button>
+                    <button type="button" id="closeModalButton" class="deli_btn">닫기</button>
+                    <button type="button" id="modifyPasswordConfirmBtn" class="deli_btn">변경</button>
                 </div>
             </div>
         </div>
     </form>
 
-    <div class="logOutBox">
+    <div class="withdrawalBox">
         <form action="/account/withdrawal" id="withdrawalForm" method="post">
-            <button type="button" id="withdrawalButton">회원탈퇴</button>
+            <button type="button" id="withdrawalButton" class="deli_btn">회원탈퇴</button>
         </form>
     </div>
 
