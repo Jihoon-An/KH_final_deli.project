@@ -81,7 +81,7 @@
                     <c:when test="${not empty reviews.rev_sysname}">
                         <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
                             <div id="img_box">
-                                <img src="/resources/img/review/${reviewImg}">
+                                <img src="/resources/img/review/${reviewImg}" style="width: 100%"; height="100%">
                             </div>
                         </c:forEach>
                     </c:when>
@@ -101,7 +101,7 @@
                 <c:choose>
                 <c:when test="${not empty i.menuOptionDTO}">
                 <c:forEach var="k" items="${i.menuOptionDTO}">
-                    <div id="option_name"> ${k.option_name} </div>
+                    <div class="option_name"> ${k.option_name} </div>
                 </c:forEach>
             </div>
             </c:when>
@@ -127,21 +127,19 @@
 
     <script>
         function onclickDeleteBtn(param) {
-            debugger;
-            var revSeq = param.getAttribute('revSeq');
+            var rev_seq = param.getAttribute('rev_seq');
         }
 
         $("#delete_review").on("click", function () {
-            var ans = alert("리뷰를 삭제하시겠습니까?");
-
-            if (ans == true) {
+            if (confirm("정말 삭제하시겠습니까?") == true) {
                 $.ajax({
                     url: "/myPage/reviewList/deleteReview",
-                    data: {rev_seq: revSeq},
                     type: "post"
                 }).done(function (resp) {
                     location.reload();
                 })
+            }else{
+                return false;
             }
         })
     </script>
