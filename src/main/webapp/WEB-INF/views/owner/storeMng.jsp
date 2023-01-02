@@ -18,6 +18,11 @@
 
 <body>
 <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+<style>
+    #deli_nav {
+        min-height: 1700px;
+    }
+</style>
 <main id="storeMng">
     <form action="/owner/store/mng/modify" id="frm" method="post" enctype="multipart/form-data">
         <div class="container">
