@@ -121,7 +121,8 @@ $(document).on("click", ".btn_option_add", function () {
 
     });
     addBox.append(delBtn)
-    addBox.append(" <select name='option_required' class='required'> <option value='Y'>필수옵션</option> <option value='N'>선택옵션</option></select><select name='option_multiple' class='op_multi'>  <option value='Y'>중복가능</option><option value='N'>중복불가능</option></select>  <input type='text' placeholder='옵션그룹명을 입력하세요' name='option_group' class='op_group'><br><div class='group'> <div class='optionName_div'><input style='width: 200px' type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name'>  <input style='width: 150px' type='text' placeholder='옵션가격' name='option_price' class='op_price' oninput=validNum()>원</div> <button type='button' class='btn_opnameadd deli_btn'>옵션명추가</button><br></div></div>")
+    addBox.append("<div class=\"input-group\"  style=\"width: 600px;\" ><select name='option_required' class='required form-select' ><option value='Y'>필수옵션</option><option value='N'>선택옵션</option></select><select name='option_multiple' class='op_multi form-select ' ><option value='Y'>중복가능</option><option value='N'>중복불가능</option></select><input type='text' placeholder='옵션그룹명을 입력하세요' name='option_group'class='op_group form-control' style=\"width: 300px;\"></div><div style=\"height: 5px\"></div><div class='group'><div class='optionName_div input-group' style='width: 600px'><input type='text'placeholder='옵션명을 입력하세요'name='option_name'class='op_name form-control' style=\"width: 300px;\"><input style='width: 200px;' type='text' placeholder='옵션가격' name='option_price'class='op_price form-control' oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div><button type='button' class='btn_opnameadd deli_btn'>+</button></div></div>")
+    //addBox.append(" <select name='option_required' class='required'> <option value='Y'>필수옵션</option> <option value='N'>선택옵션</option></select><select name='option_multiple' class='op_multi'>  <option value='Y'>중복가능</option><option value='N'>중복불가능</option></select>  <input type='text' placeholder='옵션그룹명을 입력하세요' name='option_group' class='op_group'><br><div class='group'> <div class='optionName_div'><input style='width: 200px' type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name'>  <input style='width: 150px;'  type='text' placeholder='옵션가격' name='option_price' class='op_price' oninput=validNum()>원 &nbsp;&nbsp;<button type='button' class='btn_opnameadd deli_btn'>+</button></div> <br></div>")
 
     addBox.hide();
 
@@ -140,11 +141,12 @@ $(document).on("click", ".btn_opnameadd", function () {
 
 
 
-    let opAddBox = $("<div class='optionName_div_add'>");
+    let opAddBox = $("<div class='optionName_div_add input-group' style='margin-top: 5px'>");
 
     let delBtn = $("<button type='button'>")
     delBtn.addClass("deli_btn")
     delBtn.append("X");
+    delBtn.attr("display","inline")
 
 
     delBtn.addClass("del_btn").on("click", function () {
@@ -153,7 +155,8 @@ $(document).on("click", ".btn_opnameadd", function () {
     });
     opAddBox.append(delBtn)
 
-    opAddBox.append("<input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name'> <input type='text' placeholder='옵션가격을 입력하세요' name='option_price' class='op_price' oninput=validNum()>원</div> <br> ")
+        opAddBox.append("<input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name form-control' style=\"width: 300px;\"> <input type='text' placeholder='옵션가격' name='option_price' class='op_price form-control' style=\"width: 200px;\" oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>")
+    //opAddBox.append("<input type='text' placeholder='옵션명을 입력하세요' name='option_name' class='op_name'> <input  style='width: 150px;'type='text' placeholder='옵션가격' name='option_price' class='op_price' oninput=validNum()>원</div> <br> ")
 
 
     //  $(this).closest(".name_add_box").append("<div class='text-start' style='width: 350px'> <span style='color: #808080; font - size:x-small'>옵션명</span></div> <input type='text' id='option_name_input' name='option_name' class='option_name' placeholder='옵션명을 입력하세요' maxlength='20'><div class='text - start' style='width: 350px'><span span style = 'color: #808080; font-size: x-small' > 옵션가격</span ></div > <input type='text' id='option_price_input' name='option_price' class='option_price'placeholder = '옵션 가격' maxlength = '11' oninput = validNum() > ")
