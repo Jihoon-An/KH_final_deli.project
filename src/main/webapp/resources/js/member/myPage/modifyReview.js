@@ -104,7 +104,7 @@ function imgCount() {
 
 //내 리뷰 관리로 이동
 $("#backBtn").on("click", function () {
-    location.href = "/";
+    location.href = "/myPage/reviewList";
 })
 
 //지우기

@@ -194,5 +194,11 @@ function setStar(star) {//number star
 }
 
 $(function(){
-
+    let arr=$("select[name=select_bs]");
+    for (let i = 0; arr.length > i; i++) {
+        if ($(arr[i]).val() == '휴무일') {
+            $(".bs_time").eq(i).hide();
+        }
+    }
 })
+
