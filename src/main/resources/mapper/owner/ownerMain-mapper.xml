@@ -13,7 +13,7 @@
         SELECT (sum(o.PAY_PRICE)-sum(o.DELIVERY_TIP)) AS daily_sales,o.STORE_SEQ,(SELECT store_name FROM STORE s WHERE s.STORE_SEQ=${store_seq}) AS store_name
         FROM ORDERS o
         WHERE o.STORE_SEQ =${store_seq}
-        AND o.ORDER_DATE BETWEEN TO_TIMESTAMP('${now} 00.00.00','DD-MON-RR HH.MI.SSXFF AM') and TO_TIMESTAMP('${now} 23.59.59','DD-MON-RR HH.MI.SSXFF AM')
+        AND o.ORDER_DATE BETWEEN TO_TIMESTAMP('${now} 00.00.00','YYYY-MM-DD HH24:MI:SS') and TO_TIMESTAMP('${now} 23.59.59','YYYY-MM-DD HH24:MI:SS')
         GROUP BY o.STORE_SEQ
     </select>
 
