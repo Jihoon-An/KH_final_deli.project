@@ -1,25 +1,49 @@
 #ownerMain *{box-sizing: border-box;}
 
-#ownerMain .infoBox{
-    /*background-color: cadetblue;*/
-}
-
-#graph{
+#ownerMain #graph{
+    width: 500px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 50px;
 }
 
-.deli_btn{
+#ownerMain .deli_btn{
     height:28px;
     position: relative;
     top:-1px;
 }
-#optionCOn{
+
+#ownerMain #optionCon{
     margin-bottom: 15px;
 }
 
-#myTable_length,myTable_filter{
+#ownerMain #myTable_length,myTable_filter{
     margin-bottom: 10px;
+}
+
+#ownerMain .memo{
+    width: 600px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#ownerMain #memoSelect{
+    margin-bottom: 15px;
+}
+#ownerMain .font{
+    font-weight: bold;
+    font-size: large;
+    color:#E84C4F;
+}
+
+#ownerMain .orderCnt{
+    text-align: center;
+}
+
+#ownerMain #titlefont{
+    font-weight: bold;
 }
