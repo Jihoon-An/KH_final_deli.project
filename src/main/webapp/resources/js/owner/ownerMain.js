@@ -108,10 +108,12 @@ $(document).ready(function () {
 
 
 $("#orderCtnBtn").on("click",function (){
-    let storeSeq=$(this).prev($(".storeSeqOpt")).val();
+    let storeSeq=$(this).prev().val();
+
     console.log("식당시퀀스"+storeSeq);
+
     $.ajax({
-        url:"/owner/",
+        url:"/owner/selectOrderCnt",
         type: "post",
         data: {
             storeSeq:storeSeq
@@ -119,8 +121,13 @@ $("#orderCtnBtn").on("click",function (){
         dataType:"json"
     }).done(function (data){
         $("#memo").empty();
-
-
+        $("#memo").append(
+            $("<span>어제의 주문건수는 <span class='font'>"+data.daily_order_cnt +"</span> 건 입니다.</span>")
+        );
+        $("#memo").append($("<br>"));
+        $("#memo").append(
+            $("<span>오늘의 주문건수는 <span class='font'>"+data.td_order_cnt +"</span> 건 입니다.</span>")
+        );
     })
 })
 

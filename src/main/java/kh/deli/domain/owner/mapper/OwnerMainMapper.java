@@ -2,6 +2,7 @@ package kh.deli.domain.owner.mapper;
 
 import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
 import kh.deli.domain.owner.dto.OwnerDdSalesDTO;
+import kh.deli.domain.owner.dto.OwnerOrderCountDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,6 +27,6 @@ public interface OwnerMainMapper {
             @Param("endDate") String endDate
     );
 
-    public int selectOrderCnt(@Param("storeSeq")int storeSeq);
+    public OwnerOrderCountDTO selectOrderCnt(@Param("storeSeq")int storeSeq, @Param("now") LocalDate now);
 
 }

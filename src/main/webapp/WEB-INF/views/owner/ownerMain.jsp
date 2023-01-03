@@ -64,43 +64,22 @@
                             }
                         });
                     </script>
-                    <canvas id="ddOrderCnt"></canvas>
-                    <script>
-                        const ddOrderCnt = document.getElementById('ddOrderCnt');
-
-                        new Chart(ddOrderCnt, {
-                            type: 'bar',
-                            data: {
-                                labels: [
-                                    <c:forEach var="ds" items="${dslist}" varStatus="status">
-                                    '${ds.store_name}'<c:if test="${!status.last}">, </c:if>
-                                    </c:forEach>
-                                ],
-                                datasets: [{
-                                    label: '주문건수',
-                                    data: [
-                                        <c:forEach var="ds" items="${dslist}"  varStatus="status">
-                                        '${ds.daily_order_cnt}'<c:if test="${!status.last}">, </c:if>
-                                        </c:forEach>
-                                    ],
-                                    backgroundColor: ['#E84C4F'],
-                                    borderWidth: 1
-                                }]
-                            }
-                        });
-                    </script>
                 </div>
             </c:if>
+            <h4 style="margin-top:30px; margin-bottom: 20px; text-align: center;">
+                어제와 오늘의 주문수 비교하기
+            </h4>
             <div class="memo">
-                <h5>어제와 오늘의 주문수 비교하기</h5>
-                <select>
+                <select id="memoSelect">
                     <c:forEach var="ds" items="${dslist}">
                         <option class="storeSeqOpt"
-                                value="${ds.store_seq}">${ds.store_seq}+${ds.store_name}</option>
+                                value="${ds.store_seq}">${ds.store_name}
+                            </option>
                     </c:forEach>
                 </select>
                 <button id="orderCtnBtn" type="button" class="deli_btn">비교하기</button>
-                <div id="memo"></div>
+                <div id="memo">
+                </div>
             </div>
         </div>
 
