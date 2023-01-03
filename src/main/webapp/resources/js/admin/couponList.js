@@ -14,53 +14,54 @@ $(".coupon").click(function () {
     let type=$(this).find(".type").text();
     let discount=$(this).find(".discount").text();
     let period=$(this).find(".period").val();
-    console.log("seq : " + seq);
-    console.log("name : " + name);
-    console.log("code : " + code);
-    console.log("content : " + content);
-    console.log("type : " + type);
-    console.log("discount : " + discount);
-    console.log("period : " + period);
+
     //위에서 가져온 값 세팅하고 없는 값 html 지우기.
     //seq
-    $("#modal").find("#modal_cp_seq").val(seq);
+    $("#modal").find("#modal_cp_seq").html(seq);
     //name
-    $("#modal").find("#modal_cp_name").val(name);
+    $("#modal").find("#modal_cp_name").html(name);
     //code
     if (!code) {
         $("#modal").find("#modal_cp_code").hide();
+        $("#modal").find("#title_cp_code").hide();
     }else {
-        $("#modal").find("#modal_cp_code").show().val(code);
+        $("#modal").find("#modal_cp_code").show().html(code);
+        $("#modal").find("#title_cp_code").show();
     }
     //content
     if (!content) {
         $("#modal").find("#modal_cp_content").hide();
+        $("#modal").find("#title_cp_content").hide();
     }else {
-        $("#modal").find("#modal_cp_content").show().val(content);
+        $("#modal").find("#modal_cp_content").show().html(content);
+        $("#modal").find("#title_cp_content").show();
     }
     //type
-    $("#modal").find("#modal_cp_type").val(type);
+    $("#modal").find("#modal_cp_type").html(type);
+    $("#modal").find("#title_cp_type");
     //discount
-    $("#modal").find("#modal_cp_discount").val(discount);
+    $("#modal").find("#modal_cp_discount").html(discount);
+    $("#modal").find("#title_cp_discount");
     //period
     if (!period) {
         $("#modal").find("#modal_cp_period").hide();
+        $("#modal").find("#title_cp_period").hide();
     }else {
         $("#modal").find("#modal_cp_period").show().val(period);
+        $("#modal").find("#title_cp_period").show();
     }
     $("#modal").fadeIn();
 });
 
 //쿠폰 상세 모달 닫기
 $("#close_modal").click(function () {
-    $("#modal").fadeOut();
-    $("#modal").find("#modal_cp_seq").val("").css("display", "block");
-    $("#modal").find("#modal_cp_name").val("").css("display", "block");
-    $("#modal").find("#modal_cp_code").val("").css("display", "block");
-    $("#modal").find("#modal_cp_content").val("").css("display", "block");
-    $("#modal").find("#modal_cp_type").val("").css("display", "block");
-    $("#modal").find("#modal_cp_discount").val("").css("display", "block");
-    $("#modal").find("#modal_cp_period").val("").css("display", "block");
+    $("#modal").toggle();
+    $("#modal").find("#modal_cp_name").html("").css("display", "block");
+    $("#modal").find("#modal_cp_code").html("").css("display", "block");
+    $("#modal").find("#modal_cp_content").html("").css("display", "block");
+    $("#modal").find("#modal_cp_type").html("").css("display", "block");
+    $("#modal").find("#modal_cp_discount").html("").css("display", "block");
+    $("#modal").find("#modal_cp_period").html("").css("display", "block");
 });
 
 //발행하기 버튼 (미완성)

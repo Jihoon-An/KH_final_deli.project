@@ -79,7 +79,7 @@ function trClickEvent() {
 
 };
 
-$(".closeModal").click(function () {
+$(".closeBtn").click(function () {
     $(".modal").fadeOut();
 });
 

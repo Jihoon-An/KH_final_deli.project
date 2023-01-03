@@ -35,3 +35,5 @@ input[type="number"]:focus{
 .swal2-styled.swal2-confirm{
     background-color: #e78c8c !important;
 }
+*{-ms-overflow-style:none; }
+*::-webkit-scrollbar { display:none; }

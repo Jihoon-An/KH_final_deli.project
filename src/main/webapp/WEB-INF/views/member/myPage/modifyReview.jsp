@@ -70,7 +70,7 @@
                     </label>
                 </div>
 
-                <div id="rev_imgs_area" style="margin: 0 auto" >
+                <div id="rev_imgs_area">
                     <c:choose>
                         <c:when test="${not empty review_dto}">
                             <%
@@ -82,9 +82,11 @@
                                 request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                             %>
                             <c:forEach var="revImg" items="${review_img_list}">
-                                <div class="review_img_div" class="preimg_img" style="display: inline-block; padding: 2px; margin-top:5px; width: 157px; height: 157px;'">
-                                    <i class="fa-solid fa-x del_img_btn" style="position: relative; left:140px; z-index: 10"></i>
-                                    <img src="/resources/img/review/${revImg}" style="width: 100%; height: 100%; object-fit: cover; position: relative; top:-16px;">
+<%--                                <div class="review_img_div" class="preimg_img" style="display: inline-block; padding: 2px; margin-top:5px; width: 157px; height: 157px;'">--%>
+                                <div class="review_img_div">
+<%--                                    <img src="/resources/img/review/${revImg}" style="width: 100%; height: 100%; object-fit: cover; position: relative; top:-16px;">--%>
+                                    <img src="/resources/img/review/${revImg}">
+                                    <i class="fa-solid fa-x del_img_btn"></i>
                                     <input type="hidden" class="img_name" value="${revImg}">
                                 </div>
                             </c:forEach>
@@ -92,7 +94,7 @@
                     </c:choose>
                 </div>
             </div>
-            <hr>
+
             <div>
                 <input type="hidden" value="${dto.menu_list}" id="menu">
                 <div class="menuBox">주문 메뉴</div>

@@ -32,9 +32,11 @@
 
     <%--font--%>
     <%--font-family: 'Noto Sans KR', sans-serif;--%>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+          rel="stylesheet">
     <%--font-family: 'Nanum Gothic', sans-serif;--%>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <main id="owner_signup">
@@ -47,11 +49,14 @@
             <div class="input_title row mt-5"><h5>이메일</h5></div>
             <div class="row">
                 <div class="col-9">
-                    <input class="input_data form-control" id="email" name="acc_email">
+                    <input class="input_data form-control" id="email" name="acc_email"
+                           maxlength="30">
                 </div>
                 <div class="col-3">
-                    <button class="certi_btn form-control myBtn" type="button" id="email_btn">인증</button>
-                    <button class="certi_btn form-control myBtn" type="button" id="re_email_btn" style="display:none;">
+                    <button class="certi_btn form-control myBtn" type="button" id="email_btn">인증
+                    </button>
+                    <button class="certi_btn form-control myBtn" type="button" id="re_email_btn"
+                            style="display:none;">
                         다시입력
                     </button>
                 </div>
@@ -61,11 +66,14 @@
             <div id="email_confirm_table" class="mt-1">
                 <div class="row">
                     <div class="col-9">
-                        <input class="input_data form-control" id="email_confirm_input"/><span
-                            id="confirm_count"></span>
+                        <input class="input_data form-control" id="email_confirm_input"
+                               maxlength="8">
+                        <span id="confirm_count"></span>
                     </div>
                     <div class="col-3">
-                        <button type="button" class="confirm_btn form-control myBtn" id="email_confirm_btn">확인</button>
+                        <button type="button" class="confirm_btn form-control myBtn"
+                                id="email_confirm_btn">확인
+                        </button>
                     </div>
                 </div>
             </div>
@@ -74,12 +82,14 @@
             <div class="input_title row mt-3"><h5>비밀번호</h5></div>
             <div class="row">
                 <div class="col">
-                    <input type="password" class="input_data form-control" id="pw1" name="acc_pw" placeholder="8~16글자+특수문자">
+                    <input type="password" class="input_data form-control" id="pw1" name="acc_pw"
+                           placeholder="8~16글자+특수문자" maxlength="16">
                 </div>
             </div>
             <div class="row mt-1">
                 <div class="col">
-                    <input type="password" class="input_data form-control" id="pw2" placeholder="비밀번호 재입력">
+                    <input type="password" class="input_data form-control" id="pw2"
+                           placeholder="비밀번호 재입력" maxlength="16">
                 </div>
             </div>
 
@@ -87,7 +97,8 @@
             <div class="input_title row mt-3"><h5>이름</h5></div>
             <div class="row">
                 <div class="col">
-                    <input class="input_data form-control" id="name" name="owner_name">
+                    <input class="input_data form-control" id="name" name="owner_name"
+                           maxlength="5">
                 </div>
             </div>
 
@@ -106,21 +117,25 @@
                     />
                     <input
                             type="hidden" ,
-                            name="owner_phone",
+                            name="owner_phone" ,
                             id="owner_phone"
                     />
                 </div>
                 <div class="col-3">
-                    <button class="certi_btn form-control myBtn" type="button" id="phone_btn">인증</button>
+                    <button class="certi_btn form-control myBtn" type="button" id="phone_btn">인증
+                    </button>
                 </div>
             </div>
             <div class="row" id="phone_confirm_box" style="display: none">
                 <div class="col-9">
-                    <input class="form-control" type="text" id="phone_confirm_input" placeholder="인증문자 입력">
+                    <input class="form-control" type="text" id="phone_confirm_input"
+                           placeholder="인증문자 입력">
                     <span id="phone_confirm_count"></span>
                 </div>
                 <div class="col-3">
-                    <button class="certi_btn form-control myBtn" type="button" id="phone_confirm_btn">확인</button>
+                    <button class="certi_btn form-control myBtn" type="button"
+                            id="phone_confirm_btn">확인
+                    </button>
                 </div>
             </div>
 
@@ -128,7 +143,22 @@
             <div class="input_title row mt-3"><h5>사업자 번호</h5></div>
             <div class="row">
                 <div class="col">
-                    <input type="number" class="input_data form-control" id="num" name="owner_num" min="0" maxlength="11" max="999999999999">
+                    <input
+                            type="number"
+                            class="input_data form-control"
+                            id="num"
+                            name="owner_num"
+                            oninput="maxLengthCheck(this)"
+                            maxlength="11"
+                    >
+                    <script type="text/javascript">
+                        function maxLengthCheck(object){
+                            if (object.value.length > object.maxLength){
+                                object.value = object.value.slice(0, object.maxLength);
+                            }
+                        }
+
+                    </script>
                 </div>
             </div>
 
@@ -144,11 +174,15 @@
             <div class="row justify-content-center mt-5">
                 <div class="col-3">
                     <a href="/">
-                        <button type="button" class="footer_btn form-control btn btn-danger" id="cancel_btn">취소하기</button>
+                        <button type="button" class="footer_btn form-control btn btn-danger"
+                                id="cancel_btn">취소하기
+                        </button>
                     </a>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="footer_btn form-control btn btn-danger" id="submit_btn">가입하기</button>
+                    <button type="button" class="footer_btn form-control btn btn-danger"
+                            id="submit_btn">가입하기
+                    </button>
                 </div>
             </div>
         </form>

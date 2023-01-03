@@ -60,38 +60,52 @@
 <form action="/admin/deleteReview" id="frm">
     <div class="modal">
         <div class="modal_content">
-            <div class="closeModal">X</div>
+            <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>
 
-            <div>
-                이메일 <input
-                    type="text" placeholder="이메일" id="email" class="email" disabled>
-            </div>
-            <div>
-                닉네임<input
-                    type="text" placeholder="이름" disabled id="nick" class="nick">
-            </div>
-            <div>
-                연락처<input
-                    type="text" placeholder="연락처" disabled id="phone" class="phone">
+            <div class="modalInfo">
+            <span class="modalTitle">이메일</span>
+                <input
+                        type="text" placeholder="이메일" id="email" class="email" disabled>
             </div>
 
-            <div>
-                가입일<input
-                    type="text" placeholder="가입일자" disabled id="accsignupdate" class="accsignupdate">
-            </div>
-            <div>
-               등급<input
-                    type="text" placeholder="등급" disabled id="memgrade" class="memgrade">
-            </div>
-
-            <div>
-                회원번호<input
-                    type="text" placeholder="회원번호" id="accseq" class="accseq">
+            <div class="modalInfo">
+                <span class="modalTitle">닉네임</span>
+                <input
+                        type="text" placeholder="이름" disabled id="nick" class="nick">
             </div>
 
 
-            <button type="button" id="deleteAccount" type="button">삭제</button>
+            <div class="modalInfo">
+                <span class="modalTitle">연락처</span>
+                <input
+                        type="text" placeholder="연락처" disabled id="phone" class="phone">
+            </div>
+
+
+            <div class="modalInfo">
+                <span class="modalTitle">가입일</span>
+                <input
+                        type="text" placeholder="가입일자" disabled id="accsignupdate" class="accsignupdate">
+            </div>
+
+
+            <div class="modalInfo">
+                <span class="modalTitle">등급</span>
+                <input
+                        type="text" placeholder="등급" disabled id="memgrade" class="memgrade">
+            </div>
+
+
+
+            <div class="modalInfo">
+                <span class="modalTitle">회원번호</span>
+                <input
+                        type="text" placeholder="회원번호" id="accseq" class="accseq">
+            </div>
+
+            <button type="button" id="deleteAccount" type="button" class="deli_btn">삭제</button>
         </div>
+     </div>
     </div>
 </form>
 
