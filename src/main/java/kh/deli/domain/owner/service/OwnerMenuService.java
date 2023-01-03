@@ -40,7 +40,7 @@ public class OwnerMenuService {
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성
         }
-
+        file.getSize();
         if(file.getSize()!=0) {//파일 사이즈가0이 아니라면
             String oriName=file.getOriginalFilename();
             //겹치지 않게 이름을 만들어야함
