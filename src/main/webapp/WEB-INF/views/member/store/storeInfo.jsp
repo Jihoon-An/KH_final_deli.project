@@ -11,7 +11,8 @@
     <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
     <div class="fieldBox" style="margin-bottom: -10px;">
         <div id="menu"><a onclick="loadCode1();" style="cursor: pointer;">메뉴</a></div>
-        <div id="info"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;" id="to_info">정보</a></div>
+        <div id="info"><a onclick="loadCode2();" style="font-weight: bold; font-size: 1.15em; cursor: pointer;"
+                          id="to_info">정보</a></div>
         <div id="review"><a onclick="loadCode3();" style="cursor: pointer;">리뷰</a></div>
     </div>
 
@@ -43,14 +44,15 @@
             <div class="d-flex flex-row">
                 <div class="title">전화번호</div>
                 <c:if test="${fn:length(storeInfoDTO.store_phone)==9}">
-                    <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,###,####"/>
-                    <div class="detail_contents" id="store_phone">0<c:out
-                            value="${fn:replace(phoneNo, ',', '-')}"/></div>
+                    ${fn:substring(storeInfoDTO.store_phone, 0, 2)}-${fn:substring(storeInfoDTO.store_phone, 2, 5)}-${fn:substring(storeInfoDTO.store_phone, 5, 9)}
                 </c:if>
-                <c:if test="${fn:length(storeInfoDTO.store_phone)>=10}">
+                <c:if test="${fn:length(storeInfoDTO.store_phone)==11}">
                     <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
                     <div class="detail_contents" id="store_phone">0<c:out
                             value="${fn:replace(phoneNo, ',', '-')}"/></div>
+                </c:if>
+                <c:if test="${fn:length(storeInfoDTO.store_phone)==12}">
+                    ${fn:substring(storeInfoDTO.store_phone, 0, 4)}-${fn:substring(storeInfoDTO.store_phone, 4,8)}-${fn:substring(storeInfoDTO.store_phone, 8, 12)}
                 </c:if>
             </div>
 
