@@ -141,11 +141,12 @@ function handleImgFileSelect(e) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $("#rev_imgs_area")
-                    .append($("<div class='review_img_div' style='display: inline-block; padding: 2px; margin-top:5px; width: 157px; height: 157px;'>")
+                    .append($("<div class='review_img_div'>")
                         .append(
-                            // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
-                            // $("<i class=\"fa-solid fa-x del_img_btn\"></i>").append(
-                            $("<i class='fa-solid fa-x del_img_btn new_del' style='position: relative; left:140px; z-index: 10'></i>")
+                            $("<img>")
+                                .attr("src", e.target.result)
+                        ).append(
+                            $("<i class='fa-solid fa-x del_img_btn new_del'></i>")
                                 .click(function () {
                                     $(this).closest(".review_img_div").remove();
 
@@ -158,16 +159,11 @@ function handleImgFileSelect(e) {
                                     });
                                 })
                                 .attr("index", index)
-                        )
-                        // .text("X")
-                        .append(
-                            $("<img class='preimg_img' style='width: 100%; height: 100%; object-fit: cover; position: relative; top:-16px;'>")
-                                .attr("src", e.target.result)
                         ).append(
                             $("<input type='hidden' class='img_name'>")
                                 .val(f.name)
                         )
-                    ).append("&nbsp;");
+                    );
             }
             reader.readAsDataURL(f);
         });

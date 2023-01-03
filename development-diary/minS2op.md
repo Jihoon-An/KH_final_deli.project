@@ -107,10 +107,10 @@
 - 이메일찾기, 비밀번호 찾기 페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 일반유저 마이페이지 CSS 수정
 ---
-### 22-12-31 (토)
+### <span style="color: #E84C4F">22-12-31 (토)</span>
 - 휴가
 ---
-### 23-01-01 (일)
+### <span style="color: #E84C4F">23-01-01 (일)</span>
 <span style="font-size:25px;">🎉</span>
 <span style="color: orange; font-size:25px; font-weight: bold;">H</span>
 <span style="color: orange; font-size:25px; font-weight: bold;">a</span>
@@ -135,3 +135,27 @@
 - 일반유저 포인트, 쿠폰 출력 페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 사업자 프로필 출력 및 수정 페이지 CSS (<span style="color: chartreuse">100%</span>)
 - 사업자 비밀번호 변경 모달 CSS (<span style="color: chartreuse">100%</span>)
+---
+### 23-01-02 (월)
+- 어드민 로그아웃 버그 체크
+- 장바구니 전체 비우기 기능 구현
+- 장바구니 메뉴 사진 없을 시 CSS
+- 일반 유저 내 정보수정 페이지 닉네임 max length 설정
+- 일반 유저 내 정보수정 페이지 저장버튼 추가
+- 일반 유저 회원탈퇴 버그 수정
+- 사업자 정보 수정 페이지 사업자 등록증 출력 기능 구현
+- 비로그인 페이지 이메일 저장 체크박스 CSS
+- 비로그인 페이지 CSS 수정
+- 일반 유저 쿠폰&포인트 페이지 쿠폰 배경이미지 변경
+- 비밀번호 찾기 페이지 CSS 수정
+---
+### 23-01-03 (화)
+- 일반 유저 쿠폰&포인트 페이지 쿠폰 배경이미지 변경
+- 일반 유저 쿠폰&포인트 페이지 쿠폰 데드라인 출력 기능 구현
+- 일반 유저 리뷰 수정 페이지 img 파일 미리보기 CSS 수정
+- 어드민 리뷰 관리 페이지 데이터 테이블 CSS 수정
+- 결제 페이지 order 테이블 데이터 insert 에러 수정
+- 결제 페이지 CSS 수정
+---
+### 23-01-04 (수)
+- PPT 제작 예정
