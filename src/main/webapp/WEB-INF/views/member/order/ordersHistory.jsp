@@ -45,7 +45,7 @@
                             <div class="box2">
                                 <span class="head_deli">배달주문</span>
                                 <span class="head_date">
-                                    <fmt:formatDate value="${order_list.order_date}" pattern="yyyy.MM.dd HH:ss"/></span>
+                                    <fmt:formatDate value="${order_list.order_date}" pattern="yyyy.MM.dd HH:mm"/></span>
                                 <span class="head_status">${order_list.order_status}</span>
                             <%--&lt;%&ndash;                <c:if test="${i.order_status=='order'}">미접수</c:if>&ndash;%&gt;--%>
                             <%--&lt;%&ndash;                <c:if test="${i.order_status=='take'}">접수</c:if>&ndash;%&gt;--%>
