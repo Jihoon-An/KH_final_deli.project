@@ -29,8 +29,7 @@
             </c:choose>
         </span>
     </div>
-    <div id="star"><span class="storeEtc"> <i class="fa-solid fa-star"></i> ${reviews.rev_star}</span>
-        (${storeReviewAvg}) | 리뷰(${storeReviewCount})
+    <div id="star"><span class="storeEtc"> <i class="fa-solid fa-star"></i>${reviews.rev_star}</span><span style="color: #888888">(${storeReviewAvg})</span> | <a onclick="loadCode3();" style="cursor: pointer;">리뷰<span style="color: #888888">(${storeReviewCount})</span></a>
     </div>
     <%--    <div id="reviewCount"> | 리뷰(${storeReviewCount})</div>--%>
     <div id="storeInfo">${storeInfoDTO.store_intro}</div>
@@ -39,12 +38,6 @@
         <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
         <div>배달팁 : <fmt:formatNumber value="${storeInfoDTO.store_deli_tip}" pattern="#,###"/>원</div>
     </div>
-<%--    <div class="fieldBox" style="margin-bottom: -10px;">--%>
-<%--        <div id="menu"><a href="/store/menu/${storeInfoDTO.store_seq}">메뉴</a></div>--%>
-<%--        <div id="info"><a href="/store/info/${storeInfoDTO.store_seq}" id="to_info">정보</a></div>--%>
-<%--        <div id="review"><a href="/store/review/${storeInfoDTO.store_seq}">리뷰</a></div>--%>
-<%--    </div>--%>
-
 
 </div>
 
