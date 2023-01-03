@@ -7,6 +7,7 @@ import kh.deli.global.entity.OrdersDTO;
 import kh.deli.global.util.alarm.AlarmEndpoint;
 import kh.deli.global.util.alarm.NoticeRequestDTO;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class OwnerOrdersService {
@@ -45,17 +47,22 @@ public class OwnerOrdersService {
     @Transactional
     public void updateStatus(Map<String, String> changeInfo) {
         String checkedSeqListJson = changeInfo.get("checkedSeqListJson"); // orderSeqList
+        log.info("order status input");
+        log.info("checkedSeqListJson = " + checkedSeqListJson);
 
         checkedSeqListJson = checkedSeqListJson.replace("[", "(");
         checkedSeqListJson = checkedSeqListJson.replace("]", ")");
 
         String newStatus = changeInfo.get("newStatus");
+        log.info("newStatus = " + newStatus);
 
 
         if (checkedSeqListJson != "()") {
             // 상태 업데이트
             ordersMapper.updateStatus(checkedSeqListJson, newStatus);
-
+            log.info("order update status");
+            log.info("seqs = " + checkedSeqListJson);
+            log.info("new status = " + newStatus);
             List<Integer> accSeqList = ordersMapper.getAccSeqList(checkedSeqListJson);
 
             // 상태 업데이트에 대한 유저에게 알림
@@ -69,7 +76,7 @@ public class OwnerOrdersService {
                 alarmEndpoint.OnMessage(noticeRequestDTO, session);
             }
         }
-
+        log.info("Delivery - Done");
 
     }
 }
