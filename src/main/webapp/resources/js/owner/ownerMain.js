@@ -60,7 +60,7 @@ $("#optionBtn").on("click", function () {
                 r+="<tr>";
                 r+="<td>"+ data[i].daily_date+"</td>";
                 r+="<td>"+data[i].daily_sales.toLocaleString('ko-KR')+"</td>";
-                r+="<td>"+data[i].daily_order_cnt+"</td>";
+                r+="<td class='orderCnt'>"+data[i].daily_order_cnt+"</td>";
                 r+="</tr>";
             }
             $(".storeSales").append(r);
