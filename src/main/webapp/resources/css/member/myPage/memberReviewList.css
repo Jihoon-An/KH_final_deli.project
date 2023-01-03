@@ -1,6 +1,10 @@
 #memberReviewList * {
     box-sizing: border-box;
 }
+#memberReviewList .container{
+    border: 1px solid red;
+    height: fit-content;
+}
 
 #memberReviewList #page_title{
     height: 40px;
@@ -37,7 +41,7 @@
     margin: 10px;
 }
 
-#memberReviewList #delete_review{
+#memberReviewList .delete_review{
     width: 11%;
     height: 25px;
     text-align: center;

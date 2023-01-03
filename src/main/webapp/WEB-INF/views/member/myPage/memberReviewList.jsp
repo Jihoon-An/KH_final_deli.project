@@ -25,11 +25,11 @@
         <div id="page_title">내 리뷰 보기</div>
         <div class="member_review">내가 쓴 리뷰 총 ${myPageReviewCount}개</div>
 
-        <div class="reviews">
             <c:choose>
             <c:when test="${not empty myPageReviewList}">
             <c:forEach var="reviews" items="${myPageReviewList}">
 
+        <div class="reviews">
                 <div class="store_name">식당명 > ${reviews.store_name}</div>
 
                 <div id="review_star" style="position: relative">${reviews.rev_star}
@@ -73,8 +73,8 @@
 
                 </c:otherwise>
             </c:choose>
-            <button id="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
-            <input type="hidden" class="rev_seq" value="${rev_seq}">
+            <button class="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
+            <input type="hidden" class="rev_seq" value="${reviews.rev_seq}">
 
 
                 <c:choose>
@@ -104,9 +104,9 @@
                     <div class="option_name"> ${k.option_name} </div>
                 </c:forEach>
             </div>
+        </div>
             </c:when>
             <c:otherwise>
-        </div>
         <div class="menu_name">
             </c:otherwise>
             </c:choose>
@@ -130,11 +130,16 @@
             var rev_seq = param.getAttribute('rev_seq');
         }
 
-        $("#delete_review").on("click", function () {
+        $(".delete_review").on("click", function () {
+
+            let revSeq = $(this).closest($(".reviews")).find($(".rev_seq")).val();
+            console.log(revSeq);
+
             if (confirm("정말 삭제하시겠습니까?") == true) {
                 $.ajax({
                     url: "/myPage/reviewList/deleteReview",
-                    type: "post"
+                    type: "post",
+                    data: {'rev_seq': revSeq}
                 }).done(function (resp) {
                     location.reload();
                 })
