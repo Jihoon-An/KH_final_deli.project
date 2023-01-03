@@ -104,7 +104,7 @@
                     </option>
                 </select></div>
             </div>
-            <div class="rowBox" style="height: 150px">
+            <div class="rowBox" style="height: 170px">
                 <div class="title">대표사진</div>
 
                 <div class="profile">
@@ -257,14 +257,14 @@
 
             <div class="rowBox">
                 <div class="title">휴무일</div>
-                <div class="contents" style="display: inline; width: 220px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day form-control"> </div>
+                <div class="contents" style="display: inline; width: 300px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day form-control"> </div>
                 <span class="close_day_msg" style="font-size: 8px; width: 40%; line-height: 40px; padding-left:10px"></span>
             </div>
 
 
             <div class="rowBox">
                 <div class="title">주문 최소 금액</div>
-                <div class="contents input-group" > <input style="height: 40px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
+                <div class="contents input-group" style="width: 200px;" > <input style="height: 40px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
                     class="input form-control" oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>
             </div>
 
@@ -272,7 +272,7 @@
 
             <div class="rowBox">
                 <div class="title">배달팁</div>
-                <div class="contents input-group"><input style="width:20px !important; height: 40px" type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input form-control"
+                <div class="contents input-group" style="width: 200px;"><input style="width:20px !important; height: 40px;" type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input form-control"
                                              oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>
             </div>
 
