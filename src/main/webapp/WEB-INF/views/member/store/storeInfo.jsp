@@ -60,89 +60,145 @@
                 <div class="title">영업시간</div>
                 <div class="detail_contents" id="time">
                     <div class="time">
-                        <div>월(${bsnsHours.get("mon").get("open")})
-                            <c:if test="${bsnsHours.get('mon').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('mon').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('mon').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('mon').get('open') eq '영업일'}">
+                                <div>월 :
+                                    <c:if test="${bsnsHours.get('mon').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('mon').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('mon').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>월 : ${bsnsHours.get('mon').get('open')}</div>
+                            </c:otherwise>
+                        </c:choose>
 
-                        <div>화(${bsnsHours.get("tue").get("open")})
-                            <c:if test="${bsnsHours.get('tue').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('tue').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('tue').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('tue').get('open') eq '영업일'}">
+                                <div>화 :
+                                    <c:if test="${bsnsHours.get('tue').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('tue').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('tue').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>화 : ${bsnsHours.get('tue').get('open')})</div>
+                            </c:otherwise>
+                        </c:choose>
 
-                        <div>수(${bsnsHours.get("wed").get("open")})
-                            <c:if test="${bsnsHours.get('wed').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('wed').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('wed').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('wed').get('open') eq '영업일'}">
+                                <div>수 :
+                                    <c:if test="${bsnsHours.get('wed').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('wed').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('wed').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>수 : ${bsnsHours.get('wed').get('open')}</div>
+                            </c:otherwise>
+                        </c:choose>
 
-                        <div>목(${bsnsHours.get("thu").get("open")})
-                            <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('thu').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('thu').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('thu').get('open') eq '영업일'}">
+                                <div>목 :
+                                    <c:if test="${bsnsHours.get('thu').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('thu').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('thu').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>목 : ${bsnsHours.get('thu').get('open')}</div>
+                            </c:otherwise>
+                        </c:choose>
 
-                        <div>금(${bsnsHours.get("fri").get("open")})
-                            <c:if test="${bsnsHours.get('fri').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('fri').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('fri').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('fri').get('open') eq '영업일'}">
+                                <div>금 :
+                                    <c:if test="${bsnsHours.get('fri').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('fri').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('fri').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>금 : ${bsnsHours.get('fri').get('open')}</div>
+                            </c:otherwise>
+                        </c:choose>
 
-                        <div>토(${bsnsHours.get("sat").get("open")})
-                            <c:if test="${bsnsHours.get('sat').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('sat').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('sat').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('sat').get('open') eq '영업일'}">
+                                <div>토 :
+                                    <c:if test="${bsnsHours.get('sat').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('sat').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('sat').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>토 : ${bsnsHours.get('sat').get('open')}</div>
+                            </c:otherwise>
+                        </c:choose>
 
-                        <div>일(${bsnsHours.get("sun").get("open")})
-                            <c:if test="${bsnsHours.get('sun').get('open') eq '영업일'}">
-                                <fmt:parseDate value="${bsnsHours.get('sun').get('open_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                                ~
-                                <fmt:parseDate value="${bsnsHours.get('sun').get('close_time')}" var="registered"
-                                               pattern="HH:mm"/>
-                                <fmt:formatDate value="${registered}" pattern="a h:mm"/>
-                            </c:if>
-                        </div>
+                        <c:choose>
+                            <c:when test="${bsnsHours.get('sun').get('open') eq '영업일'}">
+                                <div>일 :
+                                    <c:if test="${bsnsHours.get('sun').get('open') eq '영업일'}">
+                                        <fmt:parseDate value="${bsnsHours.get('sun').get('open_time')}" var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                        ~
+                                        <fmt:parseDate value="${bsnsHours.get('sun').get('close_time')}"
+                                                       var="registered"
+                                                       pattern="HH:mm"/>
+                                        <fmt:formatDate value="${registered}" pattern="a h:mm"/>
+                                    </c:if>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div>일 : ${bsnsHours.get('sun').get('open')}</div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
 
                 </div>
