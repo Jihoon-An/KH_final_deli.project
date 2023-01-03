@@ -115,31 +115,7 @@
     border-radius: 7px;
 }
 
-#order_price_out{
-    width: 80%;
-    float: left;
-}
-#order_price{
-    width: 100%;
-}
 
-#delivery_tip_out{
-    width: 80%;
-    float: left;
-}
-#delivery_tip{
-    width: 100%;
-}
-
-#pay_price_out{
-    width: 80%;
-    float: left;
-    padding-bottom: 5px;
-}
-
-#pay_price{
-    width: 100%;
-}
 
 #ownPointOut{
     width: 25%;
@@ -154,8 +130,61 @@
     font-size: 20px;
     padding-bottom: 5px;
 }
-
+.payPriceRowBox{
+    width: 100%;
+    border-top: 1px solid lightgray;
+    float: left;
+    padding-top: 15px;
+}
 #pay_price_out{
     font-weight: bold;
     font-size: 20px;
+    float: left;
+}
+#pay_price{
+    float: right;
+}
+.orderPriceRowBox{
+    width: 100%;
+    float: left;
+}
+.orderPriceRowBox > #order_price_out{
+    float: left;
+}
+.orderPriceRowBox > #order_price{
+    float: right;
+}
+.couponRowBox{
+    width: 100%;
+    float: left;
+}
+.couponRowBox > #selectCoupon{
+    float: left;
+}
+.couponRowBox > #discountPrice{
+    float: right;
+}
+.pointRowBox{
+    width: 100%;
+    float: left;
+}
+.pointRowBox > #salePoint{
+    float: left;
+}
+.pointRowBox > #use_point{
+    float: right;
+}
+.tipRowBox{
+    width: 100%;
+    float: left;
+}
+.tipRowBox > #delivery_tip_out{
+    float: left;
+}
+.tipRowBox > #delivery_tip{
+    float: right;
+}
+.wonBox{
+    float: right;
+    padding-right: 31px;
 }
