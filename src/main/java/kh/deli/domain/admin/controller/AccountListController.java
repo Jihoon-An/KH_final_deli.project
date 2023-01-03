@@ -21,7 +21,7 @@ public class AccountListController {
     @RequestMapping("")
     public String toAdminAccount(Model model){
         List<AdminAccountDTO> account_list = adminAccountService.selectAccountList();
-        System.out.println(account_list.get(2));
+    //    System.out.println(account_list.get(2));
         model.addAttribute("account_list", account_list);
         return "admin/adminAccountList";
     }
@@ -29,7 +29,7 @@ public class AccountListController {
 
     @RequestMapping("/deleteAccount")
     public String acoounDelete(int acc_seq) throws  Exception{
-        System.out.println(acc_seq);
+       // System.out.println(acc_seq);
 
         adminAccountService.deleteAccount(acc_seq);
         return"redirect:";

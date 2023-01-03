@@ -68,15 +68,20 @@ function trClickEvent() {
             $(this).find(".mem_grade").html()
         );
 
+        $("#frm").find(".accseq").val(
+            $(this).find(".acc_seq").html()
+        );
 
-        $("#accseq").val($(this).find(".acc_seq").val());
+
+
+      // $("#accseq").val($(this).find(".acc_seq").val());
         $(".modal").fadeIn();
 
     });
 
 };
 
-$(".closeModal").click(function () {
+$(".closeBtn").click(function () {
     $(".modal").fadeOut();
 });
 
