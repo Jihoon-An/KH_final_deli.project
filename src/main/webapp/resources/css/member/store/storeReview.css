@@ -40,7 +40,7 @@
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #storeReview .deliveryInfo {
@@ -50,7 +50,7 @@
 
 #storeReview .deliveryInfo div {
     line-height: 27px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #storeReview .fieldBox {

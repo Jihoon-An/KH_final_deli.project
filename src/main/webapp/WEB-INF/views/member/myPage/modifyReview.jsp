@@ -70,7 +70,7 @@
                     </label>
                 </div>
 
-                <div id="rev_imgs_area">
+                <div id="rev_imgs_area" style="margin: 0 auto" >
                     <c:choose>
                         <c:when test="${not empty review_dto}">
                             <%
@@ -82,9 +82,9 @@
                                 request.setAttribute("review_img_list", gson.fromJson(reviewSysName, type));
                             %>
                             <c:forEach var="revImg" items="${review_img_list}">
-                                <div class="review_img_div" class="preview">
-                                    <i class="fa-solid fa-x del_img_btn"></i>
-                                    <img src="/resources/img/review/${revImg}" style="width: 100%; height: 200px;">
+                                <div class="review_img_div" class="preimg_img" style="display: inline-block; padding: 2px; margin-top:5px; width: 157px; height: 157px;">
+                                    <i class="fa-solid fa-x del_img_btn" style="position: relative; left:140px; z-index: 10"></i>
+                                    <img src="/resources/img/review/${revImg}" style="width: 100%; height: 100%; object-fit: cover; position: relative; top:-16px;">
                                     <input type="hidden" class="img_name" value="${revImg}">
                                 </div>
                             </c:forEach>

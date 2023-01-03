@@ -83,6 +83,7 @@
     cursor: pointer;
     text-align: center;
     line-height: 30px;
+    margin-bottom: 10px;
 }
 
 #modify_review #revImgBtn {

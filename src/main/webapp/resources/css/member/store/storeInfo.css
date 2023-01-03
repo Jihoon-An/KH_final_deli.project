@@ -40,7 +40,7 @@
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #store_info .delivery {
@@ -77,7 +77,7 @@
 
 #store_info .deliveryInfo div {
     line-height: 27px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #store_info .fieldBox {
