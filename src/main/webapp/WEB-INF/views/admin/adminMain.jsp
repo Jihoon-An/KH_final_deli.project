@@ -34,7 +34,7 @@
             ]);
 
             var options = {
-                title: '딜리 일별 마감 매출',
+                title: '딜리 일별 마감 매출(최근 7일간)',
                 curveType: 'function',
                 bars: 'vertical',
                 vAxis: {format: 'decimal'},
