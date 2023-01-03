@@ -17,7 +17,7 @@ $(".coupon").click(function () {
 
     //위에서 가져온 값 세팅하고 없는 값 html 지우기.
     //seq
-    $("#modal").find("#modal_cp_seq").html(seq);
+    $("#modal").find("#modal_cp_seq").val(seq);
     //name
     $("#modal").find("#modal_cp_name").html(name);
     //code
