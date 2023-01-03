@@ -93,50 +93,53 @@
 /*    border-radius: 25px;*/
 /*}*/
 
-#storeAdd .input{
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 200px;
-    border-radius: 25px;
-    border: 2px solid black;
-}
+/*#storeAdd .input{*/
+/*    padding-left: 5px;*/
+/*    padding-right: 5px;*/
+/*    width: 200px;*/
+/*    border-radius: 25px;*/
+/*    border: 2px solid black;*/
+/*}*/
 
-#storeAdd .input_intro{
+/*#storeAdd .input_intro{*/
 
-    padding: 25px;
-    width: 600px;
-    height: 100px;
-    background-color: rgb(199,211,220,0.4);
-    border: 1px solid rgb(209, 213, 219);
-    border-radius: 6px;
-    color: #111827;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.25rem;
-    text-decoration-thickness: auto;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-}
+/*    padding: 25px;*/
+/*    width: 600px;*/
+/*    height: 100px;*/
+/*    background-color: rgb(199,211,220,0.4);*/
+/*    border: 1px solid rgb(209, 213, 219);*/
+/*    border-radius: 6px;*/
+/*    color: #111827;*/
+/*    font-size: 1rem;*/
+/*    font-weight: 600;*/
+/*    line-height: 1.25rem;*/
+/*    text-decoration-thickness: auto;*/
+/*    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);*/
+/*}*/
 
-#storeAdd .input_origin{
-    /*margin-top: 50px;*/
-    padding: 25px;
-    width: 600px;
-    height: 100px;
-    background-color: rgb(199,211,220,0.4);
-    border: 1px solid rgb(209, 213, 219);
-    border-radius: 6px;
-    color: #111827;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.25rem;
-    text-decoration-thickness: auto;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-}
+/*#storeAdd .input_origin{*/
+/*    !*margin-top: 50px;*!*/
+/*    padding: 25px;*/
+/*    width: 600px;*/
+/*    height: 100px;*/
+/*    background-color: rgb(199,211,220,0.4);*/
+/*    border: 1px solid rgb(209, 213, 219);*/
+/*    border-radius: 6px;*/
+/*    color: #111827;*/
+/*    font-size: 1rem;*/
+/*    font-weight: 600;*/
+/*    line-height: 1.25rem;*/
+/*    text-decoration-thickness: auto;*/
+/*    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);*/
+/*}*/
 
 /*#storeAdd .rowBox>div{*/
 /*    float: left;*/
 /*}*/
 
+/*#storeAdd .form-control{*/
+/*    height: 35px;*/
+/*}*/
 #storeAdd .rowBox{
     overflow: hidden;
 }

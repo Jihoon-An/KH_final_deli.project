@@ -33,29 +33,29 @@
             <div class="rowBox">
                 <div class="title">상호명</div>
                 <div class="contents">
-                    <input type="text" name="store_name" placeholder="상호명입력" id="store_name" class="input">
+                    <input type="text" name="store_name" placeholder="상호명입력" id="store_name" class="input form-control">
                 </div>
             </div>
             <div class="rowBox">
                 <div class="title">핸드폰 번호</div>
                 <div class="contents"><input type="text" name="store_phone" placeholder="폰번호입력" id="store_phone"
-                                             oninput=validNum() class="input"></div>
+                                             oninput=validNum() class="input form-control"></div>
             </div>
             <div class="rowBox">
                 <div class="title">우편번호</div>
-                <div class="contents"><input type="text" id="postcode" placeholder="우편번호" class="input">
-                    <button type="button" class="postsearch deli_btn">우편검색</button>
+                <div class="contents input-group"><input style="height: 40px" type="text" id="postcode" placeholder="우편번호" class="input form-control">
+                    <button style="height: 40px" type="button" class="postsearch deli_btn">우편검색</button>
                 </div>
             </div>
             <div class="rowBox">
                 <div class="title">기본주소</div>
                 <div class="contents"><input type="text" id="add1" name="store_add_detail1" placeholder="기본주소"
-                                             id="store_add_detail1" class="input"></div>
+                                             id="store_add_detail1" class="input  form-control"></div>
             </div>
             <div class="rowBox">
                 <div class="title">상세주소</div>
                 <div class="contents"><input type="text" id="add2" name="store_add_detail2" placeholder="상세주소"
-                                             id="store_add_detail2" class="input"></div>
+                                             id="store_add_detail2" class="input form-control"></div>
             </div>
 
             <input type="hidden" id="store_add_x" name="store_add_x" class="input">
@@ -123,7 +123,7 @@
                 <div class="contents" style="height:100px;">
 <%--                    <input type="text" name="store_intro" placeholder="식당소개란" id="store_intro"--%>
 <%--                                                                    class="input_intro">--%>
-                    <textarea id="store_intro" name="store_intro" placeholder="식당 소개란"  class="input_intro"></textarea>
+                    <textarea id="store_intro" name="store_intro" placeholder="식당 소개란"  class="input_intro form-control"></textarea>
                 </div>
             </div>
             <div class="rowBox" style="height:100px; margin-top: 25px;" >
@@ -131,7 +131,7 @@
                 <div class="contents" style="height:100px;" >
 <%--                    <input type="text" name="store_origin" placeholder="주요 원산지" id="store_origin"--%>
 <%--                                                                      class="input_origin">--%>
-                    <textarea id="store_origin" name="store_origin" placeholder="주요 원산지"  class="input_origin"></textarea></div>
+                    <textarea id="store_origin" name="store_origin" placeholder="주요 원산지"  class="input_origin form-control"></textarea></div>
             </div>
 
 
@@ -255,23 +255,23 @@
 
             <div class="rowBox">
                 <div class="title">휴무일</div>
-                <div class="contents" style="display: inline; width: 220px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day"> </div>
+                <div class="contents" style="display: inline; width: 220px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day form-control"> </div>
                 <div class="close_day_msg" style="font-size: 10px; line-height: 20px"></div>
             </div>
 
 
             <div class="rowBox">
                 <div class="title">주문 최소 금액</div>
-                <div class="contents" > <input style="width:130px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
-                    class="input" oninput=validNum()>원</div>
+                <div class="contents input-group" > <input style="width:50px; height: 40px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
+                    class="input form-control" oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>
             </div>
 
 
 
             <div class="rowBox">
                 <div class="title">배달팁</div>
-                <div class="contents"><input style="width:130px " type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input"
-                                             oninput=validNum()>원</div>
+                <div class="contents input-group"><input style="width:50px; height: 40px" type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input form-control"
+                                             oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>
             </div>
 
 
@@ -299,7 +299,7 @@
 
             <div class="rowBox">
                 <div class="title">공개여부</div>
-                <div class="contents">   <label><input type="radio" name="store_display" value="Y"> Y</label>
+                <div class="contents">   <label><input type="radio" name="store_display" value="Y" > Y</label>
                     <label><input type="radio" name="store_display" value="N"> N</label></div>
             </div>
 
@@ -307,7 +307,7 @@
             <div class="rowBox">
                 <div class="title">배달가능지역</div>
                 <div class="contents"> <input type="text" name="store_destination" id="store_destination"
-                                              placeholder="배달 가능 지역" class="input"></div>
+                                              placeholder="배달 가능 지역" class="input form-control"></div>
             </div>
 
             <div class="foot_btn"><button class="deli_btn" id=add type="button" >식당추가</button>
