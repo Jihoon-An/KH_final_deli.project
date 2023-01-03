@@ -48,9 +48,9 @@
                                 <c:choose>
                                     <c:when test="${fn:length(menuList.optionList) != 0}">
                                         <c:forEach var="i" items="${menuList.optionList}" varStatus="status2">
-                                            <div class="orderContent">${i.option_group} : ${i.option_name}
+                                            <div class="orderContent"><li>${i.option_group} : ${i.option_name}
                                                 (<fmt:formatNumber value="${i.option_price}" pattern="#,###"/>원)
-                                                <c:if test="${!status2.last}">, </c:if>
+                                                <c:if test="${!status2.last}">, </c:if></li>
                                             </div>
                                         </c:forEach>
                                     </c:when>

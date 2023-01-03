@@ -31,8 +31,7 @@
 
     <hr style="margin-top: 10px; margin-bottom: 5px;">
     <div class="contents">
-        <div id="map" style="width:100%; height:200px;"></div>
-        <%--        <hr>--%>
+        <div id="map" style="width:100%; height:200px; margin-top: 10px;"></div>
         <div style="height: 25px;"></div>
         <div class="store store_box">
             <div class="field">영업정보</div>

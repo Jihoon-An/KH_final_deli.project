@@ -73,7 +73,7 @@
 
         <div id="findPassWordBox">
             <div class="input-group">
-                <input type="text" placeholder="이메일 입력" id="pw_emailInput" class="form-control">
+                <input type="text" placeholder="이메일 입력" id="pw_emailInput" class="form-control" style="margin-bottom: 10px;">
             </div>
             <div class="input-group">
                 <input type="text" placeholder="핸드폰 번호 숫자만 입력" name="mem_phone" id="pw_mem_phone" maxlength='13'

@@ -3,12 +3,11 @@
 }
 
 #menuAdd div {
-  // border: 1px solid black;
+   /*border: 1px solid black;*/
 }
 
 #menuAdd .container {
-    width: 100%;
-    height: 80%;
+    width: 75%;
     margin-top: 40px;
 
 }
@@ -93,8 +92,8 @@
 }
 
 /*  아래로 옵션추가 수정본*/
-#menuAdd #btn_option_add {
-    float: right;
+#menuAdd .btn_option_add {
+    float: left;
 }
 
 #menuAdd .del {
@@ -122,13 +121,14 @@
 /*}*/
 
 #menuAdd .foot_btn{
-    text-align: left;
+    text-align: center;
+    padding-top: 70px;
     padding-bottom :50px
 }
 
 
 #menuAdd .topContents{
-    height: 250px;
+    height: 260px;
     overflow: hidden;
 }
 
@@ -144,24 +144,24 @@
     float: right;
 }
 
-#menuAdd .rightContents input{
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 300px;
-    border-radius: 25px;
-    margin: 5px;
-}
+/*#menuAdd .rightContents input{*/
+/*    padding-left: 5px;*/
+/*    padding-right: 5px;*/
+/*    width: 300px;*/
+/*    border-radius: 25px;*/
+/*    margin: 5px;*/
+/*}*/
 /*#menuAdd .rowBox{*/
 /*    margin-top: 30px;*/
 /*}*/
 
-#menuAdd .option_div_add input{
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 200px;
-    border-radius: 25px;
-    margin: 7px;
-}
+/*#menuAdd .option_div_add input{*/
+/*    padding-left: 5px;*/
+/*    padding-right: 5px;*/
+/*    width: 200px;*/
+/*    !*border-radius: 25px;*!*/
+/*    margin: 7px;*/
+/*}*/
 
 #menuAdd .option_div_add{
     margin-bottom: 25px;
@@ -184,9 +184,9 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
 }
 
-#menuAdd input{
+/*#menuAdd input{*/
 
 
-    border-radius: 25px;
-    border: 2px solid black;
-}
+/*    border-radius: 25px;*/
+/*    border: 2px solid black;*/
+/*}*/

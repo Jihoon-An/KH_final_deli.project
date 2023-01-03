@@ -22,14 +22,26 @@
 
 <body>
 <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
+<style>
+    #deli_nav_back {
+        position: fixed;
+        z-index: 1;
+        background: #353535;
+        min-height: 1000px;
+        min-width: 250px;
+    }
+</style>
+<div id="deli_nav_back"></div>
 <main id="menuAdd">
     <form action="" id="frm" method="post" enctype="multipart/form-data">
 
         <div class="container">
             <div class="rowBox">
                 <div class="title">메뉴그룹</div>
-                <div class="contents" style="display: inline"><input tpye="text" id="menu_group" name="menu_group"
-                                                                     placeholder="메뉴그룹명을 입력하세요"></div>
+                <div class="contents" style="display: inline"><input style="width: 200px" tpye="text" id="menu_group"
+                                                                     name="menu_group"
+                                                                     placeholder="메뉴그룹명을 입력하세요" class="form-control">
+                </div>
                 <div style="display: inline; font-size: 12px" class="menu_group_msg"></div>
             </div>
 
@@ -44,7 +56,7 @@
                         </div>
 
                         <div class="control">
-                            <label id="btnCustom"> <i class="fa-solid fa-camera"></i>  사진 추가 (필수)
+                            <label id="btnCustom"> <i class="fa-solid fa-camera"></i> 사진 추가 (필수)
                                 <input type=file name="file" id="menu_img" accept=".png, .jpg, .jpg,.gif">
                             </label>
                         </div>
@@ -69,13 +81,17 @@
                         </div>
                     </div>
                     <div class="rightContents">
-                        <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"><br>
-                        <input style="width: 170px"type="text" id="menu_price" name="menu_price" placeholder="메뉴가격"
-                               oninput=validNum()>원<br>
+                        <div class="input-group" style="width: 517px;">
+                            <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"
+                                   class="form-control" style="width: 150px"><br>
+                            <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격"
+                                   oninput=validNum() class="form-control">
+                            <div style='position: relative; top: 5px; left: -25px;'>원</div>
+                        </div>
 
-                        <textarea id="menu_intro" name="menu_intro" placeholder="주요 원산지"  class="input_menu_intro"></textarea>
+                        <textarea id="menu_intro" name="menu_intro" placeholder="메뉴 소개란"
+                                  class="input_menu_intro"></textarea>
                         <%--                        <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">--%>
-
 
                         <input type="hidden" name="store_seq" value="${store_seq}">
 
@@ -107,7 +123,7 @@
             <%--                </div>--%>
 
 
-            <div class="option_div">
+            <div class="option_div" style=" padding-left: 50px">
                 <div class="option_div2">
                     <%--                        <select name="option_required" class="required">--%>
                     <%--                            <option value="Y">필수옵션</option>--%>
@@ -132,13 +148,17 @@
             </div>
 
 
-
             <div class="foot_btn">
-            <a href="/owner/store/list"><button type="button" class="deli_btn">취소하기</button></a>
-            <button class="btn btn-outline-secondary btn_add deli_btn" type="button"
-                    style="--bs-btn-border-color: rgb(206,212,218);">등록하기
-            </button>
+                <a href="/owner/store/list">
+                    <button type="button" class="deli_btn">취소하기</button>
+                </a>
+                <button class="btn btn-outline-secondary btn_add deli_btn" type="button"
+                        style="--bs-btn-border-color: rgb(206,212,218);">등록하기
+                </button>
+
+
             </div>
+
         </div>
     </form>
 

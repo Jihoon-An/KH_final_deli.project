@@ -35,7 +35,7 @@
 <%--            <div><a href="/account/kakaoUnLink">--%>
 <%--                <button type="button">그냥 가입안할래요. 연동 해지해주세요.</button>--%>
 <%--            </a></div>--%>
-            <br>
+<%--            <br>--%>
             </c:when>
             <c:otherwise>
             <form id="signup_frm" method="post" action="/account/memberSignUp">

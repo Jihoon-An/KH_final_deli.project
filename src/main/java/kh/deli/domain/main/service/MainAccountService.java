@@ -29,7 +29,6 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.*;
 
 @Service
@@ -243,7 +242,7 @@ public class MainAccountService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=1475b617eab69841d5cabd68f1527015"); // TODO REST_API_KEY 입력
-            sb.append("&redirect_uri=http://localhost/account/oauth/kakao"); // TODO 인가코드 받은 redirect_uri 입력
+            sb.append("&redirect_uri=http://mydeli.me/account/oauth/kakao"); // TODO 인가코드 받은 redirect_uri 입력
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();
@@ -324,7 +323,7 @@ public class MainAccountService {
      * @return
      * @throws Exception
      */
-    public boolean dupleCheckKakaoId(String kakaoId) throws Exception {
+    public boolean dupleCheckKakaoId(String kakaoId) {
         int result = mainAccountMapper.findByAccToken(kakaoId);
         if (result == 1) {
             return true;
@@ -373,7 +372,7 @@ public class MainAccountService {
      * @param tel
      * @return
      */
-    public String sendRandomMessage(String tel) throws UnsupportedEncodingException {
+    public String sendRandomMessage(String tel) {
         NaverSms message = new NaverSms();
         Random rand = new Random();
         String numStr = "";
@@ -381,8 +380,7 @@ public class MainAccountService {
             String ran = Integer.toString(rand.nextInt(10));
             numStr += ran;
         }
-        String msg = URLDecoder.decode("딜리본인인증번호 ["+numStr+"]", "UTF-8");
-        message.send_msg(tel, msg);
+        message.send_msg(tel, "딜리본인인증번호 ["+numStr+"]");
         return numStr;
     }
 

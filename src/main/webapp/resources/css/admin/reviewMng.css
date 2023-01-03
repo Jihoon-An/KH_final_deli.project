@@ -12,7 +12,7 @@
     background: #fff;
     border-radius: 10px;
     position: relative;
-    top: 40%;
+    top: 30%;
     left: 50%;
     margin-top: -150px;
     margin-left: -200px;
@@ -91,6 +91,15 @@
     margin-top: 5px;
     margin-bottom: 10px;
     margin-left: 15px;
+    word-break: break-word;
+}
+
+#review_mng .rev{
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: break-word;
+    text-overflow: ellipsis;
+
 }
 
 #review_mng #myTable * {

@@ -1,7 +1,7 @@
 package kh.deli.domain.member.myPage.controller;
 
+import kh.deli.domain.member.myPage.dto.MyPageCouponDTO;
 import kh.deli.domain.member.myPage.service.MyPageCouponPointService;
-import kh.deli.global.entity.CouponDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class MyPageCouponPointController {
     public String toMyPageCouponPoint(Model model) throws Exception {
         int accSeq = (int) session.getAttribute("acc_seq");
         int point = myPageCouponPointService.findMemberPointBySeq(accSeq);
-        List<CouponDTO> couponList = myPageCouponPointService.findMemberCouponBySeq(accSeq);
+        List<MyPageCouponDTO> couponList = myPageCouponPointService.findMemberCouponBySeq(accSeq);
 
         model.addAttribute("point", point);
         model.addAttribute("coupons", couponList);

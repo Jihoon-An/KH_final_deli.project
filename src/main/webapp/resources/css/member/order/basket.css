@@ -26,7 +26,12 @@
     padding-left: 7px;
     font-weight: bold;
 }
-
+#basket #emptyBasketButton{
+    float: right;
+    font-size: 25px;
+    border: none;
+    background-color: unset;
+}
 
 #basket .menuBox{
     width: 100%;
