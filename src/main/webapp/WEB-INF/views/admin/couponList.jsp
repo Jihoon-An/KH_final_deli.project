@@ -86,6 +86,9 @@
             <input type="text" id="modal_cp_discount" placeholder="cp_discount"
                    style="background-color: green;" readonly>
 
+            <input type="text" id="modal_user_email" placeholder="email"
+                   style="background-color: cadetblue;">
+
             <input type="text" id="modal_cp_period" placeholder="cp_period"
                    style="background-color: salmon;" readonly>
         </div>
