@@ -2,6 +2,7 @@ package kh.deli.domain.owner.service;
 
 import kh.deli.domain.owner.dto.OwnerDailySalesDTO;
 import kh.deli.domain.owner.dto.OwnerDdSalesDTO;
+import kh.deli.domain.owner.dto.OwnerOrderCountDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import kh.deli.domain.owner.mapper.OwnerMainMapper;
 import lombok.AllArgsConstructor;
@@ -70,5 +71,11 @@ public class OwnerMainService {
     public List<OwnerDdSalesDTO> selectSpecific(int store_seq, String startDate, String endDate) throws Exception{
         List<OwnerDdSalesDTO> list = ownerMainMapper.selectSpecific(store_seq,startDate,endDate);
         return list;
+    }
+
+    public OwnerOrderCountDTO selectOrderCnt(int storeSeq) throws Exception{
+        LocalDate now = LocalDate.now();
+        OwnerOrderCountDTO result= ownerMainMapper.selectOrderCnt(storeSeq,now) ;
+        return result;
     }
 }
