@@ -34,7 +34,7 @@ public class OwnerListController {
         List<AdminOwnerDTO> owner_list = adminOwnerService.selectOwnerList();
 
         // System.out.println(owner_list.get(3).getStore_count());
-        System.out.println(owner_list.get(2).getAcc_seq());
+       // System.out.println(owner_list.get(2).getAcc_seq());
         model.addAttribute("owner_list", owner_list);
         return "admin/adminOwnerList";
     }
@@ -79,7 +79,7 @@ public class OwnerListController {
 //
 //        }
 
-            //mainAccountService.withdrawal(acc_seq); //사업자 삭제 통합 메서드
+        //mainAccountService.withdrawal(acc_seq); //사업자 삭제 통합 메서드
       //  adminOwnerService.deleteStore(owner_seq); //식당삭제
         //adminOwnerService.deleteOwner(owner_seq); //사업자 회원 삭제
         //adminOwnerService.deleteAccount(acc_seq); //account 테이블 사업자 회원 삭제

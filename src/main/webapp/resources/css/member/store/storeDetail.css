@@ -22,14 +22,14 @@
 
 #store_detail .header #storeName {
     line-height: 70px;
-    font-size: 19.55px;
+    font-size: 17px;
     font-weight: bold;
     text-align: center;
 }
 
 #store_detail .header #star {
     width: 95%;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #store_detail .header #reviewCount {
@@ -40,7 +40,7 @@
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 13px;
 }
 
 #store_detail .deliveryInfo {
@@ -49,7 +49,7 @@
 
 #store_detail .deliveryInfo div {
     line-height: 27px;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 
@@ -173,7 +173,7 @@
     border: rgba(232, 76, 79, 0.5) solid 1px;
     padding: 5px 15px 5px 15px;
     background-color: #FFFFFF;
-    font-size: 14px;
+    font-size: 12px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -250,7 +250,7 @@
     padding: 10px 20px 10px 20px;
     /*margin-bottom: 10px;*/
     background-color: #FFFFFF;
-    font-size: 13px;
+    font-size: 12px;
     box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
     margin: auto;
     overflow: hidden;
@@ -268,7 +268,7 @@
 }
 
 #store_detail .menu_name {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -302,7 +302,7 @@ store_detail button {
 }
 
 #store_detail .menu_intro, #store_detail .menu_price{
-    font-size: 13.5px;
+    font-size: 13px;
 }
 
 /*div{*/
