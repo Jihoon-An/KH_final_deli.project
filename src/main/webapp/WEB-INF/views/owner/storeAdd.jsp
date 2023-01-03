@@ -29,7 +29,7 @@
 
     <form action="" id="frm" method="post" enctype="multipart/form-data">
         <div class="container">
-            <input type="hidden" name="acc_seq" value="${acc_seq}">
+            <input type="hidden" name="acc_seq" value="${acc_seq}" class="form-control">
             <div class="rowBox">
                 <div class="title">상호명</div>
                 <div class="contents">

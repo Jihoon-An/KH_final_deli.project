@@ -1,7 +1,7 @@
 package kh.deli.domain.member.myPage.service;
 
+import kh.deli.domain.member.myPage.dto.MyPageCouponDTO;
 import kh.deli.domain.member.myPage.mapper.MyPageCouponPointMapper;
-import kh.deli.global.entity.CouponDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class MyPageCouponPointService {
         return myPageCouponPointMapper.findMemberPointBySeq(accSeq);
     }
 
-    public List<CouponDTO> findMemberCouponBySeq(int accSeq) throws Exception {
+    public List<MyPageCouponDTO> findMemberCouponBySeq(int accSeq) throws Exception {
         return myPageCouponPointMapper.findMemberCouponBySeq(accSeq);
     }
 
