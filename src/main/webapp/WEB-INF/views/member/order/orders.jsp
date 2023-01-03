@@ -67,32 +67,48 @@
         <div>포인트 할인</div>
             <div id="ownPointOut">보유 포인트</div>
             <div id="ownPoint"></div>
-<%--                <input type="text" name="ownPoint" id="ownPoint" placeholder="보유포인트 0" readonly="true"--%>
+                <input type="hidden" name="ownPoint" id="ownPointInput">
 <%--                       onchange="onchangeOwnPoint()" style="border-radius: 7px;width: 50px">--%>
                 <input type="number" id="usePoint" name="usePoint" onchange="onchangeUsePoint()" min="0" style="width: 220px;border-radius: 7px">
 
             <hr>
             <div id="total_price">결제 금액</div>
-            <div id="order_price_out">주문 금액</div><div id="order_price"></div>
-<%--                <input type="text" id="order_price" name="order_price" readonly>--%>
-        <div id="selectCoupon">쿠폰할인</div><div id="discountPrice"></div>
+
+        <div class="orderPriceRowBox">
+            <div id="order_price_out">주문 금액</div>
+            <div class="wonBox">원</div>
+            <div id="order_price"></div>
+            <input type="hidden" id="orderPriceInput" name="order_price">
+        </div>
+
+        <div class="couponRowBox">
+            <div id="selectCoupon">쿠폰할인</div>
+            <div class="wonBox">원</div>
+            <div id="discountPrice">0</div>
+        </div>
                 <input type="hidden" id="cp_seq" name="cp_seq">
                 <input type="hidden" id="mc_seq" name="mc_seq">
 
 <%--                <input type="text" value=0 id="discountPrice" name="discountPrice" disabled="disabled"--%>
 <%--                       placeholder="쿠폰 할인 금액 출력">--%>
-
-            <div>포인트 할인
-                <div id="use_point"></div>
-<%--                <input type="text" value=0 id="use_point" name="use_point" placeholder="포인트 할인 출력" readonly>--%>
-            </div>
-            <div id="delivery_tip_out">배달팁</div><div id="delivery_tip">
+        <div class="pointRowBox">
+            <div id="salePoint">포인트 할인</div>
+            <div class="wonBox">원</div>
+            <div id="use_point">0</div>
+        </div>
+        <div class="tipRowBox">
+            <div id="delivery_tip_out">배달팁</div>
+            <div class="wonBox">원</div>
+            <div id="delivery_tip"></div>
+        </div>
 <%--                <input type="text" id="delivery_tip" name="delivery_tip" placeholder="배달팁" readonly>--%>
-            </div>
-            <hr>
-            <div id="pay_price_out">총 결제 금액</div><div id="pay_price"></div>
-<%--                <input type="text" id="pay_price" name="pay_price" placeholder="총 결제 금액" readonly>--%>
 
+        <div class="payPriceRowBox">
+            <div id="pay_price_out">총 결제 금액</div>
+            <div class="wonBox">원</div>
+            <div id="pay_price"></div>
+            <input type="hidden" id="payPriceInput" name="pay_price" placeholder="총 결제 금액">
+        </div>
             <hr>
             <div id="pay_method">
             <button type="button" id="payKakao" onclick="requestPay()">카카오 페이 결제</button>
@@ -118,15 +134,19 @@
         $("#payCard").hide();
         $("#payment").val('kakaoPay');
         $("#acc_seq").val();
-        $("#order_price").html(${orderOrdersDTO.order_price} + "원");
-        <%--$("#order_price").val(${orderOrdersDTO.order_price})--%>
-        $("#delivery_tip").html(${orderOrdersDTO.delivery_tip} + "원");
+
+
+        parseInt($("#order_price").html(${orderOrdersDTO.order_price}));
+        parseInt($("#delivery_tip").html(${orderOrdersDTO.delivery_tip}));
+
+        <%--$("#order_price").val(${orderOrdersDTO.order_price});--%>
         <%--$("#delivery_tip").val(${orderOrdersDTO.delivery_tip})--%>
+
         initPage();
         setCouponList();
-        var orderPrice = parseInt($("#order_price").html());
-        var deliveryPrice = parseInt($("#delivery_tip").html());
-        $("#pay_price").html(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip} + "원");
+        // var orderPrice = parseInt($("#order_price").html());
+        // var deliveryPrice = parseInt($("#delivery_tip").html());
+        $("#pay_price").html(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip});
         <%--$("#pay_price").val(${orderOrdersDTO.order_price}+${orderOrdersDTO.delivery_tip});--%>
 
     }
@@ -221,13 +241,14 @@
         console.log(orderPrice);
         // var discountPrice = $("#discount_coupon").val();
         // var discountPrice = orderPrice * (1 - cpName.replace(/\D/g,'')/100);
+
         if(cpType == 'percent') {
             var discountPrice = Math.floor(orderPrice * Number(cpDiscount) / 100);
         }else {
             var discountPrice = Math.floor(Number(cpDiscount));
         }
         var usePoint = Number($("#use_point").val());
-        var deliveryTip = $("#delivery_tip").html();
+        var deliveryTip = parseInt($("#delivery_tip").html());
         var payPrice = orderPrice - (discountPrice + usePoint) + deliveryTip;
         console.log(cpDiscount);
         console.log(deliveryTip);
@@ -330,13 +351,14 @@
 
     function onchangeUsePoint() {
         var orderPrice = Number($("#order_price").html());
-        var usePoint = Math.floor($("#usePoint").html());
+        var usePoint = Math.floor($("#usePoint").val());
+
         if(usePoint > ownPoint){
             usePoint = ownPoint;
-            Math.floor($("#usePoint").html(ownPoint));
+            Math.floor($("#use_point").html(ownPoint));
         }else if (usePoint < 0) {
             usePoint = 0;
-            $("#usePoint").html(0);
+            $("#use_point").html(0);
         }
 
 
@@ -389,7 +411,7 @@
             pg: 'html5_inicis',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
-            name: '결제',// 상품명,
+            name: 'Test 결제',// 상품명,
             amount: 100,//상품 가격,
             buyer_email: email,//구매자 이메일,
             buyer_name: name,
@@ -399,6 +421,9 @@
         }, function (rsp) {
             var result = '';
             if (rsp.success) {
+                $("#orderPriceInput").val(parseInt($("#order_price").html()));
+                $("#payPriceInput").val(parseInt($("#pay_price").html()));
+                $("#ownPointInput").val(parseInt($("#ownPoint").html()));
                 $("#insertForm").submit();
                 var msg = '결제가 완료되었습니다.';
 
@@ -427,7 +452,7 @@
             pg: 'kakaopay',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
-            name: '결제',
+            name: 'Test 결제',
             amount: 100,//'가격 입력',
             buyer_email: email,//'구매자 이메일',
             buyer_name: name,//'구매자 이름'
@@ -439,6 +464,9 @@
             if (rsp.success) {
 
                 var msg = '결제가 완료되었습니다.';
+                $("#orderPriceInput").val(parseInt($("#order_price").html()));
+                $("#payPriceInput").val(parseInt($("#pay_price").html()));
+                $("#ownPointInput").val(parseInt($("#ownPoint").html()));
                 $("#insertForm").submit();
 
             } else {
