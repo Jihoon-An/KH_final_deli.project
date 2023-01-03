@@ -64,36 +64,34 @@
     </a>
 
     <!-- 모달 -->
-    <div id="modal">
+    <div id="modal" class="p-3">
         <div id="close_modal">X</div>
         <div id="modal_content">
+            <input type="hidden" id="modal_cp_seq" placeholder="seq" readonly>
 
-            <input type="hidden" id="modal_cp_seq" placeholder="seq"
-                   style="background-color: wheat;" readonly>
+            <span id="title_cp_name" class="row_title">쿠폰 이름</span>
+            <div id="modal_cp_name" placeholder="name" class="cp_content" readonly></div>
 
-            <input type="text" id="modal_cp_name" placeholder="name"
-                   readonly>
+            <span id="title_cp_code" class="row_title">쿠폰코드</span>
+            <div id="modal_cp_code" placeholder="code" class="cp_content" readonly></div>
 
-            <input type="text" id="modal_cp_code" placeholder="code"
-                   style="background-color: dodgerblue;" readonly>
+            <span id="title_cp_type" class="row_title">쿠폰 타입</span>
+            <div id="modal_cp_type" placeholder="cp_type" class="cp_content" readonly></div>
 
-            <input type="text" id="modal_cp_content" placeholder="content"
-                   style="background-color: white;" readonly>
+            <span id="title_cp_discount" class="row_title">할인율/할인 금액</span>
+            <div id="modal_cp_discount" placeholder="cp_discount" class="cp_content" readonly></div>
 
-            <input type="text" id="modal_cp_type" placeholder="cp_type"
-                   style="background-color: yellow;" readonly>
+            <span id="title_cp_period" class="row_title">쿠폰 유지 기간</span>
+            <div id="modal_cp_period" placeholder="cp_period" class="cp_content" readonly></div>
 
-            <input type="text" id="modal_cp_discount" placeholder="cp_discount"
-                   style="background-color: green;" readonly>
+            <span id="title_cp_content" class="row_title">설명</span>
+            <div id="modal_cp_content" placeholder="content" class="cp_content" readonly></div>
 
-            <input type="text" id="modal_cp_period" placeholder="cp_period"
-                   style="background-color: salmon;" readonly>
+            <div id="modal_btn_area">
+                <button id="publish_btn" type="button" class="btn btn-light mb-2">발행</button>
+                <button id="delete_btn" type="button" class="btn btn-light mb-2">삭제</button>
+            </div>
         </div>
-        <div id="modal_btn_area">
-            <button id="publish_btn" type="button" class="btn btn-light">발행</button>
-            <button id="delete_btn" type="button" class="btn btn-light">삭제</button>
-        </div>
-    </div>
 
 </main>
 <script src="/resources/js/admin/couponList.js"></script>
