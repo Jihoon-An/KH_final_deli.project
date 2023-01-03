@@ -120,7 +120,7 @@
         </c:forEach>
         </c:when>
         <c:otherwise>
-            <h2>작성한 리뷰가 없습니다.</h2>
+            <h3>작성한 리뷰가 없습니다.</h3>
         </c:otherwise>
         </c:choose>
     </div>
