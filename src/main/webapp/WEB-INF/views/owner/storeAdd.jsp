@@ -40,6 +40,8 @@
                 <div class="title">핸드폰 번호</div>
                 <div class="contents"><input type="text" name="store_phone" placeholder="폰번호입력" id="store_phone"
                                              oninput=validNum() class="input form-control"></div>
+                <span class="phone_msg" style="font-size: 8px; width: 40%; line-height: 40px; padding-left:10px"></span>
+
             </div>
             <div class="rowBox">
                 <div class="title">우편번호</div>
@@ -256,13 +258,13 @@
             <div class="rowBox">
                 <div class="title">휴무일</div>
                 <div class="contents" style="display: inline; width: 220px" > <input type="text" name="store_close_day" placeholder="휴무일" class="input close_day form-control"> </div>
-                <div class="close_day_msg" style="font-size: 10px; line-height: 20px"></div>
+                <span class="close_day_msg" style="font-size: 8px; width: 40%; line-height: 40px; padding-left:10px"></span>
             </div>
 
 
             <div class="rowBox">
                 <div class="title">주문 최소 금액</div>
-                <div class="contents input-group" > <input style="width:50px; height: 40px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
+                <div class="contents input-group" > <input style="height: 40px " type="text" name="store_min_price" placeholder="주문 최소 금액" id="store_min_price"
                     class="input form-control" oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>
             </div>
 
@@ -270,7 +272,7 @@
 
             <div class="rowBox">
                 <div class="title">배달팁</div>
-                <div class="contents input-group"><input style="width:50px; height: 40px" type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input form-control"
+                <div class="contents input-group"><input style="width:20px !important; height: 40px" type="text" name="store_deli_tip" placeholder="배달팁" id="store_deli_tip" class="input form-control"
                                              oninput=validNum()><div style='position: relative; top: 5px; left: -25px;'>원</div></div>
             </div>
 
