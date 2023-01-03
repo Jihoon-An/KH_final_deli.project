@@ -1,8 +1,8 @@
-var fileArr = [];
-var new_name_list = new Array();
-var del_list = new Array();
+var fileArr = []; // 새로운 파일 바이너리 리스트
+// var new_name_list = new Array();
+var del_list = new Array(); // 기존에 있던 파일 중에 삭제하는 파일 이름 리스트
 const imgMaxcnt = 4; // 사진 개수 제한
-const orgImgCnt = document.getElementsByClassName("review_img_div").length;
+var orgImgCnt = document.getElementsByClassName("review_img_div").length; // 원래 있던 이미지 개수
 
 $("#revImgBtn").on("change", function (e) {
 
@@ -81,9 +81,7 @@ function imgCount() {
 //                         $("<i class='fa-solid fa-x del_img_btn'></i>")
 //                             .click(function () {
 //                                 $(this).closest(".review_img_div").remove();
-//                                 console.log(document.getElementById("revImgBtn").files[0]);
 //                                 removeFileFromFileList(0);
-//                                 console.log(document.getElementById("revImgBtn").files[0]);
 //                             })
 //                     )
 //                     // .text("X")
@@ -109,13 +107,14 @@ $("#backBtn").on("click", function () {
 //지우기
 $(".del_img_btn").on("click", del_img_btn_event);
 
+
 function del_img_btn_event() {
     let rev_img_div = $(this).closest(".review_img_div");
 
     del_list.push(rev_img_div.find(".img_name").val());
 
     $("#del_files_json").val(JSON.stringify(del_list));
-
+    orgImgCnt -= 1;
     $(rev_img_div).remove();
 }
 
