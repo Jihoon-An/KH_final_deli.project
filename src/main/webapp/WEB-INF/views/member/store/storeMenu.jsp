@@ -112,7 +112,7 @@
             <%--원산지--%>
         <c:choose>
             <c:when test="${not empty storeInfoDTO.store_origin}">
-                <div class="origin" style="margin-top: -10px;">
+                <div class="origin">
                     원산지 : ${storeInfoDTO.store_origin}
                 </div>
             </c:when>
