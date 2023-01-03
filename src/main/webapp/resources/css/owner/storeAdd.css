@@ -26,9 +26,13 @@
 #storeAdd .profile {
 
     width: 400px;
-    height: 150px;
-    margin-bottom: 100px;
+    height: 100px;
+    /*margin-bottom: 100px;*/
+    /*padding-top: 50px;*/
     float: left;
+}
+#storeAdd #profile{
+        height: 120px;
 }
 
 /*#storeAdd .profile div {*/
@@ -38,7 +42,7 @@
 
 #storeAdd .thumbnail {
     width: 50%;
-    height: 120px;
+    height: 110px;
     padding: 5px;
 }
 
@@ -56,6 +60,7 @@
     height: 30px;
     position: relative;
     left: 50%;
+    top:15px;
     transform: translateX(-50%);
     border-radius: 7px;
     border: 1px solid black;
@@ -93,20 +98,20 @@
 /*    border-radius: 25px;*/
 /*}*/
 
-#storeAdd .input{
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 200px;
-    border-radius: 25px;
-    border: 2px solid black;
-}
+/*#storeAdd .input{*/
+/*    padding-left: 5px;*/
+/*    padding-right: 5px;*/
+/*    width: 200px;*/
+/*    border-radius: 25px;*/
+/*    border: 2px solid black;*/
+/*}*/
 
 #storeAdd .input_intro{
 
     padding: 25px;
     width: 600px;
-    height: 100px;
-    background-color: rgb(199,211,220,0.4);
+    height: 90px;
+    background-color: rgb(204,204,204,0.4);
     border: 1px solid rgb(209, 213, 219);
     border-radius: 6px;
     color: #111827;
@@ -121,8 +126,8 @@
     /*margin-top: 50px;*/
     padding: 25px;
     width: 600px;
-    height: 100px;
-    background-color: rgb(199,211,220,0.4);
+    height: 90px;
+    background-color: rgb(204,204,204,0.4);
     border: 1px solid rgb(209, 213, 219);
     border-radius: 6px;
     color: #111827;
@@ -137,8 +142,12 @@
 /*    float: left;*/
 /*}*/
 
+/*#storeAdd .form-control{*/
+/*    height: 35px;*/
+/*}*/
 #storeAdd .rowBox{
     overflow: hidden;
+    padding-top:3px;
 }
 #storeAdd .title{
     float: left;
@@ -152,7 +161,7 @@
     //background-color: #3e4462;
     float: left;
     width: 300px;
-    height: 50px;
+    height: 60px;
 
 }
 

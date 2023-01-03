@@ -89,7 +89,7 @@
                             <div style='position: relative; top: 5px; left: -25px;'>원</div>
                         </div>
 
-                        <textarea id="menu_intro" name="menu_intro" placeholder="주요 원산지"
+                        <textarea id="menu_intro" name="menu_intro" placeholder="메뉴 소개란"
                                   class="input_menu_intro"></textarea>
                         <%--                        <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">--%>
 

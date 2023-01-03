@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>딜리 - 내 포인트/쿠폰</title>
@@ -52,7 +53,8 @@
                             <label class="pickUpLabel">포장</label>
                         </div>
                         <div class="periodBox">
-                            기한 ${coupons.cp_period}일
+<%--                            기한 ${coupons.cp_period}일--%>
+                            ~ <fmt:formatDate value="${coupons.mc_deadline}" pattern="yyyy.MM.dd"/>까지
                         </div>
                     </div>
                     <div class="couponInfo">

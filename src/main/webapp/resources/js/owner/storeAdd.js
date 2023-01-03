@@ -27,6 +27,9 @@ function storeSubmitCheck() {
     else if ($("#store_phone").val() == "") {
 
         $("#store_phone").focus();
+    }else if ($("#store_phone").val().length>12 || $("#store_phone").val().length < 9) {
+
+        $("#store_phone").focus();
     }
     else if ($("#gym_price").val() == "") {
 
@@ -273,3 +276,11 @@ $(".close_day").on("keyup", function (){
     $(".close_day_msg").css("font-size", "15px")
     $(".close_day_msg").html("ex)연중 무휴, 목, 금은 쉽니다")
 })
+
+$("#store_phone").on("keyup", function (){
+
+    $(".phone_msg").css("color", "#001a41")
+    $(".phone_msg").css("font-size", "15px")
+    $(".phone_msg").html("-를 제외한 9~12글자까지 입력 가능")
+})
+
