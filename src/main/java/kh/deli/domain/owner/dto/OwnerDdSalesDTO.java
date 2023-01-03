@@ -15,5 +15,6 @@ public class OwnerDdSalesDTO {
     private int owner_seq;
     private String daily_date;
     private int daily_sales;
+    private int daily_order_cnt;
 
 }

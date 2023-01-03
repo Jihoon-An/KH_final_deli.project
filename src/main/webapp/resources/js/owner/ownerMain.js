@@ -60,6 +60,7 @@ $("#optionBtn").on("click", function () {
                 r+="<tr>";
                 r+="<td>"+ data[i].daily_date+"</td>";
                 r+="<td>"+data[i].daily_sales.toLocaleString('ko-KR')+"</td>";
+                r+="<td class='orderCnt'>"+data[i].daily_order_cnt+"</td>";
                 r+="</tr>";
             }
             $(".storeSales").append(r);
@@ -103,6 +104,33 @@ $(document).ready(function () {
     document.getElementById('startDate').value = new Date().toISOString().substring(0, 10);
     document.getElementById('endDate').value = new Date().toISOString().substring(0, 10);
 })
+
+
+
+$("#orderCtnBtn").on("click",function (){
+    let storeSeq=$(this).prev().val();
+
+    console.log("식당시퀀스"+storeSeq);
+
+    $.ajax({
+        url:"/owner/selectOrderCnt",
+        type: "post",
+        data: {
+            storeSeq:storeSeq
+        },
+        dataType:"json"
+    }).done(function (data){
+        $("#memo").empty();
+        $("#memo").append(
+            $("<span>어제의 주문건수는 <span class='font'>"+data.daily_order_cnt +"</span> 건 입니다.</span>")
+        );
+        $("#memo").append($("<br>"));
+        $("#memo").append(
+            $("<span>오늘의 주문건수는 <span class='font'>"+data.td_order_cnt +"</span> 건 입니다.</span>")
+        );
+    })
+})
+
 
 
 

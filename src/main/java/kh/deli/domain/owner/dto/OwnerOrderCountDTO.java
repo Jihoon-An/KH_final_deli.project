@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OwnerDailySalesDTO {
+public class OwnerOrderCountDTO {
 
-    private int daily_sales;
-    private int store_seq;
-    private String store_name;
     private int daily_order_cnt;
+    private int td_order_cnt;
+
 
 }
