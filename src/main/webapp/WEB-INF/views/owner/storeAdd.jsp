@@ -39,7 +39,7 @@
             <div class="rowBox">
                 <div class="title">핸드폰 번호</div>
                 <div class="contents"><input type="text" name="store_phone" placeholder="폰번호입력" id="store_phone"
-                                             oninput=validNum() class="input form-control"></div>
+                                             oninput=validNum() class="input form-control" maxlength="12"></div>
                 <span class="phone_msg" style="font-size: 8px; width: 40%; line-height: 40px; padding-left:10px"></span>
 
             </div>

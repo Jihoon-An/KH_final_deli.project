@@ -27,7 +27,7 @@ function storeSubmitCheck() {
     else if ($("#store_phone").val() == "") {
 
         $("#store_phone").focus();
-    }else if ($("#store_phone").val().length>11) {
+    }else if ($("#store_phone").val().length>12 || $("#store_phone").val().length < 9) {
 
         $("#store_phone").focus();
     }
@@ -281,5 +281,6 @@ $("#store_phone").on("keyup", function (){
 
     $(".phone_msg").css("color", "#001a41")
     $(".phone_msg").css("font-size", "15px")
-    $(".phone_msg").html("-를 제외한 11글자까지 입력 가능")
+    $(".phone_msg").html("-를 제외한 9~12글자까지 입력 가능")
 })
+
