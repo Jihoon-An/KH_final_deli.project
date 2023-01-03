@@ -1,6 +1,7 @@
 package kh.deli.domain.owner.controller;
 
 import kh.deli.domain.owner.dto.OwnerDdSalesDTO;
+import kh.deli.domain.owner.dto.OwnerOrderCountDTO;
 import kh.deli.domain.owner.service.OwnerMainService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,14 @@ public class OwnerMainController {
 
         List<OwnerDdSalesDTO> list=ownerMainService.selectSpecific(store_seq,startDate,endDate);
 
+        return list;
+    }
+
+    @PostMapping("selectOrderCnt")
+    public OwnerOrderCountDTO selectOrderCnt(int storeSeq) throws Exception{
+
+        OwnerOrderCountDTO list=ownerMainService.selectOrderCnt(storeSeq);
+        System.out.println(list);
         return list;
     }
 

@@ -1,10 +1,10 @@
 #ownerMain *{box-sizing: border-box;}
 
 #ownerMain .infoBox{
-    /*background-color: cadetblue;*/
 }
 
 #graph{
+    width: 500px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -16,10 +16,32 @@
     position: relative;
     top:-1px;
 }
-#optionCOn{
+#optionCon{
     margin-bottom: 15px;
 }
 
 #myTable_length,myTable_filter{
     margin-bottom: 10px;
+}
+
+.memo{
+    width: 600px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#memoSelect{
+    margin-bottom: 15px;
+}
+.font{
+    font-weight: bold;
+    font-size: large;
+    color:#E84C4F;
+}
+
+.orderCnt{
+    text-align: center;
 }

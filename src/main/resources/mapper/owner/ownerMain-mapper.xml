@@ -10,7 +10,10 @@
     </select>
 
     <select id="selectSales" resultType="kh.deli.domain.owner.dto.OwnerDailySalesDTO">
-        SELECT (sum(o.PAY_PRICE)-sum(o.DELIVERY_TIP)) AS daily_sales,o.STORE_SEQ,(SELECT store_name FROM STORE s WHERE s.STORE_SEQ=${store_seq}) AS store_name
+        SELECT (sum(o.PAY_PRICE)-sum(o.DELIVERY_TIP)) AS daily_sales
+        ,o.STORE_SEQ
+        ,(SELECT store_name FROM STORE s WHERE s.STORE_SEQ=${store_seq}) AS store_name
+        ,count(*) AS daily_order_cnt
         FROM ORDERS o
         WHERE o.STORE_SEQ =${store_seq}
         AND o.ORDER_DATE BETWEEN TO_TIMESTAMP('${now} 00.00.00','YYYY-MM-DD HH24:MI:SS') and TO_TIMESTAMP('${now} 23.59.59','YYYY-MM-DD HH24:MI:SS')
@@ -26,6 +29,17 @@
 
     <select id="selectSpecific" resultType="kh.deli.domain.owner.dto.OwnerDdSalesDTO">
         SELECT * FROM DD_SALES ds WHERE DAILY_DATE >= ${startDate}  AND DAILY_DATE &lt;= ${endDate} AND STORE_SEQ =${store_seq}
+    </select>
+
+    <select id="selectOrderCnt" resultType="kh.deli.domain.owner.dto.OwnerOrderCountDTO">
+        SELECT ds.daily_order_cnt
+        ,(SELECT count(*)
+        FROM ORDERS o
+        WHERE o.STORE_SEQ =${storeSeq}
+        AND o.ORDER_DATE BETWEEN '${now} 00:00:00' AND sysdate) AS td_order_cnt
+        FROM DD_SALES ds
+        WHERE ds.STORE_SEQ =${storeSeq}
+        AND ds.DAILY_DATE = TO_CHAR((sysdate-1),'YYYYMMDD')
     </select>
 
 </mapper>
