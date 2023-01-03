@@ -43,7 +43,6 @@ public class OwnerOrderMngService {
         List<OwnerOrderMngRequestDTO> orderMngReqList = ordersService.getOrderMngList(storeSeq);
 
         List<OwnerOrderMngResponseDTO> orderMngList = new ArrayList<>();
-//        NaverNShortURL nShortURL = new NaverNShortURL();
 
         for (OwnerOrderMngRequestDTO orderMngReq : orderMngReqList) {
             String address = orderMngReq.getAdd_detail1() + " " + orderMngReq.getAdd_detail2();
