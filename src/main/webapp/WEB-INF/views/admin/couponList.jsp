@@ -97,7 +97,7 @@
                 <button id="delete_btn" type="button" class="btn btn-light mb-2">삭제</button>
             </div>
         </div>
-
+    </div>
 </main>
 <script src="/resources/js/admin/couponList.js"></script>
 </body>

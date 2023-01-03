@@ -37,7 +37,7 @@ public class AdminCouponService {
     public String isEmailExist(String user_email, Integer cp_seq,Integer cp_period) {
         Integer accSeq = cpMapper.selectByEmail(user_email);
         if (accSeq!= null) {
-            cpMapper.insertCoupon(accSeq, cp_seq,cp_period);
+            cpMapper.insertCoupon(cp_seq, accSeq,cp_period);
             String nickName=cpMapper.selectNickNameBySeq(accSeq);
             String result=nickName+"님에게 쿠폰 발급이 완료되었습니다.";
             return result;
