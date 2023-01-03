@@ -61,7 +61,7 @@
                                 </c:if>
                                 <c:if test="${order_list.store_logo!=null}">
                                     <div class="image-box"><img class="image-thumbnail"
-                                                                src="/resources/img/store/${order_list.store_logo }"
+                                                                src="/resources/img/store/${order_list.store_logo}"
                                                                 id="profile"></div>
                                 </c:if>
                                 <div class="info">
