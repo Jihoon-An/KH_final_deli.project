@@ -26,4 +26,6 @@ public interface OwnerMainMapper {
             @Param("endDate") String endDate
     );
 
+    public int selectOrderCnt(@Param("storeSeq")int storeSeq);
+
 }

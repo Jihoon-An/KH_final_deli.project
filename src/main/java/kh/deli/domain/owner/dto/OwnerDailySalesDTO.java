@@ -12,5 +12,6 @@ public class OwnerDailySalesDTO {
     private int daily_sales;
     private int store_seq;
     private String store_name;
+    private int daily_order_cnt;
 
 }

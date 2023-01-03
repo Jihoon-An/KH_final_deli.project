@@ -24,4 +24,12 @@ public class OwnerMainController {
         return list;
     }
 
+    @PostMapping("selectOrderCnt")
+    public int selectOrderCnt(int storeSeq) throws Exception{
+
+        int result=1;
+
+        return result;
+    }
+
 }

@@ -60,6 +60,7 @@ $("#optionBtn").on("click", function () {
                 r+="<tr>";
                 r+="<td>"+ data[i].daily_date+"</td>";
                 r+="<td>"+data[i].daily_sales.toLocaleString('ko-KR')+"</td>";
+                r+="<td>"+data[i].daily_order_cnt+"</td>";
                 r+="</tr>";
             }
             $(".storeSales").append(r);
@@ -103,6 +104,26 @@ $(document).ready(function () {
     document.getElementById('startDate').value = new Date().toISOString().substring(0, 10);
     document.getElementById('endDate').value = new Date().toISOString().substring(0, 10);
 })
+
+
+
+$("#orderCtnBtn").on("click",function (){
+    let storeSeq=$(this).prev($(".storeSeqOpt")).val();
+    console.log("식당시퀀스"+storeSeq);
+    $.ajax({
+        url:"/owner/",
+        type: "post",
+        data: {
+            storeSeq:storeSeq
+        },
+        dataType:"json"
+    }).done(function (data){
+        $("#memo").empty();
+
+
+    })
+})
+
 
 
 

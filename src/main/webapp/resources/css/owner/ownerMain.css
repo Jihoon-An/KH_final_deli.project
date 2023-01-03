@@ -1,14 +1,16 @@
 #ownerMain *{box-sizing: border-box;}
 
 #ownerMain .infoBox{
-    /*background-color: cadetblue;*/
+    font: left;
 }
 
 #graph{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 500px;
+    /*position: relative;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
     margin-bottom: 50px;
+    /*float: left;*/
 }
 
 .deli_btn{
@@ -16,10 +18,18 @@
     position: relative;
     top:-1px;
 }
-#optionCOn{
+#optionCon{
     margin-bottom: 15px;
 }
 
 #myTable_length,myTable_filter{
     margin-bottom: 10px;
 }
+/* backgroundColor: ['#E84C4F'],*/
+
+.memo{
+    border: 1px solid darkcyan;
+    width: 500px;
+    height: 500px;
+}
+
