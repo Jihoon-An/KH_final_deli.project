@@ -6,10 +6,16 @@
 <mapper namespace="kh.deli.domain.admin.mapper.AdminMainMapper">
 
     <select id="selectAllSalesList" resultType="kh.deli.domain.admin.dto.AdminMainDTO">
-        SELECT DAILY_DATE
+        SELECT * FROM (SELECT DAILY_DATE
         , SUM(DAILY_SALES) AS SUM_DAILY_SALES
         FROM DD_SALES
         GROUP BY DAILY_DATE
+        ORDER BY 1 DESC)
+        WHERE ROWNUM
+        <![CDATA[
+        <
+        ]]>
+        = 7
         ORDER BY 1
     </select>
 

@@ -67,21 +67,34 @@ $(document).on("click",".del", function () { // 정적바인딩
 
 $(document).on("click","#destination_select", function () {
     if($("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".pick")).html()=="[선택]") {
-        if(confirm('기본 선택지를 변경하면 초기 화면으로 돌아갑니다.')){
-            $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
-            $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".hidden_add_division")).val("basics");
-            $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".pick")).html("[기본]");
-            $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".pick")).html("[선택]");
-            $.ajax({
-                url: "/member/header/destination/divisionChange",
-                type: "post",
-                data: $("#destination_select_frm").serialize()
-            }).done(function() {
-                location.replace('/');
-            });
-        } else {
-            return false;
-        }
+        Swal.fire({
+            title: '기본 선택지를 변경하시겠습니까?',
+            text: "장바구니가 비워지고, 초기 화면으로 돌아갑니다.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '변경하기',
+            cancelButtonText: '취소',
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) =>{
+            if (result.isConfirmed) {
+                // if(confirm('기본 선택지를 변경하면 장바구니가 비워지고, 초기 화면으로 돌아갑니다.')){
+                    $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".hidden_add_division")).val("add");
+                    $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".hidden_add_division")).val("basics");
+                    $("input[name='radio_add_division']:checked").closest($(".destination_box")).find($(".pick")).html("[기본]");
+                    $("input[name='radio_add_division']:not(:checked)").closest($(".destination_box")).find($(".pick")).html("[선택]");
+                    $.ajax({
+                        url: "/member/header/destination/divisionChange",
+                        type: "post",
+                        data: $("#destination_select_frm").serialize()
+                    }).done(function() {
+                        location.replace('/');
+                    });
+                } else {
+                    return false;
+                }
+        })
     }
 });
 

@@ -40,8 +40,8 @@
             <ul class="dropdown-menu">
                 <c:forEach var="store" items="${storeList}">
                     <li><a class="dropdown-item"
-<%--                           href="http://mydeli.me/owner/order/${store.store_seq}">${store.store_name}</a>--%>
-                           href="http://localhost/owner/order/${store.store_seq}">${store.store_name}</a>
+                           href="http://mydeli.me/owner/order/${store.store_seq}">${store.store_name}</a>
+<%--                           href="http://localhost/owner/order/${store.store_seq}">${store.store_name}</a>--%>
                     </li>
                 </c:forEach>
             </ul>
