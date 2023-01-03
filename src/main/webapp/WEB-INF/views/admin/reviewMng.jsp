@@ -22,6 +22,11 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
+<style>
+    #deli_nav {
+        min-height: 1700px;
+    }
+</style>
 <main id="review_mng">
 
     <div id="container">
@@ -40,7 +45,7 @@
                 <c:forEach var="store" items="${nev_list}">
                     <tr>
                         <td class="mem_name">${store.mem_nick}</td>
-                        <td class="rev_content">${store.rev_content}</td>
+                        <td class="rev_content rev">${store.rev_content}</td>
                         <td class="store_name">${store.store_name}</td>
                         <td class="rev_writedate">
                             <fmt:parseDate value="${store.rev_writedate}" var="registered"
