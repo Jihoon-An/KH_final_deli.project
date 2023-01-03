@@ -34,7 +34,7 @@ public class OwnerListController {
         List<AdminOwnerDTO> owner_list = adminOwnerService.selectOwnerList();
 
         // System.out.println(owner_list.get(3).getStore_count());
-        System.out.println(owner_list.get(2).getAcc_seq());
+       // System.out.println(owner_list.get(2).getAcc_seq());
         model.addAttribute("owner_list", owner_list);
         return "admin/adminOwnerList";
     }
