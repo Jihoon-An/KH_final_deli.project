@@ -299,10 +299,10 @@
             </div>
 
 
-            <div class="rowBox">
+            <div class="rowBox" style="display: none">
                 <div class="title">공개여부</div>
-                <div class="contents">   <label><input type="radio" name="store_display" value="Y" > Y</label>
-                    <label><input type="radio" name="store_display" value="N"> N</label></div>
+                <div class="contents">   <label><input type="radio" name="store_display" value="Y" checked> Y</label>
+                    <label><input type="radio" name="store_display" value="N">N</label></div>
             </div>
 
 
