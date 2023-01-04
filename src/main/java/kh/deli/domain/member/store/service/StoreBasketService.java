@@ -31,7 +31,9 @@ public class StoreBasketService {
     public Integer setBasketInSession(HttpSession session, String newMenuJson) throws ParseException {
         BasketDTO basket = (BasketDTO) session.getAttribute("basket");
         StoreBasketMenuRequestDTO basketMenu = gson.fromJson(newMenuJson, StoreBasketMenuRequestDTO.class);
-//        checker.storeBsTimeCheckToError(basketMenu.getStoreSeq());
+
+        // 식당 근무시간 테스트
+        checkerService.storeBsTimeCheckToError(basketMenu.getStoreSeq());
 
         if (basket == null) {
 
