@@ -9,7 +9,7 @@
             select a.acc_seq, a.acc_email, m.mem_nick, ad.add_detail1, a.acc_signupdate,m.mem_phone,
             m.mem_grade from account a left  join member m on a.acc_seq = m.acc_Seq
             left join address ad on a.acc_seq = ad.acc_seq
-            where  acc_type = 'client' order by acc_signupdate desc
+            where  acc_type = 'client' and add_division = 'basics' order by acc_signupdate desc
         </select>
 
 </mapper>

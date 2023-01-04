@@ -22,7 +22,7 @@
 <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <style>
     #deli_nav {
-        min-height: 1700px;
+        min-height: 2000px;
     }
 </style>
 <main id="storeAdd">
@@ -299,10 +299,10 @@
             </div>
 
 
-            <div class="rowBox">
+            <div class="rowBox" style="display: none">
                 <div class="title">공개여부</div>
-                <div class="contents">   <label><input type="radio" name="store_display" value="Y" > Y</label>
-                    <label><input type="radio" name="store_display" value="N"> N</label></div>
+                <div class="contents">   <label><input type="radio" name="store_display" value="Y" checked> Y</label>
+                    <label><input type="radio" name="store_display" value="N">N</label></div>
             </div>
 
 

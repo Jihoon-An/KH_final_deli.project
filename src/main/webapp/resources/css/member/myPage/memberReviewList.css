@@ -8,12 +8,10 @@
     padding-bottom: 135px;
     overflow: hidden;
 }
-#memberReviewList .reviews{
-    border: 1px solid dodgerblue;
-}
+
 #memberReviewList img{
     width: 100px;
-    height: 100px;
+    height: 150px;
 }
 
 #memberReviewList #page_title{
@@ -40,7 +38,7 @@
 }
 
 #memberReviewList #psb_modify_review{
-    width: 11%;
+    width: 100%;
     height: 25px;
     border-radius: 7px;
     border: none;
@@ -49,10 +47,11 @@
     font-size: 0.8em;
     cursor: pointer;
     margin: 10px;
+    margin-top: -1px;
 }
 
 #memberReviewList .delete_review{
-    width: 11%;
+    width: 100%;
     height: 25px;
     text-align: center;
     border-radius: 7px;
@@ -63,24 +62,21 @@
     cursor: pointer;
     margin: 5px;
 }
-
+#menu_name_wrap{
+    width: 110px;
+    margin-bottom: 20px;
+}
 #memberReviewList .menu_name{
-    width:30%;
-    height: 20px;
+    width: 110px;
+    /*height: 20px;*/
     border-radius: 15px;
     border: none;
     background-color: gainsboro;
     font-size: 1em;
+    padding-left: 5px;
+    margin-bottom: 5px;
 }
 
-#memberReviewList .option_name{
-    width: 26%;
-    height: 20px;
-    border-radius: 15px;
-    border: none;
-    background-color: gainsboro;
-    font-size: 1em;
-}
 #memberReviewList #write_time{
     float: left;
 }
@@ -108,11 +104,19 @@
     -webkit-text-fill-color: rgba(250, 208, 0, 0.99);
     text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
+#modify_review_wrap{
+    width: 11%;
+    float: left;
+    margin-left: 30px;
 
-/*#memberReviewList #img_box{*/
-/*    width: 100%;*/
-/*    height: 50%;*/
-/*}*/
+}
+
+#delete_review_wrap{
+    width: 11%;
+    float: left;
+    margin-left: 10px;
+    margin-top: -6px;
+}
 
 
 
