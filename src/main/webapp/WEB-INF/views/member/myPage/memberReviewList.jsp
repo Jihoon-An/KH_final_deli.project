@@ -68,19 +68,21 @@
                             </c:when>
 
                             <c:otherwise>
-                                <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}">
-                                    <button id="psb_modify_review" name="psb_modify_review" revSeq="${reviews.rev_seq}">수정</button>
-                                </a>
-
-                                <input type="hidden" value="${reviews.rev_seq}">
-                                <input type="hidden" value="${reviews.store_seq}">
-                                <input type="hidden" value="${reviews.order_seq}">
+                                <div id="modify_review_wrap">
+                                    <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}">
+                                        <button id="psb_modify_review" name="psb_modify_review" revSeq="${reviews.rev_seq}">수정</button>
+                                    </a>
+                                </div>
+                                    <input type="hidden" value="${reviews.rev_seq}">
+                                    <input type="hidden" value="${reviews.store_seq}">
+                                    <input type="hidden" value="${reviews.order_seq}">
 
                             </c:otherwise>
                         </c:choose>
-                        <button class="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
-                        <input type="hidden" class="rev_seq" value="${reviews.rev_seq}">
-
+                        <div id="delete_review_wrap">
+                            <button class="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
+                            <input type="hidden" class="rev_seq" value="${reviews.rev_seq}">
+                        </div>
                         <c:choose>
                             <c:when test="${not empty reviews.rev_sysname}">
                                 <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
@@ -101,18 +103,11 @@
 
                         <c:choose>
                             <c:when test="${not empty reviews.menu}">
-                                <div class="menu_name">
-                                    <c:forEach var="i" items="${reviews.menu}">
-                                        ${i.menuDTO.menu_name}
-                                        <c:choose>
-                                            <c:when test="${not empty i.menuOptionDTO}">
-                                                <c:forEach var="k" items="${i.menuOptionDTO}">
-                                                    <div class="option_name"> ${k.option_name} </div>
-                                                </c:forEach>
-                                            </c:when>
-                                        </c:choose>
-                                    </c:forEach>
-                                </div>
+                                    <div id="menu_name_wrap">
+                                        <c:forEach var="i" items="${reviews.menu}">
+                                            <div class="menu_name">${i.menuDTO.menu_name}</div>
+                                        </c:forEach>
+                                    </div>
                             </c:when>
                         </c:choose>
 
