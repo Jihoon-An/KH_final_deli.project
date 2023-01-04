@@ -850,7 +850,7 @@
             </div>
 
 
-            <div class="rowBox">
+            <div class="rowBox" >
                 <div class="title">오픈여부</div>
                 <div class="contents">
                     <c:if test="${store.store_open eq 'Y'}">
@@ -866,7 +866,7 @@
             </div>
 
 
-            <div class="rowBox">
+            <div class="rowBox" style="display: none;">
                 <div class="title">공개여부</div>
                 <div class="contents">
                     <c:if test="${store.store_display eq'Y'}">

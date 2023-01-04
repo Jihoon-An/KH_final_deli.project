@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>딜리 - Error</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
   <%@ include file="/WEB-INF/views/global/pc-commonLib.jsp" %>
 
   <style>
