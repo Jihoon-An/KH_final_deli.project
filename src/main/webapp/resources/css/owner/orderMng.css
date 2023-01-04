@@ -33,3 +33,6 @@
 main{
     transform: translateX(100px);
 }
+#status_btn{
+    margin-left: 12px;
+}

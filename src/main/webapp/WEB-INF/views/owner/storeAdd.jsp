@@ -22,7 +22,7 @@
 <%@ include file="/WEB-INF/views/customHeader/owner_nav.jsp" %>
 <style>
     #deli_nav {
-        min-height: 1700px;
+        min-height: 2000px;
     }
 </style>
 <main id="storeAdd">
