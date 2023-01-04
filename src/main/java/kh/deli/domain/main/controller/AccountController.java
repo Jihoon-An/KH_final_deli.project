@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Slf4j
@@ -144,11 +145,13 @@ public class AccountController {
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
+        Timestamp now = new Timestamp(System.currentTimeMillis());
         NoticeDTO noticeDTO = NoticeDTO.builder()
                 .to_acc_seq(accSeq)
-                .notice_title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
+                .notice_title(memberDTO.getMem_nick() + "님 회원가입을 축하드립니다.")
                 .notice_content("")
                 .from_acc_seq(3)
+                .notice_time(now)
                 .build();
         alarmService.saveNotice(noticeDTO);
 
@@ -166,11 +169,13 @@ public class AccountController {
         mcpService.giveSignUpCp(accSeq);
         redisUtil.deleteData(memberDTO.getMem_phone());
 
+        Timestamp now = new Timestamp(System.currentTimeMillis());
         NoticeDTO noticeDTO = NoticeDTO.builder()
                 .to_acc_seq(accSeq)
-                .notice_title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
+                .notice_title(memberDTO.getMem_nick() + "님 회원가입을 축하드립니다.")
                 .notice_content("")
                 .from_acc_seq(3)
+                .notice_time(now)
                 .build();
         alarmService.saveNotice(noticeDTO);
 
