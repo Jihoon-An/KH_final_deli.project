@@ -18,8 +18,8 @@ $(document).ready(function () {
         .append($('<div id="alarm_background">'))
         .append($('<div id="alarm_area">')
             .append($('<div id="alarm_box">'))
-            .append($('<button id="alarm_close_btn" style="background-color: #e8f3de">')
-                .html('<i class="fa-sharp fa-solid fa-chevron-up" style="color: #d52d2d; font-size: 30px"></i>')
+            .append($('<button id="alarm_close_btn" style="background-color: #E84C4F">')
+                .html('<i class="fa-sharp fa-solid fa-chevron-up" style="color: #FFFFFF; font-size: 25px"></i>')
             )
         );
     //display toggle 이벤트 부여
@@ -95,8 +95,15 @@ $(document).ready(function () {
 
 //알림박스 추가 함수
 function createAlarmBox(data) {
+    let dateFormat = new Date(data.notice_time);
+    let ggumtle =
+        dateFormat.getFullYear()+
+        "/"+(dateFormat.getMonth()+1)+
+        "/"+dateFormat.getDate()+
+        " "+dateFormat.getHours()+
+        ":"+dateFormat.getMinutes();
     $('#alarm_box').prepend(
-        $('<div class="alarm p-1">')
+        $('<div class="alarm" style="padding: 10px 20px;">')
             .append($('<input type="hidden" class="notice_seq">')
                 .val(data.notice_seq))
             .append($('<div class="row">')
@@ -122,12 +129,12 @@ function createAlarmBox(data) {
                 )
             )
             .append($('<hr class="p-0 m-0">'))
-            .append($('<div class="notice_title mb-1">')
+            .append($('<div class="notice_title mb-1" style="margin-top: 10px">')
                 .append(data.notice_title))
             .append($('<div class="notice_content">')
                 .append(data.notice_content))
             .append($('<div class="notice_time">')
-                .append(data.notice_time))
+                .append(ggumtle))
     );
 }
 
