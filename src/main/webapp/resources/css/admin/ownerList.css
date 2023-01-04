@@ -31,3 +31,28 @@
 #myTable * {
     cursor: pointer;
 }
+
+#owner_list .closeBtn{
+    position: relative;
+    bottom: 40px;
+    left: 155px
+}
+
+#owner_list .modalInfo{
+    margin: 5px 50px 5px 50px;
+    text-align: left;
+}
+
+
+#owner_list .modalInfo>input{
+    width: 185px;
+    border: none;
+    background: none;
+}
+
+#owner_list .modalTitle{
+    display: inline-block;
+    padding-left: 13px;
+    width: 110px;
+    font-weight: bold;
+}

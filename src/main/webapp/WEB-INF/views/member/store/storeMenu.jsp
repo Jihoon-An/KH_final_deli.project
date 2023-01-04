@@ -59,7 +59,7 @@
                     <c:when test="${not empty categoryList}">
                     <c:forEach var="categories" items="${categoryList}" varStatus="num">
                     <div class="bottom_menu_group" id="bottom_menu_group${num.count}"
-                         style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">${categories.menu_group}
+                         style="font-weight: bold; font-size: 16px; margin-bottom: 5px;">${categories.menu_group}
                         <div style="height: 10px;"></div>
                         <c:forEach var="menuList" items="${categories.menuList}">
                         <div class="menu_box">

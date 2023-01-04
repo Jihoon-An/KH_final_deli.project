@@ -67,23 +67,6 @@
                                 <div id="r_content">${reviews.rev_content}</div>
                             </c:when>
                         </c:choose>
-                    <c:choose>
-                        <c:when test="${not empty reviews.menu_list}">
-                            <%--                                <c:forEach var="i" items="${reviews.menu_list}">--%>
-                            <%--                                    <div>메뉴명 : ${i}</div>--%>
-                            <div class="filter_box${status.index}">
-                                <div style="margin: 0 auto;" class="d-inline-flex">
-                                    <c:forEach var="i" items="${reviews.menu_list}">
-                                        <div class="filter" style="margin-right: 4px">${i}</div>
-                                        <div class="filter" style="margin-right: 4px">돼지ddddddddddddddd국밥</div>
-                                        <div class="filter" style="margin-right: 4px">sdfffffffffff</div>
-                                        <div class="filter" style="margin-right: 4px">sdffffffff</div>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                            <%--                                </c:forEach>--%>
-                        </c:when>
-                    </c:choose>
                     </div>
                 </c:forEach>
             </c:when>
@@ -102,9 +85,12 @@
         height: 40px;
         border-radius: 10px 10px 0 0;
         text-align: center;
-        overflow: hidden;
         margin-top: 10px;
+        overflow-y:scroll;
         cursor: pointer;
+    }
+    .filter_box${status.index}::-webkit-scrollbar {
+        height: 0px;
     }
     </c:forEach>
 </style>

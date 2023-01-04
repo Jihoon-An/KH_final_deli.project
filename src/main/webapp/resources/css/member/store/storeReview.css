@@ -22,14 +22,14 @@
 
 #storeReview .header #storeName {
     line-height: 70px;
-    font-size:19.55px;
+    font-size:17px;
     font-weight: bold;
     text-align: center;
 }
 
 #storeReview .header #star {
     width: 95%;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #storeReview .header #reviewCount {
@@ -40,7 +40,7 @@
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 13px;
 }
 
 #storeReview .deliveryInfo {
@@ -50,7 +50,7 @@
 
 #storeReview .deliveryInfo div {
     line-height: 27px;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 #storeReview .fieldBox {
@@ -172,6 +172,10 @@
 
 }
 
+/*#storeReview .filter_box{*/
+/*    overflow-y: scroll;*/
+/*}*/
+
 /*#storeReview .filter_box::-webkit-scrollbar {*/
 /*    height: 5px;*/
 /*}*/
@@ -232,7 +236,7 @@ img {
     padding: 10px 20px 20px 20px;
     margin-bottom: 10px;
     background-color: #FFFFFF;
-    font-size: 13px;
+    font-size: 14px;
     box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
 }
 

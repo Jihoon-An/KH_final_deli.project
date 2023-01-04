@@ -22,14 +22,14 @@
 
 #store_info .header #storeName {
     line-height: 70px;
-    font-size: 19.55px;
+    font-size: 17px;
     font-weight: bold;
     text-align: center;
 }
 
 #store_info .header #star {
     width: 95%;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #store_info .header #reviewCount {
@@ -40,7 +40,7 @@
     word-wrap: break-word;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 13px;
 }
 
 #store_info .delivery {
@@ -77,7 +77,7 @@
 
 #store_info .deliveryInfo div {
     line-height: 27px;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 #store_info .fieldBox {
@@ -195,7 +195,7 @@
     padding: 10px 20px 20px 20px;
     margin-bottom: 10px;
     background-color: #FFFFFF;
-    font-size: 13px;
+    font-size: 14px;
     box-shadow: 0 5px 18px -7px rgba(0, 0, 0, 0.1);
 }
 

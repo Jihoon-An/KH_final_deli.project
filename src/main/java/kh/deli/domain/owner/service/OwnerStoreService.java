@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -20,7 +22,33 @@ public class OwnerStoreService {
     private final OwnerStoreMapper ownerStoreMapper;
     private final HttpSession session;
 
-    public void insertStore(StoreDTO dto) {
+    public void insertStore(StoreDTO dto, MultipartFile file, int acc_seq) throws  Exception{
+
+
+        int owner_seq = ownerStoreMapper.selectOwnerSeq(acc_seq); //acc_seq로 owner_seq 조히
+        System.out.println(owner_seq);
+        dto.setOwner_seq(owner_seq); //owner_seq dq입력
+
+        String realPath=session.getServletContext().getRealPath("/resources/img/store");
+        File filePath=new File(realPath);
+
+        System.out.println(file.getSize());
+
+        if(!filePath.exists()) {
+            filePath.mkdir(); //파일업로드 폴더가 없다면 생성
+        }
+
+        if(file.getSize()!=0) {//파일 사이즈가0이 아니라면
+            String oriName=file.getOriginalFilename();
+            //겹치지 않게 이름을 만들어야함
+            String sysName= UUID.randomUUID()+"_"+oriName;
+            file.transferTo(new File(filePath+"/"+sysName));
+            System.out.println("파일있을떄");
+
+            dto.setStore_logo(sysName);
+        }
+
+
         ownerStoreMapper.insertStore(dto);
     }
 

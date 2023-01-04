@@ -28,6 +28,8 @@ public class CheckerService {
      * @return 운영시간이면 true
      */
     public boolean storeBsTimeCheck(int storeSeq) throws ParseException {
+        boolean result = true;
+
         StoreOpenCheckListDTO openCheckList = storeMapper.getOpenCheckListBySeq(storeSeq);
         Type type = new TypeToken<Map<String, Map<String, String>>>() {
         }.getType();
@@ -44,7 +46,8 @@ public class CheckerService {
         // 요일별 체크
         if (storeBsTimeOfWeek.get("open") != "휴무일"
                 && openCheckList.getOpen() == "Y"
-                && openCheckList.getDisplay() == "Y") {
+                && openCheckList.getDisplay() == "Y")
+        {
             //open info
             String openTimeStr = storeBsTimeOfWeek.get("open_time");
             Date openTimeDate = formatter.parse(openTimeStr);
@@ -54,12 +57,14 @@ public class CheckerService {
             Date closeTimeDate = formatter.parse(closeTimeStr);
             Long closeTime = closeTimeDate.getTime();
 
-            if (now < openTime || now > closeTime) {
-                return false;
+            if (openTime < closeTime && (now < openTime || now > closeTime)) {
+                result = false;
+            }else if (openTime > closeTime && !(now < openTime && now > closeTime)) {
+                result = false;
             }
-            return true;
         }
-        return false;
+
+        return result;
     }
 
     public void storeBsTimeCheckToError(int storeSeq) throws ParseException, StoreBsTimeOutException {

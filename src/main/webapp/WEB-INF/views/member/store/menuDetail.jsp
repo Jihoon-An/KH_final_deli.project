@@ -18,8 +18,28 @@
 <%@ include file="/WEB-INF/views/customHeader/m_header.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_back.jsp" %>
 <%@ include file="/WEB-INF/views/customHeader/m_cart.jsp" %>
+<script>
+    var count = 1;
+    var select_option = new Array();
+    var one_price = ${menu.menu_price};
+
+    class BasketMenuDTO {
+        constructor(options, count, price) {
+            this.storeSeq = ${menu.store_seq}
+                this.menuSeq = ${menu.menu_seq};
+            this.optionSeqList = options;
+            this.count = count;
+            this.price = price;
+        }
+    }
+
+    var basketStoreSeq = '${basketStoreSeq}';
+    console.log(basketStoreSeq);
+</script>
 <main id="menu_detail">
-    <img style="width: 100%;" src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
+    <c:if test="${menu.menu_img ne null}">
+    <img style="width: 100%; height: 260px; object-fit: cover;" src="/resources/img/menu-img/${menu.menu_img}" alt="menu_img">
+    </c:if>
     <div class="container px-4">
         <div id="menu_name" class="text-center py-2">${menu.menu_name}</div>
         <div id="menu_intro" class="text-center">${menu.menu_intro}</div>
@@ -101,24 +121,6 @@
         </form>
     </div>
 </main>
-<script>
-    var count = 1;
-    var select_option = new Array();
-    var one_price = ${menu.menu_price};
-
-    class BasketMenuDTO {
-        constructor(options, count, price) {
-            this.storeSeq = ${menu.store_seq}
-                this.menuSeq = ${menu.menu_seq};
-            this.optionSeqList = options;
-            this.count = count;
-            this.price = price;
-        }
-    }
-
-    var basketStoreSeq = '${basketStoreSeq}';
-    console.log(basketStoreSeq);
-</script>
 <script src="/resources/js/member/store/menuDetail.js"></script>
 </body>
 </html>

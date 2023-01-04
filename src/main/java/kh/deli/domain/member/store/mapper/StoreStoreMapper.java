@@ -31,6 +31,6 @@ public interface StoreStoreMapper {
     /**
      * @param seq - storeSeq
      */
-    @Select("SELECT STORE_BSNS_HOURS AS BS_TIME_JSON, STORE_OPEN AS OPEN, STORE_DISPLAY  AS DISPLAY FROM STORE WHERE STORE_SEQ = #{seq}")
+    @Select("SELECT STORE_BSNS_HOURS AS BS_TIME_JSON, STORE_OPEN AS OPEN, STORE_DISPLAY AS DISPLAY FROM STORE WHERE STORE_SEQ = #{seq}")
     StoreOpenCheckListDTO getOpenCheckListBySeq(@Param("seq") int seq);
 }
