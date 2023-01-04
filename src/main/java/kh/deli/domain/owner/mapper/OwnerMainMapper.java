@@ -17,7 +17,7 @@ public interface OwnerMainMapper {
 
     public List<OwnerStoreInfoDTO> selectByOwner (@Param("owner_seq") int owner_seq);
 
-    public OwnerDailySalesDTO selectSales(@Param("store_seq") int store_seq, @Param("now") LocalDate now);
+    public OwnerDailySalesDTO selectSales(@Param("store_seq") int store_seq);
 
     public int selectOwnerSeq(@Param("acc_seq") int acc_seq);
 
@@ -27,6 +27,6 @@ public interface OwnerMainMapper {
             @Param("endDate") String endDate
     );
 
-    public OwnerOrderCountDTO selectOrderCnt(@Param("storeSeq")int storeSeq, @Param("now") LocalDate now);
+    public OwnerOrderCountDTO selectOrderCnt(@Param("storeSeq")int storeSeq);
 
 }
