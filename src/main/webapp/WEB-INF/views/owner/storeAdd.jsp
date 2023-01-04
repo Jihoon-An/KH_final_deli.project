@@ -144,6 +144,22 @@
             </div>
 
             <div class="rowBox">
+                <div class="title">전체 영업시간</div>
+                <div class="contents">
+                    <div class="bsns_div">
+                        <select  class="bsns bs bs_openAll">
+                            <option value="영업일">영업일</option>
+                            <option>휴무일</option>
+                        </select>
+                        <span class="bs_time">
+                                <input type="time" class="bsns bs_open_timeAll">
+                                <input type="time" class="bsns bs_close_timeAll">
+                            </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rowBox">
                 <div class="title"> 월요일</div>
                 <div class="contents">  <div class="bsns_div">
 
