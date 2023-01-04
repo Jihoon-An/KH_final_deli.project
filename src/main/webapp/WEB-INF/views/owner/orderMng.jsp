@@ -41,7 +41,7 @@
                 <c:forEach var="store" items="${storeList}">
                     <li><a class="dropdown-item"
                            href="http://mydeli.me/owner/order/${store.store_seq}">${store.store_name}</a>
-<%--                           href="http://localhost/owner/order/${store.store_seq}">${store.store_name}</a>--%>
+                            <%--                           href="http://localhost/owner/order/${store.store_seq}">${store.store_name}</a>--%>
                     </li>
                 </c:forEach>
             </ul>
@@ -52,15 +52,19 @@
         <%--        <button type="button">새 주문 보기</button>--%>
         <%--    </div>--%>
 
-        <div class="pb-4">
-            <button type="button" id="status_btn" class="btn btn-light" style="border: 1px solid #3e4462">선택항목 상태 바꾸기</button>
-            <select name="status" id="new_status">
-                <option value="미접수">미접수</option>
-                <option value="접수">접수</option>
-                <option value="조리중">조리중</option>
-                <option value="배달중">배달중</option>
-                <option value="배달완료">배달완료</option>
-            </select>
+        <div class="pb-4 row px-2">
+            <button type="button" id="status_btn" class="btn btn-light col-2 px-1"
+                    style="border: 1px solid #3e4462">선택항목 상태 바꾸기
+            </button>
+            <div class="col-3">
+                <select name="status" id="new_status" class="form-select">
+                    <option value="미접수">미접수</option>
+                    <option value="접수">접수</option>
+                    <option value="조리중">조리중</option>
+                    <option value="배달중">배달중</option>
+                    <option value="배달완료">배달완료</option>
+                </select>
+            </div>
         </div>
 
         <table id="order_table" class="table table-borded">
