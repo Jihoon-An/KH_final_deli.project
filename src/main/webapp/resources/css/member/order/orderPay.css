@@ -1,7 +1,7 @@
 /*main CSS*/
 .container {
     width: 360px;
-    height: 100%;
+    overflow: hidden;
 }
 
 /*modal CSS*/
@@ -71,6 +71,7 @@
 
 #pay_method{
     text-align: center;
+    padding-bottom: 50px;
 }
 #pay_method #payKakao{
     border-radius: 7px;
@@ -79,6 +80,10 @@
     color: white;
     background-color: #e84c4f;
     font-size: 1em;
+    margin-top: 25px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #pay_method #payCard{
@@ -88,6 +93,10 @@
     color: white;
     background-color: #e84c4f;
     font-size: 1em;
+    margin-top: 25px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #btn_modal2{
