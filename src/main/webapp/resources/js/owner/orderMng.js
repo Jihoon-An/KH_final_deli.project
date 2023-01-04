@@ -85,8 +85,8 @@ $("#status_btn").click(() => {
         type: "post",
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({
-            checkedSeqListJson: JSON.stringify(checkedSeqList),
-            newStatus: newStatus
+            'checkedSeqListJson': JSON.stringify(checkedSeqList),
+            'newStatus': newStatus
         })
     });
 });

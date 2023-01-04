@@ -21,7 +21,7 @@
     left: -50px;
     right: 0;
     top: 39px;
-    background-color: #E84C4F;
+    background-color: #FFFAE7;
     display: none;
     overflow-y: scroll;
     border-radius: 10px;
@@ -53,9 +53,9 @@
     overflow-y: scroll;
     /*border-radius: 10px;*/
     /*padding: 10px 10px;*/
-    padding: 10px 10px;
+    padding: 20px 20px;
     width: 100%;
-
+    font-size: 15px;
 }
 
 /* 스크롤 없애기 */
@@ -77,9 +77,9 @@
     z-index: 30;
     position: sticky;
     margin: 0 auto;
-    top:90%;
+    top:94%;
     width: 100%;
-    height: 11%;
+    height: 7%;
     cursor: pointer;
     border: none;
 }
