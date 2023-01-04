@@ -1,8 +1,8 @@
-#coupon_list .coupon{
+#coupon_list .coupon {
     cursor: pointer;
 }
 
-#coupon_list #close_modal{
+#coupon_list #close_modal {
     cursor: pointer;
     position: absolute;
     right: 10px;
@@ -10,35 +10,51 @@
 }
 
 #coupon_list #modal {
-    width: 500px;
-    height: 500px;
-    background-color: antiquewhite;
+    width: 350px;
+    height: 360px;
+    background-color: #FFFFFF;
     position: fixed;
     display: none;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 5px;
+    border: 1px solid rgba(62, 68, 98, 0.42);
 }
 
-#coupon_list #modal_btn_area{
+#coupon_list #modal_btn_area {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%);
 }
-#coupon_list #modal_btn_area > *{
 
-}
-
-
-#coupon_list #modal_content > input{
+#coupon_list #modal_content > input {
     display: block;
 }
 
-#table_area{
+#table_area {
     padding-top: 80px;
 }
 
-#add_cp_btn{
+#add_cp_btn {
     border: 1px solid rgba(67, 72, 103, 0.55);
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+.cp_content{
+    margin-bottom: 5px;
+    padding: 4px;
+    background-color: #f1f0f0;
+    border-radius: 5px;
+}
+
+.row_title{
+    font-size: 8px;
 }
