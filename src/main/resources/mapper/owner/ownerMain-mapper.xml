@@ -16,7 +16,7 @@
         ,count(*) AS daily_order_cnt
         FROM ORDERS o
         WHERE o.STORE_SEQ =${store_seq}
-        AND o.ORDER_DATE BETWEEN TO_TIMESTAMP('${now} 00.00.00','YYYY-MM-DD HH24:MI:SS') and TO_TIMESTAMP('${now} 23.59.59','YYYY-MM-DD HH24:MI:SS')
+        AND o.ORDER_DATE >=TRUNC(sysdate) AND o.ORDER_DATE &lt; TRUNC(sysdate+1)
         GROUP BY o.STORE_SEQ
     </select>
 
@@ -36,7 +36,7 @@
         ,(SELECT count(*)
         FROM ORDERS o
         WHERE o.STORE_SEQ =${storeSeq}
-        AND o.ORDER_DATE BETWEEN '${now} 00:00:00' AND sysdate) AS td_order_cnt
+        AND o.ORDER_DATE BETWEEN TRUNC(sysdate) AND sysdate) AS td_order_cnt
         FROM DD_SALES ds
         WHERE ds.STORE_SEQ =${storeSeq}
         AND ds.DAILY_DATE = TO_CHAR((sysdate-1),'YYYYMMDD')

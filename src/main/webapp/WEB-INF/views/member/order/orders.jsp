@@ -19,9 +19,9 @@
 
 <main>
     <hr class="mt55">
-<form name="dataForm" id="insertForm" action="/order/orders/insertOrder" method="post">
 
     <div class="container">
+<form name="dataForm" id="insertForm" action="/order/orders/insertOrder" method="post">
         <h2>배달 정보</h2>
         <hr>
         <div id="mainAddress">
@@ -118,8 +118,8 @@
         <input type="hidden" id="accEmail" name="accEmail" value="${userInfo.accEmail}"/>
         <input type="hidden" id="memName" name="memName" value="${userInfo.memName}"/>
         <input type="hidden" id="add_seq" name="add_seq"/>
-    </div>
 </form>
+    </div>
 </main>
 <script>
     var addSeq;

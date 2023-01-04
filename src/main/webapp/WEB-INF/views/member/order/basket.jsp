@@ -24,14 +24,16 @@
                 <input type="hidden" id="storeSeq" value="${store.store_seq}">
                 <input type="hidden" id="minPrice" value="${store.store_min_price}">
                 <input type="hidden" id="minPriceText" value="<fmt:formatNumber value="${store.store_min_price}" type="number"/>">
-                <div class="storeImgBox">
-                    <img style="width: 30px; height: 30px;" src="/resources/img/store/${store.store_logo}">
-                </div>
-                <div class="storeNameBox">
-                    <span id="storeNameSpan" style="font-size: 20px;">${store.store_name}</span>
-                </div>
+                <a href="/store/menu/${store.store_seq}">
+                    <div class="storeImgBox">
+                        <img style="width: 30px; height: 30px;" src="/resources/img/store/${store.store_logo}">
+                    </div>
+                    <div class="storeNameBox">
+                        <span id="storeNameSpan" style="font-size: 20px;">${store.store_name}</span>
+                    </div>
+                </a>
                 <button id="emptyBasketButton">
-                    <i class="fa-regular fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can"></i>
                 </button>
                 <br>
                 <hr>

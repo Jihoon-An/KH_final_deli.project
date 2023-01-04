@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberCoupon {
+public class MemberCouponDTO {
     private int mc_seq;
     private int cp_seq;
     private int acc_seq;
