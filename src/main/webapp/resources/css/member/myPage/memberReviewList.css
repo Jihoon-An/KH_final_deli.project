@@ -63,52 +63,38 @@
     margin: 5px;
 }
 #menu_name_wrap{
-    width: 110px;
+    width: fit-content;
     margin-bottom: 20px;
 }
 #memberReviewList .menu_name{
-    width: 110px;
-    /*height: 20px;*/
+    width: fit-content;
     border-radius: 15px;
     border: none;
     background-color: gainsboro;
     font-size: 1em;
     padding-left: 5px;
     margin-bottom: 5px;
+    padding: 0px 7px;
 }
 
 #memberReviewList #write_time{
     float: left;
 }
 
-#review_star {
+#review_star_wrap{
     width: 130px;
+    float: left;
     display: flex;
-    flex-direction: row-reverse;
     font-size: 1.3em;
     line-height: 10px;
-    justify-content: space-around;
     text-align: center;
-    float: left;
+    justify-content: space-around;
 }
 
-#review_star input {
-    display: none;
-}
-
-#review_star label {
-    -webkit-text-fill-color: #ddd;
-}
-
-#review_star :checked ~ label {
-    -webkit-text-fill-color: rgba(250, 208, 0, 0.99);
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
 #modify_review_wrap{
     width: 11%;
     float: left;
     margin-left: 30px;
-
 }
 
 #delete_review_wrap{
@@ -117,7 +103,12 @@
     margin-left: 10px;
     margin-top: -6px;
 }
+#review_content{
+    width: fit-content;
+    margin-top: 10px;
+    margin-bottom: 5px;
 
+}
 
 
 
