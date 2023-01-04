@@ -67,7 +67,13 @@
                                 <div id="r_content">${reviews.rev_content}</div>
                             </c:when>
                         </c:choose>
-                    </div>
+                        <div class="filter_box" style="overflow: scroll">
+                            <c:forEach var="index" items="${reviews.menu_list}" varStatus="status">
+                                <div style="margin: 0 auto" class="d-inline-flex">
+                                    <div class="filter" style="margin-right: 7px">${index}</div>
+                                </div>
+                            </c:forEach>
+                        </div>
                 </c:forEach>
             </c:when>
             <c:otherwise>
@@ -86,12 +92,14 @@
         border-radius: 10px 10px 0 0;
         text-align: center;
         margin-top: 10px;
-        overflow-y:scroll;
+        overflow-y: scroll;
         cursor: pointer;
     }
+
     .filter_box${status.index}::-webkit-scrollbar {
         height: 0px;
     }
+
     </c:forEach>
 </style>
 
@@ -118,3 +126,5 @@
     });
     </c:forEach>
 </script>
+
+

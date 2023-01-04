@@ -259,8 +259,8 @@
             <div class="d-flex flex-row">
                 <div class="title">사업자등록번호</div>
                 <div><c:out value="${fn:substring(ownerInfoDTO.owner_num,0,3)}"/>-<c:out
-                        value="${fn:substring(ownerInfoDTO.owner_num,4,6)}"/>-<c:out
-                        value="${fn:substring(ownerInfoDTO.owner_num,6,11)}"/>-
+                        value="${fn:substring(ownerInfoDTO.owner_num,3,5)}"/>-<c:out
+                        value="${fn:substring(ownerInfoDTO.owner_num,5,10)}"/>
                 </div>
             </div>
         </div>
