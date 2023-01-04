@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>딜리 - 메뉴담기</title>
@@ -46,7 +47,8 @@
         <hr>
         <div class="row">
             <div class="col-6 fs-3 soft-bold">가격</div>
-            <div id="menu_price" class="col-6 fs-3 text-end soft-bold">${menu.menu_price}원</div>
+            <div class="col-6 fs-3 text-end soft-bold"><fmt:formatNumber value="${menu.menu_price}" type="number"/>원</div>
+            <div id="menu_price" style="display: none;">${menu.menu_price}</div>
         </div>
         <hr>
         <c:forEach var="optionMap" items="${menuOptions}">
@@ -64,7 +66,7 @@
                                         <span>${option.option_name}</span>
                                     </div>
                                     <div class="col-3 text-end">
-                                        <span>+${option.option_price}원</span>
+                                        <span>+<fmt:formatNumber value="${option.option_price}" type="number"/>원</span>
                                     </div>
                                     <input class="option_seq" type="hidden"
                                            value='${option.option_seq}'>
@@ -80,7 +82,7 @@
                                         <span>${option.option_name}</span>
                                     </div>
                                     <div class="col-3 text-end">
-                                        <span>+${option.option_price}원</span>
+                                        <span>+<fmt:formatNumber value="${option.option_price}" type="number"/>원</span>
                                     </div>
                                     <input class="option_seq" type="hidden"
                                            value='${option.option_seq}'>
@@ -110,8 +112,11 @@
         </div>
         <div class="row text-center mt-4 pb-5">
             <button class="btn btn-danger" id="basket_btn" type="button" onclick="onModal()">
-            <span class="mx-0" id="total_price">
-                ${menu.menu_price}
+<%--            <span class="mx-0" id="total_price">--%>
+<%--                ${menu.menu_price}--%>
+<%--            </span>--%>
+                <span class="mx-0" id="total_price">
+                <fmt:formatNumber value="${menu.menu_price}" type="number"/>
             </span>
                 <span class="mx-0">원 담기</span>
             </button>
