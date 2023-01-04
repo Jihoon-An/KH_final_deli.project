@@ -52,7 +52,7 @@
         <%--        <button type="button">새 주문 보기</button>--%>
         <%--    </div>--%>
 
-        <div class="pb-4 row px-2">
+        <div class="pb-4 row">
             <button type="button" id="status_btn" class="btn btn-light col-2 px-1"
                     style="border: 1px solid #3e4462">선택항목 상태 바꾸기
             </button>
