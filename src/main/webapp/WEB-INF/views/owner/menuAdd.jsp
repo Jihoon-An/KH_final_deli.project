@@ -40,7 +40,7 @@
                 <div class="title">메뉴그룹</div>
                 <div class="contents" style="display: inline"><input style="width: 200px" tpye="text" id="menu_group"
                                                                      name="menu_group"
-                                                                     placeholder="메뉴그룹명을 입력하세요" class="form-control">
+                                                                     placeholder="메뉴그룹명을 입력하세요" class="form-control" maxlength="20">
                 </div>
                 <div style="display: inline; font-size: 12px" class="menu_group_msg"></div>
             </div>
@@ -83,14 +83,14 @@
                     <div class="rightContents">
                         <div class="input-group" style="width: 517px;">
                             <input type="text" id="menu_name" name="menu_name" placeholder="메뉴명을 입력하세요"
-                                   class="form-control" style="width: 150px"><br>
+                                   class="form-control" style="width: 150px" maxlength="25"><br>
                             <input type="text" id="menu_price" name="menu_price" placeholder="메뉴가격"
                                    oninput=validNum() class="form-control">
                             <div style='position: relative; top: 5px; left: -25px;'>원</div>
                         </div>
 
                         <textarea id="menu_intro" name="menu_intro" placeholder="메뉴 소개란"
-                                  class="input_menu_intro"></textarea>
+                                  class="input_menu_intro" maxlength="200"></textarea>
                         <%--                        <input type="text" id="menu_intro" name="menu_intro" placeholder="메뉴소개">--%>
 
                         <input type="hidden" name="store_seq" value="${store_seq}">
