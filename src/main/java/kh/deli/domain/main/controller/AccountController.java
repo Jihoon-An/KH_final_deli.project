@@ -85,23 +85,19 @@ public class AccountController {
 
     @PostMapping("withdrawal")
     public String withdrawal() throws Exception {
-        System.out.println("aaaaaaaa");
         int accSeq = (Integer) session.getAttribute("acc_seq");
         String loginType = (String)session.getAttribute("loginType");
-        System.out.println(accSeq);
-        System.out.println(loginType);
         switch (loginType) {
             case "normal" :
-                mainAccountService.withdrawal(accSeq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
+                mainAccountService.withdrawal(accSeq);
                 session.invalidate();
                 break;
             case "kakao" :
                 String accessToken = (String)session.getAttribute("kakaoAccessToken");
                 mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
-                mainAccountService.withdrawal(accSeq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
+                mainAccountService.withdrawal(accSeq);
                 session.invalidate();
                 break;
-//                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
         }
         return "redirect:/";
 

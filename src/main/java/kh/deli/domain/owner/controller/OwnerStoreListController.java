@@ -24,7 +24,6 @@ public class OwnerStoreListController {
     @GetMapping("")
     public String toPage(Model model) throws Exception {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-//        int acc_seq = 38;
         List<StoreDTO> storeList=ownerStoreService.findByAccSeq(acc_seq);
 
         if (storeList.size() == 0) {
