@@ -18,68 +18,57 @@
 <%@ include file="/WEB-INF/views/customHeader/admin_nav.jsp" %>
 <main id="add_coupon">
     <h1>쿠폰 등록</h1>
-    <form id="cp_add_frm" action="/admin/coupon/add/add" method="post">
+    <form id="cp_add_frm" action="/admin/coupon/add/add" method="post" class="container-fluid justify-content-start">
         <%--이름--%>
-        <div class="row" id="name_area">
-            <div class="col-3">
-                <span class="info_title">쿠폰이름</span>
-            </div>
-            <div class="col-9">
-                <input type="text" name="cp_name">
-            </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text info_title" id="basic-addon1">쿠폰이름</span>
+            <input type="text" class="form-control" placeholder="필수" aria-label="필수"
+                   aria-describedby="basic-addon1" name="cp_name" maxlength="20">
         </div>
+
         <%--쿠폰코드--%>
-        <div class="row" id="name_area">
-            <div class="col-3">
-                <span class="info_title">쿠폰코드</span>
+            <div class="input-group mb-3">
+                <span class="input-group-text info_title">쿠폰코드</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                       name="cp_code" id="cp_code" maxlength="20" placeholder="선택">
+                <button class="btn btn-outline-secondary" type="button" id="cp_code_confirm_btn">중복확인</button>
             </div>
-            <div class="col-9">
-                <input type="text" name="cp_code" id="cp_code">
-                <button type="button" id="cp_code_confirm_btn">중복확인</button>
-            </div>
-        </div>
+
         <%--할인종류--%>
-        <div class="row" id="type_area">
-            <div class="col-3">
-                <span class="info_title">할인종류</span>
-            </div>
-            <div class="col-9">
-                <select name="cp_type" id="cp_type">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="cp_type">할인종류</label>
+                <select class="form-select" id="cp_type" name="cp_type">
                     <option value="amount">정액할인</option>
                     <option value="percent">퍼센트할인</option>
                 </select>
             </div>
-        </div>
+
         <%--할인율--%>
-        <div class="row" id="discount_area">
-            <div class="col-3">
-                <span class="info_title" id="info_title">할인금액</span>
+            <div class="input-group mb-3">
+                <span class="input-group-text info_title" id="info_title">할인금액</span>
+                <input type="number" class="form-control" placeholder="필수" aria-label="필수"
+                       aria-describedby="basic-addon1" name="cp_discount" maxlength="20">
             </div>
-            <div class="col-9">
-                <input type="number" name="cp_discount">
-            </div>
-        </div>
+
+
         <%--쿠폰기한--%>
-        <div class="row" id="period_area">
-            <div class="col-3">
-                <span class="info_title">쿠폰기한</span>
+            <div class="input-group mb-3">
+                <span class="input-group-text info_title info_title">쿠폰기한</span>
+                <input type="number" class="form-control" placeholder="필수 - 일 수 기준" aria-label="필수"
+                       aria-describedby="basic-addon1" name="cp_period" maxlength="20">
             </div>
-            <div class="col-9">
-                <input type="number" name="cp_period">
-            </div>
-        </div>
+
+
         <%--설명--%>
-        <div class="row" id="content_area">
-            <div class="col-3">
-                <span class="info_title">쿠폰설명</span>
+            <div class="input-group">
+                <span class="input-group-text">쿠폰설명</span>
+                <textarea class="form-control" aria-label="With textarea" name="cp_content" placeholder="필수"></textarea>
             </div>
-            <div class="col-9">
-                <textarea name="cp_content"></textarea>
-            </div>
-        </div>
+
+
         <%--푸터 메뉴--%>
-        <div class="row">
-            <button type="button" id="cp_add_btn">등록하기</button>
+        <div class="row justify-content-center">
+            <button type="button" id="cp_add_btn" class="btn btn-secondary col-5 mt-3">등록하기</button>
         </div>
     </form>
 </main>
