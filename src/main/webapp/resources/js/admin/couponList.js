@@ -17,7 +17,7 @@ $(".coupon").click(function () {
 
     //위에서 가져온 값 세팅하고 없는 값 html 지우기.
     //seq
-    $("#modal").find("#modal_cp_seq").html(seq);
+    $("#modal").find("#modal_cp_seq").val(seq);
     //name
     $("#modal").find("#modal_cp_name").html(name);
     //code
@@ -66,32 +66,51 @@ $("#close_modal").click(function () {
 
 //발행하기 버튼 (미완성)
 $("#publish_btn").click(() => {
-    // Swal.fire({
-    //     title: '정말 비공개 처리 하시겠습니까?',
-    //     icon: 'warning',
-    //     showCancelButton: true,
-    //     confirmButtonColor: '#3085d6',
-    //     cancelButtonColor: '#d33',
-    //     confirmButtonText: '실행',
-    //     cancelButtonText: '취소'
-    // }).then((result) => {
-    //     if (result.isConfirmed) {
-    //         $.ajax({
-    //             url: "",
-    //             type: "post",
-    //             data: {},
-    //             dataType: "json"
-    //         }).done(() => {
-    //             Swal.fire({
-    //                 position: 'center-center',
-    //                 icon: 'success',
-    //                 title: '삭제되었습니다.',
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //             })
-    //         }).error();
-    //     }
-    // })
+    let user_email= $("#modal_content").find("#modal_user_email").val();
+    let cp_seq= $("#modal_content").find("#modal_cp_seq").val();
+    let cp_period= $("#modal_content").find("#modal_cp_period").val();
+
+    console.log(user_email);
+    console.log(cp_seq);
+    Swal.fire({
+        title: '쿠폰을 발행하시겠습니까?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '실행',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/admin/coupon/list/publish",
+                type: "post",
+                data: {
+                    "user_email" : user_email,
+                    "cp_seq" : cp_seq,
+                    "cp_period":cp_period
+                }
+            }).done((resp) => {
+                if (resp == "쿠폰 발급 실패"){
+                    Swal.fire({
+                        position: 'center-center',
+                        icon: 'warning',
+                        title: resp,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }else {
+                    Swal.fire({
+                        position: 'center-center',
+                        icon: 'success',
+                        title: resp,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }).error();
+        }
+    })
 });
 
 //삭제버튼

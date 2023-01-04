@@ -87,12 +87,17 @@
             <span id="title_cp_content" class="row_title">설명</span>
             <div id="modal_cp_content" placeholder="content" class="cp_content" readonly></div>
 
+            <input type="text" id="modal_user_email" placeholder="email"
+                   style="background-color: cadetblue;">
+
+<%--            <input type="text" id="modal_cp_period" placeholder="cp_period"--%>
+<%--                   style="background-color: salmon;" readonly>--%>
             <div id="modal_btn_area">
                 <button id="publish_btn" type="button" class="btn btn-light mb-2">발행</button>
                 <button id="delete_btn" type="button" class="btn btn-light mb-2">삭제</button>
             </div>
         </div>
-
+    </div>
 </main>
 <script src="/resources/js/admin/couponList.js"></script>
 </body>
