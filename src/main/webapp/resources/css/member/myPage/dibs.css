@@ -43,7 +43,7 @@
     left: -6.4px;
 }
 
-.divBox2{
+#dibs .divBox2{
     font-weight: bold;
     text-align: center;
     line-height: 130px;
@@ -75,6 +75,10 @@
 #dibs .store_name{
     font-weight: bolder;
     font-size: larger;
+    width:145px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
 }
 #dibs .avg_star,.store_min, .store_deli_tip,.store_deli_time{
     font-size: small;
@@ -110,8 +114,4 @@ text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 #dibs .heartIcon:hover{
     cursor: pointer;
-}
-
-#dibs hr{
-    border-width: 0.25px;
 }
