@@ -191,7 +191,7 @@
                 var html = "";
                 if (data.length > 0) {
                     html += '<p style="color: #e84c4f;margin-top: -50px;font-size: 20px;text-align: center">< 사용가능한 쿠폰 목록 ></p>';
-                    html += '<div style="color:black;float: left"> 쿠폰 이름 || 할인율 </div><br>';
+                    html += '<div style="color:black;float: left;"> 쿠폰 이름 || 할인율 </div><br>';
 
                     for (var i = 0; i < data.length; i++) {
                         var type = '';
@@ -207,7 +207,7 @@
                     }
 
                 } else {
-                    html += '<p>사용 가능한 쿠폰이 없습니다.</p>';
+                    html += '<p style="color:black;">사용 가능한 쿠폰이 없습니다.</p>';
                 }
                 $("#couponList").html(html);
             },
@@ -264,11 +264,6 @@
         // $("#discount_coupon").val(discountPrice);
         // $("#discount_coupon").text(discountPrice);
 
-        /*
-        * 쿠폰 정보 빼오는 방법
-        *
-        * $("#chCp").attr('cpSeq'); ==> 하면 li 태그에 저장해둔 쿠폰 시퀀스 가져올 수 있다.
-        * */
     }
 
     function onclickBtnChgAddr() {
