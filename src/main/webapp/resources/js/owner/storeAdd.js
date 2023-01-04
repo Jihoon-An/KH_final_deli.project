@@ -1,4 +1,3 @@
-
 //정규식
 
 
@@ -16,6 +15,7 @@ function wobble(element) {
     });
     element.animate(seq, {duration: 300});
 }
+
 //비어있는지 확인
 //let selectBs = document.querySelectorAll('.bs_open');
 
@@ -23,106 +23,79 @@ function storeSubmitCheck() {
     if ($("#store_name").val() == "") {
 
         $("#store_name").focus();
-    }
-    else if ($("#store_phone").val() == "") {
+    } else if ($("#store_phone").val() == "") {
 
         $("#store_phone").focus();
-    }else if ($("#store_phone").val().length>12 || $("#store_phone").val().length < 9) {
+    } else if ($("#store_phone").val().length > 12 || $("#store_phone").val().length < 9) {
 
         $("#store_phone").focus();
-    }
-    else if ($("#gym_price").val() == "") {
+    } else if ($("#gym_price").val() == "") {
 
         $("#gym_price").focus();
-    }
-    else if ($("#store_intro").val() == "") {
+    } else if ($("#store_intro").val() == "") {
 
         $("#store_intro").focus();
-    }
-    else if ($("#menu_img").val() == "") {
+    } else if ($("#menu_img").val() == "") {
         Swal.fire({title: "사진 필수", icon: "error", text: "사진 등록은 필수입니다"});
-    }
-    else if ($("#store_origin").val() == "") {
+    } else if ($("#store_origin").val() == "") {
 
         $("#store_origin").focus();
     } else if ($("#store_min_price").val() == "") {
 
         $("#store_min_price").focus();
-    }
-    else if ($("#store_deli_tip").val() == "") {
+    } else if ($("#store_deli_tip").val() == "") {
 
         $("#store_deli_tip").focus();
-    }
-    else if ($("#store_add_detail1").val() == "") {
+    } else if ($("#store_add_detail1").val() == "") {
 
         $(".store_add_detail1").focus();
-    }
-    else if ($("#store_add_detail2").val() == "") {
+    } else if ($("#store_add_detail2").val() == "") {
 
         $("#store_add_detail2").focus();
-    }
-    else if ($("#store_destination").val() == "") {
+    } else if ($("#store_destination").val() == "") {
 
         $("#store_destination").focus();
-    }
-    else if ($("select[name=select_bs]").eq(0).val()=="영업일" && $(".bs_open_time").eq(0).val()=="" && $(".bs_close_time").eq(0).val()=="") {
+    } else if ($("select[name=select_bs]").eq(0).val() == "영업일" && ($(".bs_open_time").eq(0).val() == "" || $(".bs_close_time").eq(0).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-    else if ($("select[name=select_bs]").eq(1).val()=="영업일" && $(".bs_open_time").eq(1).val()=="" && $(".bs_close_time").eq(1).val()=="") {
+    } else if ($("select[name=select_bs]").eq(1).val() == "영업일" && ($(".bs_open_time").eq(1).val() == "" || $(".bs_close_time").eq(1).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-    else if ($("select[name=select_bs]").eq(2).val()=="영업일" && $(".bs_open_time").eq(2).val()=="" && $(".bs_close_time").eq(2).val()=="") {
+    } else if ($("select[name=select_bs]").eq(2).val() == "영업일" && ($(".bs_open_time").eq(2).val() == "" || $(".bs_close_time").eq(2).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-    else if ($("select[name=select_bs]").eq(3).val()=="영업일" && $(".bs_open_time").eq(3).val()=="" && $(".bs_close_time").eq(3).val()=="") {
+    } else if ($("select[name=select_bs]").eq(3).val() == "영업일" && ($(".bs_open_time").eq(3).val() == "" || $(".bs_close_time").eq(3).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-    else if ($("select[name=select_bs]").eq(4).val()=="영업일" && $(".bs_open_time").eq(4).val()=="" && $(".bs_close_time").eq(4).val()=="") {
+    } else if ($("select[name=select_bs]").eq(4).val() == "영업일" &&  ($(".bs_open_time").eq(4).val() == "" || $(".bs_close_time").eq(4).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-    else if ($("select[name=select_bs]").eq(5).val()=="영업일" && $(".bs_open_time").eq(5).val()=="" && $(".bs_close_time").eq(5).val()=="") {
+    } else if ($("select[name=select_bs]").eq(5).val() == "영업일" && ($(".bs_open_time").eq(5).val() == "" || $(".bs_close_time").eq(5).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-    else if ($("select[name=select_bs]").eq(6).val()=="영업일" && $(".bs_open_time").eq(6).val()=="" && $(".bs_close_time").eq(6).val()=="") {
+    } else if ($("select[name=select_bs]").eq(6).val() == "영업일" &&  ($(".bs_open_time").eq(6).val() == "" || $(".bs_close_time").eq(6).val() == "")) {
 
         Swal.fire({title: "지정 필수", icon: "error", text: "영업일에 대한 오픈, 마감 시간 지정을 해주세요"});
         return false;
-    }
-
-
-
-    else if($("input[name=store_open]:radio:checked").length<1){
+    } else if ($("input[name=store_open]:radio:checked").length < 1) {
         Swal.fire({title: "체크 필수", icon: "error", text: "오픈 여부를 체크해주세요"});
         return false;
-    }
-    else if($("input[name=store_display]:radio:checked").length<1){
+    } else if ($("input[name=store_display]:radio:checked").length < 1) {
         Swal.fire({title: "체크 필수", icon: "error", text: "공개 여부를 체크해주세요"});
         return false;
-    }
-    else {
+    } else {
         Swal.fire({title: "등록 성공", icon: "success", text: "등록이 완료되었습니다"});
         return true;
     }
     Swal.fire({title: "등록 실패", icon: "error", text: "등록에 실패하였습니다. 관리자에게 문의해주세요"});
     return false;
 }
-
-
-
-
-
 
 
 $(".bs").on("change", function () {
@@ -136,42 +109,75 @@ $(".bs").on("change", function () {
 
 
 $("#add").on("click", function () {
+
+
+    if ($("select[name=select_bs]").eq(0).val() == "휴무일") {
+        $(".bs_open_time").eq(0).val("")
+        $(".bs_close_time").eq(0).val("")
+    }
+    if ($("select[name=select_bs]").eq(1).val() == "휴무일") {
+        $(".bs_open_time").eq(1).val("")
+        $(".bs_close_time").eq(1).val("")
+    }
+    if ($("select[name=select_bs]").eq(2).val() == "휴무일") {
+        $(".bs_open_time").eq(2).val("")
+        $(".bs_close_time").eq(2).val("")
+    }
+    if ($("select[name=select_bs]").eq(3).val() == "휴무일") {
+        $(".bs_open_time").eq(3).val("")
+        $(".bs_close_time").eq(3).val("")
+    }
+    if ($("select[name=select_bs]").eq(4).val() == "휴무일") {
+        $(".bs_open_time").eq(4).val("")
+        $(".bs_close_time").eq(4).val("")
+    }
+
+    if ($("select[name=select_bs]").eq(5).val() == "휴무일") {
+        $(".bs_open_time").eq(5).val("")
+        $(".bs_close_time").eq(5).val("")
+    }
+
+    if ($("select[name=select_bs]").eq(6).val() == "휴무일") {
+        $(".bs_open_time").eq(6).val("")
+        $(".bs_close_time").eq(6).val("")
+    }   //휴무일이면 비우고 담기
+
     let bsns_div = $(".bsns_div");
     var bs_day = {
         "mon": {
-            open: $(bsns_div[0]).find(".bs_open").val(),
-            open_time: $(bsns_div[0]).find(".bs_open_time").val(),
-            close_time: $(bsns_div[0]).find(".bs_close_time").val()
-        },
-        "tue": {
             open: $(bsns_div[1]).find(".bs_open").val(),
             open_time: $(bsns_div[1]).find(".bs_open_time").val(),
             close_time: $(bsns_div[1]).find(".bs_close_time").val()
         },
-        "wed": {
+        "tue": {
             open: $(bsns_div[2]).find(".bs_open").val(),
             open_time: $(bsns_div[2]).find(".bs_open_time").val(),
             close_time: $(bsns_div[2]).find(".bs_close_time").val()
         },
-        "thu": {
+        "wed": {
             open: $(bsns_div[3]).find(".bs_open").val(),
             open_time: $(bsns_div[3]).find(".bs_open_time").val(),
             close_time: $(bsns_div[3]).find(".bs_close_time").val()
         },
-        "fri": {
+        "thu": {
             open: $(bsns_div[4]).find(".bs_open").val(),
             open_time: $(bsns_div[4]).find(".bs_open_time").val(),
             close_time: $(bsns_div[4]).find(".bs_close_time").val()
         },
-        "sat": {
+        "fri": {
             open: $(bsns_div[5]).find(".bs_open").val(),
             open_time: $(bsns_div[5]).find(".bs_open_time").val(),
             close_time: $(bsns_div[5]).find(".bs_close_time").val()
         },
-        "sun": {
+        "sat": {
             open: $(bsns_div[6]).find(".bs_open").val(),
             open_time: $(bsns_div[6]).find(".bs_open_time").val(),
             close_time: $(bsns_div[6]).find(".bs_close_time").val()
+        },
+        "sun": {
+            open: $(bsns_div[7]).find(".bs_open").val(),
+            open_time: $(bsns_div[7]).find(".bs_open_time").val(),
+            close_time: $(bsns_div[7]).find(".bs_close_time").val()
         }
     }
 
@@ -182,9 +188,9 @@ $("#add").on("click", function () {
     console.log(bsns_data); //이렇게 parsing해서 쓰면 돼요.
 
 
-
     $("#frm").attr("action", "/owner/store/add/storeAdd")
     if (storeSubmitCheck()) {
+     
         $("#frm").submit();
     }
 
@@ -269,7 +275,7 @@ $(document).on("click", ".postsearch", function () {
 })
 
 
-$(".close_day").on("keyup", function (){
+$(".close_day").on("keyup", function () {
 
 
     $(".close_day_msg").css("color", "#001a41")
@@ -277,10 +283,55 @@ $(".close_day").on("keyup", function (){
     $(".close_day_msg").html("ex)연중 무휴, 목, 금은 쉽니다")
 })
 
-$("#store_phone").on("keyup", function (){
+$("#store_phone").on("keyup", function () {
 
     $(".phone_msg").css("color", "#001a41")
     $(".phone_msg").css("font-size", "15px")
     $(".phone_msg").html("-를 제외한 9~12글자까지 입력 가능")
 })
 
+
+//시간 일괄 선택
+
+
+$(".bs_open_time").on("change", function () {
+
+    $(".bs_open_timeAll").val("");
+})
+
+$(".bs_close_time").on("change", function () {
+    $(".bs_close_timeAll").val("");
+
+})
+
+$(".bs_openAll").on("change", function () {
+    let bsns_div = $(".bsns_div");
+    let bsns = $(bsns_div[0]).find(".bs_openAll").val()
+    console.log(bsns)
+
+    $(".bs_open").val(bsns)
+    // $(bsns_div[1]).find(".bs_open").val(bsns)
+    if ($('.bs').val() == '영업일') {
+        $(".bs_time").show();
+    } else {
+        $(".bs_open_time").val("");
+        $(".bs_close_time").val("");
+        $(".bs_time").hide();
+    }
+})
+
+$(".bs_open_timeAll").on("change", function () {
+
+
+    let open = $(".bs_open_timeAll").val()
+    $(".bs_open_time").val(open)
+
+})
+
+
+$(".bs_close_timeAll").on("change", function () {
+  
+    let close = $(".bs_close_timeAll").val()
+    $(".bs_close_time").val(close)
+
+})

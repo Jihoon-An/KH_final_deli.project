@@ -172,7 +172,7 @@
 
 
 
-#storeAdd .bs_open_time, #storeAdd .bs_close_time{
+#storeAdd .bs_open_time, #storeAdd .bs_close_time, #storeAdd .bs_open_timeAll, #storeAdd .bs_close_timeAll {
     font-size: 14px;
     width: 103px;
 }
