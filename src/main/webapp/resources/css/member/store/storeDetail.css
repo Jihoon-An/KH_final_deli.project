@@ -174,34 +174,13 @@
     padding: 5px 15px 5px 15px;
     background-color: #FFFFFF;
     font-size: 12px;
-    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
 }
 
 #store_detail .filter_box::-webkit-scrollbar {
-    height: 5px;
-}
-
-#store_detail .filter_box::-webkit-scrollbar-thumb {
-    background-color: #ddd;
-    border-radius: 10px;
-    width: 30% !important;
-    background-color: rgba(232, 76, 79, 0.5);
-}
-
-#store_detail .filter_box::-webkit-scrollbar-track {
-    background-color: #ffffff;
-    border-radius: 10px;
-    /*width: 0.5px;*/
-    /*border-left: 3px solid transparent;*/
-    /*border-right: 3px solid transparent;*/
-    /*background-clip: content-box;*/
-}
-
-#store_detail .filter_box::-webkit-scrollbar {
-    height: 5px;
+    display: none;
 }
 
 #store_detail .filter_box::-webkit-scrollbar-corner {
@@ -214,20 +193,6 @@
 
 #store_detail .filter_box::-webkit-scrollbar-button:end {
     opacity: 0;
-}
-
-#store_detail .filter_box {
-    width: 95%;
-    /*margin: 0 auto;*/
-    /*min-width: 360px;*/
-    /*max-width: 420px;*/
-    height: 40px;
-    /*background: #ffffff;*/
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    /*overflow-x: scroll;*/
-    overflow: hidden;
-    margin-top: 10px;
 }
 
 #store_detail .menu {
