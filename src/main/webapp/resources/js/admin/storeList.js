@@ -82,21 +82,38 @@ $(".closeBtn").on("click",function () {
 
 //삭제
 $("#deleteBtn").on("click",function (){
-    let result= confirm($("#store_name").val()+"을(를) 삭제하시겠습니까?");
-    let store_seq=$("#store_seq").val();
-    console.log(store_seq);
-    if(result){
-        $(".modal").fadeOut();
-        $.ajax({
-            url:"/admin/store/list/deleteStore",
-            data: {
-                "store_seq":store_seq
-            },
-            type: "post"
-        }).done(function (){
-            location.reload();
-        })
-    }
+    Swal.fire({
+        title: $("#store_name").val()+'을(를) 삭제하시겠습니까?',
+        text: "복구할 수 없습니다.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '삭제',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                '식당 삭제!',
+                $("#store_name").val()+'을(를) 삭제하였습니다.',
+                '삭제 성공'
+            )
+            let store_seq=$("#store_seq").val();
+
+            if(result){
+                $(".modal").fadeOut();
+                $.ajax({
+                    url:"/admin/store/list/deleteStore",
+                    data: {
+                        "store_seq":store_seq
+                    },
+                    type: "post"
+                }).done(function (){
+                    location.reload();
+                })
+            }
+        }
+    })
 })
 
 //비공개 공개 기능
