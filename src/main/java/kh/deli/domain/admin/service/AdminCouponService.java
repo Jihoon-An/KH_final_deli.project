@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -31,5 +32,17 @@ public class AdminCouponService {
 
     public void deleteBySeq(int seq) {
         cpMapper.deleteBySeq(seq);
+    }
+
+    public String isEmailExist(String user_email, Integer cp_seq,Integer cp_period) {
+        Integer accSeq = cpMapper.selectByEmail(user_email);
+        if (accSeq!= null) {
+            cpMapper.insertCoupon(cp_seq, accSeq,cp_period);
+            String nickName=cpMapper.selectNickNameBySeq(accSeq);
+            String result=nickName+"님에게 쿠폰 발급이 완료되었습니다.";
+            return result;
+        } else {
+            return "쿠폰 발급 실패";
+        }
     }
 }

@@ -99,7 +99,9 @@
     white-space: nowrap;
     word-break: break-word;
     text-overflow: ellipsis;
-
+}
+#review_mng .rev_content{
+    max-width: 270px;
 }
 
 #review_mng #myTable * {

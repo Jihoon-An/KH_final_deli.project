@@ -32,10 +32,10 @@
         <div class="infoBox">
             <h3 style="margin-top:60px; margin-bottom: 50px; text-align: center;">
                 <c:if test="${total != 0}">
-                    회원님의 오늘 하루 총 매출은 <fmt:formatNumber value="${total}" pattern="#,###"/> 원 입니다😋
+                    회원님의 오늘 하루 총 매출은 <span id="titlefont"><fmt:formatNumber value="${total}" pattern="#,###"/></span> 원 입니다😋
                 </c:if>
                 <c:if test="${total == 0}">
-                    회원님의 오늘 하루 총 매출은 0 원 입니다😑
+                    회원님의 오늘 하루 총 매출은 <span id="titlefont">0</span> 원 입니다😑
                 </c:if>
             </h3>
             <c:if test="${total != 0}">

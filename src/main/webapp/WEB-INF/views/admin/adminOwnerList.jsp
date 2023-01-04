@@ -1,5 +1,3 @@
-
-
 <%--
   Created by IntelliJ IDEA.
   User: 이나경
@@ -62,43 +60,54 @@
     <form action="/admin/deleteReview" id="frm">
         <div class="modal">
             <div class="modal_content">
-                <div class="closeModal">X</div>
-                <div>
-                    사업자 회원번호<input
-                        type="text" placeholder="사업자 회원번호" disabled id="owner_seq" class="owner_seq">
+                <div class="closeBtn"><i class="fa-solid fa-xmark fa-2xl"></i></div>
+                <div class="modalInfo">
+
+                    <span class="modalTitle">사업자회원번호</span>
+                    <input type="text" placeholder="사업자 회원번호" disabled id="owner_seq" class="owner_seq">
+
                 </div>
-                <div>
-                    사업자 번호 <input
-                        type="text" placeholder="사업자 번호" id="ownernum" class="ownernum" disabled>
+                <div class="modalInfo">
+                    <span class="modalTitle">사업자 번호 </span>
+                    <input type="text" placeholder="사업자 번호" id="ownernum" class="ownernum" disabled>
                 </div>
 
-                <div>
-                    회원번호<input
-                        type="text" placeholder="회원번호" disabled id="acc_seq" class="acc_seq">
+                <div class="modalInfo">
+                    <span class="modalTitle">회원번호</span>
+                    <input type="text" placeholder="회원번호" disabled id="acc_seq" class="acc_seq">
                 </div>
-                <div>
-                    사업자 이름<input
-                        type="text" placeholder="사업자 이름" disabled id="name" class="name">
+
+                <div class="modalInfo">
+                    <span class="modalTitle">사업자 이름</span>
+                    <input
+                            type="text" placeholder="사업자 이름" disabled id="name" class="name">
                 </div>
-                <div>
-                    연락처<input
-                        type="text" placeholder="연락처" disabled id="ownerPhone" class="ownerPhone">
+
+                <div class="modalInfo">
+                    <span class="modalTitle">연락처</span>
+                    <input
+                            type="text" placeholder="연락처" disabled id="ownerPhone" class="ownerPhone">
                 </div>
-                <div>
-                    이메일<input
-                        type="text" placeholder="이메일" disabled id="email" class="email">
+
+                <div class="modalInfo">
+                    <span class="modalTitle">이메일</span>
+                    <input `type="text" placeholder="이메일" disabled id="email" class="email">
                 </div>
-                <div>
-                    보유 식당갯수<input
-                        type="text" placeholder="식당갯수" id="scount" class="scount">
+
+                <div class="modalInfo">
+                    <span class="modalTitle">보유 식당 갯수 </span>
+                    <input type="text" placeholder="식당갯수" disabled id="scount" class="scount">
                 </div>
-                <div>
-                    가입일<input
-                        type="text" placeholder="가입일" id="signdate" class="signdate">
+
+                <div class="modalInfo">
+                    <span class="modalTitle">가입일 </span>
+                    <input type="text" placeholder="가입일" disabled id="signdate" class="signdate">
                 </div>
 
 
-                <button type="button" id="deleteOwner" type="button">삭제</button>
+
+
+                <button type="button" id="deleteOwner" type="button" class="deli_btn">삭제</button>
             </div>
         </div>
     </form>

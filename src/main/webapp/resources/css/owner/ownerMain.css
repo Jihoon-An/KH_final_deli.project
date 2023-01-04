@@ -1,9 +1,6 @@
 #ownerMain *{box-sizing: border-box;}
 
-#ownerMain .infoBox{
-}
-
-#graph{
+#ownerMain #graph{
     width: 500px;
     position: relative;
     left: 50%;
@@ -11,20 +8,21 @@
     margin-bottom: 50px;
 }
 
-.deli_btn{
+#ownerMain .deli_btn{
     height:28px;
     position: relative;
     top:-1px;
 }
-#optionCon{
+
+#ownerMain #optionCon{
     margin-bottom: 15px;
 }
 
-#myTable_length,myTable_filter{
+#ownerMain #myTable_length,myTable_filter{
     margin-bottom: 10px;
 }
 
-.memo{
+#ownerMain .memo{
     width: 600px;
     position: relative;
     left: 50%;
@@ -33,15 +31,19 @@
     text-align: center;
 }
 
-#memoSelect{
+#ownerMain #memoSelect{
     margin-bottom: 15px;
 }
-.font{
+#ownerMain .font{
     font-weight: bold;
     font-size: large;
     color:#E84C4F;
 }
 
-.orderCnt{
+#ownerMain .orderCnt{
     text-align: center;
+}
+
+#ownerMain #titlefont{
+    font-weight: bold;
 }
