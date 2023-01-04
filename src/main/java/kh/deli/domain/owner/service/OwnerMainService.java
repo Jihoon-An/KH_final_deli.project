@@ -6,14 +6,11 @@ import kh.deli.domain.owner.dto.OwnerOrderCountDTO;
 import kh.deli.domain.owner.dto.OwnerStoreInfoDTO;
 import kh.deli.domain.owner.mapper.OwnerMainMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.transform.Source;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 @Service
 @AllArgsConstructor
@@ -34,9 +31,8 @@ public class OwnerMainService {
         for(int i=0;i<list.size();i++){
             int store_seq=list.get(i).getStore_seq();
 
-            LocalDate now = LocalDate.now();
 
-            OwnerDailySalesDTO dto= ownerMainMapper.selectSales(store_seq,now);
+            OwnerDailySalesDTO dto= ownerMainMapper.selectSales(store_seq);
             if(dto!=null){
                 dslist.add(dto);
             }
@@ -74,8 +70,7 @@ public class OwnerMainService {
     }
 
     public OwnerOrderCountDTO selectOrderCnt(int storeSeq) throws Exception{
-        LocalDate now = LocalDate.now();
-        OwnerOrderCountDTO result= ownerMainMapper.selectOrderCnt(storeSeq,now) ;
+        OwnerOrderCountDTO result= ownerMainMapper.selectOrderCnt(storeSeq) ;
         return result;
     }
 }
