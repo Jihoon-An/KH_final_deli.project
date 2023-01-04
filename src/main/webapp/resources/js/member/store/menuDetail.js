@@ -34,7 +34,7 @@ function get_total_price() {
     });
 
     totalPrice *= parseInt($("#menu_count").val());
-    $("#total_price").text(totalPrice);
+    $("#total_price").text(totalPrice.toLocaleString());
 }
 
 //장바구니 담기
@@ -129,7 +129,9 @@ $(function () {
 });
 
 
+function creatSpot() {
 
+}
 
 
 
