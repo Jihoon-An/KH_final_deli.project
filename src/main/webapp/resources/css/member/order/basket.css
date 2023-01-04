@@ -28,9 +28,11 @@
 }
 #basket #emptyBasketButton{
     float: right;
-    font-size: 25px;
+    font-size: 20px;
+    padding-top: 6px;
     border: none;
     background-color: unset;
+    color: #e84c4f;
 }
 
 #basket .menuBox{
