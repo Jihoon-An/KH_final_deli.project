@@ -70,13 +70,13 @@
                     <div class="rowBox ">
                         <span>주문여부 : </span>
                         <div class="contents" style="display: inline"><input type="radio" name="menu_sold_out"
-                                                                             value="Y">주문가능
+                                                                             value="Y" checked>주문가능
                             <input type="radio" name="menu_sold_out" value="N">주문불가능
                         </div>
                     </div>
-                    <div class="rowBox">
+                    <div class="rowBox" style="display: none">
                         <span>공개여부 : </span>
-                        <div class="contents" style="display: inline"><input type="radio" name="menu_display" value="Y">공개
+                        <div class="contents" style="display: inline"><input type="radio" name="menu_display" value="Y" checked>공개
                             <input type="radio" name="menu_display" value="N">비공개
                         </div>
                     </div>

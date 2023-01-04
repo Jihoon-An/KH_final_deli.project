@@ -45,8 +45,8 @@
         <div style="border: 1px solid black;margin-bottom: 10px;padding-left: 5px;border-radius: 7px;width: 58%">
             <input type="checkbox" name="order_disposable" value="N">일회용 수저,포크 안주셔도 돼요!<br>
         </div>
-        <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말" style="margin-bottom: 10px;border: 1px solid black;border-radius: 7px;width:100%">
-        <input type="text" name="order_rider_req" value="" placeholder="라이더님한테 전달할 말" style="border-radius: 7px;border: 1px solid black;width:100%">
+        <input type="text" name="order_store_req" value="" placeholder="사장님한테 전달할 말" style="margin-bottom: 10px;border: 1px solid black;border-radius: 7px;width:100%" maxlength="30">
+        <input type="text" name="order_rider_req" value="" placeholder="라이더님한테 전달할 말" style="border-radius: 7px;border: 1px solid black;width:100%" maxlength="30">
         <hr>
         <div>결제수단
             <select id="payment" name="pay_method" onchange="onchangePayment()" style="border-radius: 7px">
@@ -462,13 +462,11 @@
 
         IMP.request_pay(payInfo, function (rsp) {
             if (rsp.success) {
-
                 var msg = '결제가 완료되었습니다.';
                 $("#orderPriceInput").val(parseInt($("#order_price").html()));
                 $("#payPriceInput").val(parseInt($("#pay_price").html()));
                 $("#ownPointInput").val(parseInt($("#ownPoint").html()));
                 $("#insertForm").submit();
-
             } else {
                 var msg = '결제에 실패하였습니다.';
             }

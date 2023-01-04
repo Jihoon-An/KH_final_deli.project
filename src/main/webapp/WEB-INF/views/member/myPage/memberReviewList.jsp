@@ -31,33 +31,96 @@
                     <div class="reviews">
                         <div class="store_name">식당명 > ${reviews.store_name}</div>
 
-                        <div id="review_star" style="position: relative">${reviews.rev_star}
-                            <input type="radio" id="5-stars" class="star" name="rev_star" value="5"
-                                   <c:if test="${reviews.rev_star == '5'}">checked</c:if>>
-                            <label for="5-stars" id="star_5" class="startext pr-4">
-                                <i class="fa-solid fa-star" style="position:relative;"></i>
-                            </label>
-                            <input type="radio" id="4-stars" class="star" name="rev_star" value="4"
-                                   <c:if test="${reviews.rev_star == '4'}">checked</c:if>>
-                            <label for="4-stars" id="star_4" class="startext">
-                                <i class="fa-solid fa-star"style="position:relative;"></i>
-                            </label>
-                            <input type="radio" id="3-stars" class="star" name="rev_star" value="3"
-                                   <c:if test="${reviews.rev_star == '3'}">checked</c:if>>
-                            <label for="3-stars" id="star_3" class="startext">
-                                <i class="fa-solid fa-star"style="position:relative;"></i>
-                            </label>
-                            <input type="radio" id="2-stars" class="star" name="rev_star" value="2"
-                                   <c:if test="${reviews.rev_star == '2'}">checked</c:if>>
-                            <label for="2-stars" id="star_2" class="startext">
-                                <i class="fa-solid fa-star" style="position:relative;"></i>
-                            </label>
-                            <input type="radio" id="1-star" class="star" name="rev_star" value="1"
-                                   <c:if test="${reviews.rev_star == '1'}">checked</c:if>>
+                        <div id="review_star_wrap">
+                        <c:if test="${reviews.rev_star == '1'}">
                             <label for="1-star" id="star_1" class="startext">
-                                <i class="fa-solid fa-star" style="position:relative;"></i>
+                                <i class="fa-solid fa-star" style="position:relative;color:rgba(250, 208, 0, 0.99);"></i>
                             </label>
+                            <label for="1-star" id="star_2" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                            <label for="1-star" id="star_3" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                            <label for="1-star" id="star_4" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                            <label for="1-star" id="star_5" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                        </c:if>
 
+                        <c:if test="${reviews.rev_star == '2'}">
+                            <label for="1-star" id="star_1" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_2" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_3" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                            <label for="1-star" id="star_4" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                            <label for="1-star" id="star_5" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                        </c:if>
+
+                        <c:if test="${reviews.rev_star == '3'}">
+                            <label for="1-star" id="star_1" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_2" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_3" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_4" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                            <label for="1-star" id="star_5" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                        </c:if>
+
+                        <c:if test="${reviews.rev_star == '4'}">
+                            <label for="1-star" id="star_1" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_2" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_3" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_4" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_5" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: #ddd;"></i>
+                            </label>
+                        </c:if>
+
+                        <c:if test="${reviews.rev_star == '5'}">
+                            <label for="1-star" id="star_1" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_2" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_3" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_4" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                            <label for="1-star" id="star_5" class="startext">
+                                <i class="fa-solid fa-star" style="position:relative;color: rgba(250, 208, 0, 0.99);"></i>
+                            </label>
+                        </c:if>
                         </div>
 
                         <div id="write_time">${reviews.rev_writetime}</div>
@@ -68,19 +131,21 @@
                             </c:when>
 
                             <c:otherwise>
-                                <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}">
-                                    <button id="psb_modify_review" name="psb_modify_review" revSeq="${reviews.rev_seq}">수정</button>
-                                </a>
-
-                                <input type="hidden" value="${reviews.rev_seq}">
-                                <input type="hidden" value="${reviews.store_seq}">
-                                <input type="hidden" value="${reviews.order_seq}">
+                                <div id="modify_review_wrap">
+                                    <a href="/myPage/review?rev_seq=${reviews.rev_seq}&order_seq=${reviews.order_seq}&store_seq=${reviews.store_seq}">
+                                        <button id="psb_modify_review" name="psb_modify_review" revSeq="${reviews.rev_seq}">수정</button>
+                                    </a>
+                                </div>
+                                    <input type="hidden" value="${reviews.rev_seq}">
+                                    <input type="hidden" value="${reviews.store_seq}">
+                                    <input type="hidden" value="${reviews.order_seq}">
 
                             </c:otherwise>
                         </c:choose>
-                        <button class="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
-                        <input type="hidden" class="rev_seq" value="${reviews.rev_seq}">
-
+                        <div id="delete_review_wrap">
+                            <button class="delete_review" name="delete_review" revSeq="${reviews.rev_seq}">삭제</button>
+                            <input type="hidden" class="rev_seq" value="${reviews.rev_seq}">
+                        </div>
                         <c:choose>
                             <c:when test="${not empty reviews.rev_sysname}">
                                 <c:forEach var="reviewImg" items="${reviews.rev_sysname}">
@@ -96,28 +161,17 @@
                             <c:when test="${not empty reviews.rev_content}">
                                 <div id="review_content">리뷰 내용 > ${reviews.rev_content}</div>
                             </c:when>
-
                         </c:choose>
 
                         <c:choose>
                             <c:when test="${not empty reviews.menu}">
-                                <div class="menu_name">
-                                    <c:forEach var="i" items="${reviews.menu}">
-                                        ${i.menuDTO.menu_name}
-                                        <c:choose>
-                                            <c:when test="${not empty i.menuOptionDTO}">
-                                                <c:forEach var="k" items="${i.menuOptionDTO}">
-                                                    <div class="option_name"> ${k.option_name} </div>
-                                                </c:forEach>
-                                            </c:when>
-                                        </c:choose>
-                                    </c:forEach>
-                                </div>
+                                    <div id="menu_name_wrap">
+                                        <c:forEach var="i" items="${reviews.menu}">
+                                            <div class="menu_name">${i.menuDTO.menu_name}</div>
+                                        </c:forEach>
+                                    </div>
                             </c:when>
                         </c:choose>
-
-
-
                 </c:forEach>
                 </c:when>
                 <c:otherwise>

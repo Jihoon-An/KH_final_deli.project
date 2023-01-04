@@ -8,12 +8,10 @@
     padding-bottom: 135px;
     overflow: hidden;
 }
-#memberReviewList .reviews{
-    border: 1px solid dodgerblue;
-}
+
 #memberReviewList img{
     width: 100px;
-    height: 100px;
+    height: 150px;
 }
 
 #memberReviewList #page_title{
@@ -40,7 +38,7 @@
 }
 
 #memberReviewList #psb_modify_review{
-    width: 11%;
+    width: 100%;
     height: 25px;
     border-radius: 7px;
     border: none;
@@ -49,10 +47,11 @@
     font-size: 0.8em;
     cursor: pointer;
     margin: 10px;
+    margin-top: -1px;
 }
 
 #memberReviewList .delete_review{
-    width: 11%;
+    width: 100%;
     height: 25px;
     text-align: center;
     border-radius: 7px;
@@ -63,57 +62,53 @@
     cursor: pointer;
     margin: 5px;
 }
-
+#menu_name_wrap{
+    width: fit-content;
+    margin-bottom: 20px;
+}
 #memberReviewList .menu_name{
-    width:30%;
-    height: 20px;
+    width: fit-content;
     border-radius: 15px;
     border: none;
     background-color: gainsboro;
     font-size: 1em;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    padding: 0px 7px;
 }
 
-#memberReviewList .option_name{
-    width: 26%;
-    height: 20px;
-    border-radius: 15px;
-    border: none;
-    background-color: gainsboro;
-    font-size: 1em;
-}
 #memberReviewList #write_time{
     float: left;
 }
 
-#review_star {
+#review_star_wrap{
     width: 130px;
+    float: left;
     display: flex;
-    flex-direction: row-reverse;
     font-size: 1.3em;
     line-height: 10px;
-    justify-content: space-around;
     text-align: center;
+    justify-content: space-around;
+}
+
+#modify_review_wrap{
+    width: 11%;
     float: left;
+    margin-left: 30px;
 }
 
-#review_star input {
-    display: none;
+#delete_review_wrap{
+    width: 11%;
+    float: left;
+    margin-left: 10px;
+    margin-top: -6px;
 }
+#review_content{
+    width: fit-content;
+    margin-top: 10px;
+    margin-bottom: 5px;
 
-#review_star label {
-    -webkit-text-fill-color: #ddd;
 }
-
-#review_star :checked ~ label {
-    -webkit-text-fill-color: rgba(250, 208, 0, 0.99);
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-
-/*#memberReviewList #img_box{*/
-/*    width: 100%;*/
-/*    height: 50%;*/
-/*}*/
-
 
 
 
