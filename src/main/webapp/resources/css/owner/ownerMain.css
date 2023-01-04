@@ -1,5 +1,9 @@
 #ownerMain *{box-sizing: border-box;}
 
+#ownerMain .infoBox{
+    text-align: center;
+}
+
 #ownerMain #graph{
     width: 500px;
     position: relative;
@@ -15,7 +19,7 @@
 }
 
 #ownerMain #optionCon{
-    margin-bottom: 15px;
+    margin: 15px 0px;
 }
 
 #ownerMain #myTable_length,myTable_filter{
@@ -27,6 +31,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 20px;
     margin-bottom: 50px;
     text-align: center;
 }
@@ -46,4 +51,10 @@
 
 #ownerMain #titlefont{
     font-weight: bold;
+}
+
+#ownerMain .expain{
+    font-size: small;
+    color: #7e7e7e;
+
 }

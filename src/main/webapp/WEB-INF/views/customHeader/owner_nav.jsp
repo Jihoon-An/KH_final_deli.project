@@ -12,9 +12,10 @@
   #deli_nav {
     z-index: 3;
     background: #353535;
-    min-height: 900px;
+    /*min-height: 900px;*/
     min-width: 250px;
     padding-top: 35px;
+    height: 100%;
   }
 
   #deli_nav a {

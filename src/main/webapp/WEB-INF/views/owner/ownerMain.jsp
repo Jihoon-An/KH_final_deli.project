@@ -66,10 +66,14 @@
                     </script>
                 </div>
             </c:if>
-            <h4 style="margin-top:30px; margin-bottom: 20px; text-align: center;">
-                어제와 오늘의 주문수 비교하기
+            <h4 style="margin-top:30px; text-align: center;">
+                어제와 오늘의 주문건수 비교하기
             </h4>
+            <span class="expain" style="text-align: center;">
+                어제의 주문건수와 오늘의 주무건수를 비교할 수 있습니다. <br>비교하기는 오늘의 주문이 들어온 식당만 가능합니다.
+            </span>
             <div class="memo">
+                <c:if test="${total != 0}">
                 <select id="memoSelect">
                     <c:forEach var="ds" items="${dslist}">
                         <option class="storeSeqOpt"
@@ -78,6 +82,7 @@
                     </c:forEach>
                 </select>
                 <button id="orderCtnBtn" type="button" class="deli_btn">비교하기</button>
+                </c:if>
                 <div id="memo">
                 </div>
             </div>
@@ -85,7 +90,10 @@
 
         <hr>
         <div>
-            <h4 style="margin: 15px 0px;">매출보기</h4>
+            <h4 style="margin-top: 15px; margin-bottom: 5px;">매출보기</h4>
+            <span class="expain">
+                매일 00시 00분에 하루전 매출을 자동산출합니다. 매출보기는 전날까지의 매출을 볼 수 있습니다.
+            </span>
             <div id="optionCon">
                 <select>
                     <c:choose>
