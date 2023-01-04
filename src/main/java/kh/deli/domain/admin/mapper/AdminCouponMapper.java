@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 @Mapper
@@ -33,7 +32,7 @@ public interface AdminCouponMapper {
     @Select("SELECT ACCOUNT.ACC_SEQ FROM ACCOUNT JOIN MEMBER ON ACCOUNT.ACC_SEQ=MEMBER.ACC_SEQ WHERE ACCOUNT.ACC_EMAIL=#{email}")
     Integer selectByEmail(@Param("email") String user_email);
 
-    @Insert("INSERT INTO MEMBER_COUPON VALUES(MC_SEQ.NEXTVAL,#{cp_seq},#{acc_seq},sysdate,sysdate+30)")
+    @Insert("INSERT INTO MEMBER_COUPON VALUES(MC_SEQ.NEXTVAL, #{cp_seq}, #{acc_seq}, SYSDATE, SYSDATE + #{cp_period, jdbcType=INTEGER})")
     void insertCoupon(@Param("cp_seq") Integer cp_seq,@Param("acc_seq") Integer acc_seq,@Param("cp_period") Integer cp_period);
 
     @Select("SELECT MEM_NICK FROM MEMBER WHERE ACC_SEQ=#{acc_seq}")

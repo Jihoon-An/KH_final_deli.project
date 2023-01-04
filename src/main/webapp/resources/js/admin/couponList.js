@@ -7,13 +7,13 @@ $(document).ready(function () {
 $(".coupon").click(function () {
 
     //선택한 coupon값 가져오기
-    let seq=$(this).find(".seq").val();
-    let name=$(this).find(".name").text();
-    let code=$(this).find(".code").val();
-    let content=$(this).find(".content").val();
-    let type=$(this).find(".type").text();
-    let discount=$(this).find(".discount").text();
-    let period=$(this).find(".period").val();
+    let seq = $(this).find(".seq").val();
+    let name = $(this).find(".name").text();
+    let code = $(this).find(".code").val();
+    let content = $(this).find(".content").val();
+    let type = $(this).find(".type").text();
+    let discount = $(this).find(".discount").text();
+    let period = $(this).find(".period").html();
 
     //위에서 가져온 값 세팅하고 없는 값 html 지우기.
     //seq
@@ -24,7 +24,7 @@ $(".coupon").click(function () {
     if (!code) {
         $("#modal").find("#modal_cp_code").hide();
         $("#modal").find("#title_cp_code").hide();
-    }else {
+    } else {
         $("#modal").find("#modal_cp_code").show().html(code);
         $("#modal").find("#title_cp_code").show();
     }
@@ -32,7 +32,7 @@ $(".coupon").click(function () {
     if (!content) {
         $("#modal").find("#modal_cp_content").hide();
         $("#modal").find("#title_cp_content").hide();
-    }else {
+    } else {
         $("#modal").find("#modal_cp_content").show().html(content);
         $("#modal").find("#title_cp_content").show();
     }
@@ -43,13 +43,9 @@ $(".coupon").click(function () {
     $("#modal").find("#modal_cp_discount").html(discount);
     $("#modal").find("#title_cp_discount");
     //period
-    if (!period) {
-        $("#modal").find("#modal_cp_period").hide();
-        $("#modal").find("#title_cp_period").hide();
-    }else {
-        $("#modal").find("#modal_cp_period").show().val(period);
-        $("#modal").find("#title_cp_period").show();
-    }
+    $("#modal").find("#modal_cp_period").show().html(period);
+    $("#modal").find("#title_cp_period").show();
+
     $("#modal").fadeIn();
 });
 
@@ -66,12 +62,11 @@ $("#close_modal").click(function () {
 
 //발행하기 버튼 (미완성)
 $("#publish_btn").click(() => {
-    let user_email= $("#modal_content").find("#modal_user_email").val();
-    let cp_seq= $("#modal_content").find("#modal_cp_seq").val();
-    let cp_period= $("#modal_content").find("#modal_cp_period").val();
+    let user_email = $("#modal_content").find("#modal_user_email").val();
+    let cp_seq = $("#modal_content").find("#modal_cp_seq").val();
+    const numRegex = /[^0-9]/g;
+    let cp_period = Number($("#modal_content").find("#modal_cp_period").html().replace(numRegex, ""));
 
-    console.log(user_email);
-    console.log(cp_seq);
     Swal.fire({
         title: '쿠폰을 발행하시겠습니까?',
         icon: 'warning',
@@ -86,12 +81,12 @@ $("#publish_btn").click(() => {
                 url: "/admin/coupon/list/publish",
                 type: "post",
                 data: {
-                    "user_email" : user_email,
-                    "cp_seq" : cp_seq,
-                    "cp_period":cp_period
+                    "user_email": user_email,
+                    "cp_seq": cp_seq,
+                    "cp_period": cp_period
                 }
             }).done((resp) => {
-                if (resp == "쿠폰 발급 실패"){
+                if (resp == "쿠폰 발급 실패") {
                     Swal.fire({
                         position: 'center-center',
                         icon: 'warning',
@@ -99,7 +94,7 @@ $("#publish_btn").click(() => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                }else {
+                } else {
                     Swal.fire({
                         position: 'center-center',
                         icon: 'success',
@@ -108,7 +103,7 @@ $("#publish_btn").click(() => {
                         timer: 1500
                     })
                 }
-            }).error();
+            });
         }
     })
 });
