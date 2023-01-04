@@ -56,9 +56,9 @@ public class AlarmService {
         if (type.equals(UserType.ADMIN.getType())) {
             name = "Admin";
         } else if (type.equals(UserType.MEMBER.getType())) {
-            name = memberMapper.getNick(notice.getFrom_acc_seq());
-        } else if (type.equals(UserType.OWNER.getType())) {
             name = ownerMapper.getName(notice.getFrom_acc_seq());
+        } else if (type.equals(UserType.OWNER.getType())) {
+            name = memberMapper.getNick(notice.getFrom_acc_seq());
         }
 
         NoticeResponseDTO response = NoticeResponseDTO.builder()
@@ -76,7 +76,10 @@ public class AlarmService {
 
     public String getSendText(NoticeDTO notice, UserType userType) {
         String text = "";
+
         NoticeResponseDTO responseDto = NoticeResponseDTO.builder()
+                .notice_seq(notice.getNotice_seq())
+                .from_name(ownerMapper.getName(notice.getFrom_acc_seq()))
                 .notice_title(notice.getNotice_title())
                 .notice_content(notice.getNotice_content())
                 .notice_time(notice.getNotice_time())
@@ -111,13 +114,19 @@ public class AlarmService {
         }
     }
 
-    public void insertNoticeOnType(NoticeDTO notice, UserType userType) {
+    public List<Integer> insertNoticeOnType(NoticeDTO notice, UserType userType) {
         List<Integer> seqList = this.getSeqListByType(userType);
+        List<Integer> noticeSeqList = new ArrayList<>();
         for (int seq : seqList) {
-            notice.setNotice_seq(noticeMapper.getNextSeq());
+            Integer newNoticeSeq = noticeMapper.getNextSeq();
+            notice.setNotice_seq(newNoticeSeq);
             notice.setTo_acc_seq(seq);
             noticeMapper.put(notice);
+
+            noticeSeqList.add(newNoticeSeq);
         }
+
+        return noticeSeqList;
     }
 
     public void delete(Integer seq) {

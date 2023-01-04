@@ -6,6 +6,8 @@ import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
 import kh.deli.global.util.RedisUtil;
+import kh.deli.global.util.alarm.AlarmEndpoint;
+import kh.deli.global.util.alarm.NoticeRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ public class AccountController {
     private final MainMemberCouponService mcpService;
     private final HttpSession session;
     private final RedisUtil redisUtil;
+
+    private final AlarmEndpoint alarmEndpoint;
 
 
     /**
@@ -142,6 +146,13 @@ public class AccountController {
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
+        NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
+                .to_acc_seq(accSeq)
+                .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
+                .content("")
+                .build();
+        alarmEndpoint.OnMessage(noticeRequestDTO, session);
+
         return "redirect:/";
     }
 
@@ -153,10 +164,15 @@ public class AccountController {
         session.setAttribute("loginEmail", accountDTO.getAcc_email());
         session.setAttribute("loginType", "kakao");
         session.setAttribute("acc_seq",  accSeq);
-
         mcpService.giveSignUpCp(accSeq);
-
         redisUtil.deleteData(memberDTO.getMem_phone());
+
+        NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
+                .to_acc_seq(accSeq)
+                .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
+                .content("")
+                .build();
+        alarmEndpoint.OnMessage(noticeRequestDTO, session);
 
         return "redirect:/";
     }

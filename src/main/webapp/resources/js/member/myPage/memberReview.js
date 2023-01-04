@@ -8,7 +8,12 @@ $("#revImgBtn").on("change", function (e) {
     let accept = ["png", "jpg", "jpeg", "gif"]; // 업로드 가능한 파일 타입을 배열로 만듦
     let result = $.inArray(ext, accept);// 첫번째 인자값이, 두번째 인자 배열안에 존재한다면 0이상, 존재하지 않는다면 -1을 반환
     if (result == -1) {
-        alert("이미지만 사용 가능합니다.");
+        Swal.fire({
+            icon: 'error',
+            title: '업로드 불가',
+            text: '이미지만 업로드 가능합니다.',
+            confirmButtonText: '확인'
+        });
         $("#revImgBtn").val("");// accept에 없는 파일을 올릴 경우 경고창을 띄우면서 업로드한 파일을 지움
         //미리보기 삭제
     }else {
@@ -155,7 +160,7 @@ $("#writeBtn").on("click", function () {
         Swal.fire({
             icon: 'error',
             title: '이미지 업로드 불가',
-            text: '이미지의 용량이 큼 삭제 요망.',
+            text: '이미지 용량을 초과하였습니다.',
             confirmButtonText: '확인'
         });
         return false;
@@ -174,7 +179,7 @@ $("#writeBtn").on("click", function () {
         Swal.fire({
             icon: 'error',
             title: '별점 미입력',
-            text: '별점 필수.',
+            text: '별점을 입력해주세요.',
             confirmButtonText: '확인'
         });
         return false;

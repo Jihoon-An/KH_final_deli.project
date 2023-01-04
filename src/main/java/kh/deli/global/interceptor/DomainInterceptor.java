@@ -27,17 +27,22 @@ public class DomainInterceptor implements HandlerInterceptor {
 
         switch (userType) {
             case NONE:
-                if (uri.startsWith("/admin/")
-                        || uri.startsWith("/owner/")
-                        || uri.startsWith("/member/")
-                        || uri.startsWith("/order/")
-                        || uri.startsWith("/myPage/")
-                        || uri.startsWith("/store/")
-                        || uri.equals("/admin")
-                        || uri.equals("/owner")
-                        || uri.equals("/order")
-                        || uri.equals("/myPage")
-                        || uri.equals("/store")
+                if (
+                        (uri.startsWith("/admin/")
+                                || uri.startsWith("/owner/")
+                                || uri.startsWith("/member/")
+                                || uri.startsWith("/order/")
+                                || uri.startsWith("/myPage/")
+                                || uri.startsWith("/store/")
+                                || uri.equals("/admin")
+                                || uri.equals("/owner")
+                                || uri.equals("/order")
+                                || uri.equals("/myPage")
+                                || uri.equals("/store")
+                        ) && !(
+                                // 예외
+                                uri.equals("/owner/order/updateStatus")
+                        )
                 ) {
                     response.sendRedirect("/");
                     return false;

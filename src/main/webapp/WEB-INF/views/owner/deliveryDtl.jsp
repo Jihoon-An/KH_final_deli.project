@@ -24,7 +24,7 @@
             <div>배달예상시간 : ${storeInfoDTO.store_deli_time}분</div>
             <div>연락처 :
                 <fmt:formatNumber var="phoneNo" value="${ordererInfoDTO.order_phone}" pattern="##,####,####"/>
-                0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                0<c:out value="${fn:replace(phoneNo, ',', '-')}"/></div>
             <div>주소 : ${ordererInfoDTO.address_add_detail1} ${ordererInfoDTO.orders_add_detail2}</div>
             <div>라이더님에게 전달하는 말 : ${ordererInfoDTO.order_rider_req}</div>
             <hr>
@@ -74,7 +74,7 @@
             <h2 class="info">식당정보</h2>
             <div>식당명 : ${storeInfoDTO.store_name}</div>
             <div>연락처 : <fmt:formatNumber var="phoneNo" value="${storeInfoDTO.store_phone}" pattern="##,####,####"/>
-                0<c:out value="${fn:replace(phoneNo, ',', '-')}" /></div>
+                0<c:out value="${fn:replace(phoneNo, ',', '-')}"/></div>
             <div>주소 : ${storeInfoDTO.store_add_detail1} ${storeInfoDTO.store_add_detail2}</div>
 
             <div style="text-align: center">
@@ -86,7 +86,7 @@
 
 <script>
     let urlKey = "";
-    window.onload = function (){
+    window.onload = function () {
         let url = window.location.pathname;
         urlKey = url.split('/')[2];
         console.log(urlKey)
@@ -110,33 +110,28 @@
                 let newStatus = '배달완료';
                 let checkedSeqList = new Array();
                 checkedSeqList.push(parseInt(${storeInfoDTO.order_seq}));
+                console.log(checkedSeqList);
                 //DB변경 요청
                 $.ajax({
                     url: "/owner/order/updateStatus",
                     type: "post",
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify({
-                        checkedSeqListJson: JSON.stringify(checkedSeqList),
-                        newStatus: newStatus
+                        'checkedSeqListJson': JSON.stringify(checkedSeqList),
+                        'newStatus': newStatus
                     })
-                }).done(
-                    // Swal.fire({
-                    //     title: `배달완료 처리가 되었습니다.`
-                    // })
+                }).done(function () {
+                    $.ajax({
+                        url: "/deliveryDtl/confirm",
+                        type: "post",
+                        data: {'redisKey': urlKey}
+                    });
                     Swal.fire('배달완료 처리가 되었습니다.', '', 'success').then((result) => {
                         if (result.isConfirmed) {
-                            $.ajax({
-                                url: "/deliveryDtl/confirm",
-                                type: "post",
-                                data: {'redisKey':urlKey}
-                            }).done(function(resp){
-                                console.log(resp);
-                                location.href = resp;
-                            });
+                            location.reload()
                         }
-                    })
-                );
-
+                    });
+                });
             }
         })
     });

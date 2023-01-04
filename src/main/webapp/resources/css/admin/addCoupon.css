@@ -1,0 +1,11 @@
+.container-fluid{
+    width: 500px !important;
+}
+
+main{
+    padding-top: 30px !important;
+}
+
+#cp_add_frm{
+    padding-top: 50px;
+}

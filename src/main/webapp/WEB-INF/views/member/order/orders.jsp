@@ -462,13 +462,11 @@
 
         IMP.request_pay(payInfo, function (rsp) {
             if (rsp.success) {
-
                 var msg = '결제가 완료되었습니다.';
                 $("#orderPriceInput").val(parseInt($("#order_price").html()));
                 $("#payPriceInput").val(parseInt($("#pay_price").html()));
                 $("#ownPointInput").val(parseInt($("#ownPoint").html()));
                 $("#insertForm").submit();
-
             } else {
                 var msg = '결제에 실패하였습니다.';
             }
