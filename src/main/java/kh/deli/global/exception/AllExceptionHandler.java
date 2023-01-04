@@ -29,6 +29,6 @@ public class AllExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String allExceptionHandler(Exception e) {
         e.printStackTrace();
-        return "error";
+        return "main/home";
     }
 }

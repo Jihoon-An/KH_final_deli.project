@@ -5,8 +5,10 @@ import kh.deli.domain.main.service.MainMemberCouponService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
+import kh.deli.global.entity.NoticeDTO;
 import kh.deli.global.util.RedisUtil;
 import kh.deli.global.util.alarm.AlarmEndpoint;
+import kh.deli.global.util.alarm.AlarmService;
 import kh.deli.global.util.alarm.NoticeRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +32,7 @@ public class AccountController {
     private final HttpSession session;
     private final RedisUtil redisUtil;
 
-    private final AlarmEndpoint alarmEndpoint;
+    private final AlarmService alarmService;
 
 
     /**
@@ -146,12 +148,13 @@ public class AccountController {
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
-        NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
+        NoticeDTO noticeDTO = NoticeDTO.builder()
                 .to_acc_seq(accSeq)
-                .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
-                .content("")
+                .notice_title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
+                .notice_content("")
+                .from_acc_seq(3)
                 .build();
-        alarmEndpoint.OnMessage(noticeRequestDTO, session);
+        alarmService.saveNotice(noticeDTO);
 
         return "redirect:/";
     }
@@ -167,12 +170,13 @@ public class AccountController {
         mcpService.giveSignUpCp(accSeq);
         redisUtil.deleteData(memberDTO.getMem_phone());
 
-        NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
+        NoticeDTO noticeDTO = NoticeDTO.builder()
                 .to_acc_seq(accSeq)
-                .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
-                .content("")
+                .notice_title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
+                .notice_content("")
+                .from_acc_seq(3)
                 .build();
-        alarmEndpoint.OnMessage(noticeRequestDTO, session);
+        alarmService.saveNotice(noticeDTO);
 
         return "redirect:/";
     }
