@@ -10,15 +10,10 @@ import kh.deli.domain.member.order.dto.OrderDetailDTO;
 import kh.deli.domain.member.order.service.OrderBasketService;
 import kh.deli.global.entity.MenuDTO;
 import kh.deli.global.entity.MenuOptionDTO;
-import kh.deli.global.entity.OrdersDTO;
 import lombok.AllArgsConstructor;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Type;
@@ -55,23 +50,6 @@ public class MypageReviewListController {
         List<MypageReviewDTO> myPageReviewList = new ArrayList<>();
 
         List<Map<String, Object>> reviewList = myPageReviewService.getReviews(param);
-//나경
-        //OrdersDTO orders_dto = myPageReviewService.selectByOrderSeq(18);
-
-        //JSONParser jsonParser = new JSONParser();
-        //JSONArray jsonArr = (JSONArray) jsonParser.parse(orders_dto.getMenu_list()); //파싱한 다음 jsonobject로 변환
-
-//        List<String> menuNameList = new ArrayList<>();
-//
-//        if (jsonArr.size() > 0) {
-//
-//            for (Integer i = 0; i < jsonArr.size(); i++) {
-//                JSONObject jsonObj = (JSONObject) jsonArr.get(i);
-//                String menuSeq = jsonObj.get("menuSeq").toString();
-//                String menuName = myPageReviewService.selectMenuName(menuSeq);
-//                menuNameList.add(menuName);
-//            }
-//        }
 
 
         for (int i = 0; i < reviewList.size(); i++) {
