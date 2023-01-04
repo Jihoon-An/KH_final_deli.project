@@ -59,8 +59,8 @@ $(document).ready(function () {
 
 
     // WS 연결 테스트
-    var alarmWS = new WebSocket("ws://localhost/alarmWS");
-    // var alarmWS = new WebSocket("ws://mydeli.me/alarmWS");
+    // var alarmWS = new WebSocket("ws://localhost/alarmWS");
+    var alarmWS = new WebSocket("ws://mydeli.me/alarmWS");
     alarmWS.onopen = (ev) => {
         console.info("Server와 연결되었습니다.");
     };
