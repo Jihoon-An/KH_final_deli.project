@@ -61,7 +61,7 @@
                 <br><br>
                 <br><br>
                 <div id="kakaoBox">
-                    <a class="link" href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">
+                    <a class="link" href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://mydeli.me/account/oauth/kakao&response_type=code">
                         <img src="/resources/img/kakao_login.png" id="kakao_login_img">
                     </a>
                 </div>
