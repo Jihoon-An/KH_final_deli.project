@@ -64,13 +64,13 @@
             <url disable="true">/basket</url>
         </url-rule>
         <url-rule>
-            <url disable="true">/basket</url>
-        </url-rule>
-        <url-rule>
-            <url disable="true">/menu/**</url>
+            <url disable="true">/menu/detail/put</url>
         </url-rule>
         <url-rule>
             <url disable="true">/menu/detail/toBasket</url>
+        </url-rule>
+        <url-rule>
+            <url disable="true">/owner/store/add/storeAdd</url>
         </url-rule>
         <url-rule>
             <url disable="true">/admin/**</url>

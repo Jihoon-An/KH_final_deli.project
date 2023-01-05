@@ -28,7 +28,8 @@ public class WebConfig implements WebMvcConfigurer {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new XssEscapeServletFilter());
         registrationBean.setOrder(Ordered.LOWEST_PRECEDENCE);
-        registrationBean.addUrlPatterns("/store/review/**","/main/kakaoSignUp","/main/memberSignUp","/myPage/**");
+        registrationBean.addUrlPatterns("/**","*.jsp");
+//        registrationBean.addUrlPatterns("/store/review/**","/main/kakaoSignUp","/main/memberSignUp","/myPage/**");
         return registrationBean;
     }
 
