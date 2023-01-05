@@ -25,6 +25,6 @@ public interface AlarmNoticeMapper {
     @Delete("DELETE FROM NOTICE WHERE NOTICE_SEQ = #{seq}")
     void delete(@Param("seq") Integer seq);
 
-    @Select("SELECT * FROM NOTICE WHERE TO_ACC_SEQ = #{toAccSeq} ORDER BY 1 DESC")
+    @Select("SELECT * FROM NOTICE WHERE TO_ACC_SEQ = #{toAccSeq} ORDER BY 1")
     List<NoticeDTO> findByToSeq(@Param("toAccSeq") int toAccSeq);
 }
