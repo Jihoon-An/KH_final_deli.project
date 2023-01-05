@@ -23,24 +23,24 @@ public class WebConfig implements WebMvcConfigurer {
     private final ObjectMapper objectMapper;
 
     //Lucy Xss filter 적용
-    @Bean
-    public FilterRegistrationBean xssFilterBean(){
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new XssEscapeServletFilter());
-        registrationBean.setOrder(Ordered.LOWEST_PRECEDENCE);
-        registrationBean.addUrlPatterns("/test");
-//        registrationBean.addUrlPatterns("/**","*.jsp");
-//        registrationBean.addUrlPatterns("/stores/review/**","/main/kakaoSignUp","/main/memberSignUp","/myPage/**");
-        return registrationBean;
-    }
-
-    //requestBody xss 필터 적용(json/api)
-    @Bean
-    public MappingJackson2HttpMessageConverter jsonEscapeConverter() {
-        ObjectMapper copy = objectMapper.copy();
-        copy.getFactory().setCharacterEscapes(new HtmlCharacterEscapes());
-        return new MappingJackson2HttpMessageConverter(copy);
-    }
+//    @Bean
+//    public FilterRegistrationBean xssFilterBean(){
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//        registrationBean.setFilter(new XssEscapeServletFilter());
+//        registrationBean.setOrder(Ordered.LOWEST_PRECEDENCE);
+//        registrationBean.addUrlPatterns("/test");
+////        registrationBean.addUrlPatterns("/**","*.jsp");
+////        registrationBean.addUrlPatterns("/stores/review/**","/main/kakaoSignUp","/main/memberSignUp","/myPage/**");
+//        return registrationBean;
+//    }
+//
+//    //requestBody xss 필터 적용(json/api)ss
+//    @Bean
+//    public MappingJackson2HttpMessageConverter jsonEscapeConverter() {
+//        ObjectMapper copy = objectMapper.copy();
+//        copy.getFactory().setCharacterEscapes(new HtmlCharacterEscapes());
+//        return new MappingJackson2HttpMessageConverter(copy);
+//    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

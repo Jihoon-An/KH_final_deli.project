@@ -9,25 +9,25 @@
         <session-timeout>60</session-timeout>
     </session-config>
 
-    <!-- 멀티파트 필터링을 위한 설정 -->
-    <filter>
-        <filter-name>multipartFilter</filter-name>
-        <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>multipartFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+<!--    &lt;!&ndash; 멀티파트 필터링을 위한 설정 &ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>multipartFilter</filter-name>-->
+<!--        <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>multipartFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
 
-    <!-- lucy 설정 -->
-    <filter>
-        <filter-name>xssEscapeServletFilter</filter-name>
-        <filter-class>com.navercorp.lucy.security.xss.servletfilter.XssEscapeServletFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>xssEscapeServletFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <url-pattern>*.do</url-pattern>
-    </filter-mapping>
+<!--    &lt;!&ndash; lucy 설정 &ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>xssEscapeServletFilter</filter-name>-->
+<!--        <filter-class>com.navercorp.lucy.security.xss.servletfilter.XssEscapeServletFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>xssEscapeServletFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--        <url-pattern>*.do</url-pattern>-->
+<!--    </filter-mapping>-->
 
 </web-app>
