@@ -29,6 +29,7 @@ public class AllExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String allExceptionHandler(Exception e) {
         e.printStackTrace();
-        return "main/home";
+        return "errorPage/permissionException";
+//        return "error";
     }
 }

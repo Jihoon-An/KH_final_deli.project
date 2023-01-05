@@ -1,9 +1,9 @@
+<%@ page import="org.springframework.beans.factory.annotation.Value" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-
     <title>딜리 - Deli</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
@@ -61,7 +61,9 @@
                 <br><br>
                 <br><br>
                 <div id="kakaoBox">
-                    <a class="link" href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://mydeli.me/account/oauth/kakao&response_type=code">
+<%--                    <a class="link" href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://localhost/account/oauth/kakao&response_type=code">--%>
+                        <a class="link" href="https://kauth.kakao.com/oauth/authorize?client_id=1475b617eab69841d5cabd68f1527015&redirect_uri=http://mydeli.me/account/oauth/kakao&response_type=code">
+
                         <img src="/resources/img/kakao_login.png" id="kakao_login_img">
                     </a>
                 </div>
