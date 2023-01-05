@@ -87,20 +87,24 @@ public class AccountController {
     public String withdrawal() throws Exception {
         int accSeq = (Integer) session.getAttribute("acc_seq");
         String loginType = (String)session.getAttribute("loginType");
-        switch (loginType) {
-            case "normal" :
-                mainAccountService.withdrawal(accSeq);
-                session.invalidate();
-                break;
-            case "kakao" :
-                String accessToken = (String)session.getAttribute("kakaoAccessToken");
-                mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
-                mainAccountService.withdrawal(accSeq);
-                session.invalidate();
-                break;
+
+        // 시연 테스트용 계정 회원탈퇴 방지
+        if (accSeq != 3 && accSeq != 7 && accSeq != 8) {
+
+            switch (loginType) {
+                case "normal":
+                    mainAccountService.withdrawal(accSeq);
+                    session.invalidate();
+                    break;
+                case "kakao":
+                    String accessToken = (String) session.getAttribute("kakaoAccessToken");
+                    mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
+                    mainAccountService.withdrawal(accSeq);
+                    session.invalidate();
+                    break;
+            }
         }
         return "redirect:/";
-
     }
 
     @RequestMapping("kakaoUnLink")
