@@ -69,7 +69,7 @@ public class OwnerOrdersService {
 
             for (Integer accSeq : accSeqList) {
                 NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
-                        .to_acc_seq(accSeq)
+                        .toAccSeq(accSeq)
                         .title("주문하신 상품상태 변경: " + newStatus)
                         .content("")
                         .build();

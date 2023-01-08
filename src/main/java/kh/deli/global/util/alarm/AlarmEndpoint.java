@@ -57,13 +57,13 @@ public class AlarmEndpoint {
         Set<Session> clientsCopy = new HashSet<>(clients);
 
         Optional<String> requestUserType = Optional.ofNullable(
-                noticeRequestDto.getUser_type());
-        noticeRequestDto.setUser_type(requestUserType.orElse(""));
+                noticeRequestDto.getUserType());
+        noticeRequestDto.setUserType(requestUserType.orElse(""));
 
         Timestamp now = new Timestamp(System.currentTimeMillis());
 
         NoticeDTO notice = NoticeDTO.builder()
-                .to_acc_seq(noticeRequestDto.getTo_acc_seq())
+                .to_acc_seq(noticeRequestDto.getToAccSeq())
                 .from_acc_seq((Integer) fromSession.getAttribute("acc_seq"))
                 .notice_title(noticeRequestDto.getTitle())
                 .notice_content(noticeRequestDto.getContent())
@@ -71,7 +71,7 @@ public class AlarmEndpoint {
                 .build();
 
         try {
-            switch (noticeRequestDto.getUser_type()) {
+            switch (noticeRequestDto.getUserType()) {
                 case "client": {
                     // DB 저장
                     alarmService.insertNoticeOnType(notice, UserType.MEMBER);

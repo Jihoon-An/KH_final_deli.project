@@ -40,7 +40,9 @@ public class AccountController {
      */
     @ResponseBody
     @PostMapping("login")
-    public Boolean login(String email, String pw, String emailSave, HttpServletResponse response) throws Exception {
+    public Boolean login(String email, String pw, String emailSave, HttpServletResponse response)
+            throws Exception
+    {
         // 로그인 서비스 요청
         int result = mainAccountService.login(email, pw);
 
@@ -147,7 +149,7 @@ public class AccountController {
         redisUtil.deleteData(memberDTO.getMem_phone());
 
         NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
-                .to_acc_seq(accSeq)
+                .toAccSeq(accSeq)
                 .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
                 .content("")
                 .build();
@@ -168,7 +170,7 @@ public class AccountController {
         redisUtil.deleteData(memberDTO.getMem_phone());
 
         NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
-                .to_acc_seq(accSeq)
+                .toAccSeq(accSeq)
                 .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
                 .content("")
                 .build();
