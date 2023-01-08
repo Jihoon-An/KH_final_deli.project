@@ -40,7 +40,7 @@
             <div class="nameBox">
                 <span>이름</span><br>
                 <input type="text" id="nameInput" class="form-control" name="owner_name"
-                       placeholder="이름" value="${ownerInfo.owner_name}">
+                       placeholder="이름" value="${ownerInfo.owner_name}" maxlength="6">
             </div>
 
             <div class="phoneBox">

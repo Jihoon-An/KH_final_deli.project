@@ -96,7 +96,7 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div>화 : ${bsnsHours.get('tue').get('open')})</div>
+                                <div>화 : ${bsnsHours.get('tue').get('open')}</div>
                             </c:otherwise>
                         </c:choose>
 

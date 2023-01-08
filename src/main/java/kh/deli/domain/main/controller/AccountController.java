@@ -5,8 +5,10 @@ import kh.deli.domain.main.service.MainMemberCouponService;
 import kh.deli.global.entity.AccountDTO;
 import kh.deli.global.entity.AddressDTO;
 import kh.deli.global.entity.MemberDTO;
+import kh.deli.global.entity.NoticeDTO;
 import kh.deli.global.util.RedisUtil;
 import kh.deli.global.util.alarm.AlarmEndpoint;
+import kh.deli.global.util.alarm.AlarmService;
 import kh.deli.global.util.alarm.NoticeRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Slf4j
@@ -30,7 +33,7 @@ public class AccountController {
     private final HttpSession session;
     private final RedisUtil redisUtil;
 
-    private final AlarmEndpoint alarmEndpoint;
+    private final AlarmService alarmService;
 
 
     /**
@@ -80,33 +83,35 @@ public class AccountController {
                 session.invalidate();
                 break;
             case "kakao" :
-                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
+//                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
+                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://mydeli.me/account/oauth/kakaoLogout";
+
                 }
         return "redirect:/";
     }
 
     @PostMapping("withdrawal")
     public String withdrawal() throws Exception {
-        System.out.println("aaaaaaaa");
         int accSeq = (Integer) session.getAttribute("acc_seq");
         String loginType = (String)session.getAttribute("loginType");
-        System.out.println(accSeq);
-        System.out.println(loginType);
-        switch (loginType) {
-            case "normal" :
-                mainAccountService.withdrawal(accSeq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
-                session.invalidate();
-                break;
-            case "kakao" :
-                String accessToken = (String)session.getAttribute("kakaoAccessToken");
-                mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
-                mainAccountService.withdrawal(accSeq); // ADDRESS > MEMBER > ACCOUNT 순 데이터 삭제
-                session.invalidate();
-                break;
-//                return "redirect:https://kauth.kakao.com/oauth/logout?client_id=1475b617eab69841d5cabd68f1527015&logout_redirect_uri=http://localhost/account/oauth/kakaoLogout";
+
+        // 시연 테스트용 계정 회원탈퇴 방지
+        if (accSeq != 3 && accSeq != 7 && accSeq != 8) {
+
+            switch (loginType) {
+                case "normal":
+                    mainAccountService.withdrawal(accSeq);
+                    session.invalidate();
+                    break;
+                case "kakao":
+                    String accessToken = (String) session.getAttribute("kakaoAccessToken");
+                    mainAccountService.kakaoUnlink(accessToken); // 카카오 연결해제
+                    mainAccountService.withdrawal(accSeq);
+                    session.invalidate();
+                    break;
+            }
         }
         return "redirect:/";
-
     }
 
     @RequestMapping("kakaoUnLink")
@@ -148,12 +153,15 @@ public class AccountController {
 
         redisUtil.deleteData(memberDTO.getMem_phone());
 
-        NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
-                .toAccSeq(accSeq)
-                .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
-                .content("")
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        NoticeDTO noticeDTO = NoticeDTO.builder()
+                .to_acc_seq(accSeq)
+                .notice_title(memberDTO.getMem_nick() + "님 회원가입을 축하드립니다.")
+                .notice_content("")
+                .from_acc_seq(3)
+                .notice_time(now)
                 .build();
-        alarmEndpoint.OnMessage(noticeRequestDTO, session);
+        alarmService.saveNotice(noticeDTO);
 
         return "redirect:/";
     }
@@ -169,12 +177,15 @@ public class AccountController {
         mcpService.giveSignUpCp(accSeq);
         redisUtil.deleteData(memberDTO.getMem_phone());
 
-        NoticeRequestDTO noticeRequestDTO = NoticeRequestDTO.builder()
-                .toAccSeq(accSeq)
-                .title(memberDTO.getMem_name() + "님 회원가입을 축하드립니다.")
-                .content("")
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        NoticeDTO noticeDTO = NoticeDTO.builder()
+                .to_acc_seq(accSeq)
+                .notice_title(memberDTO.getMem_nick() + "님 회원가입을 축하드립니다.")
+                .notice_content("")
+                .from_acc_seq(3)
+                .notice_time(now)
                 .build();
-        alarmEndpoint.OnMessage(noticeRequestDTO, session);
+        alarmService.saveNotice(noticeDTO);
 
         return "redirect:/";
     }

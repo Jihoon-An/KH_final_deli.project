@@ -68,7 +68,7 @@ public class MainAccountService {
     }
 
     /**
-     * <h2>회원탈퇴 (Address -> Member -> Account)</h2>
+     * <h2>회원탈퇴</h2>
      */
     @Transactional
     public void withdrawal(int accSeq) throws Exception {
@@ -198,7 +198,6 @@ public class MainAccountService {
         while ((line = br.readLine()) != null) {
             result += line;
         }
-        System.out.println("개좆같은새끼야 : " + result);
     }
 
     /**
@@ -258,15 +257,12 @@ public class MainAccountService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-//            System.out.println("response body : " + result);
 
             //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-//            System.out.println("access_token : " + access_Token);
-//            System.out.println("refresh_token : " + refresh_Token);
             br.close();
             bw.close();
         } catch (IOException e) {
@@ -306,7 +302,6 @@ public class MainAccountService {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(response.getBody());
             id = element.getAsJsonObject().get("id").getAsString();
-            // System.out.println("아이디 : " + id);
 
         } catch (HttpStatusCodeException e) {
             // System.out.println("error :" + e);

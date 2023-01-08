@@ -134,24 +134,27 @@
                     </div>
                 </div>
 
-                <button type="button" id="saveButton" class="deli_btn"
-                        style="
-                        width: 100%;
-                        height: 35px;
-                        font-size: 15px;
-                        margin-top: 35px;">
+                <button type="button" id="saveButton">
                     저장
                 </button>
 
             </form>
 
             <div class="buttonBox">
-                <a href="/account/logout">
-                    <button type="button">로그아웃</button>
-                </a>
-                <br><br>
+<%--                <a href="/account/logout">--%>
+<%--                    <button type="button">로그아웃</button>--%>
+<%--                </a>--%>
+<%--                <br><br>--%>
                 <form action="/account/withdrawal" id="withdrawalForm" method="post">
-                    <button type="button" id="withdrawalButton">회원탈퇴</button>
+                    <button type="button" id="withdrawalButton" class="deli_btn" style="
+                        width: 335px;
+                        height: 35px;
+                        font-size: 15px;
+                        margin-top: 35px;
+                        color: #e84c4f;
+                        font-weight: bold;">
+                        회원탈퇴
+                    </button>
                 </form>
             </div>
 

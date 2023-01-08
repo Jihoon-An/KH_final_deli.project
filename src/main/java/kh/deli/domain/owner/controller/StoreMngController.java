@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.lang.reflect.Type;
@@ -29,17 +28,14 @@ public class StoreMngController {
     Gson gson = new Gson();
     @RequestMapping("")
     public String toStoreMng(Model model, Integer store_seq) throws Exception {
-//        int store_seq = 33;
         StoreDTO store = storeStoreService.getStoreInfo(store_seq); // 식당정보
 
         //식당 영업시간
         Map<String, Object> storeBsnsHours = new HashMap<>();
         String bsnsHours = String.valueOf(store.getStore_bsns_hours());
-//        System.out.println("bsnsHours : "+bsnsHours);
 
         Type type = new TypeToken<Map<String,Map<String,Object>>>() {}.getType();
         Map<String,Map<String,Object>> parsingStr = gson.fromJson(bsnsHours, type);
-//        System.out.println("파싱 : "+parsingStr);
 
         model.addAttribute("store", store);
         model.addAttribute("parsingStr", parsingStr);
