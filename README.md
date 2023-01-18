@@ -20,7 +20,7 @@
 - 개발인원: 7명
 ### 프로젝트에 시도하고 싶었던 것
   - 프레임워크, 라이브러리 - **Java mail sender**, **Web-socket**, **Spring boot**, JPA(실패)
-  - 그 외 - **도메인 형 패키지 구조**, TDD(실패), proxy패턴(실패)
+  - 그 외 - **도메인 형 패키지 구조**, **컨벤션 만들고 **, TDD(실패), proxy패턴(실패)
   - 실패원인 - 시간부족
 ### 개발환경
 - **Back-End -** JDK11, Spring Boot 2.7.6, Spring Batch, MyBatis, OracleDB(ojdbc v8), Redis
