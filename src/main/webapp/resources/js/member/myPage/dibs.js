@@ -5,7 +5,6 @@ $(".heart").on("click",function (){
 
     let storeSeq=$(this).children().val();
     let heartIcon=$(this).find(".heartIcon");
-    console.log("식당시퀀스 : "+storeSeq);
 
     $.ajax({
         url:"/myPage/dibs/like",

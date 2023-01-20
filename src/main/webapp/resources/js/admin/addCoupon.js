@@ -10,7 +10,6 @@ $("#cp_code").on("change", function () {
     } else {
         codeOk = false;
     }
-    console.log(codeOk);
 });
 
 $("#cp_code_confirm_btn").click(function () {

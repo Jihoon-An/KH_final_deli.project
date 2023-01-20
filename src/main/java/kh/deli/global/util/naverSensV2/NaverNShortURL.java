@@ -48,7 +48,6 @@ public class NaverNShortURL {
             return shortenURL;
 
         } catch (Exception e) {
-            System.out.println(e);
         }
 
         return "";

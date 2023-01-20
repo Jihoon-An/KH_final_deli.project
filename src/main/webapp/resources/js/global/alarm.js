@@ -68,7 +68,6 @@ $(document).ready(function () {
     // WebSocket 에서 오는 데이터 확인하기
     alarmWS.onmessage = (ev) => {
         let data = JSON.parse(ev.data);
-        console.log(data);
         interval = setInterval(function () {
             $("#new_alarm_icon").toggle();
         }, 500);
@@ -186,7 +185,6 @@ function alarmInit() {
         dataType: 'json',
         success: function (list) {
             list.forEach((data) => {
-                console.log(data);
                 createAlarmBox(data);
             });
         }

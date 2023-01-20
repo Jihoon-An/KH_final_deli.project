@@ -49,46 +49,8 @@ $("#modifyStoreBtn").on("click", function () {
     }
 
     $("#bsns_data").val(JSON.stringify(bs_day));
-    console.log(bs_day);
-    console.log($("#bsns_data").val());
     let bsns_data = JSON.parse($("#bsns_data").val());
-    console.log(bsns_data); //이렇게 parsing해서 쓰면 돼요.
-    // var bsns_arr = [];
-    //
-    // let b = document.getElementsByClassName("bsns")
-    // let bs = document.getElementById("bsnsdata")
-    //
-    //
-    // for (let i = 0; i < b.length; i++) {
-    //
-    //     bsns_arr.push(b[i].value);
-    //
-    // }
-    //
-    // console.log(bsns_arr.toString())
-    //
-    // bs.value = bsns_arr.toString()
-    //
-    // console.log(bs.value)
 
-    // let size=0;
-    // const maxSize=1024 * 1024 * 10;
-    //
-    // for(i=0;i<fileArr.length;i++){
-    //     size+=fileArr[i].size;
-    // }
-    //
-    // console.log("이미지 사이즈  : "+size);
-    // //이미지 크기
-    // if(size>maxSize){
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: '이미지 업로드 불가',
-    //         text: '이미지의 용량이 큼 삭제 요망.',
-    //         confirmButtonText: '확인'
-    //     });
-    //     return false;
-    // }
 
     $("#frm").attr("action", "/owner/store/mng/modify")
     $("#frm").submit()
@@ -155,8 +117,6 @@ $(document).on("click", ".postsearch", function () {
                 if (status === kakao.maps.services.Status.OK) {
                     let x = result[0].x;
                     let y = result[0].y;
-                    console.log(x)
-                    console.log(y)
                     document.getElementById("store_add_y").value = x;
                     document.getElementById("store_add_x").value = y;
                 }
@@ -213,7 +173,6 @@ function setStar(star) {//number star
 
 $(function(){
     let arr=$("select[name=select_bs]");
-    console.log(arr);
     for (let i = 0; arr.length > i; i++) {
         if ($(arr[i]).val() == '휴무일') {
             $(".bs_time").eq(i).hide();

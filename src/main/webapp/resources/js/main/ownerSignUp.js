@@ -95,7 +95,6 @@ $("#email_btn").on("click", function () {
             //         message: "<h1>" + confirmText + "</h1>"
             //     }
             // });
-            console.log(confirmText);
             $("#email_confirm_table").css("display", "block");
 
             countStopper = true;
@@ -172,8 +171,6 @@ $("#phone_btn").on("click", function () {
     }
     $("#owner_phone").val(phoneNum);
     phoneConfirmText = randomString();
-
-    console.log(phoneConfirmText);
 
     $.ajax({
         url: "/util/sendSms",
@@ -276,7 +273,6 @@ function filesTest(element) {  // 값이 변경되면
 
     for (const file of files) {
         var filename = file.name.split('/').pop().split('\\').pop();
-        // console.log(filename);
         var ext = filename.split('.').pop().toLowerCase(); //확장자분리
         //아래 확장자가 있는지 체크
 

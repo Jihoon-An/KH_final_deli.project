@@ -182,10 +182,7 @@ $("#add").on("click", function () {
     }
 
     $("#bsns_data").val(JSON.stringify(bs_day));
-    console.log(bs_day);
-    console.log($("#bsns_data").val());
     let bsnsData = JSON.parse($("#bsns_data").val());
-    console.log(bsns_data); //이렇게 parsing해서 쓰면 돼요.
 
 
     $("#frm").attr("action", "/owner/store/add/storeAdd")
@@ -212,13 +209,11 @@ $("#menu_img").on("change", function () {
         $("#profile").attr("src", "/resources/img/store/no_storelogo.png");
         return;
     }
-    console.log($("#menu_img").val());
     let ext = $("#menu_img").val().split(".").pop().toLowerCase();
 
     let accept = ["png", "jpg", "jpeg", "gif"];
 
     let result = $.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
-    console.log(result);
 
 
     if (result == -1) {
@@ -257,8 +252,6 @@ $(document).on("click", ".postsearch", function () {
                 if (status === kakao.maps.services.Status.OK) {
                     let x = result[0].x;
                     let y = result[0].y;
-                    console.log(x)
-                    console.log(y)
                     document.getElementById("store_add_y").value = x;
                     document.getElementById("store_add_x").value = y;
                 }
@@ -307,7 +300,6 @@ $(".bs_close_time").on("change", function () {
 $(".bs_openAll").on("change", function () {
     let bsns_div = $(".bsns_div");
     let bsns = $(bsns_div[0]).find(".bs_openAll").val()
-    console.log(bsns)
 
     $(".bs_open").val(bsns)
     // $(bsns_div[1]).find(".bs_open").val(bsns)

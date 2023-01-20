@@ -37,7 +37,6 @@ public class StoreMenuService {
             //겹치지 않게 이름을 만들어야함
             String sysName = UUID.randomUUID() + "_" + oriName;
             file.transferTo(new File(filePath + "/" + sysName));
-            System.out.println("파일있을떄");
 
             menu.setMenu_img(sysName);
         }

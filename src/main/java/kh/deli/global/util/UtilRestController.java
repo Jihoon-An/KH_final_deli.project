@@ -25,7 +25,6 @@ public class UtilRestController {
     }
     @PostMapping("sendRiderLink")
     public String sendRiderLink(String tel, String msg) {
-        System.out.println(msg);
         NaverNShortURL shortURL = new NaverNShortURL();
         String url = shortURL.toShortURL(msg);
         smsService.send_msg(tel,"딜리 라이더 링크\n" + url);

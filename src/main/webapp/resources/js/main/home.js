@@ -9,7 +9,6 @@ $("#emailSave").on("change" ,()=>{
             url: "/account/deleteSavedEmail",
             type: "post"
         }).done(function(response){
-            console.log(response);
         });
     }
 });

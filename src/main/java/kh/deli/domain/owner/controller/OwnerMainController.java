@@ -29,7 +29,6 @@ public class OwnerMainController {
     public OwnerOrderCountDTO selectOrderCnt(int storeSeq) throws Exception{
 
         OwnerOrderCountDTO list=ownerMainService.selectOrderCnt(storeSeq);
-        System.out.println(list);
         return list;
     }
 

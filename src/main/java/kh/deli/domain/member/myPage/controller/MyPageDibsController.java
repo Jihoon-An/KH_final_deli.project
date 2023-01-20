@@ -28,24 +28,24 @@ public class MyPageDibsController {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
 
         List<MyPageDibsDTO> list = myPageDibsService.select(acc_seq);
-        int dibCount=list.size();
+        int dibCount = list.size();
 
-        model.addAttribute("list",list);
-        model.addAttribute("dibCount",dibCount);
+        model.addAttribute("list", list);
+        model.addAttribute("dibCount", dibCount);
 
         return "/member/myPage/dibs";
     }
 
     @ResponseBody
     @PostMapping(value = "like")
-    public int  insertDibs(Integer store_seq) throws Exception{
+    public int insertDibs(Integer store_seq) throws Exception {
         int acc_seq = (Integer) session.getAttribute("acc_seq");
-        Integer result = myPageDibsService.isExistDibs(acc_seq,store_seq);
-        if(result==0){
-            myPageDibsService.insertDibs(acc_seq,store_seq);
+        Integer result = myPageDibsService.isExistDibs(acc_seq, store_seq);
+        if (result == 0) {
+            myPageDibsService.insertDibs(acc_seq, store_seq);
             return 1;
-        }else {
-            myPageDibsService.deleteDibs(acc_seq,store_seq);
+        } else {
+            myPageDibsService.deleteDibs(acc_seq, store_seq);
             return 0;
         }
     }

@@ -48,7 +48,6 @@ public class NaverSms {
         bodyJson.put("messages", toArr);
 
         String body = bodyJson.toJSONString();
-        System.out.println("내용 : " + body);
 
         try {
             URL url = new URL(apiUrl);
@@ -70,8 +69,6 @@ public class NaverSms {
 
             int responseCode = con.getResponseCode();
             BufferedReader br;
-
-            System.out.println("responseCode" +" " + responseCode);
 
             if(responseCode==202) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));

@@ -96,7 +96,6 @@ function imgPreview(){
                     $("<button type='button' onclick='del_img_btn(this)' class='delBtn'><i class=\"fa-regular fa-circle-xmark\"></i></button>")
                 )
             )
-            console.log(fileArr.findIndex(i=>i.name==f.name));
         }
         reader.readAsDataURL(f);
     })
@@ -109,7 +108,6 @@ function del_img_btn(e){
     let filename=$(e).prev().val();
     let index=fileArr.indexOf(filename);
     fileArr.splice(index,1);
-    console.log("파이ㅏㄹ 길이"+fileArr.length);
 
     let dataTran = new DataTransfer();
     if(fileArr.length!=0){
@@ -154,7 +152,6 @@ $("#writeBtn").on("click", function () {
          size+=fileArr[i].size;
      }
 
-     console.log("이미지 사이즈  : "+size);
     //이미지 크기
     if(size>maxSize){
         Swal.fire({

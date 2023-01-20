@@ -120,7 +120,6 @@ $("#deleteBtn").on("click",function (){
 $("#statusBtn").on("click",function (){
    let status = $("#store_display").val();
     let store_seq=$("#store_seq").val();
-    console.log(status);
 
     if(status == 'Y'){
         $(".modal").fadeOut();

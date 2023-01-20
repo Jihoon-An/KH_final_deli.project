@@ -21,32 +21,32 @@ public class StoreListController {
     private final AdminStoreService adminStoreService;
 
     @RequestMapping("")
-    public String toAdminStoreList(Model model) throws Exception{
+    public String toAdminStoreList(Model model) throws Exception {
 
         List<AdminStoreDTO> list = adminStoreService.selectAllStore();
 
-        model.addAttribute("list",list);
+        model.addAttribute("list", list);
 
         return "admin/adminStoreList";
     }
 
     @ResponseBody
     @PostMapping("deleteStore")
-    public void deleteByStoreSeq(int store_seq) throws Exception{
+    public void deleteByStoreSeq(int store_seq) throws Exception {
 
         adminStoreService.deleteByStoreSeq(store_seq);
     }
 
     @ResponseBody
     @PostMapping("updateDisplayAsY")
-    public void updateDisplayAsY(int store_seq) throws Exception{
+    public void updateDisplayAsY(int store_seq) throws Exception {
 
         adminStoreService.updateDisplayAsY(store_seq);
     }
 
     @ResponseBody
     @PostMapping("updateDisplayAsN")
-    public void updateDisplayAsN(int store_seq) throws Exception{
+    public void updateDisplayAsN(int store_seq) throws Exception {
 
         adminStoreService.updateDisplayAsN(store_seq);
     }

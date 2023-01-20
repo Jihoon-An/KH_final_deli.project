@@ -86,7 +86,6 @@ function onModal() {
     let requiredCheck = true;
     $(".option_select").each(function () {
         let required = $(this).find(".required").val();
-        console.log(required);
         if (required == 'N') {
             return false;
         }

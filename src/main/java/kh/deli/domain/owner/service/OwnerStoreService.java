@@ -26,13 +26,10 @@ public class OwnerStoreService {
 
 
         int owner_seq = ownerStoreMapper.selectOwnerSeq(acc_seq); //acc_seq로 owner_seq 조히
-        System.out.println(owner_seq);
         dto.setOwner_seq(owner_seq); //owner_seq dq입력
 
         String realPath=session.getServletContext().getRealPath("/resources/img/store");
         File filePath=new File(realPath);
-
-        System.out.println(file.getSize());
 
         if(!filePath.exists()) {
             filePath.mkdir(); //파일업로드 폴더가 없다면 생성
@@ -43,7 +40,6 @@ public class OwnerStoreService {
             //겹치지 않게 이름을 만들어야함
             String sysName= UUID.randomUUID()+"_"+oriName;
             file.transferTo(new File(filePath+"/"+sysName));
-            System.out.println("파일있을떄");
 
             dto.setStore_logo(sysName);
         }

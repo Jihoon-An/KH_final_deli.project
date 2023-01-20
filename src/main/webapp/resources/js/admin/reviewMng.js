@@ -46,7 +46,6 @@ function trClickEvent() {
     $("tr").click(function () {
 
         let rev_display=$(this).find(".rev_display").val();
-        console.log(rev_display);
         //리뷰 비공개
         if (rev_display == 'Y') {
             $("#openReview").hide();

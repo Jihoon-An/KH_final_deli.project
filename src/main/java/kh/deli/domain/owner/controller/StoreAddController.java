@@ -26,7 +26,6 @@ public class StoreAddController {
     @RequestMapping("/storeAdd")
     public String add(StoreDTO dto, MultipartFile file, int acc_seq) throws Exception {
 
-        System.out.println("ACC"+acc_seq);
 
       storeService.insertStore(dto, file, acc_seq);
 

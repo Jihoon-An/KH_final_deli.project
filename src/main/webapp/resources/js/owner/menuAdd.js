@@ -179,19 +179,13 @@ $(document).on("click",".btn_add", function () {
     // let selb = $("select[name=option_required] option:selected").val();
     // let sela = document.querySelectorAll(".required:selected")
     let opGroup = document.querySelectorAll(".op_group");
-    console.log(opGroup)
-    console.log("그룹길이"+opGroup.length)
     let sela = document.querySelectorAll(".required");
-    console.log(sela)
-    console.log(sela.length)
     let multiPle = document.querySelectorAll(".op_multi");
     //중첩for문돌리예정
     //let opgroup = $(".opgroup").val();
 
 
     let menuSeq;
-    console.log(menuSubmitCheck())
-
 
     if(opGroup.length!=0) {
 
@@ -240,29 +234,21 @@ $(document).on("click",".btn_add", function () {
                         "option_price": Number(opPriceVal)
                     }
 
-                    console.log(data)
                     $.ajax({
                         url: "/owner/menu/add/menuAddAjax",
                         type: "post",
                         data: data
                     })
-                    console.log("옵션ajax방문")
                 }
             }
         }
         
-        console.log("서브밋왜안되냐")
         //메뉴추가
         $("#frm").attr("action","/owner/menu/add/menuAdd?menu_seq="+menuSeq);
-        //console.log(data)
          $("#frm").submit();
 
-        console.log("서브밋왜안되냐2222")
 
     })
-
-    // console.log(menu_seq)
-
 })
 
 ///이미지 미리보기
@@ -281,13 +267,11 @@ $("#menu_img").on("change", function () {
         $("#profile").attr("src", "/resources/img/store/no_storelogo.png");
         return;
     }
-    console.log($("#menu_img").val());
     let ext = $("#menu_img").val().split(".").pop().toLowerCase();
 
     let accept = ["png", "jpg", "jpeg", "gif"];
 
     let result = $.inArray(ext, accept); //첫번쨰 인자값이 두번쨰 인자 배열 안에 존재한다면 배열 인덱스 반환(0이상값 반환),  존재하지않으면 -1 반환
-    console.log(result);
 
 
     if (result == -1) {

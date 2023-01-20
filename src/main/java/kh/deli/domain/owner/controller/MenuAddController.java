@@ -21,11 +21,11 @@ import java.io.IOException;
 public class MenuAddController {
 
     private final HttpSession session;
-    private  final OwnerMenuService ownerMenuService;
+    private final OwnerMenuService ownerMenuService;
 
     @RequestMapping("")
 
-    public String toMenuAdd(Model model, Integer store_seq){
+    public String toMenuAdd(Model model, Integer store_seq) {
 
         model.addAttribute("store_seq", store_seq);
         return "/owner/menuAdd";
@@ -33,12 +33,8 @@ public class MenuAddController {
 
     @RequestMapping("/menuAdd")
     public String menuAdd(MenuDTO menuDTO, MultipartFile file, int menu_seq) throws IOException {
-        System.out.println("메뉴옵션없다");
-        System.out.println(menu_seq+"메뉴 seqseq");
-        System.out.println(menuDTO.getMenu_name());
-        System.out.println(menuDTO.getMenu_price());
 
-      ownerMenuService.insertMenu(menuDTO, file, menu_seq);
+        ownerMenuService.insertMenu(menuDTO, file, menu_seq);
 
 
         return "redirect:/";
@@ -48,16 +44,7 @@ public class MenuAddController {
     @RequestMapping("/menuAddAjax")
     @ResponseBody
     public String menuAdd(MenuOptionDTO menuOptionDTO) throws Exception {
-
-        System.out.println("메뉴옵션없이 도달");
-        System.out.println(new Gson().toJson(menuOptionDTO));
-
-        System.out.println("이시발");
-
-            ownerMenuService.insertMenuOption(menuOptionDTO);
-            System.out.println("메뉴옵션추가");
-
-
+        ownerMenuService.insertMenuOption(menuOptionDTO);
 
         return "redirect:/";
     }
@@ -67,11 +54,8 @@ public class MenuAddController {
     public int getMenuSeq() {
         int seq = ownerMenuService.getNextMenuSeq();
 
-        System.out.println("AJAX");
-        System.out.println(seq);
         return seq;
     }
-
 
 
 }

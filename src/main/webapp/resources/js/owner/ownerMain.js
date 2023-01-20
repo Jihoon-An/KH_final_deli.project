@@ -43,7 +43,6 @@ $("#optionBtn").on("click", function () {
     startDate=startDate.replace(/-/g, '');
     endDate=endDate.replace(/-/g, '');
 
-    console.log("시작 시간 스트링"+startDate+" ; "+endDate);
     $.ajax({
         url:"/owner/selectSales",
         type: "post",
@@ -126,8 +125,6 @@ $(document).ready(function () {
 //주문건수 비교
 $("#orderCtnBtn").on("click",function (){
     let storeSeq=$(this).prev().val();
-
-    console.log("식당시퀀스"+storeSeq);
 
     $.ajax({
         url:"/owner/selectOrderCnt",

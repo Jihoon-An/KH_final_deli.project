@@ -94,7 +94,6 @@ function randomString() {   //6글자의 랜덤한 글자 생성/
         const rnum = Math.floor(Math.random() * chars.length);
         randomstring += chars.substring(rnum, rnum + 1);
     }
-    console.log(randomstring);
     return randomstring;
 }
 
