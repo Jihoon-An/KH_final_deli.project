@@ -14,12 +14,12 @@ public class AdminAccountService {
 
     private final AdminAccountMapper adminAccountMapper;
 
-    public List<AdminAccountDTO> selectAccountList(){
+    public List<AdminAccountDTO> selectAccountList() {
         return adminAccountMapper.selectAccountList();
     }
 
 
-    public int deleteAccount(int acc_seq){
+    public int deleteAccount(int acc_seq) {
         return adminAccountMapper.deleteAccount(acc_seq);
     }
 }

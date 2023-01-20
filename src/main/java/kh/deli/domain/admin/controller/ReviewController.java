@@ -28,7 +28,7 @@ public class ReviewController {
     //리뷰 삭제
     @ResponseBody
     @PostMapping("/deleteReview")
-    public void deleteReview(int rev_seq) throws Exception{
+    public void deleteReview(int rev_seq) throws Exception {
         System.out.println(rev_seq);
         adminReviewService.deleteReview(rev_seq);
     }
@@ -36,8 +36,8 @@ public class ReviewController {
     //리뷰 공개/비공개
     @ResponseBody
     @PostMapping("/modifyReviewDisplay")
-    public void modifyReviewDisplay(int rev_seq,String rev_display) throws Exception{
-        adminReviewService.modifyReviewDisplay(rev_seq,rev_display);
+    public void modifyReviewDisplay(int rev_seq, String rev_display) throws Exception {
+        adminReviewService.modifyReviewDisplay(rev_seq, rev_display);
     }
 
 }

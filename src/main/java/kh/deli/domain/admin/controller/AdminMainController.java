@@ -26,13 +26,10 @@ public class AdminMainController {
         // 오늘 하루 매출 값 출력
         AdminMainDTO selectTodaySales = adminMainService.selectTodaySales();
 
-        model.addAttribute("salesList",selectAllSalesList);
-        model.addAttribute("salesToday",selectTodaySales);
+        model.addAttribute("salesList", selectAllSalesList);
+        model.addAttribute("salesToday", selectTodaySales);
         return "admin/adminMain";
     }
-
-
-
 
 
 }

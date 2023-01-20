@@ -33,7 +33,7 @@ public class CouponListController {
 
     @PostMapping("/publish")
     @ResponseBody
-    public String publish(String user_email,Integer cp_seq,Integer cp_period) {
-        return cpService.isEmailExist(user_email,cp_seq,cp_period);
+    public String publish(String user_email, Integer cp_seq, Integer cp_period) {
+        return cpService.isEmailExist(user_email, cp_seq, cp_period);
     }
 }

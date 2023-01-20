@@ -46,7 +46,6 @@ public class MypageReviewListController {
         param.setAcc_seq(accSeq);
 
         int myPageReivewCount = myPageReviewService.getReviewCount(param);
-        System.out.println("리뷰 갯수 >>>> " + myPageReivewCount);
         List<MypageReviewDTO> myPageReviewList = new ArrayList<>();
 
         List<Map<String, Object>> reviewList = myPageReviewService.getReviews(param);

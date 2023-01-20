@@ -57,7 +57,7 @@ public class BasketController {
                     menuOptionDTOList.add(menuOptionDTO);
                 }
                 int count = basketDTO.getMenuList().get(i).getCount(); // BasketDTO > MenuList 에서 뽑아낸 Count
-                int price = (basketDTO.getMenuList().get(i).getPrice())*count; // BasketDTO > MenuList 에서 뽑아낸 Price
+                int price = (basketDTO.getMenuList().get(i).getPrice()) * count; // BasketDTO > MenuList 에서 뽑아낸 Price
 
                 OrderDetailDTO orderDetailDTO = new OrderDetailDTO(menuDTO, menuOptionDTOList, count, price);
                 orderDetailDTOList.add(orderDetailDTO);
@@ -85,7 +85,6 @@ public class BasketController {
         basketService.updateBasketInSession(session, basketJson);
         return "";
     }
-
 
 
 }

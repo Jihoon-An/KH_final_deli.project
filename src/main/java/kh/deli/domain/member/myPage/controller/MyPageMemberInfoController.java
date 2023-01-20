@@ -49,7 +49,11 @@ public class MyPageMemberInfoController {
     public String modifyPassWord(String oldPassWord, String newPassWord) throws Exception {
         int accSeq = (int) session.getAttribute("acc_seq");
         boolean result = myPageMemberInfoService.modifyAccountPW(accSeq, oldPassWord, newPassWord);
-        if (result) {return "true";}else {return "false";}
+        if (result) {
+            return "true";
+        } else {
+            return "false";
+        }
     }
 
 
