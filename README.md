@@ -16,7 +16,7 @@
 - (일반 유저) 알림
 - (사업자 유저) 주문관리
 - (Admin) 쿠폰관리
-4. [기능 구현 지원](https://github.com/Jihoon-An/KH_final_deli.project/blob/main/README.md#4-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A7%80%EC%9B%90-%ED%95%B5%EC%8B%AC) (핵심)
+4. [기능 구현 지원](https://github.com/Jihoon-An/KH_final_deli.project/blob/main/README.md#4-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A7%80%EC%9B%90-%ED%95%B5%EC%8B%AC)
 - (일반 유저) 식당 리스트 - 경도 위도를 기반으로 일정 거리 내의 식당 출력
 - (일반 유저) 리뷰 수정 - 최대 개수가 정해진 다수의 이미지 수정
 
